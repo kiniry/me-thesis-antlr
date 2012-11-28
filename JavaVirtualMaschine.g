@@ -77,7 +77,7 @@ typeSignature
 	;
 
 typeIdentifier
-	:	(IDENTIFIER | TypeIdentifier | ArrayIdentifier) SEMI?
+	:	(TypeIdentifier | IDENTIFIER) SEMI?
 	;
 
 //*******************************/
@@ -91,7 +91,10 @@ constant_pool
 	
 contant_pool_line
 	:	Constant_pool_index ASSIGN 
-		CONSTANT_TYPE_ASSIGNABLE
+		//CONSTANT_TYPE_ASSIGNABLE
+		(UTF8TYPE
+		|
+		otherType)
 	;
 	
 otherType
@@ -281,7 +284,7 @@ lineNumberTableLine
 	
 localVariableTable
 	:	LOCALVARIABLETABLE COLON
-		IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
+		IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER SIGNATURE
 		localVariableTableLine+
 	;
 	
@@ -307,15 +310,8 @@ stackMapTableTypes
 	;
 
 stackMapTableType
-	:	(plainObject|arrayObject|PrimitiveType)
+	:	CLASS? (typeIdentifier|QuotedTypeIdentifier|PrimitiveType)
 	;
-	
-plainObject
-	:	CLASS typeIdentifier;
-
-arrayObject
-	:	CLASS QuotedTypeIdentifier;
-
 //*******************************/
 //						Lexer			 				 /
 //*******************************/
@@ -357,21 +353,18 @@ STACK	:	'stack';	LOCALS	:	'locals';	ARGS:	'args_size';
 
 MINUS	:	'-'		;	PLUS		:	'+'		;	
 COLON	:	':'		;	SEMI		: 	';'		;	
-fragment QUOTE	
-	:	'\"'		;	COMMA		:	','		;
+fragment QUOTE	:	'\"'		;	COMMA		:	','		;
 DOT	:	'.'		;	
-fragment SLASH		
-	:	'/'		;
+fragment SLASH		:	'/'		;
 LBRACE	:	'{'		;	RBRACE		:	'}'		;
 LBRACK	:	'['		;	RBRACK		:	']'		;
 LPAREN	:	'('		;	RPAREN		:	')'		;
 ASSIGN	:	'='		;	fragment UNDERSCORE	:	'_'		;
-HASH	:	'#'		;	fragment MLCOMMENT	:	'/*'		;
-fragment SLCOMMENT
-	:	'//'		;
+HASH		:	'#'		;
 
 QUOTED_STRING
-	:	QUOTE IDENTIFIER JAVAFILETYPE QUOTE
+	:
+	QUOTE IDENTIFIER JAVAFILETYPE QUOTE
 	;
 
 ACCESS_FLAGS
@@ -382,12 +375,17 @@ ACCESS_FLAGS
 	|	'ACC_NATIVE'	|	'ACC_INTERFACE'
 	|	'ACC_ABSTRACT'	| 'ACC_SUPER')	; // ACC_SUPER is not presented in the specification of jvm 1
 	
-Constant_type
-	:	'Class'		|	'Fieldref'	|	'Methodref'
-	|	'InterfaceMethodref'			|	'String'
-	|	'Integer'	|	'Float'		|	'Long'
-	|	'Double'	|	'NameAndType'
-	|	'Unicode'	|	'Utf8'
+//Constant_type
+//	:	'Class'		|	'Fieldref'	|	'Methodref'
+//	|	'InterfaceMethodref'			|	'String'
+//	|	'Integer'	|	'Float'		|	'Long'
+//	|	'Double'	|	'NameAndType'
+//	|	'Unicode'
+//	;
+
+
+Constant_type_UTF8
+	:'Utf8'
 	;
 
 PrimitiveType 
@@ -410,11 +408,8 @@ PATH	:	SLASH LETTER COLON (SLASH (IDENTIFIER WS*)+)+ JAVABYTECODEFILE;
 DATE	:	DIGIT DIGIT MINUS DIGIT DIGIT MINUS INT;
 
 TypeIdentifier
-	:	IDENTIFIER (SLASH IDENTIFIER)+
+	:	LBRACK* IDENTIFIER (SLASH IDENTIFIER)* //SEMI?
 	;
-
-ArrayIdentifier
-	:	LBRACK+ (TypeIdentifier|IDENTIFIER);
 	
 QuotedTypeIdentifier
 	:	QUOTE TypeIdentifier SEMI? QUOTE
@@ -426,13 +421,17 @@ FLOAT
     |   DIGIT+ EXPONENT
     ;
 
-CONSTANT_TYPE_ASSIGNABLE
-	:	Constant_type REGULAR_STRING_LITERAL_CHARACTER*
+UTF8TYPE
+	:	Constant_type_UTF8 REGULAR_STRING_LITERAL_CHARACTER*
 	;
 
+//CONSTANT_TYPE_ASSIGNABLE
+//	:	Constant_type REGULAR_STRING_LITERAL_CHARACTER*
+//	;
+
 COMMENT
-    :   SLCOMMENT ~(NL|'\r')* '\r'? NL {$channel=HIDDEN;}
-    |   MLCOMMENT ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
+    :   '//' ~(NL|'\r')* '\r'? NL {$channel=HIDDEN;}
+    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
     ;
 
 WS  :   ( ' '
@@ -485,7 +484,7 @@ REGULAR_STRING_LITERAL_CHARACTER
 	
 fragment	
 SINGLE_REGULAR_STRING_LITERAL_CHARACTER
-	:	 ~( '\"' | '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029' | SLCOMMENT | MLCOMMENT)
+	:	 ~( '\"' | '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029')
 	;
 	
 fragment
