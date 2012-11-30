@@ -5,6 +5,7 @@ language = 'Java';
 output=AST; 
 }
 
+
 //*******************************/
 //	Class files
 //*******************************/
@@ -29,7 +30,7 @@ modified_file_info
 	;
 	
 checksum_file_info
-	:	CHECKSUM HEX_DIGITS
+	:	CHECKSUM IDENTIFIER
 	;
 		
 compiled_file_info
@@ -69,7 +70,11 @@ major_version_info
 	;
 			
 flags
-	:	FLAGS COLON ACCESS_FLAGS (COMMA ACCESS_FLAGS)*
+	:	FLAGS COLON accessFlagList
+	;
+	
+accessFlagList
+	:	ACCESS_FLAGS (COMMA ACCESS_FLAGS)* -> ACCESS_FLAGS+
 	;
 	
 typeSignature
@@ -91,10 +96,10 @@ constant_pool
 	
 contant_pool_line
 	:	Constant_pool_index ASSIGN 
-		//CONSTANT_TYPE_ASSIGNABLE
-		(UTF8TYPE
-		|
-		otherType)
+		CONSTANT_TYPE_ASSIGNABLE
+		//(UTF8TYPE
+		//|
+		//otherType)
 	;
 	
 otherType
@@ -124,7 +129,7 @@ class_modifier
 	;
 
 typeList
- 	:	type (COMMA type)*
+ 	:	type (COMMA type)* -> type+
  	; 
   	
 type 
@@ -132,7 +137,7 @@ type
 	;
  	
 classOrInterfaceType 
-	: 	IDENTIFIER (DOT IDENTIFIER)*
+	: 	IDENTIFIER (DOT IDENTIFIER)* -> IDENTIFIER+
 	;
 
 //*******************************/
@@ -195,7 +200,7 @@ method_modifier
 	;
 
 arguments
-	:	LPAREN (type (COMMA type)*)? RPAREN
+	:	LPAREN typeList? RPAREN
 	;
 	
 body	:	exceptionDeclaration?
@@ -300,13 +305,17 @@ stackMapTable
 	:	STACKMAPTABLE COLON NUMBER_OF_ENTRIES ASSIGN INT
 	(	FRAME_TYPE ASSIGN INT
 	|	OFFSET_DELTA ASSIGN INT
-	|	LOCALS ASSIGN stackMapTableTypes
-	|	STACK ASSIGN stackMapTableTypes
+	|	LOCALS ASSIGN stackMapTableTypesContainer
+	|	STACK ASSIGN stackMapTableTypesContainer
 	)*
 	;
 
+stackMapTableTypesContainer
+	:	LBRACK stackMapTableTypes? RBRACK
+	;
+	
 stackMapTableTypes
-	:	LBRACK (stackMapTableType (COMMA stackMapTableType)*)? RBRACK
+	:	stackMapTableType (COMMA stackMapTableType)* -> stackMapTableType+
 	;
 
 stackMapTableType
@@ -375,18 +384,18 @@ ACCESS_FLAGS
 	|	'ACC_NATIVE'	|	'ACC_INTERFACE'
 	|	'ACC_ABSTRACT'	| 'ACC_SUPER')	; // ACC_SUPER is not presented in the specification of jvm 1
 	
-//Constant_type
-//	:	'Class'		|	'Fieldref'	|	'Methodref'
-//	|	'InterfaceMethodref'			|	'String'
-//	|	'Integer'	|	'Float'		|	'Long'
-//	|	'Double'	|	'NameAndType'
-//	|	'Unicode'
-//	;
-
-
-Constant_type_UTF8
-	:'Utf8'
+fragment
+Constant_type
+	:	'Class'		|	'Fieldref'	|	'Methodref'
+	|	'InterfaceMethodref'			|	'String'
+	|	'Integer'	|	'Float'		|	'Long'
+	|	'Double'	|	'NameAndType'
+	|	'Unicode' | 'Utf8'
 	;
+
+//Constant_type_UTF8
+//	:'Utf8'
+//	;
 
 PrimitiveType 
 	: 	Numeric_type
@@ -399,9 +408,9 @@ IDENTIFIER
 
 INT :	DIGIT+;
 
-HEX_DIGITS
-	:	HEX_DIGIT+
-	;
+//HEX_DIGITS
+//	:	HEX_DIGIT+
+//	;
 
 PATH	:	SLASH LETTER COLON (SLASH (IDENTIFIER WS*)+)+ JAVABYTECODEFILE;
 
@@ -421,13 +430,13 @@ FLOAT
     |   DIGIT+ EXPONENT
     ;
 
-UTF8TYPE
-	:	Constant_type_UTF8 REGULAR_STRING_LITERAL_CHARACTER*
-	;
-
-//CONSTANT_TYPE_ASSIGNABLE
-//	:	Constant_type REGULAR_STRING_LITERAL_CHARACTER*
+//UTF8TYPE
+//	:	Constant_type_UTF8 REGULAR_STRING_LITERAL_CHARACTER*
 //	;
+
+CONSTANT_TYPE_ASSIGNABLE
+	:	Constant_type (' ')+ REGULAR_STRING_LITERAL_CHARACTER*
+	;
 
 COMMENT
     :   '//' ~(NL|'\r')* '\r'? NL {$channel=HIDDEN;}
@@ -484,7 +493,7 @@ REGULAR_STRING_LITERAL_CHARACTER
 	
 fragment	
 SINGLE_REGULAR_STRING_LITERAL_CHARACTER
-	:	 ~( '\"' | '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029')
+	:	 ~( '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029') //'\"' | 
 	;
 	
 fragment
