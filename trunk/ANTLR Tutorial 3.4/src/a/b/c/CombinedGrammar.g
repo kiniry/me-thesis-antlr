@@ -2,12 +2,16 @@ grammar CombinedGrammar;
 
 options {
   language = Java;
+  output=AST; 
 }
 
 @header {
 	package a.b.c;
 }
 
+@lexer::header {
+	package a.b.c;
+}
 
 //*******************************/
 //	Class files
@@ -33,7 +37,7 @@ modified_file_info
 	;
 	
 checksum_file_info
-	:	CHECKSUM IDENTIFIER
+	:	CHECKSUM (IDENTIFIER | HEX_DIGITS)
 	;
 		
 compiled_file_info
@@ -53,15 +57,35 @@ type_info
 	|	signature_info
 	|	minor_version_info
 	|	major_version_info
-	|	flags)+
+	|	flags
+	| scalaSig_info
+	| runtimeVisibleAnnotations_info
+	|	innerclass_info)+
 	;
 	
 sourcefile_info
 	:	SOURCEFILE COLON QUOTED_STRING
 	;
+
+scalaSig_info
+	:	SCALASIG COLON IDENTIFIER ASSIGN HEX_DIGITS
+	INT INT INT
+	;
+runtimeVisibleAnnotations_info
+	:RuntimeVisibleAnnotations COLON
+	INT COLON Constant_pool_index LPAREN Constant_pool_index ASSIGN IDENTIFIER Constant_pool_index RPAREN
+  ;
 		
 signature_info
 	:	SIGNATURE COLON typeSignature
+	;
+
+innerclass_info
+	: INNERCLASSES COLON
+		innerclass_info_line+
+	;
+innerclass_info_line
+	:class_visual_modifier class_modifier* Constant_pool_index (ASSIGN Constant_pool_index IDENTIFIER Constant_pool_index)? SEMI
 	;
 		
 minor_version_info
@@ -73,7 +97,11 @@ major_version_info
 	;
 			
 flags
-	:	FLAGS COLON ACCESS_FLAGS (COMMA ACCESS_FLAGS)*
+	:	FLAGS COLON accessFlagList
+	;
+	
+accessFlagList
+	:	ACCESS_FLAGS (COMMA ACCESS_FLAGS)* -> ACCESS_FLAGS+
 	;
 	
 typeSignature
@@ -96,9 +124,6 @@ constant_pool
 contant_pool_line
 	:	Constant_pool_index ASSIGN 
 		CONSTANT_TYPE_ASSIGNABLE
-		//(UTF8TYPE
-		//|
-		//otherType)
 	;
 	
 otherType
@@ -111,7 +136,7 @@ otherType
 
 
 classDefinition
-	:	class_visual_modifier class_modifier* CLASS IDENTIFIER (EXTENDS type )? (IMPLEMENTS typeList )?
+	:	class_visual_modifier class_modifier* classOrInterfaceType (EXTENDS type )? (IMPLEMENTS typeList )?
 		type_info
 		constant_pool
 		LBRACE
@@ -124,19 +149,27 @@ class_visual_modifier
 	;
 		
 class_modifier
-	:	ABSTRACT | FINAL | INTERFACE
+	:	ABSTRACT | FINAL | INTERFACE | CLASS
 	;
 
 typeList
- 	:	type (COMMA type)*
+ 	:	type (COMMA type)* -> type+
  	; 
   	
 type 
-	:	(PrimitiveType | classOrInterfaceType) (LBRACK RBRACK)*
+	:	(PrimitiveType | classOrInterfaceType | genericType) (LBRACK RBRACK)*
 	;
- 	
-classOrInterfaceType 
-	: 	IDENTIFIER (DOT IDENTIFIER)*
+
+genericType
+	:	classOrInterfaceType LESST classOrInterfaceTypeList LARGET
+	;
+
+classOrInterfaceType
+	:	(IDENTIFIER | PACKAGETYPEIDENTIFIER)
+	;
+	
+classOrInterfaceTypeList
+	:	classOrInterfaceType (COMMA classOrInterfaceType)* -> classOrInterfaceType+
 	;
 
 //*******************************/
@@ -184,12 +217,16 @@ ctorDefinition
 
 methodDefinition
 	: 	method_visual_modifier method_modifier* type IDENTIFIER arguments throwClause? SEMI
-		type_info
+		type_info		
 	( 	body
-	|	';'	//Abstract method
-	)
+	|	signature_info_add	//Abstract method
+	)?
 	;
-		
+	
+signature_info_add
+	:	SIGNATURE COLON Constant_pool_index
+	;
+	
 method_visual_modifier
 	:	PUBLIC	|	PRIVATE |	PROTECTED
 	;
@@ -199,7 +236,7 @@ method_modifier
 	;
 
 arguments
-	:	LPAREN (type (COMMA type)*)? RPAREN
+	:	LPAREN typeList? RPAREN
 	;
 	
 body	:	exceptionDeclaration?
@@ -304,13 +341,17 @@ stackMapTable
 	:	STACKMAPTABLE COLON NUMBER_OF_ENTRIES ASSIGN INT
 	(	FRAME_TYPE ASSIGN INT
 	|	OFFSET_DELTA ASSIGN INT
-	|	LOCALS ASSIGN stackMapTableTypes
-	|	STACK ASSIGN stackMapTableTypes
+	|	LOCALS ASSIGN stackMapTableTypesContainer
+	|	STACK ASSIGN stackMapTableTypesContainer
 	)*
 	;
 
+stackMapTableTypesContainer
+	:	LBRACK stackMapTableTypes? RBRACK
+	;
+	
 stackMapTableTypes
-	:	LBRACK (stackMapTableType (COMMA stackMapTableType)*)? RBRACK
+	:	stackMapTableType (COMMA stackMapTableType)* -> stackMapTableType+
 	;
 
 stackMapTableType
@@ -342,7 +383,7 @@ MODIFIED : 'Last modified';	CHECKSUM : 'MD5 checksum';	CLASSFILE : 'Classfile';
 SOURCEFILE : 'SourceFile';	MINORVERSION : 'minor version';	MAJORVERSION : 'major version';
 FLAGS : 'flags';		SIZE : 'size';			BYTES : 'bytes';
 JAVAFILETYPE : '.java';		COMPILED : 'Compiled from';	CLASS : 'class';
-JAVABYTECODEFILE	:	'.class'	;	DEFAULT : 'default';
+DEFAULT : 'default';	//JAVABYTECODEFILE	:	'.class'	;
 EXTENDS : 'extends';		IMPLEMENTS : 'implements';	SIGNATURE : 'Signature';
 CONSTANTPOOL : 'Constant pool';	THROWS : 'throws';		CODE : 'Code';
 TABLESWITCH : 'tableswitch';	LOOKUPSWITCH : 'lookupswitch';	EXCEPTIONS : 'Exceptions';
@@ -351,7 +392,9 @@ ABSTRACT : 'abstract';		PUBLIC : 'public';		FINAL : 'final';
 STATIC : 'static';		PRIVATE : 'private';		PROTECTED : 'protected';
 INTERFACE : 'interface';	SYNCHRONIZED : 'synchronized';	NATIVE : 'native';
 VOLATILE : 'volatile';		TRANSIENT : 'transient'; CTOR : '<init>';
-DCTOR 	: '<clinit>';
+DCTOR 	: '<clinit>';	
+SCALASIG	: 'ScalaSig'; INNERCLASSES : 'InnerClasses';
+RuntimeVisibleAnnotations: 'RuntimeVisibleAnnotations';
 STACK	:	'stack';	LOCALS	:	'locals';	ARGS:	'args_size';
 
 
@@ -363,12 +406,13 @@ fragment SLASH		:	'/'		;
 LBRACE	:	'{'		;	RBRACE		:	'}'		;
 LBRACK	:	'['		;	RBRACK		:	']'		;
 LPAREN	:	'('		;	RPAREN		:	')'		;
+LESST		:	'<'		;	LARGET		:	'>'		;
 ASSIGN	:	'='		;	fragment UNDERSCORE	:	'_'		;
 HASH		:	'#'		;
 
 QUOTED_STRING
 	:
-	QUOTE IDENTIFIER JAVAFILETYPE QUOTE
+	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
 	;
 
 ACCESS_FLAGS
@@ -398,21 +442,25 @@ PrimitiveType
 	;
 
 IDENTIFIER  
-	:	(LETTER|'_') (LETTER|DIGIT|'_')*
+	:	(LETTER|'_') (LETTER|DIGIT|'_'|'$')*
     	;
+ 	
+PACKAGETYPEIDENTIFIER 
+	: 	IDENTIFIER (DOT IDENTIFIER)+
+	;
 
 INT :	DIGIT+;
 
-//HEX_DIGITS
-//	:	HEX_DIGIT+
-//	;
+HEX_DIGITS
+	:	'0x'? HEX_DIGIT+
+	;
 
-PATH	:	SLASH LETTER COLON (SLASH (IDENTIFIER WS*)+)+ JAVABYTECODEFILE;
+PATH	:	SLASH LETTER COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
 DATE	:	DIGIT DIGIT MINUS DIGIT DIGIT MINUS INT;
 
 TypeIdentifier
-	:	LBRACK* IDENTIFIER (SLASH IDENTIFIER)* //SEMI?
+	:	LBRACK* IDENTIFIER (SLASH IDENTIFIER)*
 	;
 	
 QuotedTypeIdentifier
@@ -430,7 +478,7 @@ FLOAT
 //	;
 
 CONSTANT_TYPE_ASSIGNABLE
-	:	Constant_type (' ')+ REGULAR_STRING_LITERAL_CHARACTER*
+	:	Constant_type (' ')+ ~(NL|'\r')* '\r'? NL
 	;
 
 COMMENT
@@ -451,6 +499,7 @@ STRING
 
 CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''
     ;
+	
 fragment
 LETTER	:	('a'..'z'|'A'..'Z');
 
