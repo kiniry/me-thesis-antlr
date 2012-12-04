@@ -29,11 +29,11 @@ class_file_header
 	|	compiled_file_info)* 
 	;
 class_file_info
-	:	CLASSFILE PATH
+	:	IDENTIFIER PATH
 	;
 	
 modified_file_info
-	:	MODIFIED DATE SEMI SIZE INT BYTES
+	:	MODIFIED DATE SEMI IDENTIFIER INT BYTES
 	;
 	
 checksum_file_info
@@ -55,21 +55,25 @@ file_name
 type_info
 	:	(sourcefile_info
 	|	signature_info
-	|	minor_version_info
-	|	major_version_info
+	|	minor_major_version_info
 	|	flags
 	| scalaSig_info
 	| runtimeVisibleAnnotations_info
-	|	innerclass_info)+
+	|	innerclass_info
+	| enclosingMethod)+
 	;
-	
+
+enclosingMethod
+	:	EnclosingMethod COLON Constant_pool_index DOT Constant_pool_index
+	;
+
 sourcefile_info
 	:	SOURCEFILE COLON QUOTED_STRING
 	;
 
 scalaSig_info
-	:	SCALASIG COLON IDENTIFIER ASSIGN HEX_DIGITS
-	INT INT INT
+	:	IDENTIFIER COLON IDENTIFIER ASSIGN HEX_DIGITS
+		(INT INT INT)?
 	;
 runtimeVisibleAnnotations_info
 	:RuntimeVisibleAnnotations COLON
@@ -77,23 +81,19 @@ runtimeVisibleAnnotations_info
   ;
 		
 signature_info
-	:	SIGNATURE COLON typeSignature
+	:	SIGNATURE COLON (typeSignature | Constant_pool_index)
 	;
 
 innerclass_info
-	: INNERCLASSES COLON
+	: IDENTIFIER COLON
 		innerclass_info_line+
 	;
 innerclass_info_line
-	:class_visual_modifier class_modifier* Constant_pool_index (ASSIGN Constant_pool_index IDENTIFIER Constant_pool_index)? SEMI
+	:field_visual_modifier? method_modifier* Constant_pool_index (ASSIGN Constant_pool_index IDENTIFIER Constant_pool_index)? SEMI
 	;
 		
-minor_version_info
-	:	MINORVERSION COLON INT
-	;
-		
-major_version_info
-	:	MAJORVERSION COLON INT
+minor_major_version_info
+	:	IDENTIFIER IDENTIFIER COLON INT
 	;
 			
 flags
@@ -101,11 +101,11 @@ flags
 	;
 	
 accessFlagList
-	:	ACCESS_FLAGS (COMMA ACCESS_FLAGS)* -> ACCESS_FLAGS+
+	:	ACCESS_FLAGS? (COMMA ACCESS_FLAGS)* -> ACCESS_FLAGS*
 	;
 	
 typeSignature
-	:	(LPAREN (typeIdentifier)? RPAREN)? typeIdentifier
+	:	(LPAREN (typeIdentifier)* RPAREN)? typeIdentifier
 	;
 
 typeIdentifier
@@ -136,7 +136,7 @@ otherType
 
 
 classDefinition
-	:	class_visual_modifier class_modifier* classOrInterfaceType (EXTENDS type )? (IMPLEMENTS typeList )?
+	:	class_visual_modifier? class_modifier* classOrInterfaceType (EXTENDS type )? (IMPLEMENTS typeList )?
 		type_info
 		constant_pool
 		LBRACE
@@ -181,6 +181,7 @@ classBody
 	(	fieldDefinition
 	|	ctorDefinition
 	|	methodDefinition
+	|	staticCtorDefinition
 	)+
 	;
 
@@ -189,10 +190,15 @@ classBody
 //*******************************/
 
 fieldDefinition
-	:	field_visual_modifier field_modifier* type typeIdentifier
+	:	field_visual_modifier? field_modifier* type typeIdentifier (ASSIGN MINUS? INT SEMI)?
 	type_info
+	constantValue?
 	;
-		
+
+constantValue
+	:	IDENTIFIER COLON type MINUS? INT
+	;
+
 field_visual_modifier
 	:	PUBLIC	|	PRIVATE |	PROTECTED
 	;
@@ -206,7 +212,17 @@ field_modifier
 //*******************************/
 
 ctorDefinition
-	:	class_visual_modifier IDENTIFIER arguments throwClause? SEMI
+	:	field_visual_modifier? classOrInterfaceType arguments throwClause? SEMI
+		type_info
+		body?
+	;
+	
+//*******************************/
+//		Static ctor definition		 /
+//*******************************/
+
+staticCtorDefinition
+	:	field_visual_modifier? STATIC LBRACE RBRACE SEMI
 		type_info
 		body
 	;
@@ -216,15 +232,15 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-	: 	method_visual_modifier method_modifier* type IDENTIFIER arguments throwClause? SEMI
+	: 	method_visual_modifier? method_modifier* type IDENTIFIER arguments throwClause? SEMI
 		type_info		
-	( 	body
-	|	signature_info_add	//Abstract method
-	)?
+		body?
+		signature_info?
+		deprecated?
 	;
 	
-signature_info_add
-	:	SIGNATURE COLON Constant_pool_index
+deprecated
+	:	IDENTIFIER COLON IDENTIFIER
 	;
 	
 method_visual_modifier
@@ -239,14 +255,19 @@ arguments
 	:	LPAREN typeList? RPAREN
 	;
 	
-body	:	exceptionDeclaration?
-		CODE COLON
+body	
+	: (codeBlock
+	|	exceptionTable
+	|	lineNumberTable
+	|	localVariableTable
+	|	stackMapTable
+	|	exceptionDeclaration)+
+	;
+
+codeBlock
+	:	CODE COLON
 		variables
 		(codeLine |	javaSwitch)*
-		exceptionTable?
-		lineNumberTable
-		localVariableTable
-		stackMapTable?
 	;
 
 codeLine
@@ -303,7 +324,7 @@ throwClause
 exceptionTable
 	:	EXCEPTION_TABLE COLON
 		IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
-		INT INT INT IDENTIFIER typeIdentifier
+		INT INT INT CONSTANT_TYPE_ASSIGNABLE//IDENTIFIER typeIdentifier
 	;
 	
 //*******************************/
@@ -378,10 +399,12 @@ FRAME_TYPE
 	:	'frame_type';
 OFFSET_DELTA
 	:	'offset_delta';
+EnclosingMethod
+	:	'EnclosingMethod';
 
-MODIFIED : 'Last modified';	CHECKSUM : 'MD5 checksum';	CLASSFILE : 'Classfile';
-SOURCEFILE : 'SourceFile';	MINORVERSION : 'minor version';	MAJORVERSION : 'major version';
-FLAGS : 'flags';		SIZE : 'size';			BYTES : 'bytes';
+MODIFIED : 'Last modified';	CHECKSUM : 'MD5 checksum';	//CLASSFILE : 'Classfile';
+SOURCEFILE : 'SourceFile';	//MINORVERSION : 'minor version';	MAJORVERSION : 'major version';
+FLAGS : 'flags';		BYTES : 'bytes';	//SIZE : 'size';
 JAVAFILETYPE : '.java';		COMPILED : 'Compiled from';	CLASS : 'class';
 DEFAULT : 'default';	//JAVABYTECODEFILE	:	'.class'	;
 EXTENDS : 'extends';		IMPLEMENTS : 'implements';	SIGNATURE : 'Signature';
@@ -393,7 +416,7 @@ STATIC : 'static';		PRIVATE : 'private';		PROTECTED : 'protected';
 INTERFACE : 'interface';	SYNCHRONIZED : 'synchronized';	NATIVE : 'native';
 VOLATILE : 'volatile';		TRANSIENT : 'transient'; CTOR : '<init>';
 DCTOR 	: '<clinit>';	
-SCALASIG	: 'ScalaSig'; INNERCLASSES : 'InnerClasses';
+//SCALASIG	: 'ScalaSig'; //INNERCLASSES : 'InnerClasses';
 RuntimeVisibleAnnotations: 'RuntimeVisibleAnnotations';
 STACK	:	'stack';	LOCALS	:	'locals';	ARGS:	'args_size';
 
@@ -416,13 +439,15 @@ QUOTED_STRING
 	;
 
 ACCESS_FLAGS
-	:	('ACC_PUBLIC'	|	'ACC_PRIVATE'
+	:	('ACC_PUBLIC'		|	'ACC_PRIVATE'
 	|	'ACC_PROTECTED'	|	'ACC_STATIC'
-	|	'ACC_FINAL'	|	'ACC_SYNCHRONIZED'
+	|	'ACC_FINAL'			|	'ACC_SYNCHRONIZED'
 	|	'ACC_VOLATILE'	|	'ACC_TRANSIENT'
-	|	'ACC_NATIVE'	|	'ACC_INTERFACE'
-	|	'ACC_ABSTRACT'	| 'ACC_SUPER')	; // ACC_SUPER is not presented in the specification of jvm 1
-	
+	|	'ACC_NATIVE'		|	'ACC_INTERFACE'
+	|	'ACC_ABSTRACT'	| 'ACC_SUPER'
+	|	'ACC_SYNTHETIC'	|	'ACC_ANNOTATION'
+	|	'ACC_ENUM'			|	'ACC_BRIDGE')	; // ACC_SUPER is not presented in the specification of jvm 1
+
 fragment
 Constant_type
 	:	'Class'		|	'Fieldref'	|	'Methodref'
@@ -431,10 +456,6 @@ Constant_type
 	|	'Double'	|	'NameAndType'
 	|	'Unicode' | 'Utf8'
 	;
-
-//Constant_type_UTF8
-//	:'Utf8'
-//	;
 
 PrimitiveType 
 	: 	Numeric_type
@@ -472,10 +493,6 @@ FLOAT
     |   '.' DIGIT+ EXPONENT?
     |   DIGIT+ EXPONENT
     ;
-
-//UTF8TYPE
-//	:	Constant_type_UTF8 REGULAR_STRING_LITERAL_CHARACTER*
-//	;
 
 CONSTANT_TYPE_ASSIGNABLE
 	:	Constant_type (' ')+ ~(NL|'\r')* '\r'? NL
