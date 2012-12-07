@@ -534,3 +534,79 @@ Floating_point_type
 	:	'float'
 	|	'double'
 	;
+	
+
+//*******************************/
+// 4.3.3 Class signature
+//*******************************/
+
+ClassSignature:
+    FormalTypeParameters? SuperclassSignature SuperinterfaceSignature*;
+    
+FormalTypeParameters:
+    LESST FormalTypeParameter+ LARGET;
+
+FormalTypeParameter:
+    Identifier ClassBound InterfaceBound*;
+
+ClassBound:
+    : FieldTypeSignature?;
+
+InterfaceBound:
+    : FieldTypeSignature;
+
+SuperclassSignature:
+    ClassTypeSignature;
+
+SuperinterfaceSignature:
+    ClassTypeSignature;
+    
+FieldTypeSignature
+	:	ClassTypeSignature	
+  |	ArrayTypeSignature
+  |	TypeVariableSignature;
+
+// L(Some/)*Class(<any type>)
+ClassTypeSignature:
+    'L' PackageSpecifier? SimpleClassTypeSignature ClassTypeSignatureSuffix*;
+
+PackageSpecifier:
+    Identifier SLASH PackageSpecifier*;
+
+SimpleClassTypeSignature:
+    Identifier TypeArguments?;
+
+ClassTypeSignatureSuffix:
+    DOT SimpleClassTypeSignature;
+
+TypeVariableSignature:
+    'T' Identifier;
+
+TypeArguments:
+    LESST TypeArgument+ LARGET;
+
+TypeArgument:
+    WildcardIndicator? FieldTypeSignature
+    *
+
+WildcardIndicator:
+    	'+'
+    |	'-';
+
+ArrayTypeSignature:
+    LBRACK TypeSignature;
+
+TypeSignature:
+    FieldTypeSignature
+    |	BaseType;
+    
+MethodTypeSignature:
+    FormalTypeParameters? LPAREN TypeSignature* RPAREN ReturnType ThrowsSignature*;
+
+ReturnType:
+    TypeSignature
+    |	VoidDescriptor;
+
+ThrowsSignature:
+    '^' ClassTypeSignature
+    |	'^' TypeVariableSignature;
