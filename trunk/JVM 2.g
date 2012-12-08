@@ -67,10 +67,15 @@ infoTypes
 	|	innerclass_info
 	| enclosingMethod
 	| signature_info_addition
+	| deprecated
 	;
 
 caption
 	:	IDENTIFIER IDENTIFIER? COLON
+	;
+
+deprecated
+	:	BOOLEANLITERAL
 	;
 
 enclosingMethod
@@ -135,7 +140,7 @@ contant_pool_line
 //*******************************/
 
 classDefinition
-	:	class_visual_modifier? class_modifier* javaType superClass? superInterface?
+	:	class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface?
 		type_info
 		constant_pool
 		LBRACE
@@ -189,6 +194,7 @@ fieldInfoTypes
 	:	fieldInfoOption1
 	|	fieldInfoOption2
 	|	fieldInfoOption3
+	|	fieldInfoOption4
 	;
 	
 fieldInfoOption1 // Minded Flags
@@ -201,6 +207,10 @@ fieldInfoOption2 // Minded signatures
 
 fieldInfoOption3 // Minded constant values
 	:	 javaType (MINUS | PLUS)? INTLITERAL
+	;
+
+fieldInfoOption4 // Minded signatures
+	:	 CPINDEX
 	;
 
 field_visual_modifier
@@ -219,6 +229,7 @@ ctorDefinition
 	:	field_visual_modifier? javaType arguments throwClause? SEMI
 		methodInfo
 		body
+		afterMethodInfo
 	;
 	
 //*******************************/
@@ -236,7 +247,7 @@ staticCtorDefinition
 //*******************************/
 
 methodDefinition
-	: method_visual_modifier? method_modifier* type javaType arguments throwClause? SEMI
+	: method_visual_modifier? method_modifier* (type | genericReturn) javaTypeIdentifier arguments throwClause? SEMI
 		methodInfo		
 		body?
 		afterMethodInfo
@@ -253,6 +264,7 @@ afterMethodInfo
 methodBeforeInfoTypes
 	:	methodFlagList
 	|	methodSignatureInfo
+	| methodExceptions
 	;
 
 methodAfterInfoTypes
@@ -262,6 +274,10 @@ methodAfterInfoTypes
 	
 methodFlagList
 	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
+	;
+	
+methodExceptions
+	:	(THROWS NORMALTYPE)+
 	;
 	
 methodSignatureInfo
@@ -409,7 +425,7 @@ stackMapTableEntry
 	;
 
 stackMapTableTypesContainer
-	:	LBRACK stackMapTableTypes RBRACK
+	:	LBRACK stackMapTableTypes? RBRACK
 	;
 	
 stackMapTableTypes
@@ -435,25 +451,56 @@ typeList
  	; 
   	
 type 
-	:	(primitiveType | javaType | genericType) (LBRACK RBRACK)*
+	:	(primitiveType | javaTypeIdentifier) (LBRACK RBRACK)*
+	;
+	
+javaTypeIdentifier
+	:	javaType | genericConstraintType | genericType
+	;
+
+genericConstraintType
+	:	javaType genericConstraintList
 	;
 
 genericType
-	:	javaType LESST javaTypeList LARGET
+	:	javaType genericList
 	;
 
 javaType
 	:	(IDENTIFIER | NORMALTYPE)
 	;
 	
-javaTypeList
-	:	javaType (COMMA javaType)* -> javaType+
+genericConstraintList
+	:	LESST genericConstraints (COMMA genericConstraints)* LARGET -> genericConstraints+
+	;
+
+genericConstraints
+	:	IDENTIFIER EXTENDS (genericType | javaType) ('&' (genericType | javaType))*// -> ^(IDENTIFIER EXTENDS baseJavaType+)
+	;
+	
+genericList
+	:	LESST (identifierList|qList) LARGET
+	;
+	
+identifierList
+	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
+	;
+	
+qList
+	:	'?' (COMMA '?')*
 	;
 
 methodDescriptor:	LPAREN bytecodeType* RPAREN returnDescriptor;
 
 returnDescriptor:	bytecodeType	|	VoidType;
 
+genericReturnDescriptor
+	:	LESST IDENTIFIER EXTENDS (INTERNALTYPE | IDENTIFIER) ('&' (INTERNALTYPE | IDENTIFIER))* LARGET
+	;
+
+genericReturn
+	: genericReturnDescriptor genericType
+	;
 //identifier: IDENTIFIER | BaseType | VoidType;
 
 bytecodeType
@@ -577,7 +624,7 @@ NORMALTYPE
 INTERNALTYPE
 	: IDENTIFIER (SLASH IDENTIFIER)+;
 
-ObjectType:	'L' (INTERNALTYPE | IDENTIFIER) SEMI;
+ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) SEMI;
 
 ArrayType:	LBRACK+ (BaseType | ObjectType);
 
