@@ -467,7 +467,7 @@ genericType
 	;
 
 javaType
-	:	(IDENTIFIER | NORMALTYPE)
+	:	(identifier | NORMALTYPE)
 	;
 	
 genericConstraintList
@@ -475,19 +475,11 @@ genericConstraintList
 	;
 
 genericConstraints
-	:	IDENTIFIER EXTENDS (genericType | javaType) ('&' (genericType | javaType))*// -> ^(IDENTIFIER EXTENDS baseJavaType+)
+	:	identifier EXTENDS (genericType | javaType) ('&' (genericType | javaType))*// -> ^(IDENTIFIER EXTENDS baseJavaType+)
 	;
 	
 genericList
-	:	LESST (identifierList|qList) LARGET
-	;
-	
-identifierList
-	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
-	;
-	
-qList
-	:	'?' (COMMA '?')*
+	:	LESST ('?'|javaType) (COMMA ('?'|javaType))* LARGET
 	;
 
 methodDescriptor:	LPAREN bytecodeType* RPAREN returnDescriptor;
@@ -495,13 +487,14 @@ methodDescriptor:	LPAREN bytecodeType* RPAREN returnDescriptor;
 returnDescriptor:	bytecodeType	|	VoidType;
 
 genericReturnDescriptor
-	:	LESST IDENTIFIER EXTENDS (INTERNALTYPE | IDENTIFIER) ('&' (INTERNALTYPE | IDENTIFIER))* LARGET
+	:	LESST identifier EXTENDS (INTERNALTYPE | identifier) ('&' (INTERNALTYPE | identifier))* LARGET
 	;
 
 genericReturn
 	: genericReturnDescriptor genericType
 	;
-//identifier: IDENTIFIER | BaseType | VoidType;
+
+identifier: IDENTIFIER | BaseType | VoidType;
 
 bytecodeType
 	:	BaseType
@@ -611,14 +604,14 @@ BOOLEANLITERAL	:	TRUE | FALSE;
 //*******************************/
 
 CONSTANT_TYPE_ASSIGNABLE
-	:	Constant_type ((' ')+ ~('\n'|'\r'|' ')+)+ '\r'? '\n'
+	:	Constant_type ((' ')+ ~('\n'|'\r'|' ')+)+ (' ')? '\r'? '\n'
 	;
 PC
 	:	IntDigit+ COLON;
 CPINDEX
 	:	HASH INTLITERAL;
 IDENTIFIER  
-	:	(Letter|'_') (Letter|IntDigit|'_'|'$')*;
+	:	(Letter|'_'|'$') (Letter|IntDigit|'_'|'$')*;
 NORMALTYPE
 	: IDENTIFIER (DOT IDENTIFIER)+;
 INTERNALTYPE
