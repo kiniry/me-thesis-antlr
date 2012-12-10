@@ -15,7 +15,7 @@ options {
 
 
 //*******************************/
-//	Class files
+//	Class files 
 //*******************************/
 
 program	:	class_file*;
@@ -149,7 +149,7 @@ classDefinition
 	;
 	
 superClass
-	:	EXTENDS type
+	:	EXTENDS aggregatedJavaType
 	;
 	
 superInterface
@@ -170,7 +170,8 @@ class_modifier
 	
 classBody
 	:	
-	(	fieldDefinition
+	(	
+		fieldDefinition
 	|	ctorDefinition
 	|	methodDefinition
 	|	staticCtorDefinition
@@ -182,7 +183,7 @@ classBody
 //*******************************/
 
 fieldDefinition
-	:	field_visual_modifier? field_modifier* type IDENTIFIER (ASSIGN MINUS? INTLITERAL)? SEMI
+	:	field_visual_modifier? field_modifier* aggregatedJavaType IDENTIFIER (ASSIGN MINUS? INTLITERAL)? SEMI
 		fieldInfo
 	;
 
@@ -206,7 +207,7 @@ fieldInfoOption2 // Minded signatures
 	;
 
 fieldInfoOption3 // Minded constant values
-	:	 javaType (MINUS | PLUS)? INTLITERAL
+	:	javaType (MINUS | PLUS)? INTLITERAL
 	;
 
 fieldInfoOption4 // Minded signatures
@@ -222,17 +223,6 @@ field_modifier
 	;
 	
 //*******************************/
-//				Ctor definition			 	 /
-//*******************************/
-
-ctorDefinition
-	:	field_visual_modifier? javaType arguments throwClause? SEMI
-		methodInfo
-		body
-		afterMethodInfo
-	;
-	
-//*******************************/
 //		Static ctor definition		 /
 //*******************************/
 
@@ -241,14 +231,25 @@ staticCtorDefinition
 		methodInfo
 		body
 	;
+	
+//*******************************/
+//				Ctor definition			 	 /
+//*******************************/
+
+ctorDefinition
+	:	field_visual_modifier javaType arguments throwClause? SEMI
+		methodInfo
+		body
+		afterMethodInfo
+	;
 
 //*******************************/
 //				Method definition			 /
 //*******************************/
 
 methodDefinition
-	: method_visual_modifier? method_modifier* (type | genericReturn) javaTypeIdentifier arguments throwClause? SEMI
-		methodInfo		
+	: method_visual_modifier? method_modifier* genericReturnDescriptor? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI
+		methodInfo
 		body?
 		afterMethodInfo
 	;
@@ -283,6 +284,14 @@ methodExceptions
 methodSignatureInfo
 	:	methodDescriptor
 	;
+
+methodDescriptor
+	:	LPAREN bytecodeType* RPAREN returnDescriptor
+	;
+
+returnDescriptor
+	:	bytecodeType | VoidType
+	;
 	
 methodGenericSignatureInfo
 	:	CPINDEX
@@ -302,6 +311,10 @@ method_modifier
 arguments
 	:	LPAREN typeList? RPAREN
 	;
+
+//*******************************/
+//				Body definition			 /
+//*******************************/
 	
 body	
 	:	caption codeBlock
@@ -446,28 +459,12 @@ stackMapTableTypeObject
 // Types
 //*******************************/
 
-typeList
- 	:	type (COMMA type)* -> type+
- 	; 
-  	
-type 
-	:	(primitiveType | javaTypeIdentifier) (LBRACK RBRACK)*
-	;
-	
-javaTypeIdentifier
-	:	javaType | genericConstraintType | genericType
-	;
+//*******************************/
+// Normal java types
+//*******************************/
 
 genericConstraintType
 	:	javaType genericConstraintList
-	;
-
-genericType
-	:	javaType genericList
-	;
-
-javaType
-	:	(identifier | NORMALTYPE)
 	;
 	
 genericConstraintList
@@ -475,31 +472,62 @@ genericConstraintList
 	;
 
 genericConstraints
-	:	identifier EXTENDS (genericType | javaType) ('&' (genericType | javaType))*// -> ^(IDENTIFIER EXTENDS baseJavaType+)
+	:	identifier EXTENDS (genericType | javaType) (AND (genericType | javaType))*
+	;
+
+typeList
+ 	:	aggregatedJavaType (COMMA aggregatedJavaType)* -> aggregatedJavaType+
+ 	;
+  	
+aggregatedJavaType
+	:	(primitiveType | javaTypeIdentifier) (LBRACK RBRACK)*
+	;
+	
+javaTypeIdentifier
+	:	javaType | genericConstraintType | genericType
+	;
+	
+genericType
+	:	javaType genericList
 	;
 	
 genericList
-	:	LESST ('?'|javaType) (COMMA ('?'|javaType))* LARGET
+	:	LESST ('?'|genericGeneric|javaType) (COMMA ('?'|genericGeneric|javaType))* LARGET
 	;
 
-methodDescriptor:	LPAREN bytecodeType* RPAREN returnDescriptor;
-
-returnDescriptor:	bytecodeType	|	VoidType;
-
-genericReturnDescriptor
-	:	LESST identifier EXTENDS (INTERNALTYPE | identifier) ('&' (INTERNALTYPE | identifier))* LARGET
+genericGeneric
+	:	javaType LESST (javaType) (COMMA (javaType))* LARGET
 	;
+
+javaType
+	:	NORMALTYPE | identifier
+	;
+//*******************************/
+// Bytecode Types
+//*******************************/
 
 genericReturn
-	: genericReturnDescriptor genericType
+	: genericReturnDescriptor javaTypeIdentifier
 	;
+
+genericReturnDescriptor
+	:	LESST identifier EXTENDS simpleByteCodeType (AND simpleByteCodeType)* LARGET
+	;
+
+simpleByteCodeType
+	:	INTERNALTYPE | identifier
+	;
+
+//*******************************/
+// Simple types
+//*******************************/
 
 identifier: IDENTIFIER | BaseType | VoidType;
 
 bytecodeType
 	:	BaseType
-  |  ObjectType
-  |  ArrayType
+  | ObjectType
+  | ArrayType
   | IDENTIFIER
   ;
 
@@ -530,7 +558,6 @@ floating_point_type
 	:	FLOAT
 	|	DOUBLE
 	;
-
 //*******************************/
 // Lexer
 //*******************************/
@@ -592,7 +619,7 @@ LBRACE	:	'{'		;	RBRACE	:	'}'		;
 LBRACK	:	'['		;	RBRACK	:	']'		;
 LPAREN	:	'('		;	RPAREN	:	')'		;
 LESST		:	'<'		;	LARGET	:	'>'		;
-ASSIGN	:	'='		;
+ASSIGN	:	'='		; AND			:	'&'		;
 
 
 VoidType:	'V';
@@ -604,7 +631,7 @@ BOOLEANLITERAL	:	TRUE | FALSE;
 //*******************************/
 
 CONSTANT_TYPE_ASSIGNABLE
-	:	Constant_type ((' ')+ ~('\n'|'\r'|' ')+)+ (' ')? '\r'? '\n'
+	:	Constant_type (' ')+ (~('\n'|'\r'|' ')+ (' ')+)* ~('\n'|'\r'|' ')* '\r'? '\n'
 	;
 PC
 	:	IntDigit+ COLON;

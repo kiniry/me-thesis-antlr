@@ -1,8 +1,16 @@
 grammar JavaVirtualMaschine;
 
 options {
-language = 'Java'; 
-output=AST; 
+  language = Java;
+  output=AST; 
+}
+
+@header {
+	package a.b.c;
+}
+
+@lexer::header {
+	package a.b.c;
 }
 
 
@@ -22,23 +30,23 @@ class_file_header
 	|	compiled_file_info)* 
 	;
 class_file_info
-	:	CLASSFILE PATH
+	:	IDENTIFIER WINDOWSPATH
 	;
 	
 modified_file_info
-	:	MODIFIED DATE SEMI SIZE INT BYTES
+	:	MODIFIED DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER
 	;
 	
 checksum_file_info
-	:	CHECKSUM IDENTIFIER
+	:	CHECKSUM (IDENTIFIER | HexDigits)
 	;
 		
 compiled_file_info
-	:	COMPILED QUOTED_STRING
+	:	COMPILED QuotedFile
 	;
 	
 file_name
-	:	 IDENTIFIER JAVAFILETYPE
+	:	 IDENTIFIER DOT IDENTIFIER
 	;
 	
 //*******************************/
@@ -46,43 +54,71 @@ file_name
 //*******************************/
 	
 type_info
-	:	(sourcefile_info
-	|	signature_info
-	|	minor_version_info
-	|	major_version_info
-	|	flags)+
+	:	(caption infoTypes)+
 	;
 	
-sourcefile_info
-	:	SOURCEFILE COLON QUOTED_STRING
+infoTypes
+	:	sourcefile_info
+//	|	signature_info
+	|	minor_major_version_info
+	|	flags
+	| scalaSig_info
+	| runtimeVisibleAnnotations_info
+	|	innerclass_info
+	| enclosingMethod
+	| signature_info_addition
+	| deprecated
 	;
+
+caption
+	:	IDENTIFIER IDENTIFIER? COLON
+	;
+
+deprecated
+	:	BOOLEANLITERAL
+	;
+
+enclosingMethod
+	:	CPINDEX DOT CPINDEX
+	;
+
+sourcefile_info
+	:	QuotedFile
+	;
+
+scalaSig_info
+	:	IDENTIFIER ASSIGN INTLITERAL
+		(INTLITERAL INTLITERAL INTLITERAL)?
+	;
+runtimeVisibleAnnotations_info
+	:	PC CPINDEX LPAREN CPINDEX ASSIGN IDENTIFIER CPINDEX RPAREN
+  ;
 		
 signature_info
-	:	SIGNATURE COLON typeSignature
+	:	methodDescriptor
 	;
 		
-minor_version_info
-	:	MINORVERSION COLON INT
+signature_info_addition
+	:	CPINDEX
+	;
+
+innerclass_info
+	: innerclass_info_line+
+	;
+innerclass_info_line
+	:	field_visual_modifier? method_modifier* CPINDEX (ASSIGN CPINDEX IDENTIFIER CPINDEX)? SEMI
 	;
 		
-major_version_info
-	:	MAJORVERSION COLON INT
+minor_major_version_info
+	:	INTLITERAL
 	;
 			
 flags
-	:	FLAGS COLON accessFlagList
+	:	accessFlagList
 	;
 	
 accessFlagList
-	:	ACCESS_FLAGS (COMMA ACCESS_FLAGS)* -> ACCESS_FLAGS+
-	;
-	
-typeSignature
-	:	(LPAREN (typeIdentifier)? RPAREN)? typeIdentifier
-	;
-
-typeIdentifier
-	:	(TypeIdentifier | IDENTIFIER) SEMI?
+	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
 	;
 
 //*******************************/
@@ -90,34 +126,34 @@ typeIdentifier
 //*******************************/
 
 constant_pool
-	:	CONSTANTPOOL COLON
+	:	CONSTANTPOOL COLON!
 		contant_pool_line*
 	;
 	
 contant_pool_line
-	:	Constant_pool_index ASSIGN 
+	:	CPINDEX ASSIGN 
 		CONSTANT_TYPE_ASSIGNABLE
-		//(UTF8TYPE
-		//|
-		//otherType)
-	;
-	
-otherType
-	:	IDENTIFIER Constant_pool_index ((DOT | COLON) Constant_pool_index)?
 	;
 
 //*******************************/
 //				Class definition       /
 //*******************************/
 
-
 classDefinition
-	:	class_visual_modifier class_modifier* CLASS IDENTIFIER (EXTENDS type )? (IMPLEMENTS typeList )?
+	:	class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface?
 		type_info
 		constant_pool
 		LBRACE
 		classBody 
 		RBRACE
+	;
+	
+superClass
+	:	EXTENDS type
+	;
+	
+superInterface
+	:	IMPLEMENTS typeList
 	;
 		
 class_visual_modifier
@@ -125,19 +161,7 @@ class_visual_modifier
 	;
 		
 class_modifier
-	:	ABSTRACT | FINAL | INTERFACE
-	;
-
-typeList
- 	:	type (COMMA type)* -> type+
- 	; 
-  	
-type 
-	:	(PrimitiveType | classOrInterfaceType) (LBRACK RBRACK)*
-	;
- 	
-classOrInterfaceType 
-	: 	IDENTIFIER (DOT IDENTIFIER)* -> IDENTIFIER+
+	:	ABSTRACT | FINAL | INTERFACE | CLASS
 	;
 
 //*******************************/
@@ -149,6 +173,7 @@ classBody
 	(	fieldDefinition
 	|	ctorDefinition
 	|	methodDefinition
+	|	staticCtorDefinition
 	)+
 	;
 
@@ -157,10 +182,37 @@ classBody
 //*******************************/
 
 fieldDefinition
-	:	field_visual_modifier field_modifier* type typeIdentifier
-	type_info
+	:	field_visual_modifier? field_modifier* type IDENTIFIER (ASSIGN MINUS? INTLITERAL)? SEMI
+		fieldInfo
 	;
-		
+
+fieldInfo
+	:	(caption fieldInfoTypes)+
+	;
+
+fieldInfoTypes
+	:	fieldInfoOption1
+	|	fieldInfoOption2
+	|	fieldInfoOption3
+	|	fieldInfoOption4
+	;
+	
+fieldInfoOption1 // Minded Flags
+	:	IDENTIFIER (COMMA IDENTIFIER)+ -> IDENTIFIER+
+	;
+	
+fieldInfoOption2 // Minded signatures
+	:	bytecodeType
+	;
+
+fieldInfoOption3 // Minded constant values
+	:	 javaType (MINUS | PLUS)? INTLITERAL
+	;
+
+fieldInfoOption4 // Minded signatures
+	:	 CPINDEX
+	;
+
 field_visual_modifier
 	:	PUBLIC	|	PRIVATE |	PROTECTED
 	;
@@ -174,8 +226,19 @@ field_modifier
 //*******************************/
 
 ctorDefinition
-	:	class_visual_modifier IDENTIFIER arguments throwClause? SEMI
-		type_info
+	:	field_visual_modifier? javaType arguments throwClause? SEMI
+		methodInfo
+		body
+		afterMethodInfo
+	;
+	
+//*******************************/
+//		Static ctor definition		 /
+//*******************************/
+
+staticCtorDefinition
+	:	field_visual_modifier? STATIC LBRACE RBRACE SEMI
+		methodInfo
 		body
 	;
 
@@ -184,13 +247,50 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-	: 	method_visual_modifier method_modifier* type IDENTIFIER arguments throwClause? SEMI
-		type_info
-	( 	body
-	|	';'	//Abstract method
-	)
+	: method_visual_modifier? method_modifier* (type | genericReturn) javaTypeIdentifier arguments throwClause? SEMI
+		methodInfo		
+		body?
+		afterMethodInfo
 	;
-		
+
+methodInfo
+	:	(caption methodBeforeInfoTypes)+
+	;
+
+afterMethodInfo
+	:	(caption methodAfterInfoTypes)*
+	;
+
+methodBeforeInfoTypes
+	:	methodFlagList
+	|	methodSignatureInfo
+	| methodExceptions
+	;
+
+methodAfterInfoTypes
+	:	methodDeprecatedInfo
+	|	methodGenericSignatureInfo
+	;
+	
+methodFlagList
+	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
+	;
+	
+methodExceptions
+	:	(THROWS NORMALTYPE)+
+	;
+	
+methodSignatureInfo
+	:	methodDescriptor
+	;
+	
+methodGenericSignatureInfo
+	:	CPINDEX
+	;
+methodDeprecatedInfo
+	:	BOOLEANLITERAL
+	;
+	
 method_visual_modifier
 	:	PUBLIC	|	PRIVATE |	PROTECTED
 	;
@@ -203,38 +303,63 @@ arguments
 	:	LPAREN typeList? RPAREN
 	;
 	
-body	:	exceptionDeclaration?
-		CODE COLON
-		variables
+body	
+	:	caption codeBlock
+		(bodyExtension)*
+	;
+
+bodyExtension
+	:	 
+	(EXCEPTION_TABLE COLON exceptionTable
+	|	caption (lineNumberTable
+		|	localVariableTable
+		|	stackMapTable
+		|	throwClause))
+	;
+
+codeBlock
+	:	variables
 		(codeLine |	javaSwitch)*
-		exceptionTable?
-		lineNumberTable
-		localVariableTable
-		stackMapTable?
 	;
 
 codeLine
-	:	pc IDENTIFIER ((Constant_pool_index | INT | PrimitiveType) (COMMA INT)?)? 
+	:	PC IDENTIFIER codeValues?
+	;
+	
+codeValues
+	:	logic 
+	| logic2 
+	| logic3
+	|	logic4
+	| primitiveType
+	;
+	
+logic
+	:	CPINDEX COMMA INTLITERAL
+	;
+	
+logic2
+	:	CPINDEX
+	;
+	
+logic3
+	:	INTLITERAL
+	;
+	
+logic4
+	:	INTLITERAL COMMA INTLITERAL
 	;
 
 variables
-	:	stacks COMMA locals COMMA args
+	:	variable COMMA variable COMMA variable
 	;
 
-stacks
-	:	STACK ASSIGN INT
-	;
-
-locals
-	:	LOCALS ASSIGN INT
-	;
-
-args
-	:	ARGS ASSIGN INT
+variable
+	:	IDENTIFIER ASSIGN INTLITERAL
 	;
 
 javaSwitch	
-	:	INT COLON (TABLESWITCH | LOOKUPSWITCH)
+	:	PC IDENTIFIER
 		LBRACE
 		switchLine*
 		switchDefaultLine
@@ -242,32 +367,24 @@ javaSwitch
 	;
 	
 switchLine
-	:	INT COLON INT
+	:	PC INTLITERAL
 	;
 
 switchDefaultLine
-	:	DEFAULT COLON INT
+	:	DEFAULT COLON INTLITERAL
 	;
-
-pc:	INT COLON;
 
 //*******************************/
 //				Exceptions						 /
 //*******************************/
 
-exceptionDeclaration
-	:	EXCEPTIONS COLON
-		throwClause
-	;
-
 throwClause
-	: THROWS classOrInterfaceType
+	: THROWS javaType
 	;
 
 exceptionTable
-	:	EXCEPTION_TABLE COLON
-		IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
-		INT INT INT IDENTIFIER typeIdentifier
+	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
+		INTLITERAL INTLITERAL INTLITERAL CONSTANT_TYPE_ASSIGNABLE//IDENTIFIER typeIdentifier
 	;
 	
 //*******************************/
@@ -275,12 +392,11 @@ exceptionTable
 //*******************************/
 
 lineNumberTable
-	:	LINENUMBERTABLE COLON
-		lineNumberTableLine*
+	:	lineNumberTableLine*
 	;
 
 lineNumberTableLine
-	:	IDENTIFIER pc INT
+	:	IDENTIFIER PC INTLITERAL
 	;
 	
 //*******************************/
@@ -288,13 +404,12 @@ lineNumberTableLine
 //*******************************/
 	
 localVariableTable
-	:	LOCALVARIABLETABLE COLON
-		IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER SIGNATURE
+	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
 		localVariableTableLine+
 	;
 	
 localVariableTableLine
-	:	INT INT INT IDENTIFIER typeIdentifier
+	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER bytecodeType
 	;
 	
 //*******************************/
@@ -302,12 +417,11 @@ localVariableTableLine
 //*******************************/
 
 stackMapTable
-	:	STACKMAPTABLE COLON NUMBER_OF_ENTRIES ASSIGN INT
-	(	FRAME_TYPE ASSIGN INT
-	|	OFFSET_DELTA ASSIGN INT
-	|	LOCALS ASSIGN stackMapTableTypesContainer
-	|	STACK ASSIGN stackMapTableTypesContainer
-	)*
+	:	IDENTIFIER ASSIGN INTLITERAL
+		stackMapTableEntry+
+	;
+stackMapTableEntry
+	:	IDENTIFIER ASSIGN (INTLITERAL | stackMapTableTypesContainer)
 	;
 
 stackMapTableTypesContainer
@@ -319,294 +433,263 @@ stackMapTableTypes
 	;
 
 stackMapTableType
-	:	CLASS? (typeIdentifier|QuotedTypeIdentifier|PrimitiveType)
+	:	(stackMapTableTypeObject|stackMapTableTypePlainObject|primitiveType)
 	;
-//*******************************/
-//						Lexer			 				 /
-//*******************************/
-
-Constant_pool_index
-	:	HASH INT;
-
-LINENUMBERTABLE
-	:	'LineNumberTable';
-STACKMAPTABLE
-	:	'StackMapTable';
-LOCALVARIABLETABLE
-	:	'LocalVariableTable';
-EXCEPTION_TABLE
-	:	'Exception table';
-NUMBER_OF_ENTRIES
-	:	'number_of_entries';
-FRAME_TYPE
-	:	'frame_type';
-OFFSET_DELTA
-	:	'offset_delta';
-
-MODIFIED : 'Last modified';	CHECKSUM : 'MD5 checksum';	CLASSFILE : 'Classfile';
-SOURCEFILE : 'SourceFile';	MINORVERSION : 'minor version';	MAJORVERSION : 'major version';
-FLAGS : 'flags';		SIZE : 'size';			BYTES : 'bytes';
-JAVAFILETYPE : '.java';		COMPILED : 'Compiled from';	CLASS : 'class';
-JAVABYTECODEFILE	:	'.class'	;	DEFAULT : 'default';
-EXTENDS : 'extends';		IMPLEMENTS : 'implements';	SIGNATURE : 'Signature';
-CONSTANTPOOL : 'Constant pool';	THROWS : 'throws';		CODE : 'Code';
-TABLESWITCH : 'tableswitch';	LOOKUPSWITCH : 'lookupswitch';	EXCEPTIONS : 'Exceptions';
-
-ABSTRACT : 'abstract';		PUBLIC : 'public';		FINAL : 'final';
-STATIC : 'static';		PRIVATE : 'private';		PROTECTED : 'protected';
-INTERFACE : 'interface';	SYNCHRONIZED : 'synchronized';	NATIVE : 'native';
-VOLATILE : 'volatile';		TRANSIENT : 'transient'; CTOR : '<init>';
-DCTOR 	: '<clinit>';
-STACK	:	'stack';	LOCALS	:	'locals';	ARGS:	'args_size';
-
-
-MINUS	:	'-'		;	PLUS		:	'+'		;	
-COLON	:	':'		;	SEMI		: 	';'		;	
-fragment QUOTE	:	'\"'		;	COMMA		:	','		;
-DOT	:	'.'		;	
-fragment SLASH		:	'/'		;
-LBRACE	:	'{'		;	RBRACE		:	'}'		;
-LBRACK	:	'['		;	RBRACK		:	']'		;
-LPAREN	:	'('		;	RPAREN		:	')'		;
-ASSIGN	:	'='		;	fragment UNDERSCORE	:	'_'		;
-HASH		:	'#'		;
-
-QUOTED_STRING
-	:
-	QUOTE IDENTIFIER JAVAFILETYPE QUOTE
+stackMapTableTypePlainObject
+	:	CLASS (INTERNALTYPE | IDENTIFIER)
+	;
+stackMapTableTypeObject
+	:	CLASS QuotedBytecodeType
 	;
 
-ACCESS_FLAGS
-	:	('ACC_PUBLIC'	|	'ACC_PRIVATE'
-	|	'ACC_PROTECTED'	|	'ACC_STATIC'
-	|	'ACC_FINAL'	|	'ACC_SYNCHRONIZED'
-	|	'ACC_VOLATILE'	|	'ACC_TRANSIENT'
-	|	'ACC_NATIVE'	|	'ACC_INTERFACE'
-	|	'ACC_ABSTRACT'	| 'ACC_SUPER')	; // ACC_SUPER is not presented in the specification of jvm 1
+//*******************************/
+// Types
+//*******************************/
+
+typeList
+ 	:	type (COMMA type)* -> type+
+ 	; 
+  	
+type 
+	:	(primitiveType | javaTypeIdentifier) (LBRACK RBRACK)*
+	;
 	
-fragment
+javaTypeIdentifier
+	:	javaType | genericConstraintType | genericType
+	;
+
+genericConstraintType
+	:	javaType genericConstraintList
+	;
+
+genericType
+	:	javaType genericList
+	;
+
+javaType
+	:	(IDENTIFIER | NORMALTYPE)
+	;
+	
+genericConstraintList
+	:	LESST genericConstraints (COMMA genericConstraints)* LARGET -> genericConstraints+
+	;
+
+genericConstraints
+	:	IDENTIFIER EXTENDS (genericType | javaType) ('&' (genericType | javaType))*// -> ^(IDENTIFIER EXTENDS baseJavaType+)
+	;
+	
+genericList
+	:	LESST (identifierList|qList) LARGET
+	;
+	
+identifierList
+	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
+	;
+	
+qList
+	:	'?' (COMMA '?')*
+	;
+
+methodDescriptor:	LPAREN bytecodeType* RPAREN returnDescriptor;
+
+returnDescriptor:	bytecodeType	|	VoidType;
+
+genericReturnDescriptor
+	:	LESST IDENTIFIER EXTENDS (INTERNALTYPE | IDENTIFIER) ('&' (INTERNALTYPE | IDENTIFIER))* LARGET
+	;
+
+genericReturn
+	: genericReturnDescriptor genericType
+	;
+//identifier: IDENTIFIER | BaseType | VoidType;
+
+bytecodeType
+	:	BaseType
+  |  ObjectType
+  |  ArrayType
+  | IDENTIFIER
+  ;
+
+primitiveType
+	:	boolean_type
+	|	numeric_type
+	| VOID
+	;
+
+boolean_type
+	:	BOOLEAN
+	;
+
+numeric_type
+	:	floating_point_type
+	|	integral_type
+	;
+
+integral_type
+	:	BYTE
+	|	SHORT
+	|	INT
+	|	LONG
+	|	CHAR
+	;
+
+floating_point_type
+	:	FLOAT
+	|	DOUBLE
+	;
+
+//*******************************/
+// Lexer
+//*******************************/
+
+//*******************************/
+// Keywords
+//*******************************/
+
+//ABSTRACT	:  'abstract' ;	   CONTINUE		:  'continue' 	;	   FOR				:  'for' 				;	   NEW			:  'new' 			;	   SWITCH				:  'switch' 			;
+//ASSERT		:  'assert' 	;	   GOTO				:  'goto' 			;	   PACKAGE	:  'package' 	;	   SYNCHRONIZED	:  'synchronized' ;
+//DO				:  'do' 			;	   IF					:  'if' 				;	   PRIVATE		:  'private' 		;	   THIS			:  'this' 		;
+//BREAK			:  'break' 		;	   IMPLEMENTS	:  'implements' ;	   PROTECTED	:  'protected'	;	   THROW		:  'throw' 		;
+//ELSE			:  'else' 		;	   IMPORT			:  'import' 		;	   PUBLIC			:  'public' 		;	   THROWS		:  'throws' 	;
+//CASE			:  'case' 		;	   ENUM				:  'enum'				;	   INSTANCEOF	:  'instanceof' ;	   RETURN		:  'return' 	;	   TRANSIENT		:  'transient' 		;
+//CATCH			:  'catch' 		;	   TRY				:  'try' 				;
+//FINAL			:  'final' 		;	   INTERFACE	:  'interface' 	;	   STATIC			:  'static' 		;	   
+//CLASS			:  'class' 		;	   FINALLY		:  'finally' 		;	   STRICTFP		:  'strictfp' 	;	   VOLATILE	:  'volatile' ;
+//CONST			:  'const*' 	;	   NATIVE			:  'native' 		;	   SUPER			:  'super' 			;	   WHILE		:  'while' 		;
+EXCEPTION_TABLE	:	'Exception table'; 
+COMPILED : 'Compiled from'; CONSTANTPOOL: 'Constant pool';
+MODIFIED : 'Last modified';	CHECKSUM 		: 'MD5 checksum';
+
 Constant_type
 	:	'Class'		|	'Fieldref'	|	'Methodref'
-	|	'InterfaceMethodref'			|	'String'
-	|	'Integer'	|	'Float'		|	'Long'
+	|	'InterfaceMethodref'		|	'String'
+	|	'Integer'	|	'Float'			|	'Long'
 	|	'Double'	|	'NameAndType'
 	|	'Unicode' | 'Utf8'
 	;
 
-//Constant_type_UTF8
-//	:'Utf8'
-//	;
+EXTENDS		: 'extends'		;		IMPLEMENTS		: 'implements' 	;		DEFAULT		:  'default' 	;
+ABSTRACT 	: 'abstract'	;		PUBLIC 				: 'public'			;		FINAL 		: 'final'			;
+STATIC 		: 'static'		;		PRIVATE 			: 'private'			;		PROTECTED : 'protected'	;
+INTERFACE : 'interface'	;		SYNCHRONIZED 	: 'synchronized';		NATIVE 		: 'native'		;
+VOLATILE 	: 'volatile'	;		TRANSIENT 		: 'transient'		;		CLASS			:  'class' 		;
+THROWS		:  'throws' 	;
 
-PrimitiveType 
-	: 	Numeric_type
-	| 	Boolean_type
-	;
-
-IDENTIFIER  
-	:	(LETTER|'_') (LETTER|DIGIT|'_')*
-    	;
-
-INT :	DIGIT+;
-
-//HEX_DIGITS
-//	:	HEX_DIGIT+
-//	;
-
-PATH	:	SLASH LETTER COLON (SLASH (IDENTIFIER WS*)+)+ JAVABYTECODEFILE;
-
-DATE	:	DIGIT DIGIT MINUS DIGIT DIGIT MINUS INT;
-
-TypeIdentifier
-	:	LBRACK* IDENTIFIER (SLASH IDENTIFIER)* //SEMI?
-	;
+fragment FALSE			:	 'false'		;
+fragment TRUE			:	 'true'			;
+BOOLEAN		:  'boolean' 	;
+CHAR			:  'char' 		;
+BYTE			:  'byte' 		;
+DOUBLE		:  'double' 	;
+FLOAT			:  'float' 		;
+LONG			:  'long' 		;
+INT				:  'int' 			;
+VOID			:  'void' 		;
+SHORT			:  'short' 		;
 	
-QuotedTypeIdentifier
-	:	QUOTE TypeIdentifier SEMI? QUOTE
-	;
+fragment QUOTE			:	'\"';
+fragment SLASH			:	'/';
+fragment UNDERSCORE	:	'_';
+fragment HASH				:	'#';
 
-FLOAT
-    :   DIGIT+ '.' DIGIT* EXPONENT?
-    |   '.' DIGIT+ EXPONENT?
-    |   DIGIT+ EXPONENT
-    ;
+MINUS		:	'-'		;	PLUS		:	'+'		;	
+COLON		:	':'		;	SEMI		: ';'		;	
+COMMA		:	','		; DOT			:	'.'		;	
+LBRACE	:	'{'		;	RBRACE	:	'}'		;
+LBRACK	:	'['		;	RBRACK	:	']'		;
+LPAREN	:	'('		;	RPAREN	:	')'		;
+LESST		:	'<'		;	LARGET	:	'>'		;
+ASSIGN	:	'='		;
 
-//UTF8TYPE
-//	:	Constant_type_UTF8 REGULAR_STRING_LITERAL_CHARACTER*
-//	;
+
+VoidType:	'V';
+BaseType:	'B'	|	'C'	|	'D'	|	'F'	|	'I'	|	'J'	|	'S'	|	'Z';
+BOOLEANLITERAL	:	TRUE | FALSE;
+
+//*******************************/
+// Others
+//*******************************/
 
 CONSTANT_TYPE_ASSIGNABLE
-	:	Constant_type (' ')+ REGULAR_STRING_LITERAL_CHARACTER*
+	:	Constant_type ((' ')+ ~('\n'|'\r'|' ')+)+ '\r'? '\n'
 	;
+PC
+	:	IntDigit+ COLON;
+CPINDEX
+	:	HASH INTLITERAL;
+IDENTIFIER  
+	:	(Letter|'_') (Letter|IntDigit|'_'|'$')*;
+NORMALTYPE
+	: IDENTIFIER (DOT IDENTIFIER)+;
+INTERNALTYPE
+	: IDENTIFIER (SLASH IDENTIFIER)+;
+
+ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) SEMI;
+
+ArrayType:	LBRACK+ (BaseType | ObjectType);
+
+WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
+
+DATE	:	IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigit IntDigit;
+
 
 COMMENT
-    :   '//' ~(NL|'\r')* '\r'? NL {$channel=HIDDEN;}
+    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
     |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
     ;
 
 WS  :   ( ' '
         | '\t'
         | '\r'
-        | NL
+        | '\n'
         ) {$channel=HIDDEN;}
     ;
 
-STRING
-    :  '"' ( ESC_SEQ | ~('\\'|'"') )* '"'
+QuotedFile
+	:	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
+	;
+QuotedBytecodeType
+	:	QUOTE (ObjectType | ArrayType) QUOTE
+	;
+
+//*******************************/
+// Literals
+//*******************************/
+
+LONGLITERAL : IntegerNumber LongSuffix ; 
+INTLITERAL : IntegerNumber ;
+FLOATLITERAL : NonIntegerNumber FloatSuffix ; 
+DOUBLELITERAL : NonIntegerNumber DoubleSuffix? ;
+//CHARLITERAL : '\'' EscapeSequence '\'' ;
+//STRINGLITERAL : QUOTE EscapeSequence* QUOTE ;
+HexDigits	:	HexDigit+;
+
+fragment IntegerNumber : '0' | '1'..'9' IntDigit* | '0' Octal+ | HexPrefix HexDigit+ ;
+fragment IntDigit	:	'0'..'9';
+fragment HexPrefix : '0x' | '0X' ; 
+fragment HexDigit : (IntDigit|('a'..'f')|('A'..'F')) ; 
+fragment LongSuffix : 'l' | 'L' ; 
+fragment NonIntegerNumber : IntDigit+ DOT IntDigit* Exponent? | '.' IntDigit+ Exponent? | IntDigit+ Exponent | IntDigit+ | HexPrefix HexDigit* ( () | ('.' HexDigit*) ) ( 'p' | 'P' ) ( PLUS | MINUS )? IntDigit+ ; 
+fragment Exponent : ( 'e' | 'E' ) ( PLUS | MINUS )? IntDigit+ ; 
+fragment FloatSuffix : 'f' | 'F' ; 
+fragment DoubleSuffix : 'd' | 'D' ;
+fragment Letter	:	('a'..'z'|'A'..'Z');
+fragment Octal	:	'0'..'7';
+fragment OctalEscape
+    :   '\\' ('0'..'3') Octal Octal
+    |   '\\' Octal Octal
+    |   '\\' Octal
     ;
-
-CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''
-    ;
 fragment
-LETTER	:	('a'..'z'|'A'..'Z');
-
-fragment NL : '\n';
-
-fragment
-HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;
-
-fragment
-DIGIT	:	'0'..'9';
-
-fragment
-EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
-
-fragment
-ESC_SEQ
+EscapeSequence
     :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
-    |   UNICODE_ESCAPE_SEQUENCE
-    |   OCTAL_ESC
+    |   UnicodeEscapeSequence
+    |   OctalEscape
+    | 	~( '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
     ;
-
 fragment
-OCTAL_ESC
-    :   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7')
-    ;
-
-fragment
-REGULAR_STRING_LITERAL_CHARACTER
-	:	SINGLE_REGULAR_STRING_LITERAL_CHARACTER
-	|	SIMPLE_ESCAPE_SEQUENCE
-	|	UNICODE_ESCAPE_SEQUENCE
+UnicodeEscapeSequence
+	:	('\\' 'u'   HexDigit   HexDigit   HexDigit  HexDigit)
+	|	('\\' 'U'   HexDigit   HexDigit   HexDigit  HexDigit  
+					HexDigit   HexDigit   HexDigit  HexDigit)
 	;
-	
-fragment	
-SINGLE_REGULAR_STRING_LITERAL_CHARACTER
-	:	 ~( '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029') //'\"' | 
-	;
-	
-fragment
-SIMPLE_ESCAPE_SEQUENCE
-	:	'\\\'' | '\\\"' | '\\\\' | '\\0' | '\\a'  
-	|	'\\b' | '\\f'  | '\\n'  | '\\r' | '\\t' | '\\v'
-	;
-
-fragment
-UNICODE_ESCAPE_SEQUENCE
-	:	('\\' 'u'   HEX_DIGIT   HEX_DIGIT   HEX_DIGIT  HEX_DIGIT)
-	|	('\\' 'U'   HEX_DIGIT   HEX_DIGIT   HEX_DIGIT  HEX_DIGIT  
-					HEX_DIGIT   HEX_DIGIT   HEX_DIGIT  HEX_DIGIT)
-	;
-	
-fragment
-Boolean_type
-	:	'boolean'
-	;
-
-fragment
-Numeric_type
-	:	Floating_point_type
-	|	Integral_type
-	;
-
-fragment
-Integral_type
-	:	'byte'
-	|	'short'
-	|	'int'
-	|	'long'
-	|	'char'
-	;
-
-fragment
-Floating_point_type
-	:	'float'
-	|	'double'
-	;
-	
-
-//*******************************/
-// 4.3.3 Class signature
-//*******************************/
-
-ClassSignature:
-    FormalTypeParameters? SuperclassSignature SuperinterfaceSignature*;
-    
-FormalTypeParameters:
-    LESST FormalTypeParameter+ LARGET;
-
-FormalTypeParameter:
-    Identifier ClassBound InterfaceBound*;
-
-ClassBound:
-    : FieldTypeSignature?;
-
-InterfaceBound:
-    : FieldTypeSignature;
-
-SuperclassSignature:
-    ClassTypeSignature;
-
-SuperinterfaceSignature:
-    ClassTypeSignature;
-    
-FieldTypeSignature
-	:	ClassTypeSignature	
-  |	ArrayTypeSignature
-  |	TypeVariableSignature;
-
-// L(Some/)*Class(<any type>)
-ClassTypeSignature:
-    'L' PackageSpecifier? SimpleClassTypeSignature ClassTypeSignatureSuffix*;
-
-PackageSpecifier:
-    Identifier SLASH PackageSpecifier*;
-
-SimpleClassTypeSignature:
-    Identifier TypeArguments?;
-
-ClassTypeSignatureSuffix:
-    DOT SimpleClassTypeSignature;
-
-TypeVariableSignature:
-    'T' Identifier;
-
-TypeArguments:
-    LESST TypeArgument+ LARGET;
-
-TypeArgument:
-    WildcardIndicator? FieldTypeSignature
-    *
-
-WildcardIndicator:
-    	'+'
-    |	'-';
-
-ArrayTypeSignature:
-    LBRACK TypeSignature;
-
-TypeSignature:
-    FieldTypeSignature
-    |	BaseType;
-    
-MethodTypeSignature:
-    FormalTypeParameters? LPAREN TypeSignature* RPAREN ReturnType ThrowsSignature*;
-
-ReturnType:
-    TypeSignature
-    |	VoidDescriptor;
-
-ThrowsSignature:
-    '^' ClassTypeSignature
-    |	'^' TypeVariableSignature;
