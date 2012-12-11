@@ -175,7 +175,8 @@ class_modifier
 	
 classBody
 	:	
-	(	fieldDefinition
+	(	
+		fieldDefinition
 	|	ctorDefinition
 	|	methodDefinition
 	|	staticCtorDefinition
@@ -193,9 +194,10 @@ fieldDefinition
 
 fieldInfoTypes
 	:	caption fieldInfoOption1
-		caption fieldInfoOption2
+		caption fieldInfoOption2?
 		(caption fieldInfoOption3
-	|	caption fieldInfoOption4)?
+	|	caption fieldInfoOption4
+	|	caption fieldInfoOption5)?
 	;
 	
 fieldInfoOption1 // Minded signatures
@@ -212,6 +214,10 @@ fieldInfoOption3 // Minded constant values
 
 fieldInfoOption4 // Minded signatures
 	:	 CPINDEX
+	;
+
+fieldInfoOption5 // Minded signatures
+	:	 BOOLEANLITERAL
 	;
 
 field_visual_modifier
@@ -248,7 +254,7 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-	: method_visual_modifier? method_modifier* genericReturnDescriptor? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI
+	: method_visual_modifier?  method_modifier* genericReturnDescriptor? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI
 		methodInfo
 		body?
 		afterMethodInfo
@@ -264,7 +270,7 @@ afterMethodInfo
 
 methodBeforeInfoTypes
 	:	caption methodSignatureInfo	
-		caption methodFlagList
+		caption methodFlagList?
 		(caption methodExceptions)?
 	;
 
@@ -318,7 +324,7 @@ arguments
 //*******************************/
 	
 body	
-	:	caption codeBlock
+	:	CodeCaption codeBlock
 		(bodyExtension)*
 	;
 
@@ -512,6 +518,7 @@ genericGeneric
 javaType
 	:	NORMALTYPE | identifier
 	;
+	
 //*******************************/
 // Bytecode Types
 //*******************************/
@@ -592,7 +599,7 @@ floating_point_type
 //CLASS			:  'class' 		;	   FINALLY		:  'finally' 		;	   STRICTFP		:  'strictfp' 	;	   VOLATILE	:  'volatile' ;
 //CONST			:  'const*' 	;	   NATIVE			:  'native' 		;	   SUPER			:  'super' 			;	   WHILE		:  'while' 		;
 EXCEPTION_TABLE	:	'Exception table'	; MAJOR_VERSION	:	'major version' ;	MINOR_VERSION	:	'minor version' ;
-COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;
+COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;	CodeCaption		:	'Code' COLON		; // If caption was used instead then a problem could occure when no flags are added (empty flag section). flags: IDENIFIER (could either be an actual flag or Code from Code:) 
 MODIFIED 				: 'Last modified'		;	CHECKSUM 			: 'MD5 checksum'	;
 
 Constant_type
@@ -661,7 +668,7 @@ INTERNALTYPE
 	: IDENTIFIER (SLASH IDENTIFIER)+;
 
 ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) SEMI;
-GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (ObjectType) LARGET SEMI;
+GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST ((('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ LARGET SEMI;
 
 ArrayType:	LBRACK+ (BaseType+ | ObjectType);
 
