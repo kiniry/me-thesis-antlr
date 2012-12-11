@@ -54,7 +54,7 @@ file_name
 //*******************************/
 	
 type_info
-	:	(caption infoTypes)+
+	:	(infoTypeCaption infoTypes)+
 	;
 	
 infoTypes
@@ -70,8 +70,12 @@ infoTypes
 	| deprecated
 	;
 
+infoTypeCaption
+	:	(MINOR_VERSION| MAJOR_VERSION | IDENTIFIER) COLON
+	;
+
 caption
-	:	IDENTIFIER IDENTIFIER? COLON
+	:	IDENTIFIER COLON
 	;
 
 deprecated
@@ -90,8 +94,9 @@ scalaSig_info
 	:	IDENTIFIER ASSIGN INTLITERAL
 		(INTLITERAL INTLITERAL INTLITERAL)?
 	;
+	
 runtimeVisibleAnnotations_info
-	:	PC CPINDEX LPAREN CPINDEX ASSIGN IDENTIFIER CPINDEX RPAREN
+	:	PC CPINDEX LPAREN (CPINDEX ASSIGN IDENTIFIER CPINDEX)? RPAREN
   ;
 		
 signature_info
@@ -106,7 +111,7 @@ innerclass_info
 	: innerclass_info_line+
 	;
 innerclass_info_line
-	:	field_visual_modifier? method_modifier* CPINDEX (ASSIGN CPINDEX IDENTIFIER CPINDEX)? SEMI
+	:	field_visual_modifier? method_modifier* CPINDEX ((ASSIGN CPINDEX IDENTIFIER CPINDEX) | (IDENTIFIER CPINDEX))? SEMI
 	;
 		
 minor_major_version_info
@@ -144,12 +149,12 @@ classDefinition
 		type_info
 		constant_pool
 		LBRACE
-		classBody 
+		classBody?
 		RBRACE
 	;
 	
 superClass
-	:	EXTENDS aggregatedJavaType
+	:	EXTENDS typeList
 	;
 	
 superInterface
@@ -170,8 +175,7 @@ class_modifier
 	
 classBody
 	:	
-	(	
-		fieldDefinition
+	(	fieldDefinition
 	|	ctorDefinition
 	|	methodDefinition
 	|	staticCtorDefinition
@@ -184,30 +188,26 @@ classBody
 
 fieldDefinition
 	:	field_visual_modifier? field_modifier* aggregatedJavaType IDENTIFIER (ASSIGN MINUS? INTLITERAL)? SEMI
-		fieldInfo
-	;
-
-fieldInfo
-	:	(caption fieldInfoTypes)+
+		fieldInfoTypes
 	;
 
 fieldInfoTypes
-	:	fieldInfoOption1
-	|	fieldInfoOption2
-	|	fieldInfoOption3
-	|	fieldInfoOption4
+	:	caption fieldInfoOption1
+		caption fieldInfoOption2
+		(caption fieldInfoOption3
+	|	caption fieldInfoOption4)?
 	;
 	
-fieldInfoOption1 // Minded Flags
-	:	IDENTIFIER (COMMA IDENTIFIER)+ -> IDENTIFIER+
-	;
-	
-fieldInfoOption2 // Minded signatures
+fieldInfoOption1 // Minded signatures
 	:	bytecodeType
+	;
+	
+fieldInfoOption2 // Minded Flags
+	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
 	;
 
 fieldInfoOption3 // Minded constant values
-	:	javaType (MINUS | PLUS)? INTLITERAL
+	:	primitiveType (MINUS | PLUS)? INTLITERAL
 	;
 
 fieldInfoOption4 // Minded signatures
@@ -237,7 +237,7 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-	:	field_visual_modifier javaType arguments throwClause? SEMI
+	:	field_visual_modifier? javaType arguments throwClause? SEMI
 		methodInfo
 		body
 		afterMethodInfo
@@ -255,7 +255,7 @@ methodDefinition
 	;
 
 methodInfo
-	:	(caption methodBeforeInfoTypes)+
+	:	methodBeforeInfoTypes //(caption methodBeforeInfoTypes)+
 	;
 
 afterMethodInfo
@@ -263,14 +263,15 @@ afterMethodInfo
 	;
 
 methodBeforeInfoTypes
-	:	methodFlagList
-	|	methodSignatureInfo
-	| methodExceptions
+	:	caption methodSignatureInfo	
+		caption methodFlagList
+		(caption methodExceptions)?
 	;
 
 methodAfterInfoTypes
 	:	methodDeprecatedInfo
 	|	methodGenericSignatureInfo
+	|	runtimeVisibleAnnotations_info
 	;
 	
 methodFlagList
@@ -324,19 +325,24 @@ body
 bodyExtension
 	:	 
 	(EXCEPTION_TABLE COLON exceptionTable
-	|	caption (lineNumberTable
-		|	localVariableTable
-		|	stackMapTable
-		|	throwClause))
+	|	caption (	lineNumberTable
+						|	localVariableTable
+						|	stackMapTable
+						|	throwClause))
 	;
 
 codeBlock
 	:	variables
 		(codeLine |	javaSwitch)*
+		codeBlockEnd
 	;
 
 codeLine
 	:	PC IDENTIFIER codeValues?
+	;
+
+codeBlockEnd
+	:	PC IDENTIFIER logic3?
 	;
 	
 codeValues
@@ -397,7 +403,11 @@ throwClause
 
 exceptionTable
 	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
-		INTLITERAL INTLITERAL INTLITERAL CONSTANT_TYPE_ASSIGNABLE//IDENTIFIER typeIdentifier
+		exceptionTableEntry+
+	;
+
+exceptionTableEntry
+	:	INTLITERAL INTLITERAL INTLITERAL (primitiveType | IDENTIFIER	|	(CONSTANT_TYPE_ASSIGNABLE))
 	;
 	
 //*******************************/
@@ -524,11 +534,16 @@ simpleByteCodeType
 
 identifier: IDENTIFIER | BaseType | VoidType;
 
+//genericByteCodeType
+//	:	ObjectType LESST LARGET
+//	;
+
 bytecodeType
 	:	BaseType
   | ObjectType
   | ArrayType
   | IDENTIFIER
+  | GenericObjectType
   ;
 
 primitiveType
@@ -576,9 +591,9 @@ floating_point_type
 //FINAL			:  'final' 		;	   INTERFACE	:  'interface' 	;	   STATIC			:  'static' 		;	   
 //CLASS			:  'class' 		;	   FINALLY		:  'finally' 		;	   STRICTFP		:  'strictfp' 	;	   VOLATILE	:  'volatile' ;
 //CONST			:  'const*' 	;	   NATIVE			:  'native' 		;	   SUPER			:  'super' 			;	   WHILE		:  'while' 		;
-EXCEPTION_TABLE	:	'Exception table'; 
-COMPILED : 'Compiled from'; CONSTANTPOOL: 'Constant pool';
-MODIFIED : 'Last modified';	CHECKSUM 		: 'MD5 checksum';
+EXCEPTION_TABLE	:	'Exception table'	; MAJOR_VERSION	:	'major version' ;	MINOR_VERSION	:	'minor version' ;
+COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;
+MODIFIED 				: 'Last modified'		;	CHECKSUM 			: 'MD5 checksum'	;
 
 Constant_type
 	:	'Class'		|	'Fieldref'	|	'Methodref'
@@ -595,8 +610,9 @@ INTERFACE : 'interface'	;		SYNCHRONIZED 	: 'synchronized';		NATIVE 		: 'native'	
 VOLATILE 	: 'volatile'	;		TRANSIENT 		: 'transient'		;		CLASS			:  'class' 		;
 THROWS		:  'throws' 	;
 
-fragment FALSE			:	 'false'		;
+fragment FALSE		:	 'false'		;
 fragment TRUE			:	 'true'			;
+
 BOOLEAN		:  'boolean' 	;
 CHAR			:  'char' 		;
 BYTE			:  'byte' 		;
@@ -645,8 +661,9 @@ INTERNALTYPE
 	: IDENTIFIER (SLASH IDENTIFIER)+;
 
 ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) SEMI;
+GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (ObjectType) LARGET SEMI;
 
-ArrayType:	LBRACK+ (BaseType | ObjectType);
+ArrayType:	LBRACK+ (BaseType+ | ObjectType);
 
 WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
@@ -654,7 +671,7 @@ DATE	:	IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigi
 
 
 COMMENT
-    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    :   '//' ~('\n'|'\r')* ('\r\n'|'\n'|'\r') {$channel=HIDDEN;}
     |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
     ;
 
