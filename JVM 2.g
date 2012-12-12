@@ -188,7 +188,7 @@ classBody
 //*******************************/
 
 fieldDefinition
-	:	field_visual_modifier? field_modifier* aggregatedJavaType IDENTIFIER (ASSIGN MINUS? INTLITERAL)? SEMI
+	:	field_visual_modifier? field_modifier* aggregatedJavaType IDENTIFIER (ASSIGN (INTLITERAL | STRINGLITERAL))? SEMI
 		fieldInfoTypes
 	;
 
@@ -197,7 +197,8 @@ fieldInfoTypes
 		caption fieldInfoOption2?
 		(caption fieldInfoOption3
 	|	caption fieldInfoOption4
-	|	caption fieldInfoOption5)?
+	|	caption fieldInfoOption5
+	|	caption fieldInfoOption6)?
 	;
 	
 fieldInfoOption1 // Minded signatures
@@ -212,11 +213,15 @@ fieldInfoOption3 // Minded constant values
 	:	primitiveType (MINUS | PLUS)? INTLITERAL
 	;
 
-fieldInfoOption4 // Minded signatures
-	:	 CPINDEX
+fieldInfoOption4 // Minded constant values
+	:	CONSTANT_TYPE_ASSIGNABLE
 	;
 
 fieldInfoOption5 // Minded signatures
+	:	 CPINDEX
+	;
+
+fieldInfoOption6 // Minded signatures
 	:	 BOOLEANLITERAL
 	;
 
@@ -254,7 +259,7 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-	: method_visual_modifier?  method_modifier* genericReturnDescriptor? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI
+	: method_visual_modifier?  method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI
 		methodInfo
 		body?
 		afterMethodInfo
@@ -404,7 +409,7 @@ switchDefaultLine
 //*******************************/
 
 throwClause
-	: THROWS javaType
+	: THROWS javaTypeList
 	;
 
 exceptionTable
@@ -438,8 +443,7 @@ localVariableTable
 	;
 	
 localVariableTableLine
-	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER bytecodeType
-	;
+	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER (BaseType | ObjectType | ArrayType SEMI? | IDENTIFIER SEMI | GenericObjectType);
 	
 //*******************************/
 //				StackMapTable				 	 /
@@ -515,6 +519,10 @@ genericGeneric
 	:	javaType LESST (javaType) (COMMA (javaType))* LARGET
 	;
 
+javaTypeList
+	:	javaType (COMMA javaType)* -> javaType+
+	;
+
 javaType
 	:	NORMALTYPE | identifier
 	;
@@ -524,11 +532,11 @@ javaType
 //*******************************/
 
 genericReturn
-	: genericReturnDescriptor javaTypeIdentifier
+	: LESST genericReturnDescriptor (COMMA genericReturnDescriptor)* LARGET -> genericReturnDescriptor+
 	;
 
 genericReturnDescriptor
-	:	LESST identifier EXTENDS simpleByteCodeType (AND simpleByteCodeType)* LARGET
+	:	identifier EXTENDS simpleByteCodeType// (AND simpleByteCodeType)*
 	;
 
 simpleByteCodeType
@@ -670,7 +678,7 @@ INTERNALTYPE
 ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) SEMI;
 GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST ((('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ LARGET SEMI;
 
-ArrayType:	LBRACK+ (BaseType+ | ObjectType);
+ArrayType:	LBRACK+ (ObjectType | IDENTIFIER);
 
 WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
@@ -684,10 +692,13 @@ COMMENT
 
 WS  :   ( ' '
         | '\t'
-        | '\r'
-        | '\n'
         ) {$channel=HIDDEN;}
     ;
+NL
+	: 		( '\r'
+        | '\n'
+        ) {$channel=HIDDEN;}
+	;
 
 QuotedFile
 	:	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
@@ -701,11 +712,11 @@ QuotedBytecodeType
 //*******************************/
 
 LONGLITERAL : IntegerNumber LongSuffix ; 
-INTLITERAL : IntegerNumber ;
+INTLITERAL : ( PLUS | MINUS )? IntegerNumber ;
 FLOATLITERAL : NonIntegerNumber FloatSuffix ; 
 DOUBLELITERAL : NonIntegerNumber DoubleSuffix? ;
 //CHARLITERAL : '\'' EscapeSequence '\'' ;
-//STRINGLITERAL : QUOTE EscapeSequence* QUOTE ;
+STRINGLITERAL : QUOTE EscapeSequence* QUOTE ;
 HexDigits	:	HexDigit+;
 
 fragment IntegerNumber : '0' | '1'..'9' IntDigit* | '0' Octal+ | HexPrefix HexDigit+ ;
