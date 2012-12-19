@@ -441,7 +441,7 @@ exceptionTable
 	;
 
 exceptionTableEntry
-	:	INTLITERAL INTLITERAL INTLITERAL (primitiveType NL | IDENTIFIER NL	|	(CONSTANT_TYPE_ASSIGNABLE))
+	:	INTLITERAL INTLITERAL INTLITERAL (primitiveType NL+ | IDENTIFIER NL+	|	CONSTANT_TYPE_ASSIGNABLE NL*)
 	;
 	
 //*******************************/
@@ -586,7 +586,7 @@ simpleByteCodeType // Used for private <T extends org/Object> returnType methodN
 	;
 
 bytecodeType
-	:	bytecodeArrayType | bytecodeBaseType | bytecodeObjectType | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+	:	bytecodeArrayType | bytecodeBaseType | combinedBytecodeObjectType | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
 	;
 
 bytecodeArrayType
@@ -597,14 +597,18 @@ bytecodeArrayType
  	:	BaseType
  	;
  
- bytecodeObjectType
+ simpleBytecodeObjectType
  	:	INTERNALTYPE SEMI
-  |	VersionedInternalType SEMI
   | IDENTIFIER SEMI
   | genericObjectType
  	;
+ 
+combinedBytecodeObjectType
+ 	:	VersionedInternalType SEMI
+ 	| simpleBytecodeObjectType
+ 	;
 
-genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ( ((MINUS|PLUS)? (INTERNALTYPE | IDENTIFIER) SEMI)+ | STAR | genericObjectType) LARGET SEMI;
+genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ( ((MINUS|PLUS)? simpleBytecodeObjectType)+ | STAR) LARGET SEMI;
 
 //*******************************/
 // Simple types
