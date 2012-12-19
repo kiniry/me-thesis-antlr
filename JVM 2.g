@@ -102,7 +102,7 @@ runtimeVisibleAnnotations_info
   ;
 
 runtimeVisibleAnnotationsItem
-	:	PC CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN NL
+	:	pc CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN NL
 	;
 
 runtimeVisibleAnnotationAssignList
@@ -212,10 +212,6 @@ fieldDefinition
 		fieldInfo
 		fieldAdditionalInfo?
 	;
-	
-wtf
-	: identifier SEMI
-	;
 
 fieldInfo
 	:	Signature fieldInfoOption1 NL
@@ -323,10 +319,6 @@ annotationDefault
 //	;
 	
 methodSignatureInfo
-	:	methodDescriptor
-	;
-
-methodDescriptor
 	:	LPAREN bytecodeType* RPAREN returnDescriptor
 	;
 
@@ -380,11 +372,11 @@ codeBlock
 	;
 
 codeLine
-	:	PC IDENTIFIER codeValues? NL?
+	:	pc IDENTIFIER codeValues? NL?
 	;
 
 codeBlockEnd
-	:	PC IDENTIFIER logic3? NL+
+	:	pc IDENTIFIER logic3? NL+
 	;
 	
 codeValues
@@ -420,7 +412,7 @@ variable
 	;
 
 javaSwitch	
-	:	PC IDENTIFIER
+	:	pc IDENTIFIER
 		LBRACE NL
 		switchLine*
 		switchDefaultLine
@@ -428,7 +420,7 @@ javaSwitch
 	;
 	
 switchLine
-	:	PC INTLITERAL NL+
+	:	pc INTLITERAL NL+
 	;
 
 switchDefaultLine
@@ -461,7 +453,7 @@ lineNumberTable
 	;
 
 lineNumberTableLine
-	:	IDENTIFIER PC INTLITERAL NL+
+	:	IDENTIFIER pc INTLITERAL NL+
 	;
 	
 //*******************************/
@@ -657,6 +649,8 @@ literals
 	|	STRINGLITERAL
 	;
 
+pc
+	:	INTLITERAL COLON;
 //*******************************/
 // Lexer
 //*******************************/
@@ -756,8 +750,6 @@ BaseType:	'B'	|	'C'	|	'D'	|	'F'	|	'I'	|	'J'	|	'S'	|	'Z';
 CONSTANT_TYPE_ASSIGNABLE
 	:	Constant_type (' ')+ (~('\n'|'\r'|' ')+ (' ')+)* ~('\n'|'\r'|' ')* '\r'? '\n'
 	;
-PC
-	:	IntDigit+ COLON;
 CPINDEX
 	:	HASH INTLITERAL;
 IDENTIFIER  
