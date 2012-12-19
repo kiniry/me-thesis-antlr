@@ -13,6 +13,22 @@ options {
 	package a.b.c;
 }
 
+@members{
+
+                private boolean newLineBeforeNextToken( int index ) {
+
+                Token tkn;               
+                input = (CommonTokenStream) input;
+                while( input.size()>(index+1) && (tkn=input.get(++index)).getChannel() != Token.DEFAULT_CHANNEL ) {
+
+                                if( tkn.getType() == NL ) return true;
+
+                                index++;
+
+                }
+                return false;
+                }
+}
 
 //*******************************/
 //	Class files 
@@ -30,23 +46,19 @@ class_file_header
 	|	compiled_file_info)* 
 	;
 class_file_info
-	:	IDENTIFIER WINDOWSPATH
+	:	IDENTIFIER WINDOWSPATH NL
 	;
 	
 modified_file_info
-	:	MODIFIED DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER
+	:	MODIFIED DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER NL
 	;
 	
 checksum_file_info
-	:	CHECKSUM (IDENTIFIER | HexDigits)
+	:	CHECKSUM (IDENTIFIER | HexDigits) NL
 	;
 		
 compiled_file_info
-	:	COMPILED QuotedFile
-	;
-	
-file_name
-	:	 IDENTIFIER DOT IDENTIFIER
+	:	COMPILED QuotedFile NL
 	;
 	
 //*******************************/
@@ -54,72 +66,75 @@ file_name
 //*******************************/
 	
 type_info
-	:	(infoTypeCaption infoTypes)+
-	;
-	
-infoTypes
-	:	sourcefile_info
-//	|	signature_info
-	|	minor_major_version_info
+	:	(sourcefile_info
+	|	major_version_info
+	|	minor_version_info
 	|	flags
-	| scalaSig_info
+	| scalaSig_info NL
 	| runtimeVisibleAnnotations_info
 	|	innerclass_info
 	| enclosingMethod
 	| signature_info_addition
-	| deprecated
-	;
-
-infoTypeCaption
-	:	(MINOR_VERSION| MAJOR_VERSION | IDENTIFIER) COLON
-	;
-
-caption
-	:	IDENTIFIER COLON
+	| deprecated)+
 	;
 
 deprecated
-	:	BOOLEANLITERAL
+	:	Deprecated BOOLEANLITERAL NL
 	;
 
 enclosingMethod
-	:	CPINDEX DOT CPINDEX
+	: EnclosingMethod	CPINDEX DOT CPINDEX NL?
 	;
 
 sourcefile_info
-	:	QuotedFile
+	: SourceFile QuotedFile NL
 	;
 
 scalaSig_info
-	:	IDENTIFIER ASSIGN INTLITERAL
+	:	(ScalaSig |Scala)
+		IDENTIFIER ASSIGN INTLITERAL  NL
 		(INTLITERAL INTLITERAL INTLITERAL)?
 	;
 	
 runtimeVisibleAnnotations_info
-	:	PC CPINDEX LPAREN (CPINDEX ASSIGN IDENTIFIER CPINDEX)? RPAREN
+	:	RuntimeVisibleAnnotations NL
+	 	runtimeVisibleAnnotationsItem+
   ;
-		
-signature_info
-	:	methodDescriptor
+
+runtimeVisibleAnnotationsItem
+	:	PC CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN NL
+	;
+
+runtimeVisibleAnnotationAssignList
+	:	annotationAssign (COMMA annotationAssign)* -> annotationAssign+
+	;
+
+annotationAssign
+	:	CPINDEX ASSIGN (BrackedAnnotationAssign | AnnotationAssign)
 	;
 		
 signature_info_addition
-	:	CPINDEX
+	: Signature	CPINDEX NL?
 	;
 
 innerclass_info
-	: innerclass_info_line+
+	: InnerClasses  NL
+		innerclass_info_line+
 	;
 innerclass_info_line
-	:	field_visual_modifier? method_modifier* CPINDEX ((ASSIGN CPINDEX IDENTIFIER CPINDEX) | (IDENTIFIER CPINDEX))? SEMI
+	:	 method_modifier* CPINDEX ((ASSIGN CPINDEX IDENTIFIER CPINDEX) | (IDENTIFIER CPINDEX))? SEMI NL?
 	;
 		
-minor_major_version_info
-	:	INTLITERAL
+major_version_info
+	:	MAJOR_VERSION INTLITERAL NL
+	;
+		
+minor_version_info
+	:	MINOR_VERSION INTLITERAL NL
 	;
 			
 flags
-	:	accessFlagList
+	:	Flag accessFlagList NL+
 	;
 	
 accessFlagList
@@ -131,13 +146,12 @@ accessFlagList
 //*******************************/
 
 constant_pool
-	:	CONSTANTPOOL COLON!
+	:	CONSTANTPOOL COLON! NL
 		contant_pool_line*
 	;
 	
 contant_pool_line
-	:	CPINDEX ASSIGN 
-		CONSTANT_TYPE_ASSIGNABLE
+	:	CPINDEX ASSIGN CONSTANT_TYPE_ASSIGNABLE
 	;
 
 //*******************************/
@@ -145,12 +159,12 @@ contant_pool_line
 //*******************************/
 
 classDefinition
-	:	class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface?
+	:	class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface? NL
 		type_info
 		constant_pool
-		LBRACE
+		LBRACE NL
 		classBody?
-		RBRACE
+		RBRACE NL
 	;
 	
 superClass
@@ -175,10 +189,16 @@ class_modifier
 	
 classBody
 	:	
+//	(	
+//		methodDefinition
+//	|	fieldDefinition
+//	|	ctorDefinition
+//	|	staticCtorDefinition
+//	)+
 	(	
-		fieldDefinition
-	|	ctorDefinition
-	|	methodDefinition
+		(methodDefinition) => methodDefinition
+	|	(ctorDefinition) => ctorDefinition
+	|	(fieldDefinition) => fieldDefinition
 	|	staticCtorDefinition
 	)+
 	;
@@ -188,19 +208,26 @@ classBody
 //*******************************/
 
 fieldDefinition
-	:	field_visual_modifier? field_modifier* aggregatedJavaType IDENTIFIER (ASSIGN (INTLITERAL | STRINGLITERAL))? SEMI
-		fieldInfoTypes
+	:	field_visual_modifier? field_modifier* aggregatedJavaType identifier (ASSIGN literals)? SEMI NL
+		fieldInfo
+		fieldAdditionalInfo?
 	;
 
-fieldInfoTypes
-	:	caption fieldInfoOption1
-		caption fieldInfoOption2?
-		(caption fieldInfoOption3
-	|	caption fieldInfoOption4
-	|	caption fieldInfoOption5
-	|	caption fieldInfoOption6)?
+fieldInfo
+	:	Signature fieldInfoOption1 NL
+//		t=Flag { !newLineBeforeNextToken($t.getTokenIndex() ) }? accessFlagList	
+		Flag accessFlagList? NL+
+//		Flag flagList		
 	;
-	
+
+fieldAdditionalInfo
+	:	(Constant fieldInfoOption3
+	|	Constant fieldInfoOption4
+	|	Signature fieldInfoOption5
+	|	Deprecated fieldInfoOption6
+	|	Synthetic fieldInfoOption6) NL+
+	;
+
 fieldInfoOption1 // Minded signatures
 	:	bytecodeType
 	;
@@ -210,7 +237,7 @@ fieldInfoOption2 // Minded Flags
 	;
 
 fieldInfoOption3 // Minded constant values
-	:	primitiveType (MINUS | PLUS)? INTLITERAL
+	:	primitiveType literals
 	;
 
 fieldInfoOption4 // Minded constant values
@@ -221,7 +248,7 @@ fieldInfoOption5 // Minded signatures
 	:	 CPINDEX
 	;
 
-fieldInfoOption6 // Minded signatures
+fieldInfoOption6 // Minded deprecates
 	:	 BOOLEANLITERAL
 	;
 
@@ -238,7 +265,7 @@ field_modifier
 //*******************************/
 
 staticCtorDefinition
-	:	field_visual_modifier? STATIC LBRACE RBRACE SEMI
+	:	field_visual_modifier? STATIC LBRACE RBRACE SEMI NL
 		methodInfo
 		body
 	;
@@ -248,7 +275,7 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-	:	field_visual_modifier? javaType arguments throwClause? SEMI
+	:	field_visual_modifier? javaType arguments throwClause? SEMI NL
 		methodInfo
 		body
 		afterMethodInfo
@@ -259,39 +286,38 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-	: method_visual_modifier?  method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI
+	:	method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI NL
 		methodInfo
 		body?
 		afterMethodInfo
 	;
 
 methodInfo
-	:	methodBeforeInfoTypes //(caption methodBeforeInfoTypes)+
+	:	Signature methodSignatureInfo NL
+		Flag accessFlagList? NL+
+//		Flag flagList
 	;
+
+//flagList
+//	:	{ newLineBeforeNextToken(input.LT(1).getTokenIndex()) == false}? accessFlagList
+//	;
 
 afterMethodInfo
-	:	(caption methodAfterInfoTypes)*
-	;
-
-methodBeforeInfoTypes
-	:	caption methodSignatureInfo	
-		caption methodFlagList?
-		(caption methodExceptions)?
-	;
-
-methodAfterInfoTypes
-	:	methodDeprecatedInfo
-	|	methodGenericSignatureInfo
+	:	((Deprecated	methodDeprecatedInfo
+	|	Signature CPINDEX
 	|	runtimeVisibleAnnotations_info
+	| Exceptions NL throwClause
+	| Synthetic BOOLEANLITERAL
+	| annotationDefault) NL*)*
+	;
+
+annotationDefault
+	:	AnnotationDefault NL DefaultValue AnnotationAssign
 	;
 	
-methodFlagList
-	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
-	;
-	
-methodExceptions
-	:	(THROWS NORMALTYPE)+
-	;
+//methodExceptions
+//	:	(THROWS NORMALTYPE NL)+
+//	;
 	
 methodSignatureInfo
 	:	methodDescriptor
@@ -305,19 +331,16 @@ returnDescriptor
 	:	bytecodeType | VoidType
 	;
 	
-methodGenericSignatureInfo
-	:	CPINDEX
-	;
 methodDeprecatedInfo
 	:	BOOLEANLITERAL
 	;
 	
-method_visual_modifier
-	:	PUBLIC	|	PRIVATE |	PROTECTED
-	;
+//method_visual_modifier
+//	:	PUBLIC	|	PRIVATE |	PROTECTED
+//	;
 		
 method_modifier
-	:	ABSTRACT | FINAL	|	STATIC	|	SYNCHRONIZED	|	NATIVE
+	:	ABSTRACT | FINAL	|	STATIC	|	SYNCHRONIZED	|	NATIVE | PUBLIC	|	PRIVATE |	PROTECTED
 	;
 
 arguments
@@ -329,31 +352,36 @@ arguments
 //*******************************/
 	
 body	
-	:	CodeCaption codeBlock
+	:	
+//	(Exceptions NL 
+//		methodExceptions)?
+		Code NL
+		codeBlock
 		(bodyExtension)*
 	;
 
 bodyExtension
 	:	 
-	(EXCEPTION_TABLE COLON exceptionTable
-	|	caption (	lineNumberTable
-						|	localVariableTable
-						|	stackMapTable
-						|	throwClause))
+	(	ExceptionTable NL exceptionTable
+	|	LineNumberTable NL lineNumberTable
+	| LocalVariableTable NL	localVariableTable
+	| LocalVariableTypeTable NL	localVariableTable
+	|	StackMapTable stackMapTable
+	|	StackMap stackMapTypeTable)
 	;
 
 codeBlock
-	:	variables
+	:	variables NL
 		(codeLine |	javaSwitch)*
 		codeBlockEnd
 	;
 
 codeLine
-	:	PC IDENTIFIER codeValues?
+	:	PC IDENTIFIER codeValues? NL?
 	;
 
 codeBlockEnd
-	:	PC IDENTIFIER logic3?
+	:	PC IDENTIFIER logic3? NL+
 	;
 	
 codeValues
@@ -390,18 +418,18 @@ variable
 
 javaSwitch	
 	:	PC IDENTIFIER
-		LBRACE
+		LBRACE NL
 		switchLine*
 		switchDefaultLine
-		RBRACE
+		RBRACE NL
 	;
 	
 switchLine
-	:	PC INTLITERAL
+	:	PC INTLITERAL NL+
 	;
 
 switchDefaultLine
-	:	DEFAULT COLON INTLITERAL
+	:	DEFAULT COLON INTLITERAL NL
 	;
 
 //*******************************/
@@ -413,12 +441,12 @@ throwClause
 	;
 
 exceptionTable
-	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
+	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER NL
 		exceptionTableEntry+
 	;
 
 exceptionTableEntry
-	:	INTLITERAL INTLITERAL INTLITERAL (primitiveType | IDENTIFIER	|	(CONSTANT_TYPE_ASSIGNABLE))
+	:	INTLITERAL INTLITERAL INTLITERAL (primitiveType NL | IDENTIFIER NL	|	(CONSTANT_TYPE_ASSIGNABLE))
 	;
 	
 //*******************************/
@@ -430,7 +458,7 @@ lineNumberTable
 	;
 
 lineNumberTableLine
-	:	IDENTIFIER PC INTLITERAL
+	:	IDENTIFIER PC INTLITERAL NL+
 	;
 	
 //*******************************/
@@ -438,23 +466,38 @@ lineNumberTableLine
 //*******************************/
 	
 localVariableTable
-	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER
+	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER NL
 		localVariableTableLine+
 	;
 	
 localVariableTableLine
-	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER (BaseType | ObjectType | ArrayType SEMI? | IDENTIFIER SEMI | GenericObjectType);
+	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER (BaseType | ObjectType | ArrayType SEMI? | IDENTIFIER SEMI | GenericObjectType) NL+;
 	
+//*******************************/
+//			StackMapTypeTable				 /
+//*******************************/
+
+stackMapTypeTable
+	:	IDENTIFIER ASSIGN INTLITERAL NL
+		stackMapTypeTableEntry+
+	;
+
+stackMapTypeTableEntry
+	:	IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL NL
+		IDENTIFIER ASSIGN stackMapTableTypesContainer NL
+		IDENTIFIER ASSIGN stackMapTableTypesContainer NL+
+	;
+
 //*******************************/
 //				StackMapTable				 	 /
 //*******************************/
 
 stackMapTable
-	:	IDENTIFIER ASSIGN INTLITERAL
+	:	IDENTIFIER ASSIGN INTLITERAL NL
 		stackMapTableEntry+
 	;
 stackMapTableEntry
-	:	IDENTIFIER ASSIGN (INTLITERAL | stackMapTableTypesContainer)
+	:	IDENTIFIER ASSIGN (INTLITERAL | stackMapTableTypesContainer) NL+
 	;
 
 stackMapTableTypesContainer
@@ -512,7 +555,11 @@ genericType
 	;
 	
 genericList
-	:	LESST ('?'|genericGeneric|javaType) (COMMA ('?'|genericGeneric|javaType))* LARGET
+	:	LESST (genericConstraint|genericType|javaType) (COMMA (genericConstraint|genericType|javaType))* LARGET
+	;
+
+genericConstraint
+	:	QUESTION ((SUPER | EXTENDS ) (javaType | genericType))?
 	;
 
 genericGeneric
@@ -549,10 +596,6 @@ simpleByteCodeType
 
 identifier: IDENTIFIER | BaseType | VoidType;
 
-//genericByteCodeType
-//	:	ObjectType LESST LARGET
-//	;
-
 bytecodeType
 	:	BaseType
   | ObjectType
@@ -588,6 +631,16 @@ floating_point_type
 	:	FLOAT
 	|	DOUBLE
 	;
+
+literals
+	:	LONGLITERAL
+	|	INTLITERAL
+	|	FLOATLITERAL
+	|	DOUBLELITERAL
+	|	CHARLITERAL
+	|	STRINGLITERAL
+	;
+
 //*******************************/
 // Lexer
 //*******************************/
@@ -606,9 +659,26 @@ floating_point_type
 //FINAL			:  'final' 		;	   INTERFACE	:  'interface' 	;	   STATIC			:  'static' 		;	   
 //CLASS			:  'class' 		;	   FINALLY		:  'finally' 		;	   STRICTFP		:  'strictfp' 	;	   VOLATILE	:  'volatile' ;
 //CONST			:  'const*' 	;	   NATIVE			:  'native' 		;	   SUPER			:  'super' 			;	   WHILE		:  'while' 		;
-EXCEPTION_TABLE	:	'Exception table'	; MAJOR_VERSION	:	'major version' ;	MINOR_VERSION	:	'minor version' ;
-COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;	CodeCaption		:	'Code' COLON		; // If caption was used instead then a problem could occure when no flags are added (empty flag section). flags: IDENIFIER (could either be an actual flag or Code from Code:) 
-MODIFIED 				: 'Last modified'		;	CHECKSUM 			: 'MD5 checksum'	;
+ 
+COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;	 
+MODIFIED 				: 'Last modified'		;	CHECKSUM 			: 'MD5 checksum'	;	
+
+//*******************************/
+// Captions
+//*******************************/
+
+Flag					: 'flags' COLON					;	RuntimeVisibleAnnotations	:	'RuntimeVisibleAnnotations' COLON	;
+Code					:	'Code' COLON					;	SourceFile								: 'SourceFile' COLON								;
+Scala					: 'Scala' COLON					;	Deprecated								:	'Deprecated' COLON								;
+Signature			: 'Signature' COLON			;	Exceptions								: 'Exceptions' COLON								;
+Constant			:	'ConstantValue'	COLON	;	LineNumberTable						:	'LineNumberTable' COLON						;
+StackMapTable :	'StackMapTable' COLON	;	LocalVariableTable				: 'LocalVariableTable' COLON				;
+Throws				:	'Throws' COLON				;	InnerClasses							:	'InnerClasses' COLON							;
+MAJOR_VERSION	:	'major version' COLON ;	MINOR_VERSION							:	'minor version' COLON							;
+ScalaSig			: 'ScalaSig' COLON			; EnclosingMethod						: 'EnclosingMethod' COLON						;
+ExceptionTable:	'Exception table'COLON;	LocalVariableTypeTable		: 'LocalVariableTypeTable' COLON		;
+Synthetic			:	'Synthetic' COLON			;	StackMap									:	'StackMap' COLON									;
+DefaultValue	: 'default_value' COLON	; AnnotationDefault					: 'AnnotationDefault' COLON					;
 
 Constant_type
 	:	'Class'		|	'Fieldref'	|	'Methodref'
@@ -623,20 +693,12 @@ ABSTRACT 	: 'abstract'	;		PUBLIC 				: 'public'			;		FINAL 		: 'final'			;
 STATIC 		: 'static'		;		PRIVATE 			: 'private'			;		PROTECTED : 'protected'	;
 INTERFACE : 'interface'	;		SYNCHRONIZED 	: 'synchronized';		NATIVE 		: 'native'		;
 VOLATILE 	: 'volatile'	;		TRANSIENT 		: 'transient'		;		CLASS			:  'class' 		;
-THROWS		:  'throws' 	;
+THROWS		:  'throws' 	;		SUPER					: 'super' 			;
+
+BOOLEANLITERAL	:	TRUE | FALSE;
 
 fragment FALSE		:	 'false'		;
 fragment TRUE			:	 'true'			;
-
-BOOLEAN		:  'boolean' 	;
-CHAR			:  'char' 		;
-BYTE			:  'byte' 		;
-DOUBLE		:  'double' 	;
-FLOAT			:  'float' 		;
-LONG			:  'long' 		;
-INT				:  'int' 			;
-VOID			:  'void' 		;
-SHORT			:  'short' 		;
 	
 fragment QUOTE			:	'\"';
 fragment SLASH			:	'/';
@@ -651,11 +713,25 @@ LBRACK	:	'['		;	RBRACK	:	']'		;
 LPAREN	:	'('		;	RPAREN	:	')'		;
 LESST		:	'<'		;	LARGET	:	'>'		;
 ASSIGN	:	'='		; AND			:	'&'		;
+QUESTION:	'?'		; STAR		: '*'		;
+
+//*******************************/
+// Types
+//*******************************/
+
+BOOLEAN		:  'boolean' 	;
+CHAR			:  'char' 		;
+BYTE			:  'byte' 		;
+DOUBLE		:  'double' 	;
+FLOAT			:  'float' 		;
+LONG			:  'long' 		;
+INT				:  'int' 			;
+VOID			:  'void' 		;
+SHORT			:  'short' 		;
 
 
 VoidType:	'V';
 BaseType:	'B'	|	'C'	|	'D'	|	'F'	|	'I'	|	'J'	|	'S'	|	'Z';
-BOOLEANLITERAL	:	TRUE | FALSE;
 
 //*******************************/
 // Others
@@ -671,12 +747,12 @@ CPINDEX
 IDENTIFIER  
 	:	(Letter|'_'|'$') (Letter|IntDigit|'_'|'$')*;
 NORMALTYPE
-	: IDENTIFIER (DOT IDENTIFIER)+;
+	: IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
 INTERNALTYPE
 	: IDENTIFIER (SLASH IDENTIFIER)+;
 
 ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) SEMI;
-GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST ((('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ LARGET SEMI;
+GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (((MINUS|PLUS)? (('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ | STAR) LARGET SEMI;
 
 ArrayType:	LBRACK+ (ObjectType | IDENTIFIER);
 
@@ -697,7 +773,8 @@ WS  :   ( ' '
 NL
 	: 		( '\r'
         | '\n'
-        ) {$channel=HIDDEN;}
+        | '\r\n'
+        )
 	;
 
 QuotedFile
@@ -707,16 +784,24 @@ QuotedBytecodeType
 	:	QUOTE (ObjectType | ArrayType) QUOTE
 	;
 
+AnnotationAssign
+	: (BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX (DOT CPINDEX)?
+	;
+BrackedAnnotationAssign
+	:	LBRACK AnnotationAssign (COMMA AnnotationAssign)* RBRACK
+	;
+
 //*******************************/
 // Literals
 //*******************************/
 
-LONGLITERAL : IntegerNumber LongSuffix ; 
-INTLITERAL : ( PLUS | MINUS )? IntegerNumber ;
-FLOATLITERAL : NonIntegerNumber FloatSuffix ; 
-DOUBLELITERAL : NonIntegerNumber DoubleSuffix? ;
-//CHARLITERAL : '\'' EscapeSequence '\'' ;
-STRINGLITERAL : QUOTE EscapeSequence* QUOTE ;
+LONGLITERAL 	: INTLITERAL LongSuffix 		;
+INTLITERAL 	: ( PLUS | MINUS )? IntegerNumber 	;
+FLOATLITERAL 	: NonIntegerNumber FloatSuffix 		;
+DOUBLELITERAL 	: NonIntegerNumber DoubleSuffix? 	;
+CHARLITERAL 	: '\'' EscapeSequence '\'' 		;
+STRINGLITERAL 	: QUOTE EscapeSequence* QUOTE 		;
+
 HexDigits	:	HexDigit+;
 
 fragment IntegerNumber : '0' | '1'..'9' IntDigit* | '0' Octal+ | HexPrefix HexDigit+ ;
