@@ -339,7 +339,7 @@ method_modifier
 	;
 
 arguments
-	:	LPAREN typeList? RPAREN
+	:	LPAREN typeList? (DOT DOT DOT)? RPAREN //(DOT DOT DOT)? zero or more of the last object
 	;
 
 //*******************************/
@@ -466,7 +466,7 @@ localVariableTable
 	;
 	
 localVariableTableLine
-	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER bytecodeType NL+;
+	:	INTLITERAL INTLITERAL INTLITERAL (IDENTIFIER | primitiveType) bytecodeType NL+;
 	
 //*******************************/
 //			StackMapTypeTable				 /
@@ -651,6 +651,7 @@ literals
 	|	DOUBLELITERAL
 	|	CHARLITERAL
 	|	STRINGLITERAL
+	| BOOLEANLITERAL
 	;
 
 pc
