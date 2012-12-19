@@ -212,6 +212,10 @@ fieldDefinition
 		fieldInfo
 		fieldAdditionalInfo?
 	;
+	
+wtf
+	: identifier SEMI
+	;
 
 fieldInfo
 	:	Signature fieldInfoOption1 NL
@@ -312,9 +316,8 @@ afterMethodInfo
 	;
 
 annotationDefault
-	:	AnnotationDefault NL DefaultValue AnnotationAssign
+	:	AnnotationDefault NL DefaultValue (AnnotationAssign | LBRACK RBRACK)
 	;
-	
 //methodExceptions
 //	:	(THROWS NORMALTYPE NL)+
 //	;
@@ -471,7 +474,7 @@ localVariableTable
 	;
 	
 localVariableTableLine
-	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER (BaseType | ObjectType | ArrayType SEMI? | IDENTIFIER SEMI | GenericObjectType) NL+;
+	:	INTLITERAL INTLITERAL INTLITERAL IDENTIFIER bytecodeType NL+;
 	
 //*******************************/
 //			StackMapTypeTable				 /
@@ -557,9 +560,9 @@ genericType
 genericList
 	:	LESST (genericConstraint|genericType|javaType) (COMMA (genericConstraint|genericType|javaType))* LARGET
 	;
-
+	
 genericConstraint
-	:	QUESTION ((SUPER | EXTENDS ) (javaType | genericType))?
+	:	QUESTION ((SUPER | EXTENDS ) (genericType | javaType))?
 	;
 
 genericGeneric
@@ -586,23 +589,34 @@ genericReturnDescriptor
 	:	identifier EXTENDS simpleByteCodeType// (AND simpleByteCodeType)*
 	;
 
-simpleByteCodeType
+simpleByteCodeType // Used for private <T extends org/Object> returnType methodName(...);
 	:	INTERNALTYPE | identifier
 	;
+
+bytecodeType
+	:	bytecodeArrayType | bytecodeBaseType | bytecodeObjectType
+	;
+
+bytecodeArrayType
+	:	ArrayType
+  ;
+ 
+ bytecodeBaseType
+ 	:	BaseType
+ 	;
+ 
+ bytecodeObjectType
+ 	:	INTERNALTYPE SEMI
+  |	VersionedInternalType SEMI
+  | IDENTIFIER SEMI
+  | GenericObjectType SEMI
+ 	;
 
 //*******************************/
 // Simple types
 //*******************************/
 
 identifier: IDENTIFIER | BaseType | VoidType;
-
-bytecodeType
-	:	BaseType
-  | ObjectType
-  | ArrayType
-  | IDENTIFIER
-  | GenericObjectType
-  ;
 
 primitiveType
 	:	boolean_type
@@ -688,12 +702,12 @@ Constant_type
 	|	'Unicode' | 'Utf8'
 	;
 
-EXTENDS		: 'extends'		;		IMPLEMENTS		: 'implements' 	;		DEFAULT		:  'default' 	;
+EXTENDS		: 'extends'		;		IMPLEMENTS		: 'implements' 	;		DEFAULT		: 'default' 	;
 ABSTRACT 	: 'abstract'	;		PUBLIC 				: 'public'			;		FINAL 		: 'final'			;
 STATIC 		: 'static'		;		PRIVATE 			: 'private'			;		PROTECTED : 'protected'	;
 INTERFACE : 'interface'	;		SYNCHRONIZED 	: 'synchronized';		NATIVE 		: 'native'		;
-VOLATILE 	: 'volatile'	;		TRANSIENT 		: 'transient'		;		CLASS			:  'class' 		;
-THROWS		:  'throws' 	;		SUPER					: 'super' 			;
+VOLATILE 	: 'volatile'	;		TRANSIENT 		: 'transient'		;		CLASS			: 'class' 		;
+THROWS		: 'throws' 		;		SUPER					: 'super' 			;
 
 BOOLEANLITERAL	:	TRUE | FALSE;
 
@@ -751,10 +765,13 @@ NORMALTYPE
 INTERNALTYPE
 	: IDENTIFIER (SLASH IDENTIFIER)+;
 
-ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) SEMI;
-GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (((MINUS|PLUS)? (('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ | STAR) LARGET SEMI;
+//FIL IDENTIFIER;
+//ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) (DOT IntegerNumber)? SEMI;
+VersionedInternalType	:	INTERNALTYPE (DOT IntegerNumber);
 
-ArrayType:	LBRACK+ (ObjectType | IDENTIFIER);
+GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (((MINUS|PLUS)? (('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ | STAR) LARGET;
+
+ArrayType:	LBRACK+ (INTERNALTYPE SEMI | IDENTIFIER SEMI | BaseType);
 
 WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
@@ -781,15 +798,20 @@ QuotedFile
 	:	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
 	;
 QuotedBytecodeType
-	:	QUOTE (ObjectType | ArrayType) QUOTE
+	:	QUOTE (INTERNALTYPE SEMI | ArrayType) QUOTE
 	;
-
 AnnotationAssign
 	: (BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX (DOT CPINDEX)?
 	;
 BrackedAnnotationAssign
 	:	LBRACK AnnotationAssign (COMMA AnnotationAssign)* RBRACK
 	;
+//AnnotationAssign
+//	: LBRACK BrackedAnnotationAssign RBRACK
+//	;
+//BrackedAnnotationAssign
+//	:	(BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX
+//	;
 
 //*******************************/
 // Literals
