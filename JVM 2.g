@@ -594,7 +594,7 @@ simpleByteCodeType // Used for private <T extends org/Object> returnType methodN
 	;
 
 bytecodeType
-	:	bytecodeArrayType | bytecodeBaseType | bytecodeObjectType
+	:	bytecodeArrayType | bytecodeBaseType | bytecodeObjectType | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
 	;
 
 bytecodeArrayType
@@ -609,8 +609,10 @@ bytecodeArrayType
  	:	INTERNALTYPE SEMI
   |	VersionedInternalType SEMI
   | IDENTIFIER SEMI
-  | GenericObjectType SEMI
+  | genericObjectType
  	;
+
+genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ( ((MINUS|PLUS)? (INTERNALTYPE | IDENTIFIER) SEMI)+ | STAR | genericObjectType) LARGET SEMI;
 
 //*******************************/
 // Simple types
@@ -771,7 +773,7 @@ VersionedInternalType	:	INTERNALTYPE (DOT IntegerNumber);
 
 GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (((MINUS|PLUS)? (('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ | STAR) LARGET;
 
-ArrayType:	LBRACK+ (INTERNALTYPE SEMI | IDENTIFIER SEMI | BaseType);
+ArrayType:	LBRACK+ (INTERNALTYPE SEMI | BaseType+ | IDENTIFIER SEMI);
 
 WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
