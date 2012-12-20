@@ -75,7 +75,12 @@ type_info
 	|	innerclass_info
 	| enclosingMethod
 	| signature_info_addition
-	| deprecated)+
+	| deprecated
+	| synthetic)+
+	;
+
+synthetic
+	:	Synthetic BOOLEANLITERAL NL
 	;
 
 deprecated
@@ -110,7 +115,11 @@ runtimeVisibleAnnotationAssignList
 	;
 
 annotationAssign
-	:	CPINDEX ASSIGN (BrackedAnnotationAssign | AnnotationAssign)
+	:	CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
+	;
+
+brackedAnnotationAssign
+	:	LBRACK AnnotationAssign (COMMA AnnotationAssign)* RBRACK -> AnnotationAssign+
 	;
 		
 signature_info_addition
@@ -210,7 +219,7 @@ classBody
 fieldDefinition
 	:	field_visual_modifier? field_modifier* aggregatedJavaType identifier (ASSIGN literals)? SEMI NL
 		fieldInfo
-		fieldAdditionalInfo?
+		fieldAdditionalInfo*
 	;
 
 fieldInfo
@@ -225,7 +234,8 @@ fieldAdditionalInfo
 	|	Constant fieldInfoOption4
 	|	Signature fieldInfoOption5
 	|	Deprecated fieldInfoOption6
-	|	Synthetic fieldInfoOption6) NL+
+	|	Synthetic fieldInfoOption6
+	| runtimeVisibleAnnotations_info) NL+
 	;
 
 fieldInfoOption1 // Minded signatures
@@ -359,8 +369,8 @@ bodyExtension
 	:	 
 	(	ExceptionTable NL exceptionTable
 	|	LineNumberTable NL lineNumberTable
-	| LocalVariableTable NL	localVariableTable
-	| LocalVariableTypeTable NL	localVariableTable
+	| LocalVariableTable NL	localVariableTable NL*
+	| LocalVariableTypeTable NL	localVariableTable NL*
 	|	StackMapTable stackMapTable
 	|	StackMap stackMapTypeTable)
 	;
@@ -462,11 +472,11 @@ lineNumberTableLine
 	
 localVariableTable
 	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER NL
-		localVariableTableLine+
+		localVariableTableLine*
 	;
 	
 localVariableTableLine
-	:	INTLITERAL INTLITERAL INTLITERAL (IDENTIFIER | primitiveType) bytecodeType NL+;
+	:	INTLITERAL INTLITERAL INTLITERAL (IDENTIFIER | primitiveType) bytecodeType NL;
 	
 //*******************************/
 //			StackMapTypeTable				 /
@@ -510,7 +520,7 @@ stackMapTableTypePlainObject
 	:	CLASS (INTERNALTYPE | IDENTIFIER)
 	;
 stackMapTableTypeObject
-	:	CLASS QuotedBytecodeType
+	:	CLASS STRINGLITERAL
 	;
 
 //*******************************/
@@ -538,7 +548,7 @@ typeList
  	;
   	
 aggregatedJavaType
-	:	(primitiveType | javaTypeIdentifier) (LBRACK RBRACK)*
+	:	(primitiveType | javaTypeIdentifier (DOT javaTypeIdentifier)?) (LBRACK RBRACK)*
 	;
 	
 javaTypeIdentifier
@@ -550,7 +560,7 @@ genericType
 	;
 	
 genericList
-	:	LESST (genericConstraint|genericType|javaType) (COMMA (genericConstraint|genericType|javaType))* LARGET
+	:	LESST (genericConstraint|aggregatedJavaType) (COMMA (genericConstraint|aggregatedJavaType))* LARGET
 	;
 	
 genericConstraint
@@ -589,8 +599,12 @@ bytecodeType
 	:	bytecodeArrayType | bytecodeBaseType | combinedBytecodeObjectType | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
 	;
 
+//ArrayType:	LBRACK+ (INTERNALTYPE SEMI | BaseType* | IDENTIFIER SEMI);
+//bytecodeArrayType
+//	:	LBRACK+ (simpleBytecodeObjectType | bytecodeBaseType)
+//  ;
 bytecodeArrayType
-	:	ArrayType
+	:	LBRACK (bytecodeType)
   ;
  
  bytecodeBaseType
@@ -608,7 +622,7 @@ combinedBytecodeObjectType
  	| simpleBytecodeObjectType
  	;
 
-genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ( ((MINUS|PLUS)? simpleBytecodeObjectType)+ | STAR) LARGET SEMI;
+genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET SEMI;
 
 //*******************************/
 // Simple types
@@ -770,7 +784,7 @@ VersionedInternalType	:	INTERNALTYPE (DOT IntegerNumber);
 
 //GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (((MINUS|PLUS)? (('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ | STAR) LARGET;
 
-ArrayType:	LBRACK+ (INTERNALTYPE SEMI | BaseType+ | IDENTIFIER SEMI);
+//ArrayType:	LBRACK+ (INTERNALTYPE SEMI | BaseType+ | IDENTIFIER SEMI);
 
 WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
@@ -796,14 +810,11 @@ NL
 QuotedFile
 	:	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
 	;
-QuotedBytecodeType
-	:	QUOTE (INTERNALTYPE SEMI | ArrayType) QUOTE
-	;
+//QuotedBytecodeType
+//	:	QUOTE (INTERNALTYPE SEMI | ArrayType) QUOTE
+//	;
 AnnotationAssign
 	: (BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX (DOT CPINDEX)?
-	;
-BrackedAnnotationAssign
-	:	LBRACK AnnotationAssign (COMMA AnnotationAssign)* RBRACK
 	;
 //AnnotationAssign
 //	: LBRACK BrackedAnnotationAssign RBRACK
