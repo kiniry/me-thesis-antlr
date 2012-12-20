@@ -50,15 +50,15 @@ class_file_info
 	;
 	
 modified_file_info
-	:	MODIFIED DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER NL
+	:	IDENTIFIER IDENTIFIER DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER NL
 	;
 	
 checksum_file_info
-	:	CHECKSUM (IDENTIFIER | HexDigits) NL
+	:	IDENTIFIER IDENTIFIER (IDENTIFIER | HexDigits) NL
 	;
 		
 compiled_file_info
-	:	COMPILED QuotedFile NL
+	:	IDENTIFIER IDENTIFIER STRINGLITERAL NL
 	;
 	
 //*******************************/
@@ -92,7 +92,7 @@ enclosingMethod
 	;
 
 sourcefile_info
-	: SourceFile QuotedFile NL
+	: SourceFile STRINGLITERAL NL
 	;
 
 scalaSig_info
@@ -131,7 +131,7 @@ innerclass_info
 		innerclass_info_line+
 	;
 innerclass_info_line
-	:	 method_modifier* CPINDEX ((ASSIGN CPINDEX IDENTIFIER CPINDEX) | (IDENTIFIER CPINDEX))? SEMI NL?
+	:	 method_modifier* CPINDEX ((ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) | (IDENTIFIER CPINDEX))? SEMI NL?
 	;
 		
 major_version_info
@@ -147,7 +147,11 @@ flags
 	;
 	
 accessFlagList
-	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
+	:	flagType (COMMA flagType)* -> flagType+
+	;
+
+flagType
+	:	IDENTIFIER | INTLITERAL
 	;
 
 //*******************************/
@@ -155,7 +159,7 @@ accessFlagList
 //*******************************/
 
 constant_pool
-	:	CONSTANTPOOL COLON! NL
+	:	IDENTIFIER IDENTIFIER COLON NL
 		contant_pool_line*
 	;
 	
@@ -476,7 +480,7 @@ localVariableTable
 	;
 	
 localVariableTableLine
-	:	INTLITERAL INTLITERAL INTLITERAL (IDENTIFIER | primitiveType) bytecodeType NL;
+	:	INTLITERAL INTLITERAL INTLITERAL (IDENTIFIER | primitiveType | DEFAULT) bytecodeType NL;
 	
 //*******************************/
 //			StackMapTypeTable				 /
@@ -580,7 +584,7 @@ javaType
 	;
 	
 //*******************************/
-// Bytecode Types
+// Generic return Type description
 //*******************************/
 
 genericReturn
@@ -588,15 +592,30 @@ genericReturn
 	;
 
 genericReturnDescriptor
-	:	identifier EXTENDS simpleByteCodeType// (AND simpleByteCodeType)*
+	:	identifier EXTENDS (bytecodeObjectType | BaseType)// (AND simpleByteCodeType)*
 	;
+ 
+bytecodeObjectType
+ 	:	INTERNALTYPE
+  | IDENTIFIER
+  | genericBydecodeObjectType
+ 	;
 
-simpleByteCodeType // Used for private <T extends org/Object> returnType methodName(...);
-	:	INTERNALTYPE | identifier
-	;
+genericBydecodeObjectType
+	:	(INTERNALTYPE | IDENTIFIER) LESST bytecodeObjectType (COMMA bytecodeObjectType)* LARGET
+	; 
+
+//simpleByteCodeType // Used for private <T extends org/Object> returnType methodName(...);
+//	:	INTERNALTYPE | identifier
+//	;
+	
+	
+//*******************************/
+// Bytecode Types
+//*******************************/
 
 bytecodeType
-	:	bytecodeArrayType | bytecodeBaseType | combinedBytecodeObjectType | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+	:	bytecodeArrayType | bytecodeBaseType | combinedBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
 	;
 
 //ArrayType:	LBRACK+ (INTERNALTYPE SEMI | BaseType* | IDENTIFIER SEMI);
@@ -612,23 +631,23 @@ bytecodeArrayType
  	;
  
  simpleBytecodeObjectType
- 	:	INTERNALTYPE SEMI
-  | IDENTIFIER SEMI
+ 	:	INTERNALTYPE
+  | IDENTIFIER
   | genericObjectType
  	;
  
 combinedBytecodeObjectType
- 	:	VersionedInternalType SEMI
+ 	:	VersionedInternalType
  	| simpleBytecodeObjectType
  	;
 
-genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET SEMI;
+genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET;
 
 //*******************************/
 // Simple types
 //*******************************/
 
-identifier: IDENTIFIER | BaseType | VoidType;
+identifier: IDENTIFIER | BaseType | VoidType | DEFAULT;
 
 primitiveType
 	:	boolean_type
@@ -689,8 +708,8 @@ pc
 //CLASS			:  'class' 		;	   FINALLY		:  'finally' 		;	   STRICTFP		:  'strictfp' 	;	   VOLATILE	:  'volatile' ;
 //CONST			:  'const*' 	;	   NATIVE			:  'native' 		;	   SUPER			:  'super' 			;	   WHILE		:  'while' 		;
  
-COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;	 
-MODIFIED 				: 'Last modified'		;	CHECKSUM 			: 'MD5 checksum'	;	
+//COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;	 
+//MODIFIED 				: 'Last modified'		;	CHECKSUM 			: 'MD5 checksum'	;	
 
 //*******************************/
 // Captions
@@ -717,7 +736,7 @@ Constant_type
 	|	'Unicode' | 'Utf8'
 	;
 
-EXTENDS		: 'extends'		;		IMPLEMENTS		: 'implements' 	;		DEFAULT		: 'default' 	;
+EXTENDS		: 'extends'		;		IMPLEMENTS		: 'implements' 	;		DEFAULT		: 'default' 	; // Default is a keyword though it is seen in AttrDecl.class as identifier
 ABSTRACT 	: 'abstract'	;		PUBLIC 				: 'public'			;		FINAL 		: 'final'			;
 STATIC 		: 'static'		;		PRIVATE 			: 'private'			;		PROTECTED : 'protected'	;
 INTERFACE : 'interface'	;		SYNCHRONIZED 	: 'synchronized';		NATIVE 		: 'native'		;
@@ -807,9 +826,9 @@ NL
         )
 	;
 
-QuotedFile
-	:	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
-	;
+//QuotedFile
+//	:	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
+//	;
 //QuotedBytecodeType
 //	:	QUOTE (INTERNALTYPE SEMI | ArrayType) QUOTE
 //	;
