@@ -13,23 +13,6 @@ options {
 	package a.b.c;
 }
 
-@members{
-
-                private boolean newLineBeforeNextToken( int index ) {
-
-                Token tkn;               
-                input = (CommonTokenStream) input;
-                while( input.size()>(index+1) && (tkn=input.get(++index)).getChannel() != Token.DEFAULT_CHANNEL ) {
-
-                                if( tkn.getType() == NL ) return true;
-
-                                index++;
-
-                }
-                return false;
-                }
-}
-
 //*******************************/
 //	Class files 
 //*******************************/
@@ -130,6 +113,7 @@ innerclass_info
 	: InnerClasses  NL
 		innerclass_info_line+
 	;
+	
 innerclass_info_line
 	:	 method_modifier* CPINDEX ((ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) | (IDENTIFIER CPINDEX))? SEMI NL?
 	;
@@ -201,13 +185,7 @@ class_modifier
 //*******************************/
 	
 classBody
-	:	
-//	(	
-//		methodDefinition
-//	|	fieldDefinition
-//	|	ctorDefinition
-//	|	staticCtorDefinition
-//	)+
+	:
 	(	
 		(methodDefinition) => methodDefinition
 	|	(ctorDefinition) => ctorDefinition
@@ -228,9 +206,7 @@ fieldDefinition
 
 fieldInfo
 	:	Signature fieldInfoOption1 NL
-//		t=Flag { !newLineBeforeNextToken($t.getTokenIndex() ) }? accessFlagList	
 		Flag accessFlagList? NL+
-//		Flag flagList		
 	;
 
 fieldAdditionalInfo
@@ -309,12 +285,7 @@ methodDefinition
 methodInfo
 	:	Signature methodSignatureInfo NL
 		Flag accessFlagList? NL+
-//		Flag flagList
 	;
-
-//flagList
-//	:	{ newLineBeforeNextToken(input.LT(1).getTokenIndex()) == false}? accessFlagList
-//	;
 
 afterMethodInfo
 	:	((Deprecated	methodDeprecatedInfo
@@ -328,9 +299,6 @@ afterMethodInfo
 annotationDefault
 	:	AnnotationDefault NL DefaultValue (AnnotationAssign | LBRACK RBRACK)
 	;
-//methodExceptions
-//	:	(THROWS NORMALTYPE NL)+
-//	;
 	
 methodSignatureInfo
 	:	LPAREN bytecodeType* RPAREN returnDescriptor
@@ -343,10 +311,6 @@ returnDescriptor
 methodDeprecatedInfo
 	:	BOOLEANLITERAL
 	;
-	
-//method_visual_modifier
-//	:	PUBLIC	|	PRIVATE |	PROTECTED
-//	;
 		
 method_modifier
 	:	ABSTRACT | FINAL	|	STATIC	|	SYNCHRONIZED	|	NATIVE | PUBLIC	|	PRIVATE |	PROTECTED
@@ -362,8 +326,6 @@ arguments
 	
 body	
 	:	
-//	(Exceptions NL 
-//		methodExceptions)?
 		Code NL
 		codeBlock
 		(bodyExtension)*
@@ -603,12 +565,7 @@ bytecodeObjectType
 
 genericBydecodeObjectType
 	:	(INTERNALTYPE | IDENTIFIER) LESST bytecodeObjectType (COMMA bytecodeObjectType)* LARGET
-	; 
-
-//simpleByteCodeType // Used for private <T extends org/Object> returnType methodName(...);
-//	:	INTERNALTYPE | identifier
-//	;
-	
+	;
 	
 //*******************************/
 // Bytecode Types
@@ -618,10 +575,6 @@ bytecodeType
 	:	bytecodeArrayType | bytecodeBaseType | combinedBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
 	;
 
-//ArrayType:	LBRACK+ (INTERNALTYPE SEMI | BaseType* | IDENTIFIER SEMI);
-//bytecodeArrayType
-//	:	LBRACK+ (simpleBytecodeObjectType | bytecodeBaseType)
-//  ;
 bytecodeArrayType
 	:	LBRACK (bytecodeType)
   ;
@@ -707,9 +660,6 @@ pc
 //FINAL			:  'final' 		;	   INTERFACE	:  'interface' 	;	   STATIC			:  'static' 		;	   
 //CLASS			:  'class' 		;	   FINALLY		:  'finally' 		;	   STRICTFP		:  'strictfp' 	;	   VOLATILE	:  'volatile' ;
 //CONST			:  'const*' 	;	   NATIVE			:  'native' 		;	   SUPER			:  'super' 			;	   WHILE		:  'while' 		;
- 
-//COMPILED 				: 'Compiled from'		; CONSTANTPOOL	: 'Constant pool'	;	 
-//MODIFIED 				: 'Last modified'		;	CHECKSUM 			: 'MD5 checksum'	;	
 
 //*******************************/
 // Captions
@@ -797,13 +747,7 @@ NORMALTYPE
 INTERNALTYPE
 	: IDENTIFIER (SLASH IDENTIFIER)+;
 
-//FIL IDENTIFIER;
-//ObjectType: BaseType* 'L' (INTERNALTYPE | IDENTIFIER) (DOT IntegerNumber)? SEMI;
 VersionedInternalType	:	INTERNALTYPE (DOT IntegerNumber);
-
-//GenericObjectType:	'L' (INTERNALTYPE | IDENTIFIER) LESST (((MINUS|PLUS)? (('L' INTERNALTYPE) | IDENTIFIER) SEMI)+ | STAR) LARGET;
-
-//ArrayType:	LBRACK+ (INTERNALTYPE SEMI | BaseType+ | IDENTIFIER SEMI);
 
 WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
@@ -826,21 +770,9 @@ NL
         )
 	;
 
-//QuotedFile
-//	:	QUOTE IDENTIFIER DOT IDENTIFIER QUOTE
-//	;
-//QuotedBytecodeType
-//	:	QUOTE (INTERNALTYPE SEMI | ArrayType) QUOTE
-//	;
 AnnotationAssign
 	: (BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX (DOT CPINDEX)?
 	;
-//AnnotationAssign
-//	: LBRACK BrackedAnnotationAssign RBRACK
-//	;
-//BrackedAnnotationAssign
-//	:	(BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX
-//	;
 
 //*******************************/
 // Literals
