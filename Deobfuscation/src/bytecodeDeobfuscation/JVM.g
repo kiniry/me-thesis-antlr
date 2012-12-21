@@ -127,7 +127,7 @@ minor_version_info
 	;
 			
 flags
-	:	Flag accessFlagList 
+	:	Flag accessFlagList? Marker
 	;
 	
 accessFlagList
@@ -206,7 +206,7 @@ fieldDefinition
 
 fieldInfo
 	:	Signature fieldInfoOption1 
-		Flag accessFlagList? 
+		flags 
 	;
 
 fieldAdditionalInfo
@@ -284,7 +284,7 @@ methodDefinition
 
 methodInfo
 	:	Signature methodSignatureInfo 
-		Flag accessFlagList? 
+		flags
 	;
 
 afterMethodInfo
@@ -712,6 +712,7 @@ LPAREN	:	'('		;	RPAREN	:	')'		;
 LESST		:	'<'		;	LARGET	:	'>'		;
 ASSIGN	:	'='		; AND			:	'&'		;
 QUESTION:	'?'		; STAR		: '*'		;
+Marker  : '¤'   ;
 
 //*******************************/
 // Types
