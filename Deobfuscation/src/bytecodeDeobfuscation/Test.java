@@ -1,4 +1,4 @@
-package a.b.c;
+package bytecodeDeobfuscation;
 
 import java.io.File;
 import java.io.FileReader;

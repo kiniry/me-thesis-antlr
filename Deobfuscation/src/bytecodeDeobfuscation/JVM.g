@@ -6,11 +6,11 @@ options {
 }
 
 @header {
-	package a.b.c;
+	package bytecodeDeobfuscation;
 }
 
 @lexer::header {
-	package a.b.c;
+	package bytecodeDeobfuscation;
 }
 
 //*******************************/
