@@ -26,7 +26,7 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		try {
-			IterateFiles("D:\\Libs\\ReadableBytecodeClasses");
+			IterateFiles("src/TestFiles");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,7 +79,7 @@ public class Test {
 	private static void handleFile(File child) throws IOException{
 		  if(child.isDirectory())
 			  IterateFiles(child.getAbsolutePath());
-		  else if (child.isFile() && child.getName().endsWith(".class.txt"))
+		  else if (child.isFile() && child.getName().endsWith(".txt"))
 		        {
 			  		System.out.println(child.getName());
 			  		RunTest(child);
