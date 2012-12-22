@@ -278,7 +278,7 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-  : field_visual_modifier? javaType arguments throwClause? SEMI 
+  : field_visual_modifier? genericReturn? javaType arguments throwClause? SEMI 
     methodInfo
     body
     afterMethodInfo
@@ -340,6 +340,7 @@ arguments
   
 body  
   : 
+    (Synthetic BOOLEANLITERAL)?
     Code 
     codeBlock
     (bodyExtension)*
@@ -540,7 +541,7 @@ genericType
   ;
   
 genericList
-  : LESST (genericConstraint|genericType|javaType) (COMMA (genericConstraint|genericType|javaType))* LARGET
+  : LESST (genericConstraint|aggregatedJavaType) (COMMA (genericConstraint|aggregatedJavaType))* LARGET
   ;
   
 genericConstraint
@@ -760,7 +761,7 @@ IDENTIFIER
 NORMALTYPE
   : IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
 INTERNALTYPE
-  : IDENTIFIER (SLASH IDENTIFIER)+;
+  : IDENTIFIER (SLASH IDENTIFIER)+ (DOT IntegerNumber)?;
 
 WINDOWSPATH : SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
@@ -795,7 +796,7 @@ LONGLITERAL   : INTLITERAL LongSuffix     ;
 INTLITERAL  : ( PLUS | MINUS )? IntegerNumber   ;
 FLOATLITERAL  : NonIntegerNumber FloatSuffix    ;
 DOUBLELITERAL   : NonIntegerNumber DoubleSuffix?  ;
-CHARLITERAL   : '\'' EscapeSequence '\''    ;
+CHARLITERAL   : '\'' CharEscapeSequence '\''    ;
 STRINGLITERAL   : QUOTE EscapeSequence* QUOTE     ;
 
 HexDigits : HexDigit+;
@@ -823,6 +824,19 @@ EscapeSequence
     |   OctalEscape
     |   ~( '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
     ;
+fragment
+CharEscapeSequence
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\')
+    |   CharUnicodeEscapeSequence
+    |   OctalEscape
+    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
+    ;
+fragment
+CharUnicodeEscapeSequence
+  : '\\' (('u'   HexDigit   HexDigit   HexDigit  HexDigit)
+  | ('U'   HexDigit   HexDigit   HexDigit  HexDigit  
+          HexDigit   HexDigit   HexDigit  HexDigit))?
+  ;
 fragment
 UnicodeEscapeSequence
   : ('\\' 'u'   HexDigit   HexDigit   HexDigit  HexDigit)
