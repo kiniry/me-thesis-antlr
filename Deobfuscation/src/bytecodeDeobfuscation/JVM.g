@@ -6,86 +6,86 @@ options {
 }
 
 @header {
-	package bytecodeDeobfuscation;
+  package bytecodeDeobfuscation;
 }
 
 @lexer::header {
-	package bytecodeDeobfuscation;
+  package bytecodeDeobfuscation;
 }
 
 //*******************************/
-//	Class files 
+//  Class files 
 //*******************************/
 
-program	:	class_file*;
+program : class_file*;
 
 class_file
-	:	class_file_header classDefinition;
-	
+  : class_file_header classDefinition;
+  
 class_file_header
-	:	(class_file_info
-	|	modified_file_info
-	|	checksum_file_info
-	|	compiled_file_info)* 
-	;
+  : (class_file_info
+  | modified_file_info
+  | checksum_file_info
+  | compiled_file_info)* 
+  ;
 class_file_info
-	:	IDENTIFIER WINDOWSPATH 
-	;
-	
+  : IDENTIFIER WINDOWSPATH 
+  ;
+  
 modified_file_info
-	:	IDENTIFIER IDENTIFIER DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER 
-	;
-	
+  : IDENTIFIER IDENTIFIER DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER 
+  ;
+  
 checksum_file_info
-	:	IDENTIFIER IDENTIFIER (IDENTIFIER | HexDigits) 
-	;
-		
+  : IDENTIFIER IDENTIFIER (IDENTIFIER | HexDigits) 
+  ;
+    
 compiled_file_info
-	:	IDENTIFIER IDENTIFIER STRINGLITERAL 
-	;
-	
+  : IDENTIFIER IDENTIFIER STRINGLITERAL 
+  ;
+  
 //*******************************/
-//	type header
+//  type header
 //*******************************/
-	
+  
 type_info
-	:	(sourcefile_info
-	|	minor_major_version_info
-	|	flags
-	| scalaSig_info 
-	| runtimeVisibleAnnotations_info
-	|	innerclass_info
-	| enclosingMethod
-	| signature_info_addition
-	| deprecated
-	| synthetic)+
-	;
+  : (sourcefile_info
+  | minor_major_version_info
+  | flags
+  | scalaSig_info 
+  | runtimeVisibleAnnotations_info
+  | innerclass_info
+  | enclosingMethod
+  | signature_info_addition
+  | deprecated
+  | synthetic)+
+  ;
 
 synthetic
-	:	Synthetic BOOLEANLITERAL 
-	;
+  : Synthetic BOOLEANLITERAL 
+  ;
 
 deprecated
-	:	Deprecated BOOLEANLITERAL 
-	;
+  : Deprecated BOOLEANLITERAL 
+  ;
 
 enclosingMethod
-	: EnclosingMethod	CPINDEX DOT CPINDEX ?
-	;
+  : EnclosingMethod CPINDEX DOT CPINDEX ?
+  ;
 
 sourcefile_info
-	: SourceFile STRINGLITERAL 
-	;
+  : SourceFile STRINGLITERAL 
+  ;
 
 scalaSig_info
-	:	(ScalaSig |Scala)
-		IDENTIFIER ASSIGN INTLITERAL  
-		(INTLITERAL INTLITERAL INTLITERAL)?
-	;
-	
+  : (ScalaSig |Scala)
+    IDENTIFIER ASSIGN INTLITERAL  
+    (INTLITERAL INTLITERAL INTLITERAL)?
+  ;
+  
 runtimeVisibleAnnotations_info
-	:	RuntimeVisibleAnnotations 
-	 	runtimeVisibleAnnotationsItem+
+  : RuntimeVisibleAnnotations 
+    runtimeVisibleAnnotationsItem+
   ;
   
 runtimeInvisibleAnnotations
@@ -98,401 +98,410 @@ runtimeInvisibleAnnotationsItem
   ;
 
 runtimeVisibleAnnotationsItem
-	:	pc CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
-	;
+  : pc CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
+  ;
 
 runtimeVisibleAnnotationAssignList
-	:	annotationAssign (COMMA annotationAssign)* -> annotationAssign+
-	;
+  : annotationAssign (COMMA annotationAssign)* -> annotationAssign+
+  ;
 
 annotationAssign
-	:	CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
-	;
+  : CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
+  ;
 
 brackedAnnotationAssign
-	:	LBRACK AnnotationAssign (COMMA AnnotationAssign)* RBRACK -> AnnotationAssign+
-	;
-		
+  : LBRACK AnnotationAssign (COMMA AnnotationAssign)* RBRACK -> AnnotationAssign+
+  ;
+    
 signature_info_addition
-	: Signature	CPINDEX ?
-	;
+  : Signature CPINDEX ?
+  ;
 
 innerclass_info
-	: InnerClasses  
-		innerclass_info_line+
-	;
-	
+  : InnerClasses  
+    innerclass_info_line+
+  ;
+  
 innerclass_info_line
-	:	 method_modifier* CPINDEX ((ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) | (IDENTIFIER CPINDEX))? SEMI ?
-	;
+  :  method_modifier* CPINDEX ((ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) | (IDENTIFIER CPINDEX))? SEMI ?
+  ;
     
 minor_major_version_info
   : IDENTIFIER IDENTIFIER COLON INTLITERAL 
   ;
-			
+    
+//minor_version_info
+//  : MINOR_VERSION INTLITERAL 
+//  ;
+      
 flags
-	:	Flag accessFlagList? Marker
-	;
-	
+  : Flag accessFlagList? Marker
+  ;
+  
 accessFlagList
-	:	flagType (COMMA flagType)* -> flagType+
-	;
+  : flagType (COMMA flagType)* -> flagType+
+  ;
 
 flagType
-	:	IDENTIFIER | INTLITERAL
-	;
+  : IDENTIFIER | INTLITERAL
+  ;
 
 //*******************************/
-//	Constant pool
+//  Constant pool
 //*******************************/
 
 constant_pool
-	:	IDENTIFIER IDENTIFIER COLON 
-		contant_pool_line*
-	;
-	
+  : IDENTIFIER IDENTIFIER COLON 
+    contant_pool_line*
+  ;
+  
 contant_pool_line
-	:	CPINDEX ASSIGN CONSTANT_TYPE_ASSIGNABLE
-	;
+  : CPINDEX ASSIGN CONSTANT_TYPE_ASSIGNABLE
+  ;
 
 //*******************************/
-//				Class definition       /
+//        Class definition       /
 //*******************************/
 
 classDefinition
-	:	class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface? 
-		type_info
-		constant_pool
-		LBRACE 
-		classBody?
-		RBRACE 
-	;
-	
+  : class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface? 
+    type_info
+    constant_pool
+    LBRACE 
+    classBody?
+    RBRACE 
+  ;
+  
 superClass
-	:	EXTENDS typeList
-	;
-	
+  : EXTENDS typeList
+  ;
+  
 superInterface
-	:	IMPLEMENTS typeList
-	;
-		
+  : IMPLEMENTS typeList
+  ;
+    
 class_visual_modifier
-	:	PUBLIC
-	;
-		
+  : PUBLIC
+  ;
+    
 class_modifier
-	:	ABSTRACT | FINAL | INTERFACE | CLASS
-	;
+  : ABSTRACT | FINAL | INTERFACE | CLASS
+  ;
 
 //*******************************/
-//					Code body			 			 /
+//          Code body            /
 //*******************************/
-	
+  
 classBody
-	:
-	(	
-		(methodDefinition) => methodDefinition
-	|	(ctorDefinition) => ctorDefinition
-	|	(fieldDefinition) => fieldDefinition
-	|	staticCtorDefinition
-	)+
-	;
+  :
+  ( 
+    (methodDefinition) => methodDefinition
+  | (ctorDefinition) => ctorDefinition
+  | (fieldDefinition) => fieldDefinition
+  | staticCtorDefinition
+  )+
+//  ( methodDefinition
+//  | ctorDefinition
+//  | fieldDefinition
+//  | staticCtorDefinition
+//  )+
+  ;
 
 //*******************************/
-//				Field definition			 /
+//        Field definition       /
 //*******************************/
 
 fieldDefinition
-	:	field_visual_modifier? field_modifier* aggregatedJavaType identifier (ASSIGN literals)? SEMI 
-		fieldInfo
-		fieldAdditionalInfo*
-	;
+  : field_visual_modifier? field_modifier* aggregatedJavaType identifier (ASSIGN literals)? SEMI 
+    fieldInfo
+    fieldAdditionalInfo*
+  ;
 
 fieldInfo
-	:	Signature fieldInfoOption1 
-		flags 
-	;
+  : Signature fieldInfoOption1 
+    flags 
+  ;
 
 fieldAdditionalInfo
-	:	(Constant fieldInfoOption3
-	|	Constant fieldInfoOption4
-	|	Signature fieldInfoOption5
-	|	Deprecated fieldInfoOption6
-	|	Synthetic fieldInfoOption6
-	| runtimeVisibleAnnotations_info) 
-	;
+  : (Constant fieldInfoOption3
+  | Constant fieldInfoOption4
+  | Signature fieldInfoOption5
+  | Deprecated fieldInfoOption6
+  | Synthetic fieldInfoOption6
+  | runtimeVisibleAnnotations_info) 
+  ;
 
 fieldInfoOption1 // Minded signatures
-	:	bytecodeType
-	;
-	
+  : bytecodeType
+  ;
+  
 fieldInfoOption2 // Minded Flags
-	:	IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
-	;
+  : IDENTIFIER (COMMA IDENTIFIER)* -> IDENTIFIER+
+  ;
 
 fieldInfoOption3 // Minded constant values
-	:	primitiveType literals
-	;
+  : primitiveType literals
+  ;
 
 fieldInfoOption4 // Minded constant values
-	:	CONSTANT_TYPE_ASSIGNABLE
-	;
+  : CONSTANT_TYPE_ASSIGNABLE
+  ;
 
 fieldInfoOption5 // Minded signatures
-	:	 CPINDEX
-	;
+  :  CPINDEX
+  ;
 
 fieldInfoOption6 // Minded deprecates
-	:	 BOOLEANLITERAL
-	;
+  :  BOOLEANLITERAL
+  ;
 
 field_visual_modifier
-	:	PUBLIC	|	PRIVATE |	PROTECTED
-	;
-		
+  : PUBLIC  | PRIVATE | PROTECTED
+  ;
+    
 field_modifier
-	:	FINAL	|	STATIC	|	TRANSIENT	|	VOLATILE
-	;
-	
+  : FINAL | STATIC  | TRANSIENT | VOLATILE
+  ;
+  
 //*******************************/
-//		Static ctor definition		 /
+//    Static ctor definition     /
 //*******************************/
 
 staticCtorDefinition
-	:	field_visual_modifier? STATIC LBRACE RBRACE SEMI 
-		methodInfo
-		body
-	;
-	
+  : field_visual_modifier? STATIC LBRACE RBRACE SEMI 
+    methodInfo
+    body
+  ;
+  
 //*******************************/
-//				Ctor definition			 	 /
+//        Ctor definition        /
 //*******************************/
 
 ctorDefinition
-	:	field_visual_modifier? javaType arguments throwClause? SEMI 
-		methodInfo
-		body
-		afterMethodInfo
-	;
+  : field_visual_modifier? javaType arguments throwClause? SEMI 
+    methodInfo
+    body
+    afterMethodInfo
+  ;
 
 //*******************************/
-//				Method definition			 /
+//        Method definition      /
 //*******************************/
 
 methodDefinition
-	:	method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI 
-		methodInfo
-		body?
-		afterMethodInfo
-	;
+  : method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI 
+    methodInfo
+    body?
+    afterMethodInfo
+  ;
 
 methodInfo
-	:	Signature methodSignatureInfo 
-		flags
-	;
+  : Signature methodSignatureInfo 
+    flags
+  ;
 
 afterMethodInfo
-	:	((Deprecated	methodDeprecatedInfo
-	|	Signature CPINDEX
+  : ((Deprecated  methodDeprecatedInfo
+  | Signature CPINDEX
   | runtimeInvisibleAnnotations
-	|	runtimeVisibleAnnotations_info
-	| Exceptions  throwClause
-	| Synthetic BOOLEANLITERAL
-	| annotationDefault) )*
-	;
+  | runtimeVisibleAnnotations_info
+  | Exceptions  throwClause
+  | Synthetic BOOLEANLITERAL
+  | annotationDefault) )*
+  ;
 
 annotationDefault
-	:	AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK RBRACK)
-	;
-	
+  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK RBRACK)
+  ;
+  
 methodSignatureInfo
-	:	LPAREN bytecodeType* RPAREN returnDescriptor
-	;
+  : LPAREN bytecodeType* RPAREN returnDescriptor
+  ;
 
 returnDescriptor
-	:	bytecodeType | VoidType
-	;
-	
+  : bytecodeType | VoidType
+  ;
+  
 methodDeprecatedInfo
-	:	BOOLEANLITERAL
-	;
-		
+  : BOOLEANLITERAL
+  ;
+    
 method_modifier
-	:	ABSTRACT | FINAL	|	STATIC	|	SYNCHRONIZED	|	NATIVE | PUBLIC	|	PRIVATE |	PROTECTED
-	;
+  : ABSTRACT | FINAL  | STATIC  | SYNCHRONIZED  | NATIVE | PUBLIC | PRIVATE | PROTECTED
+  ;
 
 arguments
-	:	LPAREN typeList? (DOT DOT DOT)? RPAREN //(DOT DOT DOT)? zero or more of the last object
-	;
+  : LPAREN typeList? (DOT DOT DOT)? RPAREN //(DOT DOT DOT)? zero or more of the last object
+  ;
 
 //*******************************/
-//				Body definition			 /
+//        Body definition      /
 //*******************************/
-	
-body	
-	:	
-		Code 
-		codeBlock
-		(bodyExtension)*
-	;
+  
+body  
+  : 
+    Code 
+    codeBlock
+    (bodyExtension)*
+  ;
 
 bodyExtension
-	:	 
-	(	ExceptionTable  exceptionTable
-	|	LineNumberTable  lineNumberTable
-	| LocalVariableTable 	localVariableTable 
-	| LocalVariableTypeTable 	localVariableTable 
-	|	StackMapTable stackMapTable
-	|	StackMap stackMapTypeTable)
-	;
+  :  
+  ( ExceptionTable  exceptionTable
+  | LineNumberTable  lineNumberTable
+  | LocalVariableTable  localVariableTable 
+  | LocalVariableTypeTable  localVariableTable 
+  | StackMapTable stackMapTable
+  | StackMap stackMapTypeTable)
+  ;
 
 codeBlock
-	:	variables 
-		(codeLine |	javaSwitch)*
-		codeBlockEnd
-	;
+  : variables 
+    (codeLine | javaSwitch)*
+    codeBlockEnd
+  ;
 
 codeLine
-	:	pc IDENTIFIER codeValues?
-	;
+  : pc IDENTIFIER codeValues?
+  ;
 
 codeBlockEnd
-	:	pc IDENTIFIER logic3? 
-	;
-	
+  : pc IDENTIFIER logic3? 
+  ;
+  
 codeValues
-	:	logic 
-	| logic2 
-	| logic3
-	|	logic4
-	| primitiveType
-	;
-	
+  : logic 
+  | logic2 
+  | logic3
+  | logic4
+  | primitiveType
+  ;
+  
 logic
-	:	CPINDEX COMMA INTLITERAL
-	;
-	
+  : CPINDEX COMMA INTLITERAL
+  ;
+  
 logic2
-	:	CPINDEX
-	;
-	
+  : CPINDEX
+  ;
+  
 logic3
-	:	INTLITERAL
-	;
-	
+  : INTLITERAL
+  ;
+  
 logic4
-	:	INTLITERAL COMMA INTLITERAL
-	;
+  : INTLITERAL COMMA INTLITERAL
+  ;
 
 variables
-	:	variable COMMA variable COMMA variable
-	;
+  : variable COMMA variable COMMA variable
+  ;
 
 variable
-	:	IDENTIFIER ASSIGN INTLITERAL
-	;
+  : IDENTIFIER ASSIGN INTLITERAL
+  ;
 
-javaSwitch	
-	:	pc IDENTIFIER
-		LBRACE 
-		switchLine*
-		switchDefaultLine
-		RBRACE 
-	;
-	
+javaSwitch  
+  : pc IDENTIFIER
+    LBRACE 
+    switchLine*
+    switchDefaultLine
+    RBRACE 
+  ;
+  
 switchLine
-	:	pc INTLITERAL 
-	;
+  : pc INTLITERAL 
+  ;
 
 switchDefaultLine
-	:	DEFAULT COLON INTLITERAL 
-	;
+  : DEFAULT COLON INTLITERAL 
+  ;
 
 //*******************************/
-//				Exceptions						 /
+//        Exceptions             /
 //*******************************/
 
 throwClause
-	: THROWS javaTypeList
-	;
+  : THROWS javaTypeList
+  ;
 
 exceptionTable
-	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
-		exceptionTableEntry+
-	;
+  : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
+    exceptionTableEntry+
+  ;
 
 exceptionTableEntry
-	:	INTLITERAL INTLITERAL INTLITERAL (primitiveType  | IDENTIFIER 	|	CONSTANT_TYPE_ASSIGNABLE )
-	;
-	
+  : INTLITERAL INTLITERAL INTLITERAL (primitiveType  | IDENTIFIER   | CONSTANT_TYPE_ASSIGNABLE )
+  ;
+  
 //*******************************/
-//				LineNumber						 /
+//        LineNumber             /
 //*******************************/
 
 lineNumberTable
-	:	lineNumberTableLine*
-	;
+  : lineNumberTableLine*
+  ;
 
 lineNumberTableLine
-	:	IDENTIFIER pc INTLITERAL 
-	;
-	
+  : IDENTIFIER pc INTLITERAL 
+  ;
+  
 //*******************************/
-//			localVariableTable			 /
+//      localVariableTable       /
 //*******************************/
-	
+  
 localVariableTable
-	:	IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
-		localVariableTableLine*
-	;
-	
+  : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
+    localVariableTableLine*
+  ;
+  
 localVariableTableLine
-	:	INTLITERAL INTLITERAL INTLITERAL identifier bytecodeType ;
-	
+  : INTLITERAL INTLITERAL INTLITERAL identifier bytecodeType ;
+  
 //*******************************/
-//			StackMapTypeTable				 /
+//      StackMapTypeTable        /
 //*******************************/
 
 stackMapTypeTable
-	:	IDENTIFIER ASSIGN INTLITERAL 
-		stackMapTypeTableEntry+
-	;
+  : IDENTIFIER ASSIGN INTLITERAL 
+    stackMapTypeTableEntry+
+  ;
 
 stackMapTypeTableEntry
-	:	IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL 
-		IDENTIFIER ASSIGN stackMapTableTypesContainer 
-		IDENTIFIER ASSIGN stackMapTableTypesContainer 
-	;
+  : IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL 
+    IDENTIFIER ASSIGN stackMapTableTypesContainer 
+    IDENTIFIER ASSIGN stackMapTableTypesContainer 
+  ;
 
 //*******************************/
-//				StackMapTable				 	 /
+//        StackMapTable          /
 //*******************************/
 
 stackMapTable
-	:	IDENTIFIER ASSIGN INTLITERAL 
-		stackMapTableEntry+
-	;
+  : IDENTIFIER ASSIGN INTLITERAL 
+    stackMapTableEntry+
+  ;
 stackMapTableEntry
-	:	IDENTIFIER ASSIGN (INTLITERAL | stackMapTableTypesContainer) 
-	;
+  : IDENTIFIER ASSIGN (INTLITERAL | stackMapTableTypesContainer) 
+  ;
 
 stackMapTableTypesContainer
-	:	LBRACK stackMapTableTypes? RBRACK
-	;
-	
+  : LBRACK stackMapTableTypes? RBRACK
+  ;
+  
 stackMapTableTypes
-	:	stackMapTableType (COMMA stackMapTableType)* -> stackMapTableType+
-	;
+  : stackMapTableType (COMMA stackMapTableType)* -> stackMapTableType+
+  ;
 
 stackMapTableType
   : (stackMapTableTypeObject|stackMapTableTypePlainObject|primitiveType|IDENTIFIER INTLITERAL?)
-	;
+  ;
 stackMapTableTypePlainObject
-	:	CLASS (INTERNALTYPE | IDENTIFIER)
-	;
+  : CLASS (INTERNALTYPE | IDENTIFIER)
+  ;
 stackMapTableTypeObject
-	:	CLASS STRINGLITERAL
-	;
+  : CLASS STRINGLITERAL
+  ;
 
 //*******************************/
 // Types
@@ -503,103 +512,98 @@ stackMapTableTypeObject
 //*******************************/
 
 genericConstraintType
-	:	javaType genericConstraintList
-	;
-	
+  : javaType genericConstraintList
+  ;
+  
 genericConstraintList
-	:	LESST genericConstraints (COMMA genericConstraints)* LARGET -> genericConstraints+
-	;
+  : LESST genericConstraints (COMMA genericConstraints)* LARGET -> genericConstraints+
+  ;
 
 genericConstraints
-	:	identifier EXTENDS (genericType | javaType) (AND (genericType | javaType))*
-	;
+  : identifier EXTENDS (genericType | javaType) (AND (genericType | javaType))*
+  ;
 
 typeList
- 	:	aggregatedJavaType (COMMA aggregatedJavaType)* -> aggregatedJavaType+
- 	;
-  	
+  : aggregatedJavaType (COMMA aggregatedJavaType)* -> aggregatedJavaType+
+  ;
+    
 aggregatedJavaType
-	:	(javaTypeIdentifier (DOT javaTypeIdentifier)?) (LBRACK RBRACK)*
-	;
-	
+  : (javaTypeIdentifier (DOT javaTypeIdentifier)?) (LBRACK RBRACK)*
+  ;
+  
 javaTypeIdentifier
   : javaType (genericConstraintList | genericList)?
-	;
-	
+  ;
+  
 genericType
-	:	javaType genericList
-	;
-	
+  : javaType genericList
+  ;
+  
 genericList
-	:	LESST (genericConstraint|aggregatedJavaType) (COMMA (genericConstraint|aggregatedJavaType))* LARGET
-	;
-	
+  : LESST (genericConstraint|genericType|javaType) (COMMA (genericConstraint|genericType|javaType))* LARGET
+  ;
+  
 genericConstraint
-	:	QUESTION ((SUPER | EXTENDS ) (genericType | javaType))?
-	;
+  : QUESTION ((SUPER | EXTENDS ) (genericType | javaType))?
+  ;
 
 genericGeneric
-	:	javaType LESST (javaType) (COMMA (javaType))* LARGET
-	;
+  : javaType LESST (javaType) (COMMA (javaType))* LARGET
+  ;
 
 javaTypeList
-	:	javaType (COMMA javaType)* -> javaType+
-	;
+  : javaType (COMMA javaType)* -> javaType+
+  ;
 
 javaType
   : identifier | NORMALTYPE
   ;
-	
+  
 //*******************************/
 // Generic return Type description
 //*******************************/
 
 genericReturn
-	: LESST genericReturnDescriptor (COMMA genericReturnDescriptor)* LARGET -> genericReturnDescriptor+
-	;
+  : LESST genericReturnDescriptor (COMMA genericReturnDescriptor)* LARGET -> genericReturnDescriptor+
+  ;
 
 genericReturnDescriptor
-	:	identifier EXTENDS (bytecodeObjectType | BaseType)// (AND simpleByteCodeType)*
-	;
+  : identifier EXTENDS (bytecodeObjectType | BaseType)// (AND simpleByteCodeType)*
+  ;
  
 bytecodeObjectType
- 	:	INTERNALTYPE
+  : INTERNALTYPE
   | IDENTIFIER
   | genericBydecodeObjectType
- 	;
+  ;
 
 genericBydecodeObjectType
-	:	(INTERNALTYPE | IDENTIFIER) LESST bytecodeObjectType (COMMA bytecodeObjectType)* LARGET
-	;
-	
+  : (INTERNALTYPE | IDENTIFIER) LESST bytecodeObjectType (COMMA bytecodeObjectType)* LARGET
+  ;
+  
 //*******************************/
 // Bytecode Types
 //*******************************/
 
 bytecodeType
-	:	bytecodeArrayType | bytecodeBaseType | combinedBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
-	;
+  : bytecodeArrayType | bytecodeBaseType | simpleBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+  ;
 
 bytecodeArrayType
-	:	LBRACK (bytecodeType)
+  : LBRACK (bytecodeType)
   ;
  
  bytecodeBaseType
- 	:	BaseType
- 	;
+  : BaseType
+  ;
  
  simpleBytecodeObjectType
- 	:	INTERNALTYPE
+  : (INTERNALTYPE
   | IDENTIFIER
-  | genericObjectType
- 	;
- 
-combinedBytecodeObjectType
- 	:	VersionedInternalType
- 	| simpleBytecodeObjectType
- 	;
+  | genericObjectType) (DOT IDENTIFIER)?
+  ;
 
-genericObjectType:	(INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET;
+genericObjectType:  (INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET;
 
 //*******************************/
 // Simple types
@@ -612,48 +616,46 @@ keywordAggregate
   | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER
   ;
 
-//identifier: IDENTIFIER | BaseType | VoidType | DEFAULT | primitiveType;
-
 primitiveType
-	:	boolean_type
-	|	numeric_type
-	| VOID
-	;
+  : boolean_type
+  | numeric_type
+  | VOID
+  ;
 
 boolean_type
-	:	BOOLEAN
-	;
+  : BOOLEAN
+  ;
 
 numeric_type
-	:	floating_point_type
-	|	integral_type
-	;
+  : floating_point_type
+  | integral_type
+  ;
 
 integral_type
-	:	BYTE
-	|	SHORT
-	|	INT
-	|	LONG
-	|	CHAR
-	;
+  : BYTE
+  | SHORT
+  | INT
+  | LONG
+  | CHAR
+  ;
 
 floating_point_type
-	:	FLOAT
-	|	DOUBLE
-	;
+  : FLOAT
+  | DOUBLE
+  ;
 
 literals
-	:	LONGLITERAL
-	|	INTLITERAL
-	|	FLOATLITERAL
-	|	DOUBLELITERAL
-	|	CHARLITERAL
-	|	STRINGLITERAL
-	| BOOLEANLITERAL
-	;
+  : LONGLITERAL
+  | INTLITERAL
+  | FLOATLITERAL
+  | DOUBLELITERAL
+  | CHARLITERAL
+  | STRINGLITERAL
+  | BOOLEANLITERAL
+  ;
 
 pc
-	:	INTLITERAL COLON;
+  : INTLITERAL COLON;
 //*******************************/
 // Lexer
 //*******************************/
@@ -662,108 +664,107 @@ pc
 // Keywords
 //*******************************/
 
-//ABSTRACT	:  'abstract' ;	   CONTINUE		:  'continue' 	;	   FOR				:  'for' 				;	   NEW			:  'new' 			;	   SWITCH				:  'switch' 			;
-//ASSERT		:  'assert' 	;	   GOTO				:  'goto' 			;	   PACKAGE	:  'package' 	;	   SYNCHRONIZED	:  'synchronized' ;
-//DO				:  'do' 			;	   IF					:  'if' 				;	   PRIVATE		:  'private' 		;	   THIS			:  'this' 		;
-//BREAK			:  'break' 		;	   IMPLEMENTS	:  'implements' ;	   PROTECTED	:  'protected'	;	   THROW		:  'throw' 		;
-//ELSE			:  'else' 		;	   IMPORT			:  'import' 		;	   PUBLIC			:  'public' 		;	   THROWS		:  'throws' 	;
-//CASE			:  'case' 		;	   ENUM				:  'enum'				;	   INSTANCEOF	:  'instanceof' ;	   RETURN		:  'return' 	;	   TRANSIENT		:  'transient' 		;
-//CATCH			:  'catch' 		;	   TRY				:  'try' 				;
-//FINAL			:  'final' 		;	   INTERFACE	:  'interface' 	;	   STATIC			:  'static' 		;	   
-//CLASS			:  'class' 		;	   FINALLY		:  'finally' 		;	   STRICTFP		:  'strictfp' 	;	   VOLATILE	:  'volatile' ;
-//CONST			:  'const*' 	;	   NATIVE			:  'native' 		;	   SUPER			:  'super' 			;	   WHILE		:  'while' 		;
+//ABSTRACT  :  'abstract' ;    CONTINUE   :  'continue'   ;    FOR        :  'for'        ;    NEW      :  'new'      ;    SWITCH       :  'switch'       ;
+//ASSERT    :  'assert'   ;    GOTO       :  'goto'       ;    PACKAGE  :  'package'  ;    SYNCHRONIZED :  'synchronized' ;
+//DO        :  'do'       ;    IF         :  'if'         ;    PRIVATE    :  'private'    ;    THIS     :  'this'     ;
+//BREAK     :  'break'    ;    IMPLEMENTS :  'implements' ;    PROTECTED  :  'protected'  ;    THROW    :  'throw'    ;
+//ELSE      :  'else'     ;    IMPORT     :  'import'     ;    PUBLIC     :  'public'     ;    THROWS   :  'throws'   ;
+//CASE      :  'case'     ;    ENUM       :  'enum'       ;    INSTANCEOF :  'instanceof' ;    RETURN   :  'return'   ;    TRANSIENT    :  'transient'    ;
+//CATCH     :  'catch'    ;    TRY        :  'try'        ;
+//FINAL     :  'final'    ;    INTERFACE  :  'interface'  ;    STATIC     :  'static'     ;    
+//CLASS     :  'class'    ;    FINALLY    :  'finally'    ;    STRICTFP   :  'strictfp'   ;    VOLATILE :  'volatile' ;
+//CONST     :  'const*'   ;    NATIVE     :  'native'     ;    SUPER      :  'super'      ;    WHILE    :  'while'    ;
 
 //*******************************/
 // Captions
 //*******************************/
 
-Flag					: 'flags' COLON					;	RuntimeVisibleAnnotations	:	'RuntimeVisibleAnnotations' COLON	;
-Code					:	'Code' COLON					;	SourceFile								: 'SourceFile' COLON								;
-Scala					: 'Scala' COLON					;	Deprecated								:	'Deprecated' COLON								;
-Signature			: 'Signature' COLON			;	Exceptions								: 'Exceptions' COLON								;
-Constant			:	'ConstantValue'	COLON	;	LineNumberTable						:	'LineNumberTable' COLON						;
-StackMapTable :	'StackMapTable' COLON	;	LocalVariableTable				: 'LocalVariableTable' COLON				;
-Throws				:	'Throws' COLON				;	InnerClasses							:	'InnerClasses' COLON							;
-ScalaSig			: 'ScalaSig' COLON			; EnclosingMethod						: 'EnclosingMethod' COLON						;
-ExceptionTable:	'Exception table'COLON;	LocalVariableTypeTable		: 'LocalVariableTypeTable' COLON		;
-Synthetic			:	'Synthetic' COLON			;	StackMap									:	'StackMap' COLON									;
-DefaultValue	: 'default_value' COLON	; AnnotationDefault					: 'AnnotationDefault' COLON					;
+Flag          : 'flags' COLON         ; RuntimeVisibleAnnotations : 'RuntimeVisibleAnnotations' COLON ;
+Code          : 'Code' COLON          ; SourceFile                : 'SourceFile' COLON                ;
+Scala         : 'Scala' COLON         ; Deprecated                : 'Deprecated' COLON                ;
+Signature     : 'Signature' COLON     ; Exceptions                : 'Exceptions' COLON                ;
+Constant      : 'ConstantValue' COLON ; LineNumberTable           : 'LineNumberTable' COLON           ;
+StackMapTable : 'StackMapTable' COLON ; LocalVariableTable        : 'LocalVariableTable' COLON        ;
+Throws        : 'Throws' COLON        ; InnerClasses              : 'InnerClasses' COLON              ;
+//MAJOR_VERSION : 'major version' COLON ; MINOR_VERSION             : 'minor version' COLON             ;
+ScalaSig      : 'ScalaSig' COLON      ; EnclosingMethod           : 'EnclosingMethod' COLON           ;
+ExceptionTable: 'Exception table'COLON; LocalVariableTypeTable    : 'LocalVariableTypeTable' COLON    ;
+Synthetic     : 'Synthetic' COLON     ; StackMap                  : 'StackMap' COLON                  ;
+DefaultValue  : 'default_value' COLON ; AnnotationDefault         : 'AnnotationDefault' COLON         ;
 
 Constant_type
-	:	'Class'		|	'Fieldref'	|	'Methodref'
-	|	'InterfaceMethodref'		|	'String'
-	|	'Integer'	|	'Float'			|	'Long'
-	|	'Double'	|	'NameAndType'
-	|	'Unicode' | 'Utf8'
-	;
+  : 'Class'   | 'Fieldref'  | 'Methodref'
+  | 'InterfaceMethodref'    | 'String'
+  | 'Integer' | 'Float'     | 'Long'
+  | 'Double'  | 'NameAndType'
+  | 'Unicode' | 'Utf8'
+  ;
 
-EXTENDS		: 'extends'		;		IMPLEMENTS		: 'implements' 	;		DEFAULT		: 'default' 	; // Default is a keyword though it is seen in AttrDecl.class as identifier
-ABSTRACT 	: 'abstract'	;		PUBLIC 				: 'public'			;		FINAL 		: 'final'			;
-STATIC 		: 'static'		;		PRIVATE 			: 'private'			;		PROTECTED : 'protected'	;
-INTERFACE : 'interface'	;		SYNCHRONIZED 	: 'synchronized';		NATIVE 		: 'native'		;
-VOLATILE 	: 'volatile'	;		TRANSIENT 		: 'transient'		;		CLASS			: 'class' 		;
-THROWS		: 'throws' 		;		SUPER					: 'super' 			;
+EXTENDS   : 'extends'   ;   IMPLEMENTS    : 'implements'  ;   DEFAULT   : 'default'   ; // Default is a keyword though it is seen in AttrDecl.class as identifier
+ABSTRACT  : 'abstract'  ;   PUBLIC        : 'public'      ;   FINAL     : 'final'     ;
+STATIC    : 'static'    ;   PRIVATE       : 'private'     ;   PROTECTED : 'protected' ;
+INTERFACE : 'interface' ;   SYNCHRONIZED  : 'synchronized';   NATIVE    : 'native'    ;
+VOLATILE  : 'volatile'  ;   TRANSIENT     : 'transient'   ;   CLASS     : 'class'     ;
+THROWS    : 'throws'    ;   SUPER         : 'super'       ;
 
-BOOLEANLITERAL	:	TRUE | FALSE;
+BOOLEANLITERAL  : TRUE | FALSE;
 
-fragment FALSE		:	 'false'		;
-fragment TRUE			:	 'true'			;
-	
-fragment QUOTE			:	'\"';
-fragment SLASH			:	'/';
-fragment UNDERSCORE	:	'_';
-fragment HASH				:	'#';
+fragment FALSE    :  'false'    ;
+fragment TRUE     :  'true'     ;
+  
+fragment QUOTE      : '\"';
+fragment SLASH      : '/';
+fragment UNDERSCORE : '_';
+fragment HASH       : '#';
 
-MINUS		:	'-'		;	PLUS		:	'+'		;	
-COLON		:	':'		;	SEMI		: ';'		;	
-COMMA		:	','		; DOT			:	'.'		;	
-LBRACE	:	'{'		;	RBRACE	:	'}'		;
-LBRACK	:	'['		;	RBRACK	:	']'		;
-LPAREN	:	'('		;	RPAREN	:	')'		;
-LESST		:	'<'		;	LARGET	:	'>'		;
-ASSIGN	:	'='		; AND			:	'&'		;
-QUESTION:	'?'		; STAR		: '*'		;
+MINUS   : '-'   ; PLUS    : '+'   ; 
+COLON   : ':'   ; SEMI    : ';'   ; 
+COMMA   : ','   ; DOT     : '.'   ; 
+LBRACE  : '{'   ; RBRACE  : '}'   ;
+LBRACK  : '['   ; RBRACK  : ']'   ;
+LPAREN  : '('   ; RPAREN  : ')'   ;
+LESST   : '<'   ; LARGET  : '>'   ;
+ASSIGN  : '='   ; AND     : '&'   ;
+QUESTION: '?'   ; STAR    : '*'   ;
 Marker  : '%'   ;
 
 //*******************************/
 // Types
 //*******************************/
 
-BOOLEAN		:  'boolean' 	;
-CHAR			:  'char' 		;
-BYTE			:  'byte' 		;
-DOUBLE		:  'double' 	;
-FLOAT			:  'float' 		;
-LONG			:  'long' 		;
-INT				:  'int' 			;
-VOID			:  'void' 		;
-SHORT			:  'short' 		;
+BOOLEAN   :  'boolean'  ;
+CHAR      :  'char'     ;
+BYTE      :  'byte'     ;
+DOUBLE    :  'double'   ;
+FLOAT     :  'float'    ;
+LONG      :  'long'     ;
+INT       :  'int'      ;
+VOID      :  'void'     ;
+SHORT     :  'short'    ;
 
 
-VoidType:	'V';
-BaseType:	'B'	|	'C'	|	'D'	|	'F'	|	'I'	|	'J'	|	'S'	|	'Z';
+VoidType: 'V';
+BaseType: 'B' | 'C' | 'D' | 'F' | 'I' | 'J' | 'S' | 'Z';
 
 //*******************************/
 // Others
 //*******************************/
 
 CONSTANT_TYPE_ASSIGNABLE
-	:	Constant_type (' ')+ (~('\n'|'\r'|' ')+ (' ')+)* ~('\n'|'\r'|' ')* '\r'? '\n'
-	;
+  : Constant_type (' ')+ (~('\n'|'\r'|' ')+ (' ')+)* ~('\n'|'\r'|' ')* '\r'? '\n'
+  ;
 CPINDEX
-	:	HASH INTLITERAL;
+  : HASH INTLITERAL;
 IDENTIFIER  
-	:	(Letter|'_'|'$') (Letter|IntDigit|'_'|'$')*;
+  : (Letter|'_'|'$') (Letter|IntDigit|'_'|'$')*;
 NORMALTYPE
-	: IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
+  : IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
 INTERNALTYPE
-	: IDENTIFIER (SLASH IDENTIFIER)+;
+  : IDENTIFIER (SLASH IDENTIFIER)+;
 
-VersionedInternalType	:	INTERNALTYPE (DOT IntegerNumber);
+WINDOWSPATH : SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
-WINDOWSPATH	:	SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
-
-DATE	:	IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigit IntDigit;
+DATE  : IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigit IntDigit;
 
 
 COMMENT
@@ -776,31 +777,31 @@ WS  :   ( ' '
         ) {$channel=HIDDEN;}
     ;
 NL
-	: 		( '\r'
+  :     ( '\r'
         | '\n'
         | '\r\n'
         ) {$channel=HIDDEN;}
-	;
+  ;
 
 AnnotationAssign
-	: (BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX (DOT CPINDEX)?
-	;
+  : (BaseType | LBRACK | '@' | 'c' | 'e' | 's') CPINDEX (DOT CPINDEX)?
+  ;
 
 //*******************************/
 // Literals
 //*******************************/
 
-LONGLITERAL 	: INTLITERAL LongSuffix 		;
-INTLITERAL 	: ( PLUS | MINUS )? IntegerNumber 	;
-FLOATLITERAL 	: NonIntegerNumber FloatSuffix 		;
-DOUBLELITERAL 	: NonIntegerNumber DoubleSuffix? 	;
-CHARLITERAL 	: '\'' EscapeSequence '\'' 		;
-STRINGLITERAL 	: QUOTE EscapeSequence* QUOTE 		;
+LONGLITERAL   : INTLITERAL LongSuffix     ;
+INTLITERAL  : ( PLUS | MINUS )? IntegerNumber   ;
+FLOATLITERAL  : NonIntegerNumber FloatSuffix    ;
+DOUBLELITERAL   : NonIntegerNumber DoubleSuffix?  ;
+CHARLITERAL   : '\'' EscapeSequence '\''    ;
+STRINGLITERAL   : QUOTE EscapeSequence* QUOTE     ;
 
-HexDigits	:	HexDigit+;
+HexDigits : HexDigit+;
 
 fragment IntegerNumber : '0' | '1'..'9' IntDigit* | '0' Octal+ | HexPrefix HexDigit+ ;
-fragment IntDigit	:	'0'..'9';
+fragment IntDigit : '0'..'9';
 fragment HexPrefix : '0x' | '0X' ; 
 fragment HexDigit : (IntDigit|('a'..'f')|('A'..'F')) ; 
 fragment LongSuffix : 'l' | 'L' ; 
@@ -808,8 +809,8 @@ fragment NonIntegerNumber : IntDigit+ DOT IntDigit* Exponent? | '.' IntDigit+ Ex
 fragment Exponent : ( 'e' | 'E' ) ( PLUS | MINUS )? IntDigit+ ; 
 fragment FloatSuffix : 'f' | 'F' ; 
 fragment DoubleSuffix : 'd' | 'D' ;
-fragment Letter	:	('a'..'z'|'A'..'Z');
-fragment Octal	:	'0'..'7';
+fragment Letter : ('a'..'z'|'A'..'Z');
+fragment Octal  : '0'..'7';
 fragment OctalEscape
     :   '\\' ('0'..'3') Octal Octal
     |   '\\' Octal Octal
@@ -820,11 +821,11 @@ EscapeSequence
     :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
     |   UnicodeEscapeSequence
     |   OctalEscape
-    | 	~( '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
+    |   ~( '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
     ;
 fragment
 UnicodeEscapeSequence
-	:	('\\' 'u'   HexDigit   HexDigit   HexDigit  HexDigit)
-	|	('\\' 'U'   HexDigit   HexDigit   HexDigit  HexDigit  
-					HexDigit   HexDigit   HexDigit  HexDigit)
-	;
+  : ('\\' 'u'   HexDigit   HexDigit   HexDigit  HexDigit)
+  | ('\\' 'U'   HexDigit   HexDigit   HexDigit  HexDigit  
+          HexDigit   HexDigit   HexDigit  HexDigit)
+  ;
