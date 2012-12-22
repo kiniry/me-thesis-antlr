@@ -717,7 +717,7 @@ LPAREN  : '('   ; RPAREN  : ')'   ;
 LESST   : '<'   ; LARGET  : '>'   ;
 ASSIGN  : '='   ; AND     : '&'   ;
 QUESTION: '?'   ; STAR    : '*'   ;
-Marker  : '¤'   ;
+Marker  : '%'   ;
 
 //*******************************/
 // Types

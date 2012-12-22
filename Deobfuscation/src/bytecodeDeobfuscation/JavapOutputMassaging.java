@@ -21,7 +21,7 @@ import java.nio.CharBuffer;
  */
 public class /*@ pure @*/ JavapOutputMassaging {
 	// What is the flags marker?
-	public static final char FLAGS_MARKER = '¤';
+	public static final char FLAGS_MARKER = '%';
 
 	/**
 	 * @param args the single file that is to be massaged and overwritten.
@@ -35,22 +35,23 @@ public class /*@ pure @*/ JavapOutputMassaging {
 	// Performs massaging on a file, over-writing its content.
 	//@ require a_file.canWrite();
 	public static /*@ pure @*/ void massage(File a_file) {
-		StringBuffer sb = new StringBuffer();
+		final StringBuffer buffer = new StringBuffer();
 		try {
 			if (a_file.canWrite()) {
-				FileReader fr;
-				fr = new FileReader(a_file);
-				final CharBuffer cb = CharBuffer.allocate(65536);
-				int readBytes = 0;
-				do {
-					readBytes = fr.read(cb);
-					sb.append(cb, 0, readBytes);
-				} while (0 < readBytes);
-				fr.close();
+				int len;
+				char[] chr = new char[4096];
+				final FileReader reader = new FileReader(a_file);
+				try {
+					while ((len = reader.read(chr)) > 0) {
+						buffer.append(chr, 0, len);
+					}
+				} finally {
+					reader.close();
+				}
 			} else {
 				System.err.println("Cannot write over file '" + a_file.toString() + "'");
 			}
-			String result = massage(sb.toString());
+			String result = massage(buffer.toString());
 			File outputFile = new File(a_file.getAbsolutePath());
 			FileWriter fr = new FileWriter(outputFile);
 			fr.write(result);
@@ -65,7 +66,14 @@ public class /*@ pure @*/ JavapOutputMassaging {
 		String[] split_input = a_string.split("\r?\n");
 		for (int i = 0; i < split_input.length; i++)
 			if (recognizeFlags(split_input[i]))
+			{
 				split_input[i] = appendMarker(split_input[i]);
+			}
+			else
+			{
+				if(i != split_input.length - 1)
+					split_input[i] = split_input[i] + "\r\n";
+			}
 		StringBuffer sb = new StringBuffer();
 		for (String s : split_input)
 			sb.append(s);
