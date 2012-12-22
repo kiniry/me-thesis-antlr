@@ -29,8 +29,8 @@ public class Test {
 	public static void main(String[] args) {
 		try {
 //			overwriteFiles("src/TestFiles");
-			parseMassagedFiles("src/TestFiles");
-//			parseFiles("D:/Libs/ReadableBytecodeClasses");
+//			parseMassagedFiles("src/TestFiles");
+			parseFiles("D:/Libs/ReadableBytecodeClasses");
 //			parseAndMassageFiles("src/TestFiles");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
