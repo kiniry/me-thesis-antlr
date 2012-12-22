@@ -87,6 +87,15 @@ runtimeVisibleAnnotations_info
   : RuntimeVisibleAnnotations 
     runtimeVisibleAnnotationsItem+
   ;
+
+runtimeInvisibleParameterAnnotations
+  : IDENTIFIER COLON 
+    runtimeInvisibleParameterAnnotationsItem+
+  ;
+
+runtimeInvisibleParameterAnnotationsItem
+  : pc (CPINDEX LPAREN RPAREN)? 
+  ;
   
 runtimeInvisibleAnnotations
   : IDENTIFIER COLON 
@@ -303,7 +312,7 @@ methodInfo
 afterMethodInfo
   : ((Deprecated  methodDeprecatedInfo
   | Signature CPINDEX
-  | runtimeInvisibleAnnotations
+  | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
   | Exceptions  throwClause
   | Synthetic BOOLEANLITERAL
@@ -653,6 +662,7 @@ literals
   | CHARLITERAL
   | STRINGLITERAL
   | BOOLEANLITERAL
+  | (PLUS|MINUS) IDENTIFIER
   ;
 
 pc
@@ -794,8 +804,8 @@ AnnotationAssign
 
 LONGLITERAL   : INTLITERAL LongSuffix     ;
 INTLITERAL  : ( PLUS | MINUS )? IntegerNumber   ;
-FLOATLITERAL  : NonIntegerNumber FloatSuffix    ;
-DOUBLELITERAL   : NonIntegerNumber DoubleSuffix?  ;
+FLOATLITERAL  : ( PLUS | MINUS )? NonIntegerNumber FloatSuffix    ;
+DOUBLELITERAL   : ( PLUS | MINUS )? NonIntegerNumber DoubleSuffix?  ;
 CHARLITERAL   : '\'' CharEscapeSequence '\''    ;
 STRINGLITERAL   : QUOTE EscapeSequence* QUOTE     ;
 
@@ -819,14 +829,14 @@ fragment OctalEscape
     ;
 fragment
 EscapeSequence
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\'|'~')
     |   UnicodeEscapeSequence
     |   OctalEscape
-    |   ~( '\\' | '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
+    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
     ;
 fragment
 CharEscapeSequence
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\')
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\'|'\'')
     |   CharUnicodeEscapeSequence
     |   OctalEscape
     |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
@@ -835,7 +845,7 @@ fragment
 CharUnicodeEscapeSequence
   : '\\' (('u'   HexDigit   HexDigit   HexDigit  HexDigit)
   | ('U'   HexDigit   HexDigit   HexDigit  HexDigit  
-          HexDigit   HexDigit   HexDigit  HexDigit))?
+          HexDigit   HexDigit   HexDigit  HexDigit))
   ;
 fragment
 UnicodeEscapeSequence
