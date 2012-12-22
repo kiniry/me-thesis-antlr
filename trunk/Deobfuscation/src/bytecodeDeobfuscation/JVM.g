@@ -712,7 +712,7 @@ LPAREN	:	'('		;	RPAREN	:	')'		;
 LESST		:	'<'		;	LARGET	:	'>'		;
 ASSIGN	:	'='		; AND			:	'&'		;
 QUESTION:	'?'		; STAR		: '*'		;
-Marker  : '\u00A7'   ;
+Marker  : '%'   ;
 
 //*******************************/
 // Types
