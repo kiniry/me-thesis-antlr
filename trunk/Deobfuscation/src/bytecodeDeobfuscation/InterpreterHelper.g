@@ -240,7 +240,8 @@ fieldAdditionalInfo
   | Signature fieldInfoOption5
   | Deprecated fieldInfoOption6
   | Synthetic fieldInfoOption6
-  | runtimeVisibleAnnotations_info) 
+  | runtimeVisibleAnnotations_info
+  | runtimeInvisibleAnnotations) 
   ;
 
 fieldInfoOption1 // Minded signatures
@@ -770,7 +771,7 @@ CONSTANT_TYPE_ASSIGNABLE
 CPINDEX
   : HASH INTLITERAL;
 IDENTIFIER  
-  : (Letter|'_'|'$') (Letter|IntDigit|'_'|'$')*;
+  : (Letter|'_'|'$'|'-') (Letter|IntDigit|'_'|'$'|'-')*;
 NORMALTYPE
   : IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
 INTERNALTYPE
