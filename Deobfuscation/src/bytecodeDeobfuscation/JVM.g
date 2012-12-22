@@ -768,7 +768,7 @@ CONSTANT_TYPE_ASSIGNABLE
 CPINDEX
   : HASH INTLITERAL;
 IDENTIFIER  
-  : (Letter|'_'|'$'|'-') (Letter|IntDigit|'_'|'$'|'-')*;
+  : (Letter|'_'|'$') (Letter|IntDigit|'_'|'$'|'-')*;
 NORMALTYPE
   : IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
 INTERNALTYPE
