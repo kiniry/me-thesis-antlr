@@ -26,12 +26,30 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		try {
-			overwriteFiles("src/TestFiles");
-//			parseFiles("src/TestFiles");
+//			overwriteFiles("src/TestFiles");
+			parseMassagedFiles("src/TestFiles");
+//			parseFiles("D:/Libs/ReadableBytecodeClasses");
 //			parseAndMassageFiles("src/TestFiles");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	public static void parseMassagedFiles(String myDirectoryPath) throws IOException {
+		File dir = new File(myDirectoryPath);
+		for (File child : dir.listFiles()) {
+			parseMassagedFile(child);
+		}
+	}
+
+	private static void parseMassagedFile(File child) throws IOException {
+		if (child.isDirectory())
+			parseFiles(child.getAbsolutePath());
+		else if (child.isFile() && child.getName().endsWith(".class.txt")) {
+			System.out.println(child.getName());
+			String filetext = deserializeString(child.getAbsolutePath());
+			RunTest(filetext);
 		}
 	}
 
@@ -46,9 +64,10 @@ public class Test {
 		if (child.isDirectory())
 			parseFiles(child.getAbsolutePath());
 		else if (child.isFile() && child.getName().endsWith(".class.txt")) {
-			JavapOutputMassaging.massage(child);
 			System.out.println(child.getName());
-			RunTest(child);
+			String filetext = deserializeString(child.getAbsolutePath());
+			filetext = JavapOutputMassaging.massage(filetext);
+			RunTest(filetext);
 		}
 	}
 
@@ -108,17 +127,21 @@ public class Test {
 	private static void RunTest(File file) {
 		try {
 			String filetext = deserializeString(file.getAbsolutePath());
-			CharStream charStream = new ANTLRStringStream(filetext);
-			JVMLexer lexer = new JVMLexer(charStream);
-			TokenStream tokenStream = new CommonTokenStream(lexer);
-			JVMParser parser = new JVMParser(tokenStream);
-			try {
-				parser.program();
-			} catch (RecognitionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			RunTest(filetext);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private static void RunTest(String filetext) {
+		CharStream charStream = new ANTLRStringStream(filetext);
+		JVMLexer lexer = new JVMLexer(charStream);
+		TokenStream tokenStream = new CommonTokenStream(lexer);
+		JVMParser parser = new JVMParser(tokenStream);
+		try {
+			parser.program();
+		} catch (RecognitionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

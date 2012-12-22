@@ -50,8 +50,7 @@ compiled_file_info
   
 type_info
   : (sourcefile_info
-  | major_version_info
-  | minor_version_info
+  | minor_major_version_info
   | flags
   | scalaSig_info 
   | runtimeVisibleAnnotations_info
@@ -88,6 +87,15 @@ runtimeVisibleAnnotations_info
   : RuntimeVisibleAnnotations 
     runtimeVisibleAnnotationsItem+
   ;
+  
+runtimeInvisibleAnnotations
+  : IDENTIFIER COLON 
+    runtimeInvisibleAnnotationsItem+
+  ;
+
+runtimeInvisibleAnnotationsItem
+  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
+  ;
 
 runtimeVisibleAnnotationsItem
   : pc CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
@@ -118,13 +126,13 @@ innerclass_info_line
   :  method_modifier* CPINDEX ((ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) | (IDENTIFIER CPINDEX))? SEMI ?
   ;
     
-major_version_info
-  : MAJOR_VERSION INTLITERAL 
+minor_major_version_info
+  : IDENTIFIER IDENTIFIER COLON INTLITERAL 
   ;
     
-minor_version_info
-  : MINOR_VERSION INTLITERAL 
-  ;
+//minor_version_info
+//  : MINOR_VERSION INTLITERAL 
+//  ;
       
 flags
   : Flag accessFlagList? Marker
@@ -295,6 +303,7 @@ methodInfo
 afterMethodInfo
   : ((Deprecated  methodDeprecatedInfo
   | Signature CPINDEX
+  | runtimeInvisibleAnnotations
   | runtimeVisibleAnnotations_info
   | Exceptions  throwClause
   | Synthetic BOOLEANLITERAL
@@ -447,7 +456,7 @@ localVariableTable
   ;
   
 localVariableTableLine
-  : INTLITERAL INTLITERAL INTLITERAL (IDENTIFIER | primitiveType | DEFAULT) bytecodeType ;
+  : INTLITERAL INTLITERAL INTLITERAL identifier bytecodeType ;
   
 //*******************************/
 //      StackMapTypeTable        /
@@ -485,7 +494,7 @@ stackMapTableTypes
   ;
 
 stackMapTableType
-  : (stackMapTableTypeObject|stackMapTableTypePlainObject|primitiveType)
+  : (stackMapTableTypeObject|stackMapTableTypePlainObject|primitiveType|IDENTIFIER INTLITERAL?)
   ;
 stackMapTableTypePlainObject
   : CLASS (INTERNALTYPE | IDENTIFIER)
@@ -519,11 +528,11 @@ typeList
   ;
     
 aggregatedJavaType
-  : (primitiveType | javaTypeIdentifier (DOT javaTypeIdentifier)?) (LBRACK RBRACK)*
+  : (javaTypeIdentifier (DOT javaTypeIdentifier)?) (LBRACK RBRACK)*
   ;
   
 javaTypeIdentifier
-  : javaType | genericConstraintType | genericType
+  : javaType (genericConstraintList | genericList)?
   ;
   
 genericType
@@ -547,7 +556,7 @@ javaTypeList
   ;
 
 javaType
-  : NORMALTYPE | identifier
+  : identifier | NORMALTYPE
   ;
   
 //*******************************/
@@ -577,7 +586,7 @@ genericBydecodeObjectType
 //*******************************/
 
 bytecodeType
-  : bytecodeArrayType | bytecodeBaseType | combinedBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+  : bytecodeArrayType | bytecodeBaseType | simpleBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
   ;
 
 bytecodeArrayType
@@ -589,14 +598,9 @@ bytecodeArrayType
   ;
  
  simpleBytecodeObjectType
-  : INTERNALTYPE
+  : (INTERNALTYPE
   | IDENTIFIER
-  | genericObjectType
-  ;
- 
-combinedBytecodeObjectType
-  : VersionedInternalType
-  | simpleBytecodeObjectType
+  | genericObjectType) (DOT IDENTIFIER)?
   ;
 
 genericObjectType:  (INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET;
@@ -605,7 +609,12 @@ genericObjectType:  (INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeTyp
 // Simple types
 //*******************************/
 
-identifier: IDENTIFIER | BaseType | VoidType | DEFAULT;
+identifier: IDENTIFIER | keywordAggregate;
+
+keywordAggregate
+  : BaseType | VoidType | primitiveType | Constant_type
+  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER
+  ;
 
 primitiveType
   : boolean_type
@@ -677,7 +686,7 @@ Signature     : 'Signature' COLON     ; Exceptions                : 'Exceptions'
 Constant      : 'ConstantValue' COLON ; LineNumberTable           : 'LineNumberTable' COLON           ;
 StackMapTable : 'StackMapTable' COLON ; LocalVariableTable        : 'LocalVariableTable' COLON        ;
 Throws        : 'Throws' COLON        ; InnerClasses              : 'InnerClasses' COLON              ;
-MAJOR_VERSION : 'major version' COLON ; MINOR_VERSION             : 'minor version' COLON             ;
+//MAJOR_VERSION : 'major version' COLON ; MINOR_VERSION             : 'minor version' COLON             ;
 ScalaSig      : 'ScalaSig' COLON      ; EnclosingMethod           : 'EnclosingMethod' COLON           ;
 ExceptionTable: 'Exception table'COLON; LocalVariableTypeTable    : 'LocalVariableTypeTable' COLON    ;
 Synthetic     : 'Synthetic' COLON     ; StackMap                  : 'StackMap' COLON                  ;
@@ -752,8 +761,6 @@ NORMALTYPE
   : IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
 INTERNALTYPE
   : IDENTIFIER (SLASH IDENTIFIER)+;
-
-VersionedInternalType : INTERNALTYPE (DOT IntegerNumber);
 
 WINDOWSPATH : SLASH Letter COLON (SLASH (IDENTIFIER WS*)+)+ DOT IDENTIFIER;
 
