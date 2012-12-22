@@ -15,6 +15,8 @@ import org.antlr.runtime.TokenStream;
 
 public class Test {
 
+	private static int ParsedFilesCounter = 0;
+	
 	// try {
 	// IterateFiles("D:\\Work and Projects\\Speciale\\Repository\\Libraries");
 	// } catch (IOException e) {
@@ -26,8 +28,8 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		try {
-//			overwriteFiles("src/TestFiles");
-			parseMassagedFiles("src/TestFiles");
+			overwriteFiles("src/TestFiles");
+//			parseMassagedFiles("src/TestFiles");
 //			parseFiles("D:/Libs/ReadableBytecodeClasses");
 //			parseAndMassageFiles("src/TestFiles");
 		} catch (IOException e) {
@@ -64,10 +66,11 @@ public class Test {
 		if (child.isDirectory())
 			parseFiles(child.getAbsolutePath());
 		else if (child.isFile() && child.getName().endsWith(".class.txt")) {
-			System.out.println(child.getName());
+			System.out.println(child.getName() + " - " + ParsedFilesCounter);
 			String filetext = deserializeString(child.getAbsolutePath());
 			filetext = JavapOutputMassaging.massage(filetext);
 			RunTest(filetext);
+			ParsedFilesCounter++;
 		}
 	}
 
