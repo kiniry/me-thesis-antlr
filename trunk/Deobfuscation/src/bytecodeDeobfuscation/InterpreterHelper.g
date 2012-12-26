@@ -312,7 +312,7 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI 
+  : method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClauseMethod? SEMI 
     methodInfo
     body?
     afterMethodInfo
@@ -448,6 +448,10 @@ switchDefaultLine
 throwClause
   : THROWS javaTypeList
   ;
+  
+throwClauseMethod
+  : THROWS (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE) (COMMA (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE))*
+  ;
 
 exceptionTable
   : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
@@ -564,11 +568,15 @@ genericType
   ;
   
 genericList
-  : LESST (genericConstraint|genericGeneric|javaType) (COMMA (genericConstraint|genericGeneric|javaType))* LARGET
+  : LESST (genericConstraint|genericGeneric|javaTypeArray) (COMMA (genericConstraint|genericGeneric|javaTypeArray))* LARGET
   ;
   
 genericConstraint
-  : QUESTION ((SUPER | EXTENDS ) javaType)?
+  : QUESTION ((SUPER | EXTENDS ) javaTypeArray)?
+  ;
+
+javaTypeArray
+  : javaType (LBRACK RBRACK)*
   ;
 
 genericGeneric
@@ -592,7 +600,11 @@ genericReturn
   ;
 
 genericReturnDescriptor
-  : identifier EXTENDS bytecodeObjectType// (AND simpleByteCodeType)*
+  : identifier EXTENDS bytecodeObjectTypeList
+  ;
+ 
+bytecodeObjectTypeList
+  : bytecodeObjectType (AND bytecodeObjectType)* -> bytecodeObjectType+
   ;
  
 bytecodeObjectType
@@ -606,7 +618,7 @@ genericBydecodeObjectType
   ;
 
 genericGenericReturnDescriptor
-  : QUESTION (SUPER | EXTENDS ) identifier
+  : QUESTION ((SUPER | EXTENDS ) identifier)?
   ;
   
 //*******************************/
@@ -680,7 +692,7 @@ literals
   | CHARLITERAL
   | STRINGLITERAL
   | BOOLEANLITERAL
-  | (PLUS|MINUS) IDENTIFIER
+  | MINUS? IDENTIFIER
   ;
 
 pc

@@ -473,7 +473,7 @@ localVariableTable
   ;
   
 localVariableTableLine
-  : INTLITERAL INTLITERAL INTLITERAL identifier bytecodeType ;
+  : INTLITERAL INTLITERAL INTLITERAL (identifier | STATIC) bytecodeType ;
   
 //*******************************/
 //      StackMapTypeTable        /
@@ -545,7 +545,7 @@ typeList
   ;
     
 aggregatedJavaType
-  : (javaTypeIdentifier (DOT javaTypeIdentifier)?) (LBRACK RBRACK)*
+  : (javaTypeIdentifier (DOT javaTypeIdentifier)*) (LBRACK RBRACK)*
   ;
   
 javaTypeIdentifier
@@ -585,13 +585,13 @@ genericReturn
   ;
 
 genericReturnDescriptor
-  : identifier EXTENDS (bytecodeObjectType | BaseType)// (AND simpleByteCodeType)*
+  : identifier EXTENDS bytecodeObjectType
   ;
  
 bytecodeObjectType
-  : INTERNALTYPE
-  | IDENTIFIER
-  | genericBydecodeObjectType
+  : (INTERNALTYPE
+  | identifier
+  | genericBydecodeObjectType) (DOT bytecodeObjectType)?
   ;
 
 genericBydecodeObjectType
@@ -599,7 +599,7 @@ genericBydecodeObjectType
   ;
 
 genericGenericReturnDescriptor
-  : QUESTION (SUPER | EXTENDS ) identifier
+  : QUESTION ((SUPER | EXTENDS ) identifier)?
   ;
   
 //*******************************/
@@ -617,11 +617,11 @@ bytecodeArrayType
  bytecodeBaseType
   : BaseType
   ;
- 
+
  simpleBytecodeObjectType
   : (INTERNALTYPE
   | IDENTIFIER
-  | genericObjectType) (DOT IDENTIFIER)?
+  | genericObjectType) (DOT simpleBytecodeObjectType)?
   ;
 
 genericObjectType:  (INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET;
@@ -840,7 +840,7 @@ fragment OctalEscape
     ;
 fragment
 EscapeSequence
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\'|'~')
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'~')
     |   UnicodeEscapeSequence
     |   OctalEscape
     |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
