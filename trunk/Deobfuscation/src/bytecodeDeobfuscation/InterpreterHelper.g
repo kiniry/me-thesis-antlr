@@ -28,7 +28,6 @@ class_file_header
   | checksum_file_info
   | compiled_file_info)* 
   ;
-  
 class_file_info
   : IDENTIFIER WINDOWSPATH 
   ;
@@ -97,7 +96,7 @@ runtimeInvisibleParameterAnnotations
 runtimeInvisibleParameterAnnotationsItem
   : pc (CPINDEX LPAREN RPAREN)? 
   ;
-  
+ 
 runtimeInvisibleAnnotations
   : IDENTIFIER COLON 
     runtimeInvisibleAnnotationsItem+
@@ -108,7 +107,11 @@ runtimeInvisibleAnnotationsItem
   ;
 
 runtimeVisibleAnnotationsItem
-  : pc CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
+  : pc runtimeVisibleAnnotationsValue
+  ;
+
+runtimeVisibleAnnotationsValue
+  : CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
   ;
 
 runtimeVisibleAnnotationAssignList
@@ -118,6 +121,7 @@ runtimeVisibleAnnotationAssignList
 annotationAssign
   : CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
   ;
+
 brackedAnnotationAssign
   : LBRACK brackedAnnotationAssignList? RBRACK
   ;
@@ -209,17 +213,20 @@ class_modifier
   
 classBody
   :
-  ( 
-    (methodDefinition) => methodDefinition
-  | (ctorDefinition) => ctorDefinition
-  | (fieldDefinition) => fieldDefinition
-  | staticCtorDefinition
-  )+
-//  ( methodDefinition
-//  | ctorDefinition
-//  | fieldDefinition
+//  ( 
+//    (methodDefinition) => methodDefinition
+//  | (ctorDefinition) => ctorDefinition
+//  | (fieldDefinition) => fieldDefinition
 //  | staticCtorDefinition
 //  )+
+  ( 
+//    fieldDefinition
+//    |
+    methodDefinition
+  | ctorDefinition
+  | fieldDefinition
+  | staticCtorDefinition
+  )+
   ;
 
 //*******************************/
@@ -294,7 +301,7 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-  : field_visual_modifier? genericReturn? javaType arguments throwClause? SEMI 
+  : field_visual_modifier? javaType arguments throwClause? SEMI 
     methodInfo
     body
     afterMethodInfo
@@ -473,7 +480,7 @@ localVariableTable
   ;
   
 localVariableTableLine
-  : INTLITERAL INTLITERAL INTLITERAL identifier bytecodeType ;
+  : INTLITERAL INTLITERAL INTLITERAL (identifier | STATIC) bytecodeType ;
   
 //*******************************/
 //      StackMapTypeTable        /
@@ -545,7 +552,7 @@ typeList
   ;
     
 aggregatedJavaType
-  : (javaTypeIdentifier (DOT javaTypeIdentifier)?) (LBRACK RBRACK)*
+  : (javaTypeIdentifier (DOT javaTypeIdentifier)*) (LBRACK RBRACK)*
   ;
   
 javaTypeIdentifier
@@ -557,11 +564,11 @@ genericType
   ;
   
 genericList
-  : LESST (genericConstraint|aggregatedJavaType) (COMMA (genericConstraint|aggregatedJavaType))* LARGET
+  : LESST (genericConstraint|genericGeneric|javaType) (COMMA (genericConstraint|genericGeneric|javaType))* LARGET
   ;
   
 genericConstraint
-  : QUESTION ((SUPER | EXTENDS ) (genericType | javaType))?
+  : QUESTION ((SUPER | EXTENDS ) javaType)?
   ;
 
 genericGeneric
@@ -585,13 +592,13 @@ genericReturn
   ;
 
 genericReturnDescriptor
-  : identifier EXTENDS (bytecodeObjectType | BaseType)// (AND simpleByteCodeType)*
+  : identifier EXTENDS bytecodeObjectType// (AND simpleByteCodeType)*
   ;
  
 bytecodeObjectType
-  : INTERNALTYPE
-  | IDENTIFIER
-  | genericBydecodeObjectType
+  : (INTERNALTYPE
+  | identifier
+  | genericBydecodeObjectType) (DOT bytecodeObjectType)?
   ;
 
 genericBydecodeObjectType
@@ -621,7 +628,7 @@ bytecodeArrayType
  simpleBytecodeObjectType
   : (INTERNALTYPE
   | IDENTIFIER
-  | genericObjectType) (DOT IDENTIFIER)?
+  | genericObjectType) (DOT simpleBytecodeObjectType)?
   ;
 
 genericObjectType:  (INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET;
@@ -840,7 +847,7 @@ fragment OctalEscape
     ;
 fragment
 EscapeSequence
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\'|'~')
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'~')
     |   UnicodeEscapeSequence
     |   OctalEscape
     |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
