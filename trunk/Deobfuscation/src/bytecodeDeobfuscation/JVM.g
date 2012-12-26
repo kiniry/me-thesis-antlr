@@ -28,6 +28,7 @@ class_file_header
   | checksum_file_info
   | compiled_file_info)* 
   ;
+  
 class_file_info
   : IDENTIFIER WINDOWSPATH 
   ;
@@ -117,9 +118,14 @@ runtimeVisibleAnnotationAssignList
 annotationAssign
   : CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
   ;
-
 brackedAnnotationAssign
-  : LBRACK AnnotationAssign (COMMA AnnotationAssign)* RBRACK -> AnnotationAssign+
+  : LBRACK brackedAnnotationAssignList? RBRACK
+  ;
+brackedAnnotationAssignList
+  : brackedAnnotationAssignValue (COMMA brackedAnnotationAssignValue)* -> brackedAnnotationAssignValue+
+  ;
+brackedAnnotationAssignValue
+  : AnnotationAssign (LPAREN runtimeVisibleAnnotationAssignList RPAREN)?
   ;
     
 signature_info_addition
@@ -589,7 +595,11 @@ bytecodeObjectType
   ;
 
 genericBydecodeObjectType
-  : (INTERNALTYPE | IDENTIFIER) LESST bytecodeObjectType (COMMA bytecodeObjectType)* LARGET
+  : (INTERNALTYPE | IDENTIFIER) LESST (bytecodeObjectType (COMMA bytecodeObjectType)* | genericGenericReturnDescriptor) LARGET
+  ;
+
+genericGenericReturnDescriptor
+  : QUESTION (SUPER | EXTENDS ) identifier
   ;
   
 //*******************************/
