@@ -871,7 +871,7 @@ CharEscapeSequence
     :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\'|'\'')
     |   CharUnicodeEscapeSequence
     |   OctalEscape
-    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
+    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029')
     ;
 fragment
 CharUnicodeEscapeSequence
