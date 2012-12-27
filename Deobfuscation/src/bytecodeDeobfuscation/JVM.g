@@ -28,7 +28,6 @@ class_file_header
   | checksum_file_info
   | compiled_file_info)* 
   ;
-  
 class_file_info
   : IDENTIFIER WINDOWSPATH 
   ;
@@ -135,7 +134,7 @@ runtimeInvisibleAnnotations
 runtimeInvisibleAnnotationsItem
   : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
   ;
-  
+   
 signature_info_addition
   : Signature CPINDEX ?
   ;
@@ -217,17 +216,20 @@ class_modifier
   
 classBody
   :
-  ( 
-    (methodDefinition) => methodDefinition
-  | (ctorDefinition) => ctorDefinition
-  | (fieldDefinition) => fieldDefinition
-  | staticCtorDefinition
-  )+
-//  ( methodDefinition
-//  | ctorDefinition
-//  | fieldDefinition
+//  ( 
+//    (methodDefinition) => methodDefinition
+//  | (ctorDefinition) => ctorDefinition
+//  | (fieldDefinition) => fieldDefinition
 //  | staticCtorDefinition
 //  )+
+  ( 
+//    fieldDefinition
+//    |
+    methodDefinition
+  | ctorDefinition
+  | fieldDefinition
+  | staticCtorDefinition
+  )+
   ;
 
 //*******************************/
@@ -302,7 +304,7 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-  : field_visual_modifier? genericReturn? javaType arguments throwClause? SEMI 
+  : field_visual_modifier? javaType arguments throwClause? SEMI 
     methodInfo
     body
     afterMethodInfo
@@ -337,7 +339,7 @@ afterMethodInfo
   ;
 
 annotationDefault
-  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK  AnnotationAssign? RBRACK)
+  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK AnnotationAssign? RBRACK)
   ;
   
 methodSignatureInfo
@@ -451,7 +453,7 @@ switchDefaultLine
 throwClause
   : THROWS javaTypeList
   ;
-
+  
 throwClauseMethod
   : THROWS (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE) (COMMA (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE))*
   ;
@@ -571,11 +573,15 @@ genericType
   ;
   
 genericList
-  : LESST (genericConstraint|aggregatedJavaType) (COMMA (genericConstraint|aggregatedJavaType))* LARGET
+  : LESST (genericConstraint|genericGeneric|javaTypeArray) (COMMA (genericConstraint|genericGeneric|javaTypeArray))* LARGET
   ;
   
 genericConstraint
-  : QUESTION ((SUPER | EXTENDS ) aggregatedJavaType)?
+  : QUESTION ((SUPER | EXTENDS ) javaTypeArray)?
+  ;
+
+javaTypeArray
+  : javaType (LBRACK RBRACK)*
   ;
 
 genericGeneric
@@ -635,7 +641,7 @@ bytecodeArrayType
  bytecodeBaseType
   : BaseType
   ;
-
+ 
  simpleBytecodeObjectType
   : (INTERNALTYPE
   | IDENTIFIER
@@ -652,7 +658,7 @@ identifier: IDENTIFIER | keywordAggregate;
 
 keywordAggregate
   : BaseType | VoidType | primitiveType | Constant_type
-  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER
+  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER | NATIVE
   ;
 
 primitiveType
@@ -871,7 +877,7 @@ CharEscapeSequence
     :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\'|'\'')
     |   CharUnicodeEscapeSequence
     |   OctalEscape
-    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029')
+    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' )
     ;
 fragment
 CharUnicodeEscapeSequence
