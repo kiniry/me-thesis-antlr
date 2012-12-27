@@ -83,6 +83,7 @@ scalaSig_info
     IDENTIFIER ASSIGN INTLITERAL  
     (INTLITERAL INTLITERAL INTLITERAL)?
   ;
+  
 //*******************************/
 //  Runetime visibility
 //*******************************/
@@ -112,25 +113,29 @@ brackedAnnotationAssignList
 brackedAnnotationAssignValue
   : AnnotationAssign (LPAREN runtimeVisibleAnnotationAssignList RPAREN)?
   ;
+runtimeVisibleParameterAnnotations
+  : RuntimeVisibleParameterAnnotations 
+    parameterVisibilityInfo+
+  ;
 runtimeInvisibleParameterAnnotations
-  : IDENTIFIER COLON 
+  : RuntimeInvisibleParameterAnnotations 
     parameterVisibilityInfo+
   ;
 runtimeInvisibleParameterAnnotationsItem1
   : pc (CPINDEX LPAREN RPAREN)? 
   ;
 parameterVisibilityInfo
-  : IDENTIFIER pc
+  : IDENTIFIER? pc
     runtimeVisibleAnnotationsItem*
   ;
 runtimeInvisibleAnnotations
-  : IDENTIFIER COLON 
+  : RuntimeInvisibleAnnotations 
     runtimeInvisibleAnnotationsItem+
   ;
 runtimeInvisibleAnnotationsItem
   : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
   ;
-    
+  
 signature_info_addition
   : Signature CPINDEX ?
   ;
@@ -325,6 +330,7 @@ afterMethodInfo
   | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
   | runtimeInvisibleAnnotations
+  | runtimeVisibleParameterAnnotations
   | Exceptions  throwClause
   | Synthetic BOOLEANLITERAL
   | annotationDefault) )*
@@ -725,6 +731,9 @@ ScalaSig      : 'ScalaSig' COLON      ; EnclosingMethod           : 'EnclosingMe
 ExceptionTable: 'Exception table'COLON; LocalVariableTypeTable    : 'LocalVariableTypeTable' COLON    ;
 Synthetic     : 'Synthetic' COLON     ; StackMap                  : 'StackMap' COLON                  ;
 DefaultValue  : 'default_value' COLON ; AnnotationDefault         : 'AnnotationDefault' COLON         ;
+RuntimeInvisibleParameterAnnotations  : 'RuntimeInvisibleParameterAnnotations' COLON;
+RuntimeVisibleParameterAnnotations    : 'RuntimeVisibleParameterAnnotations' COLON;
+RuntimeInvisibleAnnotations           : 'RuntimeInvisibleAnnotations' COLON;
 
 Constant_type
   : 'Class'   | 'Fieldref'  | 'Methodref'
