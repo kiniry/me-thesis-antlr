@@ -83,45 +83,26 @@ scalaSig_info
     (INTLITERAL INTLITERAL INTLITERAL)?
   ;
   
+//*******************************/
+//  Runetime visibility
+//*******************************/
+
 runtimeVisibleAnnotations_info
   : RuntimeVisibleAnnotations 
     runtimeVisibleAnnotationsItem+
   ;
-
-runtimeInvisibleParameterAnnotations
-  : IDENTIFIER COLON 
-    runtimeInvisibleParameterAnnotationsItem+
-  ;
-
-runtimeInvisibleParameterAnnotationsItem
-  : pc (CPINDEX LPAREN RPAREN)? 
-  ;
- 
-runtimeInvisibleAnnotations
-  : IDENTIFIER COLON 
-    runtimeInvisibleAnnotationsItem+
-  ;
-
-runtimeInvisibleAnnotationsItem
-  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
-  ;
-
 runtimeVisibleAnnotationsItem
   : pc runtimeVisibleAnnotationsValue
   ;
-
 runtimeVisibleAnnotationsValue
   : CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
   ;
-
 runtimeVisibleAnnotationAssignList
   : annotationAssign (COMMA annotationAssign)* -> annotationAssign+
   ;
-
 annotationAssign
   : CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
   ;
-
 brackedAnnotationAssign
   : LBRACK brackedAnnotationAssignList? RBRACK
   ;
@@ -131,7 +112,25 @@ brackedAnnotationAssignList
 brackedAnnotationAssignValue
   : AnnotationAssign (LPAREN runtimeVisibleAnnotationAssignList RPAREN)?
   ;
-    
+runtimeInvisibleParameterAnnotations
+  : IDENTIFIER COLON 
+    parameterVisibilityInfo+
+  ;
+runtimeInvisibleParameterAnnotationsItem1
+  : pc (CPINDEX LPAREN RPAREN)? 
+  ;
+parameterVisibilityInfo
+  : IDENTIFIER pc
+    runtimeVisibleAnnotationsItem*
+  ;
+runtimeInvisibleAnnotations
+  : IDENTIFIER COLON 
+    runtimeInvisibleAnnotationsItem+
+  ;
+runtimeInvisibleAnnotationsItem
+  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
+  ;
+   
 signature_info_addition
   : Signature CPINDEX ?
   ;
@@ -334,7 +333,7 @@ afterMethodInfo
   ;
 
 annotationDefault
-  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK RBRACK)
+  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK AnnotationAssign? RBRACK)
   ;
   
 methodSignatureInfo
