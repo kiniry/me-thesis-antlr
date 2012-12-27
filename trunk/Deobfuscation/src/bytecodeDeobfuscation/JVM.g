@@ -216,20 +216,20 @@ class_modifier
   
 classBody
   :
-//  ( 
-//    (methodDefinition) => methodDefinition
-//  | (ctorDefinition) => ctorDefinition
-//  | (fieldDefinition) => fieldDefinition
-//  | staticCtorDefinition
-//  )+
   ( 
-//    fieldDefinition
-//    |
-    methodDefinition
-  | ctorDefinition
-  | fieldDefinition
+    (methodDefinition) => methodDefinition
+  | (ctorDefinition) => ctorDefinition
+  | (fieldDefinition) => fieldDefinition
   | staticCtorDefinition
   )+
+//  ( 
+////    fieldDefinition
+////    |
+//    methodDefinition
+//  | ctorDefinition
+//  | fieldDefinition
+//  | staticCtorDefinition
+//  )+
   ;
 
 //*******************************/
@@ -304,7 +304,7 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-  : field_visual_modifier? javaType arguments throwClause? SEMI 
+  : field_visual_modifier? genericReturn? javaType arguments throwClause? SEMI 
     methodInfo
     body
     afterMethodInfo
@@ -573,15 +573,11 @@ genericType
   ;
   
 genericList
-  : LESST (genericConstraint|genericGeneric|javaTypeArray) (COMMA (genericConstraint|genericGeneric|javaTypeArray))* LARGET
+  : LESST (genericConstraint|aggregatedJavaType) (COMMA (genericConstraint|aggregatedJavaType))* LARGET
   ;
   
 genericConstraint
-  : QUESTION ((SUPER | EXTENDS ) javaTypeArray)?
-  ;
-
-javaTypeArray
-  : javaType (LBRACK RBRACK)*
+  : QUESTION ((SUPER | EXTENDS ) aggregatedJavaType)?
   ;
 
 genericGeneric
@@ -658,7 +654,7 @@ identifier: IDENTIFIER | keywordAggregate;
 
 keywordAggregate
   : BaseType | VoidType | primitiveType | Constant_type
-  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER | NATIVE
+  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER
   ;
 
 primitiveType
