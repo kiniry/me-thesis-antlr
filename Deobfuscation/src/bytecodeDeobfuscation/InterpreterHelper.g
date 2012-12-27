@@ -113,18 +113,18 @@ brackedAnnotationAssignValue
   : AnnotationAssign (LPAREN runtimeVisibleAnnotationAssignList RPAREN)?
   ;
 runtimeInvisibleParameterAnnotations
-  : IDENTIFIER COLON 
+  : RuntimeInvisibleParameterAnnotations 
     parameterVisibilityInfo+
   ;
 runtimeInvisibleParameterAnnotationsItem1
   : pc (CPINDEX LPAREN RPAREN)? 
   ;
 parameterVisibilityInfo
-  : IDENTIFIER pc
+  : IDENTIFIER? pc
     runtimeVisibleAnnotationsItem*
   ;
 runtimeInvisibleAnnotations
-  : IDENTIFIER COLON 
+  : RuntimeInvisibleAnnotations 
     runtimeInvisibleAnnotationsItem+
   ;
 runtimeInvisibleAnnotationsItem
@@ -327,6 +327,7 @@ afterMethodInfo
   | Signature CPINDEX
   | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
+  | runtimeInvisibleAnnotations
   | Exceptions  throwClause
   | Synthetic BOOLEANLITERAL
   | annotationDefault) )*
@@ -731,6 +732,8 @@ ScalaSig      : 'ScalaSig' COLON      ; EnclosingMethod           : 'EnclosingMe
 ExceptionTable: 'Exception table'COLON; LocalVariableTypeTable    : 'LocalVariableTypeTable' COLON    ;
 Synthetic     : 'Synthetic' COLON     ; StackMap                  : 'StackMap' COLON                  ;
 DefaultValue  : 'default_value' COLON ; AnnotationDefault         : 'AnnotationDefault' COLON         ;
+RuntimeInvisibleParameterAnnotations  : 'RuntimeInvisibleParameterAnnotations' COLON;
+RuntimeInvisibleAnnotations           : 'RuntimeInvisibleAnnotations' COLON;
 
 Constant_type
   : 'Class'   | 'Fieldref'  | 'Methodref'

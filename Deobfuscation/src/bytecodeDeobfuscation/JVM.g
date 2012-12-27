@@ -324,13 +324,14 @@ afterMethodInfo
   | Signature CPINDEX
   | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
+  | runtimeInvisibleAnnotations
   | Exceptions  throwClause
   | Synthetic BOOLEANLITERAL
   | annotationDefault) )*
   ;
 
 annotationDefault
-  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK RBRACK)
+  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK  AnnotationAssign? RBRACK)
   ;
   
 methodSignatureInfo
