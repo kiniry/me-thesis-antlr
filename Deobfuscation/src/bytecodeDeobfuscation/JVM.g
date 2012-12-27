@@ -83,38 +83,23 @@ scalaSig_info
     IDENTIFIER ASSIGN INTLITERAL  
     (INTLITERAL INTLITERAL INTLITERAL)?
   ;
-  
+//*******************************/
+//  Runetime visibility
+//*******************************/
+
 runtimeVisibleAnnotations_info
   : RuntimeVisibleAnnotations 
     runtimeVisibleAnnotationsItem+
   ;
-
-runtimeInvisibleParameterAnnotations
-  : IDENTIFIER COLON 
-    runtimeInvisibleParameterAnnotationsItem+
-  ;
-
-runtimeInvisibleParameterAnnotationsItem
-  : pc (CPINDEX LPAREN RPAREN)? 
-  ;
-  
-runtimeInvisibleAnnotations
-  : IDENTIFIER COLON 
-    runtimeInvisibleAnnotationsItem+
-  ;
-
-runtimeInvisibleAnnotationsItem
-  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
-  ;
-
 runtimeVisibleAnnotationsItem
-  : pc CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
+  : pc runtimeVisibleAnnotationsValue
   ;
-
+runtimeVisibleAnnotationsValue
+  : CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
+  ;
 runtimeVisibleAnnotationAssignList
   : annotationAssign (COMMA annotationAssign)* -> annotationAssign+
   ;
-
 annotationAssign
   : CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
   ;
@@ -126,6 +111,24 @@ brackedAnnotationAssignList
   ;
 brackedAnnotationAssignValue
   : AnnotationAssign (LPAREN runtimeVisibleAnnotationAssignList RPAREN)?
+  ;
+runtimeInvisibleParameterAnnotations
+  : IDENTIFIER COLON 
+    parameterVisibilityInfo+
+  ;
+runtimeInvisibleParameterAnnotationsItem1
+  : pc (CPINDEX LPAREN RPAREN)? 
+  ;
+parameterVisibilityInfo
+  : IDENTIFIER pc
+    runtimeVisibleAnnotationsItem*
+  ;
+runtimeInvisibleAnnotations
+  : IDENTIFIER COLON 
+    runtimeInvisibleAnnotationsItem+
+  ;
+runtimeInvisibleAnnotationsItem
+  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
   ;
     
 signature_info_addition
@@ -305,7 +308,7 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClause? SEMI 
+  : method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClauseMethod? SEMI 
     methodInfo
     body?
     afterMethodInfo
@@ -442,6 +445,10 @@ throwClause
   : THROWS javaTypeList
   ;
 
+throwClauseMethod
+  : THROWS (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE) (COMMA (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE))*
+  ;
+
 exceptionTable
   : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
     exceptionTableEntry+
@@ -561,7 +568,7 @@ genericList
   ;
   
 genericConstraint
-  : QUESTION ((SUPER | EXTENDS ) (genericType | javaType))?
+  : QUESTION ((SUPER | EXTENDS ) aggregatedJavaType)?
   ;
 
 genericGeneric
@@ -585,7 +592,11 @@ genericReturn
   ;
 
 genericReturnDescriptor
-  : identifier EXTENDS bytecodeObjectType
+  : identifier EXTENDS bytecodeObjectTypeList
+  ;
+ 
+bytecodeObjectTypeList
+  : bytecodeObjectType (AND bytecodeObjectType)* -> bytecodeObjectType+
   ;
  
 bytecodeObjectType
@@ -673,7 +684,7 @@ literals
   | CHARLITERAL
   | STRINGLITERAL
   | BOOLEANLITERAL
-  | (PLUS|MINUS) IDENTIFIER
+  | MINUS? IDENTIFIER
   ;
 
 pc
