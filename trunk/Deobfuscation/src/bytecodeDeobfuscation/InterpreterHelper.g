@@ -112,6 +112,10 @@ brackedAnnotationAssignList
 brackedAnnotationAssignValue
   : AnnotationAssign (LPAREN runtimeVisibleAnnotationAssignList RPAREN)?
   ;
+runtimeVisibleParameterAnnotations
+  : RuntimeVisibleParameterAnnotations 
+    parameterVisibilityInfo+
+  ;
 runtimeInvisibleParameterAnnotations
   : RuntimeInvisibleParameterAnnotations 
     parameterVisibilityInfo+
@@ -328,6 +332,7 @@ afterMethodInfo
   | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
   | runtimeInvisibleAnnotations
+  | runtimeVisibleParameterAnnotations
   | Exceptions  throwClause
   | Synthetic BOOLEANLITERAL
   | annotationDefault) )*
@@ -653,7 +658,7 @@ identifier: IDENTIFIER | keywordAggregate;
 
 keywordAggregate
   : BaseType | VoidType | primitiveType | Constant_type
-  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER
+  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER | NATIVE
   ;
 
 primitiveType
@@ -733,6 +738,7 @@ ExceptionTable: 'Exception table'COLON; LocalVariableTypeTable    : 'LocalVariab
 Synthetic     : 'Synthetic' COLON     ; StackMap                  : 'StackMap' COLON                  ;
 DefaultValue  : 'default_value' COLON ; AnnotationDefault         : 'AnnotationDefault' COLON         ;
 RuntimeInvisibleParameterAnnotations  : 'RuntimeInvisibleParameterAnnotations' COLON;
+RuntimeVisibleParameterAnnotations    : 'RuntimeVisibleParameterAnnotations' COLON;
 RuntimeInvisibleAnnotations           : 'RuntimeInvisibleAnnotations' COLON;
 
 Constant_type
@@ -871,7 +877,7 @@ CharEscapeSequence
     :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\'|'\'')
     |   CharUnicodeEscapeSequence
     |   OctalEscape
-    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' | '\"' )
+    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' )
     ;
 fragment
 CharUnicodeEscapeSequence
