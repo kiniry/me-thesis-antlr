@@ -33,47 +33,18 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		try {
-//			overwriteFiles("src/TestFiles");
-//			parseMassagedFiles("src/TestFiles");
-			parseFiles("D:/Libs/ReadableBytecodeClasses");
-//			parseAndMassageFiles("src/TestFiles");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	private static void testTemplate() throws IOException
-	{
-		try {
-		FileReader groupFile = new FileReader("ByteCode.stg");
-		StringTemplateGroup templates = new StringTemplateGroup(groupFile);
-		groupFile.close();
 
+		TreeConstructorRunner.PrintTree(false);
 		
-		
-//		CharStream charStream = new ANTLRStringStream("s#10.#12 ide ide 123 extends 321 some, some");
-		ANTLRInputStream input = new ANTLRInputStream(System.in);
-		TreeConstructorLexer lexer = new TreeConstructorLexer(input);
-		TokenStream tokenStream = new CommonTokenStream(lexer);
-		TreeConstructorParser parser = new TreeConstructorParser(tokenStream);
-		rule1_return ret = parser.rule1();
-		
-		System.out.println("tree="+((Tree)ret.tree).toStringTree());
-		
-		CommonTree tree = (CommonTree)ret.getTree();
-		CommonTreeNodeStream nodes = new CommonTreeNodeStream(tree);
-		nodes.setTokenStream(tokenStream);
-		
-		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+////			overwriteFiles("src/TestFiles");
+////			parseMassagedFiles("src/TestFiles");
+////			parseFiles("D:/Libs/ReadableBytecodeClasses");
+////			parseAndMassageFiles("src/TestFiles");
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	public static void parseMassagedFiles(String myDirectoryPath) throws IOException {
