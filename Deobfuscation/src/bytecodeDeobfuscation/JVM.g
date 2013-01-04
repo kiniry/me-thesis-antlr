@@ -5,6 +5,19 @@ options {
   output=AST; 
 }
 
+tokens  {
+CLASSFILE; CFHEADER; UNITHEADER;
+UNITBODY; UNITARGUMENTS;
+VMODIFIER;  MODIFIER; 
+CLASSDECL; FIELDDECL; STATICCTORDECL; CTORDECL;
+CPOOL; ICDATA;
+ANNOTATIONVALUE;
+RETVALUE; GENERICDESC; UNITNAME; ARGNAME; VARINFO; INSTRUCTION;
+SWITCH; THROWVAL;
+
+ETHEADER; ETENTRY; LVHEADER; LVENTRY; SMTHEADER; SMTENTRY; SMHEADER; SMENTRY;
+}
+
 @header {
   package bytecodeDeobfuscation;
 }
@@ -20,28 +33,60 @@ options {
 program : class_file*;
 
 class_file
-  : class_file_header classDefinition;
+  : class_file_header classDefinition -> ^(CLASSFILE ^(CFHEADER class_file_header) classDefinition);
   
 class_file_header
   : (class_file_info
   | modified_file_info
   | checksum_file_info
-  | compiled_file_info)* 
+  | compiled_file_info)*
   ;
 class_file_info
-  : IDENTIFIER WINDOWSPATH 
+  : IDENTIFIER WINDOWSPATH -> ^(IDENTIFIER WINDOWSPATH)
   ;
   
 modified_file_info
-  : IDENTIFIER IDENTIFIER DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER 
+  : i1=IDENTIFIER i2=IDENTIFIER DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER -> ^(IDENTIFIER[$i1.getText() + " " + $i2.getText()] DATE ^(IDENTIFIER INTLITERAL IDENTIFIER))
   ;
   
 checksum_file_info
-  : IDENTIFIER IDENTIFIER (IDENTIFIER | HexDigits) 
+  : IDENTIFIER IDENTIFIER (IDENTIFIER | HexDigits) -> ^(IDENTIFIER IDENTIFIER IDENTIFIER? HexDigits?)
   ;
     
 compiled_file_info
-  : IDENTIFIER IDENTIFIER STRINGLITERAL 
+  : IDENTIFIER IDENTIFIER STRINGLITERAL -> ^(IDENTIFIER IDENTIFIER STRINGLITERAL)
+  ;
+
+//*******************************/
+//        Class definition       /
+//*******************************/
+
+classDefinition
+  : class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface? 
+    type_info
+    constant_pool
+    LBRACE 
+    classBody?
+    RBRACE -> ^(CLASSDECL ^(VMODIFIER class_visual_modifier)? ^(MODIFIER class_modifier*) javaTypeIdentifier superClass? superInterface?
+                ^(UNITHEADER type_info)
+                ^(CPOOL constant_pool)
+                classBody?)
+  ;
+  
+superClass
+  : EXTENDS typeList -> ^(EXTENDS typeList)
+  ;
+  
+superInterface
+  : IMPLEMENTS typeList -> ^(IMPLEMENTS typeList)
+  ;
+    
+class_visual_modifier
+  : PUBLIC
+  ;
+    
+class_modifier
+  : ABSTRACT | FINAL | INTERFACE | CLASS
   ;
   
 //*******************************/
@@ -58,29 +103,76 @@ type_info
   | enclosingMethod
   | signature_info_addition
   | deprecated
-  | synthetic)+
+  | synthetic
+  | scala_info)+
   ;
 
 synthetic
-  : Synthetic BOOLEANLITERAL 
+  : Synthetic BOOLEANLITERAL -> ^(Synthetic BOOLEANLITERAL)
   ;
 
 deprecated
-  : Deprecated BOOLEANLITERAL 
+  : Deprecated BOOLEANLITERAL -> ^(Deprecated BOOLEANLITERAL)
   ;
 
 enclosingMethod
-  : EnclosingMethod CPINDEX DOT CPINDEX ?
+  : EnclosingMethod CPINDEX DOT CPINDEX ? -> ^(EnclosingMethod CPINDEX DOT CPINDEX ?)
   ;
 
 sourcefile_info
-  : SourceFile STRINGLITERAL 
+  : SourceFile STRINGLITERAL  -> ^(SourceFile STRINGLITERAL)
   ;
 
 scalaSig_info
-  : (ScalaSig |Scala)
+  : ScalaSig
     IDENTIFIER ASSIGN INTLITERAL  
-    (INTLITERAL INTLITERAL INTLITERAL)?
+    INTLITERAL INTLITERAL INTLITERAL 
+        -> ^(ScalaSig
+        IDENTIFIER ASSIGN INTLITERAL  
+        INTLITERAL INTLITERAL INTLITERAL)
+  ;
+
+scala_info
+  : Scala
+    IDENTIFIER ASSIGN INTLITERAL
+        -> ^(Scala IDENTIFIER ASSIGN INTLITERAL)
+  ;
+   
+signature_info_addition
+  : Signature CPINDEX ? -> ^(Signature CPINDEX?)
+  ;
+
+innerclass_info
+  : InnerClasses innerclass_info_line+ -> ^(InnerClasses innerclass_info_line+)
+  ;
+  
+innerclass_info_line
+  :  method_visual_modifier? method_modifier* innerclass_info_data SEMI?
+      -> ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier* ^(ICDATA CPINDEX innerclass_info_data?))
+  ;
+
+innerclass_info_data
+  : CPINDEX (
+    ( ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) -> ^(CPINDEX ^(ASSIGN CPINDEX (IDENTIFIER CPINDEX)?))
+    | IDENTIFIER CPINDEX                    -> ^(CPINDEX IDENTIFIER CPINDEX)
+    |                                       -> ^(CPINDEX)
+    ) 
+  ;
+    
+minor_major_version_info
+  : IDENTIFIER IDENTIFIER COLON INTLITERAL  -> ^(IDENTIFIER IDENTIFIER COLON INTLITERAL)
+  ;
+      
+flags
+  : Flag accessFlagList? Marker -> ^(Flag accessFlagList?)
+  ;
+  
+accessFlagList
+  : flagType (COMMA flagType)* -> flagType+
+  ;
+
+flagType
+  : IDENTIFIER | INTLITERAL
   ;
   
 //*******************************/
@@ -89,19 +181,19 @@ scalaSig_info
 
 runtimeVisibleAnnotations_info
   : RuntimeVisibleAnnotations 
-    runtimeVisibleAnnotationsItem+
+    runtimeVisibleAnnotationsItem+ -> ^(RuntimeVisibleAnnotations runtimeVisibleAnnotationsItem+)
   ;
 runtimeVisibleAnnotationsItem
-  : pc runtimeVisibleAnnotationsValue
-  ;
-runtimeVisibleAnnotationsValue
-  : CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
+  : pc CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN -> pc CPINDEX runtimeVisibleAnnotationAssignList?
   ;
 runtimeVisibleAnnotationAssignList
   : annotationAssign (COMMA annotationAssign)* -> annotationAssign+
   ;
 annotationAssign
-  : CPINDEX ASSIGN (brackedAnnotationAssign | AnnotationAssign)
+  : CPINDEX ASSIGN 
+  ( v1=brackedAnnotationAssign -> ^(ASSIGN CPINDEX ANNOTATIONVALUE[v1.getTree().toString()]) 
+  | v2=AnnotationAssign -> ^(ASSIGN CPINDEX ANNOTATIONVALUE[v2.getText()])
+  )
   ;
 brackedAnnotationAssign
   : LBRACK brackedAnnotationAssignList? RBRACK
@@ -114,58 +206,22 @@ brackedAnnotationAssignValue
   ;
 runtimeVisibleParameterAnnotations
   : RuntimeVisibleParameterAnnotations 
-    parameterVisibilityInfo+
+    parameterVisibilityInfo+ -> ^(RuntimeVisibleParameterAnnotations parameterVisibilityInfo+)
   ;
 runtimeInvisibleParameterAnnotations
   : RuntimeInvisibleParameterAnnotations 
-    parameterVisibilityInfo+
-  ;
-runtimeInvisibleParameterAnnotationsItem1
-  : pc (CPINDEX LPAREN RPAREN)? 
-  ;
-parameterVisibilityInfo
-  : IDENTIFIER? pc
-    runtimeVisibleAnnotationsItem*
+    parameterVisibilityInfo+ -> ^(RuntimeInvisibleParameterAnnotations parameterVisibilityInfo+)
   ;
 runtimeInvisibleAnnotations
   : RuntimeInvisibleAnnotations 
-    runtimeInvisibleAnnotationsItem+
+    runtimeInvisibleAnnotationsItem+ -> ^(RuntimeInvisibleAnnotations runtimeInvisibleAnnotationsItem+)
+  ;
+parameterVisibilityInfo
+  : IDENTIFIER? pc
+    runtimeVisibleAnnotationsItem* -> ^(pc IDENTIFIER? runtimeVisibleAnnotationsItem*)
   ;
 runtimeInvisibleAnnotationsItem
-  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN 
-  ;
-   
-signature_info_addition
-  : Signature CPINDEX ?
-  ;
-
-innerclass_info
-  : InnerClasses  
-    innerclass_info_line+
-  ;
-  
-innerclass_info_line
-  :  method_modifier* CPINDEX ((ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) | (IDENTIFIER CPINDEX))? SEMI ?
-  ;
-    
-minor_major_version_info
-  : IDENTIFIER IDENTIFIER COLON INTLITERAL 
-  ;
-    
-//minor_version_info
-//  : MINOR_VERSION INTLITERAL 
-//  ;
-      
-flags
-  : Flag accessFlagList? Marker
-  ;
-  
-accessFlagList
-  : flagType (COMMA flagType)* -> flagType+
-  ;
-
-flagType
-  : IDENTIFIER | INTLITERAL
+  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN -> ^(pc pc? ^(CPINDEX runtimeVisibleAnnotationAssignList?))
   ;
 
 //*******************************/
@@ -173,41 +229,12 @@ flagType
 //*******************************/
 
 constant_pool
-  : IDENTIFIER IDENTIFIER COLON 
-    contant_pool_line*
+  : i1=IDENTIFIER i2=IDENTIFIER COLON 
+    contant_pool_line* -> ^(IDENTIFIER[i1.getText() + " " + i2.getText()] contant_pool_line*)
   ;
   
 contant_pool_line
-  : CPINDEX ASSIGN CONSTANT_TYPE_ASSIGNABLE
-  ;
-
-//*******************************/
-//        Class definition       /
-//*******************************/
-
-classDefinition
-  : class_visual_modifier? class_modifier* javaTypeIdentifier superClass? superInterface? 
-    type_info
-    constant_pool
-    LBRACE 
-    classBody?
-    RBRACE 
-  ;
-  
-superClass
-  : EXTENDS typeList
-  ;
-  
-superInterface
-  : IMPLEMENTS typeList
-  ;
-    
-class_visual_modifier
-  : PUBLIC
-  ;
-    
-class_modifier
-  : ABSTRACT | FINAL | INTERFACE | CLASS
+  : CPINDEX ASSIGN CONSTANT_TYPE_ASSIGNABLE -> ^(ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE)
   ;
 
 //*******************************/
@@ -237,24 +264,28 @@ classBody
 //*******************************/
 
 fieldDefinition
-  : field_visual_modifier? field_modifier* aggregatedJavaType identifier (ASSIGN literals)? SEMI 
+  : field_visual_modifier? field_modifier* ret=aggregatedJavaType n=identifier (ASSIGN literals)? SEMI 
     fieldInfo
     fieldAdditionalInfo*
+            -> ^(FIELDDECL ^(VMODIFIER field_visual_modifier)? ^(MODIFIER field_modifier*) ^(RETVALUE $ret) ^(UNITNAME $n) ^(ASSIGN literals)?
+            ^(UNITHEADER fieldInfo)
+            )
   ;
 
 fieldInfo
-  : Signature fieldInfoOption1 
-    flags 
+  : Signature fieldInfoOption1
+    flags -> ^(Signature fieldInfoOption1) flags
   ;
 
 fieldAdditionalInfo
-  : (Constant fieldInfoOption3
-  | Constant fieldInfoOption4
-  | Signature fieldInfoOption5
-  | Deprecated fieldInfoOption6
-  | Synthetic fieldInfoOption6
+  : (Constant fieldInfoOption3 -> ^(Constant fieldInfoOption3)
+  | Constant fieldInfoOption4 -> ^(Constant fieldInfoOption4)
+  | Signature fieldInfoOption5 -> ^(Signature fieldInfoOption5)
+  | Deprecated fieldInfoOption6 -> ^(Deprecated fieldInfoOption6)
+  | Synthetic fieldInfoOption6 -> ^(Synthetic fieldInfoOption6)
   | runtimeVisibleAnnotations_info
-  | runtimeInvisibleAnnotations) 
+  | runtimeInvisibleAnnotations
+  ) 
   ;
 
 fieldInfoOption1 // Minded signatures
@@ -296,7 +327,7 @@ field_modifier
 staticCtorDefinition
   : field_visual_modifier? STATIC LBRACE RBRACE SEMI 
     methodInfo
-    body
+    body -> ^(STATICCTORDECL ^(VMODIFIER field_visual_modifier)? ^(UNITHEADER methodInfo) body)
   ;
   
 //*******************************/
@@ -304,10 +335,14 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-  : field_visual_modifier? genericReturn? javaType arguments throwClause? SEMI 
+  : field_visual_modifier? genericDescriptor? javaType arguments throwClause? SEMI 
     methodInfo
     body
-    afterMethodInfo
+    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER field_visual_modifier)? ^(GENERICDESC genericDescriptor)? ^(UNITNAME javaType) arguments throwClause?
+                        ^(UNITHEADER methodInfo)
+                        body
+                        afterMethodInfo?
+                        )
   ;
 
 //*******************************/
@@ -315,35 +350,42 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : method_modifier* genericReturn? aggregatedJavaType javaTypeIdentifier arguments throwClauseMethod? SEMI 
+  : method_visual_modifier? method_modifier* genericDescriptor? aggregatedJavaType javaTypeIdentifier arguments throwClauseMethod? SEMI 
     methodInfo
     body?
-    afterMethodInfo
+    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor)? ^(RETVALUE aggregatedJavaType) ^(UNITNAME javaTypeIdentifier) arguments throwClauseMethod?
+                        ^(UNITHEADER methodInfo)
+                        body?
+                        afterMethodInfo?
+                        )
   ;
 
 methodInfo
   : Signature methodSignatureInfo 
-    flags
+    flags -> ^(Signature methodSignatureInfo) flags
   ;
 
 afterMethodInfo
-  : ((Deprecated  methodDeprecatedInfo
-  | Signature CPINDEX
+  : (Deprecated  methodDeprecatedInfo   -> ^(Deprecated  methodDeprecatedInfo)
+  | Signature CPINDEX                   -> ^(Signature CPINDEX)
   | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
   | runtimeInvisibleAnnotations
   | runtimeVisibleParameterAnnotations
-  | Exceptions  throwClause
-  | Synthetic BOOLEANLITERAL
-  | annotationDefault) )*
+  | Exceptions  throwClause             -> ^(Exceptions  throwClause)
+  | Synthetic BOOLEANLITERAL            -> ^(Synthetic BOOLEANLITERAL)
+  | annotationDefault)+
   ;
 
 annotationDefault
-  : AnnotationDefault  DefaultValue (AnnotationAssign | LBRACK AnnotationAssign? RBRACK)
+  : AnnotationDefault  DefaultValue 
+  ( AnnotationAssign                    -> ^(AnnotationDefault  DefaultValue AnnotationAssign)
+  | brackedAnnotationAssign             -> ^(AnnotationDefault  DefaultValue brackedAnnotationAssign)
+  )
   ;
   
 methodSignatureInfo
-  : LPAREN bytecodeType* RPAREN returnDescriptor
+  : LPAREN bytecodeType* RPAREN returnDescriptor  -> ^(ARGNAME bytecodeType)* ^(RETVALUE returnDescriptor)
   ;
 
 returnDescriptor
@@ -355,11 +397,15 @@ methodDeprecatedInfo
   ;
     
 method_modifier
-  : ABSTRACT | FINAL  | STATIC  | SYNCHRONIZED  | NATIVE | PUBLIC | PRIVATE | PROTECTED
+  : ABSTRACT | FINAL  | STATIC  | SYNCHRONIZED  | NATIVE
+  ;
+ 
+method_visual_modifier
+  : PUBLIC | PRIVATE | PROTECTED
   ;
 
-arguments
-  : LPAREN typeList? (DOT DOT DOT)? RPAREN //(DOT DOT DOT)? zero or more of the last object
+arguments//(DOT DOT DOT)? zero or more of the last object
+  : LPAREN typeList? (DOT DOT DOT)? RPAREN -> ^(UNITARGUMENTS typeList? (DOT DOT DOT)?)
   ;
 
 //*******************************/
@@ -371,34 +417,39 @@ body
     (Synthetic BOOLEANLITERAL)?
     Code 
     codeBlock
-    (bodyExtension)*
+    bodyExtension* -> ^(UNITBODY ^(Synthetic BOOLEANLITERAL)? ^(Code codeBlock) bodyExtension*)
   ;
 
 bodyExtension
   :  
-  ( ExceptionTable  exceptionTable
-  | LineNumberTable  lineNumberTable
-  | LocalVariableTable  localVariableTable 
-  | LocalVariableTypeTable  localVariableTable 
-  | StackMapTable stackMapTable
-  | StackMap stackMapTypeTable)
+  ( ExceptionTable  exceptionTable              -> ^(ExceptionTable  exceptionTable)
+  | LineNumberTable  lineNumberTable            -> ^(LineNumberTable  lineNumberTable)
+  | LocalVariableTable  localVariableTable      -> ^(LocalVariableTable  localVariableTable)
+  | LocalVariableTypeTable  localVariableTable  -> ^(LocalVariableTypeTable  localVariableTable)
+  | StackMapTable stackMapTable                 -> ^(StackMapTable stackMapTable)
+  | StackMap stackMapTypeTable                  -> ^(StackMap stackMapTypeTable)
+  )
   ;
 
 codeBlock
   : variables 
-    (codeLine | javaSwitch)*
-    codeBlockEnd
+    instructionSet*
+    codeBlockEnd                                -> ^(VARINFO variables) ^(INSTRUCTION instructionSet* codeBlockEnd)
+  ;
+
+instructionSet
+  : codeLine | javaSwitch
   ;
 
 codeLine
-  : pc IDENTIFIER codeValues?
+  : pc IDENTIFIER codeValue? -> ^(IDENTIFIER pc codeValue?)
   ;
 
 codeBlockEnd
-  : pc IDENTIFIER logic3? 
+  : pc IDENTIFIER logic3?     -> ^(IDENTIFIER pc logic3?)
   ;
   
-codeValues
+codeValue
   : logic 
   | logic2 
   | logic3
@@ -423,11 +474,11 @@ logic4
   ;
 
 variables
-  : variable COMMA variable COMMA variable
+  : variable COMMA variable COMMA variable -> variable variable variable
   ;
 
 variable
-  : IDENTIFIER ASSIGN INTLITERAL
+  : IDENTIFIER ASSIGN INTLITERAL           -> ^(ASSIGN IDENTIFIER INTLITERAL)
   ;
 
 javaSwitch  
@@ -435,7 +486,7 @@ javaSwitch
     LBRACE 
     switchLine*
     switchDefaultLine
-    RBRACE 
+    RBRACE                                  -> ^(SWITCH ^(IDENTIFIER pc switchLine* switchDefaultLine))
   ;
   
 switchLine
@@ -443,7 +494,7 @@ switchLine
   ;
 
 switchDefaultLine
-  : DEFAULT COLON INTLITERAL 
+  : DEFAULT COLON INTLITERAL                -> ^(DEFAULT INTLITERAL) 
   ;
 
 //*******************************/
@@ -451,16 +502,21 @@ switchDefaultLine
 //*******************************/
 
 throwClause
-  : THROWS javaTypeList
+  : THROWS javaTypeList                     ->  ^(THROWS javaTypeList)
   ;
   
 throwClauseMethod
-  : THROWS (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE) (COMMA (INTERNALTYPE  | IDENTIFIER  | NORMALTYPE))*
+  : THROWS throwType (COMMA throwType)*
+                                            -> ^(THROWS throwType+)
+  ;
+
+throwType
+  : INTERNALTYPE  | IDENTIFIER  | NORMALTYPE
   ;
 
 exceptionTable
   : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
-    exceptionTableEntry+
+    exceptionTableEntry+ -> ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry)+
   ;
 
 exceptionTableEntry
@@ -485,7 +541,7 @@ lineNumberTableLine
   
 localVariableTable
   : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
-    localVariableTableLine*
+    localVariableTableLine*           -> ^(LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(LVENTRY localVariableTableLine)*
   ;
   
 localVariableTableLine
@@ -497,7 +553,7 @@ localVariableTableLine
 
 stackMapTypeTable
   : IDENTIFIER ASSIGN INTLITERAL 
-    stackMapTypeTableEntry+
+    stackMapTypeTableEntry+             ->  ^(SMTHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMTENTRY stackMapTypeTableEntry)+
   ;
 
 stackMapTypeTableEntry
@@ -544,18 +600,6 @@ stackMapTableTypeObject
 // Normal java types
 //*******************************/
 
-genericConstraintType
-  : javaType genericConstraintList
-  ;
-  
-genericConstraintList
-  : LESST genericConstraints (COMMA genericConstraints)* LARGET -> genericConstraints+
-  ;
-
-genericConstraints
-  : identifier EXTENDS (genericType | javaType) (AND (genericType | javaType))*
-  ;
-
 typeList
   : aggregatedJavaType (COMMA aggregatedJavaType)* -> aggregatedJavaType+
   ;
@@ -567,9 +611,13 @@ aggregatedJavaType
 javaTypeIdentifier
   : javaType (genericConstraintList | genericList)?
   ;
-  
-genericType
-  : javaType genericList
+
+genericConstraintList
+  : LESST genericConstraints (COMMA genericConstraints)* LARGET -> genericConstraints+
+  ;
+
+genericConstraints
+  : identifier EXTENDS javaTypeIdentifier (AND javaTypeIdentifier)* -> ^(EXTENDS identifier javaTypeIdentifier+)
   ;
   
 genericList
@@ -578,10 +626,6 @@ genericList
   
 genericConstraint
   : QUESTION ((SUPER | EXTENDS ) aggregatedJavaType)?
-  ;
-
-genericGeneric
-  : javaType LESST (javaType) (COMMA (javaType))* LARGET
   ;
 
 javaTypeList
@@ -596,7 +640,7 @@ javaType
 // Generic return Type description
 //*******************************/
 
-genericReturn
+genericDescriptor
   : LESST genericReturnDescriptor (COMMA genericReturnDescriptor)* LARGET -> genericReturnDescriptor+
   ;
 
