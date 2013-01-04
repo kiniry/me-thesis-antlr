@@ -1,0 +1,7 @@
+DOT=4
+HASH=5
+IDENTIFIER=6
+INT=7
+IntDigit=8
+Letter=9
+WS=10
