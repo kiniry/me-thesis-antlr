@@ -495,7 +495,7 @@ exceptionTable
 
 exceptionTableEntry
   : INTLITERAL INTLITERAL INTLITERAL 
-  ( pt=primitiveType              -> INTLITERAL INTLITERAL INTLITERAL IDENTIFIER[$pt]
+  ( primitiveType              -> INTLITERAL INTLITERAL INTLITERAL IDENTIFIER
   | IDENTIFIER                    -> INTLITERAL INTLITERAL INTLITERAL IDENTIFIER
   | cta=CONSTANT_TYPE_ASSIGNABLE  -> INTLITERAL INTLITERAL INTLITERAL IDENTIFIER[$cta]
   )
@@ -528,7 +528,7 @@ localVariableTableLine
 
 localVariableTableLineIdentifier
   :
-  ( id1=identifier  -> IDENTIFIER[$id1]
+  ( identifier
   | id2=STATIC      -> IDENTIFIER[$id2]
   )
   ;
