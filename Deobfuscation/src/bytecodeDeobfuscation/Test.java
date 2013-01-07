@@ -34,17 +34,17 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 
-		TreeConstructorRunner.PrintTree(false);
+//		TreeConstructorRunner.PrintTree(false);
 		
-//		try {
-////			overwriteFiles("src/TestFiles");
-////			parseMassagedFiles("src/TestFiles");
-////			parseFiles("D:/Libs/ReadableBytecodeClasses");
-////			parseAndMassageFiles("src/TestFiles");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+//			overwriteFiles("src/TestFiles");
+//			parseMassagedFiles("src/TestFiles");
+			parseFiles("D:/Libs/ReadableBytecodeClasses");
+//			parseAndMassageFiles("src/TestFiles");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void parseMassagedFiles(String myDirectoryPath) throws IOException {
