@@ -6,18 +6,21 @@ options {
 }
 
 tokens  {
-CLASSFILE; CFHEADER; UNITHEADER;
-UNITBODY; UNITARGUMENTS; UNITATTR; UNITBODY;
+CLASSFILE; CFHEADER; UNITHEADER; CEXTENDS; CIMPLEMENTS;
+UNITARGUMENTS; UNITATTR; UNITBODY;
 VMODIFIER;  MODIFIER; 
 CLASSDECL; FIELDDECL; STATICCTORDECL; CTORDECL;
-CPOOL; ICDATA;
-ANNOTATIONVALUE;
-RETVALUE; GENERICDESC; UNITNAME; ARGNAME; VARINFO; INSTRUCTION;
+CPOOL;
+RETVALUE; GENERICDESC; UNITNAME; RETDESC; PARAMDESC; VARINFO; INSTRUCTION;
 SWITCH;
-
+FIELDVALUE;
 ETHEADER; ETENTRY; LVHEADER; LVENTRY; SMTHEADER; SMTENTRY; SMHEADER; SMENTRY;
 THROWCLAUSE;
 BANNOTATION;
+OPERAND;
+TPARAMETERS;
+TYPEARGS;
+ARRAYBRACKS;
 }
 
 @header {
@@ -68,12 +71,12 @@ compiled_file_info
 //*******************************/
 
 classDefinition
-  : class_visual_modifier? class_modifier* javaTypeIdentifier (EXTENDS typeList)? (IMPLEMENTS typeList)? 
+  : class_visual_modifier? class_modifier* typeName typeParameters? (EXTENDS typeList)? (IMPLEMENTS typeList)? 
     type_info
     constant_pool
     LBRACE 
     classBody?
-    RBRACE ->   ^(CLASSDECL ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) javaTypeIdentifier ^(EXTENDS typeList?) ^(IMPLEMENTS typeList?)
+    RBRACE ->   ^(CLASSDECL ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) typeName ^(TPARAMETERS typeParameters?) ^(CEXTENDS typeList?) ^(CIMPLEMENTS typeList?)
                 ^(UNITHEADER type_info)
                 ^(CPOOL constant_pool)
                 ^(UNITBODY classBody?)
@@ -147,15 +150,15 @@ innerclass_info
   
 innerclass_info_line
   :  method_visual_modifier? method_modifier* innerclass_info_data SEMI?
-      -> ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) ^(ICDATA innerclass_info_data)
+      -> ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) innerclass_info_data
   ;
 
 innerclass_info_data
   : CPINDEX (
-    ( ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) //-> ^(CPINDEX ^(ASSIGN CPINDEX (IDENTIFIER CPINDEX)?))
-    | IDENTIFIER CPINDEX                    //-> ^(CPINDEX IDENTIFIER CPINDEX)
-    |                                       //-> ^(CPINDEX)
-    )                                       -> ^(CPINDEX ^(ASSIGN CPINDEX)? ^(IDENTIFIER CPINDEX)?)
+    ( ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) -> ^(CPINDEX ^(ASSIGN CPINDEX (IDENTIFIER CPINDEX)?))
+    | IDENTIFIER CPINDEX                    -> ^(CPINDEX IDENTIFIER CPINDEX)
+    |                                       -> ^(CPINDEX)
+    )                                       //-> ^(CPINDEX ^(INFODATA1 (ASSIGN CPINDEX)?) ^(INFODATA2 (IDENTIFIER CPINDEX)?))
   ;
     
 minor_major_version_info
@@ -171,7 +174,7 @@ accessFlagList
   ;
 
 flagType
-  : IDENTIFIER | INTLITERAL
+  : IDENTIFIER | INTLITERAL // strictfp -> 0x0800 could not be convert by javap
   ;
   
 //*******************************/
@@ -265,10 +268,10 @@ classBody
 //*******************************/
 
 fieldDefinition
-  : field_visual_modifier? field_modifier* aggregatedJavaType identifier (ASSIGN literals)? SEMI 
+  : field_visual_modifier? field_modifier* type keywordAggregate (ASSIGN literals)? SEMI 
     fieldInfo
     fieldAdditionalInfo*
-            -> ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE aggregatedJavaType) ^(UNITNAME identifier) ^(ASSIGN literals?)
+            -> ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME keywordAggregate) ^(FIELDVALUE literals?)
             ^(UNITHEADER fieldInfo)
             ^(UNITATTR fieldAdditionalInfo*)
             )
@@ -281,7 +284,7 @@ fieldInfo
 
 fieldAdditionalInfo
   : (Constant primitiveType literals -> ^(Constant primitiveType literals)
-//  | Constant CONSTANT_TYPE_ASSIGNABLE -> ^(Constant CONSTANT_TYPE_ASSIGNABLE) TEST - commented out.
+  | Constant CONSTANT_TYPE_ASSIGNABLE -> ^(Constant CONSTANT_TYPE_ASSIGNABLE)
   | Signature CPINDEX -> ^(Signature CPINDEX)
   | Deprecated BOOLEANLITERAL -> ^(Deprecated BOOLEANLITERAL)
   | Synthetic BOOLEANLITERAL -> ^(Synthetic BOOLEANLITERAL)
@@ -313,10 +316,10 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-  : field_visual_modifier? genericDescriptor? javaType arguments throwClause? SEMI 
+  : field_visual_modifier? genericDescriptor? typeName arguments throwClause? SEMI 
     methodInfo
     body
-    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER field_visual_modifier)? ^(GENERICDESC genericDescriptor)? ^(UNITNAME javaType) arguments ^(THROWCLAUSE throwClause?)
+    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER field_visual_modifier)? ^(GENERICDESC genericDescriptor)? ^(UNITNAME typeName) arguments ^(THROWCLAUSE throwClause?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body)
                         ^(UNITATTR afterMethodInfo?)
@@ -328,10 +331,10 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : method_visual_modifier? method_modifier* genericDescriptor? aggregatedJavaType javaTypeIdentifier arguments throwClauseMethod? SEMI 
+  : method_visual_modifier? method_modifier* genericDescriptor? type keywordAggregate arguments throwClauseMethod? SEMI 
     methodInfo
     body?
-    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor)? ^(RETVALUE aggregatedJavaType) ^(UNITNAME javaTypeIdentifier) arguments ^(THROWCLAUSE throwClauseMethod?)
+    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)
@@ -359,7 +362,7 @@ annotationDefault
   ;
   
 methodSignatureInfo
-  : Signature LPAREN bytecodeType* RPAREN returnDescriptor  -> ^(Signature ^(ARGNAME bytecodeType)* ^(RETVALUE returnDescriptor))
+  : Signature LPAREN bytecodeType* RPAREN returnDescriptor  -> ^(Signature ^(PARAMDESC bytecodeType)* ^(RETDESC returnDescriptor))
   ;
 
 returnDescriptor
@@ -371,7 +374,7 @@ methodDeprecatedInfo
   ;
     
 method_modifier
-  : ABSTRACT | FINAL  | STATIC  | SYNCHRONIZED  | NATIVE
+  : ABSTRACT | FINAL  | STATIC  | SYNCHRONIZED  | NATIVE | STRICTFP
   ;
  
 method_visual_modifier
@@ -397,7 +400,7 @@ body
 bodyExtension
   :  
   ( ExceptionTable  exceptionTable              -> ^(ExceptionTable  exceptionTable)
-  | LineNumberTable  lineNumberTable            -> ^(LineNumberTable  lineNumberTable)
+  | LineNumberTable  lineNumberTable?            -> ^(LineNumberTable  lineNumberTable?)
   | LocalVariableTable  localVariableTable      -> ^(LocalVariableTable  localVariableTable)
   | LocalVariableTypeTable  localVariableTable  -> ^(LocalVariableTypeTable  localVariableTable)
   | StackMapTable stackMapTable                 -> ^(StackMapTable stackMapTable)
@@ -416,35 +419,17 @@ instructionSet
   ;
 
 codeLine
-  : pc IDENTIFIER codeValue? -> ^(IDENTIFIER pc codeValue?)
+  : pc IDENTIFIER operand1? (COMMA INTLITERAL)? -> ^(IDENTIFIER pc ^(OPERAND operand1?) ^(OPERAND INTLITERAL?))
   ;
 
 codeBlockEnd
-  : pc IDENTIFIER logic3?     -> ^(IDENTIFIER pc logic3?)
+  : pc IDENTIFIER INTLITERAL?               -> ^(IDENTIFIER pc INTLITERAL?)
   ;
   
-codeValue
-  : logic 
-  | logic2 
-  | logic3
-  | logic4
+operand1
+  : CPINDEX 
+  | INTLITERAL
   | primitiveType
-  ;
-  
-logic
-  : CPINDEX COMMA INTLITERAL
-  ;
-  
-logic2
-  : CPINDEX
-  ;
-  
-logic3
-  : INTLITERAL
-  ;
-  
-logic4
-  : INTLITERAL COMMA INTLITERAL
   ;
 
 variables
@@ -476,7 +461,7 @@ switchDefaultLine
 //*******************************/
 
 throwClause
-  : THROWS javaTypeList                     -> ^(THROWS javaTypeList)
+  : THROWS typeList                     -> ^(THROWS typeList)
   ;
   
 throwClauseMethod
@@ -485,20 +470,22 @@ throwClauseMethod
   ;
 
 throwType
-  : INTERNALTYPE  | IDENTIFIER  | NORMALTYPE
+  : INTERNALTYPE  | IDENTIFIER  | QualifiedType
   ;
 
 exceptionTable
   : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
-    exceptionTableEntry+ -> ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry)+
+    exceptionTableEntry+    -> ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry)+
   ;
 
 exceptionTableEntry
-  : INTLITERAL INTLITERAL INTLITERAL 
-  ( primitiveType              -> INTLITERAL INTLITERAL INTLITERAL IDENTIFIER
-  | IDENTIFIER                    -> INTLITERAL INTLITERAL INTLITERAL IDENTIFIER
-  | cta=CONSTANT_TYPE_ASSIGNABLE  -> INTLITERAL INTLITERAL INTLITERAL IDENTIFIER[$cta]
-  )
+  : INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
+                            -> INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
+  ;
+exceptionTableEntryValue
+  : primitiveType
+  | IDENTIFIER
+  | cta=CONSTANT_TYPE_ASSIGNABLE
   ;
   
 //*******************************/
@@ -506,7 +493,7 @@ exceptionTableEntry
 //*******************************/
 
 lineNumberTable
-  : lineNumberTableLine*
+  : lineNumberTableLine+
   ;
 
 lineNumberTableLine
@@ -528,7 +515,7 @@ localVariableTableLine
 
 localVariableTableLineIdentifier
   :
-  ( identifier
+  ( keywordAggregate//-> IDENTIFIER what would this do??
   | id2=STATIC      -> IDENTIFIER[$id2]
   )
   ;
@@ -557,7 +544,10 @@ stackMapTable
     stackMapTableEntry+                         -> ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry)+
   ;
 stackMapTableEntry
-  : IDENTIFIER ASSIGN (INTLITERAL | stackMapTableTypesContainer) 
+  : IDENTIFIER ASSIGN stackMapTableEntryValue   -> ^(ASSIGN IDENTIFIER stackMapTableEntryValue)
+  ;
+stackMapTableEntryValue
+  : INTLITERAL | stackMapTableTypesContainer
   ;
 
 stackMapTableTypesContainer
@@ -588,71 +578,128 @@ stackMapTableTypeObject
 //*******************************/
 // Normal java types
 //*******************************/
-
 typeList
-  : aggregatedJavaType (COMMA aggregatedJavaType)* -> aggregatedJavaType+
+  : type (COMMA type)*                          -> type+
   ;
-    
-aggregatedJavaType
-  : (javaTypeIdentifier (DOT javaTypeIdentifier)*) (LBRACK RBRACK)*
+type
+  : combinedJavaType (LBRACK RBRACK)*           -> ^(combinedJavaType ^(ARRAYBRACKS (LBRACK RBRACK)*))
   ;
-  
-javaTypeIdentifier
-  : javaType genericList?
+combinedJavaType
+  : (primitiveType
+  | referenceType)
+  ;
+referenceType
+  : typeDeclSpecifier (DOT typeDeclSpecifier)*  -> typeDeclSpecifier+
+  ;
+typeDeclSpecifier
+  : typeName typeArguments?                     -> typeName ^(TYPEARGS typeArguments?)
+  ;
+typeName
+  : identifier
+  | QualifiedType
+  ;
+typeArguments
+  : LESST typeArgumentList LARGET               -> typeArgumentList
+  ;
+typeArgumentList 
+  : typeArgument (COMMA typeArgument)*          -> typeArgument+
+  ;
+typeArgument
+  : type
+  | wildcard
+  ;
+wildcard
+  : QUESTION wildcardBounds?                    -> ^(QUESTION wildcardBounds?)
+  ;
+wildcardBounds
+  : EXTENDS type                                -> ^(EXTENDS type)
+  | SUPER type                                  -> ^(SUPER type)
+  ;
+typeParameters
+  : LESST typeParameter (COMMA typeParameter)* LARGET -> typeParameter+
+  ;
+typeParameter
+  : identifier typeBound?                       -> ^(identifier typeBound?)
+  ;
+typeBound
+  : EXTENDS referenceType (AND referenceType)*  -> ^(EXTENDS referenceType+)
   ;
 
-//genericConstraintList
-//  : LESST genericConstraints (COMMA genericConstraints)* LARGET -> genericConstraints+
+
+//aggregatedJavaType
+//  : (javaTypeIdentifier (DOT javaTypeIdentifier)*) (LBRACK RBRACK)*
 //  ;
-
-genericConstraints
-  : identifier EXTENDS javaTypeIdentifier (AND javaTypeIdentifier)* -> ^(EXTENDS identifier javaTypeIdentifier+)
-  ;
-  
-genericList
-  : LESST (genericConstraint|aggregatedJavaType|genericConstraints) (COMMA (genericConstraint|aggregatedJavaType|genericConstraints))* LARGET
-  ;
-  
-genericConstraint
-  : QUESTION ((SUPER | EXTENDS ) aggregatedJavaType)? //XX -> two rules
-  ;
-
-javaTypeList
-  : javaType (COMMA javaType)* -> javaType+
-  ;
-
-javaType
-  : identifier | NORMALTYPE
-  ;
-  
+//  
+//javaTypeIdentifier
+//  : javaType genericList?
+//  ;
+//
+//genericConstraints
+//  : identifier EXTENDS javaTypeIdentifier (AND javaTypeIdentifier)* -> ^(EXTENDS identifier javaTypeIdentifier+)
+//  ;
+//  
+//genericList
+//  : LESST (genericConstraint|aggregatedJavaType|genericConstraints) (COMMA (genericConstraint|aggregatedJavaType|genericConstraints))* LARGET
+//  ;
+//  
+//genericConstraint
+//  : QUESTION ((SUPER | EXTENDS ) aggregatedJavaType)? //XX -> two rules
+//  ;
+//  
+//implementConstraint
+//  : QUESTION SUPER aggregatedJavaType
+//  ;
+//
+//javaTypeList
+//  : javaType (COMMA javaType)* -> javaType+
+//  ;
+//
+//javaType
+//  : identifier | NORMALTYPE
+//  ;
+//
+//typeList
+//  : aggregatedJavaType (COMMA aggregatedJavaType)* -> aggregatedJavaType+
+//  ;
+//  
 //*******************************/
 // Generic return Type description
 //*******************************/
-
 genericDescriptor
   : LESST genericReturnDescriptor (COMMA genericReturnDescriptor)* LARGET -> genericReturnDescriptor+
   ;
-
 genericReturnDescriptor
-  : identifier EXTENDS bytecodeObjectTypeList
+  : identifier EXTENDS bytecodeReferenceTypeList                ->  ^(EXTENDS identifier bytecodeReferenceTypeList)
+  ; 
+bytecodeReferenceTypeList
+  : bytecodeReferenceType (AND bytecodeReferenceType)*          -> bytecodeReferenceType+
   ;
- 
-bytecodeObjectTypeList
-  : bytecodeObjectType (AND bytecodeObjectType)* -> bytecodeObjectType+
+bytecodeReferenceType
+  : bytecodeTypeDeclSpecifier (DOT bytecodeTypeDeclSpecifier)*  -> bytecodeTypeDeclSpecifier+
   ;
- 
-bytecodeObjectType
-  : (INTERNALTYPE
-  | identifier
-  | genericBydecodeObjectType) (DOT bytecodeObjectType)?
+bytecodeTypeDeclSpecifier
+  : bytecodeTypeName bytecodeTypeArguments?                     -> bytecodeTypeName ^(TYPEARGS bytecodeTypeArguments?)
   ;
-
-genericBydecodeObjectType
-  : (INTERNALTYPE | IDENTIFIER) LESST (bytecodeObjectType (COMMA bytecodeObjectType)* | genericGenericReturnDescriptor) LARGET
+bytecodeTypeName
+  : identifier
+  | INTERNALTYPE
   ;
-
-genericGenericReturnDescriptor
-  : QUESTION ((SUPER | EXTENDS ) identifier)?
+bytecodeTypeArguments
+  : LESST bytecodeTypeArgumentList LARGET               -> bytecodeTypeArgumentList
+  ;
+bytecodeTypeArgumentList 
+  : bytecodeTypeArgument (COMMA bytecodeTypeArgument)*  -> bytecodeTypeArgument+
+  ;
+bytecodeTypeArgument
+  : bytecodeReferenceType
+  | bytecodeWildcard
+  ;
+bytecodeWildcard
+  : QUESTION bytecodeWildcardBounds?                    -> ^(QUESTION bytecodeWildcardBounds?)
+  ;
+bytecodeWildcardBounds
+  : EXTENDS bytecodeReferenceType                       -> ^(EXTENDS bytecodeReferenceType)
+  | SUPER bytecodeReferenceType                         -> ^(SUPER bytecodeReferenceType)
   ;
   
 //*******************************/
@@ -660,34 +707,44 @@ genericGenericReturnDescriptor
 //*******************************/
 
 bytecodeType
-  : bytecodeArrayType | bytecodeBaseType | simpleBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+  : bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+          -> // ?? ^(BYTECODETYPE value)
   ;
-
 bytecodeArrayType
-  : LBRACK (bytecodeType)
+  : LBRACK bytecodeType
+  ; 
+simpleBytecodeObjectType
+  : simpleBytecodeReferenceType (DOT simpleBytecodeReferenceType)* -> simpleBytecodeReferenceType+
   ;
- 
- bytecodeBaseType
-  : BaseType
+simpleBytecodeReferenceType
+  : simpleBytecodeReferenceTypeName simpleBytecodeTypeArguments?
   ;
- 
- simpleBytecodeObjectType
-  : (INTERNALTYPE
+simpleBytecodeReferenceTypeName
+  : INTERNALTYPE
   | IDENTIFIER
-  | genericObjectType) (DOT simpleBytecodeObjectType)?
   ;
-
-genericObjectType:  (INTERNALTYPE | IDENTIFIER) LESST ((MINUS|PLUS)? bytecodeType | STAR)+ LARGET;
-
+simpleBytecodeTypeArguments
+  : LESST simpleBytecodeTypeArgumentList LARGET               -> simpleBytecodeTypeArgumentList
+  ;
+simpleBytecodeTypeArgumentList
+  : simpleBytecodeTypeArgument (simpleBytecodeTypeArgument)*  -> simpleBytecodeTypeArgument+
+  ;
+simpleBytecodeTypeArgument
+  : bytecodeType
+  | MINUS bytecodeType
+  | PLUS bytecodeType
+  | STAR
+  ;
+  
 //*******************************/
 // Simple types
 //*******************************/
 
-identifier: IDENTIFIER | keywordAggregate;
+identifier: IDENTIFIER | BaseType | VoidType | Constant_type;
 
 keywordAggregate
-  : BaseType | VoidType | primitiveType | Constant_type
-  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER
+  : identifier | primitiveType
+  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER | NATIVE
   ;
 
 primitiveType
@@ -783,7 +840,7 @@ ABSTRACT  : 'abstract'  ;   PUBLIC        : 'public'      ;   FINAL     : 'final
 STATIC    : 'static'    ;   PRIVATE       : 'private'     ;   PROTECTED : 'protected' ;
 INTERFACE : 'interface' ;   SYNCHRONIZED  : 'synchronized';   NATIVE    : 'native'    ;
 VOLATILE  : 'volatile'  ;   TRANSIENT     : 'transient'   ;   CLASS     : 'class'     ;
-THROWS    : 'throws'    ;   SUPER         : 'super'       ;
+THROWS    : 'throws'    ;   SUPER         : 'super'       ;   STRICTFP  : 'strictfp'  ;
 
 BOOLEANLITERAL  : TRUE | FALSE;
 
@@ -835,7 +892,7 @@ CPINDEX
   : HASH INTLITERAL;
 IDENTIFIER  
   : (Letter|'_'|'$') (Letter|IntDigit|'_'|'$'|'-')*;
-NORMALTYPE
+QualifiedType
   : IDENTIFIER (DOT (IDENTIFIER | DOT DOT))+;
 INTERNALTYPE
   : IDENTIFIER (SLASH IDENTIFIER)+ (DOT IntegerNumber)?;
@@ -903,10 +960,11 @@ EscapeSequence
     ;
 fragment
 CharEscapeSequence
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\'|'\'')
+    :   
+        '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\'|'\'')
     |   CharUnicodeEscapeSequence
     |   OctalEscape
-    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' )
+		|   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' )
     ;
 fragment
 CharUnicodeEscapeSequence
