@@ -1,7 +1,8 @@
-tree grammar TemplateTestWalker;
+grammar TemplateTestWalker;
+//tree grammar TemplateTestWalker;
 
 options {
-  tokenVocab=TemplateTest;
+//  tokenVocab=TemplateTest;
   ASTLabelType=CommonTree;
 }
 
