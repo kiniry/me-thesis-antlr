@@ -37,6 +37,7 @@ public class TemplateTestRunner {
 		} catch (RecognitionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	}
+		}	
+	}
 
 }
