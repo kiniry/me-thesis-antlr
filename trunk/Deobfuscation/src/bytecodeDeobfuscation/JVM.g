@@ -246,13 +246,15 @@ contant_pool_line
 //*******************************/
   
 classBody
-  :
-  ( 
-    (methodDefinition) => methodDefinition
+  : classBodyEntryDecl+
+  ;
+  
+classBodyEntryDecl
+  : (methodDefinition) => methodDefinition
   | (ctorDefinition) => ctorDefinition
   | (fieldDefinition) => fieldDefinition
   | staticCtorDefinition
-  )+
+  ;
 //  ( 
 ////    fieldDefinition
 ////    |
@@ -261,7 +263,6 @@ classBody
 //  | fieldDefinition
 //  | staticCtorDefinition
 //  )+
-  ;
 
 //*******************************/
 //        Field definition       /
@@ -485,7 +486,7 @@ exceptionTableEntry
 exceptionTableEntryValue
   : primitiveType
   | IDENTIFIER
-  | cta=CONSTANT_TYPE_ASSIGNABLE
+  | CONSTANT_TYPE_ASSIGNABLE
   ;
   
 //*******************************/
@@ -515,8 +516,8 @@ localVariableTableLine
 
 localVariableTableLineIdentifier
   :
-  ( keywordAggregate//-> IDENTIFIER what would this do??
-  | id2=STATIC      -> IDENTIFIER[$id2]
+  ( id1=keywordAggregate  -> IDENTIFIER[id1.getText()]//-> IDENTIFIER what would this do??
+  | id2=STATIC            -> IDENTIFIER[$id2]
   )
   ;
   
@@ -551,11 +552,11 @@ stackMapTableEntryValue
   ;
 
 stackMapTableTypesContainer
-  : LBRACK stackMapTableTypes? RBRACK
+  : LBRACK stackMapTableTypes RBRACK              -> stackMapTableTypes
   ;
   
 stackMapTableTypes
-  : stackMapTableType (COMMA stackMapTableType)* -> stackMapTableType+
+  : stackMapTableType? (COMMA stackMapTableType)* -> stackMapTableType*
   ;
 
 stackMapTableType
@@ -625,43 +626,6 @@ typeBound
   : EXTENDS referenceType (AND referenceType)*  -> ^(EXTENDS referenceType+)
   ;
 
-
-//aggregatedJavaType
-//  : (javaTypeIdentifier (DOT javaTypeIdentifier)*) (LBRACK RBRACK)*
-//  ;
-//  
-//javaTypeIdentifier
-//  : javaType genericList?
-//  ;
-//
-//genericConstraints
-//  : identifier EXTENDS javaTypeIdentifier (AND javaTypeIdentifier)* -> ^(EXTENDS identifier javaTypeIdentifier+)
-//  ;
-//  
-//genericList
-//  : LESST (genericConstraint|aggregatedJavaType|genericConstraints) (COMMA (genericConstraint|aggregatedJavaType|genericConstraints))* LARGET
-//  ;
-//  
-//genericConstraint
-//  : QUESTION ((SUPER | EXTENDS ) aggregatedJavaType)? //XX -> two rules
-//  ;
-//  
-//implementConstraint
-//  : QUESTION SUPER aggregatedJavaType
-//  ;
-//
-//javaTypeList
-//  : javaType (COMMA javaType)* -> javaType+
-//  ;
-//
-//javaType
-//  : identifier | NORMALTYPE
-//  ;
-//
-//typeList
-//  : aggregatedJavaType (COMMA aggregatedJavaType)* -> aggregatedJavaType+
-//  ;
-//  
 //*******************************/
 // Generic return Type description
 //*******************************/
@@ -681,7 +645,7 @@ bytecodeTypeDeclSpecifier
   : bytecodeTypeName bytecodeTypeArguments?                     -> bytecodeTypeName ^(TYPEARGS bytecodeTypeArguments?)
   ;
 bytecodeTypeName
-  : identifier
+  : id=identifier                                               -> INTERNALTYPE[id.getText()]
   | INTERNALTYPE
   ;
 bytecodeTypeArguments
@@ -708,7 +672,6 @@ bytecodeWildcardBounds
 
 bytecodeType
   : bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
-          -> // ?? ^(BYTECODETYPE value)
   ;
 bytecodeArrayType
   : LBRACK bytecodeType
@@ -717,11 +680,11 @@ simpleBytecodeObjectType
   : simpleBytecodeReferenceType (DOT simpleBytecodeReferenceType)* -> simpleBytecodeReferenceType+
   ;
 simpleBytecodeReferenceType
-  : simpleBytecodeReferenceTypeName simpleBytecodeTypeArguments?
+  : simpleBytecodeReferenceTypeName simpleBytecodeTypeArguments?  -> simpleBytecodeReferenceTypeName ^(TYPEARGS simpleBytecodeTypeArguments?)
   ;
 simpleBytecodeReferenceTypeName
   : INTERNALTYPE
-  | IDENTIFIER
+  | id=IDENTIFIER                                                -> INTERNALTYPE[id.getText()]
   ;
 simpleBytecodeTypeArguments
   : LESST simpleBytecodeTypeArgumentList LARGET               -> simpleBytecodeTypeArgumentList
