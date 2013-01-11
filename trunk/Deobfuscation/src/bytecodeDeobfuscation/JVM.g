@@ -21,6 +21,8 @@ OPERAND;
 TPARAMETERS;
 TYPEARGS;
 ARRAYBRACKS;
+INFODATA1; INFODATA2;
+STANDINTOKEN;
 }
 
 @header {
@@ -150,15 +152,12 @@ innerclass_info
   
 innerclass_info_line
   :  method_visual_modifier? method_modifier* innerclass_info_data SEMI?
-      -> ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) innerclass_info_data
+      -> ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) innerclass_info_data
   ;
 
 innerclass_info_data
-  : CPINDEX (
-    ( ASSIGN CPINDEX (IDENTIFIER CPINDEX)?) -> ^(CPINDEX ^(ASSIGN CPINDEX (IDENTIFIER CPINDEX)?))
-    | IDENTIFIER CPINDEX                    -> ^(CPINDEX IDENTIFIER CPINDEX)
-    |                                       -> ^(CPINDEX)
-    )                                       //-> ^(CPINDEX ^(INFODATA1 (ASSIGN CPINDEX)?) ^(INFODATA2 (IDENTIFIER CPINDEX)?))
+  : CPINDEX (ASSIGN CPINDEX)? (IDENTIFIER CPINDEX)?
+                                           -> ^(CPINDEX ^(INFODATA1 (ASSIGN CPINDEX)?) ^(INFODATA2 (IDENTIFIER CPINDEX)?))
   ;
     
 minor_major_version_info
@@ -195,9 +194,8 @@ annotationAssign
   : CPINDEX ASSIGN annotationValue -> ^(ASSIGN CPINDEX annotationValue)
   ;
 annotationValue
-  : ( brackedAnnotationAssign 
+  : brackedAnnotationAssign 
   | AnnotationAssign
-  ) -> ^(BANNOTATION brackedAnnotationAssign? AnnotationAssign?)
   ;
 brackedAnnotationAssign
   : LBRACK brackedAnnotationAssignList? RBRACK                            -> brackedAnnotationAssignList?
@@ -320,7 +318,7 @@ ctorDefinition
   : field_visual_modifier? genericDescriptor? typeName arguments throwClause? SEMI 
     methodInfo
     body
-    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER field_visual_modifier)? ^(GENERICDESC genericDescriptor)? ^(UNITNAME typeName) arguments ^(THROWCLAUSE throwClause?)
+    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER field_visual_modifier?) ^(GENERICDESC genericDescriptor?) ^(UNITNAME typeName) arguments ^(THROWCLAUSE throwClause?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body)
                         ^(UNITATTR afterMethodInfo?)
@@ -335,7 +333,7 @@ methodDefinition
   : method_visual_modifier? method_modifier* genericDescriptor? type keywordAggregate arguments throwClauseMethod? SEMI 
     methodInfo
     body?
-    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
+    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)
@@ -347,7 +345,7 @@ methodInfo
   ;
 
 afterMethodInfo
-  : (Deprecated  methodDeprecatedInfo   -> ^(Deprecated  methodDeprecatedInfo)
+  : (Deprecated  BOOLEANLITERAL   -> ^(Deprecated  BOOLEANLITERAL)
   | Signature CPINDEX                   -> ^(Signature CPINDEX)
   | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
@@ -363,15 +361,11 @@ annotationDefault
   ;
   
 methodSignatureInfo
-  : Signature LPAREN bytecodeType* RPAREN returnDescriptor  -> ^(Signature ^(PARAMDESC bytecodeType)* ^(RETDESC returnDescriptor))
+  : Signature LPAREN bytecodeType* RPAREN returnDescriptor  -> ^(Signature ^(PARAMDESC bytecodeType*) ^(RETDESC returnDescriptor))
   ;
 
 returnDescriptor
   : bytecodeType | VoidType
-  ;
-  
-methodDeprecatedInfo
-  : BOOLEANLITERAL
   ;
     
 method_modifier
@@ -395,7 +389,7 @@ body
     (Synthetic BOOLEANLITERAL)?
     Code 
     codeBlock
-    bodyExtension* -> ^(Synthetic BOOLEANLITERAL)? ^(Code codeBlock) bodyExtension*
+    bodyExtension* -> (Synthetic BOOLEANLITERAL)? ^(Code codeBlock) bodyExtension*
   ;
 
 bodyExtension
@@ -476,7 +470,7 @@ throwType
 
 exceptionTable
   : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
-    exceptionTableEntry+    -> ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry)+
+    exceptionTableEntry+    -> ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry+)
   ;
 
 exceptionTableEntry
@@ -507,7 +501,7 @@ lineNumberTableLine
   
 localVariableTable
   : IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER 
-    localVariableTableLine*           -> ^(LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(LVENTRY localVariableTableLine)*
+    localVariableTableLine*           -> ^(LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(LVENTRY localVariableTableLine*)
   ;
   
 localVariableTableLine
@@ -516,7 +510,7 @@ localVariableTableLine
 
 localVariableTableLineIdentifier
   :
-  ( id1=keywordAggregate  -> IDENTIFIER[id1.getText()]//-> IDENTIFIER what would this do??
+  ( id1=keywordAggregate  -> IDENTIFIER[id1.getTree().toString()]//-> IDENTIFIER what would this do??
   | id2=STATIC            -> IDENTIFIER[$id2]
   )
   ;
@@ -527,7 +521,7 @@ localVariableTableLineIdentifier
 
 stackMapTypeTable
   : IDENTIFIER ASSIGN INTLITERAL 
-    stackMapTypeTableEntry+             ->  ^(SMTHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMTENTRY stackMapTypeTableEntry)+
+    stackMapTypeTableEntry+             ->  ^(SMTHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMTENTRY stackMapTypeTableEntry+)
   ;
 
 stackMapTypeTableEntry
@@ -590,13 +584,13 @@ combinedJavaType
   | referenceType)
   ;
 referenceType
-  : typeDeclSpecifier (DOT typeDeclSpecifier)*  -> typeDeclSpecifier+
+  : typeDeclSpecifier (DOT typeDeclSpecifier)*  -> ^(UNITNAME typeDeclSpecifier+)
   ;
 typeDeclSpecifier
-  : typeName typeArguments?                     -> typeName ^(TYPEARGS typeArguments?)
+  : typeName typeArguments?                     -> ^(typeName ^(TYPEARGS typeArguments?))
   ;
 typeName
-  : identifier
+  : id=identifier                               -> QualifiedType[id.getTree().toString()] 
   | QualifiedType
   ;
 typeArguments
@@ -645,7 +639,7 @@ bytecodeTypeDeclSpecifier
   : bytecodeTypeName bytecodeTypeArguments?                     -> bytecodeTypeName ^(TYPEARGS bytecodeTypeArguments?)
   ;
 bytecodeTypeName
-  : id=identifier                                               -> INTERNALTYPE[id.getText()]
+  : id=identifier                                               -> INTERNALTYPE[id.getTree().toString()]
   | INTERNALTYPE
   ;
 bytecodeTypeArguments
@@ -684,7 +678,7 @@ simpleBytecodeReferenceType
   ;
 simpleBytecodeReferenceTypeName
   : INTERNALTYPE
-  | id=IDENTIFIER                                                -> INTERNALTYPE[id.getText()]
+  | id=IDENTIFIER                                                -> INTERNALTYPE[$id.getText()]
   ;
 simpleBytecodeTypeArguments
   : LESST simpleBytecodeTypeArgumentList LARGET               -> simpleBytecodeTypeArgumentList
@@ -927,7 +921,7 @@ CharEscapeSequence
         '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\\'|'\'')
     |   CharUnicodeEscapeSequence
     |   OctalEscape
-		|   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' )
+    |   ~( '\u000D' | '\u000A' | '\u2028' | '\u2029' )
     ;
 fragment
 CharUnicodeEscapeSequence

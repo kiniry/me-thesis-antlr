@@ -12,10 +12,6 @@ options {
   package bytecodeDeobfuscation;
 }
 
-@lexer::header {
-  package bytecodeDeobfuscation;
-}
-
 //*******************************/
 //  Class files 
 //*******************************/
@@ -23,7 +19,9 @@ options {
 program : class_file*;
 
 class_file
-  : ^(CLASSFILE ^(CFHEADER class_file_header) classDefinition);
+  : ^(CLASSFILE ^(CFHEADER class_file_header) classDefinition
+  )
+  ;
   
 class_file_header
   : (class_file_info
@@ -53,7 +51,7 @@ compiled_file_info
 //*******************************/
 
 classDefinition
-  : ^(CLASSDECL ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) typeName ^(TPARAMETERS typeParameters?) ^(CEXTENDS typeList?) ^(CIMPLEMENTS typeList?)
+  : ^(CLASSDECL  ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) typeName ^(TPARAMETERS typeParameters?) ^(CEXTENDS typeList?) ^(CIMPLEMENTS typeList?)
                 ^(UNITHEADER type_info)
                 ^(CPOOL constant_pool)
                 ^(UNITBODY classBody?)
@@ -71,7 +69,7 @@ class_modifier
 //*******************************/
 //  type header
 //*******************************/
-  
+
 type_info
   : (sourcefile_info
   | minor_major_version_info
@@ -121,15 +119,12 @@ innerclass_info
   ;
   
 innerclass_info_line
-  :  ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) innerclass_info_data
+  :  ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) innerclass_info_data
   ;
 
 innerclass_info_data
-  : ( ^(CPINDEX ^(ASSIGN CPINDEX (IDENTIFIER CPINDEX)?))
-    | ^(CPINDEX IDENTIFIER CPINDEX)
-    | ^(CPINDEX)
-    )                                       //-> ^(CPINDEX ^(INFODATA1 (ASSIGN CPINDEX)?) ^(INFODATA2 (IDENTIFIER CPINDEX)?))
-  ;//??
+  : ^(CPINDEX ^(INFODATA1 (ASSIGN CPINDEX)?) ^(INFODATA2 (IDENTIFIER CPINDEX)?))
+  ;
     
 minor_major_version_info
   : ^(IDENTIFIER IDENTIFIER COLON INTLITERAL)
@@ -165,7 +160,8 @@ annotationAssign
   : ^(ASSIGN CPINDEX annotationValue)
   ;
 annotationValue
-  : ^(BANNOTATION brackedAnnotationAssign? AnnotationAssign?)
+  : brackedAnnotationAssign 
+  | AnnotationAssign
   ;
 brackedAnnotationAssign
   : brackedAnnotationAssignList?
@@ -213,9 +209,11 @@ classBody
   ;
   
 classBodyEntryDecl
-  : methodDefinition
-  | ctorDefinition
-  | fieldDefinition
+  : 
+    //methodDefinition
+//  | ctorDefinition
+  //| 
+  fieldDefinition
   | staticCtorDefinition
   ;
 
@@ -257,15 +255,16 @@ field_modifier
 //*******************************/
 
 staticCtorDefinition
-  : ^(STATICCTORDECL ^(VMODIFIER field_visual_modifier?) ^(UNITHEADER methodInfo) ^(UNITBODY body))
+  : ^(STATICCTORDECL ^(VMODIFIER field_visual_modifier?) ^(UNITHEADER methodInfo) ^(UNITBODY body)
+  )
   ;
-  
+
 //*******************************/
 //        Ctor definition        /
 //*******************************/
 
 ctorDefinition
-  : ^(CTORDECL ^(VMODIFIER field_visual_modifier)? ^(GENERICDESC genericDescriptor)? ^(UNITNAME typeName) arguments ^(THROWCLAUSE throwClause?)
+  : ^(CTORDECL ^(VMODIFIER field_visual_modifier?) ^(GENERICDESC genericDescriptor?) ^(UNITNAME typeName) arguments ^(THROWCLAUSE throwClause?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body)
                         ^(UNITATTR afterMethodInfo?)
@@ -277,7 +276,7 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : ^(CTORDECL ^(VMODIFIER method_visual_modifier)? ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
+  : ^(CTORDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)
@@ -285,11 +284,11 @@ methodDefinition
   ;
 
 methodInfo
-  : methodSignatureInfo flags
+  : ^(STANDINTOKEN methodSignatureInfo flags)
   ;
 
 afterMethodInfo
-  : ^(Deprecated  methodDeprecatedInfo)
+  : (^(Deprecated  BOOLEANLITERAL)
   | ^(Signature CPINDEX)
   | runtimeInvisibleParameterAnnotations
   | runtimeVisibleAnnotations_info
@@ -305,17 +304,13 @@ annotationDefault
   ;
   
 methodSignatureInfo
-  : ^(Signature ^(PARAMDESC bytecodeType)* ^(RETDESC returnDescriptor))
+  : ^(Signature ^(PARAMDESC bytecodeType*) ^(RETDESC returnDescriptor))
   ;
 
 returnDescriptor
   : bytecodeType | VoidType
   ;
-  
-methodDeprecatedInfo
-  : BOOLEANLITERAL
-  ;
-    
+
 method_modifier
   : ABSTRACT | FINAL  | STATIC  | SYNCHRONIZED  | NATIVE | STRICTFP
   ;
@@ -333,7 +328,7 @@ arguments//(DOT DOT DOT)? zero or more of the last object
 //*******************************/
   
 body  
-  : ^(Synthetic BOOLEANLITERAL)? ^(Code codeBlock) bodyExtension*
+  : (Synthetic BOOLEANLITERAL?) ^(Code codeBlock) bodyExtension*
   ;
 
 bodyExtension
@@ -406,7 +401,7 @@ throwType
   ;
 
 exceptionTable
-  : ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry)+
+  : ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry+)
   ;
 
 exceptionTableEntry
@@ -435,7 +430,7 @@ lineNumberTableLine
 //*******************************/
   
 localVariableTable
-  : ^(LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(LVENTRY localVariableTableLine)*
+  : ^(LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(LVENTRY localVariableTableLine*)
   ;
   
 localVariableTableLine
@@ -451,7 +446,7 @@ localVariableTableLineIdentifier
 //*******************************/
 
 stackMapTypeTable
-  : ^(SMTHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMTENTRY stackMapTypeTableEntry)+
+  : ^(SMTHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMTENTRY stackMapTypeTableEntry+)
   ;
 
 stackMapTypeTableEntry
@@ -465,7 +460,7 @@ stackMapTypeTableEntry
 //*******************************/
 
 stackMapTable
-  : ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry)+
+  : ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry+)
   ;
 stackMapTableEntry
   : ^(ASSIGN IDENTIFIER stackMapTableEntryValue)
@@ -507,14 +502,13 @@ combinedJavaType
   | referenceType
   ;
 referenceType
-  : typeDeclSpecifier+
+  : ^(UNITNAME typeDeclSpecifier+)
   ;
 typeDeclSpecifier
-  : typeName ^(TYPEARGS typeArguments?)
+  : ^(typeName ^(TYPEARGS typeArguments?))
   ;
 typeName
-  : identifier
-  | QualifiedType
+  : QualifiedType
   ;
 typeArguments
   : typeArgumentList
@@ -580,7 +574,7 @@ bytecodeWildcardBounds
   : ^(EXTENDS bytecodeReferenceType)
   | ^(SUPER bytecodeReferenceType)
   ;
-  
+
 //*******************************/
 // Bytecode Types
 //*******************************/
@@ -612,7 +606,7 @@ simpleBytecodeTypeArgument
   | PLUS bytecodeType
   | STAR
   ;
-  
+
 //*******************************/
 // Simple types
 //*******************************/
