@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g 2013-01-11 04:03:25
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g 2013-01-12 13:26:28
 
   package bytecodeDeobfuscation;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class JVMWalker extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ABSTRACT", "AND", "ARRAYBRACKS", "ASSIGN", "AnnotationAssign", "AnnotationDefault", "BANNOTATION", "BOOLEAN", "BOOLEANLITERAL", "BYTE", "BaseType", "CEXTENDS", "CFHEADER", "CHAR", "CHARLITERAL", "CIMPLEMENTS", "CLASS", "CLASSDECL", "CLASSFILE", "COLON", "COMMA", "COMMENT", "CONSTANT_TYPE_ASSIGNABLE", "CPINDEX", "CPOOL", "CTORDECL", "CharEscapeSequence", "CharUnicodeEscapeSequence", "Code", "Constant", "Constant_type", "DATE", "DEFAULT", "DOT", "DOUBLE", "DOUBLELITERAL", "DefaultValue", "Deprecated", "DoubleSuffix", "ETENTRY", "ETHEADER", "EXTENDS", "EnclosingMethod", "EscapeSequence", "ExceptionTable", "Exceptions", "Exponent", "FALSE", "FIELDDECL", "FIELDVALUE", "FINAL", "FLOAT", "FLOATLITERAL", "Flag", "FloatSuffix", "GENERICDESC", "HASH", "HexDigit", "HexDigits", "HexPrefix", "IDENTIFIER", "IMPLEMENTS", "INFODATA1", "INFODATA2", "INSTRUCTION", "INT", "INTERFACE", "INTERNALTYPE", "INTLITERAL", "InnerClasses", "IntDigit", "IntegerNumber", "LARGET", "LBRACE", "LBRACK", "LESST", "LONG", "LONGLITERAL", "LPAREN", "LVENTRY", "LVHEADER", "Letter", "LineNumberTable", "LocalVariableTable", "LocalVariableTypeTable", "LongSuffix", "MINUS", "MODIFIER", "Marker", "NATIVE", "NL", "NonIntegerNumber", "OPERAND", "Octal", "OctalEscape", "PARAMDESC", "PLUS", "PRIVATE", "PROTECTED", "PUBLIC", "QUESTION", "QUOTE", "QualifiedType", "RBRACE", "RBRACK", "RETDESC", "RETVALUE", "RPAREN", "RuntimeInvisibleAnnotations", "RuntimeInvisibleParameterAnnotations", "RuntimeVisibleAnnotations", "RuntimeVisibleParameterAnnotations", "SEMI", "SHORT", "SLASH", "SMENTRY", "SMHEADER", "SMTENTRY", "SMTHEADER", "STANDINTOKEN", "STAR", "STATIC", "STATICCTORDECL", "STRICTFP", "STRINGLITERAL", "SUPER", "SWITCH", "SYNCHRONIZED", "Scala", "ScalaSig", "Signature", "SourceFile", "StackMap", "StackMapTable", "Synthetic", "THROWCLAUSE", "THROWS", "TPARAMETERS", "TRANSIENT", "TRUE", "TYPEARGS", "Throws", "UNDERSCORE", "UNITARGUMENTS", "UNITATTR", "UNITBODY", "UNITHEADER", "UNITNAME", "UnicodeEscapeSequence", "VARINFO", "VMODIFIER", "VOID", "VOLATILE", "VoidType", "WINDOWSPATH", "WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ABSTRACT", "AND", "ARRAYBRACKS", "ASSIGN", "AnnotationAssign", "AnnotationDefault", "BANNOTATION", "BOOLEAN", "BOOLEANLITERAL", "BYTE", "BaseType", "CEXTENDS", "CFHEADER", "CHAR", "CHARLITERAL", "CIMPLEMENTS", "CLASS", "CLASSDECL", "CLASSFILE", "COLON", "COMMA", "COMMENT", "CONSTANT_TYPE_ASSIGNABLE", "CPINDEX", "CPOOL", "CTORDECL", "CharEscapeSequence", "CharUnicodeEscapeSequence", "Code", "Constant", "Constant_type", "DATE", "DEFAULT", "DOT", "DOUBLE", "DOUBLELITERAL", "DefaultValue", "Deprecated", "DoubleSuffix", "ETENTRY", "ETHEADER", "EXTENDS", "EnclosingMethod", "EscapeSequence", "ExceptionTable", "Exceptions", "Exponent", "FALSE", "FIELDDECL", "FIELDVALUE", "FINAL", "FLOAT", "FLOATLITERAL", "Flag", "FloatSuffix", "GENERICDESC", "HASH", "HexDigit", "HexDigits", "HexPrefix", "IDENTIFIER", "IMPLEMENTS", "INFODATA1", "INFODATA2", "INSTRUCTION", "INT", "INTERFACE", "INTERNALTYPE", "INTLITERAL", "InnerClasses", "IntDigit", "IntegerNumber", "LARGET", "LBRACE", "LBRACK", "LESST", "LONG", "LONGLITERAL", "LPAREN", "LVENTRY", "LVHEADER", "Letter", "LineNumberTable", "LocalVariableTable", "LocalVariableTypeTable", "LongSuffix", "METHODDECL", "MINUS", "MODIFIER", "Marker", "NATIVE", "NL", "NonIntegerNumber", "OPERAND", "Octal", "OctalEscape", "PARAMDESC", "PLUS", "PRIVATE", "PROTECTED", "PUBLIC", "QUESTION", "QUOTE", "QualifiedType", "RBRACE", "RBRACK", "RETDESC", "RETVALUE", "RPAREN", "RuntimeInvisibleAnnotations", "RuntimeInvisibleParameterAnnotations", "RuntimeVisibleAnnotations", "RuntimeVisibleParameterAnnotations", "SEMI", "SHORT", "SLASH", "SMENTRY", "SMHEADER", "SMTENTRY", "SMTHEADER", "STANDINTOKEN", "STAR", "STATIC", "STATICCTORDECL", "STRICTFP", "STRINGLITERAL", "SUPER", "SWITCH", "SYNCHRONIZED", "Scala", "ScalaSig", "Signature", "SourceFile", "StackMap", "StackMapTable", "Synthetic", "THROWCLAUSE", "THROWS", "TPARAMETERS", "TRANSIENT", "TRUE", "TYPEARGS", "Throws", "UNDERSCORE", "UNITARGUMENTS", "UNITATTR", "UNITBODY", "UNITHEADER", "UNITNAME", "UnicodeEscapeSequence", "VARINFO", "VMODIFIER", "VOID", "VOLATILE", "VoidType", "WINDOWSPATH", "WS"
     };
 
     public static final int EOF=-1;
@@ -103,76 +103,77 @@ public class JVMWalker extends TreeParser {
     public static final int LocalVariableTable=87;
     public static final int LocalVariableTypeTable=88;
     public static final int LongSuffix=89;
-    public static final int MINUS=90;
-    public static final int MODIFIER=91;
-    public static final int Marker=92;
-    public static final int NATIVE=93;
-    public static final int NL=94;
-    public static final int NonIntegerNumber=95;
-    public static final int OPERAND=96;
-    public static final int Octal=97;
-    public static final int OctalEscape=98;
-    public static final int PARAMDESC=99;
-    public static final int PLUS=100;
-    public static final int PRIVATE=101;
-    public static final int PROTECTED=102;
-    public static final int PUBLIC=103;
-    public static final int QUESTION=104;
-    public static final int QUOTE=105;
-    public static final int QualifiedType=106;
-    public static final int RBRACE=107;
-    public static final int RBRACK=108;
-    public static final int RETDESC=109;
-    public static final int RETVALUE=110;
-    public static final int RPAREN=111;
-    public static final int RuntimeInvisibleAnnotations=112;
-    public static final int RuntimeInvisibleParameterAnnotations=113;
-    public static final int RuntimeVisibleAnnotations=114;
-    public static final int RuntimeVisibleParameterAnnotations=115;
-    public static final int SEMI=116;
-    public static final int SHORT=117;
-    public static final int SLASH=118;
-    public static final int SMENTRY=119;
-    public static final int SMHEADER=120;
-    public static final int SMTENTRY=121;
-    public static final int SMTHEADER=122;
-    public static final int STANDINTOKEN=123;
-    public static final int STAR=124;
-    public static final int STATIC=125;
-    public static final int STATICCTORDECL=126;
-    public static final int STRICTFP=127;
-    public static final int STRINGLITERAL=128;
-    public static final int SUPER=129;
-    public static final int SWITCH=130;
-    public static final int SYNCHRONIZED=131;
-    public static final int Scala=132;
-    public static final int ScalaSig=133;
-    public static final int Signature=134;
-    public static final int SourceFile=135;
-    public static final int StackMap=136;
-    public static final int StackMapTable=137;
-    public static final int Synthetic=138;
-    public static final int THROWCLAUSE=139;
-    public static final int THROWS=140;
-    public static final int TPARAMETERS=141;
-    public static final int TRANSIENT=142;
-    public static final int TRUE=143;
-    public static final int TYPEARGS=144;
-    public static final int Throws=145;
-    public static final int UNDERSCORE=146;
-    public static final int UNITARGUMENTS=147;
-    public static final int UNITATTR=148;
-    public static final int UNITBODY=149;
-    public static final int UNITHEADER=150;
-    public static final int UNITNAME=151;
-    public static final int UnicodeEscapeSequence=152;
-    public static final int VARINFO=153;
-    public static final int VMODIFIER=154;
-    public static final int VOID=155;
-    public static final int VOLATILE=156;
-    public static final int VoidType=157;
-    public static final int WINDOWSPATH=158;
-    public static final int WS=159;
+    public static final int METHODDECL=90;
+    public static final int MINUS=91;
+    public static final int MODIFIER=92;
+    public static final int Marker=93;
+    public static final int NATIVE=94;
+    public static final int NL=95;
+    public static final int NonIntegerNumber=96;
+    public static final int OPERAND=97;
+    public static final int Octal=98;
+    public static final int OctalEscape=99;
+    public static final int PARAMDESC=100;
+    public static final int PLUS=101;
+    public static final int PRIVATE=102;
+    public static final int PROTECTED=103;
+    public static final int PUBLIC=104;
+    public static final int QUESTION=105;
+    public static final int QUOTE=106;
+    public static final int QualifiedType=107;
+    public static final int RBRACE=108;
+    public static final int RBRACK=109;
+    public static final int RETDESC=110;
+    public static final int RETVALUE=111;
+    public static final int RPAREN=112;
+    public static final int RuntimeInvisibleAnnotations=113;
+    public static final int RuntimeInvisibleParameterAnnotations=114;
+    public static final int RuntimeVisibleAnnotations=115;
+    public static final int RuntimeVisibleParameterAnnotations=116;
+    public static final int SEMI=117;
+    public static final int SHORT=118;
+    public static final int SLASH=119;
+    public static final int SMENTRY=120;
+    public static final int SMHEADER=121;
+    public static final int SMTENTRY=122;
+    public static final int SMTHEADER=123;
+    public static final int STANDINTOKEN=124;
+    public static final int STAR=125;
+    public static final int STATIC=126;
+    public static final int STATICCTORDECL=127;
+    public static final int STRICTFP=128;
+    public static final int STRINGLITERAL=129;
+    public static final int SUPER=130;
+    public static final int SWITCH=131;
+    public static final int SYNCHRONIZED=132;
+    public static final int Scala=133;
+    public static final int ScalaSig=134;
+    public static final int Signature=135;
+    public static final int SourceFile=136;
+    public static final int StackMap=137;
+    public static final int StackMapTable=138;
+    public static final int Synthetic=139;
+    public static final int THROWCLAUSE=140;
+    public static final int THROWS=141;
+    public static final int TPARAMETERS=142;
+    public static final int TRANSIENT=143;
+    public static final int TRUE=144;
+    public static final int TYPEARGS=145;
+    public static final int Throws=146;
+    public static final int UNDERSCORE=147;
+    public static final int UNITARGUMENTS=148;
+    public static final int UNITATTR=149;
+    public static final int UNITBODY=150;
+    public static final int UNITHEADER=151;
+    public static final int UNITNAME=152;
+    public static final int UnicodeEscapeSequence=153;
+    public static final int VARINFO=154;
+    public static final int VMODIFIER=155;
+    public static final int VOID=156;
+    public static final int VOLATILE=157;
+    public static final int VoidType=158;
+    public static final int WINDOWSPATH=159;
+    public static final int WS=160;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -930,7 +931,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "classDefinition"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:53:1: classDefinition : ^( CLASSDECL ^( VMODIFIER ( class_visual_modifier )? ) ^( MODIFIER ( class_modifier )* ) typeName ^( TPARAMETERS ( typeParameters )? ) ^( CEXTENDS ( typeList )? ) ^( CIMPLEMENTS ( typeList )? ) ^( UNITHEADER type_info ) ^( CPOOL constant_pool ) ^( UNITBODY ( classBody )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:53:1: classDefinition : ^( CLASSDECL ^( VMODIFIER ( class_visual_modifier )? ) ^( MODIFIER ( class_modifier )* ) t= typeName ^( TPARAMETERS ( typeParameters )? ) ^( CEXTENDS ( typeList )? ) ^( CIMPLEMENTS ( typeList )? ) ^( UNITHEADER type_info ) ^( CPOOL constant_pool ) ^( UNITBODY ( classBody )? ) ) ;
     public final JVMWalker.classDefinition_return classDefinition() throws RecognitionException {
         JVMWalker.classDefinition_return retval = new JVMWalker.classDefinition_return();
         retval.start = input.LT(1);
@@ -944,44 +945,44 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree CLASSDECL24=null;
         CommonTree VMODIFIER25=null;
         CommonTree MODIFIER27=null;
-        CommonTree TPARAMETERS30=null;
-        CommonTree CEXTENDS32=null;
-        CommonTree CIMPLEMENTS34=null;
-        CommonTree UNITHEADER36=null;
-        CommonTree CPOOL38=null;
-        CommonTree UNITBODY40=null;
+        CommonTree TPARAMETERS29=null;
+        CommonTree CEXTENDS31=null;
+        CommonTree CIMPLEMENTS33=null;
+        CommonTree UNITHEADER35=null;
+        CommonTree CPOOL37=null;
+        CommonTree UNITBODY39=null;
+        JVMWalker.typeName_return t =null;
+
         JVMWalker.class_visual_modifier_return class_visual_modifier26 =null;
 
         JVMWalker.class_modifier_return class_modifier28 =null;
 
-        JVMWalker.typeName_return typeName29 =null;
+        JVMWalker.typeParameters_return typeParameters30 =null;
 
-        JVMWalker.typeParameters_return typeParameters31 =null;
+        JVMWalker.typeList_return typeList32 =null;
 
-        JVMWalker.typeList_return typeList33 =null;
+        JVMWalker.typeList_return typeList34 =null;
 
-        JVMWalker.typeList_return typeList35 =null;
+        JVMWalker.type_info_return type_info36 =null;
 
-        JVMWalker.type_info_return type_info37 =null;
+        JVMWalker.constant_pool_return constant_pool38 =null;
 
-        JVMWalker.constant_pool_return constant_pool39 =null;
-
-        JVMWalker.classBody_return classBody41 =null;
+        JVMWalker.classBody_return classBody40 =null;
 
 
         CommonTree CLASSDECL24_tree=null;
         CommonTree VMODIFIER25_tree=null;
         CommonTree MODIFIER27_tree=null;
-        CommonTree TPARAMETERS30_tree=null;
-        CommonTree CEXTENDS32_tree=null;
-        CommonTree CIMPLEMENTS34_tree=null;
-        CommonTree UNITHEADER36_tree=null;
-        CommonTree CPOOL38_tree=null;
-        CommonTree UNITBODY40_tree=null;
+        CommonTree TPARAMETERS29_tree=null;
+        CommonTree CEXTENDS31_tree=null;
+        CommonTree CIMPLEMENTS33_tree=null;
+        CommonTree UNITHEADER35_tree=null;
+        CommonTree CPOOL37_tree=null;
+        CommonTree UNITBODY39_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:3: ( ^( CLASSDECL ^( VMODIFIER ( class_visual_modifier )? ) ^( MODIFIER ( class_modifier )* ) typeName ^( TPARAMETERS ( typeParameters )? ) ^( CEXTENDS ( typeList )? ) ^( CIMPLEMENTS ( typeList )? ) ^( UNITHEADER type_info ) ^( CPOOL constant_pool ) ^( UNITBODY ( classBody )? ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:5: ^( CLASSDECL ^( VMODIFIER ( class_visual_modifier )? ) ^( MODIFIER ( class_modifier )* ) typeName ^( TPARAMETERS ( typeParameters )? ) ^( CEXTENDS ( typeList )? ) ^( CIMPLEMENTS ( typeList )? ) ^( UNITHEADER type_info ) ^( CPOOL constant_pool ) ^( UNITBODY ( classBody )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:3: ( ^( CLASSDECL ^( VMODIFIER ( class_visual_modifier )? ) ^( MODIFIER ( class_modifier )* ) t= typeName ^( TPARAMETERS ( typeParameters )? ) ^( CEXTENDS ( typeList )? ) ^( CIMPLEMENTS ( typeList )? ) ^( UNITHEADER type_info ) ^( CPOOL constant_pool ) ^( UNITBODY ( classBody )? ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:5: ^( CLASSDECL ^( VMODIFIER ( class_visual_modifier )? ) ^( MODIFIER ( class_modifier )* ) t= typeName ^( TPARAMETERS ( typeParameters )? ) ^( CEXTENDS ( typeList )? ) ^( CIMPLEMENTS ( typeList )? ) ^( UNITHEADER type_info ) ^( CPOOL constant_pool ) ^( UNITBODY ( classBody )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1104,12 +1105,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeName_in_classDefinition249);
-            typeName29=typeName();
+            pushFollow(FOLLOW_typeName_in_classDefinition251);
+            t=typeName();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, typeName29.getTree());
+            adaptor.addChild(root_1, t.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -1118,16 +1119,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            TPARAMETERS30=(CommonTree)match(input,TPARAMETERS,FOLLOW_TPARAMETERS_in_classDefinition252); 
-            TPARAMETERS30_tree = (CommonTree)adaptor.dupNode(TPARAMETERS30);
+            TPARAMETERS29=(CommonTree)match(input,TPARAMETERS,FOLLOW_TPARAMETERS_in_classDefinition254); 
+            TPARAMETERS29_tree = (CommonTree)adaptor.dupNode(TPARAMETERS29);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(TPARAMETERS30_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(TPARAMETERS29_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:105: ( typeParameters )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:107: ( typeParameters )?
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
@@ -1136,15 +1137,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt5) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:105: typeParameters
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:107: typeParameters
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeParameters_in_classDefinition254);
-                        typeParameters31=typeParameters();
+                        pushFollow(FOLLOW_typeParameters_in_classDefinition256);
+                        typeParameters30=typeParameters();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, typeParameters31.getTree());
+                        adaptor.addChild(root_2, typeParameters30.getTree());
 
 
                         }
@@ -1166,16 +1167,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CEXTENDS32=(CommonTree)match(input,CEXTENDS,FOLLOW_CEXTENDS_in_classDefinition259); 
-            CEXTENDS32_tree = (CommonTree)adaptor.dupNode(CEXTENDS32);
+            CEXTENDS31=(CommonTree)match(input,CEXTENDS,FOLLOW_CEXTENDS_in_classDefinition261); 
+            CEXTENDS31_tree = (CommonTree)adaptor.dupNode(CEXTENDS31);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(CEXTENDS32_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(CEXTENDS31_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:133: ( typeList )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:135: ( typeList )?
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
@@ -1184,15 +1185,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt6) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:133: typeList
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:135: typeList
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeList_in_classDefinition261);
-                        typeList33=typeList();
+                        pushFollow(FOLLOW_typeList_in_classDefinition263);
+                        typeList32=typeList();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, typeList33.getTree());
+                        adaptor.addChild(root_2, typeList32.getTree());
 
 
                         }
@@ -1214,16 +1215,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CIMPLEMENTS34=(CommonTree)match(input,CIMPLEMENTS,FOLLOW_CIMPLEMENTS_in_classDefinition266); 
-            CIMPLEMENTS34_tree = (CommonTree)adaptor.dupNode(CIMPLEMENTS34);
+            CIMPLEMENTS33=(CommonTree)match(input,CIMPLEMENTS,FOLLOW_CIMPLEMENTS_in_classDefinition268); 
+            CIMPLEMENTS33_tree = (CommonTree)adaptor.dupNode(CIMPLEMENTS33);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(CIMPLEMENTS34_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(CIMPLEMENTS33_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:158: ( typeList )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:160: ( typeList )?
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
@@ -1232,15 +1233,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt7) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:158: typeList
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:54:160: typeList
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeList_in_classDefinition268);
-                        typeList35=typeList();
+                        pushFollow(FOLLOW_typeList_in_classDefinition270);
+                        typeList34=typeList();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, typeList35.getTree());
+                        adaptor.addChild(root_2, typeList34.getTree());
 
 
                         }
@@ -1262,21 +1263,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER36=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_classDefinition289); 
-            UNITHEADER36_tree = (CommonTree)adaptor.dupNode(UNITHEADER36);
+            UNITHEADER35=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_classDefinition291); 
+            UNITHEADER35_tree = (CommonTree)adaptor.dupNode(UNITHEADER35);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER36_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER35_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_type_info_in_classDefinition291);
-            type_info37=type_info();
+            pushFollow(FOLLOW_type_info_in_classDefinition293);
+            type_info36=type_info();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, type_info37.getTree());
+            adaptor.addChild(root_2, type_info36.getTree());
 
 
             match(input, Token.UP, null); 
@@ -1291,21 +1292,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CPOOL38=(CommonTree)match(input,CPOOL,FOLLOW_CPOOL_in_classDefinition311); 
-            CPOOL38_tree = (CommonTree)adaptor.dupNode(CPOOL38);
+            CPOOL37=(CommonTree)match(input,CPOOL,FOLLOW_CPOOL_in_classDefinition313); 
+            CPOOL37_tree = (CommonTree)adaptor.dupNode(CPOOL37);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(CPOOL38_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(CPOOL37_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_constant_pool_in_classDefinition313);
-            constant_pool39=constant_pool();
+            pushFollow(FOLLOW_constant_pool_in_classDefinition315);
+            constant_pool38=constant_pool();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, constant_pool39.getTree());
+            adaptor.addChild(root_2, constant_pool38.getTree());
 
 
             match(input, Token.UP, null); 
@@ -1320,11 +1321,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITBODY40=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_classDefinition333); 
-            UNITBODY40_tree = (CommonTree)adaptor.dupNode(UNITBODY40);
+            UNITBODY39=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_classDefinition335); 
+            UNITBODY39_tree = (CommonTree)adaptor.dupNode(UNITBODY39);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY40_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY39_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -1333,7 +1334,7 @@ public TreeAdaptor getTreeAdaptor() {
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
-                if ( (LA8_0==FIELDDECL||LA8_0==STATICCTORDECL) ) {
+                if ( (LA8_0==CTORDECL||LA8_0==FIELDDECL||LA8_0==METHODDECL||LA8_0==STATICCTORDECL) ) {
                     alt8=1;
                 }
                 switch (alt8) {
@@ -1341,12 +1342,12 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:57:28: classBody
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_classBody_in_classDefinition335);
-                        classBody41=classBody();
+                        pushFollow(FOLLOW_classBody_in_classDefinition337);
+                        classBody40=classBody();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, classBody41.getTree());
+                        adaptor.addChild(root_2, classBody40.getTree());
 
 
                         }
@@ -1367,6 +1368,8 @@ public TreeAdaptor getTreeAdaptor() {
             _last = _save_last_1;
             }
 
+
+            System.out.println((t!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(t.start),input.getTreeAdaptor().getTokenStopIndex(t.start))):null));
 
             }
 
@@ -1404,9 +1407,9 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree PUBLIC42=null;
+        CommonTree PUBLIC41=null;
 
-        CommonTree PUBLIC42_tree=null;
+        CommonTree PUBLIC41_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:62:3: ( PUBLIC )
@@ -1416,11 +1419,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            PUBLIC42=(CommonTree)match(input,PUBLIC,FOLLOW_PUBLIC_in_class_visual_modifier372); 
-            PUBLIC42_tree = (CommonTree)adaptor.dupNode(PUBLIC42);
+            PUBLIC41=(CommonTree)match(input,PUBLIC,FOLLOW_PUBLIC_in_class_visual_modifier376); 
+            PUBLIC41_tree = (CommonTree)adaptor.dupNode(PUBLIC41);
 
 
-            adaptor.addChild(root_0, PUBLIC42_tree);
+            adaptor.addChild(root_0, PUBLIC41_tree);
 
 
             }
@@ -1459,9 +1462,9 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set43=null;
+        CommonTree set42=null;
 
-        CommonTree set43_tree=null;
+        CommonTree set42_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:66:3: ( ABSTRACT | FINAL | INTERFACE | CLASS )
@@ -1471,14 +1474,14 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            set43=(CommonTree)input.LT(1);
+            set42=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==ABSTRACT||input.LA(1)==CLASS||input.LA(1)==FINAL||input.LA(1)==INTERFACE ) {
                 input.consume();
-                set43_tree = (CommonTree)adaptor.dupNode(set43);
+                set42_tree = (CommonTree)adaptor.dupNode(set42);
 
 
-                adaptor.addChild(root_0, set43_tree);
+                adaptor.addChild(root_0, set42_tree);
 
                 state.errorRecovery=false;
             }
@@ -1525,27 +1528,27 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.sourcefile_info_return sourcefile_info44 =null;
+        JVMWalker.sourcefile_info_return sourcefile_info43 =null;
 
-        JVMWalker.minor_major_version_info_return minor_major_version_info45 =null;
+        JVMWalker.minor_major_version_info_return minor_major_version_info44 =null;
 
-        JVMWalker.flags_return flags46 =null;
+        JVMWalker.flags_return flags45 =null;
 
-        JVMWalker.scalaSig_info_return scalaSig_info47 =null;
+        JVMWalker.scalaSig_info_return scalaSig_info46 =null;
 
-        JVMWalker.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info48 =null;
+        JVMWalker.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info47 =null;
 
-        JVMWalker.innerclass_info_return innerclass_info49 =null;
+        JVMWalker.innerclass_info_return innerclass_info48 =null;
 
-        JVMWalker.enclosingMethod_return enclosingMethod50 =null;
+        JVMWalker.enclosingMethod_return enclosingMethod49 =null;
 
-        JVMWalker.signature_info_addition_return signature_info_addition51 =null;
+        JVMWalker.signature_info_addition_return signature_info_addition50 =null;
 
-        JVMWalker.deprecated_return deprecated52 =null;
+        JVMWalker.deprecated_return deprecated51 =null;
 
-        JVMWalker.synthetic_return synthetic53 =null;
+        JVMWalker.synthetic_return synthetic52 =null;
 
-        JVMWalker.scala_info_return scala_info54 =null;
+        JVMWalker.scala_info_return scala_info53 =null;
 
 
 
@@ -1625,12 +1628,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:74:6: sourcefile_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_sourcefile_info_in_type_info421);
-            	    sourcefile_info44=sourcefile_info();
+            	    pushFollow(FOLLOW_sourcefile_info_in_type_info425);
+            	    sourcefile_info43=sourcefile_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, sourcefile_info44.getTree());
+            	    adaptor.addChild(root_0, sourcefile_info43.getTree());
 
 
             	    }
@@ -1639,12 +1642,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:75:5: minor_major_version_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_minor_major_version_info_in_type_info427);
-            	    minor_major_version_info45=minor_major_version_info();
+            	    pushFollow(FOLLOW_minor_major_version_info_in_type_info431);
+            	    minor_major_version_info44=minor_major_version_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, minor_major_version_info45.getTree());
+            	    adaptor.addChild(root_0, minor_major_version_info44.getTree());
 
 
             	    }
@@ -1653,12 +1656,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:76:5: flags
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_flags_in_type_info433);
-            	    flags46=flags();
+            	    pushFollow(FOLLOW_flags_in_type_info437);
+            	    flags45=flags();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, flags46.getTree());
+            	    adaptor.addChild(root_0, flags45.getTree());
 
 
             	    }
@@ -1667,12 +1670,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:77:5: scalaSig_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_scalaSig_info_in_type_info439);
-            	    scalaSig_info47=scalaSig_info();
+            	    pushFollow(FOLLOW_scalaSig_info_in_type_info443);
+            	    scalaSig_info46=scalaSig_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, scalaSig_info47.getTree());
+            	    adaptor.addChild(root_0, scalaSig_info46.getTree());
 
 
             	    }
@@ -1681,12 +1684,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:78:5: runtimeVisibleAnnotations_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_type_info446);
-            	    runtimeVisibleAnnotations_info48=runtimeVisibleAnnotations_info();
+            	    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_type_info450);
+            	    runtimeVisibleAnnotations_info47=runtimeVisibleAnnotations_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeVisibleAnnotations_info48.getTree());
+            	    adaptor.addChild(root_0, runtimeVisibleAnnotations_info47.getTree());
 
 
             	    }
@@ -1695,12 +1698,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:79:5: innerclass_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_innerclass_info_in_type_info452);
-            	    innerclass_info49=innerclass_info();
+            	    pushFollow(FOLLOW_innerclass_info_in_type_info456);
+            	    innerclass_info48=innerclass_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, innerclass_info49.getTree());
+            	    adaptor.addChild(root_0, innerclass_info48.getTree());
 
 
             	    }
@@ -1709,12 +1712,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:80:5: enclosingMethod
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_enclosingMethod_in_type_info458);
-            	    enclosingMethod50=enclosingMethod();
+            	    pushFollow(FOLLOW_enclosingMethod_in_type_info462);
+            	    enclosingMethod49=enclosingMethod();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, enclosingMethod50.getTree());
+            	    adaptor.addChild(root_0, enclosingMethod49.getTree());
 
 
             	    }
@@ -1723,12 +1726,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:81:5: signature_info_addition
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_signature_info_addition_in_type_info464);
-            	    signature_info_addition51=signature_info_addition();
+            	    pushFollow(FOLLOW_signature_info_addition_in_type_info468);
+            	    signature_info_addition50=signature_info_addition();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, signature_info_addition51.getTree());
+            	    adaptor.addChild(root_0, signature_info_addition50.getTree());
 
 
             	    }
@@ -1737,12 +1740,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:82:5: deprecated
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_deprecated_in_type_info470);
-            	    deprecated52=deprecated();
+            	    pushFollow(FOLLOW_deprecated_in_type_info474);
+            	    deprecated51=deprecated();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, deprecated52.getTree());
+            	    adaptor.addChild(root_0, deprecated51.getTree());
 
 
             	    }
@@ -1751,12 +1754,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:83:5: synthetic
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_synthetic_in_type_info476);
-            	    synthetic53=synthetic();
+            	    pushFollow(FOLLOW_synthetic_in_type_info480);
+            	    synthetic52=synthetic();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, synthetic53.getTree());
+            	    adaptor.addChild(root_0, synthetic52.getTree());
 
 
             	    }
@@ -1765,12 +1768,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:84:5: scala_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_scala_info_in_type_info482);
-            	    scala_info54=scala_info();
+            	    pushFollow(FOLLOW_scala_info_in_type_info486);
+            	    scala_info53=scala_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, scala_info54.getTree());
+            	    adaptor.addChild(root_0, scala_info53.getTree());
 
 
             	    }
@@ -1822,11 +1825,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Synthetic55=null;
-        CommonTree BOOLEANLITERAL56=null;
+        CommonTree Synthetic54=null;
+        CommonTree BOOLEANLITERAL55=null;
 
-        CommonTree Synthetic55_tree=null;
-        CommonTree BOOLEANLITERAL56_tree=null;
+        CommonTree Synthetic54_tree=null;
+        CommonTree BOOLEANLITERAL55_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:88:3: ( ^( Synthetic BOOLEANLITERAL ) )
@@ -1841,20 +1844,20 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Synthetic55=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_synthetic498); 
-            Synthetic55_tree = (CommonTree)adaptor.dupNode(Synthetic55);
+            Synthetic54=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_synthetic502); 
+            Synthetic54_tree = (CommonTree)adaptor.dupNode(Synthetic54);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Synthetic55_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Synthetic54_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            BOOLEANLITERAL56=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_synthetic500); 
-            BOOLEANLITERAL56_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL56);
+            BOOLEANLITERAL55=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_synthetic504); 
+            BOOLEANLITERAL55_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL55);
 
 
-            adaptor.addChild(root_1, BOOLEANLITERAL56_tree);
+            adaptor.addChild(root_1, BOOLEANLITERAL55_tree);
 
 
             match(input, Token.UP, null); 
@@ -1899,11 +1902,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Deprecated57=null;
-        CommonTree BOOLEANLITERAL58=null;
+        CommonTree Deprecated56=null;
+        CommonTree BOOLEANLITERAL57=null;
 
-        CommonTree Deprecated57_tree=null;
-        CommonTree BOOLEANLITERAL58_tree=null;
+        CommonTree Deprecated56_tree=null;
+        CommonTree BOOLEANLITERAL57_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:92:3: ( ^( Deprecated BOOLEANLITERAL ) )
@@ -1918,20 +1921,20 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Deprecated57=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_deprecated515); 
-            Deprecated57_tree = (CommonTree)adaptor.dupNode(Deprecated57);
+            Deprecated56=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_deprecated519); 
+            Deprecated56_tree = (CommonTree)adaptor.dupNode(Deprecated56);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Deprecated57_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Deprecated56_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            BOOLEANLITERAL58=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_deprecated517); 
-            BOOLEANLITERAL58_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL58);
+            BOOLEANLITERAL57=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_deprecated521); 
+            BOOLEANLITERAL57_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL57);
 
 
-            adaptor.addChild(root_1, BOOLEANLITERAL58_tree);
+            adaptor.addChild(root_1, BOOLEANLITERAL57_tree);
 
 
             match(input, Token.UP, null); 
@@ -1976,15 +1979,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EnclosingMethod59=null;
-        CommonTree CPINDEX60=null;
-        CommonTree DOT61=null;
-        CommonTree CPINDEX62=null;
+        CommonTree EnclosingMethod58=null;
+        CommonTree CPINDEX59=null;
+        CommonTree DOT60=null;
+        CommonTree CPINDEX61=null;
 
-        CommonTree EnclosingMethod59_tree=null;
-        CommonTree CPINDEX60_tree=null;
-        CommonTree DOT61_tree=null;
-        CommonTree CPINDEX62_tree=null;
+        CommonTree EnclosingMethod58_tree=null;
+        CommonTree CPINDEX59_tree=null;
+        CommonTree DOT60_tree=null;
+        CommonTree CPINDEX61_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:96:3: ( ^( EnclosingMethod CPINDEX DOT ( CPINDEX )? ) )
@@ -1999,28 +2002,28 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            EnclosingMethod59=(CommonTree)match(input,EnclosingMethod,FOLLOW_EnclosingMethod_in_enclosingMethod532); 
-            EnclosingMethod59_tree = (CommonTree)adaptor.dupNode(EnclosingMethod59);
+            EnclosingMethod58=(CommonTree)match(input,EnclosingMethod,FOLLOW_EnclosingMethod_in_enclosingMethod536); 
+            EnclosingMethod58_tree = (CommonTree)adaptor.dupNode(EnclosingMethod58);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(EnclosingMethod59_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(EnclosingMethod58_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            CPINDEX60=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_enclosingMethod534); 
-            CPINDEX60_tree = (CommonTree)adaptor.dupNode(CPINDEX60);
+            CPINDEX59=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_enclosingMethod538); 
+            CPINDEX59_tree = (CommonTree)adaptor.dupNode(CPINDEX59);
 
 
-            adaptor.addChild(root_1, CPINDEX60_tree);
+            adaptor.addChild(root_1, CPINDEX59_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            DOT61=(CommonTree)match(input,DOT,FOLLOW_DOT_in_enclosingMethod536); 
-            DOT61_tree = (CommonTree)adaptor.dupNode(DOT61);
+            DOT60=(CommonTree)match(input,DOT,FOLLOW_DOT_in_enclosingMethod540); 
+            DOT60_tree = (CommonTree)adaptor.dupNode(DOT60);
 
 
-            adaptor.addChild(root_1, DOT61_tree);
+            adaptor.addChild(root_1, DOT60_tree);
 
 
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:96:35: ( CPINDEX )?
@@ -2035,11 +2038,11 @@ public TreeAdaptor getTreeAdaptor() {
                     // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:96:35: CPINDEX
                     {
                     _last = (CommonTree)input.LT(1);
-                    CPINDEX62=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_enclosingMethod538); 
-                    CPINDEX62_tree = (CommonTree)adaptor.dupNode(CPINDEX62);
+                    CPINDEX61=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_enclosingMethod542); 
+                    CPINDEX61_tree = (CommonTree)adaptor.dupNode(CPINDEX61);
 
 
-                    adaptor.addChild(root_1, CPINDEX62_tree);
+                    adaptor.addChild(root_1, CPINDEX61_tree);
 
 
                     }
@@ -2090,11 +2093,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SourceFile63=null;
-        CommonTree STRINGLITERAL64=null;
+        CommonTree SourceFile62=null;
+        CommonTree STRINGLITERAL63=null;
 
-        CommonTree SourceFile63_tree=null;
-        CommonTree STRINGLITERAL64_tree=null;
+        CommonTree SourceFile62_tree=null;
+        CommonTree STRINGLITERAL63_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:100:3: ( ^( SourceFile STRINGLITERAL ) )
@@ -2109,20 +2112,20 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SourceFile63=(CommonTree)match(input,SourceFile,FOLLOW_SourceFile_in_sourcefile_info555); 
-            SourceFile63_tree = (CommonTree)adaptor.dupNode(SourceFile63);
+            SourceFile62=(CommonTree)match(input,SourceFile,FOLLOW_SourceFile_in_sourcefile_info559); 
+            SourceFile62_tree = (CommonTree)adaptor.dupNode(SourceFile62);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SourceFile63_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SourceFile62_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            STRINGLITERAL64=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_sourcefile_info557); 
-            STRINGLITERAL64_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL64);
+            STRINGLITERAL63=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_sourcefile_info561); 
+            STRINGLITERAL63_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL63);
 
 
-            adaptor.addChild(root_1, STRINGLITERAL64_tree);
+            adaptor.addChild(root_1, STRINGLITERAL63_tree);
 
 
             match(input, Token.UP, null); 
@@ -2167,21 +2170,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ScalaSig65=null;
-        CommonTree IDENTIFIER66=null;
-        CommonTree ASSIGN67=null;
+        CommonTree ScalaSig64=null;
+        CommonTree IDENTIFIER65=null;
+        CommonTree ASSIGN66=null;
+        CommonTree INTLITERAL67=null;
         CommonTree INTLITERAL68=null;
         CommonTree INTLITERAL69=null;
         CommonTree INTLITERAL70=null;
-        CommonTree INTLITERAL71=null;
 
-        CommonTree ScalaSig65_tree=null;
-        CommonTree IDENTIFIER66_tree=null;
-        CommonTree ASSIGN67_tree=null;
+        CommonTree ScalaSig64_tree=null;
+        CommonTree IDENTIFIER65_tree=null;
+        CommonTree ASSIGN66_tree=null;
+        CommonTree INTLITERAL67_tree=null;
         CommonTree INTLITERAL68_tree=null;
         CommonTree INTLITERAL69_tree=null;
         CommonTree INTLITERAL70_tree=null;
-        CommonTree INTLITERAL71_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:104:3: ( ^( ScalaSig IDENTIFIER ASSIGN INTLITERAL INTLITERAL INTLITERAL INTLITERAL ) )
@@ -2196,32 +2199,40 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ScalaSig65=(CommonTree)match(input,ScalaSig,FOLLOW_ScalaSig_in_scalaSig_info572); 
-            ScalaSig65_tree = (CommonTree)adaptor.dupNode(ScalaSig65);
+            ScalaSig64=(CommonTree)match(input,ScalaSig,FOLLOW_ScalaSig_in_scalaSig_info576); 
+            ScalaSig64_tree = (CommonTree)adaptor.dupNode(ScalaSig64);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ScalaSig65_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ScalaSig64_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER66=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_scalaSig_info586); 
-            IDENTIFIER66_tree = (CommonTree)adaptor.dupNode(IDENTIFIER66);
+            IDENTIFIER65=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_scalaSig_info590); 
+            IDENTIFIER65_tree = (CommonTree)adaptor.dupNode(IDENTIFIER65);
 
 
-            adaptor.addChild(root_1, IDENTIFIER66_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN67=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_scalaSig_info588); 
-            ASSIGN67_tree = (CommonTree)adaptor.dupNode(ASSIGN67);
-
-
-            adaptor.addChild(root_1, ASSIGN67_tree);
+            adaptor.addChild(root_1, IDENTIFIER65_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL68=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info590); 
+            ASSIGN66=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_scalaSig_info592); 
+            ASSIGN66_tree = (CommonTree)adaptor.dupNode(ASSIGN66);
+
+
+            adaptor.addChild(root_1, ASSIGN66_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL67=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info594); 
+            INTLITERAL67_tree = (CommonTree)adaptor.dupNode(INTLITERAL67);
+
+
+            adaptor.addChild(root_1, INTLITERAL67_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL68=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info610); 
             INTLITERAL68_tree = (CommonTree)adaptor.dupNode(INTLITERAL68);
 
 
@@ -2229,7 +2240,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL69=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info606); 
+            INTLITERAL69=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info612); 
             INTLITERAL69_tree = (CommonTree)adaptor.dupNode(INTLITERAL69);
 
 
@@ -2237,19 +2248,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL70=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info608); 
+            INTLITERAL70=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info614); 
             INTLITERAL70_tree = (CommonTree)adaptor.dupNode(INTLITERAL70);
 
 
             adaptor.addChild(root_1, INTLITERAL70_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            INTLITERAL71=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scalaSig_info610); 
-            INTLITERAL71_tree = (CommonTree)adaptor.dupNode(INTLITERAL71);
-
-
-            adaptor.addChild(root_1, INTLITERAL71_tree);
 
 
             match(input, Token.UP, null); 
@@ -2294,15 +2297,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Scala72=null;
-        CommonTree IDENTIFIER73=null;
-        CommonTree ASSIGN74=null;
-        CommonTree INTLITERAL75=null;
+        CommonTree Scala71=null;
+        CommonTree IDENTIFIER72=null;
+        CommonTree ASSIGN73=null;
+        CommonTree INTLITERAL74=null;
 
-        CommonTree Scala72_tree=null;
-        CommonTree IDENTIFIER73_tree=null;
-        CommonTree ASSIGN74_tree=null;
-        CommonTree INTLITERAL75_tree=null;
+        CommonTree Scala71_tree=null;
+        CommonTree IDENTIFIER72_tree=null;
+        CommonTree ASSIGN73_tree=null;
+        CommonTree INTLITERAL74_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:110:3: ( ^( Scala IDENTIFIER ASSIGN INTLITERAL ) )
@@ -2317,36 +2320,36 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Scala72=(CommonTree)match(input,Scala,FOLLOW_Scala_in_scala_info625); 
-            Scala72_tree = (CommonTree)adaptor.dupNode(Scala72);
+            Scala71=(CommonTree)match(input,Scala,FOLLOW_Scala_in_scala_info629); 
+            Scala71_tree = (CommonTree)adaptor.dupNode(Scala71);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Scala72_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Scala71_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER73=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_scala_info627); 
-            IDENTIFIER73_tree = (CommonTree)adaptor.dupNode(IDENTIFIER73);
+            IDENTIFIER72=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_scala_info631); 
+            IDENTIFIER72_tree = (CommonTree)adaptor.dupNode(IDENTIFIER72);
 
 
-            adaptor.addChild(root_1, IDENTIFIER73_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN74=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_scala_info629); 
-            ASSIGN74_tree = (CommonTree)adaptor.dupNode(ASSIGN74);
-
-
-            adaptor.addChild(root_1, ASSIGN74_tree);
+            adaptor.addChild(root_1, IDENTIFIER72_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL75=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scala_info631); 
-            INTLITERAL75_tree = (CommonTree)adaptor.dupNode(INTLITERAL75);
+            ASSIGN73=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_scala_info633); 
+            ASSIGN73_tree = (CommonTree)adaptor.dupNode(ASSIGN73);
 
 
-            adaptor.addChild(root_1, INTLITERAL75_tree);
+            adaptor.addChild(root_1, ASSIGN73_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL74=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_scala_info635); 
+            INTLITERAL74_tree = (CommonTree)adaptor.dupNode(INTLITERAL74);
+
+
+            adaptor.addChild(root_1, INTLITERAL74_tree);
 
 
             match(input, Token.UP, null); 
@@ -2391,11 +2394,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Signature76=null;
-        CommonTree CPINDEX77=null;
+        CommonTree Signature75=null;
+        CommonTree CPINDEX76=null;
 
-        CommonTree Signature76_tree=null;
-        CommonTree CPINDEX77_tree=null;
+        CommonTree Signature75_tree=null;
+        CommonTree CPINDEX76_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:114:3: ( ^( Signature ( CPINDEX )? ) )
@@ -2410,11 +2413,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Signature76=(CommonTree)match(input,Signature,FOLLOW_Signature_in_signature_info_addition649); 
-            Signature76_tree = (CommonTree)adaptor.dupNode(Signature76);
+            Signature75=(CommonTree)match(input,Signature,FOLLOW_Signature_in_signature_info_addition653); 
+            Signature75_tree = (CommonTree)adaptor.dupNode(Signature75);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Signature76_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Signature75_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -2431,11 +2434,11 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:114:17: CPINDEX
                         {
                         _last = (CommonTree)input.LT(1);
-                        CPINDEX77=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_signature_info_addition651); 
-                        CPINDEX77_tree = (CommonTree)adaptor.dupNode(CPINDEX77);
+                        CPINDEX76=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_signature_info_addition655); 
+                        CPINDEX76_tree = (CommonTree)adaptor.dupNode(CPINDEX76);
 
 
-                        adaptor.addChild(root_1, CPINDEX77_tree);
+                        adaptor.addChild(root_1, CPINDEX76_tree);
 
 
                         }
@@ -2487,11 +2490,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree InnerClasses78=null;
-        JVMWalker.innerclass_info_line_return innerclass_info_line79 =null;
+        CommonTree InnerClasses77=null;
+        JVMWalker.innerclass_info_line_return innerclass_info_line78 =null;
 
 
-        CommonTree InnerClasses78_tree=null;
+        CommonTree InnerClasses77_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:118:3: ( ^( InnerClasses ( innerclass_info_line )+ ) )
@@ -2506,11 +2509,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            InnerClasses78=(CommonTree)match(input,InnerClasses,FOLLOW_InnerClasses_in_innerclass_info667); 
-            InnerClasses78_tree = (CommonTree)adaptor.dupNode(InnerClasses78);
+            InnerClasses77=(CommonTree)match(input,InnerClasses,FOLLOW_InnerClasses_in_innerclass_info671); 
+            InnerClasses77_tree = (CommonTree)adaptor.dupNode(InnerClasses77);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(InnerClasses78_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(InnerClasses77_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -2531,12 +2534,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:118:20: innerclass_info_line
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_innerclass_info_line_in_innerclass_info669);
-            	    innerclass_info_line79=innerclass_info_line();
+            	    pushFollow(FOLLOW_innerclass_info_line_in_innerclass_info673);
+            	    innerclass_info_line78=innerclass_info_line();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, innerclass_info_line79.getTree());
+            	    adaptor.addChild(root_1, innerclass_info_line78.getTree());
 
 
             	    }
@@ -2594,17 +2597,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree VMODIFIER80=null;
-        CommonTree MODIFIER82=null;
-        JVMWalker.method_visual_modifier_return method_visual_modifier81 =null;
+        CommonTree VMODIFIER79=null;
+        CommonTree MODIFIER81=null;
+        JVMWalker.method_visual_modifier_return method_visual_modifier80 =null;
 
-        JVMWalker.method_modifier_return method_modifier83 =null;
+        JVMWalker.method_modifier_return method_modifier82 =null;
 
-        JVMWalker.innerclass_info_data_return innerclass_info_data84 =null;
+        JVMWalker.innerclass_info_data_return innerclass_info_data83 =null;
 
 
-        CommonTree VMODIFIER80_tree=null;
-        CommonTree MODIFIER82_tree=null;
+        CommonTree VMODIFIER79_tree=null;
+        CommonTree MODIFIER81_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:122:3: ( ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) innerclass_info_data )
@@ -2619,11 +2622,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER80=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_innerclass_info_line688); 
-            VMODIFIER80_tree = (CommonTree)adaptor.dupNode(VMODIFIER80);
+            VMODIFIER79=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_innerclass_info_line692); 
+            VMODIFIER79_tree = (CommonTree)adaptor.dupNode(VMODIFIER79);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(VMODIFIER80_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(VMODIFIER79_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -2640,12 +2643,12 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:122:18: method_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_method_visual_modifier_in_innerclass_info_line690);
-                        method_visual_modifier81=method_visual_modifier();
+                        pushFollow(FOLLOW_method_visual_modifier_in_innerclass_info_line694);
+                        method_visual_modifier80=method_visual_modifier();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, method_visual_modifier81.getTree());
+                        adaptor.addChild(root_1, method_visual_modifier80.getTree());
 
 
                         }
@@ -2667,11 +2670,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            MODIFIER82=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_innerclass_info_line695); 
-            MODIFIER82_tree = (CommonTree)adaptor.dupNode(MODIFIER82);
+            MODIFIER81=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_innerclass_info_line699); 
+            MODIFIER81_tree = (CommonTree)adaptor.dupNode(MODIFIER81);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(MODIFIER82_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(MODIFIER81_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -2692,12 +2695,12 @@ public TreeAdaptor getTreeAdaptor() {
                 	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:122:54: method_modifier
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_method_modifier_in_innerclass_info_line697);
-                	    method_modifier83=method_modifier();
+                	    pushFollow(FOLLOW_method_modifier_in_innerclass_info_line701);
+                	    method_modifier82=method_modifier();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_1, method_modifier83.getTree());
+                	    adaptor.addChild(root_1, method_modifier82.getTree());
 
 
                 	    }
@@ -2717,12 +2720,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_innerclass_info_data_in_innerclass_info_line701);
-            innerclass_info_data84=innerclass_info_data();
+            pushFollow(FOLLOW_innerclass_info_data_in_innerclass_info_line705);
+            innerclass_info_data83=innerclass_info_data();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, innerclass_info_data84.getTree());
+            adaptor.addChild(root_0, innerclass_info_data83.getTree());
 
 
             }
@@ -2761,21 +2764,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CPINDEX85=null;
-        CommonTree INFODATA186=null;
-        CommonTree ASSIGN87=null;
-        CommonTree CPINDEX88=null;
-        CommonTree INFODATA289=null;
-        CommonTree IDENTIFIER90=null;
-        CommonTree CPINDEX91=null;
+        CommonTree CPINDEX84=null;
+        CommonTree INFODATA185=null;
+        CommonTree ASSIGN86=null;
+        CommonTree CPINDEX87=null;
+        CommonTree INFODATA288=null;
+        CommonTree IDENTIFIER89=null;
+        CommonTree CPINDEX90=null;
 
-        CommonTree CPINDEX85_tree=null;
-        CommonTree INFODATA186_tree=null;
-        CommonTree ASSIGN87_tree=null;
-        CommonTree CPINDEX88_tree=null;
-        CommonTree INFODATA289_tree=null;
-        CommonTree IDENTIFIER90_tree=null;
-        CommonTree CPINDEX91_tree=null;
+        CommonTree CPINDEX84_tree=null;
+        CommonTree INFODATA185_tree=null;
+        CommonTree ASSIGN86_tree=null;
+        CommonTree CPINDEX87_tree=null;
+        CommonTree INFODATA288_tree=null;
+        CommonTree IDENTIFIER89_tree=null;
+        CommonTree CPINDEX90_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:126:3: ( ^( CPINDEX ^( INFODATA1 ( ASSIGN CPINDEX )? ) ^( INFODATA2 ( IDENTIFIER CPINDEX )? ) ) )
@@ -2790,11 +2793,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CPINDEX85=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_innerclass_info_data715); 
-            CPINDEX85_tree = (CommonTree)adaptor.dupNode(CPINDEX85);
+            CPINDEX84=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_innerclass_info_data719); 
+            CPINDEX84_tree = (CommonTree)adaptor.dupNode(CPINDEX84);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(CPINDEX85_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(CPINDEX84_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -2804,11 +2807,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            INFODATA186=(CommonTree)match(input,INFODATA1,FOLLOW_INFODATA1_in_innerclass_info_data718); 
-            INFODATA186_tree = (CommonTree)adaptor.dupNode(INFODATA186);
+            INFODATA185=(CommonTree)match(input,INFODATA1,FOLLOW_INFODATA1_in_innerclass_info_data722); 
+            INFODATA185_tree = (CommonTree)adaptor.dupNode(INFODATA185);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(INFODATA186_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(INFODATA185_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -2825,19 +2828,19 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:126:28: ASSIGN CPINDEX
                         {
                         _last = (CommonTree)input.LT(1);
-                        ASSIGN87=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_innerclass_info_data721); 
-                        ASSIGN87_tree = (CommonTree)adaptor.dupNode(ASSIGN87);
+                        ASSIGN86=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_innerclass_info_data725); 
+                        ASSIGN86_tree = (CommonTree)adaptor.dupNode(ASSIGN86);
 
 
-                        adaptor.addChild(root_2, ASSIGN87_tree);
+                        adaptor.addChild(root_2, ASSIGN86_tree);
 
 
                         _last = (CommonTree)input.LT(1);
-                        CPINDEX88=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_innerclass_info_data723); 
-                        CPINDEX88_tree = (CommonTree)adaptor.dupNode(CPINDEX88);
+                        CPINDEX87=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_innerclass_info_data727); 
+                        CPINDEX87_tree = (CommonTree)adaptor.dupNode(CPINDEX87);
 
 
-                        adaptor.addChild(root_2, CPINDEX88_tree);
+                        adaptor.addChild(root_2, CPINDEX87_tree);
 
 
                         }
@@ -2859,11 +2862,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            INFODATA289=(CommonTree)match(input,INFODATA2,FOLLOW_INFODATA2_in_innerclass_info_data729); 
-            INFODATA289_tree = (CommonTree)adaptor.dupNode(INFODATA289);
+            INFODATA288=(CommonTree)match(input,INFODATA2,FOLLOW_INFODATA2_in_innerclass_info_data733); 
+            INFODATA288_tree = (CommonTree)adaptor.dupNode(INFODATA288);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(INFODATA289_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(INFODATA288_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -2880,19 +2883,19 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:126:59: IDENTIFIER CPINDEX
                         {
                         _last = (CommonTree)input.LT(1);
-                        IDENTIFIER90=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_innerclass_info_data732); 
-                        IDENTIFIER90_tree = (CommonTree)adaptor.dupNode(IDENTIFIER90);
+                        IDENTIFIER89=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_innerclass_info_data736); 
+                        IDENTIFIER89_tree = (CommonTree)adaptor.dupNode(IDENTIFIER89);
 
 
-                        adaptor.addChild(root_2, IDENTIFIER90_tree);
+                        adaptor.addChild(root_2, IDENTIFIER89_tree);
 
 
                         _last = (CommonTree)input.LT(1);
-                        CPINDEX91=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_innerclass_info_data734); 
-                        CPINDEX91_tree = (CommonTree)adaptor.dupNode(CPINDEX91);
+                        CPINDEX90=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_innerclass_info_data738); 
+                        CPINDEX90_tree = (CommonTree)adaptor.dupNode(CPINDEX90);
 
 
-                        adaptor.addChild(root_2, CPINDEX91_tree);
+                        adaptor.addChild(root_2, CPINDEX90_tree);
 
 
                         }
@@ -2950,15 +2953,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
+        CommonTree IDENTIFIER91=null;
         CommonTree IDENTIFIER92=null;
-        CommonTree IDENTIFIER93=null;
-        CommonTree COLON94=null;
-        CommonTree INTLITERAL95=null;
+        CommonTree COLON93=null;
+        CommonTree INTLITERAL94=null;
 
+        CommonTree IDENTIFIER91_tree=null;
         CommonTree IDENTIFIER92_tree=null;
-        CommonTree IDENTIFIER93_tree=null;
-        CommonTree COLON94_tree=null;
-        CommonTree INTLITERAL95_tree=null;
+        CommonTree COLON93_tree=null;
+        CommonTree INTLITERAL94_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:130:3: ( ^( IDENTIFIER IDENTIFIER COLON INTLITERAL ) )
@@ -2973,36 +2976,36 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER92=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_minor_major_version_info756); 
-            IDENTIFIER92_tree = (CommonTree)adaptor.dupNode(IDENTIFIER92);
+            IDENTIFIER91=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_minor_major_version_info760); 
+            IDENTIFIER91_tree = (CommonTree)adaptor.dupNode(IDENTIFIER91);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER92_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER91_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER93=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_minor_major_version_info758); 
-            IDENTIFIER93_tree = (CommonTree)adaptor.dupNode(IDENTIFIER93);
+            IDENTIFIER92=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_minor_major_version_info762); 
+            IDENTIFIER92_tree = (CommonTree)adaptor.dupNode(IDENTIFIER92);
 
 
-            adaptor.addChild(root_1, IDENTIFIER93_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            COLON94=(CommonTree)match(input,COLON,FOLLOW_COLON_in_minor_major_version_info760); 
-            COLON94_tree = (CommonTree)adaptor.dupNode(COLON94);
-
-
-            adaptor.addChild(root_1, COLON94_tree);
+            adaptor.addChild(root_1, IDENTIFIER92_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL95=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_minor_major_version_info762); 
-            INTLITERAL95_tree = (CommonTree)adaptor.dupNode(INTLITERAL95);
+            COLON93=(CommonTree)match(input,COLON,FOLLOW_COLON_in_minor_major_version_info764); 
+            COLON93_tree = (CommonTree)adaptor.dupNode(COLON93);
 
 
-            adaptor.addChild(root_1, INTLITERAL95_tree);
+            adaptor.addChild(root_1, COLON93_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL94=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_minor_major_version_info766); 
+            INTLITERAL94_tree = (CommonTree)adaptor.dupNode(INTLITERAL94);
+
+
+            adaptor.addChild(root_1, INTLITERAL94_tree);
 
 
             match(input, Token.UP, null); 
@@ -3047,11 +3050,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Flag96=null;
-        JVMWalker.accessFlagList_return accessFlagList97 =null;
+        CommonTree Flag95=null;
+        JVMWalker.accessFlagList_return accessFlagList96 =null;
 
 
-        CommonTree Flag96_tree=null;
+        CommonTree Flag95_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:134:3: ( ^( Flag ( accessFlagList )? ) )
@@ -3066,11 +3069,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Flag96=(CommonTree)match(input,Flag,FOLLOW_Flag_in_flags783); 
-            Flag96_tree = (CommonTree)adaptor.dupNode(Flag96);
+            Flag95=(CommonTree)match(input,Flag,FOLLOW_Flag_in_flags787); 
+            Flag95_tree = (CommonTree)adaptor.dupNode(Flag95);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Flag96_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Flag95_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -3087,12 +3090,12 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:134:12: accessFlagList
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_accessFlagList_in_flags785);
-                        accessFlagList97=accessFlagList();
+                        pushFollow(FOLLOW_accessFlagList_in_flags789);
+                        accessFlagList96=accessFlagList();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, accessFlagList97.getTree());
+                        adaptor.addChild(root_1, accessFlagList96.getTree());
 
 
                         }
@@ -3144,7 +3147,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.flagType_return flagType98 =null;
+        JVMWalker.flagType_return flagType97 =null;
 
 
 
@@ -3172,12 +3175,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:138:5: flagType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_flagType_in_accessFlagList802);
-            	    flagType98=flagType();
+            	    pushFollow(FOLLOW_flagType_in_accessFlagList806);
+            	    flagType97=flagType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, flagType98.getTree());
+            	    adaptor.addChild(root_0, flagType97.getTree());
 
 
             	    }
@@ -3230,10 +3233,10 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _last = null;
 
         CommonTree id=null;
-        CommonTree INTLITERAL99=null;
+        CommonTree INTLITERAL98=null;
 
         CommonTree id_tree=null;
-        CommonTree INTLITERAL99_tree=null;
+        CommonTree INTLITERAL98_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:142:3: (id= IDENTIFIER | INTLITERAL )
@@ -3261,14 +3264,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     _last = (CommonTree)input.LT(1);
-                    id=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_flagType818); 
+                    id=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_flagType822); 
                     id_tree = (CommonTree)adaptor.dupNode(id);
 
 
                     adaptor.addChild(root_0, id_tree);
 
-
-                    System.out.println("Id: '"+(id!=null?id.getText():null)+"'");
 
                     }
                     break;
@@ -3279,11 +3280,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL99=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_flagType826); 
-                    INTLITERAL99_tree = (CommonTree)adaptor.dupNode(INTLITERAL99);
+                    INTLITERAL98=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_flagType828); 
+                    INTLITERAL98_tree = (CommonTree)adaptor.dupNode(INTLITERAL98);
 
 
-                    adaptor.addChild(root_0, INTLITERAL99_tree);
+                    adaptor.addChild(root_0, INTLITERAL98_tree);
 
 
                     }
@@ -3324,11 +3325,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree RuntimeVisibleAnnotations100=null;
-        JVMWalker.runtimeVisibleAnnotationsItem_return runtimeVisibleAnnotationsItem101 =null;
+        CommonTree RuntimeVisibleAnnotations99=null;
+        JVMWalker.runtimeVisibleAnnotationsItem_return runtimeVisibleAnnotationsItem100 =null;
 
 
-        CommonTree RuntimeVisibleAnnotations100_tree=null;
+        CommonTree RuntimeVisibleAnnotations99_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:151:3: ( ^( RuntimeVisibleAnnotations ( runtimeVisibleAnnotationsItem )+ ) )
@@ -3343,11 +3344,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RuntimeVisibleAnnotations100=(CommonTree)match(input,RuntimeVisibleAnnotations,FOLLOW_RuntimeVisibleAnnotations_in_runtimeVisibleAnnotations_info847); 
-            RuntimeVisibleAnnotations100_tree = (CommonTree)adaptor.dupNode(RuntimeVisibleAnnotations100);
+            RuntimeVisibleAnnotations99=(CommonTree)match(input,RuntimeVisibleAnnotations,FOLLOW_RuntimeVisibleAnnotations_in_runtimeVisibleAnnotations_info849); 
+            RuntimeVisibleAnnotations99_tree = (CommonTree)adaptor.dupNode(RuntimeVisibleAnnotations99);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeVisibleAnnotations100_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeVisibleAnnotations99_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -3368,12 +3369,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:151:33: runtimeVisibleAnnotationsItem
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeVisibleAnnotationsItem_in_runtimeVisibleAnnotations_info849);
-            	    runtimeVisibleAnnotationsItem101=runtimeVisibleAnnotationsItem();
+            	    pushFollow(FOLLOW_runtimeVisibleAnnotationsItem_in_runtimeVisibleAnnotations_info851);
+            	    runtimeVisibleAnnotationsItem100=runtimeVisibleAnnotationsItem();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, runtimeVisibleAnnotationsItem101.getTree());
+            	    adaptor.addChild(root_1, runtimeVisibleAnnotationsItem100.getTree());
 
 
             	    }
@@ -3431,13 +3432,13 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CPINDEX102=null;
-        JVMWalker.pc_return pc103 =null;
+        CommonTree CPINDEX101=null;
+        JVMWalker.pc_return pc102 =null;
 
-        JVMWalker.runtimeVisibleAnnotationAssignList_return runtimeVisibleAnnotationAssignList104 =null;
+        JVMWalker.runtimeVisibleAnnotationAssignList_return runtimeVisibleAnnotationAssignList103 =null;
 
 
-        CommonTree CPINDEX102_tree=null;
+        CommonTree CPINDEX101_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:154:3: ( ^( CPINDEX pc ( runtimeVisibleAnnotationAssignList )? ) )
@@ -3452,21 +3453,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CPINDEX102=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_runtimeVisibleAnnotationsItem864); 
-            CPINDEX102_tree = (CommonTree)adaptor.dupNode(CPINDEX102);
+            CPINDEX101=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_runtimeVisibleAnnotationsItem866); 
+            CPINDEX101_tree = (CommonTree)adaptor.dupNode(CPINDEX101);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(CPINDEX102_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(CPINDEX101_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_runtimeVisibleAnnotationsItem866);
-            pc103=pc();
+            pushFollow(FOLLOW_pc_in_runtimeVisibleAnnotationsItem868);
+            pc102=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, pc103.getTree());
+            adaptor.addChild(root_1, pc102.getTree());
 
 
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:154:18: ( runtimeVisibleAnnotationAssignList )?
@@ -3481,12 +3482,12 @@ public TreeAdaptor getTreeAdaptor() {
                     // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:154:18: runtimeVisibleAnnotationAssignList
                     {
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeVisibleAnnotationsItem868);
-                    runtimeVisibleAnnotationAssignList104=runtimeVisibleAnnotationAssignList();
+                    pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeVisibleAnnotationsItem870);
+                    runtimeVisibleAnnotationAssignList103=runtimeVisibleAnnotationAssignList();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, runtimeVisibleAnnotationAssignList104.getTree());
+                    adaptor.addChild(root_1, runtimeVisibleAnnotationAssignList103.getTree());
 
 
                     }
@@ -3537,7 +3538,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.annotationAssign_return annotationAssign105 =null;
+        JVMWalker.annotationAssign_return annotationAssign104 =null;
 
 
 
@@ -3565,12 +3566,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:157:5: annotationAssign
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_annotationAssign_in_runtimeVisibleAnnotationAssignList882);
-            	    annotationAssign105=annotationAssign();
+            	    pushFollow(FOLLOW_annotationAssign_in_runtimeVisibleAnnotationAssignList884);
+            	    annotationAssign104=annotationAssign();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, annotationAssign105.getTree());
+            	    adaptor.addChild(root_0, annotationAssign104.getTree());
 
 
             	    }
@@ -3622,13 +3623,13 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ASSIGN106=null;
-        CommonTree CPINDEX107=null;
-        JVMWalker.annotationValue_return annotationValue108 =null;
+        CommonTree ASSIGN105=null;
+        CommonTree CPINDEX106=null;
+        JVMWalker.annotationValue_return annotationValue107 =null;
 
 
-        CommonTree ASSIGN106_tree=null;
-        CommonTree CPINDEX107_tree=null;
+        CommonTree ASSIGN105_tree=null;
+        CommonTree CPINDEX106_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:160:3: ( ^( ASSIGN CPINDEX annotationValue ) )
@@ -3643,29 +3644,29 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ASSIGN106=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_annotationAssign896); 
-            ASSIGN106_tree = (CommonTree)adaptor.dupNode(ASSIGN106);
+            ASSIGN105=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_annotationAssign898); 
+            ASSIGN105_tree = (CommonTree)adaptor.dupNode(ASSIGN105);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN106_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN105_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            CPINDEX107=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_annotationAssign898); 
-            CPINDEX107_tree = (CommonTree)adaptor.dupNode(CPINDEX107);
+            CPINDEX106=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_annotationAssign900); 
+            CPINDEX106_tree = (CommonTree)adaptor.dupNode(CPINDEX106);
 
 
-            adaptor.addChild(root_1, CPINDEX107_tree);
+            adaptor.addChild(root_1, CPINDEX106_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_annotationValue_in_annotationAssign900);
-            annotationValue108=annotationValue();
+            pushFollow(FOLLOW_annotationValue_in_annotationAssign902);
+            annotationValue107=annotationValue();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, annotationValue108.getTree());
+            adaptor.addChild(root_1, annotationValue107.getTree());
 
 
             match(input, Token.UP, null); 
@@ -3710,11 +3711,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree AnnotationAssign110=null;
-        JVMWalker.brackedAnnotationAssign_return brackedAnnotationAssign109 =null;
+        CommonTree AnnotationAssign109=null;
+        JVMWalker.brackedAnnotationAssign_return brackedAnnotationAssign108 =null;
 
 
-        CommonTree AnnotationAssign110_tree=null;
+        CommonTree AnnotationAssign109_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:163:3: ( brackedAnnotationAssign | AnnotationAssign )
@@ -3756,12 +3757,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_brackedAnnotationAssign_in_annotationValue913);
-                    brackedAnnotationAssign109=brackedAnnotationAssign();
+                    pushFollow(FOLLOW_brackedAnnotationAssign_in_annotationValue915);
+                    brackedAnnotationAssign108=brackedAnnotationAssign();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, brackedAnnotationAssign109.getTree());
+                    adaptor.addChild(root_0, brackedAnnotationAssign108.getTree());
 
 
                     }
@@ -3773,11 +3774,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     _last = (CommonTree)input.LT(1);
-                    AnnotationAssign110=(CommonTree)match(input,AnnotationAssign,FOLLOW_AnnotationAssign_in_annotationValue920); 
-                    AnnotationAssign110_tree = (CommonTree)adaptor.dupNode(AnnotationAssign110);
+                    AnnotationAssign109=(CommonTree)match(input,AnnotationAssign,FOLLOW_AnnotationAssign_in_annotationValue922); 
+                    AnnotationAssign109_tree = (CommonTree)adaptor.dupNode(AnnotationAssign109);
 
 
-                    adaptor.addChild(root_0, AnnotationAssign110_tree);
+                    adaptor.addChild(root_0, AnnotationAssign109_tree);
 
 
                     }
@@ -3818,7 +3819,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.brackedAnnotationAssignList_return brackedAnnotationAssignList111 =null;
+        JVMWalker.brackedAnnotationAssignList_return brackedAnnotationAssignList110 =null;
 
 
 
@@ -3841,12 +3842,12 @@ public TreeAdaptor getTreeAdaptor() {
                     // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:167:5: brackedAnnotationAssignList
                     {
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_brackedAnnotationAssignList_in_brackedAnnotationAssign932);
-                    brackedAnnotationAssignList111=brackedAnnotationAssignList();
+                    pushFollow(FOLLOW_brackedAnnotationAssignList_in_brackedAnnotationAssign934);
+                    brackedAnnotationAssignList110=brackedAnnotationAssignList();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, brackedAnnotationAssignList111.getTree());
+                    adaptor.addChild(root_0, brackedAnnotationAssignList110.getTree());
 
 
                     }
@@ -3891,7 +3892,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.brackedAnnotationAssignValue_return brackedAnnotationAssignValue112 =null;
+        JVMWalker.brackedAnnotationAssignValue_return brackedAnnotationAssignValue111 =null;
 
 
 
@@ -3919,12 +3920,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:170:5: brackedAnnotationAssignValue
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_brackedAnnotationAssignValue_in_brackedAnnotationAssignList945);
-            	    brackedAnnotationAssignValue112=brackedAnnotationAssignValue();
+            	    pushFollow(FOLLOW_brackedAnnotationAssignValue_in_brackedAnnotationAssignList947);
+            	    brackedAnnotationAssignValue111=brackedAnnotationAssignValue();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, brackedAnnotationAssignValue112.getTree());
+            	    adaptor.addChild(root_0, brackedAnnotationAssignValue111.getTree());
 
 
             	    }
@@ -3976,11 +3977,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree AnnotationAssign113=null;
-        JVMWalker.runtimeVisibleAnnotationAssignList_return runtimeVisibleAnnotationAssignList114 =null;
+        CommonTree AnnotationAssign112=null;
+        JVMWalker.runtimeVisibleAnnotationAssignList_return runtimeVisibleAnnotationAssignList113 =null;
 
 
-        CommonTree AnnotationAssign113_tree=null;
+        CommonTree AnnotationAssign112_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:173:3: ( ^( AnnotationAssign ( runtimeVisibleAnnotationAssignList )? ) )
@@ -3995,11 +3996,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            AnnotationAssign113=(CommonTree)match(input,AnnotationAssign,FOLLOW_AnnotationAssign_in_brackedAnnotationAssignValue959); 
-            AnnotationAssign113_tree = (CommonTree)adaptor.dupNode(AnnotationAssign113);
+            AnnotationAssign112=(CommonTree)match(input,AnnotationAssign,FOLLOW_AnnotationAssign_in_brackedAnnotationAssignValue961); 
+            AnnotationAssign112_tree = (CommonTree)adaptor.dupNode(AnnotationAssign112);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(AnnotationAssign113_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(AnnotationAssign112_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -4016,12 +4017,12 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:173:24: runtimeVisibleAnnotationAssignList
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_brackedAnnotationAssignValue961);
-                        runtimeVisibleAnnotationAssignList114=runtimeVisibleAnnotationAssignList();
+                        pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_brackedAnnotationAssignValue963);
+                        runtimeVisibleAnnotationAssignList113=runtimeVisibleAnnotationAssignList();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, runtimeVisibleAnnotationAssignList114.getTree());
+                        adaptor.addChild(root_1, runtimeVisibleAnnotationAssignList113.getTree());
 
 
                         }
@@ -4073,11 +4074,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree RuntimeVisibleParameterAnnotations115=null;
-        JVMWalker.parameterVisibilityInfo_return parameterVisibilityInfo116 =null;
+        CommonTree RuntimeVisibleParameterAnnotations114=null;
+        JVMWalker.parameterVisibilityInfo_return parameterVisibilityInfo115 =null;
 
 
-        CommonTree RuntimeVisibleParameterAnnotations115_tree=null;
+        CommonTree RuntimeVisibleParameterAnnotations114_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:176:3: ( ^( RuntimeVisibleParameterAnnotations ( parameterVisibilityInfo )+ ) )
@@ -4092,11 +4093,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RuntimeVisibleParameterAnnotations115=(CommonTree)match(input,RuntimeVisibleParameterAnnotations,FOLLOW_RuntimeVisibleParameterAnnotations_in_runtimeVisibleParameterAnnotations976); 
-            RuntimeVisibleParameterAnnotations115_tree = (CommonTree)adaptor.dupNode(RuntimeVisibleParameterAnnotations115);
+            RuntimeVisibleParameterAnnotations114=(CommonTree)match(input,RuntimeVisibleParameterAnnotations,FOLLOW_RuntimeVisibleParameterAnnotations_in_runtimeVisibleParameterAnnotations978); 
+            RuntimeVisibleParameterAnnotations114_tree = (CommonTree)adaptor.dupNode(RuntimeVisibleParameterAnnotations114);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeVisibleParameterAnnotations115_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeVisibleParameterAnnotations114_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -4117,12 +4118,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:176:42: parameterVisibilityInfo
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_parameterVisibilityInfo_in_runtimeVisibleParameterAnnotations978);
-            	    parameterVisibilityInfo116=parameterVisibilityInfo();
+            	    pushFollow(FOLLOW_parameterVisibilityInfo_in_runtimeVisibleParameterAnnotations980);
+            	    parameterVisibilityInfo115=parameterVisibilityInfo();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, parameterVisibilityInfo116.getTree());
+            	    adaptor.addChild(root_1, parameterVisibilityInfo115.getTree());
 
 
             	    }
@@ -4180,11 +4181,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree RuntimeInvisibleParameterAnnotations117=null;
-        JVMWalker.parameterVisibilityInfo_return parameterVisibilityInfo118 =null;
+        CommonTree RuntimeInvisibleParameterAnnotations116=null;
+        JVMWalker.parameterVisibilityInfo_return parameterVisibilityInfo117 =null;
 
 
-        CommonTree RuntimeInvisibleParameterAnnotations117_tree=null;
+        CommonTree RuntimeInvisibleParameterAnnotations116_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:179:3: ( ^( RuntimeInvisibleParameterAnnotations ( parameterVisibilityInfo )+ ) )
@@ -4199,11 +4200,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RuntimeInvisibleParameterAnnotations117=(CommonTree)match(input,RuntimeInvisibleParameterAnnotations,FOLLOW_RuntimeInvisibleParameterAnnotations_in_runtimeInvisibleParameterAnnotations993); 
-            RuntimeInvisibleParameterAnnotations117_tree = (CommonTree)adaptor.dupNode(RuntimeInvisibleParameterAnnotations117);
+            RuntimeInvisibleParameterAnnotations116=(CommonTree)match(input,RuntimeInvisibleParameterAnnotations,FOLLOW_RuntimeInvisibleParameterAnnotations_in_runtimeInvisibleParameterAnnotations995); 
+            RuntimeInvisibleParameterAnnotations116_tree = (CommonTree)adaptor.dupNode(RuntimeInvisibleParameterAnnotations116);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeInvisibleParameterAnnotations117_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeInvisibleParameterAnnotations116_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -4224,12 +4225,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:179:44: parameterVisibilityInfo
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_parameterVisibilityInfo_in_runtimeInvisibleParameterAnnotations995);
-            	    parameterVisibilityInfo118=parameterVisibilityInfo();
+            	    pushFollow(FOLLOW_parameterVisibilityInfo_in_runtimeInvisibleParameterAnnotations997);
+            	    parameterVisibilityInfo117=parameterVisibilityInfo();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, parameterVisibilityInfo118.getTree());
+            	    adaptor.addChild(root_1, parameterVisibilityInfo117.getTree());
 
 
             	    }
@@ -4287,11 +4288,11 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree RuntimeInvisibleAnnotations119=null;
-        JVMWalker.runtimeInvisibleAnnotationsItem_return runtimeInvisibleAnnotationsItem120 =null;
+        CommonTree RuntimeInvisibleAnnotations118=null;
+        JVMWalker.runtimeInvisibleAnnotationsItem_return runtimeInvisibleAnnotationsItem119 =null;
 
 
-        CommonTree RuntimeInvisibleAnnotations119_tree=null;
+        CommonTree RuntimeInvisibleAnnotations118_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:182:3: ( ^( RuntimeInvisibleAnnotations ( runtimeInvisibleAnnotationsItem )+ ) )
@@ -4306,11 +4307,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RuntimeInvisibleAnnotations119=(CommonTree)match(input,RuntimeInvisibleAnnotations,FOLLOW_RuntimeInvisibleAnnotations_in_runtimeInvisibleAnnotations1010); 
-            RuntimeInvisibleAnnotations119_tree = (CommonTree)adaptor.dupNode(RuntimeInvisibleAnnotations119);
+            RuntimeInvisibleAnnotations118=(CommonTree)match(input,RuntimeInvisibleAnnotations,FOLLOW_RuntimeInvisibleAnnotations_in_runtimeInvisibleAnnotations1012); 
+            RuntimeInvisibleAnnotations118_tree = (CommonTree)adaptor.dupNode(RuntimeInvisibleAnnotations118);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeInvisibleAnnotations119_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(RuntimeInvisibleAnnotations118_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -4331,12 +4332,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:182:35: runtimeInvisibleAnnotationsItem
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeInvisibleAnnotationsItem_in_runtimeInvisibleAnnotations1012);
-            	    runtimeInvisibleAnnotationsItem120=runtimeInvisibleAnnotationsItem();
+            	    pushFollow(FOLLOW_runtimeInvisibleAnnotationsItem_in_runtimeInvisibleAnnotations1014);
+            	    runtimeInvisibleAnnotationsItem119=runtimeInvisibleAnnotationsItem();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, runtimeInvisibleAnnotationsItem120.getTree());
+            	    adaptor.addChild(root_1, runtimeInvisibleAnnotationsItem119.getTree());
 
 
             	    }
@@ -4394,13 +4395,13 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER122=null;
-        JVMWalker.pc_return pc121 =null;
+        CommonTree IDENTIFIER121=null;
+        JVMWalker.pc_return pc120 =null;
 
-        JVMWalker.runtimeVisibleAnnotationsItem_return runtimeVisibleAnnotationsItem123 =null;
+        JVMWalker.runtimeVisibleAnnotationsItem_return runtimeVisibleAnnotationsItem122 =null;
 
 
-        CommonTree IDENTIFIER122_tree=null;
+        CommonTree IDENTIFIER121_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:185:3: ( ^( pc ( IDENTIFIER )? ( runtimeVisibleAnnotationsItem )* ) )
@@ -4415,12 +4416,12 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_parameterVisibilityInfo1027);
-            pc121=pc();
+            pushFollow(FOLLOW_pc_in_parameterVisibilityInfo1029);
+            pc120=pc();
 
             state._fsp--;
 
-            root_1 = (CommonTree)adaptor.becomeRoot(pc121.getTree(), root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(pc120.getTree(), root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -4437,11 +4438,11 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:185:10: IDENTIFIER
                         {
                         _last = (CommonTree)input.LT(1);
-                        IDENTIFIER122=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_parameterVisibilityInfo1029); 
-                        IDENTIFIER122_tree = (CommonTree)adaptor.dupNode(IDENTIFIER122);
+                        IDENTIFIER121=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_parameterVisibilityInfo1031); 
+                        IDENTIFIER121_tree = (CommonTree)adaptor.dupNode(IDENTIFIER121);
 
 
-                        adaptor.addChild(root_1, IDENTIFIER122_tree);
+                        adaptor.addChild(root_1, IDENTIFIER121_tree);
 
 
                         }
@@ -4466,12 +4467,12 @@ public TreeAdaptor getTreeAdaptor() {
                 	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:185:22: runtimeVisibleAnnotationsItem
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo1032);
-                	    runtimeVisibleAnnotationsItem123=runtimeVisibleAnnotationsItem();
+                	    pushFollow(FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo1034);
+                	    runtimeVisibleAnnotationsItem122=runtimeVisibleAnnotationsItem();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_1, runtimeVisibleAnnotationsItem123.getTree());
+                	    adaptor.addChild(root_1, runtimeVisibleAnnotationsItem122.getTree());
 
 
                 	    }
@@ -4526,15 +4527,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CPINDEX126=null;
+        CommonTree CPINDEX125=null;
+        JVMWalker.pc_return pc123 =null;
+
         JVMWalker.pc_return pc124 =null;
 
-        JVMWalker.pc_return pc125 =null;
-
-        JVMWalker.runtimeVisibleAnnotationAssignList_return runtimeVisibleAnnotationAssignList127 =null;
+        JVMWalker.runtimeVisibleAnnotationAssignList_return runtimeVisibleAnnotationAssignList126 =null;
 
 
-        CommonTree CPINDEX126_tree=null;
+        CommonTree CPINDEX125_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:188:3: ( ^( pc ( pc )? ^( CPINDEX ( runtimeVisibleAnnotationAssignList )? ) ) )
@@ -4549,12 +4550,12 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1047);
-            pc124=pc();
+            pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1049);
+            pc123=pc();
 
             state._fsp--;
 
-            root_1 = (CommonTree)adaptor.becomeRoot(pc124.getTree(), root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(pc123.getTree(), root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -4570,12 +4571,12 @@ public TreeAdaptor getTreeAdaptor() {
                     // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:188:10: pc
                     {
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1049);
-                    pc125=pc();
+                    pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1051);
+                    pc124=pc();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, pc125.getTree());
+                    adaptor.addChild(root_1, pc124.getTree());
 
 
                     }
@@ -4590,11 +4591,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CPINDEX126=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem1053); 
-            CPINDEX126_tree = (CommonTree)adaptor.dupNode(CPINDEX126);
+            CPINDEX125=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem1055); 
+            CPINDEX125_tree = (CommonTree)adaptor.dupNode(CPINDEX125);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(CPINDEX126_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(CPINDEX125_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
@@ -4611,12 +4612,12 @@ public TreeAdaptor getTreeAdaptor() {
                         // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:188:24: runtimeVisibleAnnotationAssignList
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem1055);
-                        runtimeVisibleAnnotationAssignList127=runtimeVisibleAnnotationAssignList();
+                        pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem1057);
+                        runtimeVisibleAnnotationAssignList126=runtimeVisibleAnnotationAssignList();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, runtimeVisibleAnnotationAssignList127.getTree());
+                        adaptor.addChild(root_2, runtimeVisibleAnnotationAssignList126.getTree());
 
 
                         }
@@ -4674,13 +4675,13 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
+        CommonTree IDENTIFIER127=null;
         CommonTree IDENTIFIER128=null;
-        CommonTree IDENTIFIER129=null;
-        JVMWalker.contant_pool_line_return contant_pool_line130 =null;
+        JVMWalker.contant_pool_line_return contant_pool_line129 =null;
 
 
+        CommonTree IDENTIFIER127_tree=null;
         CommonTree IDENTIFIER128_tree=null;
-        CommonTree IDENTIFIER129_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:196:3: ( ^( IDENTIFIER IDENTIFIER ( contant_pool_line )* ) )
@@ -4695,20 +4696,20 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER128=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool1076); 
-            IDENTIFIER128_tree = (CommonTree)adaptor.dupNode(IDENTIFIER128);
+            IDENTIFIER127=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool1078); 
+            IDENTIFIER127_tree = (CommonTree)adaptor.dupNode(IDENTIFIER127);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER128_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER127_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER129=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool1078); 
-            IDENTIFIER129_tree = (CommonTree)adaptor.dupNode(IDENTIFIER129);
+            IDENTIFIER128=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool1080); 
+            IDENTIFIER128_tree = (CommonTree)adaptor.dupNode(IDENTIFIER128);
 
 
-            adaptor.addChild(root_1, IDENTIFIER129_tree);
+            adaptor.addChild(root_1, IDENTIFIER128_tree);
 
 
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:196:29: ( contant_pool_line )*
@@ -4727,12 +4728,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:196:29: contant_pool_line
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_contant_pool_line_in_constant_pool1080);
-            	    contant_pool_line130=contant_pool_line();
+            	    pushFollow(FOLLOW_contant_pool_line_in_constant_pool1082);
+            	    contant_pool_line129=contant_pool_line();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, contant_pool_line130.getTree());
+            	    adaptor.addChild(root_1, contant_pool_line129.getTree());
 
 
             	    }
@@ -4786,13 +4787,13 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ASSIGN131=null;
-        CommonTree CPINDEX132=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE133=null;
+        CommonTree ASSIGN130=null;
+        CommonTree CPINDEX131=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE132=null;
 
-        CommonTree ASSIGN131_tree=null;
-        CommonTree CPINDEX132_tree=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE133_tree=null;
+        CommonTree ASSIGN130_tree=null;
+        CommonTree CPINDEX131_tree=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE132_tree=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:200:3: ( ^( ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE ) )
@@ -4807,28 +4808,28 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ASSIGN131=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_contant_pool_line1098); 
-            ASSIGN131_tree = (CommonTree)adaptor.dupNode(ASSIGN131);
+            ASSIGN130=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_contant_pool_line1100); 
+            ASSIGN130_tree = (CommonTree)adaptor.dupNode(ASSIGN130);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN131_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN130_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            CPINDEX132=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_contant_pool_line1100); 
-            CPINDEX132_tree = (CommonTree)adaptor.dupNode(CPINDEX132);
+            CPINDEX131=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_contant_pool_line1102); 
+            CPINDEX131_tree = (CommonTree)adaptor.dupNode(CPINDEX131);
 
 
-            adaptor.addChild(root_1, CPINDEX132_tree);
+            adaptor.addChild(root_1, CPINDEX131_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            CONSTANT_TYPE_ASSIGNABLE133=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1102); 
-            CONSTANT_TYPE_ASSIGNABLE133_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE133);
+            CONSTANT_TYPE_ASSIGNABLE132=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1104); 
+            CONSTANT_TYPE_ASSIGNABLE132_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE132);
 
 
-            adaptor.addChild(root_1, CONSTANT_TYPE_ASSIGNABLE133_tree);
+            adaptor.addChild(root_1, CONSTANT_TYPE_ASSIGNABLE132_tree);
 
 
             match(input, Token.UP, null); 
@@ -4873,7 +4874,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.classBodyEntryDecl_return classBodyEntryDecl134 =null;
+        JVMWalker.classBodyEntryDecl_return classBodyEntryDecl133 =null;
 
 
 
@@ -4891,7 +4892,7 @@ public TreeAdaptor getTreeAdaptor() {
                 int alt35=2;
                 int LA35_0 = input.LA(1);
 
-                if ( (LA35_0==FIELDDECL||LA35_0==STATICCTORDECL) ) {
+                if ( (LA35_0==CTORDECL||LA35_0==FIELDDECL||LA35_0==METHODDECL||LA35_0==STATICCTORDECL) ) {
                     alt35=1;
                 }
 
@@ -4901,12 +4902,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:208:5: classBodyEntryDecl
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_classBodyEntryDecl_in_classBody1122);
-            	    classBodyEntryDecl134=classBodyEntryDecl();
+            	    pushFollow(FOLLOW_classBodyEntryDecl_in_classBody1124);
+            	    classBodyEntryDecl133=classBodyEntryDecl();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, classBodyEntryDecl134.getTree());
+            	    adaptor.addChild(root_0, classBodyEntryDecl133.getTree());
 
 
             	    }
@@ -4947,7 +4948,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "classBodyEntryDecl"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:211:1: classBodyEntryDecl : ( fieldDefinition | staticCtorDefinition );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:211:1: classBodyEntryDecl : ( methodDefinition | ctorDefinition | fieldDefinition | staticCtorDefinition );
     public final JVMWalker.classBodyEntryDecl_return classBodyEntryDecl() throws RecognitionException {
         JVMWalker.classBodyEntryDecl_return retval = new JVMWalker.classBodyEntryDecl_return();
         retval.start = input.LT(1);
@@ -4958,61 +4959,113 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.fieldDefinition_return fieldDefinition135 =null;
+        JVMWalker.methodDefinition_return methodDefinition134 =null;
 
-        JVMWalker.staticCtorDefinition_return staticCtorDefinition136 =null;
+        JVMWalker.ctorDefinition_return ctorDefinition135 =null;
+
+        JVMWalker.fieldDefinition_return fieldDefinition136 =null;
+
+        JVMWalker.staticCtorDefinition_return staticCtorDefinition137 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:212:3: ( fieldDefinition | staticCtorDefinition )
-            int alt36=2;
-            int LA36_0 = input.LA(1);
-
-            if ( (LA36_0==FIELDDECL) ) {
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:212:3: ( methodDefinition | ctorDefinition | fieldDefinition | staticCtorDefinition )
+            int alt36=4;
+            switch ( input.LA(1) ) {
+            case METHODDECL:
+                {
                 alt36=1;
-            }
-            else if ( (LA36_0==STATICCTORDECL) ) {
+                }
+                break;
+            case CTORDECL:
+                {
                 alt36=2;
-            }
-            else {
+                }
+                break;
+            case FIELDDECL:
+                {
+                alt36=3;
+                }
+                break;
+            case STATICCTORDECL:
+                {
+                alt36=4;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 36, 0, input);
 
                 throw nvae;
 
             }
+
             switch (alt36) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:216:3: fieldDefinition
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:212:5: methodDefinition
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_fieldDefinition_in_classBodyEntryDecl1149);
-                    fieldDefinition135=fieldDefinition();
+                    pushFollow(FOLLOW_methodDefinition_in_classBodyEntryDecl1140);
+                    methodDefinition134=methodDefinition();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, fieldDefinition135.getTree());
+                    adaptor.addChild(root_0, methodDefinition134.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:217:5: staticCtorDefinition
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:213:5: ctorDefinition
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1155);
-                    staticCtorDefinition136=staticCtorDefinition();
+                    pushFollow(FOLLOW_ctorDefinition_in_classBodyEntryDecl1146);
+                    ctorDefinition135=ctorDefinition();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, staticCtorDefinition136.getTree());
+                    adaptor.addChild(root_0, ctorDefinition135.getTree());
+
+
+                    }
+                    break;
+                case 3 :
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:214:5: fieldDefinition
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    _last = (CommonTree)input.LT(1);
+                    pushFollow(FOLLOW_fieldDefinition_in_classBodyEntryDecl1152);
+                    fieldDefinition136=fieldDefinition();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, fieldDefinition136.getTree());
+
+
+                    }
+                    break;
+                case 4 :
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:215:5: staticCtorDefinition
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    _last = (CommonTree)input.LT(1);
+                    pushFollow(FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1158);
+                    staticCtorDefinition137=staticCtorDefinition();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, staticCtorDefinition137.getTree());
 
 
                     }
@@ -5042,7 +5095,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldDefinition"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:224:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:222:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
     public final JVMWalker.fieldDefinition_return fieldDefinition() throws RecognitionException {
         JVMWalker.fieldDefinition_return retval = new JVMWalker.fieldDefinition_return();
         retval.start = input.LT(1);
@@ -5053,41 +5106,41 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree FIELDDECL137=null;
-        CommonTree VMODIFIER138=null;
-        CommonTree MODIFIER140=null;
-        CommonTree RETVALUE142=null;
-        CommonTree UNITNAME144=null;
-        CommonTree FIELDVALUE146=null;
-        CommonTree UNITHEADER148=null;
-        CommonTree UNITATTR150=null;
-        JVMWalker.field_visual_modifier_return field_visual_modifier139 =null;
+        CommonTree FIELDDECL138=null;
+        CommonTree VMODIFIER139=null;
+        CommonTree MODIFIER141=null;
+        CommonTree RETVALUE143=null;
+        CommonTree UNITNAME145=null;
+        CommonTree FIELDVALUE147=null;
+        CommonTree UNITHEADER149=null;
+        CommonTree UNITATTR151=null;
+        JVMWalker.field_visual_modifier_return field_visual_modifier140 =null;
 
-        JVMWalker.field_modifier_return field_modifier141 =null;
+        JVMWalker.field_modifier_return field_modifier142 =null;
 
-        JVMWalker.type_return type143 =null;
+        JVMWalker.type_return type144 =null;
 
-        JVMWalker.keywordAggregate_return keywordAggregate145 =null;
+        JVMWalker.keywordAggregate_return keywordAggregate146 =null;
 
-        JVMWalker.literals_return literals147 =null;
+        JVMWalker.literals_return literals148 =null;
 
-        JVMWalker.fieldInfo_return fieldInfo149 =null;
+        JVMWalker.fieldInfo_return fieldInfo150 =null;
 
-        JVMWalker.fieldAdditionalInfo_return fieldAdditionalInfo151 =null;
+        JVMWalker.fieldAdditionalInfo_return fieldAdditionalInfo152 =null;
 
 
-        CommonTree FIELDDECL137_tree=null;
-        CommonTree VMODIFIER138_tree=null;
-        CommonTree MODIFIER140_tree=null;
-        CommonTree RETVALUE142_tree=null;
-        CommonTree UNITNAME144_tree=null;
-        CommonTree FIELDVALUE146_tree=null;
-        CommonTree UNITHEADER148_tree=null;
-        CommonTree UNITATTR150_tree=null;
+        CommonTree FIELDDECL138_tree=null;
+        CommonTree VMODIFIER139_tree=null;
+        CommonTree MODIFIER141_tree=null;
+        CommonTree RETVALUE143_tree=null;
+        CommonTree UNITNAME145_tree=null;
+        CommonTree FIELDVALUE147_tree=null;
+        CommonTree UNITHEADER149_tree=null;
+        CommonTree UNITATTR151_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:3: ( ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:5: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:3: ( ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:5: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -5098,11 +5151,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            FIELDDECL137=(CommonTree)match(input,FIELDDECL,FOLLOW_FIELDDECL_in_fieldDefinition1173); 
-            FIELDDECL137_tree = (CommonTree)adaptor.dupNode(FIELDDECL137);
+            FIELDDECL138=(CommonTree)match(input,FIELDDECL,FOLLOW_FIELDDECL_in_fieldDefinition1176); 
+            FIELDDECL138_tree = (CommonTree)adaptor.dupNode(FIELDDECL138);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(FIELDDECL137_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(FIELDDECL138_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -5112,16 +5165,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER138=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_fieldDefinition1176); 
-            VMODIFIER138_tree = (CommonTree)adaptor.dupNode(VMODIFIER138);
+            VMODIFIER139=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_fieldDefinition1179); 
+            VMODIFIER139_tree = (CommonTree)adaptor.dupNode(VMODIFIER139);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER138_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER139_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:29: ( field_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:29: ( field_visual_modifier )?
                 int alt37=2;
                 int LA37_0 = input.LA(1);
 
@@ -5130,15 +5183,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt37) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:29: field_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:29: field_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_field_visual_modifier_in_fieldDefinition1178);
-                        field_visual_modifier139=field_visual_modifier();
+                        pushFollow(FOLLOW_field_visual_modifier_in_fieldDefinition1181);
+                        field_visual_modifier140=field_visual_modifier();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, field_visual_modifier139.getTree());
+                        adaptor.addChild(root_2, field_visual_modifier140.getTree());
 
 
                         }
@@ -5160,16 +5213,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            MODIFIER140=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_fieldDefinition1183); 
-            MODIFIER140_tree = (CommonTree)adaptor.dupNode(MODIFIER140);
+            MODIFIER141=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_fieldDefinition1186); 
+            MODIFIER141_tree = (CommonTree)adaptor.dupNode(MODIFIER141);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(MODIFIER140_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(MODIFIER141_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:64: ( field_modifier )*
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:64: ( field_modifier )*
                 loop38:
                 do {
                     int alt38=2;
@@ -5182,15 +5235,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt38) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:64: field_modifier
+                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:64: field_modifier
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_field_modifier_in_fieldDefinition1185);
-                	    field_modifier141=field_modifier();
+                	    pushFollow(FOLLOW_field_modifier_in_fieldDefinition1188);
+                	    field_modifier142=field_modifier();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_2, field_modifier141.getTree());
+                	    adaptor.addChild(root_2, field_modifier142.getTree());
 
 
                 	    }
@@ -5215,21 +5268,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RETVALUE142=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_fieldDefinition1190); 
-            RETVALUE142_tree = (CommonTree)adaptor.dupNode(RETVALUE142);
+            RETVALUE143=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_fieldDefinition1193); 
+            RETVALUE143_tree = (CommonTree)adaptor.dupNode(RETVALUE143);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(RETVALUE142_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(RETVALUE143_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_type_in_fieldDefinition1192);
-            type143=type();
+            pushFollow(FOLLOW_type_in_fieldDefinition1195);
+            type144=type();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, type143.getTree());
+            adaptor.addChild(root_2, type144.getTree());
 
 
             match(input, Token.UP, null); 
@@ -5244,21 +5297,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME144=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_fieldDefinition1196); 
-            UNITNAME144_tree = (CommonTree)adaptor.dupNode(UNITNAME144);
+            UNITNAME145=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_fieldDefinition1199); 
+            UNITNAME145_tree = (CommonTree)adaptor.dupNode(UNITNAME145);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME144_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME145_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_keywordAggregate_in_fieldDefinition1198);
-            keywordAggregate145=keywordAggregate();
+            pushFollow(FOLLOW_keywordAggregate_in_fieldDefinition1201);
+            keywordAggregate146=keywordAggregate();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, keywordAggregate145.getTree());
+            adaptor.addChild(root_2, keywordAggregate146.getTree());
 
 
             match(input, Token.UP, null); 
@@ -5273,16 +5326,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            FIELDVALUE146=(CommonTree)match(input,FIELDVALUE,FOLLOW_FIELDVALUE_in_fieldDefinition1202); 
-            FIELDVALUE146_tree = (CommonTree)adaptor.dupNode(FIELDVALUE146);
+            FIELDVALUE147=(CommonTree)match(input,FIELDVALUE,FOLLOW_FIELDVALUE_in_fieldDefinition1205); 
+            FIELDVALUE147_tree = (CommonTree)adaptor.dupNode(FIELDVALUE147);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(FIELDVALUE146_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(FIELDVALUE147_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:140: ( literals )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:140: ( literals )?
                 int alt39=2;
                 int LA39_0 = input.LA(1);
 
@@ -5291,15 +5344,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt39) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:140: literals
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:223:140: literals
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_literals_in_fieldDefinition1204);
-                        literals147=literals();
+                        pushFollow(FOLLOW_literals_in_fieldDefinition1207);
+                        literals148=literals();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, literals147.getTree());
+                        adaptor.addChild(root_2, literals148.getTree());
 
 
                         }
@@ -5321,21 +5374,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER148=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_fieldDefinition1221); 
-            UNITHEADER148_tree = (CommonTree)adaptor.dupNode(UNITHEADER148);
+            UNITHEADER149=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_fieldDefinition1224); 
+            UNITHEADER149_tree = (CommonTree)adaptor.dupNode(UNITHEADER149);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER148_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER149_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_fieldInfo_in_fieldDefinition1223);
-            fieldInfo149=fieldInfo();
+            pushFollow(FOLLOW_fieldInfo_in_fieldDefinition1226);
+            fieldInfo150=fieldInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, fieldInfo149.getTree());
+            adaptor.addChild(root_2, fieldInfo150.getTree());
 
 
             match(input, Token.UP, null); 
@@ -5350,16 +5403,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITATTR150=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_fieldDefinition1239); 
-            UNITATTR150_tree = (CommonTree)adaptor.dupNode(UNITATTR150);
+            UNITATTR151=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_fieldDefinition1242); 
+            UNITATTR151_tree = (CommonTree)adaptor.dupNode(UNITATTR151);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR150_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR151_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:227:24: ( fieldAdditionalInfo )*
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:24: ( fieldAdditionalInfo )*
                 loop40:
                 do {
                     int alt40=2;
@@ -5372,15 +5425,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt40) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:227:24: fieldAdditionalInfo
+                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:225:24: fieldAdditionalInfo
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_fieldAdditionalInfo_in_fieldDefinition1241);
-                	    fieldAdditionalInfo151=fieldAdditionalInfo();
+                	    pushFollow(FOLLOW_fieldAdditionalInfo_in_fieldDefinition1244);
+                	    fieldAdditionalInfo152=fieldAdditionalInfo();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_2, fieldAdditionalInfo151.getTree());
+                	    adaptor.addChild(root_2, fieldAdditionalInfo152.getTree());
 
 
                 	    }
@@ -5430,7 +5483,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldInfo"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:231:1: fieldInfo : ^( Signature bytecodeType ) flags ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:229:1: fieldInfo : ^( Signature bytecodeType ) flags ;
     public final JVMWalker.fieldInfo_return fieldInfo() throws RecognitionException {
         JVMWalker.fieldInfo_return retval = new JVMWalker.fieldInfo_return();
         retval.start = input.LT(1);
@@ -5441,17 +5494,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Signature152=null;
-        JVMWalker.bytecodeType_return bytecodeType153 =null;
+        CommonTree Signature153=null;
+        JVMWalker.bytecodeType_return bytecodeType154 =null;
 
-        JVMWalker.flags_return flags154 =null;
+        JVMWalker.flags_return flags155 =null;
 
 
-        CommonTree Signature152_tree=null;
+        CommonTree Signature153_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:232:3: ( ^( Signature bytecodeType ) flags )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:232:5: ^( Signature bytecodeType ) flags
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:230:3: ( ^( Signature bytecodeType ) flags )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:230:5: ^( Signature bytecodeType ) flags
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -5462,21 +5515,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Signature152=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldInfo1271); 
-            Signature152_tree = (CommonTree)adaptor.dupNode(Signature152);
+            Signature153=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldInfo1274); 
+            Signature153_tree = (CommonTree)adaptor.dupNode(Signature153);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Signature152_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Signature153_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeType_in_fieldInfo1273);
-            bytecodeType153=bytecodeType();
+            pushFollow(FOLLOW_bytecodeType_in_fieldInfo1276);
+            bytecodeType154=bytecodeType();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, bytecodeType153.getTree());
+            adaptor.addChild(root_1, bytecodeType154.getTree());
 
 
             match(input, Token.UP, null); 
@@ -5486,12 +5539,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_flags_in_fieldInfo1276);
-            flags154=flags();
+            pushFollow(FOLLOW_flags_in_fieldInfo1279);
+            flags155=flags();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, flags154.getTree());
+            adaptor.addChild(root_0, flags155.getTree());
 
 
             }
@@ -5519,7 +5572,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldAdditionalInfo"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:235:1: fieldAdditionalInfo : ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:233:1: fieldAdditionalInfo : ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations );
     public final JVMWalker.fieldAdditionalInfo_return fieldAdditionalInfo() throws RecognitionException {
         JVMWalker.fieldAdditionalInfo_return retval = new JVMWalker.fieldAdditionalInfo_return();
         retval.start = input.LT(1);
@@ -5530,36 +5583,36 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Constant155=null;
-        CommonTree Constant158=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE159=null;
-        CommonTree Signature160=null;
-        CommonTree CPINDEX161=null;
-        CommonTree Deprecated162=null;
-        CommonTree BOOLEANLITERAL163=null;
-        CommonTree Synthetic164=null;
-        CommonTree BOOLEANLITERAL165=null;
-        JVMWalker.primitiveType_return primitiveType156 =null;
+        CommonTree Constant156=null;
+        CommonTree Constant159=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE160=null;
+        CommonTree Signature161=null;
+        CommonTree CPINDEX162=null;
+        CommonTree Deprecated163=null;
+        CommonTree BOOLEANLITERAL164=null;
+        CommonTree Synthetic165=null;
+        CommonTree BOOLEANLITERAL166=null;
+        JVMWalker.primitiveType_return primitiveType157 =null;
 
-        JVMWalker.literals_return literals157 =null;
+        JVMWalker.literals_return literals158 =null;
 
-        JVMWalker.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info166 =null;
+        JVMWalker.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info167 =null;
 
-        JVMWalker.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations167 =null;
+        JVMWalker.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations168 =null;
 
 
-        CommonTree Constant155_tree=null;
-        CommonTree Constant158_tree=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE159_tree=null;
-        CommonTree Signature160_tree=null;
-        CommonTree CPINDEX161_tree=null;
-        CommonTree Deprecated162_tree=null;
-        CommonTree BOOLEANLITERAL163_tree=null;
-        CommonTree Synthetic164_tree=null;
-        CommonTree BOOLEANLITERAL165_tree=null;
+        CommonTree Constant156_tree=null;
+        CommonTree Constant159_tree=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE160_tree=null;
+        CommonTree Signature161_tree=null;
+        CommonTree CPINDEX162_tree=null;
+        CommonTree Deprecated163_tree=null;
+        CommonTree BOOLEANLITERAL164_tree=null;
+        CommonTree Synthetic165_tree=null;
+        CommonTree BOOLEANLITERAL166_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:236:3: ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:234:3: ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations )
             int alt41=7;
             switch ( input.LA(1) ) {
             case Constant:
@@ -5627,7 +5680,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt41) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:236:5: ^( Constant primitiveType literals )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:234:5: ^( Constant primitiveType literals )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -5638,30 +5691,30 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Constant155=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1290); 
-                    Constant155_tree = (CommonTree)adaptor.dupNode(Constant155);
+                    Constant156=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1293); 
+                    Constant156_tree = (CommonTree)adaptor.dupNode(Constant156);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Constant155_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Constant156_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo1292);
-                    primitiveType156=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo1295);
+                    primitiveType157=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, primitiveType156.getTree());
+                    adaptor.addChild(root_1, primitiveType157.getTree());
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo1294);
-                    literals157=literals();
+                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo1297);
+                    literals158=literals();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, literals157.getTree());
+                    adaptor.addChild(root_1, literals158.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -5673,7 +5726,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:237:5: ^( Constant CONSTANT_TYPE_ASSIGNABLE )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:235:5: ^( Constant CONSTANT_TYPE_ASSIGNABLE )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -5684,20 +5737,20 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Constant158=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1302); 
-                    Constant158_tree = (CommonTree)adaptor.dupNode(Constant158);
+                    Constant159=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1305); 
+                    Constant159_tree = (CommonTree)adaptor.dupNode(Constant159);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Constant158_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Constant159_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    CONSTANT_TYPE_ASSIGNABLE159=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1304); 
-                    CONSTANT_TYPE_ASSIGNABLE159_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE159);
+                    CONSTANT_TYPE_ASSIGNABLE160=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1307); 
+                    CONSTANT_TYPE_ASSIGNABLE160_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE160);
 
 
-                    adaptor.addChild(root_1, CONSTANT_TYPE_ASSIGNABLE159_tree);
+                    adaptor.addChild(root_1, CONSTANT_TYPE_ASSIGNABLE160_tree);
 
 
                     match(input, Token.UP, null); 
@@ -5709,7 +5762,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:238:5: ^( Signature CPINDEX )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:236:5: ^( Signature CPINDEX )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -5720,20 +5773,20 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Signature160=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo1312); 
-                    Signature160_tree = (CommonTree)adaptor.dupNode(Signature160);
+                    Signature161=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo1315); 
+                    Signature161_tree = (CommonTree)adaptor.dupNode(Signature161);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Signature160_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Signature161_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    CPINDEX161=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo1314); 
-                    CPINDEX161_tree = (CommonTree)adaptor.dupNode(CPINDEX161);
+                    CPINDEX162=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo1317); 
+                    CPINDEX162_tree = (CommonTree)adaptor.dupNode(CPINDEX162);
 
 
-                    adaptor.addChild(root_1, CPINDEX161_tree);
+                    adaptor.addChild(root_1, CPINDEX162_tree);
 
 
                     match(input, Token.UP, null); 
@@ -5745,7 +5798,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:239:5: ^( Deprecated BOOLEANLITERAL )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:237:5: ^( Deprecated BOOLEANLITERAL )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -5756,20 +5809,20 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Deprecated162=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo1322); 
-                    Deprecated162_tree = (CommonTree)adaptor.dupNode(Deprecated162);
+                    Deprecated163=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo1325); 
+                    Deprecated163_tree = (CommonTree)adaptor.dupNode(Deprecated163);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated162_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated163_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL163=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1324); 
-                    BOOLEANLITERAL163_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL163);
+                    BOOLEANLITERAL164=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1327); 
+                    BOOLEANLITERAL164_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL164);
 
 
-                    adaptor.addChild(root_1, BOOLEANLITERAL163_tree);
+                    adaptor.addChild(root_1, BOOLEANLITERAL164_tree);
 
 
                     match(input, Token.UP, null); 
@@ -5781,7 +5834,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:240:5: ^( Synthetic BOOLEANLITERAL )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:238:5: ^( Synthetic BOOLEANLITERAL )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -5792,20 +5845,20 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Synthetic164=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo1332); 
-                    Synthetic164_tree = (CommonTree)adaptor.dupNode(Synthetic164);
+                    Synthetic165=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo1335); 
+                    Synthetic165_tree = (CommonTree)adaptor.dupNode(Synthetic165);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic164_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic165_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL165=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1334); 
-                    BOOLEANLITERAL165_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL165);
+                    BOOLEANLITERAL166=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1337); 
+                    BOOLEANLITERAL166_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL166);
 
 
-                    adaptor.addChild(root_1, BOOLEANLITERAL165_tree);
+                    adaptor.addChild(root_1, BOOLEANLITERAL166_tree);
 
 
                     match(input, Token.UP, null); 
@@ -5817,35 +5870,35 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:241:5: runtimeVisibleAnnotations_info
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:239:5: runtimeVisibleAnnotations_info
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1341);
-                    runtimeVisibleAnnotations_info166=runtimeVisibleAnnotations_info();
+                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1344);
+                    runtimeVisibleAnnotations_info167=runtimeVisibleAnnotations_info();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, runtimeVisibleAnnotations_info166.getTree());
+                    adaptor.addChild(root_0, runtimeVisibleAnnotations_info167.getTree());
 
 
                     }
                     break;
                 case 7 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:242:5: runtimeInvisibleAnnotations
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:240:5: runtimeInvisibleAnnotations
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1347);
-                    runtimeInvisibleAnnotations167=runtimeInvisibleAnnotations();
+                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1350);
+                    runtimeInvisibleAnnotations168=runtimeInvisibleAnnotations();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, runtimeInvisibleAnnotations167.getTree());
+                    adaptor.addChild(root_0, runtimeInvisibleAnnotations168.getTree());
 
 
                     }
@@ -5875,7 +5928,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "field_visual_modifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:245:1: field_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:243:1: field_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
     public final JVMWalker.field_visual_modifier_return field_visual_modifier() throws RecognitionException {
         JVMWalker.field_visual_modifier_return retval = new JVMWalker.field_visual_modifier_return();
         retval.start = input.LT(1);
@@ -5886,26 +5939,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set168=null;
+        CommonTree set169=null;
 
-        CommonTree set168_tree=null;
+        CommonTree set169_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:246:3: ( PUBLIC | PRIVATE | PROTECTED )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:244:3: ( PUBLIC | PRIVATE | PROTECTED )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set168=(CommonTree)input.LT(1);
+            set169=(CommonTree)input.LT(1);
 
             if ( (input.LA(1) >= PRIVATE && input.LA(1) <= PUBLIC) ) {
                 input.consume();
-                set168_tree = (CommonTree)adaptor.dupNode(set168);
+                set169_tree = (CommonTree)adaptor.dupNode(set169);
 
 
-                adaptor.addChild(root_0, set168_tree);
+                adaptor.addChild(root_0, set169_tree);
 
                 state.errorRecovery=false;
             }
@@ -5941,7 +5994,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "field_modifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:249:1: field_modifier : ( FINAL | STATIC | TRANSIENT | VOLATILE );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:247:1: field_modifier : ( FINAL | STATIC | TRANSIENT | VOLATILE );
     public final JVMWalker.field_modifier_return field_modifier() throws RecognitionException {
         JVMWalker.field_modifier_return retval = new JVMWalker.field_modifier_return();
         retval.start = input.LT(1);
@@ -5952,26 +6005,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set169=null;
+        CommonTree set170=null;
 
-        CommonTree set169_tree=null;
+        CommonTree set170_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:250:3: ( FINAL | STATIC | TRANSIENT | VOLATILE )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:248:3: ( FINAL | STATIC | TRANSIENT | VOLATILE )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set169=(CommonTree)input.LT(1);
+            set170=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==FINAL||input.LA(1)==STATIC||input.LA(1)==TRANSIENT||input.LA(1)==VOLATILE ) {
                 input.consume();
-                set169_tree = (CommonTree)adaptor.dupNode(set169);
+                set170_tree = (CommonTree)adaptor.dupNode(set170);
 
 
-                adaptor.addChild(root_0, set169_tree);
+                adaptor.addChild(root_0, set170_tree);
 
                 state.errorRecovery=false;
             }
@@ -6007,7 +6060,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "staticCtorDefinition"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:257:1: staticCtorDefinition : ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:255:1: staticCtorDefinition : ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) ;
     public final JVMWalker.staticCtorDefinition_return staticCtorDefinition() throws RecognitionException {
         JVMWalker.staticCtorDefinition_return retval = new JVMWalker.staticCtorDefinition_return();
         retval.start = input.LT(1);
@@ -6018,25 +6071,25 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree STATICCTORDECL170=null;
-        CommonTree VMODIFIER171=null;
-        CommonTree UNITHEADER173=null;
-        CommonTree UNITBODY175=null;
-        JVMWalker.field_visual_modifier_return field_visual_modifier172 =null;
+        CommonTree STATICCTORDECL171=null;
+        CommonTree VMODIFIER172=null;
+        CommonTree UNITHEADER174=null;
+        CommonTree UNITBODY176=null;
+        JVMWalker.field_visual_modifier_return field_visual_modifier173 =null;
 
-        JVMWalker.methodInfo_return methodInfo174 =null;
+        JVMWalker.methodInfo_return methodInfo175 =null;
 
-        JVMWalker.body_return body176 =null;
+        JVMWalker.body_return body177 =null;
 
 
-        CommonTree STATICCTORDECL170_tree=null;
-        CommonTree VMODIFIER171_tree=null;
-        CommonTree UNITHEADER173_tree=null;
-        CommonTree UNITBODY175_tree=null;
+        CommonTree STATICCTORDECL171_tree=null;
+        CommonTree VMODIFIER172_tree=null;
+        CommonTree UNITHEADER174_tree=null;
+        CommonTree UNITBODY176_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:258:3: ( ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:258:5: ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:256:3: ( ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:256:5: ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -6047,11 +6100,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            STATICCTORDECL170=(CommonTree)match(input,STATICCTORDECL,FOLLOW_STATICCTORDECL_in_staticCtorDefinition1419); 
-            STATICCTORDECL170_tree = (CommonTree)adaptor.dupNode(STATICCTORDECL170);
+            STATICCTORDECL171=(CommonTree)match(input,STATICCTORDECL,FOLLOW_STATICCTORDECL_in_staticCtorDefinition1422); 
+            STATICCTORDECL171_tree = (CommonTree)adaptor.dupNode(STATICCTORDECL171);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(STATICCTORDECL170_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(STATICCTORDECL171_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -6061,16 +6114,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER171=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_staticCtorDefinition1422); 
-            VMODIFIER171_tree = (CommonTree)adaptor.dupNode(VMODIFIER171);
+            VMODIFIER172=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_staticCtorDefinition1425); 
+            VMODIFIER172_tree = (CommonTree)adaptor.dupNode(VMODIFIER172);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER171_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER172_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:258:34: ( field_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:256:34: ( field_visual_modifier )?
                 int alt42=2;
                 int LA42_0 = input.LA(1);
 
@@ -6079,15 +6132,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt42) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:258:34: field_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:256:34: field_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition1424);
-                        field_visual_modifier172=field_visual_modifier();
+                        pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition1427);
+                        field_visual_modifier173=field_visual_modifier();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, field_visual_modifier172.getTree());
+                        adaptor.addChild(root_2, field_visual_modifier173.getTree());
 
 
                         }
@@ -6109,21 +6162,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER173=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_staticCtorDefinition1429); 
-            UNITHEADER173_tree = (CommonTree)adaptor.dupNode(UNITHEADER173);
+            UNITHEADER174=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_staticCtorDefinition1432); 
+            UNITHEADER174_tree = (CommonTree)adaptor.dupNode(UNITHEADER174);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER173_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER174_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition1431);
-            methodInfo174=methodInfo();
+            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition1434);
+            methodInfo175=methodInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, methodInfo174.getTree());
+            adaptor.addChild(root_2, methodInfo175.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6138,21 +6191,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITBODY175=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_staticCtorDefinition1435); 
-            UNITBODY175_tree = (CommonTree)adaptor.dupNode(UNITBODY175);
+            UNITBODY176=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_staticCtorDefinition1438); 
+            UNITBODY176_tree = (CommonTree)adaptor.dupNode(UNITBODY176);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY175_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY176_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_body_in_staticCtorDefinition1437);
-            body176=body();
+            pushFollow(FOLLOW_body_in_staticCtorDefinition1440);
+            body177=body();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, body176.getTree());
+            adaptor.addChild(root_2, body177.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6192,7 +6245,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "ctorDefinition"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:266:1: ctorDefinition : ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:264:1: ctorDefinition : ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
     public final JVMWalker.ctorDefinition_return ctorDefinition() throws RecognitionException {
         JVMWalker.ctorDefinition_return retval = new JVMWalker.ctorDefinition_return();
         retval.start = input.LT(1);
@@ -6203,43 +6256,43 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CTORDECL177=null;
-        CommonTree VMODIFIER178=null;
-        CommonTree GENERICDESC180=null;
-        CommonTree UNITNAME182=null;
-        CommonTree THROWCLAUSE185=null;
-        CommonTree UNITHEADER187=null;
-        CommonTree UNITBODY189=null;
-        CommonTree UNITATTR191=null;
-        JVMWalker.field_visual_modifier_return field_visual_modifier179 =null;
+        CommonTree CTORDECL178=null;
+        CommonTree VMODIFIER179=null;
+        CommonTree GENERICDESC181=null;
+        CommonTree UNITNAME183=null;
+        CommonTree THROWCLAUSE186=null;
+        CommonTree UNITHEADER188=null;
+        CommonTree UNITBODY190=null;
+        CommonTree UNITATTR192=null;
+        JVMWalker.field_visual_modifier_return field_visual_modifier180 =null;
 
-        JVMWalker.genericDescriptor_return genericDescriptor181 =null;
+        JVMWalker.genericDescriptor_return genericDescriptor182 =null;
 
-        JVMWalker.typeName_return typeName183 =null;
+        JVMWalker.typeName_return typeName184 =null;
 
-        JVMWalker.arguments_return arguments184 =null;
+        JVMWalker.arguments_return arguments185 =null;
 
-        JVMWalker.throwClause_return throwClause186 =null;
+        JVMWalker.throwClause_return throwClause187 =null;
 
-        JVMWalker.methodInfo_return methodInfo188 =null;
+        JVMWalker.methodInfo_return methodInfo189 =null;
 
-        JVMWalker.body_return body190 =null;
+        JVMWalker.body_return body191 =null;
 
-        JVMWalker.afterMethodInfo_return afterMethodInfo192 =null;
+        JVMWalker.afterMethodInfo_return afterMethodInfo193 =null;
 
 
-        CommonTree CTORDECL177_tree=null;
-        CommonTree VMODIFIER178_tree=null;
-        CommonTree GENERICDESC180_tree=null;
-        CommonTree UNITNAME182_tree=null;
-        CommonTree THROWCLAUSE185_tree=null;
-        CommonTree UNITHEADER187_tree=null;
-        CommonTree UNITBODY189_tree=null;
-        CommonTree UNITATTR191_tree=null;
+        CommonTree CTORDECL178_tree=null;
+        CommonTree VMODIFIER179_tree=null;
+        CommonTree GENERICDESC181_tree=null;
+        CommonTree UNITNAME183_tree=null;
+        CommonTree THROWCLAUSE186_tree=null;
+        CommonTree UNITHEADER188_tree=null;
+        CommonTree UNITBODY190_tree=null;
+        CommonTree UNITATTR192_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:3: ( ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:5: ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:3: ( ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:5: ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -6250,11 +6303,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CTORDECL177=(CommonTree)match(input,CTORDECL,FOLLOW_CTORDECL_in_ctorDefinition1460); 
-            CTORDECL177_tree = (CommonTree)adaptor.dupNode(CTORDECL177);
+            CTORDECL178=(CommonTree)match(input,CTORDECL,FOLLOW_CTORDECL_in_ctorDefinition1463); 
+            CTORDECL178_tree = (CommonTree)adaptor.dupNode(CTORDECL178);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(CTORDECL177_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(CTORDECL178_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -6264,16 +6317,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER178=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_ctorDefinition1463); 
-            VMODIFIER178_tree = (CommonTree)adaptor.dupNode(VMODIFIER178);
+            VMODIFIER179=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_ctorDefinition1466); 
+            VMODIFIER179_tree = (CommonTree)adaptor.dupNode(VMODIFIER179);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER178_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER179_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:28: ( field_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:28: ( field_visual_modifier )?
                 int alt43=2;
                 int LA43_0 = input.LA(1);
 
@@ -6282,15 +6335,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt43) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:28: field_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:28: field_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition1465);
-                        field_visual_modifier179=field_visual_modifier();
+                        pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition1468);
+                        field_visual_modifier180=field_visual_modifier();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, field_visual_modifier179.getTree());
+                        adaptor.addChild(root_2, field_visual_modifier180.getTree());
 
 
                         }
@@ -6312,16 +6365,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            GENERICDESC180=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_ctorDefinition1470); 
-            GENERICDESC180_tree = (CommonTree)adaptor.dupNode(GENERICDESC180);
+            GENERICDESC181=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_ctorDefinition1473); 
+            GENERICDESC181_tree = (CommonTree)adaptor.dupNode(GENERICDESC181);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(GENERICDESC180_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(GENERICDESC181_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:66: ( genericDescriptor )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:66: ( genericDescriptor )?
                 int alt44=2;
                 int LA44_0 = input.LA(1);
 
@@ -6330,15 +6383,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt44) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:66: genericDescriptor
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:66: genericDescriptor
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition1472);
-                        genericDescriptor181=genericDescriptor();
+                        pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition1475);
+                        genericDescriptor182=genericDescriptor();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, genericDescriptor181.getTree());
+                        adaptor.addChild(root_2, genericDescriptor182.getTree());
 
 
                         }
@@ -6360,21 +6413,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME182=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_ctorDefinition1477); 
-            UNITNAME182_tree = (CommonTree)adaptor.dupNode(UNITNAME182);
+            UNITNAME183=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_ctorDefinition1480); 
+            UNITNAME183_tree = (CommonTree)adaptor.dupNode(UNITNAME183);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME182_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME183_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeName_in_ctorDefinition1479);
-            typeName183=typeName();
+            pushFollow(FOLLOW_typeName_in_ctorDefinition1482);
+            typeName184=typeName();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, typeName183.getTree());
+            adaptor.addChild(root_2, typeName184.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6384,12 +6437,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_arguments_in_ctorDefinition1482);
-            arguments184=arguments();
+            pushFollow(FOLLOW_arguments_in_ctorDefinition1485);
+            arguments185=arguments();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, arguments184.getTree());
+            adaptor.addChild(root_1, arguments185.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -6398,16 +6451,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWCLAUSE185=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_ctorDefinition1485); 
-            THROWCLAUSE185_tree = (CommonTree)adaptor.dupNode(THROWCLAUSE185);
+            THROWCLAUSE186=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_ctorDefinition1488); 
+            THROWCLAUSE186_tree = (CommonTree)adaptor.dupNode(THROWCLAUSE186);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(THROWCLAUSE185_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(THROWCLAUSE186_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:131: ( throwClause )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:131: ( throwClause )?
                 int alt45=2;
                 int LA45_0 = input.LA(1);
 
@@ -6416,15 +6469,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt45) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:267:131: throwClause
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:265:131: throwClause
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_throwClause_in_ctorDefinition1487);
-                        throwClause186=throwClause();
+                        pushFollow(FOLLOW_throwClause_in_ctorDefinition1490);
+                        throwClause187=throwClause();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, throwClause186.getTree());
+                        adaptor.addChild(root_2, throwClause187.getTree());
 
 
                         }
@@ -6446,21 +6499,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER187=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_ctorDefinition1516); 
-            UNITHEADER187_tree = (CommonTree)adaptor.dupNode(UNITHEADER187);
+            UNITHEADER188=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_ctorDefinition1519); 
+            UNITHEADER188_tree = (CommonTree)adaptor.dupNode(UNITHEADER188);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER187_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER188_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodInfo_in_ctorDefinition1518);
-            methodInfo188=methodInfo();
+            pushFollow(FOLLOW_methodInfo_in_ctorDefinition1521);
+            methodInfo189=methodInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, methodInfo188.getTree());
+            adaptor.addChild(root_2, methodInfo189.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6475,21 +6528,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITBODY189=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_ctorDefinition1546); 
-            UNITBODY189_tree = (CommonTree)adaptor.dupNode(UNITBODY189);
+            UNITBODY190=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_ctorDefinition1549); 
+            UNITBODY190_tree = (CommonTree)adaptor.dupNode(UNITBODY190);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY189_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY190_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_body_in_ctorDefinition1548);
-            body190=body();
+            pushFollow(FOLLOW_body_in_ctorDefinition1551);
+            body191=body();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, body190.getTree());
+            adaptor.addChild(root_2, body191.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6504,16 +6557,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITATTR191=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_ctorDefinition1576); 
-            UNITATTR191_tree = (CommonTree)adaptor.dupNode(UNITATTR191);
+            UNITATTR192=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_ctorDefinition1579); 
+            UNITATTR192_tree = (CommonTree)adaptor.dupNode(UNITATTR192);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR191_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR192_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:270:36: ( afterMethodInfo )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:268:36: ( afterMethodInfo )?
                 int alt46=2;
                 int LA46_0 = input.LA(1);
 
@@ -6522,15 +6575,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt46) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:270:36: afterMethodInfo
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:268:36: afterMethodInfo
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition1578);
-                        afterMethodInfo192=afterMethodInfo();
+                        pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition1581);
+                        afterMethodInfo193=afterMethodInfo();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, afterMethodInfo192.getTree());
+                        adaptor.addChild(root_2, afterMethodInfo193.getTree());
 
 
                         }
@@ -6577,7 +6630,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "methodDefinition"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:278:1: methodDefinition : ^( CTORDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:276:1: methodDefinition : ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
     public final JVMWalker.methodDefinition_return methodDefinition() throws RecognitionException {
         JVMWalker.methodDefinition_return retval = new JVMWalker.methodDefinition_return();
         retval.start = input.LT(1);
@@ -6588,51 +6641,51 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CTORDECL193=null;
-        CommonTree VMODIFIER194=null;
-        CommonTree MODIFIER196=null;
-        CommonTree GENERICDESC198=null;
-        CommonTree RETVALUE200=null;
-        CommonTree UNITNAME202=null;
-        CommonTree THROWCLAUSE205=null;
-        CommonTree UNITHEADER207=null;
-        CommonTree UNITBODY209=null;
-        CommonTree UNITATTR211=null;
-        JVMWalker.method_visual_modifier_return method_visual_modifier195 =null;
+        CommonTree METHODDECL194=null;
+        CommonTree VMODIFIER195=null;
+        CommonTree MODIFIER197=null;
+        CommonTree GENERICDESC199=null;
+        CommonTree RETVALUE201=null;
+        CommonTree UNITNAME203=null;
+        CommonTree THROWCLAUSE206=null;
+        CommonTree UNITHEADER208=null;
+        CommonTree UNITBODY210=null;
+        CommonTree UNITATTR212=null;
+        JVMWalker.method_visual_modifier_return method_visual_modifier196 =null;
 
-        JVMWalker.method_modifier_return method_modifier197 =null;
+        JVMWalker.method_modifier_return method_modifier198 =null;
 
-        JVMWalker.genericDescriptor_return genericDescriptor199 =null;
+        JVMWalker.genericDescriptor_return genericDescriptor200 =null;
 
-        JVMWalker.type_return type201 =null;
+        JVMWalker.type_return type202 =null;
 
-        JVMWalker.keywordAggregate_return keywordAggregate203 =null;
+        JVMWalker.keywordAggregate_return keywordAggregate204 =null;
 
-        JVMWalker.arguments_return arguments204 =null;
+        JVMWalker.arguments_return arguments205 =null;
 
-        JVMWalker.throwClauseMethod_return throwClauseMethod206 =null;
+        JVMWalker.throwClauseMethod_return throwClauseMethod207 =null;
 
-        JVMWalker.methodInfo_return methodInfo208 =null;
+        JVMWalker.methodInfo_return methodInfo209 =null;
 
-        JVMWalker.body_return body210 =null;
+        JVMWalker.body_return body211 =null;
 
-        JVMWalker.afterMethodInfo_return afterMethodInfo212 =null;
+        JVMWalker.afterMethodInfo_return afterMethodInfo213 =null;
 
 
-        CommonTree CTORDECL193_tree=null;
-        CommonTree VMODIFIER194_tree=null;
-        CommonTree MODIFIER196_tree=null;
-        CommonTree GENERICDESC198_tree=null;
-        CommonTree RETVALUE200_tree=null;
-        CommonTree UNITNAME202_tree=null;
-        CommonTree THROWCLAUSE205_tree=null;
-        CommonTree UNITHEADER207_tree=null;
-        CommonTree UNITBODY209_tree=null;
-        CommonTree UNITATTR211_tree=null;
+        CommonTree METHODDECL194_tree=null;
+        CommonTree VMODIFIER195_tree=null;
+        CommonTree MODIFIER197_tree=null;
+        CommonTree GENERICDESC199_tree=null;
+        CommonTree RETVALUE201_tree=null;
+        CommonTree UNITNAME203_tree=null;
+        CommonTree THROWCLAUSE206_tree=null;
+        CommonTree UNITHEADER208_tree=null;
+        CommonTree UNITBODY210_tree=null;
+        CommonTree UNITATTR212_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:3: ( ^( CTORDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:5: ^( CTORDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:3: ( ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:5: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -6643,11 +6696,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CTORDECL193=(CommonTree)match(input,CTORDECL,FOLLOW_CTORDECL_in_methodDefinition1624); 
-            CTORDECL193_tree = (CommonTree)adaptor.dupNode(CTORDECL193);
+            METHODDECL194=(CommonTree)match(input,METHODDECL,FOLLOW_METHODDECL_in_methodDefinition1627); 
+            METHODDECL194_tree = (CommonTree)adaptor.dupNode(METHODDECL194);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(CTORDECL193_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(METHODDECL194_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -6657,16 +6710,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER194=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_methodDefinition1627); 
-            VMODIFIER194_tree = (CommonTree)adaptor.dupNode(VMODIFIER194);
+            VMODIFIER195=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_methodDefinition1630); 
+            VMODIFIER195_tree = (CommonTree)adaptor.dupNode(VMODIFIER195);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER194_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER195_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:28: ( method_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:30: ( method_visual_modifier )?
                 int alt47=2;
                 int LA47_0 = input.LA(1);
 
@@ -6675,15 +6728,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt47) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:28: method_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:30: method_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition1629);
-                        method_visual_modifier195=method_visual_modifier();
+                        pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition1632);
+                        method_visual_modifier196=method_visual_modifier();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, method_visual_modifier195.getTree());
+                        adaptor.addChild(root_2, method_visual_modifier196.getTree());
 
 
                         }
@@ -6705,16 +6758,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            MODIFIER196=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_methodDefinition1634); 
-            MODIFIER196_tree = (CommonTree)adaptor.dupNode(MODIFIER196);
+            MODIFIER197=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_methodDefinition1637); 
+            MODIFIER197_tree = (CommonTree)adaptor.dupNode(MODIFIER197);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(MODIFIER196_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(MODIFIER197_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:64: ( method_modifier )*
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:66: ( method_modifier )*
                 loop48:
                 do {
                     int alt48=2;
@@ -6727,15 +6780,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt48) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:64: method_modifier
+                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:66: method_modifier
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_method_modifier_in_methodDefinition1636);
-                	    method_modifier197=method_modifier();
+                	    pushFollow(FOLLOW_method_modifier_in_methodDefinition1639);
+                	    method_modifier198=method_modifier();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_2, method_modifier197.getTree());
+                	    adaptor.addChild(root_2, method_modifier198.getTree());
 
 
                 	    }
@@ -6760,16 +6813,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            GENERICDESC198=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_methodDefinition1641); 
-            GENERICDESC198_tree = (CommonTree)adaptor.dupNode(GENERICDESC198);
+            GENERICDESC199=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_methodDefinition1644); 
+            GENERICDESC199_tree = (CommonTree)adaptor.dupNode(GENERICDESC199);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(GENERICDESC198_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(GENERICDESC199_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:96: ( genericDescriptor )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:98: ( genericDescriptor )?
                 int alt49=2;
                 int LA49_0 = input.LA(1);
 
@@ -6778,15 +6831,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt49) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:96: genericDescriptor
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:98: genericDescriptor
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_genericDescriptor_in_methodDefinition1643);
-                        genericDescriptor199=genericDescriptor();
+                        pushFollow(FOLLOW_genericDescriptor_in_methodDefinition1646);
+                        genericDescriptor200=genericDescriptor();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, genericDescriptor199.getTree());
+                        adaptor.addChild(root_2, genericDescriptor200.getTree());
 
 
                         }
@@ -6808,21 +6861,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RETVALUE200=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_methodDefinition1648); 
-            RETVALUE200_tree = (CommonTree)adaptor.dupNode(RETVALUE200);
+            RETVALUE201=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_methodDefinition1651); 
+            RETVALUE201_tree = (CommonTree)adaptor.dupNode(RETVALUE201);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(RETVALUE200_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(RETVALUE201_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_type_in_methodDefinition1650);
-            type201=type();
+            pushFollow(FOLLOW_type_in_methodDefinition1653);
+            type202=type();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, type201.getTree());
+            adaptor.addChild(root_2, type202.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6837,21 +6890,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME202=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_methodDefinition1654); 
-            UNITNAME202_tree = (CommonTree)adaptor.dupNode(UNITNAME202);
+            UNITNAME203=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_methodDefinition1657); 
+            UNITNAME203_tree = (CommonTree)adaptor.dupNode(UNITNAME203);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME202_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME203_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition1656);
-            keywordAggregate203=keywordAggregate();
+            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition1659);
+            keywordAggregate204=keywordAggregate();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, keywordAggregate203.getTree());
+            adaptor.addChild(root_2, keywordAggregate204.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6861,12 +6914,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_arguments_in_methodDefinition1659);
-            arguments204=arguments();
+            pushFollow(FOLLOW_arguments_in_methodDefinition1662);
+            arguments205=arguments();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, arguments204.getTree());
+            adaptor.addChild(root_1, arguments205.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -6875,16 +6928,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWCLAUSE205=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_methodDefinition1662); 
-            THROWCLAUSE205_tree = (CommonTree)adaptor.dupNode(THROWCLAUSE205);
+            THROWCLAUSE206=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_methodDefinition1665); 
+            THROWCLAUSE206_tree = (CommonTree)adaptor.dupNode(THROWCLAUSE206);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(THROWCLAUSE205_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(THROWCLAUSE206_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:186: ( throwClauseMethod )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:188: ( throwClauseMethod )?
                 int alt50=2;
                 int LA50_0 = input.LA(1);
 
@@ -6893,15 +6946,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt50) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:186: throwClauseMethod
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:277:188: throwClauseMethod
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition1664);
-                        throwClauseMethod206=throwClauseMethod();
+                        pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition1667);
+                        throwClauseMethod207=throwClauseMethod();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, throwClauseMethod206.getTree());
+                        adaptor.addChild(root_2, throwClauseMethod207.getTree());
 
 
                         }
@@ -6923,21 +6976,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER207=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_methodDefinition1693); 
-            UNITHEADER207_tree = (CommonTree)adaptor.dupNode(UNITHEADER207);
+            UNITHEADER208=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_methodDefinition1696); 
+            UNITHEADER208_tree = (CommonTree)adaptor.dupNode(UNITHEADER208);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER207_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER208_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodInfo_in_methodDefinition1695);
-            methodInfo208=methodInfo();
+            pushFollow(FOLLOW_methodInfo_in_methodDefinition1698);
+            methodInfo209=methodInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, methodInfo208.getTree());
+            adaptor.addChild(root_2, methodInfo209.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6952,33 +7005,33 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITBODY209=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_methodDefinition1723); 
-            UNITBODY209_tree = (CommonTree)adaptor.dupNode(UNITBODY209);
+            UNITBODY210=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_methodDefinition1726); 
+            UNITBODY210_tree = (CommonTree)adaptor.dupNode(UNITBODY210);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY209_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY210_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:281:36: ( body )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:36: ( body )?
                 int alt51=2;
                 int LA51_0 = input.LA(1);
 
-                if ( (LA51_0==Synthetic) ) {
+                if ( (LA51_0==Code||LA51_0==Synthetic) ) {
                     alt51=1;
                 }
                 switch (alt51) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:281:36: body
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:279:36: body
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_body_in_methodDefinition1725);
-                        body210=body();
+                        pushFollow(FOLLOW_body_in_methodDefinition1728);
+                        body211=body();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, body210.getTree());
+                        adaptor.addChild(root_2, body211.getTree());
 
 
                         }
@@ -7000,16 +7053,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITATTR211=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_methodDefinition1754); 
-            UNITATTR211_tree = (CommonTree)adaptor.dupNode(UNITATTR211);
+            UNITATTR212=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_methodDefinition1757); 
+            UNITATTR212_tree = (CommonTree)adaptor.dupNode(UNITATTR212);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR211_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR212_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:282:36: ( afterMethodInfo )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:280:36: ( afterMethodInfo )?
                 int alt52=2;
                 int LA52_0 = input.LA(1);
 
@@ -7018,15 +7071,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt52) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:282:36: afterMethodInfo
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:280:36: afterMethodInfo
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition1756);
-                        afterMethodInfo212=afterMethodInfo();
+                        pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition1759);
+                        afterMethodInfo213=afterMethodInfo();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, afterMethodInfo212.getTree());
+                        adaptor.addChild(root_2, afterMethodInfo213.getTree());
 
 
                         }
@@ -7073,7 +7126,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "methodInfo"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:286:1: methodInfo : ^( STANDINTOKEN methodSignatureInfo flags ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:284:1: methodInfo : ^( STANDINTOKEN methodSignatureInfo flags ) ;
     public final JVMWalker.methodInfo_return methodInfo() throws RecognitionException {
         JVMWalker.methodInfo_return retval = new JVMWalker.methodInfo_return();
         retval.start = input.LT(1);
@@ -7084,17 +7137,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree STANDINTOKEN213=null;
-        JVMWalker.methodSignatureInfo_return methodSignatureInfo214 =null;
+        CommonTree STANDINTOKEN214=null;
+        JVMWalker.methodSignatureInfo_return methodSignatureInfo215 =null;
 
-        JVMWalker.flags_return flags215 =null;
+        JVMWalker.flags_return flags216 =null;
 
 
-        CommonTree STANDINTOKEN213_tree=null;
+        CommonTree STANDINTOKEN214_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:287:3: ( ^( STANDINTOKEN methodSignatureInfo flags ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:287:5: ^( STANDINTOKEN methodSignatureInfo flags )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:285:3: ( ^( STANDINTOKEN methodSignatureInfo flags ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:285:5: ^( STANDINTOKEN methodSignatureInfo flags )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -7105,30 +7158,30 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            STANDINTOKEN213=(CommonTree)match(input,STANDINTOKEN,FOLLOW_STANDINTOKEN_in_methodInfo1798); 
-            STANDINTOKEN213_tree = (CommonTree)adaptor.dupNode(STANDINTOKEN213);
+            STANDINTOKEN214=(CommonTree)match(input,STANDINTOKEN,FOLLOW_STANDINTOKEN_in_methodInfo1801); 
+            STANDINTOKEN214_tree = (CommonTree)adaptor.dupNode(STANDINTOKEN214);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(STANDINTOKEN213_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(STANDINTOKEN214_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo1800);
-            methodSignatureInfo214=methodSignatureInfo();
+            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo1803);
+            methodSignatureInfo215=methodSignatureInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, methodSignatureInfo214.getTree());
+            adaptor.addChild(root_1, methodSignatureInfo215.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_flags_in_methodInfo1802);
-            flags215=flags();
+            pushFollow(FOLLOW_flags_in_methodInfo1805);
+            flags216=flags();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, flags215.getTree());
+            adaptor.addChild(root_1, flags216.getTree());
 
 
             match(input, Token.UP, null); 
@@ -7162,7 +7215,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "afterMethodInfo"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:290:1: afterMethodInfo : ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:288:1: afterMethodInfo : ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ ;
     public final JVMWalker.afterMethodInfo_return afterMethodInfo() throws RecognitionException {
         JVMWalker.afterMethodInfo_return retval = new JVMWalker.afterMethodInfo_return();
         retval.start = input.LT(1);
@@ -7173,42 +7226,42 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Deprecated216=null;
-        CommonTree BOOLEANLITERAL217=null;
-        CommonTree Signature218=null;
-        CommonTree CPINDEX219=null;
-        CommonTree Exceptions224=null;
-        CommonTree Synthetic226=null;
-        CommonTree BOOLEANLITERAL227=null;
-        JVMWalker.runtimeInvisibleParameterAnnotations_return runtimeInvisibleParameterAnnotations220 =null;
+        CommonTree Deprecated217=null;
+        CommonTree BOOLEANLITERAL218=null;
+        CommonTree Signature219=null;
+        CommonTree CPINDEX220=null;
+        CommonTree Exceptions225=null;
+        CommonTree Synthetic227=null;
+        CommonTree BOOLEANLITERAL228=null;
+        JVMWalker.runtimeInvisibleParameterAnnotations_return runtimeInvisibleParameterAnnotations221 =null;
 
-        JVMWalker.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info221 =null;
+        JVMWalker.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info222 =null;
 
-        JVMWalker.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations222 =null;
+        JVMWalker.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations223 =null;
 
-        JVMWalker.runtimeVisibleParameterAnnotations_return runtimeVisibleParameterAnnotations223 =null;
+        JVMWalker.runtimeVisibleParameterAnnotations_return runtimeVisibleParameterAnnotations224 =null;
 
-        JVMWalker.throwClause_return throwClause225 =null;
+        JVMWalker.throwClause_return throwClause226 =null;
 
-        JVMWalker.annotationDefault_return annotationDefault228 =null;
+        JVMWalker.annotationDefault_return annotationDefault229 =null;
 
 
-        CommonTree Deprecated216_tree=null;
-        CommonTree BOOLEANLITERAL217_tree=null;
-        CommonTree Signature218_tree=null;
-        CommonTree CPINDEX219_tree=null;
-        CommonTree Exceptions224_tree=null;
-        CommonTree Synthetic226_tree=null;
-        CommonTree BOOLEANLITERAL227_tree=null;
+        CommonTree Deprecated217_tree=null;
+        CommonTree BOOLEANLITERAL218_tree=null;
+        CommonTree Signature219_tree=null;
+        CommonTree CPINDEX220_tree=null;
+        CommonTree Exceptions225_tree=null;
+        CommonTree Synthetic227_tree=null;
+        CommonTree BOOLEANLITERAL228_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:291:3: ( ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:291:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:289:3: ( ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:289:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:291:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:289:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
             int cnt53=0;
             loop53:
             do {
@@ -7264,7 +7317,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt53) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:291:6: ^( Deprecated BOOLEANLITERAL )
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:289:6: ^( Deprecated BOOLEANLITERAL )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7272,20 +7325,20 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Deprecated216=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfo1818); 
-            	    Deprecated216_tree = (CommonTree)adaptor.dupNode(Deprecated216);
+            	    Deprecated217=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfo1821); 
+            	    Deprecated217_tree = (CommonTree)adaptor.dupNode(Deprecated217);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated216_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated217_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    BOOLEANLITERAL217=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1821); 
-            	    BOOLEANLITERAL217_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL217);
+            	    BOOLEANLITERAL218=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1824); 
+            	    BOOLEANLITERAL218_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL218);
 
 
-            	    adaptor.addChild(root_1, BOOLEANLITERAL217_tree);
+            	    adaptor.addChild(root_1, BOOLEANLITERAL218_tree);
 
 
             	    match(input, Token.UP, null); 
@@ -7297,7 +7350,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:292:5: ^( Signature CPINDEX )
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:290:5: ^( Signature CPINDEX )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7305,20 +7358,20 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Signature218=(CommonTree)match(input,Signature,FOLLOW_Signature_in_afterMethodInfo1829); 
-            	    Signature218_tree = (CommonTree)adaptor.dupNode(Signature218);
+            	    Signature219=(CommonTree)match(input,Signature,FOLLOW_Signature_in_afterMethodInfo1832); 
+            	    Signature219_tree = (CommonTree)adaptor.dupNode(Signature219);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Signature218_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Signature219_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    CPINDEX219=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfo1831); 
-            	    CPINDEX219_tree = (CommonTree)adaptor.dupNode(CPINDEX219);
+            	    CPINDEX220=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfo1834); 
+            	    CPINDEX220_tree = (CommonTree)adaptor.dupNode(CPINDEX220);
 
 
-            	    adaptor.addChild(root_1, CPINDEX219_tree);
+            	    adaptor.addChild(root_1, CPINDEX220_tree);
 
 
             	    match(input, Token.UP, null); 
@@ -7330,63 +7383,63 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 3 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:293:5: runtimeInvisibleParameterAnnotations
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:291:5: runtimeInvisibleParameterAnnotations
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo1838);
-            	    runtimeInvisibleParameterAnnotations220=runtimeInvisibleParameterAnnotations();
+            	    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo1841);
+            	    runtimeInvisibleParameterAnnotations221=runtimeInvisibleParameterAnnotations();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeInvisibleParameterAnnotations220.getTree());
+            	    adaptor.addChild(root_0, runtimeInvisibleParameterAnnotations221.getTree());
 
 
             	    }
             	    break;
             	case 4 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:294:5: runtimeVisibleAnnotations_info
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:292:5: runtimeVisibleAnnotations_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo1844);
-            	    runtimeVisibleAnnotations_info221=runtimeVisibleAnnotations_info();
+            	    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo1847);
+            	    runtimeVisibleAnnotations_info222=runtimeVisibleAnnotations_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeVisibleAnnotations_info221.getTree());
+            	    adaptor.addChild(root_0, runtimeVisibleAnnotations_info222.getTree());
 
 
             	    }
             	    break;
             	case 5 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:295:5: runtimeInvisibleAnnotations
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:293:5: runtimeInvisibleAnnotations
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo1850);
-            	    runtimeInvisibleAnnotations222=runtimeInvisibleAnnotations();
+            	    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo1853);
+            	    runtimeInvisibleAnnotations223=runtimeInvisibleAnnotations();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeInvisibleAnnotations222.getTree());
+            	    adaptor.addChild(root_0, runtimeInvisibleAnnotations223.getTree());
 
 
             	    }
             	    break;
             	case 6 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:296:5: runtimeVisibleParameterAnnotations
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:294:5: runtimeVisibleParameterAnnotations
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo1856);
-            	    runtimeVisibleParameterAnnotations223=runtimeVisibleParameterAnnotations();
+            	    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo1859);
+            	    runtimeVisibleParameterAnnotations224=runtimeVisibleParameterAnnotations();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeVisibleParameterAnnotations223.getTree());
+            	    adaptor.addChild(root_0, runtimeVisibleParameterAnnotations224.getTree());
 
 
             	    }
             	    break;
             	case 7 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:297:5: ^( Exceptions throwClause )
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:295:5: ^( Exceptions throwClause )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7394,21 +7447,21 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Exceptions224=(CommonTree)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfo1863); 
-            	    Exceptions224_tree = (CommonTree)adaptor.dupNode(Exceptions224);
+            	    Exceptions225=(CommonTree)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfo1866); 
+            	    Exceptions225_tree = (CommonTree)adaptor.dupNode(Exceptions225);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Exceptions224_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Exceptions225_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_throwClause_in_afterMethodInfo1866);
-            	    throwClause225=throwClause();
+            	    pushFollow(FOLLOW_throwClause_in_afterMethodInfo1869);
+            	    throwClause226=throwClause();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, throwClause225.getTree());
+            	    adaptor.addChild(root_1, throwClause226.getTree());
 
 
             	    match(input, Token.UP, null); 
@@ -7420,7 +7473,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 8 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:298:5: ^( Synthetic BOOLEANLITERAL )
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:296:5: ^( Synthetic BOOLEANLITERAL )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7428,20 +7481,20 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Synthetic226=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfo1874); 
-            	    Synthetic226_tree = (CommonTree)adaptor.dupNode(Synthetic226);
+            	    Synthetic227=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfo1877); 
+            	    Synthetic227_tree = (CommonTree)adaptor.dupNode(Synthetic227);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic226_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic227_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    BOOLEANLITERAL227=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1876); 
-            	    BOOLEANLITERAL227_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL227);
+            	    BOOLEANLITERAL228=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1879); 
+            	    BOOLEANLITERAL228_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL228);
 
 
-            	    adaptor.addChild(root_1, BOOLEANLITERAL227_tree);
+            	    adaptor.addChild(root_1, BOOLEANLITERAL228_tree);
 
 
             	    match(input, Token.UP, null); 
@@ -7453,15 +7506,15 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 9 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:299:5: annotationDefault
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:297:5: annotationDefault
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfo1883);
-            	    annotationDefault228=annotationDefault();
+            	    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfo1886);
+            	    annotationDefault229=annotationDefault();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, annotationDefault228.getTree());
+            	    adaptor.addChild(root_0, annotationDefault229.getTree());
 
 
             	    }
@@ -7502,7 +7555,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "annotationDefault"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:302:1: annotationDefault : ^( AnnotationDefault DefaultValue annotationValue ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:300:1: annotationDefault : ^( AnnotationDefault DefaultValue annotationValue ) ;
     public final JVMWalker.annotationDefault_return annotationDefault() throws RecognitionException {
         JVMWalker.annotationDefault_return retval = new JVMWalker.annotationDefault_return();
         retval.start = input.LT(1);
@@ -7513,17 +7566,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree AnnotationDefault229=null;
-        CommonTree DefaultValue230=null;
-        JVMWalker.annotationValue_return annotationValue231 =null;
+        CommonTree AnnotationDefault230=null;
+        CommonTree DefaultValue231=null;
+        JVMWalker.annotationValue_return annotationValue232 =null;
 
 
-        CommonTree AnnotationDefault229_tree=null;
-        CommonTree DefaultValue230_tree=null;
+        CommonTree AnnotationDefault230_tree=null;
+        CommonTree DefaultValue231_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:303:3: ( ^( AnnotationDefault DefaultValue annotationValue ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:303:5: ^( AnnotationDefault DefaultValue annotationValue )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:301:3: ( ^( AnnotationDefault DefaultValue annotationValue ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:301:5: ^( AnnotationDefault DefaultValue annotationValue )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -7534,29 +7587,29 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            AnnotationDefault229=(CommonTree)match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault1899); 
-            AnnotationDefault229_tree = (CommonTree)adaptor.dupNode(AnnotationDefault229);
+            AnnotationDefault230=(CommonTree)match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault1902); 
+            AnnotationDefault230_tree = (CommonTree)adaptor.dupNode(AnnotationDefault230);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(AnnotationDefault229_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(AnnotationDefault230_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            DefaultValue230=(CommonTree)match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault1902); 
-            DefaultValue230_tree = (CommonTree)adaptor.dupNode(DefaultValue230);
+            DefaultValue231=(CommonTree)match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault1905); 
+            DefaultValue231_tree = (CommonTree)adaptor.dupNode(DefaultValue231);
 
 
-            adaptor.addChild(root_1, DefaultValue230_tree);
+            adaptor.addChild(root_1, DefaultValue231_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_annotationValue_in_annotationDefault1904);
-            annotationValue231=annotationValue();
+            pushFollow(FOLLOW_annotationValue_in_annotationDefault1907);
+            annotationValue232=annotationValue();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, annotationValue231.getTree());
+            adaptor.addChild(root_1, annotationValue232.getTree());
 
 
             match(input, Token.UP, null); 
@@ -7590,7 +7643,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "methodSignatureInfo"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:306:1: methodSignatureInfo : ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:304:1: methodSignatureInfo : ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) ;
     public final JVMWalker.methodSignatureInfo_return methodSignatureInfo() throws RecognitionException {
         JVMWalker.methodSignatureInfo_return retval = new JVMWalker.methodSignatureInfo_return();
         retval.start = input.LT(1);
@@ -7601,21 +7654,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Signature232=null;
-        CommonTree PARAMDESC233=null;
-        CommonTree RETDESC235=null;
-        JVMWalker.bytecodeType_return bytecodeType234 =null;
+        CommonTree Signature233=null;
+        CommonTree PARAMDESC234=null;
+        CommonTree RETDESC236=null;
+        JVMWalker.bytecodeType_return bytecodeType235 =null;
 
-        JVMWalker.returnDescriptor_return returnDescriptor236 =null;
+        JVMWalker.returnDescriptor_return returnDescriptor237 =null;
 
 
-        CommonTree Signature232_tree=null;
-        CommonTree PARAMDESC233_tree=null;
-        CommonTree RETDESC235_tree=null;
+        CommonTree Signature233_tree=null;
+        CommonTree PARAMDESC234_tree=null;
+        CommonTree RETDESC236_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:307:3: ( ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:307:5: ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:305:3: ( ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:305:5: ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -7626,11 +7679,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Signature232=(CommonTree)match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo1921); 
-            Signature232_tree = (CommonTree)adaptor.dupNode(Signature232);
+            Signature233=(CommonTree)match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo1924); 
+            Signature233_tree = (CommonTree)adaptor.dupNode(Signature233);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Signature232_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Signature233_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -7640,16 +7693,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            PARAMDESC233=(CommonTree)match(input,PARAMDESC,FOLLOW_PARAMDESC_in_methodSignatureInfo1924); 
-            PARAMDESC233_tree = (CommonTree)adaptor.dupNode(PARAMDESC233);
+            PARAMDESC234=(CommonTree)match(input,PARAMDESC,FOLLOW_PARAMDESC_in_methodSignatureInfo1927); 
+            PARAMDESC234_tree = (CommonTree)adaptor.dupNode(PARAMDESC234);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(PARAMDESC233_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(PARAMDESC234_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:307:29: ( bytecodeType )*
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:305:29: ( bytecodeType )*
                 loop54:
                 do {
                     int alt54=2;
@@ -7662,15 +7715,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt54) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:307:29: bytecodeType
+                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:305:29: bytecodeType
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo1926);
-                	    bytecodeType234=bytecodeType();
+                	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo1929);
+                	    bytecodeType235=bytecodeType();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_2, bytecodeType234.getTree());
+                	    adaptor.addChild(root_2, bytecodeType235.getTree());
 
 
                 	    }
@@ -7695,21 +7748,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RETDESC235=(CommonTree)match(input,RETDESC,FOLLOW_RETDESC_in_methodSignatureInfo1931); 
-            RETDESC235_tree = (CommonTree)adaptor.dupNode(RETDESC235);
+            RETDESC236=(CommonTree)match(input,RETDESC,FOLLOW_RETDESC_in_methodSignatureInfo1934); 
+            RETDESC236_tree = (CommonTree)adaptor.dupNode(RETDESC236);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(RETDESC235_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(RETDESC236_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo1933);
-            returnDescriptor236=returnDescriptor();
+            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo1936);
+            returnDescriptor237=returnDescriptor();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, returnDescriptor236.getTree());
+            adaptor.addChild(root_2, returnDescriptor237.getTree());
 
 
             match(input, Token.UP, null); 
@@ -7749,7 +7802,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "returnDescriptor"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:310:1: returnDescriptor : ( bytecodeType | VoidType );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:308:1: returnDescriptor : ( bytecodeType | VoidType );
     public final JVMWalker.returnDescriptor_return returnDescriptor() throws RecognitionException {
         JVMWalker.returnDescriptor_return retval = new JVMWalker.returnDescriptor_return();
         retval.start = input.LT(1);
@@ -7760,14 +7813,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree VoidType238=null;
-        JVMWalker.bytecodeType_return bytecodeType237 =null;
+        CommonTree VoidType239=null;
+        JVMWalker.bytecodeType_return bytecodeType238 =null;
 
 
-        CommonTree VoidType238_tree=null;
+        CommonTree VoidType239_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:311:3: ( bytecodeType | VoidType )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:309:3: ( bytecodeType | VoidType )
             int alt55=2;
             int LA55_0 = input.LA(1);
 
@@ -7786,34 +7839,34 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt55) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:311:5: bytecodeType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:309:5: bytecodeType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor1948);
-                    bytecodeType237=bytecodeType();
+                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor1951);
+                    bytecodeType238=bytecodeType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeType237.getTree());
+                    adaptor.addChild(root_0, bytecodeType238.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:311:20: VoidType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:309:20: VoidType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    VoidType238=(CommonTree)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor1952); 
-                    VoidType238_tree = (CommonTree)adaptor.dupNode(VoidType238);
+                    VoidType239=(CommonTree)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor1955); 
+                    VoidType239_tree = (CommonTree)adaptor.dupNode(VoidType239);
 
 
-                    adaptor.addChild(root_0, VoidType238_tree);
+                    adaptor.addChild(root_0, VoidType239_tree);
 
 
                     }
@@ -7843,7 +7896,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "method_modifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:314:1: method_modifier : ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:312:1: method_modifier : ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP );
     public final JVMWalker.method_modifier_return method_modifier() throws RecognitionException {
         JVMWalker.method_modifier_return retval = new JVMWalker.method_modifier_return();
         retval.start = input.LT(1);
@@ -7854,26 +7907,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set239=null;
+        CommonTree set240=null;
 
-        CommonTree set239_tree=null;
+        CommonTree set240_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:315:3: ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:313:3: ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set239=(CommonTree)input.LT(1);
+            set240=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==ABSTRACT||input.LA(1)==FINAL||input.LA(1)==NATIVE||input.LA(1)==STATIC||input.LA(1)==STRICTFP||input.LA(1)==SYNCHRONIZED ) {
                 input.consume();
-                set239_tree = (CommonTree)adaptor.dupNode(set239);
+                set240_tree = (CommonTree)adaptor.dupNode(set240);
 
 
-                adaptor.addChild(root_0, set239_tree);
+                adaptor.addChild(root_0, set240_tree);
 
                 state.errorRecovery=false;
             }
@@ -7909,7 +7962,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "method_visual_modifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:318:1: method_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:316:1: method_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
     public final JVMWalker.method_visual_modifier_return method_visual_modifier() throws RecognitionException {
         JVMWalker.method_visual_modifier_return retval = new JVMWalker.method_visual_modifier_return();
         retval.start = input.LT(1);
@@ -7920,26 +7973,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set240=null;
+        CommonTree set241=null;
 
-        CommonTree set240_tree=null;
+        CommonTree set241_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:319:3: ( PUBLIC | PRIVATE | PROTECTED )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:317:3: ( PUBLIC | PRIVATE | PROTECTED )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set240=(CommonTree)input.LT(1);
+            set241=(CommonTree)input.LT(1);
 
             if ( (input.LA(1) >= PRIVATE && input.LA(1) <= PUBLIC) ) {
                 input.consume();
-                set240_tree = (CommonTree)adaptor.dupNode(set240);
+                set241_tree = (CommonTree)adaptor.dupNode(set241);
 
 
-                adaptor.addChild(root_0, set240_tree);
+                adaptor.addChild(root_0, set241_tree);
 
                 state.errorRecovery=false;
             }
@@ -7975,7 +8028,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "arguments"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:322:1: arguments : ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:320:1: arguments : ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) ;
     public final JVMWalker.arguments_return arguments() throws RecognitionException {
         JVMWalker.arguments_return retval = new JVMWalker.arguments_return();
         retval.start = input.LT(1);
@@ -7986,21 +8039,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree UNITARGUMENTS241=null;
-        CommonTree DOT243=null;
+        CommonTree UNITARGUMENTS242=null;
         CommonTree DOT244=null;
         CommonTree DOT245=null;
-        JVMWalker.typeList_return typeList242 =null;
+        CommonTree DOT246=null;
+        JVMWalker.typeList_return typeList243 =null;
 
 
-        CommonTree UNITARGUMENTS241_tree=null;
-        CommonTree DOT243_tree=null;
+        CommonTree UNITARGUMENTS242_tree=null;
         CommonTree DOT244_tree=null;
         CommonTree DOT245_tree=null;
+        CommonTree DOT246_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:323:3: ( ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:323:5: ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:321:3: ( ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:321:5: ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -8011,16 +8064,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITARGUMENTS241=(CommonTree)match(input,UNITARGUMENTS,FOLLOW_UNITARGUMENTS_in_arguments2024); 
-            UNITARGUMENTS241_tree = (CommonTree)adaptor.dupNode(UNITARGUMENTS241);
+            UNITARGUMENTS242=(CommonTree)match(input,UNITARGUMENTS,FOLLOW_UNITARGUMENTS_in_arguments2027); 
+            UNITARGUMENTS242_tree = (CommonTree)adaptor.dupNode(UNITARGUMENTS242);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(UNITARGUMENTS241_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(UNITARGUMENTS242_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:323:21: ( typeList )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:321:21: ( typeList )?
                 int alt56=2;
                 int LA56_0 = input.LA(1);
 
@@ -8029,15 +8082,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt56) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:323:21: typeList
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:321:21: typeList
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeList_in_arguments2026);
-                        typeList242=typeList();
+                        pushFollow(FOLLOW_typeList_in_arguments2029);
+                        typeList243=typeList();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, typeList242.getTree());
+                        adaptor.addChild(root_1, typeList243.getTree());
 
 
                         }
@@ -8046,7 +8099,7 @@ public TreeAdaptor getTreeAdaptor() {
                 }
 
 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:323:31: ( DOT DOT DOT )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:321:31: ( DOT DOT DOT )?
                 int alt57=2;
                 int LA57_0 = input.LA(1);
 
@@ -8055,18 +8108,10 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt57) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:323:32: DOT DOT DOT
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:321:32: DOT DOT DOT
                         {
                         _last = (CommonTree)input.LT(1);
-                        DOT243=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2030); 
-                        DOT243_tree = (CommonTree)adaptor.dupNode(DOT243);
-
-
-                        adaptor.addChild(root_1, DOT243_tree);
-
-
-                        _last = (CommonTree)input.LT(1);
-                        DOT244=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2032); 
+                        DOT244=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2033); 
                         DOT244_tree = (CommonTree)adaptor.dupNode(DOT244);
 
 
@@ -8074,11 +8119,19 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                         _last = (CommonTree)input.LT(1);
-                        DOT245=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2034); 
+                        DOT245=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2035); 
                         DOT245_tree = (CommonTree)adaptor.dupNode(DOT245);
 
 
                         adaptor.addChild(root_1, DOT245_tree);
+
+
+                        _last = (CommonTree)input.LT(1);
+                        DOT246=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2037); 
+                        DOT246_tree = (CommonTree)adaptor.dupNode(DOT246);
+
+
+                        adaptor.addChild(root_1, DOT246_tree);
 
 
                         }
@@ -8119,7 +8172,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "body"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:330:1: body : ( Synthetic ( BOOLEANLITERAL )? ) ^( Code codeBlock ) ( bodyExtension )* ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:328:1: body : ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )* ;
     public final JVMWalker.body_return body() throws RecognitionException {
         JVMWalker.body_return retval = new JVMWalker.body_return();
         retval.start = input.LT(1);
@@ -8130,60 +8183,54 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Synthetic246=null;
-        CommonTree BOOLEANLITERAL247=null;
-        CommonTree Code248=null;
-        JVMWalker.codeBlock_return codeBlock249 =null;
+        CommonTree Synthetic247=null;
+        CommonTree BOOLEANLITERAL248=null;
+        CommonTree Code249=null;
+        JVMWalker.codeBlock_return codeBlock250 =null;
 
-        JVMWalker.bodyExtension_return bodyExtension250 =null;
+        JVMWalker.bodyExtension_return bodyExtension251 =null;
 
 
-        CommonTree Synthetic246_tree=null;
-        CommonTree BOOLEANLITERAL247_tree=null;
-        CommonTree Code248_tree=null;
+        CommonTree Synthetic247_tree=null;
+        CommonTree BOOLEANLITERAL248_tree=null;
+        CommonTree Code249_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:3: ( ( Synthetic ( BOOLEANLITERAL )? ) ^( Code codeBlock ) ( bodyExtension )* )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:5: ( Synthetic ( BOOLEANLITERAL )? ) ^( Code codeBlock ) ( bodyExtension )*
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:329:3: ( ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )* )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:329:5: ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:5: ( Synthetic ( BOOLEANLITERAL )? )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:6: Synthetic ( BOOLEANLITERAL )?
-            {
-            _last = (CommonTree)input.LT(1);
-            Synthetic246=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_body2059); 
-            Synthetic246_tree = (CommonTree)adaptor.dupNode(Synthetic246);
-
-
-            adaptor.addChild(root_0, Synthetic246_tree);
-
-
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:16: ( BOOLEANLITERAL )?
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:329:5: ( Synthetic BOOLEANLITERAL )?
             int alt58=2;
             int LA58_0 = input.LA(1);
 
-            if ( (LA58_0==BOOLEANLITERAL) ) {
+            if ( (LA58_0==Synthetic) ) {
                 alt58=1;
             }
             switch (alt58) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:16: BOOLEANLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:329:6: Synthetic BOOLEANLITERAL
                     {
                     _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL247=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body2061); 
-                    BOOLEANLITERAL247_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL247);
+                    Synthetic247=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_body2062); 
+                    Synthetic247_tree = (CommonTree)adaptor.dupNode(Synthetic247);
 
 
-                    adaptor.addChild(root_0, BOOLEANLITERAL247_tree);
+                    adaptor.addChild(root_0, Synthetic247_tree);
+
+
+                    _last = (CommonTree)input.LT(1);
+                    BOOLEANLITERAL248=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body2064); 
+                    BOOLEANLITERAL248_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL248);
+
+
+                    adaptor.addChild(root_0, BOOLEANLITERAL248_tree);
 
 
                     }
                     break;
-
-            }
-
 
             }
 
@@ -8194,21 +8241,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Code248=(CommonTree)match(input,Code,FOLLOW_Code_in_body2066); 
-            Code248_tree = (CommonTree)adaptor.dupNode(Code248);
+            Code249=(CommonTree)match(input,Code,FOLLOW_Code_in_body2069); 
+            Code249_tree = (CommonTree)adaptor.dupNode(Code249);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Code248_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Code249_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_codeBlock_in_body2068);
-            codeBlock249=codeBlock();
+            pushFollow(FOLLOW_codeBlock_in_body2071);
+            codeBlock250=codeBlock();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, codeBlock249.getTree());
+            adaptor.addChild(root_1, codeBlock250.getTree());
 
 
             match(input, Token.UP, null); 
@@ -8217,7 +8264,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:51: ( bodyExtension )*
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:329:51: ( bodyExtension )*
             loop59:
             do {
                 int alt59=2;
@@ -8230,15 +8277,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt59) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:331:51: bodyExtension
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:329:51: bodyExtension
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bodyExtension_in_body2071);
-            	    bodyExtension250=bodyExtension();
+            	    pushFollow(FOLLOW_bodyExtension_in_body2074);
+            	    bodyExtension251=bodyExtension();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, bodyExtension250.getTree());
+            	    adaptor.addChild(root_0, bodyExtension251.getTree());
 
 
             	    }
@@ -8275,7 +8322,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bodyExtension"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:334:1: bodyExtension : ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:332:1: bodyExtension : ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) ;
     public final JVMWalker.bodyExtension_return bodyExtension() throws RecognitionException {
         JVMWalker.bodyExtension_return retval = new JVMWalker.bodyExtension_return();
         retval.start = input.LT(1);
@@ -8286,40 +8333,40 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ExceptionTable251=null;
-        CommonTree LineNumberTable253=null;
-        CommonTree LocalVariableTable255=null;
-        CommonTree LocalVariableTypeTable257=null;
-        CommonTree StackMapTable259=null;
-        CommonTree StackMap261=null;
-        JVMWalker.exceptionTable_return exceptionTable252 =null;
+        CommonTree ExceptionTable252=null;
+        CommonTree LineNumberTable254=null;
+        CommonTree LocalVariableTable256=null;
+        CommonTree LocalVariableTypeTable258=null;
+        CommonTree StackMapTable260=null;
+        CommonTree StackMap262=null;
+        JVMWalker.exceptionTable_return exceptionTable253 =null;
 
-        JVMWalker.lineNumberTable_return lineNumberTable254 =null;
+        JVMWalker.lineNumberTable_return lineNumberTable255 =null;
 
-        JVMWalker.localVariableTable_return localVariableTable256 =null;
+        JVMWalker.localVariableTable_return localVariableTable257 =null;
 
-        JVMWalker.localVariableTable_return localVariableTable258 =null;
+        JVMWalker.localVariableTable_return localVariableTable259 =null;
 
-        JVMWalker.stackMapTable_return stackMapTable260 =null;
+        JVMWalker.stackMapTable_return stackMapTable261 =null;
 
-        JVMWalker.stackMapTypeTable_return stackMapTypeTable262 =null;
+        JVMWalker.stackMapTypeTable_return stackMapTypeTable263 =null;
 
 
-        CommonTree ExceptionTable251_tree=null;
-        CommonTree LineNumberTable253_tree=null;
-        CommonTree LocalVariableTable255_tree=null;
-        CommonTree LocalVariableTypeTable257_tree=null;
-        CommonTree StackMapTable259_tree=null;
-        CommonTree StackMap261_tree=null;
+        CommonTree ExceptionTable252_tree=null;
+        CommonTree LineNumberTable254_tree=null;
+        CommonTree LocalVariableTable256_tree=null;
+        CommonTree LocalVariableTypeTable258_tree=null;
+        CommonTree StackMapTable260_tree=null;
+        CommonTree StackMap262_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:335:3: ( ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:336:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:333:3: ( ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:334:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:336:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:334:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
             int alt61=6;
             switch ( input.LA(1) ) {
             case ExceptionTable:
@@ -8362,7 +8409,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt61) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:336:5: ^( ExceptionTable exceptionTable )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:334:5: ^( ExceptionTable exceptionTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8370,21 +8417,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    ExceptionTable251=(CommonTree)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension2092); 
-                    ExceptionTable251_tree = (CommonTree)adaptor.dupNode(ExceptionTable251);
+                    ExceptionTable252=(CommonTree)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension2095); 
+                    ExceptionTable252_tree = (CommonTree)adaptor.dupNode(ExceptionTable252);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(ExceptionTable251_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(ExceptionTable252_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension2095);
-                    exceptionTable252=exceptionTable();
+                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension2098);
+                    exceptionTable253=exceptionTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, exceptionTable252.getTree());
+                    adaptor.addChild(root_1, exceptionTable253.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -8396,7 +8443,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:337:5: ^( LineNumberTable ( lineNumberTable )? )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:335:5: ^( LineNumberTable ( lineNumberTable )? )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8404,16 +8451,16 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    LineNumberTable253=(CommonTree)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension2103); 
-                    LineNumberTable253_tree = (CommonTree)adaptor.dupNode(LineNumberTable253);
+                    LineNumberTable254=(CommonTree)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension2106); 
+                    LineNumberTable254_tree = (CommonTree)adaptor.dupNode(LineNumberTable254);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(LineNumberTable253_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(LineNumberTable254_tree, root_1);
 
 
                     if ( input.LA(1)==Token.DOWN ) {
                         match(input, Token.DOWN, null); 
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:337:24: ( lineNumberTable )?
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:335:24: ( lineNumberTable )?
                         int alt60=2;
                         int LA60_0 = input.LA(1);
 
@@ -8422,15 +8469,15 @@ public TreeAdaptor getTreeAdaptor() {
                         }
                         switch (alt60) {
                             case 1 :
-                                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:337:24: lineNumberTable
+                                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:335:24: lineNumberTable
                                 {
                                 _last = (CommonTree)input.LT(1);
-                                pushFollow(FOLLOW_lineNumberTable_in_bodyExtension2106);
-                                lineNumberTable254=lineNumberTable();
+                                pushFollow(FOLLOW_lineNumberTable_in_bodyExtension2109);
+                                lineNumberTable255=lineNumberTable();
 
                                 state._fsp--;
 
-                                adaptor.addChild(root_1, lineNumberTable254.getTree());
+                                adaptor.addChild(root_1, lineNumberTable255.getTree());
 
 
                                 }
@@ -8449,7 +8496,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:338:5: ^( LocalVariableTable localVariableTable )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:336:5: ^( LocalVariableTable localVariableTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8457,21 +8504,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    LocalVariableTable255=(CommonTree)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension2115); 
-                    LocalVariableTable255_tree = (CommonTree)adaptor.dupNode(LocalVariableTable255);
+                    LocalVariableTable256=(CommonTree)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension2118); 
+                    LocalVariableTable256_tree = (CommonTree)adaptor.dupNode(LocalVariableTable256);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTable255_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTable256_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2118);
-                    localVariableTable256=localVariableTable();
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2121);
+                    localVariableTable257=localVariableTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, localVariableTable256.getTree());
+                    adaptor.addChild(root_1, localVariableTable257.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -8483,7 +8530,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:339:5: ^( LocalVariableTypeTable localVariableTable )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:337:5: ^( LocalVariableTypeTable localVariableTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8491,21 +8538,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    LocalVariableTypeTable257=(CommonTree)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension2126); 
-                    LocalVariableTypeTable257_tree = (CommonTree)adaptor.dupNode(LocalVariableTypeTable257);
+                    LocalVariableTypeTable258=(CommonTree)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension2129); 
+                    LocalVariableTypeTable258_tree = (CommonTree)adaptor.dupNode(LocalVariableTypeTable258);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTypeTable257_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTypeTable258_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2129);
-                    localVariableTable258=localVariableTable();
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2132);
+                    localVariableTable259=localVariableTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, localVariableTable258.getTree());
+                    adaptor.addChild(root_1, localVariableTable259.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -8517,7 +8564,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:340:5: ^( StackMapTable stackMapTable )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:338:5: ^( StackMapTable stackMapTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8525,21 +8572,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    StackMapTable259=(CommonTree)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension2137); 
-                    StackMapTable259_tree = (CommonTree)adaptor.dupNode(StackMapTable259);
+                    StackMapTable260=(CommonTree)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension2140); 
+                    StackMapTable260_tree = (CommonTree)adaptor.dupNode(StackMapTable260);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(StackMapTable259_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(StackMapTable260_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension2139);
-                    stackMapTable260=stackMapTable();
+                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension2142);
+                    stackMapTable261=stackMapTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, stackMapTable260.getTree());
+                    adaptor.addChild(root_1, stackMapTable261.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -8551,7 +8598,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:341:5: ^( StackMap stackMapTypeTable )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:339:5: ^( StackMap stackMapTypeTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8559,21 +8606,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    StackMap261=(CommonTree)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension2147); 
-                    StackMap261_tree = (CommonTree)adaptor.dupNode(StackMap261);
+                    StackMap262=(CommonTree)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension2150); 
+                    StackMap262_tree = (CommonTree)adaptor.dupNode(StackMap262);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(StackMap261_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(StackMap262_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension2149);
-                    stackMapTypeTable262=stackMapTypeTable();
+                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension2152);
+                    stackMapTypeTable263=stackMapTypeTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, stackMapTypeTable262.getTree());
+                    adaptor.addChild(root_1, stackMapTypeTable263.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -8613,7 +8660,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "codeBlock"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:345:1: codeBlock : ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:343:1: codeBlock : ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) ;
     public final JVMWalker.codeBlock_return codeBlock() throws RecognitionException {
         JVMWalker.codeBlock_return retval = new JVMWalker.codeBlock_return();
         retval.start = input.LT(1);
@@ -8624,21 +8671,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree VARINFO263=null;
-        CommonTree INSTRUCTION265=null;
-        JVMWalker.variables_return variables264 =null;
+        CommonTree VARINFO264=null;
+        CommonTree INSTRUCTION266=null;
+        JVMWalker.variables_return variables265 =null;
 
-        JVMWalker.instructionSet_return instructionSet266 =null;
+        JVMWalker.instructionSet_return instructionSet267 =null;
 
-        JVMWalker.codeBlockEnd_return codeBlockEnd267 =null;
+        JVMWalker.codeBlockEnd_return codeBlockEnd268 =null;
 
 
-        CommonTree VARINFO263_tree=null;
-        CommonTree INSTRUCTION265_tree=null;
+        CommonTree VARINFO264_tree=null;
+        CommonTree INSTRUCTION266_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:346:3: ( ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:346:5: ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:344:3: ( ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:344:5: ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -8649,21 +8696,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VARINFO263=(CommonTree)match(input,VARINFO,FOLLOW_VARINFO_in_codeBlock2168); 
-            VARINFO263_tree = (CommonTree)adaptor.dupNode(VARINFO263);
+            VARINFO264=(CommonTree)match(input,VARINFO,FOLLOW_VARINFO_in_codeBlock2171); 
+            VARINFO264_tree = (CommonTree)adaptor.dupNode(VARINFO264);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(VARINFO263_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(VARINFO264_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variables_in_codeBlock2170);
-            variables264=variables();
+            pushFollow(FOLLOW_variables_in_codeBlock2173);
+            variables265=variables();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, variables264.getTree());
+            adaptor.addChild(root_1, variables265.getTree());
 
 
             match(input, Token.UP, null); 
@@ -8678,15 +8725,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            INSTRUCTION265=(CommonTree)match(input,INSTRUCTION,FOLLOW_INSTRUCTION_in_codeBlock2174); 
-            INSTRUCTION265_tree = (CommonTree)adaptor.dupNode(INSTRUCTION265);
+            INSTRUCTION266=(CommonTree)match(input,INSTRUCTION,FOLLOW_INSTRUCTION_in_codeBlock2177); 
+            INSTRUCTION266_tree = (CommonTree)adaptor.dupNode(INSTRUCTION266);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(INSTRUCTION265_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(INSTRUCTION266_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:346:40: ( instructionSet )*
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:344:40: ( instructionSet )*
             loop62:
             do {
                 int alt62=2;
@@ -8726,15 +8773,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt62) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:346:40: instructionSet
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:344:40: instructionSet
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_instructionSet_in_codeBlock2176);
-            	    instructionSet266=instructionSet();
+            	    pushFollow(FOLLOW_instructionSet_in_codeBlock2179);
+            	    instructionSet267=instructionSet();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, instructionSet266.getTree());
+            	    adaptor.addChild(root_1, instructionSet267.getTree());
 
 
             	    }
@@ -8747,12 +8794,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock2179);
-            codeBlockEnd267=codeBlockEnd();
+            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock2182);
+            codeBlockEnd268=codeBlockEnd();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, codeBlockEnd267.getTree());
+            adaptor.addChild(root_1, codeBlockEnd268.getTree());
 
 
             match(input, Token.UP, null); 
@@ -8786,7 +8833,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instructionSet"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:349:1: instructionSet : ( codeLine | javaSwitch );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:347:1: instructionSet : ( codeLine | javaSwitch );
     public final JVMWalker.instructionSet_return instructionSet() throws RecognitionException {
         JVMWalker.instructionSet_return retval = new JVMWalker.instructionSet_return();
         retval.start = input.LT(1);
@@ -8797,14 +8844,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.codeLine_return codeLine268 =null;
+        JVMWalker.codeLine_return codeLine269 =null;
 
-        JVMWalker.javaSwitch_return javaSwitch269 =null;
+        JVMWalker.javaSwitch_return javaSwitch270 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:350:3: ( codeLine | javaSwitch )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:348:3: ( codeLine | javaSwitch )
             int alt63=2;
             int LA63_0 = input.LA(1);
 
@@ -8823,35 +8870,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt63) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:350:5: codeLine
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:348:5: codeLine
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_codeLine_in_instructionSet2193);
-                    codeLine268=codeLine();
+                    pushFollow(FOLLOW_codeLine_in_instructionSet2196);
+                    codeLine269=codeLine();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, codeLine268.getTree());
+                    adaptor.addChild(root_0, codeLine269.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:350:16: javaSwitch
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:348:16: javaSwitch
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_javaSwitch_in_instructionSet2197);
-                    javaSwitch269=javaSwitch();
+                    pushFollow(FOLLOW_javaSwitch_in_instructionSet2200);
+                    javaSwitch270=javaSwitch();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, javaSwitch269.getTree());
+                    adaptor.addChild(root_0, javaSwitch270.getTree());
 
 
                     }
@@ -8881,7 +8928,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "codeLine"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:353:1: codeLine : ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:351:1: codeLine : ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) ;
     public final JVMWalker.codeLine_return codeLine() throws RecognitionException {
         JVMWalker.codeLine_return retval = new JVMWalker.codeLine_return();
         retval.start = input.LT(1);
@@ -8892,23 +8939,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER270=null;
-        CommonTree OPERAND272=null;
-        CommonTree OPERAND274=null;
-        CommonTree INTLITERAL275=null;
-        JVMWalker.pc_return pc271 =null;
+        CommonTree IDENTIFIER271=null;
+        CommonTree OPERAND273=null;
+        CommonTree OPERAND275=null;
+        CommonTree INTLITERAL276=null;
+        JVMWalker.pc_return pc272 =null;
 
-        JVMWalker.operand1_return operand1273 =null;
+        JVMWalker.operand1_return operand1274 =null;
 
 
-        CommonTree IDENTIFIER270_tree=null;
-        CommonTree OPERAND272_tree=null;
-        CommonTree OPERAND274_tree=null;
-        CommonTree INTLITERAL275_tree=null;
+        CommonTree IDENTIFIER271_tree=null;
+        CommonTree OPERAND273_tree=null;
+        CommonTree OPERAND275_tree=null;
+        CommonTree INTLITERAL276_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:354:3: ( ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:354:5: ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:352:3: ( ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:352:5: ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -8919,21 +8966,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER270=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine2211); 
-            IDENTIFIER270_tree = (CommonTree)adaptor.dupNode(IDENTIFIER270);
+            IDENTIFIER271=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine2214); 
+            IDENTIFIER271_tree = (CommonTree)adaptor.dupNode(IDENTIFIER271);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER270_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER271_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_codeLine2213);
-            pc271=pc();
+            pushFollow(FOLLOW_pc_in_codeLine2216);
+            pc272=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, pc271.getTree());
+            adaptor.addChild(root_1, pc272.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -8942,16 +8989,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            OPERAND272=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2216); 
-            OPERAND272_tree = (CommonTree)adaptor.dupNode(OPERAND272);
+            OPERAND273=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2219); 
+            OPERAND273_tree = (CommonTree)adaptor.dupNode(OPERAND273);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND272_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND273_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:354:31: ( operand1 )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:352:31: ( operand1 )?
                 int alt64=2;
                 int LA64_0 = input.LA(1);
 
@@ -8960,15 +9007,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt64) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:354:31: operand1
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:352:31: operand1
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_operand1_in_codeLine2218);
-                        operand1273=operand1();
+                        pushFollow(FOLLOW_operand1_in_codeLine2221);
+                        operand1274=operand1();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, operand1273.getTree());
+                        adaptor.addChild(root_2, operand1274.getTree());
 
 
                         }
@@ -8990,16 +9037,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            OPERAND274=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2223); 
-            OPERAND274_tree = (CommonTree)adaptor.dupNode(OPERAND274);
+            OPERAND275=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2226); 
+            OPERAND275_tree = (CommonTree)adaptor.dupNode(OPERAND275);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND274_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND275_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:354:52: ( INTLITERAL )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:352:52: ( INTLITERAL )?
                 int alt65=2;
                 int LA65_0 = input.LA(1);
 
@@ -9008,14 +9055,14 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt65) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:354:52: INTLITERAL
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:352:52: INTLITERAL
                         {
                         _last = (CommonTree)input.LT(1);
-                        INTLITERAL275=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine2225); 
-                        INTLITERAL275_tree = (CommonTree)adaptor.dupNode(INTLITERAL275);
+                        INTLITERAL276=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine2228); 
+                        INTLITERAL276_tree = (CommonTree)adaptor.dupNode(INTLITERAL276);
 
 
-                        adaptor.addChild(root_2, INTLITERAL275_tree);
+                        adaptor.addChild(root_2, INTLITERAL276_tree);
 
 
                         }
@@ -9062,7 +9109,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "codeBlockEnd"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:357:1: codeBlockEnd : ^( IDENTIFIER pc ( INTLITERAL )? ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:355:1: codeBlockEnd : ^( IDENTIFIER pc ( INTLITERAL )? ) ;
     public final JVMWalker.codeBlockEnd_return codeBlockEnd() throws RecognitionException {
         JVMWalker.codeBlockEnd_return retval = new JVMWalker.codeBlockEnd_return();
         retval.start = input.LT(1);
@@ -9073,17 +9120,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER276=null;
-        CommonTree INTLITERAL278=null;
-        JVMWalker.pc_return pc277 =null;
+        CommonTree IDENTIFIER277=null;
+        CommonTree INTLITERAL279=null;
+        JVMWalker.pc_return pc278 =null;
 
 
-        CommonTree IDENTIFIER276_tree=null;
-        CommonTree INTLITERAL278_tree=null;
+        CommonTree IDENTIFIER277_tree=null;
+        CommonTree INTLITERAL279_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:358:3: ( ^( IDENTIFIER pc ( INTLITERAL )? ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:358:5: ^( IDENTIFIER pc ( INTLITERAL )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:356:3: ( ^( IDENTIFIER pc ( INTLITERAL )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:356:5: ^( IDENTIFIER pc ( INTLITERAL )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9094,24 +9141,24 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER276=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd2242); 
-            IDENTIFIER276_tree = (CommonTree)adaptor.dupNode(IDENTIFIER276);
+            IDENTIFIER277=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd2245); 
+            IDENTIFIER277_tree = (CommonTree)adaptor.dupNode(IDENTIFIER277);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER276_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER277_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_codeBlockEnd2244);
-            pc277=pc();
+            pushFollow(FOLLOW_pc_in_codeBlockEnd2247);
+            pc278=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, pc277.getTree());
+            adaptor.addChild(root_1, pc278.getTree());
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:358:21: ( INTLITERAL )?
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:356:21: ( INTLITERAL )?
             int alt66=2;
             int LA66_0 = input.LA(1);
 
@@ -9120,14 +9167,14 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt66) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:358:21: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:356:21: INTLITERAL
                     {
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL278=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd2246); 
-                    INTLITERAL278_tree = (CommonTree)adaptor.dupNode(INTLITERAL278);
+                    INTLITERAL279=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd2249); 
+                    INTLITERAL279_tree = (CommonTree)adaptor.dupNode(INTLITERAL279);
 
 
-                    adaptor.addChild(root_1, INTLITERAL278_tree);
+                    adaptor.addChild(root_1, INTLITERAL279_tree);
 
 
                     }
@@ -9167,7 +9214,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "operand1"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:361:1: operand1 : ( CPINDEX | INTLITERAL | primitiveType );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:359:1: operand1 : ( CPINDEX | INTLITERAL | primitiveType );
     public final JVMWalker.operand1_return operand1() throws RecognitionException {
         JVMWalker.operand1_return retval = new JVMWalker.operand1_return();
         retval.start = input.LT(1);
@@ -9178,16 +9225,16 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CPINDEX279=null;
-        CommonTree INTLITERAL280=null;
-        JVMWalker.primitiveType_return primitiveType281 =null;
+        CommonTree CPINDEX280=null;
+        CommonTree INTLITERAL281=null;
+        JVMWalker.primitiveType_return primitiveType282 =null;
 
 
-        CommonTree CPINDEX279_tree=null;
-        CommonTree INTLITERAL280_tree=null;
+        CommonTree CPINDEX280_tree=null;
+        CommonTree INTLITERAL281_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:362:3: ( CPINDEX | INTLITERAL | primitiveType )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:360:3: ( CPINDEX | INTLITERAL | primitiveType )
             int alt67=3;
             switch ( input.LA(1) ) {
             case CPINDEX:
@@ -9223,50 +9270,50 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt67) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:362:5: CPINDEX
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:360:5: CPINDEX
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    CPINDEX279=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand12263); 
-                    CPINDEX279_tree = (CommonTree)adaptor.dupNode(CPINDEX279);
+                    CPINDEX280=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand12266); 
+                    CPINDEX280_tree = (CommonTree)adaptor.dupNode(CPINDEX280);
 
 
-                    adaptor.addChild(root_0, CPINDEX279_tree);
+                    adaptor.addChild(root_0, CPINDEX280_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:363:5: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:361:5: INTLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL280=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand12270); 
-                    INTLITERAL280_tree = (CommonTree)adaptor.dupNode(INTLITERAL280);
+                    INTLITERAL281=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand12273); 
+                    INTLITERAL281_tree = (CommonTree)adaptor.dupNode(INTLITERAL281);
 
 
-                    adaptor.addChild(root_0, INTLITERAL280_tree);
+                    adaptor.addChild(root_0, INTLITERAL281_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:364:5: primitiveType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:362:5: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_operand12276);
-                    primitiveType281=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_operand12279);
+                    primitiveType282=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType281.getTree());
+                    adaptor.addChild(root_0, primitiveType282.getTree());
 
 
                     }
@@ -9296,7 +9343,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variables"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:367:1: variables : variable variable variable ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:365:1: variables : variable variable variable ;
     public final JVMWalker.variables_return variables() throws RecognitionException {
         JVMWalker.variables_return retval = new JVMWalker.variables_return();
         retval.start = input.LT(1);
@@ -9307,32 +9354,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.variable_return variable282 =null;
-
         JVMWalker.variable_return variable283 =null;
 
         JVMWalker.variable_return variable284 =null;
 
+        JVMWalker.variable_return variable285 =null;
+
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:368:3: ( variable variable variable )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:368:5: variable variable variable
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:366:3: ( variable variable variable )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:366:5: variable variable variable
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variable_in_variables2289);
-            variable282=variable();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, variable282.getTree());
-
-
-            _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variable_in_variables2291);
+            pushFollow(FOLLOW_variable_in_variables2292);
             variable283=variable();
 
             state._fsp--;
@@ -9341,12 +9379,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variable_in_variables2293);
+            pushFollow(FOLLOW_variable_in_variables2294);
             variable284=variable();
 
             state._fsp--;
 
             adaptor.addChild(root_0, variable284.getTree());
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_variable_in_variables2296);
+            variable285=variable();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, variable285.getTree());
 
 
             }
@@ -9374,7 +9421,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variable"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:371:1: variable : ^( ASSIGN IDENTIFIER INTLITERAL ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:369:1: variable : ^( ASSIGN IDENTIFIER INTLITERAL ) ;
     public final JVMWalker.variable_return variable() throws RecognitionException {
         JVMWalker.variable_return retval = new JVMWalker.variable_return();
         retval.start = input.LT(1);
@@ -9385,17 +9432,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ASSIGN285=null;
-        CommonTree IDENTIFIER286=null;
-        CommonTree INTLITERAL287=null;
+        CommonTree ASSIGN286=null;
+        CommonTree IDENTIFIER287=null;
+        CommonTree INTLITERAL288=null;
 
-        CommonTree ASSIGN285_tree=null;
-        CommonTree IDENTIFIER286_tree=null;
-        CommonTree INTLITERAL287_tree=null;
+        CommonTree ASSIGN286_tree=null;
+        CommonTree IDENTIFIER287_tree=null;
+        CommonTree INTLITERAL288_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:372:3: ( ^( ASSIGN IDENTIFIER INTLITERAL ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:372:5: ^( ASSIGN IDENTIFIER INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:370:3: ( ^( ASSIGN IDENTIFIER INTLITERAL ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:370:5: ^( ASSIGN IDENTIFIER INTLITERAL )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9406,28 +9453,28 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ASSIGN285=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_variable2307); 
-            ASSIGN285_tree = (CommonTree)adaptor.dupNode(ASSIGN285);
+            ASSIGN286=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_variable2310); 
+            ASSIGN286_tree = (CommonTree)adaptor.dupNode(ASSIGN286);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN285_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN286_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER286=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable2309); 
-            IDENTIFIER286_tree = (CommonTree)adaptor.dupNode(IDENTIFIER286);
+            IDENTIFIER287=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable2312); 
+            IDENTIFIER287_tree = (CommonTree)adaptor.dupNode(IDENTIFIER287);
 
 
-            adaptor.addChild(root_1, IDENTIFIER286_tree);
+            adaptor.addChild(root_1, IDENTIFIER287_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL287=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable2311); 
-            INTLITERAL287_tree = (CommonTree)adaptor.dupNode(INTLITERAL287);
+            INTLITERAL288=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable2314); 
+            INTLITERAL288_tree = (CommonTree)adaptor.dupNode(INTLITERAL288);
 
 
-            adaptor.addChild(root_1, INTLITERAL287_tree);
+            adaptor.addChild(root_1, INTLITERAL288_tree);
 
 
             match(input, Token.UP, null); 
@@ -9461,7 +9508,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "javaSwitch"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:375:1: javaSwitch : ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:373:1: javaSwitch : ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) ;
     public final JVMWalker.javaSwitch_return javaSwitch() throws RecognitionException {
         JVMWalker.javaSwitch_return retval = new JVMWalker.javaSwitch_return();
         retval.start = input.LT(1);
@@ -9472,21 +9519,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SWITCH288=null;
-        CommonTree IDENTIFIER289=null;
-        JVMWalker.pc_return pc290 =null;
+        CommonTree SWITCH289=null;
+        CommonTree IDENTIFIER290=null;
+        JVMWalker.pc_return pc291 =null;
 
-        JVMWalker.switchLine_return switchLine291 =null;
+        JVMWalker.switchLine_return switchLine292 =null;
 
-        JVMWalker.switchDefaultLine_return switchDefaultLine292 =null;
+        JVMWalker.switchDefaultLine_return switchDefaultLine293 =null;
 
 
-        CommonTree SWITCH288_tree=null;
-        CommonTree IDENTIFIER289_tree=null;
+        CommonTree SWITCH289_tree=null;
+        CommonTree IDENTIFIER290_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:376:3: ( ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:376:5: ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:374:3: ( ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:374:5: ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9497,11 +9544,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SWITCH288=(CommonTree)match(input,SWITCH,FOLLOW_SWITCH_in_javaSwitch2328); 
-            SWITCH288_tree = (CommonTree)adaptor.dupNode(SWITCH288);
+            SWITCH289=(CommonTree)match(input,SWITCH,FOLLOW_SWITCH_in_javaSwitch2331); 
+            SWITCH289_tree = (CommonTree)adaptor.dupNode(SWITCH289);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SWITCH288_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SWITCH289_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -9511,24 +9558,24 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER289=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch2331); 
-            IDENTIFIER289_tree = (CommonTree)adaptor.dupNode(IDENTIFIER289);
+            IDENTIFIER290=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch2334); 
+            IDENTIFIER290_tree = (CommonTree)adaptor.dupNode(IDENTIFIER290);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(IDENTIFIER289_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(IDENTIFIER290_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_javaSwitch2333);
-            pc290=pc();
+            pushFollow(FOLLOW_pc_in_javaSwitch2336);
+            pc291=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, pc290.getTree());
+            adaptor.addChild(root_2, pc291.getTree());
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:376:30: ( switchLine )*
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:374:30: ( switchLine )*
             loop68:
             do {
                 int alt68=2;
@@ -9541,15 +9588,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt68) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:376:30: switchLine
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:374:30: switchLine
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_switchLine_in_javaSwitch2335);
-            	    switchLine291=switchLine();
+            	    pushFollow(FOLLOW_switchLine_in_javaSwitch2338);
+            	    switchLine292=switchLine();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_2, switchLine291.getTree());
+            	    adaptor.addChild(root_2, switchLine292.getTree());
 
 
             	    }
@@ -9562,12 +9609,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch2338);
-            switchDefaultLine292=switchDefaultLine();
+            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch2341);
+            switchDefaultLine293=switchDefaultLine();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, switchDefaultLine292.getTree());
+            adaptor.addChild(root_2, switchDefaultLine293.getTree());
 
 
             match(input, Token.UP, null); 
@@ -9607,7 +9654,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "switchLine"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:379:1: switchLine : pc INTLITERAL ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:377:1: switchLine : pc INTLITERAL ;
     public final JVMWalker.switchLine_return switchLine() throws RecognitionException {
         JVMWalker.switchLine_return retval = new JVMWalker.switchLine_return();
         retval.start = input.LT(1);
@@ -9618,34 +9665,34 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL294=null;
-        JVMWalker.pc_return pc293 =null;
+        CommonTree INTLITERAL295=null;
+        JVMWalker.pc_return pc294 =null;
 
 
-        CommonTree INTLITERAL294_tree=null;
+        CommonTree INTLITERAL295_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:380:3: ( pc INTLITERAL )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:380:5: pc INTLITERAL
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:378:3: ( pc INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:378:5: pc INTLITERAL
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_switchLine2355);
-            pc293=pc();
+            pushFollow(FOLLOW_pc_in_switchLine2358);
+            pc294=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, pc293.getTree());
+            adaptor.addChild(root_0, pc294.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL294=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine2357); 
-            INTLITERAL294_tree = (CommonTree)adaptor.dupNode(INTLITERAL294);
+            INTLITERAL295=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine2360); 
+            INTLITERAL295_tree = (CommonTree)adaptor.dupNode(INTLITERAL295);
 
 
-            adaptor.addChild(root_0, INTLITERAL294_tree);
+            adaptor.addChild(root_0, INTLITERAL295_tree);
 
 
             }
@@ -9673,7 +9720,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "switchDefaultLine"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:383:1: switchDefaultLine : ^( DEFAULT INTLITERAL ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:381:1: switchDefaultLine : ^( DEFAULT INTLITERAL ) ;
     public final JVMWalker.switchDefaultLine_return switchDefaultLine() throws RecognitionException {
         JVMWalker.switchDefaultLine_return retval = new JVMWalker.switchDefaultLine_return();
         retval.start = input.LT(1);
@@ -9684,15 +9731,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree DEFAULT295=null;
-        CommonTree INTLITERAL296=null;
+        CommonTree DEFAULT296=null;
+        CommonTree INTLITERAL297=null;
 
-        CommonTree DEFAULT295_tree=null;
-        CommonTree INTLITERAL296_tree=null;
+        CommonTree DEFAULT296_tree=null;
+        CommonTree INTLITERAL297_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:384:3: ( ^( DEFAULT INTLITERAL ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:384:5: ^( DEFAULT INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:382:3: ( ^( DEFAULT INTLITERAL ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:382:5: ^( DEFAULT INTLITERAL )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9703,20 +9750,20 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            DEFAULT295=(CommonTree)match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine2372); 
-            DEFAULT295_tree = (CommonTree)adaptor.dupNode(DEFAULT295);
+            DEFAULT296=(CommonTree)match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine2375); 
+            DEFAULT296_tree = (CommonTree)adaptor.dupNode(DEFAULT296);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(DEFAULT295_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(DEFAULT296_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL296=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine2374); 
-            INTLITERAL296_tree = (CommonTree)adaptor.dupNode(INTLITERAL296);
+            INTLITERAL297=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine2377); 
+            INTLITERAL297_tree = (CommonTree)adaptor.dupNode(INTLITERAL297);
 
 
-            adaptor.addChild(root_1, INTLITERAL296_tree);
+            adaptor.addChild(root_1, INTLITERAL297_tree);
 
 
             match(input, Token.UP, null); 
@@ -9750,7 +9797,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "throwClause"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:391:1: throwClause : ^( THROWS typeList ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:389:1: throwClause : ^( THROWS typeList ) ;
     public final JVMWalker.throwClause_return throwClause() throws RecognitionException {
         JVMWalker.throwClause_return retval = new JVMWalker.throwClause_return();
         retval.start = input.LT(1);
@@ -9761,15 +9808,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree THROWS297=null;
-        JVMWalker.typeList_return typeList298 =null;
+        CommonTree THROWS298=null;
+        JVMWalker.typeList_return typeList299 =null;
 
 
-        CommonTree THROWS297_tree=null;
+        CommonTree THROWS298_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:392:3: ( ^( THROWS typeList ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:392:5: ^( THROWS typeList )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:390:3: ( ^( THROWS typeList ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:390:5: ^( THROWS typeList )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9780,21 +9827,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWS297=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClause2394); 
-            THROWS297_tree = (CommonTree)adaptor.dupNode(THROWS297);
+            THROWS298=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClause2397); 
+            THROWS298_tree = (CommonTree)adaptor.dupNode(THROWS298);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(THROWS297_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(THROWS298_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeList_in_throwClause2396);
-            typeList298=typeList();
+            pushFollow(FOLLOW_typeList_in_throwClause2399);
+            typeList299=typeList();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, typeList298.getTree());
+            adaptor.addChild(root_1, typeList299.getTree());
 
 
             match(input, Token.UP, null); 
@@ -9828,7 +9875,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "throwClauseMethod"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:395:1: throwClauseMethod : ^( THROWS ( throwType )+ ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:393:1: throwClauseMethod : ^( THROWS ( throwType )+ ) ;
     public final JVMWalker.throwClauseMethod_return throwClauseMethod() throws RecognitionException {
         JVMWalker.throwClauseMethod_return retval = new JVMWalker.throwClauseMethod_return();
         retval.start = input.LT(1);
@@ -9839,15 +9886,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree THROWS299=null;
-        JVMWalker.throwType_return throwType300 =null;
+        CommonTree THROWS300=null;
+        JVMWalker.throwType_return throwType301 =null;
 
 
-        CommonTree THROWS299_tree=null;
+        CommonTree THROWS300_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:396:3: ( ^( THROWS ( throwType )+ ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:396:5: ^( THROWS ( throwType )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:394:3: ( ^( THROWS ( throwType )+ ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:394:5: ^( THROWS ( throwType )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9858,15 +9905,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWS299=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod2413); 
-            THROWS299_tree = (CommonTree)adaptor.dupNode(THROWS299);
+            THROWS300=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod2416); 
+            THROWS300_tree = (CommonTree)adaptor.dupNode(THROWS300);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(THROWS299_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(THROWS300_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:396:14: ( throwType )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:394:14: ( throwType )+
             int cnt69=0;
             loop69:
             do {
@@ -9880,15 +9927,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt69) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:396:14: throwType
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:394:14: throwType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod2415);
-            	    throwType300=throwType();
+            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod2418);
+            	    throwType301=throwType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, throwType300.getTree());
+            	    adaptor.addChild(root_1, throwType301.getTree());
 
 
             	    }
@@ -9935,7 +9982,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "throwType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:399:1: throwType : ( INTERNALTYPE | IDENTIFIER | QualifiedType );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:397:1: throwType : ( INTERNALTYPE | IDENTIFIER | QualifiedType );
     public final JVMWalker.throwType_return throwType() throws RecognitionException {
         JVMWalker.throwType_return retval = new JVMWalker.throwType_return();
         retval.start = input.LT(1);
@@ -9946,26 +9993,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set301=null;
+        CommonTree set302=null;
 
-        CommonTree set301_tree=null;
+        CommonTree set302_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:400:3: ( INTERNALTYPE | IDENTIFIER | QualifiedType )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:398:3: ( INTERNALTYPE | IDENTIFIER | QualifiedType )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set301=(CommonTree)input.LT(1);
+            set302=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==IDENTIFIER||input.LA(1)==INTERNALTYPE||input.LA(1)==QualifiedType ) {
                 input.consume();
-                set301_tree = (CommonTree)adaptor.dupNode(set301);
+                set302_tree = (CommonTree)adaptor.dupNode(set302);
 
 
-                adaptor.addChild(root_0, set301_tree);
+                adaptor.addChild(root_0, set302_tree);
 
                 state.errorRecovery=false;
             }
@@ -10001,7 +10048,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "exceptionTable"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:403:1: exceptionTable : ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:401:1: exceptionTable : ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) ;
     public final JVMWalker.exceptionTable_return exceptionTable() throws RecognitionException {
         JVMWalker.exceptionTable_return retval = new JVMWalker.exceptionTable_return();
         retval.start = input.LT(1);
@@ -10012,25 +10059,25 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ETHEADER302=null;
-        CommonTree IDENTIFIER303=null;
+        CommonTree ETHEADER303=null;
         CommonTree IDENTIFIER304=null;
         CommonTree IDENTIFIER305=null;
         CommonTree IDENTIFIER306=null;
-        CommonTree ETENTRY307=null;
-        JVMWalker.exceptionTableEntry_return exceptionTableEntry308 =null;
+        CommonTree IDENTIFIER307=null;
+        CommonTree ETENTRY308=null;
+        JVMWalker.exceptionTableEntry_return exceptionTableEntry309 =null;
 
 
-        CommonTree ETHEADER302_tree=null;
-        CommonTree IDENTIFIER303_tree=null;
+        CommonTree ETHEADER303_tree=null;
         CommonTree IDENTIFIER304_tree=null;
         CommonTree IDENTIFIER305_tree=null;
         CommonTree IDENTIFIER306_tree=null;
-        CommonTree ETENTRY307_tree=null;
+        CommonTree IDENTIFIER307_tree=null;
+        CommonTree ETENTRY308_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:404:3: ( ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:404:5: ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:402:3: ( ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:402:5: ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10041,24 +10088,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ETHEADER302=(CommonTree)match(input,ETHEADER,FOLLOW_ETHEADER_in_exceptionTable2454); 
-            ETHEADER302_tree = (CommonTree)adaptor.dupNode(ETHEADER302);
+            ETHEADER303=(CommonTree)match(input,ETHEADER,FOLLOW_ETHEADER_in_exceptionTable2457); 
+            ETHEADER303_tree = (CommonTree)adaptor.dupNode(ETHEADER303);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ETHEADER302_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ETHEADER303_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER303=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2456); 
-            IDENTIFIER303_tree = (CommonTree)adaptor.dupNode(IDENTIFIER303);
-
-
-            adaptor.addChild(root_1, IDENTIFIER303_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER304=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2458); 
+            IDENTIFIER304=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2459); 
             IDENTIFIER304_tree = (CommonTree)adaptor.dupNode(IDENTIFIER304);
 
 
@@ -10066,7 +10105,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER305=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2460); 
+            IDENTIFIER305=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2461); 
             IDENTIFIER305_tree = (CommonTree)adaptor.dupNode(IDENTIFIER305);
 
 
@@ -10074,11 +10113,19 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER306=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2462); 
+            IDENTIFIER306=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2463); 
             IDENTIFIER306_tree = (CommonTree)adaptor.dupNode(IDENTIFIER306);
 
 
             adaptor.addChild(root_1, IDENTIFIER306_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER307=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2465); 
+            IDENTIFIER307_tree = (CommonTree)adaptor.dupNode(IDENTIFIER307);
+
+
+            adaptor.addChild(root_1, IDENTIFIER307_tree);
 
 
             match(input, Token.UP, null); 
@@ -10093,15 +10140,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ETENTRY307=(CommonTree)match(input,ETENTRY,FOLLOW_ETENTRY_in_exceptionTable2466); 
-            ETENTRY307_tree = (CommonTree)adaptor.dupNode(ETENTRY307);
+            ETENTRY308=(CommonTree)match(input,ETENTRY,FOLLOW_ETENTRY_in_exceptionTable2469); 
+            ETENTRY308_tree = (CommonTree)adaptor.dupNode(ETENTRY308);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ETENTRY307_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ETENTRY308_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:404:71: ( exceptionTableEntry )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:402:71: ( exceptionTableEntry )+
             int cnt70=0;
             loop70:
             do {
@@ -10115,15 +10162,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt70) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:404:71: exceptionTableEntry
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:402:71: exceptionTableEntry
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable2468);
-            	    exceptionTableEntry308=exceptionTableEntry();
+            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable2471);
+            	    exceptionTableEntry309=exceptionTableEntry();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, exceptionTableEntry308.getTree());
+            	    adaptor.addChild(root_1, exceptionTableEntry309.getTree());
 
 
             	    }
@@ -10170,7 +10217,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "exceptionTableEntry"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:407:1: exceptionTableEntry : INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:405:1: exceptionTableEntry : INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue ;
     public final JVMWalker.exceptionTableEntry_return exceptionTableEntry() throws RecognitionException {
         JVMWalker.exceptionTableEntry_return retval = new JVMWalker.exceptionTableEntry_return();
         retval.start = input.LT(1);
@@ -10181,33 +10228,25 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL309=null;
         CommonTree INTLITERAL310=null;
         CommonTree INTLITERAL311=null;
-        JVMWalker.exceptionTableEntryValue_return exceptionTableEntryValue312 =null;
+        CommonTree INTLITERAL312=null;
+        JVMWalker.exceptionTableEntryValue_return exceptionTableEntryValue313 =null;
 
 
-        CommonTree INTLITERAL309_tree=null;
         CommonTree INTLITERAL310_tree=null;
         CommonTree INTLITERAL311_tree=null;
+        CommonTree INTLITERAL312_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:408:3: ( INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:408:5: INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:406:3: ( INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:406:5: INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL309=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2483); 
-            INTLITERAL309_tree = (CommonTree)adaptor.dupNode(INTLITERAL309);
-
-
-            adaptor.addChild(root_0, INTLITERAL309_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            INTLITERAL310=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2485); 
+            INTLITERAL310=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2486); 
             INTLITERAL310_tree = (CommonTree)adaptor.dupNode(INTLITERAL310);
 
 
@@ -10215,7 +10254,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL311=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2487); 
+            INTLITERAL311=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2488); 
             INTLITERAL311_tree = (CommonTree)adaptor.dupNode(INTLITERAL311);
 
 
@@ -10223,12 +10262,20 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2489);
-            exceptionTableEntryValue312=exceptionTableEntryValue();
+            INTLITERAL312=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2490); 
+            INTLITERAL312_tree = (CommonTree)adaptor.dupNode(INTLITERAL312);
+
+
+            adaptor.addChild(root_0, INTLITERAL312_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2492);
+            exceptionTableEntryValue313=exceptionTableEntryValue();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, exceptionTableEntryValue312.getTree());
+            adaptor.addChild(root_0, exceptionTableEntryValue313.getTree());
 
 
             }
@@ -10256,7 +10303,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "exceptionTableEntryValue"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:410:1: exceptionTableEntryValue : ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:408:1: exceptionTableEntryValue : ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE );
     public final JVMWalker.exceptionTableEntryValue_return exceptionTableEntryValue() throws RecognitionException {
         JVMWalker.exceptionTableEntryValue_return retval = new JVMWalker.exceptionTableEntryValue_return();
         retval.start = input.LT(1);
@@ -10267,16 +10314,16 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER314=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE315=null;
-        JVMWalker.primitiveType_return primitiveType313 =null;
+        CommonTree IDENTIFIER315=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE316=null;
+        JVMWalker.primitiveType_return primitiveType314 =null;
 
 
-        CommonTree IDENTIFIER314_tree=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE315_tree=null;
+        CommonTree IDENTIFIER315_tree=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE316_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:411:3: ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:409:3: ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE )
             int alt71=3;
             switch ( input.LA(1) ) {
             case BOOLEAN:
@@ -10312,50 +10359,50 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt71) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:411:5: primitiveType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:409:5: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue2501);
-                    primitiveType313=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue2504);
+                    primitiveType314=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType313.getTree());
+                    adaptor.addChild(root_0, primitiveType314.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:412:5: IDENTIFIER
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:410:5: IDENTIFIER
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER314=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2507); 
-                    IDENTIFIER314_tree = (CommonTree)adaptor.dupNode(IDENTIFIER314);
+                    IDENTIFIER315=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2510); 
+                    IDENTIFIER315_tree = (CommonTree)adaptor.dupNode(IDENTIFIER315);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER314_tree);
+                    adaptor.addChild(root_0, IDENTIFIER315_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:413:5: CONSTANT_TYPE_ASSIGNABLE
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:411:5: CONSTANT_TYPE_ASSIGNABLE
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    CONSTANT_TYPE_ASSIGNABLE315=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2513); 
-                    CONSTANT_TYPE_ASSIGNABLE315_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE315);
+                    CONSTANT_TYPE_ASSIGNABLE316=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2516); 
+                    CONSTANT_TYPE_ASSIGNABLE316_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE316);
 
 
-                    adaptor.addChild(root_0, CONSTANT_TYPE_ASSIGNABLE315_tree);
+                    adaptor.addChild(root_0, CONSTANT_TYPE_ASSIGNABLE316_tree);
 
 
                     }
@@ -10385,7 +10432,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "lineNumberTable"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:420:1: lineNumberTable : ( lineNumberTableLine )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:418:1: lineNumberTable : ( lineNumberTableLine )+ ;
     public final JVMWalker.lineNumberTable_return lineNumberTable() throws RecognitionException {
         JVMWalker.lineNumberTable_return retval = new JVMWalker.lineNumberTable_return();
         retval.start = input.LT(1);
@@ -10396,18 +10443,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.lineNumberTableLine_return lineNumberTableLine316 =null;
+        JVMWalker.lineNumberTableLine_return lineNumberTableLine317 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:421:3: ( ( lineNumberTableLine )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:421:5: ( lineNumberTableLine )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:419:3: ( ( lineNumberTableLine )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:419:5: ( lineNumberTableLine )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:421:5: ( lineNumberTableLine )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:419:5: ( lineNumberTableLine )+
             int cnt72=0;
             loop72:
             do {
@@ -10421,15 +10468,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt72) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:421:5: lineNumberTableLine
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:419:5: lineNumberTableLine
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable2532);
-            	    lineNumberTableLine316=lineNumberTableLine();
+            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable2535);
+            	    lineNumberTableLine317=lineNumberTableLine();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, lineNumberTableLine316.getTree());
+            	    adaptor.addChild(root_0, lineNumberTableLine317.getTree());
 
 
             	    }
@@ -10470,7 +10517,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "lineNumberTableLine"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:424:1: lineNumberTableLine : ^( IDENTIFIER pc INTLITERAL ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:422:1: lineNumberTableLine : ^( IDENTIFIER pc INTLITERAL ) ;
     public final JVMWalker.lineNumberTableLine_return lineNumberTableLine() throws RecognitionException {
         JVMWalker.lineNumberTableLine_return retval = new JVMWalker.lineNumberTableLine_return();
         retval.start = input.LT(1);
@@ -10481,17 +10528,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER317=null;
-        CommonTree INTLITERAL319=null;
-        JVMWalker.pc_return pc318 =null;
+        CommonTree IDENTIFIER318=null;
+        CommonTree INTLITERAL320=null;
+        JVMWalker.pc_return pc319 =null;
 
 
-        CommonTree IDENTIFIER317_tree=null;
-        CommonTree INTLITERAL319_tree=null;
+        CommonTree IDENTIFIER318_tree=null;
+        CommonTree INTLITERAL320_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:425:3: ( ^( IDENTIFIER pc INTLITERAL ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:425:5: ^( IDENTIFIER pc INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:423:3: ( ^( IDENTIFIER pc INTLITERAL ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:423:5: ^( IDENTIFIER pc INTLITERAL )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10502,29 +10549,29 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER317=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine2547); 
-            IDENTIFIER317_tree = (CommonTree)adaptor.dupNode(IDENTIFIER317);
+            IDENTIFIER318=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine2550); 
+            IDENTIFIER318_tree = (CommonTree)adaptor.dupNode(IDENTIFIER318);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER317_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER318_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_lineNumberTableLine2549);
-            pc318=pc();
+            pushFollow(FOLLOW_pc_in_lineNumberTableLine2552);
+            pc319=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, pc318.getTree());
+            adaptor.addChild(root_1, pc319.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL319=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine2551); 
-            INTLITERAL319_tree = (CommonTree)adaptor.dupNode(INTLITERAL319);
+            INTLITERAL320=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine2554); 
+            INTLITERAL320_tree = (CommonTree)adaptor.dupNode(INTLITERAL320);
 
 
-            adaptor.addChild(root_1, INTLITERAL319_tree);
+            adaptor.addChild(root_1, INTLITERAL320_tree);
 
 
             match(input, Token.UP, null); 
@@ -10558,7 +10605,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "localVariableTable"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:432:1: localVariableTable : ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:430:1: localVariableTable : ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) ;
     public final JVMWalker.localVariableTable_return localVariableTable() throws RecognitionException {
         JVMWalker.localVariableTable_return retval = new JVMWalker.localVariableTable_return();
         retval.start = input.LT(1);
@@ -10569,27 +10616,27 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree LVHEADER320=null;
-        CommonTree IDENTIFIER321=null;
+        CommonTree LVHEADER321=null;
         CommonTree IDENTIFIER322=null;
         CommonTree IDENTIFIER323=null;
         CommonTree IDENTIFIER324=null;
         CommonTree IDENTIFIER325=null;
-        CommonTree LVENTRY326=null;
-        JVMWalker.localVariableTableLine_return localVariableTableLine327 =null;
+        CommonTree IDENTIFIER326=null;
+        CommonTree LVENTRY327=null;
+        JVMWalker.localVariableTableLine_return localVariableTableLine328 =null;
 
 
-        CommonTree LVHEADER320_tree=null;
-        CommonTree IDENTIFIER321_tree=null;
+        CommonTree LVHEADER321_tree=null;
         CommonTree IDENTIFIER322_tree=null;
         CommonTree IDENTIFIER323_tree=null;
         CommonTree IDENTIFIER324_tree=null;
         CommonTree IDENTIFIER325_tree=null;
-        CommonTree LVENTRY326_tree=null;
+        CommonTree IDENTIFIER326_tree=null;
+        CommonTree LVENTRY327_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:433:3: ( ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:433:5: ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:431:3: ( ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:431:5: ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10600,24 +10647,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            LVHEADER320=(CommonTree)match(input,LVHEADER,FOLLOW_LVHEADER_in_localVariableTable2574); 
-            LVHEADER320_tree = (CommonTree)adaptor.dupNode(LVHEADER320);
+            LVHEADER321=(CommonTree)match(input,LVHEADER,FOLLOW_LVHEADER_in_localVariableTable2577); 
+            LVHEADER321_tree = (CommonTree)adaptor.dupNode(LVHEADER321);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(LVHEADER320_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(LVHEADER321_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER321=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2576); 
-            IDENTIFIER321_tree = (CommonTree)adaptor.dupNode(IDENTIFIER321);
-
-
-            adaptor.addChild(root_1, IDENTIFIER321_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER322=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2578); 
+            IDENTIFIER322=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2579); 
             IDENTIFIER322_tree = (CommonTree)adaptor.dupNode(IDENTIFIER322);
 
 
@@ -10625,7 +10664,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER323=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2580); 
+            IDENTIFIER323=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2581); 
             IDENTIFIER323_tree = (CommonTree)adaptor.dupNode(IDENTIFIER323);
 
 
@@ -10633,7 +10672,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER324=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2582); 
+            IDENTIFIER324=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2583); 
             IDENTIFIER324_tree = (CommonTree)adaptor.dupNode(IDENTIFIER324);
 
 
@@ -10641,11 +10680,19 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER325=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2584); 
+            IDENTIFIER325=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2585); 
             IDENTIFIER325_tree = (CommonTree)adaptor.dupNode(IDENTIFIER325);
 
 
             adaptor.addChild(root_1, IDENTIFIER325_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER326=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable2587); 
+            IDENTIFIER326_tree = (CommonTree)adaptor.dupNode(IDENTIFIER326);
+
+
+            adaptor.addChild(root_1, IDENTIFIER326_tree);
 
 
             match(input, Token.UP, null); 
@@ -10660,16 +10707,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            LVENTRY326=(CommonTree)match(input,LVENTRY,FOLLOW_LVENTRY_in_localVariableTable2588); 
-            LVENTRY326_tree = (CommonTree)adaptor.dupNode(LVENTRY326);
+            LVENTRY327=(CommonTree)match(input,LVENTRY,FOLLOW_LVENTRY_in_localVariableTable2591); 
+            LVENTRY327_tree = (CommonTree)adaptor.dupNode(LVENTRY327);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(LVENTRY326_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(LVENTRY327_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:433:82: ( localVariableTableLine )*
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:431:82: ( localVariableTableLine )*
                 loop73:
                 do {
                     int alt73=2;
@@ -10682,15 +10729,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt73) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:433:82: localVariableTableLine
+                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:431:82: localVariableTableLine
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable2590);
-                	    localVariableTableLine327=localVariableTableLine();
+                	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable2593);
+                	    localVariableTableLine328=localVariableTableLine();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_1, localVariableTableLine327.getTree());
+                	    adaptor.addChild(root_1, localVariableTableLine328.getTree());
 
 
                 	    }
@@ -10734,7 +10781,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "localVariableTableLine"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:436:1: localVariableTableLine : INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:434:1: localVariableTableLine : INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType ;
     public final JVMWalker.localVariableTableLine_return localVariableTableLine() throws RecognitionException {
         JVMWalker.localVariableTableLine_return retval = new JVMWalker.localVariableTableLine_return();
         retval.start = input.LT(1);
@@ -10745,35 +10792,27 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL328=null;
         CommonTree INTLITERAL329=null;
         CommonTree INTLITERAL330=null;
-        JVMWalker.localVariableTableLineIdentifier_return localVariableTableLineIdentifier331 =null;
+        CommonTree INTLITERAL331=null;
+        JVMWalker.localVariableTableLineIdentifier_return localVariableTableLineIdentifier332 =null;
 
-        JVMWalker.bytecodeType_return bytecodeType332 =null;
+        JVMWalker.bytecodeType_return bytecodeType333 =null;
 
 
-        CommonTree INTLITERAL328_tree=null;
         CommonTree INTLITERAL329_tree=null;
         CommonTree INTLITERAL330_tree=null;
+        CommonTree INTLITERAL331_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:437:3: ( INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:437:5: INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:435:3: ( INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:435:5: INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL328=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine2607); 
-            INTLITERAL328_tree = (CommonTree)adaptor.dupNode(INTLITERAL328);
-
-
-            adaptor.addChild(root_0, INTLITERAL328_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            INTLITERAL329=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine2609); 
+            INTLITERAL329=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine2610); 
             INTLITERAL329_tree = (CommonTree)adaptor.dupNode(INTLITERAL329);
 
 
@@ -10781,7 +10820,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL330=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine2611); 
+            INTLITERAL330=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine2612); 
             INTLITERAL330_tree = (CommonTree)adaptor.dupNode(INTLITERAL330);
 
 
@@ -10789,21 +10828,29 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine2613);
-            localVariableTableLineIdentifier331=localVariableTableLineIdentifier();
+            INTLITERAL331=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine2614); 
+            INTLITERAL331_tree = (CommonTree)adaptor.dupNode(INTLITERAL331);
 
-            state._fsp--;
 
-            adaptor.addChild(root_0, localVariableTableLineIdentifier331.getTree());
+            adaptor.addChild(root_0, INTLITERAL331_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine2615);
-            bytecodeType332=bytecodeType();
+            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine2616);
+            localVariableTableLineIdentifier332=localVariableTableLineIdentifier();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeType332.getTree());
+            adaptor.addChild(root_0, localVariableTableLineIdentifier332.getTree());
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine2618);
+            bytecodeType333=bytecodeType();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, bytecodeType333.getTree());
 
 
             }
@@ -10831,7 +10878,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "localVariableTableLineIdentifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:440:1: localVariableTableLineIdentifier : IDENTIFIER ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:438:1: localVariableTableLineIdentifier : IDENTIFIER ;
     public final JVMWalker.localVariableTableLineIdentifier_return localVariableTableLineIdentifier() throws RecognitionException {
         JVMWalker.localVariableTableLineIdentifier_return retval = new JVMWalker.localVariableTableLineIdentifier_return();
         retval.start = input.LT(1);
@@ -10842,23 +10889,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER333=null;
+        CommonTree IDENTIFIER334=null;
 
-        CommonTree IDENTIFIER333_tree=null;
+        CommonTree IDENTIFIER334_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:441:3: ( IDENTIFIER )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:441:5: IDENTIFIER
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:439:3: ( IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:439:5: IDENTIFIER
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER333=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier2629); 
-            IDENTIFIER333_tree = (CommonTree)adaptor.dupNode(IDENTIFIER333);
+            IDENTIFIER334=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier2632); 
+            IDENTIFIER334_tree = (CommonTree)adaptor.dupNode(IDENTIFIER334);
 
 
-            adaptor.addChild(root_0, IDENTIFIER333_tree);
+            adaptor.addChild(root_0, IDENTIFIER334_tree);
 
 
             }
@@ -10886,7 +10933,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTypeTable"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:448:1: stackMapTypeTable : ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:446:1: stackMapTypeTable : ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) ;
     public final JVMWalker.stackMapTypeTable_return stackMapTypeTable() throws RecognitionException {
         JVMWalker.stackMapTypeTable_return retval = new JVMWalker.stackMapTypeTable_return();
         retval.start = input.LT(1);
@@ -10897,23 +10944,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SMTHEADER334=null;
-        CommonTree IDENTIFIER335=null;
-        CommonTree ASSIGN336=null;
-        CommonTree INTLITERAL337=null;
-        CommonTree SMTENTRY338=null;
-        JVMWalker.stackMapTypeTableEntry_return stackMapTypeTableEntry339 =null;
+        CommonTree SMTHEADER335=null;
+        CommonTree IDENTIFIER336=null;
+        CommonTree ASSIGN337=null;
+        CommonTree INTLITERAL338=null;
+        CommonTree SMTENTRY339=null;
+        JVMWalker.stackMapTypeTableEntry_return stackMapTypeTableEntry340 =null;
 
 
-        CommonTree SMTHEADER334_tree=null;
-        CommonTree IDENTIFIER335_tree=null;
-        CommonTree ASSIGN336_tree=null;
-        CommonTree INTLITERAL337_tree=null;
-        CommonTree SMTENTRY338_tree=null;
+        CommonTree SMTHEADER335_tree=null;
+        CommonTree IDENTIFIER336_tree=null;
+        CommonTree ASSIGN337_tree=null;
+        CommonTree INTLITERAL338_tree=null;
+        CommonTree SMTENTRY339_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:449:3: ( ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:449:5: ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:447:3: ( ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:447:5: ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10924,36 +10971,36 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMTHEADER334=(CommonTree)match(input,SMTHEADER,FOLLOW_SMTHEADER_in_stackMapTypeTable2649); 
-            SMTHEADER334_tree = (CommonTree)adaptor.dupNode(SMTHEADER334);
+            SMTHEADER335=(CommonTree)match(input,SMTHEADER,FOLLOW_SMTHEADER_in_stackMapTypeTable2652); 
+            SMTHEADER335_tree = (CommonTree)adaptor.dupNode(SMTHEADER335);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMTHEADER334_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMTHEADER335_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER335=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable2651); 
-            IDENTIFIER335_tree = (CommonTree)adaptor.dupNode(IDENTIFIER335);
+            IDENTIFIER336=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable2654); 
+            IDENTIFIER336_tree = (CommonTree)adaptor.dupNode(IDENTIFIER336);
 
 
-            adaptor.addChild(root_1, IDENTIFIER335_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN336=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable2653); 
-            ASSIGN336_tree = (CommonTree)adaptor.dupNode(ASSIGN336);
-
-
-            adaptor.addChild(root_1, ASSIGN336_tree);
+            adaptor.addChild(root_1, IDENTIFIER336_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL337=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable2655); 
-            INTLITERAL337_tree = (CommonTree)adaptor.dupNode(INTLITERAL337);
+            ASSIGN337=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable2656); 
+            ASSIGN337_tree = (CommonTree)adaptor.dupNode(ASSIGN337);
 
 
-            adaptor.addChild(root_1, INTLITERAL337_tree);
+            adaptor.addChild(root_1, ASSIGN337_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL338=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable2658); 
+            INTLITERAL338_tree = (CommonTree)adaptor.dupNode(INTLITERAL338);
+
+
+            adaptor.addChild(root_1, INTLITERAL338_tree);
 
 
             match(input, Token.UP, null); 
@@ -10968,15 +11015,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMTENTRY338=(CommonTree)match(input,SMTENTRY,FOLLOW_SMTENTRY_in_stackMapTypeTable2659); 
-            SMTENTRY338_tree = (CommonTree)adaptor.dupNode(SMTENTRY338);
+            SMTENTRY339=(CommonTree)match(input,SMTENTRY,FOLLOW_SMTENTRY_in_stackMapTypeTable2662); 
+            SMTENTRY339_tree = (CommonTree)adaptor.dupNode(SMTENTRY339);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMTENTRY338_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMTENTRY339_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:449:58: ( stackMapTypeTableEntry )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:447:58: ( stackMapTypeTableEntry )+
             int cnt74=0;
             loop74:
             do {
@@ -10990,15 +11037,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt74) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:449:58: stackMapTypeTableEntry
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:447:58: stackMapTypeTableEntry
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable2661);
-            	    stackMapTypeTableEntry339=stackMapTypeTableEntry();
+            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable2664);
+            	    stackMapTypeTableEntry340=stackMapTypeTableEntry();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, stackMapTypeTableEntry339.getTree());
+            	    adaptor.addChild(root_1, stackMapTypeTableEntry340.getTree());
 
 
             	    }
@@ -11045,7 +11092,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTypeTableEntry"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:452:1: stackMapTypeTableEntry : IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:450:1: stackMapTypeTableEntry : IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer ;
     public final JVMWalker.stackMapTypeTableEntry_return stackMapTypeTableEntry() throws RecognitionException {
         JVMWalker.stackMapTypeTableEntry_return retval = new JVMWalker.stackMapTypeTableEntry_return();
         retval.start = input.LT(1);
@@ -11056,135 +11103,135 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER340=null;
-        CommonTree ASSIGN341=null;
-        CommonTree INTLITERAL342=null;
-        CommonTree IDENTIFIER343=null;
-        CommonTree ASSIGN344=null;
-        CommonTree INTLITERAL345=null;
-        CommonTree IDENTIFIER346=null;
-        CommonTree ASSIGN347=null;
-        CommonTree IDENTIFIER349=null;
-        CommonTree ASSIGN350=null;
-        JVMWalker.stackMapTableTypesContainer_return stackMapTableTypesContainer348 =null;
+        CommonTree IDENTIFIER341=null;
+        CommonTree ASSIGN342=null;
+        CommonTree INTLITERAL343=null;
+        CommonTree IDENTIFIER344=null;
+        CommonTree ASSIGN345=null;
+        CommonTree INTLITERAL346=null;
+        CommonTree IDENTIFIER347=null;
+        CommonTree ASSIGN348=null;
+        CommonTree IDENTIFIER350=null;
+        CommonTree ASSIGN351=null;
+        JVMWalker.stackMapTableTypesContainer_return stackMapTableTypesContainer349 =null;
 
-        JVMWalker.stackMapTableTypesContainer_return stackMapTableTypesContainer351 =null;
+        JVMWalker.stackMapTableTypesContainer_return stackMapTableTypesContainer352 =null;
 
 
-        CommonTree IDENTIFIER340_tree=null;
-        CommonTree ASSIGN341_tree=null;
-        CommonTree INTLITERAL342_tree=null;
-        CommonTree IDENTIFIER343_tree=null;
-        CommonTree ASSIGN344_tree=null;
-        CommonTree INTLITERAL345_tree=null;
-        CommonTree IDENTIFIER346_tree=null;
-        CommonTree ASSIGN347_tree=null;
-        CommonTree IDENTIFIER349_tree=null;
-        CommonTree ASSIGN350_tree=null;
+        CommonTree IDENTIFIER341_tree=null;
+        CommonTree ASSIGN342_tree=null;
+        CommonTree INTLITERAL343_tree=null;
+        CommonTree IDENTIFIER344_tree=null;
+        CommonTree ASSIGN345_tree=null;
+        CommonTree INTLITERAL346_tree=null;
+        CommonTree IDENTIFIER347_tree=null;
+        CommonTree ASSIGN348_tree=null;
+        CommonTree IDENTIFIER350_tree=null;
+        CommonTree ASSIGN351_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:453:3: ( IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:453:5: IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:451:3: ( IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:451:5: IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER340=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2676); 
-            IDENTIFIER340_tree = (CommonTree)adaptor.dupNode(IDENTIFIER340);
+            IDENTIFIER341=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2679); 
+            IDENTIFIER341_tree = (CommonTree)adaptor.dupNode(IDENTIFIER341);
 
 
-            adaptor.addChild(root_0, IDENTIFIER340_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN341=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2678); 
-            ASSIGN341_tree = (CommonTree)adaptor.dupNode(ASSIGN341);
-
-
-            adaptor.addChild(root_0, ASSIGN341_tree);
+            adaptor.addChild(root_0, IDENTIFIER341_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL342=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2680); 
-            INTLITERAL342_tree = (CommonTree)adaptor.dupNode(INTLITERAL342);
+            ASSIGN342=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2681); 
+            ASSIGN342_tree = (CommonTree)adaptor.dupNode(ASSIGN342);
 
 
-            adaptor.addChild(root_0, INTLITERAL342_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER343=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2682); 
-            IDENTIFIER343_tree = (CommonTree)adaptor.dupNode(IDENTIFIER343);
-
-
-            adaptor.addChild(root_0, IDENTIFIER343_tree);
+            adaptor.addChild(root_0, ASSIGN342_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            ASSIGN344=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2684); 
-            ASSIGN344_tree = (CommonTree)adaptor.dupNode(ASSIGN344);
+            INTLITERAL343=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2683); 
+            INTLITERAL343_tree = (CommonTree)adaptor.dupNode(INTLITERAL343);
 
 
-            adaptor.addChild(root_0, ASSIGN344_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            INTLITERAL345=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2686); 
-            INTLITERAL345_tree = (CommonTree)adaptor.dupNode(INTLITERAL345);
-
-
-            adaptor.addChild(root_0, INTLITERAL345_tree);
+            adaptor.addChild(root_0, INTLITERAL343_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER346=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2693); 
-            IDENTIFIER346_tree = (CommonTree)adaptor.dupNode(IDENTIFIER346);
+            IDENTIFIER344=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2685); 
+            IDENTIFIER344_tree = (CommonTree)adaptor.dupNode(IDENTIFIER344);
 
 
-            adaptor.addChild(root_0, IDENTIFIER346_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN347=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2695); 
-            ASSIGN347_tree = (CommonTree)adaptor.dupNode(ASSIGN347);
-
-
-            adaptor.addChild(root_0, ASSIGN347_tree);
+            adaptor.addChild(root_0, IDENTIFIER344_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2697);
-            stackMapTableTypesContainer348=stackMapTableTypesContainer();
+            ASSIGN345=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2687); 
+            ASSIGN345_tree = (CommonTree)adaptor.dupNode(ASSIGN345);
+
+
+            adaptor.addChild(root_0, ASSIGN345_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL346=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2689); 
+            INTLITERAL346_tree = (CommonTree)adaptor.dupNode(INTLITERAL346);
+
+
+            adaptor.addChild(root_0, INTLITERAL346_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER347=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2696); 
+            IDENTIFIER347_tree = (CommonTree)adaptor.dupNode(IDENTIFIER347);
+
+
+            adaptor.addChild(root_0, IDENTIFIER347_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            ASSIGN348=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2698); 
+            ASSIGN348_tree = (CommonTree)adaptor.dupNode(ASSIGN348);
+
+
+            adaptor.addChild(root_0, ASSIGN348_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2700);
+            stackMapTableTypesContainer349=stackMapTableTypesContainer();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, stackMapTableTypesContainer348.getTree());
+            adaptor.addChild(root_0, stackMapTableTypesContainer349.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER349=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2704); 
-            IDENTIFIER349_tree = (CommonTree)adaptor.dupNode(IDENTIFIER349);
+            IDENTIFIER350=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2707); 
+            IDENTIFIER350_tree = (CommonTree)adaptor.dupNode(IDENTIFIER350);
 
 
-            adaptor.addChild(root_0, IDENTIFIER349_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN350=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2706); 
-            ASSIGN350_tree = (CommonTree)adaptor.dupNode(ASSIGN350);
-
-
-            adaptor.addChild(root_0, ASSIGN350_tree);
+            adaptor.addChild(root_0, IDENTIFIER350_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2708);
-            stackMapTableTypesContainer351=stackMapTableTypesContainer();
+            ASSIGN351=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry2709); 
+            ASSIGN351_tree = (CommonTree)adaptor.dupNode(ASSIGN351);
+
+
+            adaptor.addChild(root_0, ASSIGN351_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2711);
+            stackMapTableTypesContainer352=stackMapTableTypesContainer();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, stackMapTableTypesContainer351.getTree());
+            adaptor.addChild(root_0, stackMapTableTypesContainer352.getTree());
 
 
             }
@@ -11212,7 +11259,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTable"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:462:1: stackMapTable : ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:460:1: stackMapTable : ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) ;
     public final JVMWalker.stackMapTable_return stackMapTable() throws RecognitionException {
         JVMWalker.stackMapTable_return retval = new JVMWalker.stackMapTable_return();
         retval.start = input.LT(1);
@@ -11223,23 +11270,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SMHEADER352=null;
-        CommonTree IDENTIFIER353=null;
-        CommonTree ASSIGN354=null;
-        CommonTree INTLITERAL355=null;
-        CommonTree SMENTRY356=null;
-        JVMWalker.stackMapTableEntry_return stackMapTableEntry357 =null;
+        CommonTree SMHEADER353=null;
+        CommonTree IDENTIFIER354=null;
+        CommonTree ASSIGN355=null;
+        CommonTree INTLITERAL356=null;
+        CommonTree SMENTRY357=null;
+        JVMWalker.stackMapTableEntry_return stackMapTableEntry358 =null;
 
 
-        CommonTree SMHEADER352_tree=null;
-        CommonTree IDENTIFIER353_tree=null;
-        CommonTree ASSIGN354_tree=null;
-        CommonTree INTLITERAL355_tree=null;
-        CommonTree SMENTRY356_tree=null;
+        CommonTree SMHEADER353_tree=null;
+        CommonTree IDENTIFIER354_tree=null;
+        CommonTree ASSIGN355_tree=null;
+        CommonTree INTLITERAL356_tree=null;
+        CommonTree SMENTRY357_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:463:3: ( ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:463:5: ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:461:3: ( ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:461:5: ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -11250,36 +11297,36 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMHEADER352=(CommonTree)match(input,SMHEADER,FOLLOW_SMHEADER_in_stackMapTable2727); 
-            SMHEADER352_tree = (CommonTree)adaptor.dupNode(SMHEADER352);
+            SMHEADER353=(CommonTree)match(input,SMHEADER,FOLLOW_SMHEADER_in_stackMapTable2730); 
+            SMHEADER353_tree = (CommonTree)adaptor.dupNode(SMHEADER353);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMHEADER352_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMHEADER353_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER353=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable2729); 
-            IDENTIFIER353_tree = (CommonTree)adaptor.dupNode(IDENTIFIER353);
+            IDENTIFIER354=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable2732); 
+            IDENTIFIER354_tree = (CommonTree)adaptor.dupNode(IDENTIFIER354);
 
 
-            adaptor.addChild(root_1, IDENTIFIER353_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN354=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable2731); 
-            ASSIGN354_tree = (CommonTree)adaptor.dupNode(ASSIGN354);
-
-
-            adaptor.addChild(root_1, ASSIGN354_tree);
+            adaptor.addChild(root_1, IDENTIFIER354_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL355=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable2733); 
-            INTLITERAL355_tree = (CommonTree)adaptor.dupNode(INTLITERAL355);
+            ASSIGN355=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable2734); 
+            ASSIGN355_tree = (CommonTree)adaptor.dupNode(ASSIGN355);
 
 
-            adaptor.addChild(root_1, INTLITERAL355_tree);
+            adaptor.addChild(root_1, ASSIGN355_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL356=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable2736); 
+            INTLITERAL356_tree = (CommonTree)adaptor.dupNode(INTLITERAL356);
+
+
+            adaptor.addChild(root_1, INTLITERAL356_tree);
 
 
             match(input, Token.UP, null); 
@@ -11294,15 +11341,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMENTRY356=(CommonTree)match(input,SMENTRY,FOLLOW_SMENTRY_in_stackMapTable2737); 
-            SMENTRY356_tree = (CommonTree)adaptor.dupNode(SMENTRY356);
+            SMENTRY357=(CommonTree)match(input,SMENTRY,FOLLOW_SMENTRY_in_stackMapTable2740); 
+            SMENTRY357_tree = (CommonTree)adaptor.dupNode(SMENTRY357);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMENTRY356_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMENTRY357_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:463:56: ( stackMapTableEntry )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:461:56: ( stackMapTableEntry )+
             int cnt75=0;
             loop75:
             do {
@@ -11316,15 +11363,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt75) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:463:56: stackMapTableEntry
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:461:56: stackMapTableEntry
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable2739);
-            	    stackMapTableEntry357=stackMapTableEntry();
+            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable2742);
+            	    stackMapTableEntry358=stackMapTableEntry();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, stackMapTableEntry357.getTree());
+            	    adaptor.addChild(root_1, stackMapTableEntry358.getTree());
 
 
             	    }
@@ -11371,7 +11418,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableEntry"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:465:1: stackMapTableEntry : ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:463:1: stackMapTableEntry : ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) ;
     public final JVMWalker.stackMapTableEntry_return stackMapTableEntry() throws RecognitionException {
         JVMWalker.stackMapTableEntry_return retval = new JVMWalker.stackMapTableEntry_return();
         retval.start = input.LT(1);
@@ -11382,17 +11429,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ASSIGN358=null;
-        CommonTree IDENTIFIER359=null;
-        JVMWalker.stackMapTableEntryValue_return stackMapTableEntryValue360 =null;
+        CommonTree ASSIGN359=null;
+        CommonTree IDENTIFIER360=null;
+        JVMWalker.stackMapTableEntryValue_return stackMapTableEntryValue361 =null;
 
 
-        CommonTree ASSIGN358_tree=null;
-        CommonTree IDENTIFIER359_tree=null;
+        CommonTree ASSIGN359_tree=null;
+        CommonTree IDENTIFIER360_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:466:3: ( ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:466:5: ^( ASSIGN IDENTIFIER stackMapTableEntryValue )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:464:3: ( ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:464:5: ^( ASSIGN IDENTIFIER stackMapTableEntryValue )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -11403,29 +11450,29 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ASSIGN358=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry2754); 
-            ASSIGN358_tree = (CommonTree)adaptor.dupNode(ASSIGN358);
+            ASSIGN359=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry2757); 
+            ASSIGN359_tree = (CommonTree)adaptor.dupNode(ASSIGN359);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN358_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN359_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER359=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry2756); 
-            IDENTIFIER359_tree = (CommonTree)adaptor.dupNode(IDENTIFIER359);
+            IDENTIFIER360=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry2759); 
+            IDENTIFIER360_tree = (CommonTree)adaptor.dupNode(IDENTIFIER360);
 
 
-            adaptor.addChild(root_1, IDENTIFIER359_tree);
+            adaptor.addChild(root_1, IDENTIFIER360_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry2758);
-            stackMapTableEntryValue360=stackMapTableEntryValue();
+            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry2761);
+            stackMapTableEntryValue361=stackMapTableEntryValue();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, stackMapTableEntryValue360.getTree());
+            adaptor.addChild(root_1, stackMapTableEntryValue361.getTree());
 
 
             match(input, Token.UP, null); 
@@ -11459,7 +11506,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableEntryValue"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:468:1: stackMapTableEntryValue : ( INTLITERAL | stackMapTableTypesContainer );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:466:1: stackMapTableEntryValue : ( INTLITERAL | stackMapTableTypesContainer );
     public final JVMWalker.stackMapTableEntryValue_return stackMapTableEntryValue() throws RecognitionException {
         JVMWalker.stackMapTableEntryValue_return retval = new JVMWalker.stackMapTableEntryValue_return();
         retval.start = input.LT(1);
@@ -11470,14 +11517,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL361=null;
-        JVMWalker.stackMapTableTypesContainer_return stackMapTableTypesContainer362 =null;
+        CommonTree INTLITERAL362=null;
+        JVMWalker.stackMapTableTypesContainer_return stackMapTableTypesContainer363 =null;
 
 
-        CommonTree INTLITERAL361_tree=null;
+        CommonTree INTLITERAL362_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:469:3: ( INTLITERAL | stackMapTableTypesContainer )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:467:3: ( INTLITERAL | stackMapTableTypesContainer )
             int alt76=2;
             int LA76_0 = input.LA(1);
 
@@ -11496,34 +11543,34 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt76) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:469:5: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:467:5: INTLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL361=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue2771); 
-                    INTLITERAL361_tree = (CommonTree)adaptor.dupNode(INTLITERAL361);
+                    INTLITERAL362=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue2774); 
+                    INTLITERAL362_tree = (CommonTree)adaptor.dupNode(INTLITERAL362);
 
 
-                    adaptor.addChild(root_0, INTLITERAL361_tree);
+                    adaptor.addChild(root_0, INTLITERAL362_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:469:18: stackMapTableTypesContainer
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:467:18: stackMapTableTypesContainer
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue2775);
-                    stackMapTableTypesContainer362=stackMapTableTypesContainer();
+                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue2778);
+                    stackMapTableTypesContainer363=stackMapTableTypesContainer();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, stackMapTableTypesContainer362.getTree());
+                    adaptor.addChild(root_0, stackMapTableTypesContainer363.getTree());
 
 
                     }
@@ -11553,7 +11600,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypesContainer"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:471:1: stackMapTableTypesContainer : stackMapTableTypes ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:469:1: stackMapTableTypesContainer : stackMapTableTypes ;
     public final JVMWalker.stackMapTableTypesContainer_return stackMapTableTypesContainer() throws RecognitionException {
         JVMWalker.stackMapTableTypesContainer_return retval = new JVMWalker.stackMapTableTypesContainer_return();
         retval.start = input.LT(1);
@@ -11564,24 +11611,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.stackMapTableTypes_return stackMapTableTypes363 =null;
+        JVMWalker.stackMapTableTypes_return stackMapTableTypes364 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:472:3: ( stackMapTableTypes )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:472:5: stackMapTableTypes
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:470:3: ( stackMapTableTypes )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:470:5: stackMapTableTypes
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer2787);
-            stackMapTableTypes363=stackMapTableTypes();
+            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer2790);
+            stackMapTableTypes364=stackMapTableTypes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, stackMapTableTypes363.getTree());
+            adaptor.addChild(root_0, stackMapTableTypes364.getTree());
 
 
             }
@@ -11609,7 +11656,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypes"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:474:1: stackMapTableTypes : ( stackMapTableType )* ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:472:1: stackMapTableTypes : ( stackMapTableType )* ;
     public final JVMWalker.stackMapTableTypes_return stackMapTableTypes() throws RecognitionException {
         JVMWalker.stackMapTableTypes_return retval = new JVMWalker.stackMapTableTypes_return();
         retval.start = input.LT(1);
@@ -11620,18 +11667,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.stackMapTableType_return stackMapTableType364 =null;
+        JVMWalker.stackMapTableType_return stackMapTableType365 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:475:3: ( ( stackMapTableType )* )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:475:5: ( stackMapTableType )*
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:473:3: ( ( stackMapTableType )* )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:473:5: ( stackMapTableType )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:475:5: ( stackMapTableType )*
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:473:5: ( stackMapTableType )*
             loop77:
             do {
                 int alt77=2;
@@ -11653,15 +11700,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt77) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:475:5: stackMapTableType
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:473:5: stackMapTableType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes2810);
-            	    stackMapTableType364=stackMapTableType();
+            	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes2813);
+            	    stackMapTableType365=stackMapTableType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, stackMapTableType364.getTree());
+            	    adaptor.addChild(root_0, stackMapTableType365.getTree());
 
 
             	    }
@@ -11698,7 +11745,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:477:1: stackMapTableType : ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:475:1: stackMapTableType : ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? );
     public final JVMWalker.stackMapTableType_return stackMapTableType() throws RecognitionException {
         JVMWalker.stackMapTableType_return retval = new JVMWalker.stackMapTableType_return();
         retval.start = input.LT(1);
@@ -11709,20 +11756,20 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER368=null;
-        CommonTree INTLITERAL369=null;
-        JVMWalker.stackMapTableTypeObject_return stackMapTableTypeObject365 =null;
+        CommonTree IDENTIFIER369=null;
+        CommonTree INTLITERAL370=null;
+        JVMWalker.stackMapTableTypeObject_return stackMapTableTypeObject366 =null;
 
-        JVMWalker.stackMapTableTypePlainObject_return stackMapTableTypePlainObject366 =null;
+        JVMWalker.stackMapTableTypePlainObject_return stackMapTableTypePlainObject367 =null;
 
-        JVMWalker.primitiveType_return primitiveType367 =null;
+        JVMWalker.primitiveType_return primitiveType368 =null;
 
 
-        CommonTree IDENTIFIER368_tree=null;
-        CommonTree INTLITERAL369_tree=null;
+        CommonTree IDENTIFIER369_tree=null;
+        CommonTree INTLITERAL370_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:3: ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:476:3: ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? )
             int alt79=4;
             switch ( input.LA(1) ) {
             case CLASS:
@@ -11772,71 +11819,71 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt79) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:5: stackMapTableTypeObject
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:476:5: stackMapTableTypeObject
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType2823);
-                    stackMapTableTypeObject365=stackMapTableTypeObject();
+                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType2826);
+                    stackMapTableTypeObject366=stackMapTableTypeObject();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, stackMapTableTypeObject365.getTree());
+                    adaptor.addChild(root_0, stackMapTableTypeObject366.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:29: stackMapTableTypePlainObject
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:476:29: stackMapTableTypePlainObject
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType2825);
-                    stackMapTableTypePlainObject366=stackMapTableTypePlainObject();
+                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType2828);
+                    stackMapTableTypePlainObject367=stackMapTableTypePlainObject();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, stackMapTableTypePlainObject366.getTree());
+                    adaptor.addChild(root_0, stackMapTableTypePlainObject367.getTree());
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:58: primitiveType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:476:58: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType2827);
-                    primitiveType367=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType2830);
+                    primitiveType368=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType367.getTree());
+                    adaptor.addChild(root_0, primitiveType368.getTree());
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:72: IDENTIFIER ( INTLITERAL )?
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:476:72: IDENTIFIER ( INTLITERAL )?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER368=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType2829); 
-                    IDENTIFIER368_tree = (CommonTree)adaptor.dupNode(IDENTIFIER368);
+                    IDENTIFIER369=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType2832); 
+                    IDENTIFIER369_tree = (CommonTree)adaptor.dupNode(IDENTIFIER369);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER368_tree);
+                    adaptor.addChild(root_0, IDENTIFIER369_tree);
 
 
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:83: ( INTLITERAL )?
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:476:83: ( INTLITERAL )?
                     int alt78=2;
                     int LA78_0 = input.LA(1);
 
@@ -11845,14 +11892,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt78) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:83: INTLITERAL
+                            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:476:83: INTLITERAL
                             {
                             _last = (CommonTree)input.LT(1);
-                            INTLITERAL369=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType2831); 
-                            INTLITERAL369_tree = (CommonTree)adaptor.dupNode(INTLITERAL369);
+                            INTLITERAL370=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType2834); 
+                            INTLITERAL370_tree = (CommonTree)adaptor.dupNode(INTLITERAL370);
 
 
-                            adaptor.addChild(root_0, INTLITERAL369_tree);
+                            adaptor.addChild(root_0, INTLITERAL370_tree);
 
 
                             }
@@ -11888,7 +11935,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypePlainObject"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:480:1: stackMapTableTypePlainObject : CLASS INTERNALTYPE ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:478:1: stackMapTableTypePlainObject : CLASS INTERNALTYPE ;
     public final JVMWalker.stackMapTableTypePlainObject_return stackMapTableTypePlainObject() throws RecognitionException {
         JVMWalker.stackMapTableTypePlainObject_return retval = new JVMWalker.stackMapTableTypePlainObject_return();
         retval.start = input.LT(1);
@@ -11899,33 +11946,33 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CLASS370=null;
-        CommonTree INTERNALTYPE371=null;
+        CommonTree CLASS371=null;
+        CommonTree INTERNALTYPE372=null;
 
-        CommonTree CLASS370_tree=null;
-        CommonTree INTERNALTYPE371_tree=null;
+        CommonTree CLASS371_tree=null;
+        CommonTree INTERNALTYPE372_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:481:3: ( CLASS INTERNALTYPE )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:481:5: CLASS INTERNALTYPE
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:479:3: ( CLASS INTERNALTYPE )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:479:5: CLASS INTERNALTYPE
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            CLASS370=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject2844); 
-            CLASS370_tree = (CommonTree)adaptor.dupNode(CLASS370);
+            CLASS371=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject2847); 
+            CLASS371_tree = (CommonTree)adaptor.dupNode(CLASS371);
 
 
-            adaptor.addChild(root_0, CLASS370_tree);
+            adaptor.addChild(root_0, CLASS371_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTERNALTYPE371=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject2846); 
-            INTERNALTYPE371_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE371);
+            INTERNALTYPE372=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject2849); 
+            INTERNALTYPE372_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE372);
 
 
-            adaptor.addChild(root_0, INTERNALTYPE371_tree);
+            adaptor.addChild(root_0, INTERNALTYPE372_tree);
 
 
             }
@@ -11953,7 +12000,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypeObject"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:483:1: stackMapTableTypeObject : CLASS STRINGLITERAL ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:481:1: stackMapTableTypeObject : CLASS STRINGLITERAL ;
     public final JVMWalker.stackMapTableTypeObject_return stackMapTableTypeObject() throws RecognitionException {
         JVMWalker.stackMapTableTypeObject_return retval = new JVMWalker.stackMapTableTypeObject_return();
         retval.start = input.LT(1);
@@ -11964,33 +12011,33 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CLASS372=null;
-        CommonTree STRINGLITERAL373=null;
+        CommonTree CLASS373=null;
+        CommonTree STRINGLITERAL374=null;
 
-        CommonTree CLASS372_tree=null;
-        CommonTree STRINGLITERAL373_tree=null;
+        CommonTree CLASS373_tree=null;
+        CommonTree STRINGLITERAL374_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:484:3: ( CLASS STRINGLITERAL )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:484:5: CLASS STRINGLITERAL
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:482:3: ( CLASS STRINGLITERAL )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:482:5: CLASS STRINGLITERAL
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            CLASS372=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject2858); 
-            CLASS372_tree = (CommonTree)adaptor.dupNode(CLASS372);
+            CLASS373=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject2861); 
+            CLASS373_tree = (CommonTree)adaptor.dupNode(CLASS373);
 
 
-            adaptor.addChild(root_0, CLASS372_tree);
+            adaptor.addChild(root_0, CLASS373_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            STRINGLITERAL373=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject2860); 
-            STRINGLITERAL373_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL373);
+            STRINGLITERAL374=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject2863); 
+            STRINGLITERAL374_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL374);
 
 
-            adaptor.addChild(root_0, STRINGLITERAL373_tree);
+            adaptor.addChild(root_0, STRINGLITERAL374_tree);
 
 
             }
@@ -12018,7 +12065,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeList"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:494:1: typeList : ( type )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:492:1: typeList : ( type )+ ;
     public final JVMWalker.typeList_return typeList() throws RecognitionException {
         JVMWalker.typeList_return retval = new JVMWalker.typeList_return();
         retval.start = input.LT(1);
@@ -12029,18 +12076,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.type_return type374 =null;
+        JVMWalker.type_return type375 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:495:3: ( ( type )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:495:5: ( type )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:493:3: ( ( type )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:493:5: ( type )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:495:5: ( type )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:493:5: ( type )+
             int cnt80=0;
             loop80:
             do {
@@ -12054,15 +12101,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt80) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:495:5: type
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:493:5: type
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_type_in_typeList2880);
-            	    type374=type();
+            	    pushFollow(FOLLOW_type_in_typeList2883);
+            	    type375=type();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, type374.getTree());
+            	    adaptor.addChild(root_0, type375.getTree());
 
 
             	    }
@@ -12103,7 +12150,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "type"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:497:1: type : ^( combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:495:1: type : combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) ;
     public final JVMWalker.type_return type() throws RecognitionException {
         JVMWalker.type_return retval = new JVMWalker.type_return();
         retval.start = input.LT(1);
@@ -12114,21 +12161,30 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ARRAYBRACKS376=null;
-        CommonTree LBRACK377=null;
-        CommonTree RBRACK378=null;
-        JVMWalker.combinedJavaType_return combinedJavaType375 =null;
+        CommonTree ARRAYBRACKS377=null;
+        CommonTree LBRACK378=null;
+        CommonTree RBRACK379=null;
+        JVMWalker.combinedJavaType_return combinedJavaType376 =null;
 
 
-        CommonTree ARRAYBRACKS376_tree=null;
-        CommonTree LBRACK377_tree=null;
-        CommonTree RBRACK378_tree=null;
+        CommonTree ARRAYBRACKS377_tree=null;
+        CommonTree LBRACK378_tree=null;
+        CommonTree RBRACK379_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:498:3: ( ^( combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:498:5: ^( combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:496:3: ( combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:496:5: combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* )
             {
             root_0 = (CommonTree)adaptor.nil();
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_combinedJavaType_in_type2896);
+            combinedJavaType376=combinedJavaType();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, combinedJavaType376.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -12137,31 +12193,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_combinedJavaType_in_type2894);
-            combinedJavaType375=combinedJavaType();
-
-            state._fsp--;
-
-            root_1 = (CommonTree)adaptor.becomeRoot(combinedJavaType375.getTree(), root_1);
+            ARRAYBRACKS377=(CommonTree)match(input,ARRAYBRACKS,FOLLOW_ARRAYBRACKS_in_type2899); 
+            ARRAYBRACKS377_tree = (CommonTree)adaptor.dupNode(ARRAYBRACKS377);
 
 
-            match(input, Token.DOWN, null); 
-            _last = (CommonTree)input.LT(1);
-            {
-            CommonTree _save_last_2 = _last;
-            CommonTree _first_2 = null;
-            CommonTree root_2 = (CommonTree)adaptor.nil();
-            _last = (CommonTree)input.LT(1);
-            ARRAYBRACKS376=(CommonTree)match(input,ARRAYBRACKS,FOLLOW_ARRAYBRACKS_in_type2897); 
-            ARRAYBRACKS376_tree = (CommonTree)adaptor.dupNode(ARRAYBRACKS376);
-
-
-            root_2 = (CommonTree)adaptor.becomeRoot(ARRAYBRACKS376_tree, root_2);
+            root_1 = (CommonTree)adaptor.becomeRoot(ARRAYBRACKS377_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:498:38: ( LBRACK RBRACK )*
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:496:36: ( LBRACK RBRACK )*
                 loop81:
                 do {
                     int alt81=2;
@@ -12174,22 +12215,22 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt81) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:498:39: LBRACK RBRACK
+                	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:496:37: LBRACK RBRACK
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    LBRACK377=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_type2900); 
-                	    LBRACK377_tree = (CommonTree)adaptor.dupNode(LBRACK377);
+                	    LBRACK378=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_type2902); 
+                	    LBRACK378_tree = (CommonTree)adaptor.dupNode(LBRACK378);
 
 
-                	    adaptor.addChild(root_2, LBRACK377_tree);
+                	    adaptor.addChild(root_1, LBRACK378_tree);
 
 
                 	    _last = (CommonTree)input.LT(1);
-                	    RBRACK378=(CommonTree)match(input,RBRACK,FOLLOW_RBRACK_in_type2902); 
-                	    RBRACK378_tree = (CommonTree)adaptor.dupNode(RBRACK378);
+                	    RBRACK379=(CommonTree)match(input,RBRACK,FOLLOW_RBRACK_in_type2904); 
+                	    RBRACK379_tree = (CommonTree)adaptor.dupNode(RBRACK379);
 
 
-                	    adaptor.addChild(root_2, RBRACK378_tree);
+                	    adaptor.addChild(root_1, RBRACK379_tree);
 
 
                 	    }
@@ -12203,12 +12244,6 @@ public TreeAdaptor getTreeAdaptor() {
 
                 match(input, Token.UP, null); 
             }
-            adaptor.addChild(root_1, root_2);
-            _last = _save_last_2;
-            }
-
-
-            match(input, Token.UP, null); 
             adaptor.addChild(root_0, root_1);
             _last = _save_last_1;
             }
@@ -12239,7 +12274,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "combinedJavaType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:500:1: combinedJavaType : ( primitiveType | referenceType );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:498:1: combinedJavaType : ( primitiveType | referenceType );
     public final JVMWalker.combinedJavaType_return combinedJavaType() throws RecognitionException {
         JVMWalker.combinedJavaType_return retval = new JVMWalker.combinedJavaType_return();
         retval.start = input.LT(1);
@@ -12250,14 +12285,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.primitiveType_return primitiveType379 =null;
+        JVMWalker.primitiveType_return primitiveType380 =null;
 
-        JVMWalker.referenceType_return referenceType380 =null;
+        JVMWalker.referenceType_return referenceType381 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:501:3: ( primitiveType | referenceType )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:499:3: ( primitiveType | referenceType )
             int alt82=2;
             int LA82_0 = input.LA(1);
 
@@ -12276,35 +12311,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt82) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:501:5: primitiveType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:499:5: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType2918);
-                    primitiveType379=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType2919);
+                    primitiveType380=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType379.getTree());
+                    adaptor.addChild(root_0, primitiveType380.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:502:5: referenceType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:500:5: referenceType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_referenceType_in_combinedJavaType2924);
-                    referenceType380=referenceType();
+                    pushFollow(FOLLOW_referenceType_in_combinedJavaType2925);
+                    referenceType381=referenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, referenceType380.getTree());
+                    adaptor.addChild(root_0, referenceType381.getTree());
 
 
                     }
@@ -12334,7 +12369,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "referenceType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:504:1: referenceType : ^( UNITNAME ( typeDeclSpecifier )+ ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:502:1: referenceType : ^( UNITNAME ( typeDeclSpecifier )+ ) ;
     public final JVMWalker.referenceType_return referenceType() throws RecognitionException {
         JVMWalker.referenceType_return retval = new JVMWalker.referenceType_return();
         retval.start = input.LT(1);
@@ -12345,15 +12380,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree UNITNAME381=null;
-        JVMWalker.typeDeclSpecifier_return typeDeclSpecifier382 =null;
+        CommonTree UNITNAME382=null;
+        JVMWalker.typeDeclSpecifier_return typeDeclSpecifier383 =null;
 
 
-        CommonTree UNITNAME381_tree=null;
+        CommonTree UNITNAME382_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:505:3: ( ^( UNITNAME ( typeDeclSpecifier )+ ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:505:5: ^( UNITNAME ( typeDeclSpecifier )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:503:3: ( ^( UNITNAME ( typeDeclSpecifier )+ ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:503:5: ^( UNITNAME ( typeDeclSpecifier )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -12364,15 +12399,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME381=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_referenceType2937); 
-            UNITNAME381_tree = (CommonTree)adaptor.dupNode(UNITNAME381);
+            UNITNAME382=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_referenceType2938); 
+            UNITNAME382_tree = (CommonTree)adaptor.dupNode(UNITNAME382);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME381_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME382_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:505:16: ( typeDeclSpecifier )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:503:16: ( typeDeclSpecifier )+
             int cnt83=0;
             loop83:
             do {
@@ -12386,15 +12421,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt83) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:505:16: typeDeclSpecifier
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:503:16: typeDeclSpecifier
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType2939);
-            	    typeDeclSpecifier382=typeDeclSpecifier();
+            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType2940);
+            	    typeDeclSpecifier383=typeDeclSpecifier();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, typeDeclSpecifier382.getTree());
+            	    adaptor.addChild(root_1, typeDeclSpecifier383.getTree());
 
 
             	    }
@@ -12441,7 +12476,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeDeclSpecifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:507:1: typeDeclSpecifier : ^( typeName ^( TYPEARGS ( typeArguments )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:505:1: typeDeclSpecifier : ^( typeName ^( TYPEARGS ( typeArguments )? ) ) ;
     public final JVMWalker.typeDeclSpecifier_return typeDeclSpecifier() throws RecognitionException {
         JVMWalker.typeDeclSpecifier_return retval = new JVMWalker.typeDeclSpecifier_return();
         retval.start = input.LT(1);
@@ -12452,17 +12487,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree TYPEARGS384=null;
-        JVMWalker.typeName_return typeName383 =null;
+        CommonTree TYPEARGS385=null;
+        JVMWalker.typeName_return typeName384 =null;
 
-        JVMWalker.typeArguments_return typeArguments385 =null;
+        JVMWalker.typeArguments_return typeArguments386 =null;
 
 
-        CommonTree TYPEARGS384_tree=null;
+        CommonTree TYPEARGS385_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:508:3: ( ^( typeName ^( TYPEARGS ( typeArguments )? ) ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:508:5: ^( typeName ^( TYPEARGS ( typeArguments )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:506:3: ( ^( typeName ^( TYPEARGS ( typeArguments )? ) ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:506:5: ^( typeName ^( TYPEARGS ( typeArguments )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -12473,12 +12508,12 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier2954);
-            typeName383=typeName();
+            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier2955);
+            typeName384=typeName();
 
             state._fsp--;
 
-            root_1 = (CommonTree)adaptor.becomeRoot(typeName383.getTree(), root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(typeName384.getTree(), root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -12488,16 +12523,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            TYPEARGS384=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_typeDeclSpecifier2957); 
-            TYPEARGS384_tree = (CommonTree)adaptor.dupNode(TYPEARGS384);
+            TYPEARGS385=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_typeDeclSpecifier2958); 
+            TYPEARGS385_tree = (CommonTree)adaptor.dupNode(TYPEARGS385);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(TYPEARGS384_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(TYPEARGS385_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:508:27: ( typeArguments )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:506:27: ( typeArguments )?
                 int alt84=2;
                 int LA84_0 = input.LA(1);
 
@@ -12506,15 +12541,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt84) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:508:27: typeArguments
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:506:27: typeArguments
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier2959);
-                        typeArguments385=typeArguments();
+                        pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier2960);
+                        typeArguments386=typeArguments();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, typeArguments385.getTree());
+                        adaptor.addChild(root_2, typeArguments386.getTree());
 
 
                         }
@@ -12561,7 +12596,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeName"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:510:1: typeName : QualifiedType ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:508:1: typeName : QualifiedType ;
     public final JVMWalker.typeName_return typeName() throws RecognitionException {
         JVMWalker.typeName_return retval = new JVMWalker.typeName_return();
         retval.start = input.LT(1);
@@ -12572,23 +12607,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree QualifiedType386=null;
+        CommonTree QualifiedType387=null;
 
-        CommonTree QualifiedType386_tree=null;
+        CommonTree QualifiedType387_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:511:3: ( QualifiedType )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:511:5: QualifiedType
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:509:3: ( QualifiedType )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:509:5: QualifiedType
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            QualifiedType386=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName2974); 
-            QualifiedType386_tree = (CommonTree)adaptor.dupNode(QualifiedType386);
+            QualifiedType387=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName2975); 
+            QualifiedType387_tree = (CommonTree)adaptor.dupNode(QualifiedType387);
 
 
-            adaptor.addChild(root_0, QualifiedType386_tree);
+            adaptor.addChild(root_0, QualifiedType387_tree);
 
 
             }
@@ -12616,7 +12651,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeArguments"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:513:1: typeArguments : typeArgumentList ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:511:1: typeArguments : typeArgumentList ;
     public final JVMWalker.typeArguments_return typeArguments() throws RecognitionException {
         JVMWalker.typeArguments_return retval = new JVMWalker.typeArguments_return();
         retval.start = input.LT(1);
@@ -12627,24 +12662,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.typeArgumentList_return typeArgumentList387 =null;
+        JVMWalker.typeArgumentList_return typeArgumentList388 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:514:3: ( typeArgumentList )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:514:5: typeArgumentList
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:512:3: ( typeArgumentList )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:512:5: typeArgumentList
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeArgumentList_in_typeArguments2986);
-            typeArgumentList387=typeArgumentList();
+            pushFollow(FOLLOW_typeArgumentList_in_typeArguments2987);
+            typeArgumentList388=typeArgumentList();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, typeArgumentList387.getTree());
+            adaptor.addChild(root_0, typeArgumentList388.getTree());
 
 
             }
@@ -12672,7 +12707,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeArgumentList"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:516:1: typeArgumentList : ( typeArgument )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:514:1: typeArgumentList : ( typeArgument )+ ;
     public final JVMWalker.typeArgumentList_return typeArgumentList() throws RecognitionException {
         JVMWalker.typeArgumentList_return retval = new JVMWalker.typeArgumentList_return();
         retval.start = input.LT(1);
@@ -12683,18 +12718,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.typeArgument_return typeArgument388 =null;
+        JVMWalker.typeArgument_return typeArgument389 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:517:3: ( ( typeArgument )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:517:5: ( typeArgument )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:515:3: ( ( typeArgument )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:515:5: ( typeArgument )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:517:5: ( typeArgument )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:515:5: ( typeArgument )+
             int cnt85=0;
             loop85:
             do {
@@ -12708,15 +12743,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt85) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:517:5: typeArgument
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:515:5: typeArgument
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_typeArgument_in_typeArgumentList2999);
-            	    typeArgument388=typeArgument();
+            	    pushFollow(FOLLOW_typeArgument_in_typeArgumentList3000);
+            	    typeArgument389=typeArgument();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, typeArgument388.getTree());
+            	    adaptor.addChild(root_0, typeArgument389.getTree());
 
 
             	    }
@@ -12757,7 +12792,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeArgument"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:519:1: typeArgument : ( type | wildcard );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:517:1: typeArgument : ( type | wildcard );
     public final JVMWalker.typeArgument_return typeArgument() throws RecognitionException {
         JVMWalker.typeArgument_return retval = new JVMWalker.typeArgument_return();
         retval.start = input.LT(1);
@@ -12768,14 +12803,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.type_return type389 =null;
+        JVMWalker.type_return type390 =null;
 
-        JVMWalker.wildcard_return wildcard390 =null;
+        JVMWalker.wildcard_return wildcard391 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:520:3: ( type | wildcard )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:518:3: ( type | wildcard )
             int alt86=2;
             int LA86_0 = input.LA(1);
 
@@ -12794,35 +12829,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt86) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:520:5: type
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:518:5: type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_type_in_typeArgument3012);
-                    type389=type();
+                    pushFollow(FOLLOW_type_in_typeArgument3013);
+                    type390=type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, type389.getTree());
+                    adaptor.addChild(root_0, type390.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:521:5: wildcard
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:519:5: wildcard
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_wildcard_in_typeArgument3018);
-                    wildcard390=wildcard();
+                    pushFollow(FOLLOW_wildcard_in_typeArgument3019);
+                    wildcard391=wildcard();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, wildcard390.getTree());
+                    adaptor.addChild(root_0, wildcard391.getTree());
 
 
                     }
@@ -12852,7 +12887,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "wildcard"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:523:1: wildcard : ^( QUESTION ( wildcardBounds )? ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:521:1: wildcard : ^( QUESTION ( wildcardBounds )? ) ;
     public final JVMWalker.wildcard_return wildcard() throws RecognitionException {
         JVMWalker.wildcard_return retval = new JVMWalker.wildcard_return();
         retval.start = input.LT(1);
@@ -12863,15 +12898,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree QUESTION391=null;
-        JVMWalker.wildcardBounds_return wildcardBounds392 =null;
+        CommonTree QUESTION392=null;
+        JVMWalker.wildcardBounds_return wildcardBounds393 =null;
 
 
-        CommonTree QUESTION391_tree=null;
+        CommonTree QUESTION392_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:524:3: ( ^( QUESTION ( wildcardBounds )? ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:524:5: ^( QUESTION ( wildcardBounds )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:522:3: ( ^( QUESTION ( wildcardBounds )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:522:5: ^( QUESTION ( wildcardBounds )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -12882,16 +12917,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            QUESTION391=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_wildcard3031); 
-            QUESTION391_tree = (CommonTree)adaptor.dupNode(QUESTION391);
+            QUESTION392=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_wildcard3032); 
+            QUESTION392_tree = (CommonTree)adaptor.dupNode(QUESTION392);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION391_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION392_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:524:16: ( wildcardBounds )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:522:16: ( wildcardBounds )?
                 int alt87=2;
                 int LA87_0 = input.LA(1);
 
@@ -12900,15 +12935,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt87) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:524:16: wildcardBounds
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:522:16: wildcardBounds
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_wildcardBounds_in_wildcard3033);
-                        wildcardBounds392=wildcardBounds();
+                        pushFollow(FOLLOW_wildcardBounds_in_wildcard3034);
+                        wildcardBounds393=wildcardBounds();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, wildcardBounds392.getTree());
+                        adaptor.addChild(root_1, wildcardBounds393.getTree());
 
 
                         }
@@ -12949,7 +12984,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "wildcardBounds"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:526:1: wildcardBounds : ( ^( EXTENDS type ) | ^( SUPER type ) );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:524:1: wildcardBounds : ( ^( EXTENDS type ) | ^( SUPER type ) );
     public final JVMWalker.wildcardBounds_return wildcardBounds() throws RecognitionException {
         JVMWalker.wildcardBounds_return retval = new JVMWalker.wildcardBounds_return();
         retval.start = input.LT(1);
@@ -12960,18 +12995,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS393=null;
-        CommonTree SUPER395=null;
-        JVMWalker.type_return type394 =null;
+        CommonTree EXTENDS394=null;
+        CommonTree SUPER396=null;
+        JVMWalker.type_return type395 =null;
 
-        JVMWalker.type_return type396 =null;
+        JVMWalker.type_return type397 =null;
 
 
-        CommonTree EXTENDS393_tree=null;
-        CommonTree SUPER395_tree=null;
+        CommonTree EXTENDS394_tree=null;
+        CommonTree SUPER396_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:527:3: ( ^( EXTENDS type ) | ^( SUPER type ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:525:3: ( ^( EXTENDS type ) | ^( SUPER type ) )
             int alt88=2;
             int LA88_0 = input.LA(1);
 
@@ -12990,7 +13025,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt88) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:527:5: ^( EXTENDS type )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:525:5: ^( EXTENDS type )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -13001,21 +13036,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    EXTENDS393=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds3048); 
-                    EXTENDS393_tree = (CommonTree)adaptor.dupNode(EXTENDS393);
+                    EXTENDS394=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds3049); 
+                    EXTENDS394_tree = (CommonTree)adaptor.dupNode(EXTENDS394);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS393_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS394_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_type_in_wildcardBounds3050);
-                    type394=type();
+                    pushFollow(FOLLOW_type_in_wildcardBounds3051);
+                    type395=type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, type394.getTree());
+                    adaptor.addChild(root_1, type395.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -13027,7 +13062,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:528:5: ^( SUPER type )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:526:5: ^( SUPER type )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -13038,21 +13073,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    SUPER395=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds3058); 
-                    SUPER395_tree = (CommonTree)adaptor.dupNode(SUPER395);
+                    SUPER396=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds3059); 
+                    SUPER396_tree = (CommonTree)adaptor.dupNode(SUPER396);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER395_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER396_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_type_in_wildcardBounds3060);
-                    type396=type();
+                    pushFollow(FOLLOW_type_in_wildcardBounds3061);
+                    type397=type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, type396.getTree());
+                    adaptor.addChild(root_1, type397.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -13088,7 +13123,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeParameters"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:530:1: typeParameters : ( typeParameter )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:528:1: typeParameters : ( typeParameter )+ ;
     public final JVMWalker.typeParameters_return typeParameters() throws RecognitionException {
         JVMWalker.typeParameters_return retval = new JVMWalker.typeParameters_return();
         retval.start = input.LT(1);
@@ -13099,18 +13134,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.typeParameter_return typeParameter397 =null;
+        JVMWalker.typeParameter_return typeParameter398 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:531:3: ( ( typeParameter )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:531:5: ( typeParameter )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:529:3: ( ( typeParameter )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:529:5: ( typeParameter )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:531:5: ( typeParameter )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:529:5: ( typeParameter )+
             int cnt89=0;
             loop89:
             do {
@@ -13124,15 +13159,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt89) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:531:5: typeParameter
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:529:5: typeParameter
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_typeParameter_in_typeParameters3073);
-            	    typeParameter397=typeParameter();
+            	    pushFollow(FOLLOW_typeParameter_in_typeParameters3074);
+            	    typeParameter398=typeParameter();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, typeParameter397.getTree());
+            	    adaptor.addChild(root_0, typeParameter398.getTree());
 
 
             	    }
@@ -13173,7 +13208,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeParameter"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:533:1: typeParameter : ^( identifier ( typeBound )? ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:531:1: typeParameter : ^( identifier ( typeBound )? ) ;
     public final JVMWalker.typeParameter_return typeParameter() throws RecognitionException {
         JVMWalker.typeParameter_return retval = new JVMWalker.typeParameter_return();
         retval.start = input.LT(1);
@@ -13184,15 +13219,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.identifier_return identifier398 =null;
+        JVMWalker.identifier_return identifier399 =null;
 
-        JVMWalker.typeBound_return typeBound399 =null;
+        JVMWalker.typeBound_return typeBound400 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:534:3: ( ^( identifier ( typeBound )? ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:534:5: ^( identifier ( typeBound )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:532:3: ( ^( identifier ( typeBound )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:532:5: ^( identifier ( typeBound )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13203,17 +13238,17 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_identifier_in_typeParameter3087);
-            identifier398=identifier();
+            pushFollow(FOLLOW_identifier_in_typeParameter3088);
+            identifier399=identifier();
 
             state._fsp--;
 
-            root_1 = (CommonTree)adaptor.becomeRoot(identifier398.getTree(), root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(identifier399.getTree(), root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:534:18: ( typeBound )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:532:18: ( typeBound )?
                 int alt90=2;
                 int LA90_0 = input.LA(1);
 
@@ -13222,15 +13257,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt90) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:534:18: typeBound
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:532:18: typeBound
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeBound_in_typeParameter3089);
-                        typeBound399=typeBound();
+                        pushFollow(FOLLOW_typeBound_in_typeParameter3090);
+                        typeBound400=typeBound();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, typeBound399.getTree());
+                        adaptor.addChild(root_1, typeBound400.getTree());
 
 
                         }
@@ -13271,7 +13306,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeBound"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:536:1: typeBound : ^( EXTENDS ( referenceType )+ ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:534:1: typeBound : ^( EXTENDS ( referenceType )+ ) ;
     public final JVMWalker.typeBound_return typeBound() throws RecognitionException {
         JVMWalker.typeBound_return retval = new JVMWalker.typeBound_return();
         retval.start = input.LT(1);
@@ -13282,15 +13317,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS400=null;
-        JVMWalker.referenceType_return referenceType401 =null;
+        CommonTree EXTENDS401=null;
+        JVMWalker.referenceType_return referenceType402 =null;
 
 
-        CommonTree EXTENDS400_tree=null;
+        CommonTree EXTENDS401_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:537:3: ( ^( EXTENDS ( referenceType )+ ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:537:5: ^( EXTENDS ( referenceType )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:535:3: ( ^( EXTENDS ( referenceType )+ ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:535:5: ^( EXTENDS ( referenceType )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13301,15 +13336,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            EXTENDS400=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound3104); 
-            EXTENDS400_tree = (CommonTree)adaptor.dupNode(EXTENDS400);
+            EXTENDS401=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound3105); 
+            EXTENDS401_tree = (CommonTree)adaptor.dupNode(EXTENDS401);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS400_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS401_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:537:15: ( referenceType )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:535:15: ( referenceType )+
             int cnt91=0;
             loop91:
             do {
@@ -13323,15 +13358,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt91) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:537:15: referenceType
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:535:15: referenceType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_referenceType_in_typeBound3106);
-            	    referenceType401=referenceType();
+            	    pushFollow(FOLLOW_referenceType_in_typeBound3107);
+            	    referenceType402=referenceType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, referenceType401.getTree());
+            	    adaptor.addChild(root_1, referenceType402.getTree());
 
 
             	    }
@@ -13378,7 +13413,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "genericDescriptor"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:542:1: genericDescriptor : ( genericReturnDescriptor )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:540:1: genericDescriptor : ( genericReturnDescriptor )+ ;
     public final JVMWalker.genericDescriptor_return genericDescriptor() throws RecognitionException {
         JVMWalker.genericDescriptor_return retval = new JVMWalker.genericDescriptor_return();
         retval.start = input.LT(1);
@@ -13389,18 +13424,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.genericReturnDescriptor_return genericReturnDescriptor402 =null;
+        JVMWalker.genericReturnDescriptor_return genericReturnDescriptor403 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:543:3: ( ( genericReturnDescriptor )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:543:5: ( genericReturnDescriptor )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:541:3: ( ( genericReturnDescriptor )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:541:5: ( genericReturnDescriptor )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:543:5: ( genericReturnDescriptor )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:541:5: ( genericReturnDescriptor )+
             int cnt92=0;
             loop92:
             do {
@@ -13414,15 +13449,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt92) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:543:5: genericReturnDescriptor
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:541:5: genericReturnDescriptor
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor3123);
-            	    genericReturnDescriptor402=genericReturnDescriptor();
+            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor3124);
+            	    genericReturnDescriptor403=genericReturnDescriptor();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, genericReturnDescriptor402.getTree());
+            	    adaptor.addChild(root_0, genericReturnDescriptor403.getTree());
 
 
             	    }
@@ -13463,7 +13498,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "genericReturnDescriptor"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:545:1: genericReturnDescriptor : ^( EXTENDS identifier bytecodeReferenceTypeList ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:543:1: genericReturnDescriptor : ^( EXTENDS identifier bytecodeReferenceTypeList ) ;
     public final JVMWalker.genericReturnDescriptor_return genericReturnDescriptor() throws RecognitionException {
         JVMWalker.genericReturnDescriptor_return retval = new JVMWalker.genericReturnDescriptor_return();
         retval.start = input.LT(1);
@@ -13474,17 +13509,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS403=null;
-        JVMWalker.identifier_return identifier404 =null;
+        CommonTree EXTENDS404=null;
+        JVMWalker.identifier_return identifier405 =null;
 
-        JVMWalker.bytecodeReferenceTypeList_return bytecodeReferenceTypeList405 =null;
+        JVMWalker.bytecodeReferenceTypeList_return bytecodeReferenceTypeList406 =null;
 
 
-        CommonTree EXTENDS403_tree=null;
+        CommonTree EXTENDS404_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:546:3: ( ^( EXTENDS identifier bytecodeReferenceTypeList ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:546:5: ^( EXTENDS identifier bytecodeReferenceTypeList )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:544:3: ( ^( EXTENDS identifier bytecodeReferenceTypeList ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:544:5: ^( EXTENDS identifier bytecodeReferenceTypeList )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13495,30 +13530,30 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            EXTENDS403=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor3137); 
-            EXTENDS403_tree = (CommonTree)adaptor.dupNode(EXTENDS403);
+            EXTENDS404=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor3138); 
+            EXTENDS404_tree = (CommonTree)adaptor.dupNode(EXTENDS404);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS403_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS404_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor3139);
-            identifier404=identifier();
+            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor3140);
+            identifier405=identifier();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, identifier404.getTree());
+            adaptor.addChild(root_1, identifier405.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3141);
-            bytecodeReferenceTypeList405=bytecodeReferenceTypeList();
+            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3142);
+            bytecodeReferenceTypeList406=bytecodeReferenceTypeList();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, bytecodeReferenceTypeList405.getTree());
+            adaptor.addChild(root_1, bytecodeReferenceTypeList406.getTree());
 
 
             match(input, Token.UP, null); 
@@ -13552,7 +13587,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeReferenceTypeList"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:548:1: bytecodeReferenceTypeList : ( bytecodeReferenceType )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:546:1: bytecodeReferenceTypeList : ( bytecodeReferenceType )+ ;
     public final JVMWalker.bytecodeReferenceTypeList_return bytecodeReferenceTypeList() throws RecognitionException {
         JVMWalker.bytecodeReferenceTypeList_return retval = new JVMWalker.bytecodeReferenceTypeList_return();
         retval.start = input.LT(1);
@@ -13563,18 +13598,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType406 =null;
+        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType407 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:549:3: ( ( bytecodeReferenceType )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:549:5: ( bytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:547:3: ( ( bytecodeReferenceType )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:547:5: ( bytecodeReferenceType )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:549:5: ( bytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:547:5: ( bytecodeReferenceType )+
             int cnt93=0;
             loop93:
             do {
@@ -13588,15 +13623,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt93) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:549:5: bytecodeReferenceType
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:547:5: bytecodeReferenceType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3155);
-            	    bytecodeReferenceType406=bytecodeReferenceType();
+            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3156);
+            	    bytecodeReferenceType407=bytecodeReferenceType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, bytecodeReferenceType406.getTree());
+            	    adaptor.addChild(root_0, bytecodeReferenceType407.getTree());
 
 
             	    }
@@ -13637,7 +13672,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeReferenceType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:551:1: bytecodeReferenceType : ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:549:1: bytecodeReferenceType : ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) ;
     public final JVMWalker.bytecodeReferenceType_return bytecodeReferenceType() throws RecognitionException {
         JVMWalker.bytecodeReferenceType_return retval = new JVMWalker.bytecodeReferenceType_return();
         retval.start = input.LT(1);
@@ -13648,15 +13683,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree UNITNAME407=null;
-        JVMWalker.bytecodeTypeDeclSpecifier_return bytecodeTypeDeclSpecifier408 =null;
+        CommonTree UNITNAME408=null;
+        JVMWalker.bytecodeTypeDeclSpecifier_return bytecodeTypeDeclSpecifier409 =null;
 
 
-        CommonTree UNITNAME407_tree=null;
+        CommonTree UNITNAME408_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:552:3: ( ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:552:5: ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:550:3: ( ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:550:5: ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13667,15 +13702,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME407=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_bytecodeReferenceType3169); 
-            UNITNAME407_tree = (CommonTree)adaptor.dupNode(UNITNAME407);
+            UNITNAME408=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_bytecodeReferenceType3170); 
+            UNITNAME408_tree = (CommonTree)adaptor.dupNode(UNITNAME408);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME407_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME408_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:552:16: ( bytecodeTypeDeclSpecifier )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:550:16: ( bytecodeTypeDeclSpecifier )+
             int cnt94=0;
             loop94:
             do {
@@ -13689,15 +13724,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt94) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:552:16: bytecodeTypeDeclSpecifier
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:550:16: bytecodeTypeDeclSpecifier
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3171);
-            	    bytecodeTypeDeclSpecifier408=bytecodeTypeDeclSpecifier();
+            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3172);
+            	    bytecodeTypeDeclSpecifier409=bytecodeTypeDeclSpecifier();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, bytecodeTypeDeclSpecifier408.getTree());
+            	    adaptor.addChild(root_1, bytecodeTypeDeclSpecifier409.getTree());
 
 
             	    }
@@ -13744,7 +13779,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeDeclSpecifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:554:1: bytecodeTypeDeclSpecifier : bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:552:1: bytecodeTypeDeclSpecifier : bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) ;
     public final JVMWalker.bytecodeTypeDeclSpecifier_return bytecodeTypeDeclSpecifier() throws RecognitionException {
         JVMWalker.bytecodeTypeDeclSpecifier_return retval = new JVMWalker.bytecodeTypeDeclSpecifier_return();
         retval.start = input.LT(1);
@@ -13755,28 +13790,28 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree TYPEARGS410=null;
-        JVMWalker.bytecodeTypeName_return bytecodeTypeName409 =null;
+        CommonTree TYPEARGS411=null;
+        JVMWalker.bytecodeTypeName_return bytecodeTypeName410 =null;
 
-        JVMWalker.bytecodeTypeArguments_return bytecodeTypeArguments411 =null;
+        JVMWalker.bytecodeTypeArguments_return bytecodeTypeArguments412 =null;
 
 
-        CommonTree TYPEARGS410_tree=null;
+        CommonTree TYPEARGS411_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:555:3: ( bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:555:5: bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:553:3: ( bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:553:5: bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3185);
-            bytecodeTypeName409=bytecodeTypeName();
+            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3186);
+            bytecodeTypeName410=bytecodeTypeName();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeTypeName409.getTree());
+            adaptor.addChild(root_0, bytecodeTypeName410.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -13785,16 +13820,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            TYPEARGS410=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3188); 
-            TYPEARGS410_tree = (CommonTree)adaptor.dupNode(TYPEARGS410);
+            TYPEARGS411=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3189); 
+            TYPEARGS411_tree = (CommonTree)adaptor.dupNode(TYPEARGS411);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS410_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS411_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:555:33: ( bytecodeTypeArguments )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:553:33: ( bytecodeTypeArguments )?
                 int alt95=2;
                 int LA95_0 = input.LA(1);
 
@@ -13803,15 +13838,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt95) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:555:33: bytecodeTypeArguments
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:553:33: bytecodeTypeArguments
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3190);
-                        bytecodeTypeArguments411=bytecodeTypeArguments();
+                        pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3191);
+                        bytecodeTypeArguments412=bytecodeTypeArguments();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, bytecodeTypeArguments411.getTree());
+                        adaptor.addChild(root_1, bytecodeTypeArguments412.getTree());
 
 
                         }
@@ -13852,7 +13887,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeName"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:557:1: bytecodeTypeName : INTERNALTYPE ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:555:1: bytecodeTypeName : INTERNALTYPE ;
     public final JVMWalker.bytecodeTypeName_return bytecodeTypeName() throws RecognitionException {
         JVMWalker.bytecodeTypeName_return retval = new JVMWalker.bytecodeTypeName_return();
         retval.start = input.LT(1);
@@ -13863,23 +13898,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTERNALTYPE412=null;
+        CommonTree INTERNALTYPE413=null;
 
-        CommonTree INTERNALTYPE412_tree=null;
+        CommonTree INTERNALTYPE413_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:558:3: ( INTERNALTYPE )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:558:5: INTERNALTYPE
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:556:3: ( INTERNALTYPE )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:556:5: INTERNALTYPE
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTERNALTYPE412=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName3204); 
-            INTERNALTYPE412_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE412);
+            INTERNALTYPE413=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName3205); 
+            INTERNALTYPE413_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE413);
 
 
-            adaptor.addChild(root_0, INTERNALTYPE412_tree);
+            adaptor.addChild(root_0, INTERNALTYPE413_tree);
 
 
             }
@@ -13907,7 +13942,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeArguments"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:560:1: bytecodeTypeArguments : bytecodeTypeArgumentList ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:558:1: bytecodeTypeArguments : bytecodeTypeArgumentList ;
     public final JVMWalker.bytecodeTypeArguments_return bytecodeTypeArguments() throws RecognitionException {
         JVMWalker.bytecodeTypeArguments_return retval = new JVMWalker.bytecodeTypeArguments_return();
         retval.start = input.LT(1);
@@ -13918,24 +13953,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.bytecodeTypeArgumentList_return bytecodeTypeArgumentList413 =null;
+        JVMWalker.bytecodeTypeArgumentList_return bytecodeTypeArgumentList414 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:561:3: ( bytecodeTypeArgumentList )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:561:5: bytecodeTypeArgumentList
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:559:3: ( bytecodeTypeArgumentList )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:559:5: bytecodeTypeArgumentList
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3216);
-            bytecodeTypeArgumentList413=bytecodeTypeArgumentList();
+            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3217);
+            bytecodeTypeArgumentList414=bytecodeTypeArgumentList();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeTypeArgumentList413.getTree());
+            adaptor.addChild(root_0, bytecodeTypeArgumentList414.getTree());
 
 
             }
@@ -13963,7 +13998,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeArgumentList"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:563:1: bytecodeTypeArgumentList : ( bytecodeTypeArgument )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:561:1: bytecodeTypeArgumentList : ( bytecodeTypeArgument )+ ;
     public final JVMWalker.bytecodeTypeArgumentList_return bytecodeTypeArgumentList() throws RecognitionException {
         JVMWalker.bytecodeTypeArgumentList_return retval = new JVMWalker.bytecodeTypeArgumentList_return();
         retval.start = input.LT(1);
@@ -13974,18 +14009,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.bytecodeTypeArgument_return bytecodeTypeArgument414 =null;
+        JVMWalker.bytecodeTypeArgument_return bytecodeTypeArgument415 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:564:3: ( ( bytecodeTypeArgument )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:564:5: ( bytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:562:3: ( ( bytecodeTypeArgument )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:562:5: ( bytecodeTypeArgument )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:564:5: ( bytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:562:5: ( bytecodeTypeArgument )+
             int cnt96=0;
             loop96:
             do {
@@ -13999,15 +14034,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt96) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:564:5: bytecodeTypeArgument
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:562:5: bytecodeTypeArgument
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3229);
-            	    bytecodeTypeArgument414=bytecodeTypeArgument();
+            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3230);
+            	    bytecodeTypeArgument415=bytecodeTypeArgument();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, bytecodeTypeArgument414.getTree());
+            	    adaptor.addChild(root_0, bytecodeTypeArgument415.getTree());
 
 
             	    }
@@ -14048,7 +14083,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeArgument"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:566:1: bytecodeTypeArgument : ( bytecodeReferenceType | bytecodeWildcard );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:564:1: bytecodeTypeArgument : ( bytecodeReferenceType | bytecodeWildcard );
     public final JVMWalker.bytecodeTypeArgument_return bytecodeTypeArgument() throws RecognitionException {
         JVMWalker.bytecodeTypeArgument_return retval = new JVMWalker.bytecodeTypeArgument_return();
         retval.start = input.LT(1);
@@ -14059,14 +14094,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType415 =null;
+        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType416 =null;
 
-        JVMWalker.bytecodeWildcard_return bytecodeWildcard416 =null;
+        JVMWalker.bytecodeWildcard_return bytecodeWildcard417 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:567:3: ( bytecodeReferenceType | bytecodeWildcard )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:565:3: ( bytecodeReferenceType | bytecodeWildcard )
             int alt97=2;
             int LA97_0 = input.LA(1);
 
@@ -14085,35 +14120,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt97) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:567:5: bytecodeReferenceType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:565:5: bytecodeReferenceType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3242);
-                    bytecodeReferenceType415=bytecodeReferenceType();
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3243);
+                    bytecodeReferenceType416=bytecodeReferenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeReferenceType415.getTree());
+                    adaptor.addChild(root_0, bytecodeReferenceType416.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:568:5: bytecodeWildcard
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:566:5: bytecodeWildcard
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3248);
-                    bytecodeWildcard416=bytecodeWildcard();
+                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3249);
+                    bytecodeWildcard417=bytecodeWildcard();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeWildcard416.getTree());
+                    adaptor.addChild(root_0, bytecodeWildcard417.getTree());
 
 
                     }
@@ -14143,7 +14178,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeWildcard"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:570:1: bytecodeWildcard : ^( QUESTION ( bytecodeWildcardBounds )? ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:568:1: bytecodeWildcard : ^( QUESTION ( bytecodeWildcardBounds )? ) ;
     public final JVMWalker.bytecodeWildcard_return bytecodeWildcard() throws RecognitionException {
         JVMWalker.bytecodeWildcard_return retval = new JVMWalker.bytecodeWildcard_return();
         retval.start = input.LT(1);
@@ -14154,15 +14189,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree QUESTION417=null;
-        JVMWalker.bytecodeWildcardBounds_return bytecodeWildcardBounds418 =null;
+        CommonTree QUESTION418=null;
+        JVMWalker.bytecodeWildcardBounds_return bytecodeWildcardBounds419 =null;
 
 
-        CommonTree QUESTION417_tree=null;
+        CommonTree QUESTION418_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:571:3: ( ^( QUESTION ( bytecodeWildcardBounds )? ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:571:5: ^( QUESTION ( bytecodeWildcardBounds )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:569:3: ( ^( QUESTION ( bytecodeWildcardBounds )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:569:5: ^( QUESTION ( bytecodeWildcardBounds )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -14173,16 +14208,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            QUESTION417=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard3261); 
-            QUESTION417_tree = (CommonTree)adaptor.dupNode(QUESTION417);
+            QUESTION418=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard3262); 
+            QUESTION418_tree = (CommonTree)adaptor.dupNode(QUESTION418);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION417_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION418_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:571:16: ( bytecodeWildcardBounds )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:569:16: ( bytecodeWildcardBounds )?
                 int alt98=2;
                 int LA98_0 = input.LA(1);
 
@@ -14191,15 +14226,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt98) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:571:16: bytecodeWildcardBounds
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:569:16: bytecodeWildcardBounds
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3263);
-                        bytecodeWildcardBounds418=bytecodeWildcardBounds();
+                        pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3264);
+                        bytecodeWildcardBounds419=bytecodeWildcardBounds();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, bytecodeWildcardBounds418.getTree());
+                        adaptor.addChild(root_1, bytecodeWildcardBounds419.getTree());
 
 
                         }
@@ -14240,7 +14275,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeWildcardBounds"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:573:1: bytecodeWildcardBounds : ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:571:1: bytecodeWildcardBounds : ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) );
     public final JVMWalker.bytecodeWildcardBounds_return bytecodeWildcardBounds() throws RecognitionException {
         JVMWalker.bytecodeWildcardBounds_return retval = new JVMWalker.bytecodeWildcardBounds_return();
         retval.start = input.LT(1);
@@ -14251,18 +14286,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS419=null;
-        CommonTree SUPER421=null;
-        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType420 =null;
+        CommonTree EXTENDS420=null;
+        CommonTree SUPER422=null;
+        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType421 =null;
 
-        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType422 =null;
+        JVMWalker.bytecodeReferenceType_return bytecodeReferenceType423 =null;
 
 
-        CommonTree EXTENDS419_tree=null;
-        CommonTree SUPER421_tree=null;
+        CommonTree EXTENDS420_tree=null;
+        CommonTree SUPER422_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:574:3: ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:572:3: ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) )
             int alt99=2;
             int LA99_0 = input.LA(1);
 
@@ -14281,7 +14316,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt99) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:574:5: ^( EXTENDS bytecodeReferenceType )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:572:5: ^( EXTENDS bytecodeReferenceType )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -14292,21 +14327,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    EXTENDS419=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds3278); 
-                    EXTENDS419_tree = (CommonTree)adaptor.dupNode(EXTENDS419);
+                    EXTENDS420=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds3279); 
+                    EXTENDS420_tree = (CommonTree)adaptor.dupNode(EXTENDS420);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS419_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS420_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3280);
-                    bytecodeReferenceType420=bytecodeReferenceType();
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3281);
+                    bytecodeReferenceType421=bytecodeReferenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, bytecodeReferenceType420.getTree());
+                    adaptor.addChild(root_1, bytecodeReferenceType421.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -14318,7 +14353,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:575:5: ^( SUPER bytecodeReferenceType )
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:573:5: ^( SUPER bytecodeReferenceType )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -14329,21 +14364,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    SUPER421=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds3288); 
-                    SUPER421_tree = (CommonTree)adaptor.dupNode(SUPER421);
+                    SUPER422=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds3289); 
+                    SUPER422_tree = (CommonTree)adaptor.dupNode(SUPER422);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER421_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER422_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3290);
-                    bytecodeReferenceType422=bytecodeReferenceType();
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3291);
+                    bytecodeReferenceType423=bytecodeReferenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, bytecodeReferenceType422.getTree());
+                    adaptor.addChild(root_1, bytecodeReferenceType423.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -14379,7 +14414,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:582:1: bytecodeType : ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:580:1: bytecodeType : ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER );
     public final JVMWalker.bytecodeType_return bytecodeType() throws RecognitionException {
         JVMWalker.bytecodeType_return retval = new JVMWalker.bytecodeType_return();
         retval.start = input.LT(1);
@@ -14390,20 +14425,20 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree BaseType424=null;
-        CommonTree SEMI426=null;
-        CommonTree IDENTIFIER427=null;
-        JVMWalker.bytecodeArrayType_return bytecodeArrayType423 =null;
+        CommonTree BaseType425=null;
+        CommonTree SEMI427=null;
+        CommonTree IDENTIFIER428=null;
+        JVMWalker.bytecodeArrayType_return bytecodeArrayType424 =null;
 
-        JVMWalker.simpleBytecodeObjectType_return simpleBytecodeObjectType425 =null;
+        JVMWalker.simpleBytecodeObjectType_return simpleBytecodeObjectType426 =null;
 
 
-        CommonTree BaseType424_tree=null;
-        CommonTree SEMI426_tree=null;
-        CommonTree IDENTIFIER427_tree=null;
+        CommonTree BaseType425_tree=null;
+        CommonTree SEMI427_tree=null;
+        CommonTree IDENTIFIER428_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:583:3: ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:581:3: ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER )
             int alt100=4;
             switch ( input.LA(1) ) {
             case LBRACK:
@@ -14436,75 +14471,75 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt100) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:583:5: bytecodeArrayType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:581:5: bytecodeArrayType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType3308);
-                    bytecodeArrayType423=bytecodeArrayType();
+                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType3309);
+                    bytecodeArrayType424=bytecodeArrayType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeArrayType423.getTree());
+                    adaptor.addChild(root_0, bytecodeArrayType424.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:583:25: BaseType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:581:25: BaseType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    BaseType424=(CommonTree)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType3312); 
-                    BaseType424_tree = (CommonTree)adaptor.dupNode(BaseType424);
+                    BaseType425=(CommonTree)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType3313); 
+                    BaseType425_tree = (CommonTree)adaptor.dupNode(BaseType425);
 
 
-                    adaptor.addChild(root_0, BaseType424_tree);
+                    adaptor.addChild(root_0, BaseType425_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:583:36: simpleBytecodeObjectType SEMI
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:581:36: simpleBytecodeObjectType SEMI
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType3316);
-                    simpleBytecodeObjectType425=simpleBytecodeObjectType();
+                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType3317);
+                    simpleBytecodeObjectType426=simpleBytecodeObjectType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, simpleBytecodeObjectType425.getTree());
+                    adaptor.addChild(root_0, simpleBytecodeObjectType426.getTree());
 
 
                     _last = (CommonTree)input.LT(1);
-                    SEMI426=(CommonTree)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType3318); 
-                    SEMI426_tree = (CommonTree)adaptor.dupNode(SEMI426);
+                    SEMI427=(CommonTree)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType3319); 
+                    SEMI427_tree = (CommonTree)adaptor.dupNode(SEMI427);
 
 
-                    adaptor.addChild(root_0, SEMI426_tree);
+                    adaptor.addChild(root_0, SEMI427_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:583:68: IDENTIFIER
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:581:68: IDENTIFIER
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER427=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType3322); 
-                    IDENTIFIER427_tree = (CommonTree)adaptor.dupNode(IDENTIFIER427);
+                    IDENTIFIER428=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType3323); 
+                    IDENTIFIER428_tree = (CommonTree)adaptor.dupNode(IDENTIFIER428);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER427_tree);
+                    adaptor.addChild(root_0, IDENTIFIER428_tree);
 
 
                     }
@@ -14534,7 +14569,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeArrayType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:585:1: bytecodeArrayType : LBRACK bytecodeType ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:583:1: bytecodeArrayType : LBRACK bytecodeType ;
     public final JVMWalker.bytecodeArrayType_return bytecodeArrayType() throws RecognitionException {
         JVMWalker.bytecodeArrayType_return retval = new JVMWalker.bytecodeArrayType_return();
         retval.start = input.LT(1);
@@ -14545,34 +14580,34 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree LBRACK428=null;
-        JVMWalker.bytecodeType_return bytecodeType429 =null;
+        CommonTree LBRACK429=null;
+        JVMWalker.bytecodeType_return bytecodeType430 =null;
 
 
-        CommonTree LBRACK428_tree=null;
+        CommonTree LBRACK429_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:586:3: ( LBRACK bytecodeType )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:586:5: LBRACK bytecodeType
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:584:3: ( LBRACK bytecodeType )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:584:5: LBRACK bytecodeType
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            LBRACK428=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType3335); 
-            LBRACK428_tree = (CommonTree)adaptor.dupNode(LBRACK428);
+            LBRACK429=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType3336); 
+            LBRACK429_tree = (CommonTree)adaptor.dupNode(LBRACK429);
 
 
-            adaptor.addChild(root_0, LBRACK428_tree);
+            adaptor.addChild(root_0, LBRACK429_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType3337);
-            bytecodeType429=bytecodeType();
+            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType3338);
+            bytecodeType430=bytecodeType();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeType429.getTree());
+            adaptor.addChild(root_0, bytecodeType430.getTree());
 
 
             }
@@ -14600,7 +14635,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeObjectType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:588:1: simpleBytecodeObjectType : ( simpleBytecodeReferenceType )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:586:1: simpleBytecodeObjectType : ( simpleBytecodeReferenceType )+ ;
     public final JVMWalker.simpleBytecodeObjectType_return simpleBytecodeObjectType() throws RecognitionException {
         JVMWalker.simpleBytecodeObjectType_return retval = new JVMWalker.simpleBytecodeObjectType_return();
         retval.start = input.LT(1);
@@ -14611,18 +14646,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.simpleBytecodeReferenceType_return simpleBytecodeReferenceType430 =null;
+        JVMWalker.simpleBytecodeReferenceType_return simpleBytecodeReferenceType431 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:589:3: ( ( simpleBytecodeReferenceType )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:589:5: ( simpleBytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:587:3: ( ( simpleBytecodeReferenceType )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:587:5: ( simpleBytecodeReferenceType )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:589:5: ( simpleBytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:587:5: ( simpleBytecodeReferenceType )+
             int cnt101=0;
             loop101:
             do {
@@ -14636,15 +14671,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt101) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:589:5: simpleBytecodeReferenceType
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:587:5: simpleBytecodeReferenceType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3350);
-            	    simpleBytecodeReferenceType430=simpleBytecodeReferenceType();
+            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3351);
+            	    simpleBytecodeReferenceType431=simpleBytecodeReferenceType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, simpleBytecodeReferenceType430.getTree());
+            	    adaptor.addChild(root_0, simpleBytecodeReferenceType431.getTree());
 
 
             	    }
@@ -14685,7 +14720,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeReferenceType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:591:1: simpleBytecodeReferenceType : simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:589:1: simpleBytecodeReferenceType : simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) ;
     public final JVMWalker.simpleBytecodeReferenceType_return simpleBytecodeReferenceType() throws RecognitionException {
         JVMWalker.simpleBytecodeReferenceType_return retval = new JVMWalker.simpleBytecodeReferenceType_return();
         retval.start = input.LT(1);
@@ -14696,28 +14731,28 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree TYPEARGS432=null;
-        JVMWalker.simpleBytecodeReferenceTypeName_return simpleBytecodeReferenceTypeName431 =null;
+        CommonTree TYPEARGS433=null;
+        JVMWalker.simpleBytecodeReferenceTypeName_return simpleBytecodeReferenceTypeName432 =null;
 
-        JVMWalker.simpleBytecodeTypeArguments_return simpleBytecodeTypeArguments433 =null;
+        JVMWalker.simpleBytecodeTypeArguments_return simpleBytecodeTypeArguments434 =null;
 
 
-        CommonTree TYPEARGS432_tree=null;
+        CommonTree TYPEARGS433_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:592:3: ( simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:592:5: simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:590:3: ( simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:590:5: simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3363);
-            simpleBytecodeReferenceTypeName431=simpleBytecodeReferenceTypeName();
+            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3364);
+            simpleBytecodeReferenceTypeName432=simpleBytecodeReferenceTypeName();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, simpleBytecodeReferenceTypeName431.getTree());
+            adaptor.addChild(root_0, simpleBytecodeReferenceTypeName432.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -14726,16 +14761,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            TYPEARGS432=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3366); 
-            TYPEARGS432_tree = (CommonTree)adaptor.dupNode(TYPEARGS432);
+            TYPEARGS433=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3367); 
+            TYPEARGS433_tree = (CommonTree)adaptor.dupNode(TYPEARGS433);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS432_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS433_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:592:48: ( simpleBytecodeTypeArguments )?
+                // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:590:48: ( simpleBytecodeTypeArguments )?
                 int alt102=2;
                 int LA102_0 = input.LA(1);
 
@@ -14744,15 +14779,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt102) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:592:48: simpleBytecodeTypeArguments
+                        // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:590:48: simpleBytecodeTypeArguments
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3368);
-                        simpleBytecodeTypeArguments433=simpleBytecodeTypeArguments();
+                        pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3369);
+                        simpleBytecodeTypeArguments434=simpleBytecodeTypeArguments();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, simpleBytecodeTypeArguments433.getTree());
+                        adaptor.addChild(root_1, simpleBytecodeTypeArguments434.getTree());
 
 
                         }
@@ -14793,7 +14828,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeReferenceTypeName"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:594:1: simpleBytecodeReferenceTypeName : INTERNALTYPE ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:592:1: simpleBytecodeReferenceTypeName : INTERNALTYPE ;
     public final JVMWalker.simpleBytecodeReferenceTypeName_return simpleBytecodeReferenceTypeName() throws RecognitionException {
         JVMWalker.simpleBytecodeReferenceTypeName_return retval = new JVMWalker.simpleBytecodeReferenceTypeName_return();
         retval.start = input.LT(1);
@@ -14804,23 +14839,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTERNALTYPE434=null;
+        CommonTree INTERNALTYPE435=null;
 
-        CommonTree INTERNALTYPE434_tree=null;
+        CommonTree INTERNALTYPE435_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:595:3: ( INTERNALTYPE )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:595:5: INTERNALTYPE
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:593:3: ( INTERNALTYPE )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:593:5: INTERNALTYPE
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTERNALTYPE434=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3382); 
-            INTERNALTYPE434_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE434);
+            INTERNALTYPE435=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3383); 
+            INTERNALTYPE435_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE435);
 
 
-            adaptor.addChild(root_0, INTERNALTYPE434_tree);
+            adaptor.addChild(root_0, INTERNALTYPE435_tree);
 
 
             }
@@ -14848,7 +14883,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeTypeArguments"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:597:1: simpleBytecodeTypeArguments : simpleBytecodeTypeArgumentList ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:595:1: simpleBytecodeTypeArguments : simpleBytecodeTypeArgumentList ;
     public final JVMWalker.simpleBytecodeTypeArguments_return simpleBytecodeTypeArguments() throws RecognitionException {
         JVMWalker.simpleBytecodeTypeArguments_return retval = new JVMWalker.simpleBytecodeTypeArguments_return();
         retval.start = input.LT(1);
@@ -14859,24 +14894,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.simpleBytecodeTypeArgumentList_return simpleBytecodeTypeArgumentList435 =null;
+        JVMWalker.simpleBytecodeTypeArgumentList_return simpleBytecodeTypeArgumentList436 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:598:3: ( simpleBytecodeTypeArgumentList )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:598:5: simpleBytecodeTypeArgumentList
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:596:3: ( simpleBytecodeTypeArgumentList )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:596:5: simpleBytecodeTypeArgumentList
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3394);
-            simpleBytecodeTypeArgumentList435=simpleBytecodeTypeArgumentList();
+            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3395);
+            simpleBytecodeTypeArgumentList436=simpleBytecodeTypeArgumentList();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, simpleBytecodeTypeArgumentList435.getTree());
+            adaptor.addChild(root_0, simpleBytecodeTypeArgumentList436.getTree());
 
 
             }
@@ -14904,7 +14939,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeTypeArgumentList"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:600:1: simpleBytecodeTypeArgumentList : ( simpleBytecodeTypeArgument )+ ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:598:1: simpleBytecodeTypeArgumentList : ( simpleBytecodeTypeArgument )+ ;
     public final JVMWalker.simpleBytecodeTypeArgumentList_return simpleBytecodeTypeArgumentList() throws RecognitionException {
         JVMWalker.simpleBytecodeTypeArgumentList_return retval = new JVMWalker.simpleBytecodeTypeArgumentList_return();
         retval.start = input.LT(1);
@@ -14915,18 +14950,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.simpleBytecodeTypeArgument_return simpleBytecodeTypeArgument436 =null;
+        JVMWalker.simpleBytecodeTypeArgument_return simpleBytecodeTypeArgument437 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:601:3: ( ( simpleBytecodeTypeArgument )+ )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:601:5: ( simpleBytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:599:3: ( ( simpleBytecodeTypeArgument )+ )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:599:5: ( simpleBytecodeTypeArgument )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:601:5: ( simpleBytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:599:5: ( simpleBytecodeTypeArgument )+
             int cnt103=0;
             loop103:
             do {
@@ -14940,15 +14975,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt103) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:601:5: simpleBytecodeTypeArgument
+            	    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:599:5: simpleBytecodeTypeArgument
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3406);
-            	    simpleBytecodeTypeArgument436=simpleBytecodeTypeArgument();
+            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3407);
+            	    simpleBytecodeTypeArgument437=simpleBytecodeTypeArgument();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, simpleBytecodeTypeArgument436.getTree());
+            	    adaptor.addChild(root_0, simpleBytecodeTypeArgument437.getTree());
 
 
             	    }
@@ -14989,7 +15024,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeTypeArgument"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:603:1: simpleBytecodeTypeArgument : ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:601:1: simpleBytecodeTypeArgument : ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR );
     public final JVMWalker.simpleBytecodeTypeArgument_return simpleBytecodeTypeArgument() throws RecognitionException {
         JVMWalker.simpleBytecodeTypeArgument_return retval = new JVMWalker.simpleBytecodeTypeArgument_return();
         retval.start = input.LT(1);
@@ -15000,22 +15035,22 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree MINUS438=null;
-        CommonTree PLUS440=null;
-        CommonTree STAR442=null;
-        JVMWalker.bytecodeType_return bytecodeType437 =null;
+        CommonTree MINUS439=null;
+        CommonTree PLUS441=null;
+        CommonTree STAR443=null;
+        JVMWalker.bytecodeType_return bytecodeType438 =null;
 
-        JVMWalker.bytecodeType_return bytecodeType439 =null;
+        JVMWalker.bytecodeType_return bytecodeType440 =null;
 
-        JVMWalker.bytecodeType_return bytecodeType441 =null;
+        JVMWalker.bytecodeType_return bytecodeType442 =null;
 
 
-        CommonTree MINUS438_tree=null;
-        CommonTree PLUS440_tree=null;
-        CommonTree STAR442_tree=null;
+        CommonTree MINUS439_tree=null;
+        CommonTree PLUS441_tree=null;
+        CommonTree STAR443_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:604:3: ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:602:3: ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR )
             int alt104=4;
             switch ( input.LA(1) ) {
             case BaseType:
@@ -15051,84 +15086,84 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt104) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:604:5: bytecodeType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:602:5: bytecodeType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3419);
-                    bytecodeType437=bytecodeType();
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3420);
+                    bytecodeType438=bytecodeType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeType437.getTree());
+                    adaptor.addChild(root_0, bytecodeType438.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:605:5: MINUS bytecodeType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:603:5: MINUS bytecodeType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    MINUS438=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument3425); 
-                    MINUS438_tree = (CommonTree)adaptor.dupNode(MINUS438);
+                    MINUS439=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument3426); 
+                    MINUS439_tree = (CommonTree)adaptor.dupNode(MINUS439);
 
 
-                    adaptor.addChild(root_0, MINUS438_tree);
+                    adaptor.addChild(root_0, MINUS439_tree);
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3427);
-                    bytecodeType439=bytecodeType();
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3428);
+                    bytecodeType440=bytecodeType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeType439.getTree());
+                    adaptor.addChild(root_0, bytecodeType440.getTree());
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:606:5: PLUS bytecodeType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:604:5: PLUS bytecodeType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    PLUS440=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument3433); 
-                    PLUS440_tree = (CommonTree)adaptor.dupNode(PLUS440);
+                    PLUS441=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument3434); 
+                    PLUS441_tree = (CommonTree)adaptor.dupNode(PLUS441);
 
 
-                    adaptor.addChild(root_0, PLUS440_tree);
+                    adaptor.addChild(root_0, PLUS441_tree);
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3435);
-                    bytecodeType441=bytecodeType();
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3436);
+                    bytecodeType442=bytecodeType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeType441.getTree());
+                    adaptor.addChild(root_0, bytecodeType442.getTree());
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:607:5: STAR
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:605:5: STAR
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    STAR442=(CommonTree)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument3441); 
-                    STAR442_tree = (CommonTree)adaptor.dupNode(STAR442);
+                    STAR443=(CommonTree)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument3442); 
+                    STAR443_tree = (CommonTree)adaptor.dupNode(STAR443);
 
 
-                    adaptor.addChild(root_0, STAR442_tree);
+                    adaptor.addChild(root_0, STAR443_tree);
 
 
                     }
@@ -15158,7 +15193,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "identifier"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:614:1: identifier : ( IDENTIFIER | BaseType | VoidType | Constant_type );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:612:1: identifier : ( IDENTIFIER | BaseType | VoidType | Constant_type );
     public final JVMWalker.identifier_return identifier() throws RecognitionException {
         JVMWalker.identifier_return retval = new JVMWalker.identifier_return();
         retval.start = input.LT(1);
@@ -15169,26 +15204,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set443=null;
+        CommonTree set444=null;
 
-        CommonTree set443_tree=null;
+        CommonTree set444_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:614:11: ( IDENTIFIER | BaseType | VoidType | Constant_type )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:612:11: ( IDENTIFIER | BaseType | VoidType | Constant_type )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set443=(CommonTree)input.LT(1);
+            set444=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==BaseType||input.LA(1)==Constant_type||input.LA(1)==IDENTIFIER||input.LA(1)==VoidType ) {
                 input.consume();
-                set443_tree = (CommonTree)adaptor.dupNode(set443);
+                set444_tree = (CommonTree)adaptor.dupNode(set444);
 
 
-                adaptor.addChild(root_0, set443_tree);
+                adaptor.addChild(root_0, set444_tree);
 
                 state.errorRecovery=false;
             }
@@ -15224,7 +15259,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "keywordAggregate"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:1: keywordAggregate : ( identifier | primitiveType | EXTENDS | IMPLEMENTS | DEFAULT | CLASS | THROWS | SUPER | NATIVE );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:614:1: keywordAggregate : ( identifier | primitiveType | EXTENDS | IMPLEMENTS | DEFAULT | CLASS | THROWS | SUPER | NATIVE );
     public final JVMWalker.keywordAggregate_return keywordAggregate() throws RecognitionException {
         JVMWalker.keywordAggregate_return retval = new JVMWalker.keywordAggregate_return();
         retval.start = input.LT(1);
@@ -15235,28 +15270,28 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS446=null;
-        CommonTree IMPLEMENTS447=null;
-        CommonTree DEFAULT448=null;
-        CommonTree CLASS449=null;
-        CommonTree THROWS450=null;
-        CommonTree SUPER451=null;
-        CommonTree NATIVE452=null;
-        JVMWalker.identifier_return identifier444 =null;
+        CommonTree EXTENDS447=null;
+        CommonTree IMPLEMENTS448=null;
+        CommonTree DEFAULT449=null;
+        CommonTree CLASS450=null;
+        CommonTree THROWS451=null;
+        CommonTree SUPER452=null;
+        CommonTree NATIVE453=null;
+        JVMWalker.identifier_return identifier445 =null;
 
-        JVMWalker.primitiveType_return primitiveType445 =null;
+        JVMWalker.primitiveType_return primitiveType446 =null;
 
 
-        CommonTree EXTENDS446_tree=null;
-        CommonTree IMPLEMENTS447_tree=null;
-        CommonTree DEFAULT448_tree=null;
-        CommonTree CLASS449_tree=null;
-        CommonTree THROWS450_tree=null;
-        CommonTree SUPER451_tree=null;
-        CommonTree NATIVE452_tree=null;
+        CommonTree EXTENDS447_tree=null;
+        CommonTree IMPLEMENTS448_tree=null;
+        CommonTree DEFAULT449_tree=null;
+        CommonTree CLASS450_tree=null;
+        CommonTree THROWS451_tree=null;
+        CommonTree SUPER452_tree=null;
+        CommonTree NATIVE453_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:617:3: ( identifier | primitiveType | EXTENDS | IMPLEMENTS | DEFAULT | CLASS | THROWS | SUPER | NATIVE )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:615:3: ( identifier | primitiveType | EXTENDS | IMPLEMENTS | DEFAULT | CLASS | THROWS | SUPER | NATIVE )
             int alt105=9;
             switch ( input.LA(1) ) {
             case BaseType:
@@ -15325,147 +15360,147 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt105) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:617:5: identifier
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:615:5: identifier
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_identifier_in_keywordAggregate3477);
-                    identifier444=identifier();
+                    pushFollow(FOLLOW_identifier_in_keywordAggregate3478);
+                    identifier445=identifier();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, identifier444.getTree());
+                    adaptor.addChild(root_0, identifier445.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:617:18: primitiveType
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:615:18: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_keywordAggregate3481);
-                    primitiveType445=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_keywordAggregate3482);
+                    primitiveType446=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType445.getTree());
+                    adaptor.addChild(root_0, primitiveType446.getTree());
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:618:5: EXTENDS
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:5: EXTENDS
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    EXTENDS446=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_keywordAggregate3487); 
-                    EXTENDS446_tree = (CommonTree)adaptor.dupNode(EXTENDS446);
+                    EXTENDS447=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_keywordAggregate3488); 
+                    EXTENDS447_tree = (CommonTree)adaptor.dupNode(EXTENDS447);
 
 
-                    adaptor.addChild(root_0, EXTENDS446_tree);
+                    adaptor.addChild(root_0, EXTENDS447_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:618:15: IMPLEMENTS
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:15: IMPLEMENTS
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    IMPLEMENTS447=(CommonTree)match(input,IMPLEMENTS,FOLLOW_IMPLEMENTS_in_keywordAggregate3491); 
-                    IMPLEMENTS447_tree = (CommonTree)adaptor.dupNode(IMPLEMENTS447);
+                    IMPLEMENTS448=(CommonTree)match(input,IMPLEMENTS,FOLLOW_IMPLEMENTS_in_keywordAggregate3492); 
+                    IMPLEMENTS448_tree = (CommonTree)adaptor.dupNode(IMPLEMENTS448);
 
 
-                    adaptor.addChild(root_0, IMPLEMENTS447_tree);
+                    adaptor.addChild(root_0, IMPLEMENTS448_tree);
 
 
                     }
                     break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:618:29: DEFAULT
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:29: DEFAULT
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    DEFAULT448=(CommonTree)match(input,DEFAULT,FOLLOW_DEFAULT_in_keywordAggregate3496); 
-                    DEFAULT448_tree = (CommonTree)adaptor.dupNode(DEFAULT448);
+                    DEFAULT449=(CommonTree)match(input,DEFAULT,FOLLOW_DEFAULT_in_keywordAggregate3497); 
+                    DEFAULT449_tree = (CommonTree)adaptor.dupNode(DEFAULT449);
 
 
-                    adaptor.addChild(root_0, DEFAULT448_tree);
+                    adaptor.addChild(root_0, DEFAULT449_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:618:40: CLASS
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:40: CLASS
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    CLASS449=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_keywordAggregate3501); 
-                    CLASS449_tree = (CommonTree)adaptor.dupNode(CLASS449);
+                    CLASS450=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_keywordAggregate3502); 
+                    CLASS450_tree = (CommonTree)adaptor.dupNode(CLASS450);
 
 
-                    adaptor.addChild(root_0, CLASS449_tree);
+                    adaptor.addChild(root_0, CLASS450_tree);
 
 
                     }
                     break;
                 case 7 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:618:49: THROWS
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:49: THROWS
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    THROWS450=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_keywordAggregate3506); 
-                    THROWS450_tree = (CommonTree)adaptor.dupNode(THROWS450);
+                    THROWS451=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_keywordAggregate3507); 
+                    THROWS451_tree = (CommonTree)adaptor.dupNode(THROWS451);
 
 
-                    adaptor.addChild(root_0, THROWS450_tree);
+                    adaptor.addChild(root_0, THROWS451_tree);
 
 
                     }
                     break;
                 case 8 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:618:59: SUPER
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:59: SUPER
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    SUPER451=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_keywordAggregate3511); 
-                    SUPER451_tree = (CommonTree)adaptor.dupNode(SUPER451);
+                    SUPER452=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_keywordAggregate3512); 
+                    SUPER452_tree = (CommonTree)adaptor.dupNode(SUPER452);
 
 
-                    adaptor.addChild(root_0, SUPER451_tree);
+                    adaptor.addChild(root_0, SUPER452_tree);
 
 
                     }
                     break;
                 case 9 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:618:67: NATIVE
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:616:67: NATIVE
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    NATIVE452=(CommonTree)match(input,NATIVE,FOLLOW_NATIVE_in_keywordAggregate3515); 
-                    NATIVE452_tree = (CommonTree)adaptor.dupNode(NATIVE452);
+                    NATIVE453=(CommonTree)match(input,NATIVE,FOLLOW_NATIVE_in_keywordAggregate3516); 
+                    NATIVE453_tree = (CommonTree)adaptor.dupNode(NATIVE453);
 
 
-                    adaptor.addChild(root_0, NATIVE452_tree);
+                    adaptor.addChild(root_0, NATIVE453_tree);
 
 
                     }
@@ -15495,7 +15530,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "primitiveType"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:621:1: primitiveType : ( boolean_type | numeric_type | VOID );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:619:1: primitiveType : ( boolean_type | numeric_type | VOID );
     public final JVMWalker.primitiveType_return primitiveType() throws RecognitionException {
         JVMWalker.primitiveType_return retval = new JVMWalker.primitiveType_return();
         retval.start = input.LT(1);
@@ -15506,16 +15541,16 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree VOID455=null;
-        JVMWalker.boolean_type_return boolean_type453 =null;
+        CommonTree VOID456=null;
+        JVMWalker.boolean_type_return boolean_type454 =null;
 
-        JVMWalker.numeric_type_return numeric_type454 =null;
+        JVMWalker.numeric_type_return numeric_type455 =null;
 
 
-        CommonTree VOID455_tree=null;
+        CommonTree VOID456_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:622:3: ( boolean_type | numeric_type | VOID )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:620:3: ( boolean_type | numeric_type | VOID )
             int alt106=3;
             switch ( input.LA(1) ) {
             case BOOLEAN:
@@ -15549,51 +15584,51 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt106) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:622:5: boolean_type
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:620:5: boolean_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_boolean_type_in_primitiveType3528);
-                    boolean_type453=boolean_type();
+                    pushFollow(FOLLOW_boolean_type_in_primitiveType3529);
+                    boolean_type454=boolean_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, boolean_type453.getTree());
+                    adaptor.addChild(root_0, boolean_type454.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:623:5: numeric_type
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:621:5: numeric_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_numeric_type_in_primitiveType3534);
-                    numeric_type454=numeric_type();
+                    pushFollow(FOLLOW_numeric_type_in_primitiveType3535);
+                    numeric_type455=numeric_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, numeric_type454.getTree());
+                    adaptor.addChild(root_0, numeric_type455.getTree());
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:624:5: VOID
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:622:5: VOID
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    VOID455=(CommonTree)match(input,VOID,FOLLOW_VOID_in_primitiveType3540); 
-                    VOID455_tree = (CommonTree)adaptor.dupNode(VOID455);
+                    VOID456=(CommonTree)match(input,VOID,FOLLOW_VOID_in_primitiveType3541); 
+                    VOID456_tree = (CommonTree)adaptor.dupNode(VOID456);
 
 
-                    adaptor.addChild(root_0, VOID455_tree);
+                    adaptor.addChild(root_0, VOID456_tree);
 
 
                     }
@@ -15623,7 +15658,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "boolean_type"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:627:1: boolean_type : BOOLEAN ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:625:1: boolean_type : BOOLEAN ;
     public final JVMWalker.boolean_type_return boolean_type() throws RecognitionException {
         JVMWalker.boolean_type_return retval = new JVMWalker.boolean_type_return();
         retval.start = input.LT(1);
@@ -15634,23 +15669,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree BOOLEAN456=null;
+        CommonTree BOOLEAN457=null;
 
-        CommonTree BOOLEAN456_tree=null;
+        CommonTree BOOLEAN457_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:628:3: ( BOOLEAN )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:628:5: BOOLEAN
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:626:3: ( BOOLEAN )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:626:5: BOOLEAN
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            BOOLEAN456=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type3553); 
-            BOOLEAN456_tree = (CommonTree)adaptor.dupNode(BOOLEAN456);
+            BOOLEAN457=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type3554); 
+            BOOLEAN457_tree = (CommonTree)adaptor.dupNode(BOOLEAN457);
 
 
-            adaptor.addChild(root_0, BOOLEAN456_tree);
+            adaptor.addChild(root_0, BOOLEAN457_tree);
 
 
             }
@@ -15678,7 +15713,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "numeric_type"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:631:1: numeric_type : ( floating_point_type | integral_type );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:629:1: numeric_type : ( floating_point_type | integral_type );
     public final JVMWalker.numeric_type_return numeric_type() throws RecognitionException {
         JVMWalker.numeric_type_return retval = new JVMWalker.numeric_type_return();
         retval.start = input.LT(1);
@@ -15689,14 +15724,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMWalker.floating_point_type_return floating_point_type457 =null;
+        JVMWalker.floating_point_type_return floating_point_type458 =null;
 
-        JVMWalker.integral_type_return integral_type458 =null;
+        JVMWalker.integral_type_return integral_type459 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:632:3: ( floating_point_type | integral_type )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:630:3: ( floating_point_type | integral_type )
             int alt107=2;
             int LA107_0 = input.LA(1);
 
@@ -15715,35 +15750,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt107) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:632:5: floating_point_type
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:630:5: floating_point_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_floating_point_type_in_numeric_type3566);
-                    floating_point_type457=floating_point_type();
+                    pushFollow(FOLLOW_floating_point_type_in_numeric_type3567);
+                    floating_point_type458=floating_point_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, floating_point_type457.getTree());
+                    adaptor.addChild(root_0, floating_point_type458.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:633:5: integral_type
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:631:5: integral_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_integral_type_in_numeric_type3572);
-                    integral_type458=integral_type();
+                    pushFollow(FOLLOW_integral_type_in_numeric_type3573);
+                    integral_type459=integral_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, integral_type458.getTree());
+                    adaptor.addChild(root_0, integral_type459.getTree());
 
 
                     }
@@ -15773,7 +15808,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "integral_type"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:636:1: integral_type : ( BYTE | SHORT | INT | LONG | CHAR );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:634:1: integral_type : ( BYTE | SHORT | INT | LONG | CHAR );
     public final JVMWalker.integral_type_return integral_type() throws RecognitionException {
         JVMWalker.integral_type_return retval = new JVMWalker.integral_type_return();
         retval.start = input.LT(1);
@@ -15784,26 +15819,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set459=null;
+        CommonTree set460=null;
 
-        CommonTree set459_tree=null;
+        CommonTree set460_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:637:3: ( BYTE | SHORT | INT | LONG | CHAR )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:635:3: ( BYTE | SHORT | INT | LONG | CHAR )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set459=(CommonTree)input.LT(1);
+            set460=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==BYTE||input.LA(1)==CHAR||input.LA(1)==INT||input.LA(1)==LONG||input.LA(1)==SHORT ) {
                 input.consume();
-                set459_tree = (CommonTree)adaptor.dupNode(set459);
+                set460_tree = (CommonTree)adaptor.dupNode(set460);
 
 
-                adaptor.addChild(root_0, set459_tree);
+                adaptor.addChild(root_0, set460_tree);
 
                 state.errorRecovery=false;
             }
@@ -15839,7 +15874,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "floating_point_type"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:644:1: floating_point_type : ( FLOAT | DOUBLE );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:642:1: floating_point_type : ( FLOAT | DOUBLE );
     public final JVMWalker.floating_point_type_return floating_point_type() throws RecognitionException {
         JVMWalker.floating_point_type_return retval = new JVMWalker.floating_point_type_return();
         retval.start = input.LT(1);
@@ -15850,26 +15885,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set460=null;
+        CommonTree set461=null;
 
-        CommonTree set460_tree=null;
+        CommonTree set461_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:645:3: ( FLOAT | DOUBLE )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:643:3: ( FLOAT | DOUBLE )
             // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set460=(CommonTree)input.LT(1);
+            set461=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==DOUBLE||input.LA(1)==FLOAT ) {
                 input.consume();
-                set460_tree = (CommonTree)adaptor.dupNode(set460);
+                set461_tree = (CommonTree)adaptor.dupNode(set461);
 
 
-                adaptor.addChild(root_0, set460_tree);
+                adaptor.addChild(root_0, set461_tree);
 
                 state.errorRecovery=false;
             }
@@ -15905,7 +15940,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "literals"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:649:1: literals : ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER );
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:647:1: literals : ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER );
     public final JVMWalker.literals_return literals() throws RecognitionException {
         JVMWalker.literals_return retval = new JVMWalker.literals_return();
         retval.start = input.LT(1);
@@ -15916,28 +15951,28 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree LONGLITERAL461=null;
-        CommonTree INTLITERAL462=null;
-        CommonTree FLOATLITERAL463=null;
-        CommonTree DOUBLELITERAL464=null;
-        CommonTree CHARLITERAL465=null;
-        CommonTree STRINGLITERAL466=null;
-        CommonTree BOOLEANLITERAL467=null;
-        CommonTree MINUS468=null;
-        CommonTree IDENTIFIER469=null;
+        CommonTree LONGLITERAL462=null;
+        CommonTree INTLITERAL463=null;
+        CommonTree FLOATLITERAL464=null;
+        CommonTree DOUBLELITERAL465=null;
+        CommonTree CHARLITERAL466=null;
+        CommonTree STRINGLITERAL467=null;
+        CommonTree BOOLEANLITERAL468=null;
+        CommonTree MINUS469=null;
+        CommonTree IDENTIFIER470=null;
 
-        CommonTree LONGLITERAL461_tree=null;
-        CommonTree INTLITERAL462_tree=null;
-        CommonTree FLOATLITERAL463_tree=null;
-        CommonTree DOUBLELITERAL464_tree=null;
-        CommonTree CHARLITERAL465_tree=null;
-        CommonTree STRINGLITERAL466_tree=null;
-        CommonTree BOOLEANLITERAL467_tree=null;
-        CommonTree MINUS468_tree=null;
-        CommonTree IDENTIFIER469_tree=null;
+        CommonTree LONGLITERAL462_tree=null;
+        CommonTree INTLITERAL463_tree=null;
+        CommonTree FLOATLITERAL464_tree=null;
+        CommonTree DOUBLELITERAL465_tree=null;
+        CommonTree CHARLITERAL466_tree=null;
+        CommonTree STRINGLITERAL467_tree=null;
+        CommonTree BOOLEANLITERAL468_tree=null;
+        CommonTree MINUS469_tree=null;
+        CommonTree IDENTIFIER470_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:650:3: ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:648:3: ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER )
             int alt109=8;
             switch ( input.LA(1) ) {
             case LONGLITERAL:
@@ -15991,124 +16026,124 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt109) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:650:5: LONGLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:648:5: LONGLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    LONGLITERAL461=(CommonTree)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals3641); 
-                    LONGLITERAL461_tree = (CommonTree)adaptor.dupNode(LONGLITERAL461);
+                    LONGLITERAL462=(CommonTree)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals3642); 
+                    LONGLITERAL462_tree = (CommonTree)adaptor.dupNode(LONGLITERAL462);
 
 
-                    adaptor.addChild(root_0, LONGLITERAL461_tree);
+                    adaptor.addChild(root_0, LONGLITERAL462_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:651:5: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:649:5: INTLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL462=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals3647); 
-                    INTLITERAL462_tree = (CommonTree)adaptor.dupNode(INTLITERAL462);
+                    INTLITERAL463=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals3648); 
+                    INTLITERAL463_tree = (CommonTree)adaptor.dupNode(INTLITERAL463);
 
 
-                    adaptor.addChild(root_0, INTLITERAL462_tree);
+                    adaptor.addChild(root_0, INTLITERAL463_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:652:5: FLOATLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:650:5: FLOATLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    FLOATLITERAL463=(CommonTree)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals3653); 
-                    FLOATLITERAL463_tree = (CommonTree)adaptor.dupNode(FLOATLITERAL463);
+                    FLOATLITERAL464=(CommonTree)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals3654); 
+                    FLOATLITERAL464_tree = (CommonTree)adaptor.dupNode(FLOATLITERAL464);
 
 
-                    adaptor.addChild(root_0, FLOATLITERAL463_tree);
+                    adaptor.addChild(root_0, FLOATLITERAL464_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:653:5: DOUBLELITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:651:5: DOUBLELITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    DOUBLELITERAL464=(CommonTree)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals3659); 
-                    DOUBLELITERAL464_tree = (CommonTree)adaptor.dupNode(DOUBLELITERAL464);
+                    DOUBLELITERAL465=(CommonTree)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals3660); 
+                    DOUBLELITERAL465_tree = (CommonTree)adaptor.dupNode(DOUBLELITERAL465);
 
 
-                    adaptor.addChild(root_0, DOUBLELITERAL464_tree);
+                    adaptor.addChild(root_0, DOUBLELITERAL465_tree);
 
 
                     }
                     break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:654:5: CHARLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:652:5: CHARLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    CHARLITERAL465=(CommonTree)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals3665); 
-                    CHARLITERAL465_tree = (CommonTree)adaptor.dupNode(CHARLITERAL465);
+                    CHARLITERAL466=(CommonTree)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals3666); 
+                    CHARLITERAL466_tree = (CommonTree)adaptor.dupNode(CHARLITERAL466);
 
 
-                    adaptor.addChild(root_0, CHARLITERAL465_tree);
+                    adaptor.addChild(root_0, CHARLITERAL466_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:655:5: STRINGLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:653:5: STRINGLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    STRINGLITERAL466=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals3671); 
-                    STRINGLITERAL466_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL466);
+                    STRINGLITERAL467=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals3672); 
+                    STRINGLITERAL467_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL467);
 
 
-                    adaptor.addChild(root_0, STRINGLITERAL466_tree);
+                    adaptor.addChild(root_0, STRINGLITERAL467_tree);
 
 
                     }
                     break;
                 case 7 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:656:5: BOOLEANLITERAL
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:654:5: BOOLEANLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL467=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals3677); 
-                    BOOLEANLITERAL467_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL467);
+                    BOOLEANLITERAL468=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals3678); 
+                    BOOLEANLITERAL468_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL468);
 
 
-                    adaptor.addChild(root_0, BOOLEANLITERAL467_tree);
+                    adaptor.addChild(root_0, BOOLEANLITERAL468_tree);
 
 
                     }
                     break;
                 case 8 :
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:657:5: ( MINUS )? IDENTIFIER
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:655:5: ( MINUS )? IDENTIFIER
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:657:5: ( MINUS )?
+                    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:655:5: ( MINUS )?
                     int alt108=2;
                     int LA108_0 = input.LA(1);
 
@@ -16117,14 +16152,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt108) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:657:5: MINUS
+                            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:655:5: MINUS
                             {
                             _last = (CommonTree)input.LT(1);
-                            MINUS468=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_literals3683); 
-                            MINUS468_tree = (CommonTree)adaptor.dupNode(MINUS468);
+                            MINUS469=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_literals3684); 
+                            MINUS469_tree = (CommonTree)adaptor.dupNode(MINUS469);
 
 
-                            adaptor.addChild(root_0, MINUS468_tree);
+                            adaptor.addChild(root_0, MINUS469_tree);
 
 
                             }
@@ -16134,11 +16169,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER469=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals3686); 
-                    IDENTIFIER469_tree = (CommonTree)adaptor.dupNode(IDENTIFIER469);
+                    IDENTIFIER470=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals3687); 
+                    IDENTIFIER470_tree = (CommonTree)adaptor.dupNode(IDENTIFIER470);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER469_tree);
+                    adaptor.addChild(root_0, IDENTIFIER470_tree);
 
 
                     }
@@ -16168,7 +16203,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "pc"
-    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:660:1: pc : INTLITERAL COLON ;
+    // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:658:1: pc : INTLITERAL COLON ;
     public final JVMWalker.pc_return pc() throws RecognitionException {
         JVMWalker.pc_return retval = new JVMWalker.pc_return();
         retval.start = input.LT(1);
@@ -16179,33 +16214,33 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL470=null;
-        CommonTree COLON471=null;
+        CommonTree INTLITERAL471=null;
+        CommonTree COLON472=null;
 
-        CommonTree INTLITERAL470_tree=null;
-        CommonTree COLON471_tree=null;
+        CommonTree INTLITERAL471_tree=null;
+        CommonTree COLON472_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:661:3: ( INTLITERAL COLON )
-            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:661:5: INTLITERAL COLON
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:659:3: ( INTLITERAL COLON )
+            // D:\\Work and Projects\\Speciale\\Repository\\AntlrWorksProj\\JVMWalker.g:659:5: INTLITERAL COLON
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL470=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc3699); 
-            INTLITERAL470_tree = (CommonTree)adaptor.dupNode(INTLITERAL470);
+            INTLITERAL471=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc3700); 
+            INTLITERAL471_tree = (CommonTree)adaptor.dupNode(INTLITERAL471);
 
 
-            adaptor.addChild(root_0, INTLITERAL470_tree);
+            adaptor.addChild(root_0, INTLITERAL471_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            COLON471=(CommonTree)match(input,COLON,FOLLOW_COLON_in_pc3701); 
-            COLON471_tree = (CommonTree)adaptor.dupNode(COLON471);
+            COLON472=(CommonTree)match(input,COLON,FOLLOW_COLON_in_pc3702); 
+            COLON472_tree = (CommonTree)adaptor.dupNode(COLON472);
 
 
-            adaptor.addChild(root_0, COLON471_tree);
+            adaptor.addChild(root_0, COLON472_tree);
 
 
             }
@@ -16251,447 +16286,449 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_IDENTIFIER_in_checksum_file_info188 = new BitSet(new long[]{0x4000000000000000L});
     public static final BitSet FOLLOW_HexDigits_in_checksum_file_info190 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info209 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info211 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info211 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_STRINGLITERAL_in_compiled_file_info213 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_CLASSDECL_in_classDefinition232 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_VMODIFIER_in_classDefinition236 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_class_visual_modifier_in_classDefinition238 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MODIFIER_in_classDefinition243 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_class_modifier_in_classDefinition245 = new BitSet(new long[]{0x0040000000100018L,0x0000000000000040L});
-    public static final BitSet FOLLOW_typeName_in_classDefinition249 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_TPARAMETERS_in_classDefinition252 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeParameters_in_classDefinition254 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CEXTENDS_in_classDefinition259 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_classDefinition261 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CIMPLEMENTS_in_classDefinition266 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_classDefinition268 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_classDefinition289 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_info_in_classDefinition291 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CPOOL_in_classDefinition311 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_constant_pool_in_classDefinition313 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_classDefinition333 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_classBody_in_classDefinition335 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_PUBLIC_in_class_visual_modifier372 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_sourcefile_info_in_type_info421 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_minor_major_version_info_in_type_info427 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_flags_in_type_info433 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_scalaSig_info_in_type_info439 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_type_info446 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_innerclass_info_in_type_info452 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_enclosingMethod_in_type_info458 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_signature_info_addition_in_type_info464 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_deprecated_in_type_info470 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_synthetic_in_type_info476 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_scala_info_in_type_info482 = new BitSet(new long[]{0x0200420000000002L,0x0004000000000201L,0x00000000000004F0L});
-    public static final BitSet FOLLOW_Synthetic_in_synthetic498 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_synthetic500 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Deprecated_in_deprecated515 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_deprecated517 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EnclosingMethod_in_enclosingMethod532 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_enclosingMethod534 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_DOT_in_enclosingMethod536 = new BitSet(new long[]{0x0000000008000008L});
-    public static final BitSet FOLLOW_CPINDEX_in_enclosingMethod538 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SourceFile_in_sourcefile_info555 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_sourcefile_info557 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ScalaSig_in_scalaSig_info572 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_scalaSig_info586 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_scalaSig_info588 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info590 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info606 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info608 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info610 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Scala_in_scala_info625 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_scala_info627 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_scala_info629 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_scala_info631 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_signature_info_addition649 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_signature_info_addition651 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_InnerClasses_in_innerclass_info667 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_innerclass_info_line_in_innerclass_info669 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_VMODIFIER_in_innerclass_info_line688 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_visual_modifier_in_innerclass_info_line690 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_MODIFIER_in_innerclass_info_line695 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_modifier_in_innerclass_info_line697 = new BitSet(new long[]{0x0040000000000018L,0xA000000020000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_innerclass_info_data_in_innerclass_info_line701 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data715 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_INFODATA1_in_innerclass_info_data718 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ASSIGN_in_innerclass_info_data721 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data723 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INFODATA2_in_innerclass_info_data729 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_innerclass_info_data732 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data734 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_minor_major_version_info756 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_minor_major_version_info758 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_COLON_in_minor_major_version_info760 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_minor_major_version_info762 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Flag_in_flags783 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_accessFlagList_in_flags785 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_flagType_in_accessFlagList802 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000101L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_flagType818 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_flagType826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RuntimeVisibleAnnotations_in_runtimeVisibleAnnotations_info847 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotationsItem_in_runtimeVisibleAnnotations_info849 = new BitSet(new long[]{0x0000000008000008L});
-    public static final BitSet FOLLOW_CPINDEX_in_runtimeVisibleAnnotationsItem864 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_runtimeVisibleAnnotationsItem866 = new BitSet(new long[]{0x0000000000000088L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeVisibleAnnotationsItem868 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_annotationAssign_in_runtimeVisibleAnnotationAssignList882 = new BitSet(new long[]{0x0000000000000082L});
-    public static final BitSet FOLLOW_ASSIGN_in_annotationAssign896 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_annotationAssign898 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_annotationValue_in_annotationAssign900 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_brackedAnnotationAssign_in_annotationValue913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_AnnotationAssign_in_annotationValue920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_brackedAnnotationAssignList_in_brackedAnnotationAssign932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_brackedAnnotationAssignValue_in_brackedAnnotationAssignList945 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_AnnotationAssign_in_brackedAnnotationAssignValue959 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_brackedAnnotationAssignValue961 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_RuntimeVisibleParameterAnnotations_in_runtimeVisibleParameterAnnotations976 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeVisibleParameterAnnotations978 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_RuntimeInvisibleParameterAnnotations_in_runtimeInvisibleParameterAnnotations993 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeInvisibleParameterAnnotations995 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_RuntimeInvisibleAnnotations_in_runtimeInvisibleAnnotations1010 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotationsItem_in_runtimeInvisibleAnnotations1012 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_pc_in_parameterVisibilityInfo1027 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parameterVisibilityInfo1029 = new BitSet(new long[]{0x0000000008000008L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo1032 = new BitSet(new long[]{0x0000000008000008L});
-    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1047 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1049 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem1053 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem1055 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool1076 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool1078 = new BitSet(new long[]{0x0000000000000088L});
-    public static final BitSet FOLLOW_contant_pool_line_in_constant_pool1080 = new BitSet(new long[]{0x0000000000000088L});
-    public static final BitSet FOLLOW_ASSIGN_in_contant_pool_line1098 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_contant_pool_line1100 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1102 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody1122 = new BitSet(new long[]{0x0010000000000002L,0x4000000000000000L});
-    public static final BitSet FOLLOW_fieldDefinition_in_classBodyEntryDecl1149 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FIELDDECL_in_fieldDefinition1173 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_fieldDefinition1176 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_fieldDefinition1178 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_MODIFIER_in_fieldDefinition1183 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition1185 = new BitSet(new long[]{0x0040000000000008L,0x2000000000000000L,0x0000000010004000L});
-    public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition1190 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_fieldDefinition1192 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition1196 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_fieldDefinition1198 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition1202 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_literals_in_fieldDefinition1204 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition1221 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition1223 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_fieldDefinition1239 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition1241 = new BitSet(new long[]{0x0000020200000008L,0x0005000000000000L,0x0000000000000440L});
-    public static final BitSet FOLLOW_Signature_in_fieldInfo1271 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo1273 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_flags_in_fieldInfo1276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1290 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo1292 = new BitSet(new long[]{0x0100008000041000L,0x0000000004020101L,0x0000000000000001L});
-    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo1294 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1302 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1304 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo1312 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo1314 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo1322 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1324 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo1332 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1334 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1341 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1347 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STATICCTORDECL_in_staticCtorDefinition1419 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_staticCtorDefinition1422 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition1424 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_staticCtorDefinition1429 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition1431 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_staticCtorDefinition1435 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_staticCtorDefinition1437 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CTORDECL_in_ctorDefinition1460 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_ctorDefinition1463 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition1465 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_GENERICDESC_in_ctorDefinition1470 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition1472 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_ctorDefinition1477 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeName_in_ctorDefinition1479 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_ctorDefinition1482 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_THROWCLAUSE_in_ctorDefinition1485 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClause_in_ctorDefinition1487 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_ctorDefinition1516 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition1518 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_ctorDefinition1546 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_ctorDefinition1548 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_ctorDefinition1576 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition1578 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CTORDECL_in_methodDefinition1624 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_methodDefinition1627 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition1629 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_MODIFIER_in_methodDefinition1634 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_modifier_in_methodDefinition1636 = new BitSet(new long[]{0x0040000000000018L,0xA000000020000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_GENERICDESC_in_methodDefinition1641 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition1643 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_RETVALUE_in_methodDefinition1648 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_methodDefinition1650 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_methodDefinition1654 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition1656 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_methodDefinition1659 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition1662 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition1664 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_methodDefinition1693 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_methodDefinition1695 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_methodDefinition1723 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_methodDefinition1725 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_methodDefinition1754 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition1756 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_STANDINTOKEN_in_methodInfo1798 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo1800 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_flags_in_methodInfo1802 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfo1818 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1821 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_afterMethodInfo1829 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfo1831 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo1838 = new BitSet(new long[]{0x0002020000000202L,0x000F000000000000L,0x0000000000000440L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo1844 = new BitSet(new long[]{0x0002020000000202L,0x000F000000000000L,0x0000000000000440L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo1850 = new BitSet(new long[]{0x0002020000000202L,0x000F000000000000L,0x0000000000000440L});
-    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo1856 = new BitSet(new long[]{0x0002020000000202L,0x000F000000000000L,0x0000000000000440L});
-    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfo1863 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClause_in_afterMethodInfo1866 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfo1874 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1876 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfo1883 = new BitSet(new long[]{0x0002020000000202L,0x000F000000000000L,0x0000000000000440L});
-    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault1899 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault1902 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_annotationValue_in_annotationDefault1904 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo1921 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_PARAMDESC_in_methodSignatureInfo1924 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo1926 = new BitSet(new long[]{0x0000000000004008L,0x0000000000004081L});
-    public static final BitSet FOLLOW_RETDESC_in_methodSignatureInfo1931 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo1933 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor1948 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VoidType_in_returnDescriptor1952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNITARGUMENTS_in_arguments2024 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_arguments2026 = new BitSet(new long[]{0x0000002000000008L});
-    public static final BitSet FOLLOW_DOT_in_arguments2030 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments2032 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments2034 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_body2059 = new BitSet(new long[]{0x0000000100001000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body2061 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_Code_in_body2066 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_codeBlock_in_body2068 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bodyExtension_in_body2071 = new BitSet(new long[]{0x0001000000000002L,0x0000000001C00000L,0x0000000000000300L});
-    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension2092 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension2095 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension2103 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension2106 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension2115 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2118 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension2126 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2129 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension2137 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension2139 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_StackMap_in_bodyExtension2147 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension2149 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_VARINFO_in_codeBlock2168 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_variables_in_codeBlock2170 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INSTRUCTION_in_codeBlock2174 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_instructionSet_in_codeBlock2176 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L,0x0000000000000004L});
-    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock2179 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_codeLine_in_instructionSet2193 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_javaSwitch_in_instructionSet2197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine2211 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_codeLine2213 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_OPERAND_in_codeLine2216 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_operand1_in_codeLine2218 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_OPERAND_in_codeLine2223 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeLine2225 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd2242 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_codeBlockEnd2244 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd2246 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CPINDEX_in_operand12263 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_operand12270 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_operand12276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variables2289 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_variable_in_variables2291 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_variable_in_variables2293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ASSIGN_in_variable2307 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_variable2309 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_variable2311 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SWITCH_in_javaSwitch2328 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch2331 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_javaSwitch2333 = new BitSet(new long[]{0x0000001000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_switchLine_in_javaSwitch2335 = new BitSet(new long[]{0x0000001000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch2338 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_pc_in_switchLine2355 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchLine2357 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine2372 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine2374 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_THROWS_in_throwClause2394 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_throwClause2396 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod2413 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwType_in_throwClauseMethod2415 = new BitSet(new long[]{0x0000000000000008L,0x0000040000000081L});
-    public static final BitSet FOLLOW_ETHEADER_in_exceptionTable2454 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2456 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2458 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2460 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2462 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ETENTRY_in_exceptionTable2466 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable2468 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2483 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2485 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2487 = new BitSet(new long[]{0x0080004004022800L,0x0020000000010021L,0x0000000008000000L});
-    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue2501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2507 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable2532 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine2547 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_lineNumberTableLine2549 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine2551 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LVHEADER_in_localVariableTable2574 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2576 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2578 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2580 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2582 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2584 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LVENTRY_in_localVariableTable2588 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable2590 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine2607 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine2609 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine2611 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine2613 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
-    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine2615 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier2629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMTHEADER_in_stackMapTypeTable2649 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable2651 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable2653 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable2655 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SMTENTRY_in_stackMapTypeTable2659 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable2661 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2676 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2678 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2680 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2682 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2684 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2686 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2693 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2695 = new BitSet(new long[]{0x0080004000122800L,0x0020000000010021L,0x0000000008000000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2697 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2704 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2706 = new BitSet(new long[]{0x0080004000122800L,0x0020000000010021L,0x0000000008000000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2708 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMHEADER_in_stackMapTable2727 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable2729 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable2731 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable2733 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SMENTRY_in_stackMapTable2737 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable2739 = new BitSet(new long[]{0x0000000000000088L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry2754 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry2756 = new BitSet(new long[]{0x0080004000122800L,0x0020000000010121L,0x0000000008000000L});
-    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry2758 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue2771 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue2775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer2787 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes2810 = new BitSet(new long[]{0x0080004000122802L,0x0020000000010021L,0x0000000008000000L});
-    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType2823 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType2825 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType2827 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType2829 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType2831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject2844 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject2846 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject2858 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject2860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_typeList2880 = new BitSet(new long[]{0x0080004000022802L,0x0020000000010020L,0x0000000008800000L});
-    public static final BitSet FOLLOW_combinedJavaType_in_type2894 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ARRAYBRACKS_in_type2897 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_LBRACK_in_type2900 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_RBRACK_in_type2902 = new BitSet(new long[]{0x0000000000000008L,0x0000000000004000L});
-    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType2918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_referenceType_in_combinedJavaType2924 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNITNAME_in_referenceType2937 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType2939 = new BitSet(new long[]{0x0000000000000008L,0x0000040000000000L});
-    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier2954 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TYPEARGS_in_typeDeclSpecifier2957 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier2959 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_QualifiedType_in_typeName2974 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeArgumentList_in_typeArguments2986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList2999 = new BitSet(new long[]{0x0080004000022802L,0x0020010000010020L,0x0000000008800000L});
-    public static final BitSet FOLLOW_type_in_typeArgument3012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_wildcard_in_typeArgument3018 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_wildcard3031 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_wildcardBounds_in_wildcard3033 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds3048 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds3050 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SUPER_in_wildcardBounds3058 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds3060 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_typeParameter_in_typeParameters3073 = new BitSet(new long[]{0x0000000400004002L,0x0000000000000001L,0x0000000020000000L});
-    public static final BitSet FOLLOW_identifier_in_typeParameter3087 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeBound_in_typeParameter3089 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_typeBound3104 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_referenceType_in_typeBound3106 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor3123 = new BitSet(new long[]{0x0000200000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor3137 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor3139 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3141 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3155 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_UNITNAME_in_bytecodeReferenceType3169 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3171 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000080L});
-    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3185 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3188 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3190 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName3204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3229 = new BitSet(new long[]{0x0000000000000002L,0x0000010000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3248 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard3261 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3263 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds3278 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3280 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds3288 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3290 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType3308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BaseType_in_bytecodeType3312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType3316 = new BitSet(new long[]{0x0000000000000000L,0x0010000000000000L});
-    public static final BitSet FOLLOW_SEMI_in_bytecodeType3318 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType3322 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType3335 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
-    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType3337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3350 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3363 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3366 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3368 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3382 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3406 = new BitSet(new long[]{0x0000000000004002L,0x1000001004004081L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3419 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument3425 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3427 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument3433 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3435 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument3441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_keywordAggregate3477 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_keywordAggregate3481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_keywordAggregate3487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IMPLEMENTS_in_keywordAggregate3491 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEFAULT_in_keywordAggregate3496 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_keywordAggregate3501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_THROWS_in_keywordAggregate3506 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SUPER_in_keywordAggregate3511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NATIVE_in_keywordAggregate3515 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolean_type_in_primitiveType3528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numeric_type_in_primitiveType3534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VOID_in_primitiveType3540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type3553 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_floating_point_type_in_numeric_type3566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integral_type_in_numeric_type3572 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LONGLITERAL_in_literals3641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_literals3647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOATLITERAL_in_literals3653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals3659 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHARLITERAL_in_literals3665 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_literals3671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals3677 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_literals3683 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_literals3686 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_pc3699 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_COLON_in_pc3701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeName_in_classDefinition251 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_TPARAMETERS_in_classDefinition254 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeParameters_in_classDefinition256 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CEXTENDS_in_classDefinition261 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_classDefinition263 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CIMPLEMENTS_in_classDefinition268 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_classDefinition270 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_classDefinition291 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_info_in_classDefinition293 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CPOOL_in_classDefinition313 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_constant_pool_in_classDefinition315 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_classDefinition335 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_classBody_in_classDefinition337 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_PUBLIC_in_class_visual_modifier376 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_sourcefile_info_in_type_info425 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_minor_major_version_info_in_type_info431 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_flags_in_type_info437 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_scalaSig_info_in_type_info443 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_type_info450 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_innerclass_info_in_type_info456 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_enclosingMethod_in_type_info462 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_signature_info_addition_in_type_info468 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_deprecated_in_type_info474 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_synthetic_in_type_info480 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_scala_info_in_type_info486 = new BitSet(new long[]{0x0200420000000002L,0x0008000000000201L,0x00000000000009E0L});
+    public static final BitSet FOLLOW_Synthetic_in_synthetic502 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_synthetic504 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Deprecated_in_deprecated519 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_deprecated521 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EnclosingMethod_in_enclosingMethod536 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_enclosingMethod538 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_DOT_in_enclosingMethod540 = new BitSet(new long[]{0x0000000008000008L});
+    public static final BitSet FOLLOW_CPINDEX_in_enclosingMethod542 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SourceFile_in_sourcefile_info559 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_sourcefile_info561 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ScalaSig_in_scalaSig_info576 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_scalaSig_info590 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_scalaSig_info592 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info594 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info610 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info612 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_scalaSig_info614 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Scala_in_scala_info629 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_scala_info631 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_scala_info633 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_scala_info635 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_signature_info_addition653 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_signature_info_addition655 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_InnerClasses_in_innerclass_info671 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_innerclass_info_line_in_innerclass_info673 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000008000000L});
+    public static final BitSet FOLLOW_VMODIFIER_in_innerclass_info_line692 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_visual_modifier_in_innerclass_info_line694 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_MODIFIER_in_innerclass_info_line699 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_modifier_in_innerclass_info_line701 = new BitSet(new long[]{0x0040000000000018L,0x4000000040000000L,0x0000000000000011L});
+    public static final BitSet FOLLOW_innerclass_info_data_in_innerclass_info_line705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data719 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INFODATA1_in_innerclass_info_data722 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSIGN_in_innerclass_info_data725 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data727 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INFODATA2_in_innerclass_info_data733 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_innerclass_info_data736 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data738 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_minor_major_version_info760 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_minor_major_version_info762 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_COLON_in_minor_major_version_info764 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_minor_major_version_info766 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Flag_in_flags787 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_accessFlagList_in_flags789 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_flagType_in_accessFlagList806 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000101L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_flagType822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_flagType828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RuntimeVisibleAnnotations_in_runtimeVisibleAnnotations_info849 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotationsItem_in_runtimeVisibleAnnotations_info851 = new BitSet(new long[]{0x0000000008000008L});
+    public static final BitSet FOLLOW_CPINDEX_in_runtimeVisibleAnnotationsItem866 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_runtimeVisibleAnnotationsItem868 = new BitSet(new long[]{0x0000000000000088L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeVisibleAnnotationsItem870 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_annotationAssign_in_runtimeVisibleAnnotationAssignList884 = new BitSet(new long[]{0x0000000000000082L});
+    public static final BitSet FOLLOW_ASSIGN_in_annotationAssign898 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_annotationAssign900 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_annotationValue_in_annotationAssign902 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_brackedAnnotationAssign_in_annotationValue915 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_AnnotationAssign_in_annotationValue922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_brackedAnnotationAssignList_in_brackedAnnotationAssign934 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_brackedAnnotationAssignValue_in_brackedAnnotationAssignList947 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_AnnotationAssign_in_brackedAnnotationAssignValue961 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_brackedAnnotationAssignValue963 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_RuntimeVisibleParameterAnnotations_in_runtimeVisibleParameterAnnotations978 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeVisibleParameterAnnotations980 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_RuntimeInvisibleParameterAnnotations_in_runtimeInvisibleParameterAnnotations995 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeInvisibleParameterAnnotations997 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_RuntimeInvisibleAnnotations_in_runtimeInvisibleAnnotations1012 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotationsItem_in_runtimeInvisibleAnnotations1014 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_pc_in_parameterVisibilityInfo1029 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parameterVisibilityInfo1031 = new BitSet(new long[]{0x0000000008000008L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo1034 = new BitSet(new long[]{0x0000000008000008L});
+    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1049 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem1051 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem1055 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem1057 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool1078 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool1080 = new BitSet(new long[]{0x0000000000000088L});
+    public static final BitSet FOLLOW_contant_pool_line_in_constant_pool1082 = new BitSet(new long[]{0x0000000000000088L});
+    public static final BitSet FOLLOW_ASSIGN_in_contant_pool_line1100 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_contant_pool_line1102 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1104 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody1124 = new BitSet(new long[]{0x0010000020000002L,0x8000000004000000L});
+    public static final BitSet FOLLOW_methodDefinition_in_classBodyEntryDecl1140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ctorDefinition_in_classBodyEntryDecl1146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fieldDefinition_in_classBodyEntryDecl1152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1158 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FIELDDECL_in_fieldDefinition1176 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_fieldDefinition1179 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_fieldDefinition1181 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_MODIFIER_in_fieldDefinition1186 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition1188 = new BitSet(new long[]{0x0040000000000008L,0x4000000000000000L,0x0000000020008000L});
+    public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition1193 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_fieldDefinition1195 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition1199 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_keywordAggregate_in_fieldDefinition1201 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition1205 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_literals_in_fieldDefinition1207 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition1224 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition1226 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_fieldDefinition1242 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition1244 = new BitSet(new long[]{0x0000020200000008L,0x000A000000000000L,0x0000000000000880L});
+    public static final BitSet FOLLOW_Signature_in_fieldInfo1274 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo1276 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_flags_in_fieldInfo1279 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1293 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo1295 = new BitSet(new long[]{0x0100008000041000L,0x0000000008020101L,0x0000000000000002L});
+    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo1297 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1305 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1307 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo1315 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo1317 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo1325 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1327 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo1335 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1337 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1344 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1350 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STATICCTORDECL_in_staticCtorDefinition1422 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_staticCtorDefinition1425 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition1427 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_staticCtorDefinition1432 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition1434 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_staticCtorDefinition1438 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_staticCtorDefinition1440 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CTORDECL_in_ctorDefinition1463 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_ctorDefinition1466 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition1468 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_GENERICDESC_in_ctorDefinition1473 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition1475 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_ctorDefinition1480 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeName_in_ctorDefinition1482 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_arguments_in_ctorDefinition1485 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_THROWCLAUSE_in_ctorDefinition1488 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClause_in_ctorDefinition1490 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_ctorDefinition1519 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition1521 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_ctorDefinition1549 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_ctorDefinition1551 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_ctorDefinition1579 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition1581 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_METHODDECL_in_methodDefinition1627 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_methodDefinition1630 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition1632 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_MODIFIER_in_methodDefinition1637 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_modifier_in_methodDefinition1639 = new BitSet(new long[]{0x0040000000000018L,0x4000000040000000L,0x0000000000000011L});
+    public static final BitSet FOLLOW_GENERICDESC_in_methodDefinition1644 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition1646 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_RETVALUE_in_methodDefinition1651 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_methodDefinition1653 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_methodDefinition1657 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition1659 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_arguments_in_methodDefinition1662 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition1665 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition1667 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_methodDefinition1696 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_methodDefinition1698 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_methodDefinition1726 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_methodDefinition1728 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_methodDefinition1757 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition1759 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_STANDINTOKEN_in_methodInfo1801 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo1803 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_flags_in_methodInfo1805 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfo1821 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1824 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_afterMethodInfo1832 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfo1834 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo1841 = new BitSet(new long[]{0x0002020000000202L,0x001E000000000000L,0x0000000000000880L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo1847 = new BitSet(new long[]{0x0002020000000202L,0x001E000000000000L,0x0000000000000880L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo1853 = new BitSet(new long[]{0x0002020000000202L,0x001E000000000000L,0x0000000000000880L});
+    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo1859 = new BitSet(new long[]{0x0002020000000202L,0x001E000000000000L,0x0000000000000880L});
+    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfo1866 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClause_in_afterMethodInfo1869 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfo1877 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1879 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfo1886 = new BitSet(new long[]{0x0002020000000202L,0x001E000000000000L,0x0000000000000880L});
+    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault1902 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault1905 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_annotationValue_in_annotationDefault1907 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo1924 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_PARAMDESC_in_methodSignatureInfo1927 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo1929 = new BitSet(new long[]{0x0000000000004008L,0x0000000000004081L});
+    public static final BitSet FOLLOW_RETDESC_in_methodSignatureInfo1934 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo1936 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor1951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VoidType_in_returnDescriptor1955 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNITARGUMENTS_in_arguments2027 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_arguments2029 = new BitSet(new long[]{0x0000002000000008L});
+    public static final BitSet FOLLOW_DOT_in_arguments2033 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_DOT_in_arguments2035 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_DOT_in_arguments2037 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_body2062 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body2064 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_Code_in_body2069 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_codeBlock_in_body2071 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bodyExtension_in_body2074 = new BitSet(new long[]{0x0001000000000002L,0x0000000001C00000L,0x0000000000000600L});
+    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension2095 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension2098 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension2106 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension2109 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension2118 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2121 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension2129 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2132 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension2140 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension2142 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_StackMap_in_bodyExtension2150 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension2152 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_VARINFO_in_codeBlock2171 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_variables_in_codeBlock2173 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INSTRUCTION_in_codeBlock2177 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_instructionSet_in_codeBlock2179 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L,0x0000000000000008L});
+    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock2182 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_codeLine_in_instructionSet2196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_javaSwitch_in_instructionSet2200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine2214 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_codeLine2216 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_OPERAND_in_codeLine2219 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_operand1_in_codeLine2221 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_OPERAND_in_codeLine2226 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeLine2228 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd2245 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_codeBlockEnd2247 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd2249 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CPINDEX_in_operand12266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_operand12273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_operand12279 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variables2292 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_variable_in_variables2294 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_variable_in_variables2296 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ASSIGN_in_variable2310 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_variable2312 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_variable2314 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SWITCH_in_javaSwitch2331 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch2334 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_javaSwitch2336 = new BitSet(new long[]{0x0000001000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_switchLine_in_javaSwitch2338 = new BitSet(new long[]{0x0000001000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch2341 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_pc_in_switchLine2358 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchLine2360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine2375 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine2377 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_THROWS_in_throwClause2397 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_throwClause2399 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod2416 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwType_in_throwClauseMethod2418 = new BitSet(new long[]{0x0000000000000008L,0x0000080000000081L});
+    public static final BitSet FOLLOW_ETHEADER_in_exceptionTable2457 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2459 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2461 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2463 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2465 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ETENTRY_in_exceptionTable2469 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable2471 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2486 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2488 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2490 = new BitSet(new long[]{0x0080004004022800L,0x0040000000010021L,0x0000000010000000L});
+    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2492 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue2504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2510 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable2535 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine2550 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_lineNumberTableLine2552 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine2554 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LVHEADER_in_localVariableTable2577 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2579 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2581 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2583 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2585 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable2587 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LVENTRY_in_localVariableTable2591 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable2593 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine2610 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine2612 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine2614 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine2616 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
+    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine2618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier2632 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMTHEADER_in_stackMapTypeTable2652 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable2654 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable2656 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable2658 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SMTENTRY_in_stackMapTypeTable2662 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable2664 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2679 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2681 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2683 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2685 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2687 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2689 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2696 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2698 = new BitSet(new long[]{0x0080004000122800L,0x0040000000010021L,0x0000000010000000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2700 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2707 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2709 = new BitSet(new long[]{0x0080004000122800L,0x0040000000010021L,0x0000000010000000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2711 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMHEADER_in_stackMapTable2730 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable2732 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable2734 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable2736 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SMENTRY_in_stackMapTable2740 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable2742 = new BitSet(new long[]{0x0000000000000088L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry2757 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry2759 = new BitSet(new long[]{0x0080004000122800L,0x0040000000010121L,0x0000000010000000L});
+    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry2761 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue2774 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue2778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer2790 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes2813 = new BitSet(new long[]{0x0080004000122802L,0x0040000000010021L,0x0000000010000000L});
+    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType2826 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType2828 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType2830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType2832 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType2834 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject2847 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject2849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject2861 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject2863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_typeList2883 = new BitSet(new long[]{0x0080004000022802L,0x0040000000010020L,0x0000000011000000L});
+    public static final BitSet FOLLOW_combinedJavaType_in_type2896 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_ARRAYBRACKS_in_type2899 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_LBRACK_in_type2902 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000000L});
+    public static final BitSet FOLLOW_RBRACK_in_type2904 = new BitSet(new long[]{0x0000000000000008L,0x0000000000004000L});
+    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType2919 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_referenceType_in_combinedJavaType2925 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNITNAME_in_referenceType2938 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType2940 = new BitSet(new long[]{0x0000000000000008L,0x0000080000000000L});
+    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier2955 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TYPEARGS_in_typeDeclSpecifier2958 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier2960 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_QualifiedType_in_typeName2975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeArgumentList_in_typeArguments2987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList3000 = new BitSet(new long[]{0x0080004000022802L,0x0040020000010020L,0x0000000011000000L});
+    public static final BitSet FOLLOW_type_in_typeArgument3013 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_wildcard_in_typeArgument3019 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_wildcard3032 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_wildcardBounds_in_wildcard3034 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds3049 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds3051 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SUPER_in_wildcardBounds3059 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds3061 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_typeParameter_in_typeParameters3074 = new BitSet(new long[]{0x0000000400004002L,0x0000000000000001L,0x0000000040000000L});
+    public static final BitSet FOLLOW_identifier_in_typeParameter3088 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeBound_in_typeParameter3090 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_typeBound3105 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_referenceType_in_typeBound3107 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor3124 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor3138 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor3140 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3142 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3156 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_UNITNAME_in_bytecodeReferenceType3170 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3172 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000080L});
+    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3186 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3189 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3191 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName3205 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3217 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3230 = new BitSet(new long[]{0x0000000000000002L,0x0000020000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3243 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3249 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard3262 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3264 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds3279 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3281 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds3289 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3291 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType3309 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BaseType_in_bytecodeType3313 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType3317 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000000L});
+    public static final BitSet FOLLOW_SEMI_in_bytecodeType3319 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType3323 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType3336 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
+    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType3338 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3351 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3364 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3367 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3369 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3407 = new BitSet(new long[]{0x0000000000004002L,0x2000002008004081L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument3426 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3428 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument3434 = new BitSet(new long[]{0x0000000000004000L,0x0000000000004081L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument3442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_keywordAggregate3478 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_keywordAggregate3482 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_keywordAggregate3488 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IMPLEMENTS_in_keywordAggregate3492 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEFAULT_in_keywordAggregate3497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_keywordAggregate3502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_THROWS_in_keywordAggregate3507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SUPER_in_keywordAggregate3512 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NATIVE_in_keywordAggregate3516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolean_type_in_primitiveType3529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numeric_type_in_primitiveType3535 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VOID_in_primitiveType3541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type3554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_floating_point_type_in_numeric_type3567 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integral_type_in_numeric_type3573 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LONGLITERAL_in_literals3642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_literals3648 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOATLITERAL_in_literals3654 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals3660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHARLITERAL_in_literals3666 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_literals3672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals3678 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_literals3684 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_literals3687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_pc3700 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_COLON_in_pc3702 = new BitSet(new long[]{0x0000000000000002L});
 
 }
