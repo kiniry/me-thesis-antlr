@@ -9,7 +9,7 @@ tokens  {
 CLASSFILE; CFHEADER; UNITHEADER; CEXTENDS; CIMPLEMENTS;
 UNITARGUMENTS; UNITATTR; UNITBODY;
 VMODIFIER;  MODIFIER; 
-CLASSDECL; FIELDDECL; STATICCTORDECL; CTORDECL;
+CLASSDECL; FIELDDECL; STATICCTORDECL; CTORDECL; METHODDECL;
 CPOOL;
 RETVALUE; GENERICDESC; UNITNAME; RETDESC; PARAMDESC; VARINFO; INSTRUCTION;
 SWITCH;
@@ -333,7 +333,7 @@ methodDefinition
   : method_visual_modifier? method_modifier* genericDescriptor? type keywordAggregate arguments throwClauseMethod? SEMI 
     methodInfo
     body?
-    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
+    afterMethodInfo? -> ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)
@@ -341,7 +341,7 @@ methodDefinition
   ;
 
 methodInfo
-  : methodSignatureInfo flags
+  : methodSignatureInfo flags     -> ^(STANDINTOKEN methodSignatureInfo flags)
   ;
 
 afterMethodInfo
@@ -510,7 +510,7 @@ localVariableTableLine
 
 localVariableTableLineIdentifier
   :
-  ( id1=keywordAggregate  -> IDENTIFIER[id1.getTree().toString()]//-> IDENTIFIER what would this do??
+  ( id1=keywordAggregate  -> IDENTIFIER[$id1.text]//-> IDENTIFIER what would this do??
   | id2=STATIC            -> IDENTIFIER[$id2]
   )
   ;
@@ -577,7 +577,7 @@ typeList
   : type (COMMA type)*                          -> type+
   ;
 type
-  : combinedJavaType (LBRACK RBRACK)*           -> ^(combinedJavaType ^(ARRAYBRACKS (LBRACK RBRACK)*))
+  : combinedJavaType (LBRACK RBRACK)*           -> combinedJavaType ^(ARRAYBRACKS (LBRACK RBRACK)*)
   ;
 combinedJavaType
   : (primitiveType
@@ -590,7 +590,7 @@ typeDeclSpecifier
   : typeName typeArguments?                     -> ^(typeName ^(TYPEARGS typeArguments?))
   ;
 typeName
-  : id=identifier                               -> QualifiedType[id.getTree().toString()] 
+  : id=identifier                     {System.out.println("Id: '"+$id.text+"'");}          -> QualifiedType[$id.text] 
   | QualifiedType
   ;
 typeArguments
@@ -633,13 +633,13 @@ bytecodeReferenceTypeList
   : bytecodeReferenceType (AND bytecodeReferenceType)*          -> bytecodeReferenceType+
   ;
 bytecodeReferenceType
-  : bytecodeTypeDeclSpecifier (DOT bytecodeTypeDeclSpecifier)*  -> bytecodeTypeDeclSpecifier+
+  : bytecodeTypeDeclSpecifier (DOT bytecodeTypeDeclSpecifier)*  -> ^(UNITNAME bytecodeTypeDeclSpecifier+)
   ;
 bytecodeTypeDeclSpecifier
   : bytecodeTypeName bytecodeTypeArguments?                     -> bytecodeTypeName ^(TYPEARGS bytecodeTypeArguments?)
   ;
 bytecodeTypeName
-  : id=identifier                                               -> INTERNALTYPE[id.getTree().toString()]
+  : id=identifier                                               -> INTERNALTYPE[$id.text]
   | INTERNALTYPE
   ;
 bytecodeTypeArguments
@@ -678,7 +678,7 @@ simpleBytecodeReferenceType
   ;
 simpleBytecodeReferenceTypeName
   : INTERNALTYPE
-  | id=IDENTIFIER                                                -> INTERNALTYPE[$id.getText()]
+  | id=IDENTIFIER                                             -> INTERNALTYPE[$id.text] 
   ;
 simpleBytecodeTypeArguments
   : LESST simpleBytecodeTypeArgumentList LARGET               -> simpleBytecodeTypeArgumentList
