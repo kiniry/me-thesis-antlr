@@ -48,6 +48,13 @@ public class Test {
 		}
 	}
 
+	private static boolean fieldTrue = true;
+	private void TestMethod(boolean para1){
+		if(para1 && fieldTrue)
+		{
+			return;
+		}
+	}
 	public static void parseMassagedFiles(String myDirectoryPath) throws IOException {
 		File dir = new File(myDirectoryPath);
 		for (File child : dir.listFiles()) {
