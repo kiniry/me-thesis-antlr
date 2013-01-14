@@ -536,7 +536,7 @@ stackMapTypeTableEntry
 
 stackMapTable
   : IDENTIFIER ASSIGN INTLITERAL 
-    stackMapTableEntry+                         -> ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry)+
+    stackMapTableEntry+                         -> ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry+)
   ;
 stackMapTableEntry
   : IDENTIFIER ASSIGN stackMapTableEntryValue   -> ^(ASSIGN IDENTIFIER stackMapTableEntryValue)
