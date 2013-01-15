@@ -1,6 +1,7 @@
 package bytecodeDeobfuscation;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -11,6 +12,9 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.antlr.stringtemplate.StringTemplate;
+import org.antlr.stringtemplate.StringTemplateGroup;
+import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
 import bytecodeDeobfuscation.JVMParser.program_return;
 import bytecodeDeobfuscation.TemplateTestParser.rule1_return;
@@ -36,15 +40,26 @@ public class JVMTestWalker {
 	
 	private static void Parse(String fileText){
 		try {
+			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/Repository/AntlrWorksProj/JVM.stg");
+			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
+			groupFile.close();
+			
 			CharStream input =  new ANTLRStringStream(fileText);
 			
+			/*
+			 * Lexer and parser part
+			 */
 			JVMLexer lexer = new JVMLexer(input);
 			TokenStream tokenStream = new CommonTokenStream(lexer);
 			JVMParser parser = new JVMParser(tokenStream);
 			program_return ret = parser.program();
+			
+			/*
+			 * Tree walker part		
+			 */
 			CommonTree theTree = (CommonTree)ret.getTree();
-			System.out.println("The walked tree:");
-			System.out.println(theTree.toStringTree());
+//			System.out.println("The walked tree:");
+//			System.out.println(theTree.toStringTree());
 			// Walk resulting tree; create treenode stream first
 			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree);
 			// AST nodes have payloads that point into token stream 
@@ -52,8 +67,28 @@ public class JVMTestWalker {
 			// Create a tree Walker attached to the nodes stream 
 			JVMWalker walker = new JVMWalker(nodes);
 			// Invoke the start symbol, rule program
-			walker.program();
+			JVMWalker.program_return ret2 = walker.program();
+			
+			/*
+			 * Pretty printer part
+			 */
+			theTree = (CommonTree)ret2.getTree();
+			nodes = new CommonTreeNodeStream(theTree);
+			nodes.setTokenStream(tokenStream);
+			// Create a tree Walker attached to the nodes stream 
+			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes);
+			printer.setTemplateLib(templates);
+			// Invoke the start symbol, rule program
+			JVMPrettyPrinter.program_return ret3 = printer.program();
+			StringTemplate output = (StringTemplate)ret3.getTemplate();
+			System.out.println(output.toString());
 		} catch (RecognitionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		

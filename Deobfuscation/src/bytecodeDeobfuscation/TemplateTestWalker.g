@@ -4,6 +4,8 @@ tree grammar TemplateTestWalker;
 options {
   tokenVocab=TemplateTest;
   ASTLabelType=CommonTree;
+  output = AST;
+  language = Java;
 }
 
 @header {
