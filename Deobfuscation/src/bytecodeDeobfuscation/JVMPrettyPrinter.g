@@ -152,7 +152,7 @@ minor_major_version_info
   ;
       
 flags
-  : ^(Flag l=accessFlagList)  -> noformat2(f={$Flag.text},s={$l.st})
+  : ^(Flag l=accessFlagList)  -> noformatWithspace2(f={$Flag.text},s={$l.st})
   ;
   
 accessFlagList
@@ -264,8 +264,8 @@ fieldAdditionalInfo
   | ^(Signature CPINDEX)      -> noformat2(f={$Signature.text},s={$CPINDEX.text})
   | ^(Deprecated BOOLEANLITERAL)    -> noformat2(f={$Deprecated.text},s={$BOOLEANLITERAL.text})
   | ^(Synthetic BOOLEANLITERAL)     -> noformat2(f={$Synthetic.text},s={$BOOLEANLITERAL.text})
-  | s=runtimeVisibleAnnotations_info    -> noformat(f={$s.st})
-  | s=runtimeInvisibleAnnotations   -> noformat(f={$s.st})
+  | s1=runtimeVisibleAnnotations_info   -> noformat(f={$s1.st})
+  | s2=runtimeInvisibleAnnotations    -> noformat(f={$s2.st})
   ;
 
 field_visual_modifier
@@ -286,8 +286,14 @@ field_modifier
 //*******************************/
 
 staticCtorDefinition
-  : ^(STATICCTORDECL ^(VMODIFIER field_visual_modifier?) ^(UNITHEADER methodInfo) ^(UNITBODY body)
+  : ^(STATICCTORDECL ^(VMODIFIER svm=field_visual_modifier?) 
+    ^(UNITHEADER inf=methodInfo) 
+    ^(UNITBODY b=body)
   )
+                          ->    statCtorDecl(vm={$svm.st},
+                            info={$inf.st},
+                          body={$b.st}
+                          )
   ;
 
 //*******************************/
@@ -295,11 +301,16 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
-  : ^(CTORDECL ^(VMODIFIER field_visual_modifier?) ^(GENERICDESC genericDescriptor?) ^(UNITNAME typeName) arguments ^(THROWCLAUSE throwClause?)
-                        ^(UNITHEADER methodInfo)
-                        ^(UNITBODY body)
-                        ^(UNITATTR afterMethodInfo?)
+  : ^(CTORDECL ^(VMODIFIER cvm=field_visual_modifier?) ^(GENERICDESC g=genericDescriptor?) ^(UNITNAME name=typeName) a=arguments ^(THROWCLAUSE t=throwClause?)
+                        ^(UNITHEADER inf=methodInfo)
+                        ^(UNITBODY b=body)
+                        ^(UNITATTR ainfo=afterMethodInfo?)
                         )
+                        ->    ctorDecl(vm={$cvm.st}, gd={$g.st}, n={$name.st}, args={$a.st}, thr={$t.st},
+                          info={$inf.st},
+                          body={$b.st},
+                          xinf={$ainfo.st}
+                          )
   ;
 
 //*******************************/
@@ -307,51 +318,72 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
-                        ^(UNITHEADER methodInfo)
-                        ^(UNITBODY body?)
-                        ^(UNITATTR afterMethodInfo?)
+  : ^(METHODDECL ^(VMODIFIER mvm=method_visual_modifier?) ^(MODIFIER mm=method_modifier*) ^(GENERICDESC g=genericDescriptor?) ^(RETVALUE mt=type) ^(UNITNAME mn=keywordAggregate) a=arguments ^(THROWCLAUSE t=throwClauseMethod?)
+                        ^(UNITHEADER inf=methodInfo)
+                        ^(UNITBODY b=body?)
+                        ^(UNITATTR ainfo=afterMethodInfo?)
                         )
+                        ->    methDecl(vm={$mvm.st}, m={$mm.st}, gd={$g.st}, t={$mt.st}, n={$mn.st}, args={$a.st}, thr={$t.st},
+                          info={$inf.st},
+                          body={$b.st},
+                          xinf={$ainfo.st}
+                          )
   ;
 
 methodInfo
-  : ^(STANDINTOKEN methodSignatureInfo flags)
+  : ^(STANDINTOKEN ms=methodSignatureInfo fl=flags) 
+              -> methodInfo(f={$ms.st},s={$fl.st})
   ;
 
 afterMethodInfo
-  : (^(Deprecated  BOOLEANLITERAL)
-  | ^(Signature CPINDEX)
-  | runtimeInvisibleParameterAnnotations
-  | runtimeVisibleAnnotations_info
-  | runtimeInvisibleAnnotations
-  | runtimeVisibleParameterAnnotations
-  | ^(Exceptions  throwClause)
-  | ^(Synthetic BOOLEANLITERAL)
-  | annotationDefault)+
+  : (s+=afterMethodInfoEntry)+      -> nlSeparatedList(ls={$s})
+  ;
+
+afterMethodInfoEntry
+  : ^(Deprecated  BOOLEANLITERAL)   -> noformat2(f={$Deprecated.text},s={$BOOLEANLITERAL.text})
+  | ^(Signature CPINDEX)      -> noformat2(f={$Signature.text},s={$CPINDEX.text})
+  | s1=runtimeInvisibleParameterAnnotations -> noformat(f={$s1.st})
+  | s2=runtimeVisibleAnnotations_info   -> noformat(f={$s2.st})
+  | s3=runtimeInvisibleAnnotations    -> noformat(f={$s3.st})
+  | s4=runtimeVisibleParameterAnnotations -> noformat(f={$s4.st})
+  | ^(Exceptions  t=throwClause)    -> noformat2(f={$Exceptions.text},s={$t.st})
+  | ^(Synthetic BOOLEANLITERAL)     -> noformat2(f={$Synthetic.text},s={$BOOLEANLITERAL.text})
+  | s5=annotationDefault      -> noformat(f={$s5.st})
   ;
 
 annotationDefault
-  : ^(AnnotationDefault  DefaultValue annotationValue)
+  : ^(AnnotationDefault  DefaultValue v=annotationValue)
+        -> noformat(f={$v.st})
   ;
   
 methodSignatureInfo
-  : ^(Signature ^(PARAMDESC bytecodeType*) ^(RETDESC returnDescriptor))
+  : ^(Signature ^(PARAMDESC (s+=bytecodeType)*) ^(RETDESC r=returnDescriptor))
+        -> methodSign(in={$s},out={$r.st})
   ;
 
 returnDescriptor
-  : bytecodeType | VoidType
+  : s=bytecodeType  -> noformat(f={$s.st})
+  | VoidType    -> noformat(f={$VoidType.text})
   ;
 
 method_modifier
-  : ABSTRACT | FINAL  | STATIC  | SYNCHRONIZED  | NATIVE | STRICTFP
+  : ABSTRACT    -> noformat(f={$ABSTRACT.text})
+  | FINAL     -> noformat(f={$FINAL.text})
+  | STATIC      -> noformat(f={$STATIC.text})
+  | SYNCHRONIZED    -> noformat(f={$SYNCHRONIZED.text})
+  | NATIVE    -> noformat(f={$NATIVE.text})
+  | STRICTFP    -> noformat(f={$STRICTFP.text})
   ;
  
 method_visual_modifier
-  : PUBLIC | PRIVATE | PROTECTED
+  : PUBLIC    -> noformat(f={$PUBLIC.text})
+  | PRIVATE     -> noformat(f={$PRIVATE.text})
+  | PROTECTED   -> noformat(f={$PROTECTED.text})
   ;
 
 arguments//(DOT DOT DOT)? zero or more of the last object
-  : ^(UNITARGUMENTS typeList? (DOT DOT DOT)?)
+  : ^(UNITARGUMENTS tl=typeList? (d=DOT DOT DOT)?)
+        -> args(f={$tl.st},s={$d.text})
   ;
 
 //*******************************/
@@ -359,60 +391,66 @@ arguments//(DOT DOT DOT)? zero or more of the last object
 //*******************************/
   
 body  
-  : (Synthetic BOOLEANLITERAL)? ^(Code codeBlock) bodyExtension*
+  : (Synthetic BOOLEANLITERAL)? ^(Code c=codeBlock) (e+=bodyExtension)*
+          -> body(f={$BOOLEANLITERAL.text},s={$c.st},t={$e})
   ;
 
 bodyExtension
-  :  
-  ( ^(ExceptionTable  exceptionTable)
-  | ^(LineNumberTable  lineNumberTable?)
-  | ^(LocalVariableTable  localVariableTable)
-  | ^(LocalVariableTypeTable  localVariableTable)
-  | ^(StackMapTable stackMapTable)
-  | ^(StackMap stackMapTypeTable)
-  )
+  : ^(ExceptionTable  s1=exceptionTable)    -> bodyExt(f={$ExceptionTable.text},s={$s1.st})
+  | ^(LineNumberTable  s2=lineNumberTable?)   -> bodyExt(f={$LineNumberTable.text},s={$s2.st})
+  | ^(LocalVariableTable  s3=localVariableTable)  -> bodyExt(f={$LocalVariableTable.text},s={$s3.st})
+  | ^(LocalVariableTypeTable s4=localVariableTable) -> bodyExt(f={$LocalVariableTypeTable.text},s={$s4.st})
+  | ^(StackMapTable s5=stackMapTable)     -> bodyExt(f={$StackMapTable.text},s={$s5.st})
+  | ^(StackMap s6=stackMapTypeTable)      -> bodyExt(f={$StackMap.text},s={$s6.st})
   ;
 
 codeBlock
-  : ^(VARINFO variables) ^(INSTRUCTION instructionSet* codeBlockEnd)
+  : ^(VARINFO v=variables) ^(INSTRUCTION (i+=instructionSet)* e=codeBlockEnd)
+          -> codeblock(f={$v.st},s={$i},t={$e.st})
   ;
 
 instructionSet
-  : codeLine | javaSwitch
+  : s1=codeLine     -> noformat(f={$s1.st})
+  | s2=javaSwitch   -> noformat(f={$s2.st})
   ;
 
 codeLine
-  : ^(IDENTIFIER pc ^(OPERAND operand1?) ^(OPERAND INTLITERAL?))
+  : ^(IDENTIFIER p=pc ^(OPERAND o=operand1?) ^(OPERAND INTLITERAL?))
+          -> codeline(f={$p.st},s={$IDENTIFIER.text},t={$o.st},q={$INTLITERAL.text})
   ;
 
 codeBlockEnd
-  : ^(IDENTIFIER pc INTLITERAL?)
+  : ^(IDENTIFIER p=pc INTLITERAL?)
+          -> codeline(f={$p.st},s={$IDENTIFIER.text},t={$INTLITERAL.text})
   ;
   
 operand1
-  : CPINDEX 
-  | INTLITERAL
-  | primitiveType
+  : CPINDEX       -> noformat(f={$CPINDEX.text})
+  | INTLITERAL      -> noformat(f={$INTLITERAL.text})
+  | s=primitiveType   -> noformat(f={$s.st})
   ;
 
 variables
-  : variable variable variable
+  : s1=variable s2=variable s3=variable 
+          -> variables(f={$s1.st},s={$s2.st},t={$s3.st})
   ;
 
 variable
   : ^(ASSIGN IDENTIFIER INTLITERAL)
+        -> variable(f={$IDENTIFIER.text},s={$INTLITERAL.text})
   ;
 
 javaSwitch  
-  : ^(SWITCH ^(IDENTIFIER pc switchLine* switchDefaultLine))
+  : ^(SWITCH ^(IDENTIFIER p=pc (s+=switchLine)* s1=switchDefaultLine))
+          -> switch(f={$p.st},s={$IDENTIFIER.text},t={$s},q={$s1.st})
   ;
   
 switchLine
-  : pc INTLITERAL 
+  : p=pc INTLITERAL     -> noformatWithspace2(f={$p.st},s={$INTLITERAL.text})
   ;
 
 switchDefaultLine
-  : ^(DEFAULT INTLITERAL) 
+  : ^(DEFAULT INTLITERAL)   -> noformatWithspace2(f={$DEFAULT.text},s={$INTLITERAL.text})
   ;
 
 //*******************************/
@@ -420,28 +458,32 @@ switchDefaultLine
 //*******************************/
 
 throwClause
-  : ^(THROWS typeList)
+  : ^(THROWS s=typeList)  -> noformatWithspace2(f={$THROWS.text},s={$s.st})
   ;
   
 throwClauseMethod
-  : ^(THROWS throwType+)
+  : ^(THROWS (s+=throwType)+) -> throwC(f={$THROWS.text},ls={$s})
   ;
 
 throwType
-  : INTERNALTYPE  | IDENTIFIER  | QualifiedType
+  : INTERNALTYPE      -> noformat(f={$INTERNALTYPE.text})
+  | IDENTIFIER      -> noformat(f={$IDENTIFIER.text})
+  | QualifiedType   -> noformat(f={$QualifiedType.text})
   ;
 
 exceptionTable
-  : ^(ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(ETENTRY exceptionTableEntry+)
+  : ^(ETHEADER id1=IDENTIFIER id2=IDENTIFIER id3=IDENTIFIER id4=IDENTIFIER) ^(ETENTRY (s+=exceptionTableEntry)+)
+          -> excTable(f={$id1.text},s={$id2.text},t={$id3.text},q={$id4.text},ls={$s})
   ;
 
 exceptionTableEntry
-  : INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
+  : id1=INTLITERAL id2=INTLITERAL id3=INTLITERAL s1=exceptionTableEntryValue
+          -> excTableEntry(f={$id1.text},s={$id2.text},t={$id3.text},q={$s1.st})
   ;
 exceptionTableEntryValue
-  : primitiveType
-  | IDENTIFIER
-  | CONSTANT_TYPE_ASSIGNABLE
+  : s=primitiveType   -> noformat(f={$s.st})
+  | IDENTIFIER      -> noformat(f={$IDENTIFIER.text})
+  | CONSTANT_TYPE_ASSIGNABLE  -> noformat(f={$CONSTANT_TYPE_ASSIGNABLE.text})
   ;
   
 //*******************************/
@@ -449,11 +491,11 @@ exceptionTableEntryValue
 //*******************************/
 
 lineNumberTable
-  : lineNumberTableLine+
+  : (s+=lineNumberTableLine)+   -> lnTable(ls={$s})
   ;
 
 lineNumberTableLine
-  : ^(IDENTIFIER pc INTLITERAL)
+  : ^(IDENTIFIER p=pc INTLITERAL) -> lnTableEntry(f={$IDENTIFIER.text},s={$p.st},t={$INTLITERAL.text})
   ;
   
 //*******************************/
@@ -461,15 +503,17 @@ lineNumberTableLine
 //*******************************/
   
 localVariableTable
-  : ^(LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER) ^(LVENTRY localVariableTableLine*)
+  : ^(LVHEADER id1=IDENTIFIER id2=IDENTIFIER id3=IDENTIFIER id4=IDENTIFIER id5=IDENTIFIER) ^(LVENTRY (s+=localVariableTableLine)*)
+            -> lvTable(f={$id1.text},s={$id2.text},t={$id3.text},q={$id4.text},c={$id5.text},ls={$s})
   ;
   
 localVariableTableLine
-  : INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType 
+  : id1=INTLITERAL id2=INTLITERAL id3=INTLITERAL s1=localVariableTableLineIdentifier s2=bytecodeType 
+            -> lvTableEntry(f={$id1.text},s={$id2.text},t={$id3.text},q={$s1.st},c={$s2.st})
   ;
-
+  
 localVariableTableLineIdentifier
-  : IDENTIFIER
+  : IDENTIFIER        -> noformat(f={$IDENTIFIER.text})
   ;
   
 //*******************************/
@@ -477,13 +521,15 @@ localVariableTableLineIdentifier
 //*******************************/
 
 stackMapTypeTable
-  : ^(SMTHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMTENTRY stackMapTypeTableEntry+)
+  : ^(SMTHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMTENTRY (s+=stackMapTypeTableEntry)+)
+            -> smtTable(f={$IDENTIFIER.text},s={$INTLITERAL.text},ls={$s})
   ;
 
 stackMapTypeTableEntry
-  : IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL 
-    IDENTIFIER ASSIGN stackMapTableTypesContainer 
-    IDENTIFIER ASSIGN stackMapTableTypesContainer 
+  : id1=IDENTIFIER ASSIGN i1=INTLITERAL id2=IDENTIFIER ASSIGN i2=INTLITERAL 
+    id3=IDENTIFIER ASSIGN s1=stackMapTableTypesContainer 
+    id4=IDENTIFIER ASSIGN s2=stackMapTableTypesContainer
+              -> smtTableEntry(a={$id1.text},b={$i1.text},c={$id2.text},d={$i2.text},e={$id3.text},f={$s1.st},g={$id4.text},h={$s2.st})
   ;
 
 //*******************************/
@@ -491,28 +537,34 @@ stackMapTypeTableEntry
 //*******************************/
 
 stackMapTable
-  : ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry+)
+  : ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY (s+=stackMapTableEntry)+)
+            -> smTable(f={$IDENTIFIER.text},s={$INTLITERAL.text},ls={$s})
   ;
 stackMapTableEntry
-  : ^(ASSIGN IDENTIFIER stackMapTableEntryValue)
+  : ^(ASSIGN IDENTIFIER s=stackMapTableEntryValue)
+            -> smTableEntry(f={$IDENTIFIER.text},s={$s.st})
   ;
 stackMapTableEntryValue
-  : INTLITERAL | stackMapTableTypesContainer
+  : INTLITERAL        -> noformat(f={$INTLITERAL.text})
+  | s=stackMapTableTypesContainer -> noformat(f={$s.st})
   ;
 stackMapTableTypesContainer
-  : stackMapTableTypes           
+  : s=stackMapTableTypes            -> smTableContainer(f={$s.st})
   ;
 stackMapTableTypes
-  : stackMapTableType*
+  : (s+=stackMapTableType)*   -> commaSeparatedList(ls={$s})
   ;
 stackMapTableType
-  : stackMapTableTypeObject|stackMapTableTypePlainObject|primitiveType|IDENTIFIER INTLITERAL?
+  : s1=stackMapTableTypeObject    -> noformat(f={$s1.st})
+  | s2=stackMapTableTypePlainObject -> noformat(f={$s2.st})
+  | s3=primitiveType      -> noformat(f={$s3.st})
+  | IDENTIFIER INTLITERAL?    -> noformatWithspace2(f={$IDENTIFIER.text},s={$INTLITERAL.text})
   ;
 stackMapTableTypePlainObject
-  : CLASS INTERNALTYPE
+  : CLASS INTERNALTYPE      -> noformatWithspace2(f={$CLASS.text},s={$INTERNALTYPE.text})
   ;
 stackMapTableTypeObject
-  : CLASS STRINGLITERAL
+  : CLASS STRINGLITERAL     -> noformatWithspace2(f={$CLASS.text},s={$STRINGLITERAL.text})
   ;
 
 //*******************************/
@@ -526,8 +578,8 @@ typeList
   : (s+=type)+        -> commaSeparatedList(ls={$s})
   ;
 type
-  : s=combinedJavaType ^(ARRAYBRACKS ((b+=LBRACK RBRACK))*)
-            -> type(body={s.st}, ext={$b})
+  : s=combinedJavaType ^(ARRAYBRACKS (b+=LBRACK RBRACK)*)
+            -> type(f={$s.st}, s={$b})
   ;
 combinedJavaType
   : s1=primitiveType      -> noformat(f={$s1.st})
@@ -570,39 +622,41 @@ typeBound
 // Generic return Type description
 //*******************************/
 genericDescriptor
-  : genericReturnDescriptor+
+  : (s+=genericReturnDescriptor)+   -> genericParam(ls={$s})
   ;
 genericReturnDescriptor
-  : ^(EXTENDS identifier bytecodeReferenceTypeList)
+  : ^(EXTENDS s1=identifier s2=bytecodeReferenceTypeList)
+              -> genRetDesc(f={$s1.st},s={$EXTENDS.text},t={$s2.st})
   ; 
 bytecodeReferenceTypeList
-  : bytecodeReferenceType+
+  : (s+=bytecodeReferenceType)+     -> andSeparatedList(ls={$s})
   ;
 bytecodeReferenceType
-  : ^(UNITNAME bytecodeTypeDeclSpecifier+)
+  : ^(UNITNAME (s+=bytecodeTypeDeclSpecifier)+) -> dotSeparatedList(ls={$s})
   ;
 bytecodeTypeDeclSpecifier
-  : bytecodeTypeName ^(TYPEARGS bytecodeTypeArguments?)
+  : s1=bytecodeTypeName ^(TYPEARGS s2=bytecodeTypeArguments?)
+              -> noformat2(f={$s1.st}, s={$s2.st})
   ;
 bytecodeTypeName
-  : INTERNALTYPE
+  : INTERNALTYPE        -> noformat(f={$INTERNALTYPE.text})
   ;
 bytecodeTypeArguments
-  : bytecodeTypeArgumentList
+  : s=bytecodeTypeArgumentList      -> noformat(f={$s.st})
   ;
 bytecodeTypeArgumentList 
-  : bytecodeTypeArgument+
+  : (s+=bytecodeTypeArgument)+      -> genericParam(ls={$s})
   ;
 bytecodeTypeArgument
-  : bytecodeReferenceType
-  | bytecodeWildcard
+  : s1=bytecodeReferenceType    -> noformat(f={$s1.st})
+  | s2=bytecodeWildcard     -> noformat(f={$s2.st})
   ;
 bytecodeWildcard
-  : ^(QUESTION bytecodeWildcardBounds?)
+  : ^(QUESTION s=bytecodeWildcardBounds?) -> noformatWithspace2(f={$QUESTION.text},s={$s.st})
   ;
 bytecodeWildcardBounds
-  : ^(EXTENDS bytecodeReferenceType)
-  | ^(SUPER bytecodeReferenceType)
+  : ^(EXTENDS s1=bytecodeReferenceType)   -> noformatWithspace2(f={$EXTENDS.text},s={$s1.st})
+  | ^(SUPER s2=bytecodeReferenceType)   -> noformatWithspace2(f={$SUPER.text},s={$s2.st})
   ;
 
 //*******************************/
@@ -610,83 +664,89 @@ bytecodeWildcardBounds
 //*******************************/
 
 bytecodeType
-  : bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+  : s1=bytecodeArrayType    -> noformat(f={$s1.st})
+  | BaseType        -> noformat(f={$BaseType.text})
+  | s2=simpleBytecodeObjectType SEMI  -> noformat2(f={$s2.st},s={$SEMI.text})
+  | IDENTIFIER        -> noformat(f={$IDENTIFIER.text})
+  // More than one BaseType will instead be an IDENTIFIER
   ;
 bytecodeArrayType
-  : LBRACK bytecodeType
+  : LBRACK s=bytecodeType   -> noformat2(f={$LBRACK.text},s={$s.st})
   ; 
 simpleBytecodeObjectType
-  : simpleBytecodeReferenceType+
+  : (s+=simpleBytecodeReferenceType)+ -> dotSeparatedList(ls={$s})
   ;
 simpleBytecodeReferenceType
-  : simpleBytecodeReferenceTypeName ^(TYPEARGS simpleBytecodeTypeArguments?)
+  : s1=simpleBytecodeReferenceTypeName ^(TYPEARGS s2=simpleBytecodeTypeArguments?)
+            -> noformat2(f={$s1.st},s={$s2.st})
   ;
 simpleBytecodeReferenceTypeName
-  : INTERNALTYPE
+  : INTERNALTYPE      -> noformat(f={$INTERNALTYPE.text})
   ;
 simpleBytecodeTypeArguments
-  : simpleBytecodeTypeArgumentList
+  : s=simpleBytecodeTypeArgumentList  -> noformat(f={$s.st})
   ;
 simpleBytecodeTypeArgumentList
-  : simpleBytecodeTypeArgument+
+  : (s+=simpleBytecodeTypeArgument)+  -> bcGenericArgs(ls={$s})
   ;
 simpleBytecodeTypeArgument
-  : bytecodeType
-  | MINUS bytecodeType
-  | PLUS bytecodeType
-  | STAR
+  : s1=bytecodeType     -> noformat(f={$s1.st})
+  | MINUS s2=bytecodeType     -> noformat2(f={$MINUS.text},s={$s2.st})
+  | PLUS s3=bytecodeType      -> noformat2(f={$PLUS.text},s={$s3.st})
+  | STAR        -> noformat(f={$STAR.text})
   ;
 
 //*******************************/
 // Simple types
 //*******************************/
 
-identifier: IDENTIFIER | BaseType | VoidType | Constant_type;
+identifier
+  : IDENTIFIER    -> noformat(f={$IDENTIFIER.text})
+  ;
 
 keywordAggregate
-  : identifier | primitiveType
-  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER | NATIVE
+  :  IDENTIFIER     -> noformat(f={$IDENTIFIER.text})
   ;
 
 primitiveType
-  : boolean_type
-  | numeric_type
-  | VOID
+  : s1=boolean_type   -> noformat(f={$s1.st})
+  | s2=numeric_type   -> noformat(f={$s2.st})
+  | VOID      -> noformat(f={$VOID.text})
   ;
 
 boolean_type
-  : BOOLEAN
+  : BOOLEAN     -> noformat(f={$BOOLEAN.text})
   ;
 
 numeric_type
-  : floating_point_type
-  | integral_type
+  : s1=floating_point_type  -> noformat(f={$s1.st})
+  | s2=integral_type    -> noformat(f={$s2.st})
   ;
 
 integral_type
-  : BYTE
-  | SHORT
-  | INT
-  | LONG
-  | CHAR
+  : BYTE    -> noformat(f={$BYTE.text})
+  | SHORT   -> noformat(f={$SHORT.text})
+  | INT     -> noformat(f={$INT.text})
+  | LONG    -> noformat(f={$LONG.text})
+  | CHAR    -> noformat(f={$CHAR.text})
   ;
 
 floating_point_type
-  : FLOAT
-  | DOUBLE
+  : FLOAT   -> noformat(f={$FLOAT.text})
+  | DOUBLE    -> noformat(f={$DOUBLE.text})
   ;
 
 literals
-  : LONGLITERAL
-  | INTLITERAL
-  | FLOATLITERAL
-  | DOUBLELITERAL
-  | CHARLITERAL
-  | STRINGLITERAL
-  | BOOLEANLITERAL
-  | MINUS? IDENTIFIER
+  : LONGLITERAL   -> noformat(f={$LONGLITERAL.text})
+  | INTLITERAL    -> noformat(f={$INTLITERAL.text})
+  | FLOATLITERAL  -> noformat(f={$FLOATLITERAL.text})
+  | DOUBLELITERAL -> noformat(f={$DOUBLELITERAL.text})
+  | CHARLITERAL   -> noformat(f={$CHARLITERAL.text})
+  | STRINGLITERAL -> noformat(f={$STRINGLITERAL.text})
+  | BOOLEANLITERAL  -> noformat(f={$BOOLEANLITERAL.text})
+  | MINUS? IDENTIFIER -> noformat2(f={$MINUS.text},s={$IDENTIFIER.text})
   ;
 
 pc
-  : INTLITERAL COLON
+  : INTLITERAL COLON  -> noformat2(f={$INTLITERAL.text},s={$COLON.text})
   ;

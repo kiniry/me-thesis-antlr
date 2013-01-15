@@ -1,0 +1,241 @@
+group JVM;
+
+// Several rules will not do anything else than sending the formatting down the tree.
+// noformat(f={$})
+noformat(f)::= <<
+$f$
+>>
+noformatWithspace2(f,s)::=<<
+$f$ $s$
+>>
+noformat2(f,s)::=<<
+$f$$s$
+>>
+noformat3(f,s,t)::=<<
+$f$ $s$ $t$
+>>
+
+list(ls)::=<<
+$ls:{ x |$x$}$
+>>
+commaSeparatedList(ls)::=<<
+$ls; separator=", "$
+>>
+//$ls; separator=", "$
+//$first(ls)$ $rest(ls):{ x |, $x$}$
+andSeparatedList(ls)::=<<
+$ls; separator="& "$
+>>
+dotSeparatedList(ls)::=<<
+$ls; separator="."$
+>>
+nlSeparatedList(ls)::=<<
+$ls; separator="\n"$
+>>
+
+
+prog(cs)::= <<
+$cs:{ c |$\n$$c$ }$
+>>
+classFile(header, body)::= <<
+$header$
+$body$
+>>
+classFileHeader(f,s,t,q)::=<<
+$f$
+  $s$
+  $t$
+  $q$
+>>
+classFileInfo(desc, path)::= <<
+$desc$ $path$
+>>
+modifiedFileInfo(id1, id2, date, id3, int1, id4)::= <<
+$id1$ $id2$ $date$; $id3$ $int1$ $id4$
+>>
+checksumFileInfo(hexNumber)::= "MD5 checksum $hexNumber$"
+compiledFileInfo(fileName)::= "Compiled from $fileName$"
+
+classDecl(vm, m, cn, typeParams, ext, impl, info, cp, body)::= <<
+$vm$$if(m)$ $list(m)$$endif$ $cn$ $typeParams$ $ext$ $impl$
+  $info$
+$cp${
+  $body$
+}
+>>
+
+fieldDecl(vm, m, t, n, v, info, xinfo)::= <<
+$vm$$if(m)$ $list(m)$$endif$ $t$ $n$$if(v)$ = $v$ $endif$;
+  $info$
+  $xinfo$
+>>
+fieldInf(f,s,t)::=<<
+$f$ $s$
+$t$
+>>
+statCtorDecl(vm, info, body)::=<<
+$vm$ Static { };
+  $info$
+  $body$
+>>
+ctorDecl(vm, gd, n, args, thr, info, body, xinf)::=<<
+$vm$$if(gd)$ $gd$$endif$ $n$($args$) $thr$
+  $info$
+  $body$
+  $xinf$
+>>
+methDecl(vm, m, gd, t, n, args, thr, info, body, xinf)::=<<
+$vm$$if(m)$ $list(m)$$endif$$if(gd)$ $gd$$endif$ $t$ $n$($args$) $thr$
+  $info$
+  $body$
+  $xinf$
+>>
+methodInfo(f,s)::=<<
+$f$
+$s$
+>>
+flags(ls)::=<<
+$commaSeparatedList(ls)$
+
+>>
+synt(b)::= "Synthetic $b$"
+depr(b)::= "Deprecated $b$"
+encl(cpin1, cpin2)::= "EnclosingMethod $cpin1$.$cpin2$"
+srcFile(file)::= "SourceFile $file$"
+
+scalaSig(id1, int1, int2, int3, int4)::= <<
+ScalaSig
+$id1$=$int1$
+$int2$$int3$$int4$
+>>
+
+scala(id1, int1)::= <<
+Scala
+$id1$=$int1$
+>>
+version(f,s,t)::=<<
+$f$ $s$: $t$
+>>
+
+sign(v)::= "Signature: $v$"
+innerC(l)::= <<
+InnerClasses:
+$l$
+>>
+bodyExt(f,s)::=<<
+$f$
+  $s$
+>>
+innerCIL(vm, m, iid)::=<<
+$vm$ $m$ $iid$
+>>
+innerCID(f,s,t)::=<<
+$f$ $if(s)$=$s$$endif$$if(t)$of $t$$endif$
+>>
+genericParam(ls)::=<<
+<$commaSeparatedList(ls)$>
+>>
+cpool(f, s, t)::=<<
+$f$ $s$:
+$t$
+>>
+cpoolline(f, s)::=<<
+  $f$ = $s$
+>>
+body(f,s,t)::=<<
+$if(f)$Synthetic: $f$$\n$$endif$Code:
+  $s$
+  $t$
+>>
+type(f,s)::=<<
+$f$$s:{ x |$x$]}$
+>>
+args(f,s)::=<<
+$f$$if(s)$...$endif$
+>>
+variables(f,s,t)::=<<
+$f$, $s$, $t$
+>>
+variable(f,s)::=<<
+$f$=$s$
+>>
+lnTable(ls)::=<<
+$nlSeparatedList(ls)$
+
+>>
+lnTableEntry(f,s,t)::=<<
+$f$ $s$ $t$
+>>
+lvTable(f,s,t,q,c,ls)::=<<
+$f$ $s$ $t$ $q$ $c$
+  $nlSeparatedList(ls)$
+
+>>
+lvTableEntry(f,s,t,q,c)::=<<
+$f$ $s$ $t$ $q$ $c$
+>>
+switch(f,s,t,q)::=<<
+$f$ $s$ {
+  $t:{ x |$\n\n$$x$}$
+  $q$
+}
+>>
+smTable(f,s,ls)::=<<
+$f$=$s$
+$nlSeparatedList(ls)$
+
+>>
+smTableEntry(f,s)::=<<
+$f$=$s$
+>>
+smTableContainer(f)::=<<
+[$f$]
+>>
+codeblock(f,s,t)::=<<
+$f$
+  $nlSeparatedList(s)$
+  $t$
+>>
+codeline(f,s,t,q)::=<<
+$f$ $s$$\t$$t$$if(q)$, $q$$endif$
+>>
+methodSign(in, out)::=<<
+Signature: ($list(in)$)$out$
+>>
+default(f)::=<<
+Default: $f$
+>>
+tBound(f,ls)::=<<
+$f$ $andSeparatedList(s)$
+>>
+genRetDesc(f,s,t)::=<<
+$f$ $s$ $t$
+>>
+bcGenericArgs(ls)::=<<
+<$list(ls)$>
+>>
+wildT(s)::=<<
+? $s$
+>>
+wildBoundsT(f, s)::=<<
+$f$ $s$
+>>
+throwC(f, ls)::=<<
+$f$ $commaSeparatedList(ls)$
+>>
+excTable(f,s,t,q,ls)::=<<
+$f$ $s$ $t$ $q$
+$nlSeparatedList(ls)$
+>>
+excTableEntry(f,s,t,q)::=<<
+$f$ $s$ $t$ $q$
+>>
+smtTable(f,s,ls)::=<<
+$f$=$s$
+$nlSeparatedList(ls)$
+>>
+smtTableEntry(a,b,c,d,e,f,g,h)::=<<
+$a$=$b$ $c$=$d$
+$e$=$f$
+$g$=$h$
+>>
