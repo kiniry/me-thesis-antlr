@@ -333,7 +333,7 @@ methodDefinition
   : method_visual_modifier? method_modifier* genericDescriptor? type keywordAggregate arguments throwClauseMethod? SEMI 
     methodInfo
     body?
-    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
+    afterMethodInfo? -> ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)
@@ -536,7 +536,7 @@ stackMapTypeTableEntry
 
 stackMapTable
   : IDENTIFIER ASSIGN INTLITERAL 
-    stackMapTableEntry+                         -> ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry)+
+    stackMapTableEntry+                         -> ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry+)
   ;
 stackMapTableEntry
   : IDENTIFIER ASSIGN stackMapTableEntryValue   -> ^(ASSIGN IDENTIFIER stackMapTableEntryValue)
