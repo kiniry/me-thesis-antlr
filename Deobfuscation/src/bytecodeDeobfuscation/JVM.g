@@ -510,7 +510,7 @@ localVariableTableLine
 
 localVariableTableLineIdentifier
   :
-  ( id1=keywordAggregate  -> IDENTIFIER[id1.getText()]//-> IDENTIFIER what would this do??
+  ( id1=keywordAggregate  -> IDENTIFIER[$id1.text]//-> IDENTIFIER what would this do??
   | id2=STATIC            -> IDENTIFIER[$id2]
   )
   ;
@@ -590,7 +590,7 @@ typeDeclSpecifier
   : typeName typeArguments?                     -> ^(typeName ^(TYPEARGS typeArguments?))
   ;
 typeName
-  : id=identifier                               -> QualifiedType[id.getText()] 
+  : id=identifier                               -> QualifiedType[$id.text] 
   | QualifiedType
   ;
 typeArguments
@@ -639,7 +639,7 @@ bytecodeTypeDeclSpecifier
   : bytecodeTypeName bytecodeTypeArguments?                     -> bytecodeTypeName ^(TYPEARGS bytecodeTypeArguments?)
   ;
 bytecodeTypeName
-  : id=identifier                                               -> INTERNALTYPE[id.getText()]
+  : id=identifier                                               -> INTERNALTYPE[$id.text]
   | INTERNALTYPE
   ;
 bytecodeTypeArguments
@@ -706,7 +706,7 @@ identifier
 
 keywordAggregate
   : identifier 
-  | v1=primitiveType  -> IDENTIFIER[v1.getText()]
+  | v1=primitiveType  -> IDENTIFIER[$v1.text]
   | v2=EXTENDS    -> IDENTIFIER[$v2]
   | v3=IMPLEMENTS   -> IDENTIFIER[$v3]
   | v4=DEFAULT    -> IDENTIFIER[$v4]
