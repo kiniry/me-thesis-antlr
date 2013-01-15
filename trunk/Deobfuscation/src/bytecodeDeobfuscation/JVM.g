@@ -43,10 +43,11 @@ class_file
   : class_file_header classDefinition -> ^(CLASSFILE ^(CFHEADER class_file_header) classDefinition);
   
 class_file_header
-  : class_file_info
-    modified_file_info
-    checksum_file_info
-    compiled_file_info
+  : (class_file_info
+  | modified_file_info
+  | checksum_file_info
+  | compiled_file_info
+  )*
   ;
 class_file_info
   : IDENTIFIER WINDOWSPATH -> ^(IDENTIFIER WINDOWSPATH)
@@ -332,7 +333,7 @@ methodDefinition
   : method_visual_modifier? method_modifier* genericDescriptor? type keywordAggregate arguments throwClauseMethod? SEMI 
     methodInfo
     body?
-    afterMethodInfo? -> ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
+    afterMethodInfo? -> ^(CTORDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)
@@ -340,7 +341,7 @@ methodDefinition
   ;
 
 methodInfo
-  : methodSignatureInfo flags     -> ^(STANDINTOKEN methodSignatureInfo flags)
+  : methodSignatureInfo flags -> ^(STANDINTOKEN methodSignatureInfo flags)
   ;
 
 afterMethodInfo
@@ -509,7 +510,7 @@ localVariableTableLine
 
 localVariableTableLineIdentifier
   :
-  ( id1=keywordAggregate  -> IDENTIFIER[$id1.text]//-> IDENTIFIER what would this do??
+  ( id1=keywordAggregate  -> IDENTIFIER[id1.getText()]//-> IDENTIFIER what would this do??
   | id2=STATIC            -> IDENTIFIER[$id2]
   )
   ;
@@ -535,7 +536,7 @@ stackMapTypeTableEntry
 
 stackMapTable
   : IDENTIFIER ASSIGN INTLITERAL 
-    stackMapTableEntry+                         -> ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry+)
+    stackMapTableEntry+                         -> ^(SMHEADER IDENTIFIER ASSIGN INTLITERAL) ^(SMENTRY stackMapTableEntry)+
   ;
 stackMapTableEntry
   : IDENTIFIER ASSIGN stackMapTableEntryValue   -> ^(ASSIGN IDENTIFIER stackMapTableEntryValue)
@@ -589,7 +590,7 @@ typeDeclSpecifier
   : typeName typeArguments?                     -> ^(typeName ^(TYPEARGS typeArguments?))
   ;
 typeName
-  : id=identifier                     {System.out.println("Id: '"+$id.text+"'");}          -> QualifiedType[$id.text] 
+  : id=identifier                               -> QualifiedType[id.getText()] 
   | QualifiedType
   ;
 typeArguments
@@ -638,7 +639,7 @@ bytecodeTypeDeclSpecifier
   : bytecodeTypeName bytecodeTypeArguments?                     -> bytecodeTypeName ^(TYPEARGS bytecodeTypeArguments?)
   ;
 bytecodeTypeName
-  : id=identifier                                               -> INTERNALTYPE[$id.text]
+  : id=identifier                                               -> INTERNALTYPE[id.getText()]
   | INTERNALTYPE
   ;
 bytecodeTypeArguments
@@ -677,7 +678,7 @@ simpleBytecodeReferenceType
   ;
 simpleBytecodeReferenceTypeName
   : INTERNALTYPE
-  | id=IDENTIFIER                                             -> INTERNALTYPE[$id.text] 
+  | id=IDENTIFIER                                                -> INTERNALTYPE[$id]
   ;
 simpleBytecodeTypeArguments
   : LESST simpleBytecodeTypeArgumentList LARGET               -> simpleBytecodeTypeArgumentList
@@ -696,11 +697,23 @@ simpleBytecodeTypeArgument
 // Simple types
 //*******************************/
 
-identifier: IDENTIFIER | BaseType | VoidType | Constant_type;
+identifier
+  : IDENTIFIER 
+  | v1=BaseType     -> IDENTIFIER[$v1]
+  | v2=VoidType     -> IDENTIFIER[$v2]
+  | v3=Constant_type  -> IDENTIFIER[$v3]
+  ;
 
 keywordAggregate
-  : identifier | primitiveType
-  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER | NATIVE
+  : identifier 
+  | v1=primitiveType  -> IDENTIFIER[v1.getText()]
+  | v2=EXTENDS    -> IDENTIFIER[$v2]
+  | v3=IMPLEMENTS   -> IDENTIFIER[$v3]
+  | v4=DEFAULT    -> IDENTIFIER[$v4]
+  | v5=CLASS      -> IDENTIFIER[$v5]
+  | v6=THROWS     -> IDENTIFIER[$v6]
+  | v7=SUPER    -> IDENTIFIER[$v7]
+  | v8=NATIVE   -> IDENTIFIER[$v8]
   ;
 
 primitiveType
