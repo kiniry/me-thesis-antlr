@@ -15,19 +15,20 @@ options {
 //  Class files 
 //*******************************/
 
-program : class_file*;
+program : (s+=class_file)*  ->  prog(cs={$s})
+  ;
 
 class_file
-  : ^(CLASSFILE ^(CFHEADER class_file_header) classDefinition
-  )
+  : ^(CLASSFILE ^(CFHEADER ch=class_file_header) cd=classDefinition)
+          ->  classFile(header={$ch.st},body={$cd.st})
   ;
   
 class_file_header
-  : (class_file_info
-  | modified_file_info
-  | checksum_file_info
-  | compiled_file_info
-  )*
+  : a=class_file_info
+  b=modified_file_info
+    c=checksum_file_info
+    d=compiled_file_info  ->  classFileHeader(f={$a.st},s={$b.st},t={$c.st},q={$d.st})
+  
   ;
 class_file_info
   : ^(IDENTIFIER WINDOWSPATH)   ->  classFileInfo(desc={$IDENTIFIER.text}, path={$WINDOWSPATH.text})
@@ -53,103 +54,115 @@ compiled_file_info
 //*******************************/
 
 classDefinition
-  : ^(CLASSDECL  ^(VMODIFIER cvm=class_visual_modifier?) ^(MODIFIER cm=class_modifier*) name=typeName ^(TPARAMETERS typeParams=typeParameters?) ^(CEXTENDS ex=typeList?) ^(CIMPLEMENTS impl=typeList?)
-                ^(UNITHEADER inf=type_info)
+  : ^(CLASSDECL  ^(VMODIFIER cvm=class_visual_modifier?) ^(MODIFIER (cm+=class_modifier)*) n=typeName ^(TPARAMETERS typeParams=typeParameters?) ^(CEXTENDS ex=typeList?) ^(CIMPLEMENTS impl=typeList?)
+                ^(UNITHEADER inf=type_info1)
                 ^(CPOOL c=constant_pool)
                 ^(UNITBODY bodyPrint=classBody?)
-                )   ->  classDecl(vm={$cvm.st}, m={$cm.st}, name={$name.st}, typeParams={$typeParams.st}, ext={$ex.st}, impl={$impl.st},
-                      info={$inf.st},
-                      cp={$c.st},
-                      body={$bodyPrint.st}
-                      )
-  ; 
+                ) ->    classDecl(vm={$cvm.st}, m={$cm}, cn={$n.st}, typeParams={$typeParams.st}, ext={$ex.st}, impl={$impl.st},
+                          info={$inf.st},
+                          cp={$c.st},
+                          body={$bodyPrint.st}
+                          )
+  ;
     
 class_visual_modifier
-  : PUBLIC      -> visualModifier(v={$PUBLIC.text})
+  : PUBLIC      -> noformat(f={$PUBLIC.text})
   ;
     
 class_modifier
-  : ABSTRACT      -> modifier(v={$ABSTRACT.text})
-  | FINAL     -> modifier(v={$FINAL.text})
-  | INTERFACE     -> modifier(v={$INTERFACE.text})
-  | CLASS     -> modifier(v={$CLASS.text})
+  : ABSTRACT      -> noformat(f={$ABSTRACT.text})
+  | FINAL     -> noformat(f={$FINAL.text})
+  | INTERFACE     -> noformat(f={$INTERFACE.text})
+  | CLASS     -> noformat(f={$CLASS.text})
   ;
 
 //*******************************/
 //  type header
 //*******************************/
+type_info1
+  : (s+=type_info2)+    -> nlSeparatedList(ls={$s})
+  ;
 
-type_info
-  : (sourcefile_info
-  | minor_major_version_info
-  | flags
-  | scalaSig_info 
-  | runtimeVisibleAnnotations_info
-  | innerclass_info
-  | enclosingMethod
-  | signature_info_addition
-  | deprecated
-  | synthetic
-  | scala_info)+
-  ;//??
+type_info2
+  : s1=sourcefile_info      -> noformat(f={$s1.st})
+  | s2=minor_major_version_info   -> noformat(f={$s2.st})
+  | s3=flags        -> noformat(f={$s3.st})
+  | s4=scalaSig_info      -> noformat(f={$s4.st})
+  | s5=runtimeVisibleAnnotations_info -> noformat(f={$s5.st})
+  | s6=innerclass_info      -> noformat(f={$s6.st})
+  | s7=enclosingMethod      -> noformat(f={$s7.st})
+  | s8=signature_info_addition    -> noformat(f={$s8.st})
+  | s9=deprecated     -> noformat(f={$s9.st})
+  | s10=synthetic     -> noformat(f={$s10.st})
+  | s11=scala_info      -> noformat(f={$s11.st})
+  ;
 
 synthetic
-  : ^(Synthetic BOOLEANLITERAL)
+  : ^(Synthetic BOOLEANLITERAL) -> synt(b={$BOOLEANLITERAL.text})
   ;
 
 deprecated
-  : ^(Deprecated BOOLEANLITERAL)
+  : ^(Deprecated BOOLEANLITERAL)-> depr(b={$BOOLEANLITERAL.text})
   ;
 
 enclosingMethod
-  : ^(EnclosingMethod CPINDEX DOT CPINDEX ?)
+  : ^(EnclosingMethod c1=CPINDEX DOT c2=CPINDEX)
+          -> encl(cpin1={$c1.text}, cpin2={$c2.text})
   ;
 
 sourcefile_info
   : ^(SourceFile STRINGLITERAL)
+            -> srcFile(file={$STRINGLITERAL.text})
   ;
 
 scalaSig_info
   : ^(ScalaSig
-            IDENTIFIER ASSIGN INTLITERAL  
-            INTLITERAL INTLITERAL INTLITERAL)
+            IDENTIFIER ASSIGN i1=INTLITERAL  
+            i2=INTLITERAL i3=INTLITERAL i4=INTLITERAL)
+                    -> scalaSig(id1={$IDENTIFIER.text}, int1={$i1.text}, int2={$i2.text}, int3={$i3.text}, int4={$i4.text})
   ;
 
 scala_info
   : ^(Scala IDENTIFIER ASSIGN INTLITERAL)
+                      -> scala(id1={$IDENTIFIER.text}, int1={$INTLITERAL.text})
   ;
    
 signature_info_addition
-  : ^(Signature CPINDEX?)
+  : ^(Signature CPINDEX?) -> sign(v={$CPINDEX.text})
   ;
 
 innerclass_info
-  : ^(InnerClasses innerclass_info_line+)
+  : ^(InnerClasses (s+=innerclass_info_line)+)
+                        -> innerC(l={$s})
   ;
-
+  
 innerclass_info_line
-  :  ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) innerclass_info_data
+  :  ^(VMODIFIER s=method_visual_modifier?) ^(MODIFIER (m+=method_modifier)*) i=innerclass_info_data
+          -> innerCIL(vm={$s.st},m={$m},iid={$i.st})
   ;
 
 innerclass_info_data
-  : ^(CPINDEX ^(INFODATA1 (ASSIGN CPINDEX)?) ^(INFODATA2 (IDENTIFIER CPINDEX)?))
+  : ^(cp1=CPINDEX ^(INFODATA1 (ASSIGN cp2=CPINDEX)?) ^(INFODATA2 (IDENTIFIER cp3=CPINDEX)?))
+          -> innerCID(f={$cp1.text},s={$cp2.text},t={$cp3.text})
   ;
     
 minor_major_version_info
-  : ^(IDENTIFIER IDENTIFIER COLON INTLITERAL)
+  : ^(id1=IDENTIFIER id2=IDENTIFIER COLON INTLITERAL)
+          -> version(f={$id1.text},s={$id2.text},t={$INTLITERAL.text})
   ;
       
 flags
-  : ^(Flag accessFlagList?)
+  : ^(Flag l=accessFlagList)  -> noformat2(f={$Flag.text},s={$l.st})
   ;
   
 accessFlagList
-  : flagType+
+  : (s+=flagType)*    -> flags(ls={$s})
   ;
 
 flagType
-  : id=IDENTIFIER
-  | INTLITERAL // strictfp -> 0x0800 could not be convert by javap
+  : IDENTIFIER      -> noformat(f={$IDENTIFIER.text})
+  | INTLITERAL      -> noformat(f={$INTLITERAL.text})
+  // strictfp -> 0x0800 could not be convert by javap
   ;
   
 //*******************************/
@@ -202,11 +215,13 @@ runtimeInvisibleAnnotationsItem
 //*******************************/
 
 constant_pool
-  : ^(IDENTIFIER IDENTIFIER contant_pool_line*)
+  : ^(id1=IDENTIFIER id2=IDENTIFIER (s+=contant_pool_line)*)
+          -> cpool(f={$id1.text},s={$id2.text},t={$s})
   ;
   
 contant_pool_line
-  : ^(ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE)
+  : ^(ASSIGN cp1=CPINDEX cta=CONSTANT_TYPE_ASSIGNABLE)
+            -> cpoolline(f={$cp1.text},s={$cta.text})
   ;
 
 //*******************************/
@@ -214,14 +229,14 @@ contant_pool_line
 //*******************************/
   
 classBody
-  : classBodyEntryDecl+
+  : (s+=classBodyEntryDecl)+  -> nlSeparatedList(ls={$s})
   ;
   
 classBodyEntryDecl
-  : methodDefinition
-  | ctorDefinition
-  | fieldDefinition
-  | staticCtorDefinition
+  : s1=methodDefinition   -> noformat(f={$s1.st})
+  | s2=ctorDefinition   -> noformat(f={$s2.st})
+  | s3=fieldDefinition    -> noformat(f={$s3.st})
+  | s4=staticCtorDefinition -> noformat(f={$s4.st})
   ;
 
 //*******************************/
@@ -229,32 +244,41 @@ classBodyEntryDecl
 //*******************************/
 
 fieldDefinition
-  : ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME keywordAggregate) ^(FIELDVALUE literals?)
-            ^(UNITHEADER fieldInfo)
-            ^(UNITATTR fieldAdditionalInfo*)
+  : ^(FIELDDECL ^(VMODIFIER fvm=field_visual_modifier?) ^(MODIFIER (fm+=field_modifier)*) ^(RETVALUE ft=type) ^(UNITNAME fn=keywordAggregate) ^(FIELDVALUE lit=literals?)
+            ^(UNITHEADER inf=fieldInfo)
+            ^(UNITATTR ainfo=fieldAdditionalInfo*)
             )
+            ->    fieldDecl(vm={$fvm.st}, m={$fm}, t={$ft.st}, n={$fn.st}, v={$lit.st},
+                          info={$inf.st},
+                          xinf={$ainfo.st}
+                          )
   ;
 
 fieldInfo
-  : ^(Signature bytecodeType) flags
+  : ^(sig=Signature s1=bytecodeType) s2=flags -> fieldInf(f={$sig.text}, s={$s1.st}, t={$s2.st})
   ;
 
 fieldAdditionalInfo
-  : ^(Constant primitiveType literals)
-  | ^(Constant CONSTANT_TYPE_ASSIGNABLE)
-  | ^(Signature CPINDEX)
-  | ^(Deprecated BOOLEANLITERAL)
-  | ^(Synthetic BOOLEANLITERAL)
-  | runtimeVisibleAnnotations_info
-  | runtimeInvisibleAnnotations
+  : ^(Constant pt=primitiveType l=literals) -> noformat3(f={$Constant.text},s={$pt.st},t={$l.st})
+  | ^(Constant CONSTANT_TYPE_ASSIGNABLE)  -> noformat2(f={$Constant.text},s={$CONSTANT_TYPE_ASSIGNABLE.text})
+  | ^(Signature CPINDEX)      -> noformat2(f={$Signature.text},s={$CPINDEX.text})
+  | ^(Deprecated BOOLEANLITERAL)    -> noformat2(f={$Deprecated.text},s={$BOOLEANLITERAL.text})
+  | ^(Synthetic BOOLEANLITERAL)     -> noformat2(f={$Synthetic.text},s={$BOOLEANLITERAL.text})
+  | s=runtimeVisibleAnnotations_info    -> noformat(f={$s.st})
+  | s=runtimeInvisibleAnnotations   -> noformat(f={$s.st})
   ;
 
 field_visual_modifier
-  : PUBLIC  | PRIVATE | PROTECTED
+  : PUBLIC        -> noformat(f={$PUBLIC.text})
+  | PRIVATE       -> noformat(f={$PRIVATE.text})
+  | PROTECTED     -> noformat(f={$PROTECTED.text})
   ;
     
 field_modifier
-  : FINAL | STATIC  | TRANSIENT | VOLATILE
+  : FINAL       -> noformat(f={$FINAL.text})
+  | STATIC        -> noformat(f={$STATIC.text})
+  | TRANSIENT       -> noformat(f={$TRANSIENT.text})
+  | VOLATILE      -> noformat(f={$VOLATILE.text})
   ;
   
 //*******************************/
@@ -499,49 +523,48 @@ stackMapTableTypeObject
 // Normal java types
 //*******************************/
 typeList
-  : type+
+  : (s+=type)+        -> commaSeparatedList(ls={$s})
   ;
 type
-  : combinedJavaType ^(ARRAYBRACKS (LBRACK RBRACK)*)
+  : s=combinedJavaType ^(ARRAYBRACKS ((b+=LBRACK RBRACK))*)
+            -> type(body={s.st}, ext={$b})
   ;
 combinedJavaType
-  : primitiveType
-  | referenceType
+  : s1=primitiveType      -> noformat(f={$s1.st})
+  | s2=referenceType      -> noformat(f={$s2.st})
   ;
 referenceType
-  : ^(UNITNAME typeDeclSpecifier+)
+  : ^(UNITNAME (s+=typeDeclSpecifier)+) -> dotSeparatedList(ls={$s})
   ;
 typeDeclSpecifier
-  : ^(typeName ^(TYPEARGS typeArguments?))
+  : ^(s1=typeName ^(TYPEARGS s2=typeArguments?))
+            -> noformat2(f={$s1.st}, s={$s2.st})
   ;
 typeName
-  : QualifiedType
+  : QualifiedType     -> noformat(f={$QualifiedType.text})
   ;
 typeArguments
-  : typeArgumentList
-  ;
-typeArgumentList 
-  : typeArgument+
+  : (s+=typeArgument)+      -> genericParam(ls={$s})
   ;
 typeArgument
-  : type
-  | wildcard
+  : s1=type       -> noformat(f={$s1.st})
+  | s2=wildcard       -> noformat(f={$s2.st})
   ;
 wildcard
-  : ^(QUESTION wildcardBounds?)
+  : ^(QUESTION s1=wildcardBounds?)  -> wildT(f={$s1.st})
   ;
 wildcardBounds
-  : ^(EXTENDS type)
-  | ^(SUPER type)
+  : ^(EXTENDS s1=type)      -> wildBoundsT(f={$EXTENDS.text}, f={$s1.st})
+  | ^(SUPER s2=type)      -> wildBoundsT(f={$SUPER.text}, f={$s2.st})
   ;
 typeParameters
-  : typeParameter+
+  : (s+=typeParameter)+     -> genericParam(ls={$s})
   ;
 typeParameter
-  : ^(identifier typeBound?)
+  : ^(id=identifier tb=typeBound?)  -> noformat2(f={$id.st}, s={$tb.st})
   ;
 typeBound
-  : ^(EXTENDS referenceType+)
+  : ^(EXTENDS (s+=referenceType)+)  -> tBound(f={$EXTENDS.text}, ls={$s})
   ;
 //*******************************/
 // Generic return Type description
