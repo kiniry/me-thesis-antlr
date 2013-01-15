@@ -43,11 +43,10 @@ class_file
   : class_file_header classDefinition -> ^(CLASSFILE ^(CFHEADER class_file_header) classDefinition);
   
 class_file_header
-  : (class_file_info
-  | modified_file_info
-  | checksum_file_info
-  | compiled_file_info
-  )*
+  : class_file_info
+    modified_file_info
+    checksum_file_info
+    compiled_file_info
   ;
 class_file_info
   : IDENTIFIER WINDOWSPATH -> ^(IDENTIFIER WINDOWSPATH)

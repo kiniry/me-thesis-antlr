@@ -1,5 +1,9 @@
 package bytecodeDeobfuscation;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -7,6 +11,9 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.antlr.stringtemplate.StringTemplate;
+import org.antlr.stringtemplate.StringTemplateGroup;
+import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
 import bytecodeDeobfuscation.TemplateTestParser.rule1_return;
 
@@ -17,7 +24,12 @@ public class TemplateTestRunner {
 	 */
 	public static void main(String[] args) {
 		try {
-			CharStream input =  new ANTLRStringStream("foo.bar.2");
+
+			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/Repository/AntlrWorksProj/TemplateTest.stg");
+			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
+			groupFile.close();
+			
+			CharStream input =  new ANTLRStringStream("foo 56.bar 1.2 234243234. TOKEN hah hha hahhah hahaha");
 			
 			TemplateTestLexer lexer = new TemplateTestLexer(input);
 			TokenStream tokenStream = new CommonTokenStream(lexer);
@@ -31,10 +43,23 @@ public class TemplateTestRunner {
 			// AST nodes have payloads that point into token stream 
 			nodes.setTokenStream(tokenStream);
 			// Create a tree Walker attached to the nodes stream 
-			TemplateTestWalker walker = new TemplateTestWalker(nodes);
+			TemplateTestPrinter walker = new TemplateTestPrinter(nodes);
+			walker.setTemplateLib(templates);
 			// Invoke the start symbol, rule program
-			walker.rule1();
+			TemplateTestPrinter.rule1_return ret2 = walker.rule1();
+
+			StringTemplate output = (StringTemplate)ret2.getTemplate();
+			System.out.println(output.toString());
+			
+			
+			
 		} catch (RecognitionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	

@@ -1,8 +1,7 @@
-tree grammar JVMWalker;
+tree grammar JVMPrettyPrinter;
 
 options {
-  language = Java;
-  output = AST;
+  output = template;
   tokenVocab = JVM;
   ASTLabelType = CommonTree;
 }
@@ -24,25 +23,29 @@ class_file
   ;
   
 class_file_header
-  : class_file_info
-   modified_file_info
-   checksum_file_info
-   compiled_file_info
+  : (class_file_info
+  | modified_file_info
+  | checksum_file_info
+  | compiled_file_info
+  )*
   ;
 class_file_info
-  : ^(IDENTIFIER WINDOWSPATH)
+  : ^(IDENTIFIER WINDOWSPATH)   ->  classFileInfo(desc={$IDENTIFIER.text}, path={$WINDOWSPATH.text})
   ;
   
 modified_file_info
-  : ^(IDENTIFIER IDENTIFIER DATE IDENTIFIER INTLITERAL IDENTIFIER)
+  : ^(id1=IDENTIFIER id2=IDENTIFIER date=DATE id3=IDENTIFIER int1=INTLITERAL id4=IDENTIFIER)
+          ->  modifiedFileInfo(id1={$id1.text},id2={$id2.text},date={$date.text},id3={$id3.text},int1={$int1.text},id4={$id4.text})
   ;
   
 checksum_file_info
   : ^(IDENTIFIER IDENTIFIER HexDigits)
+          ->  checksumFileInfo(hexNumber={$HexDigits.text})
   ;
     
 compiled_file_info
   : ^(IDENTIFIER IDENTIFIER STRINGLITERAL)
+            ->  compiledFileInfo(fileName={$STRINGLITERAL.text})
   ;
 
 //*******************************/
@@ -50,19 +53,26 @@ compiled_file_info
 //*******************************/
 
 classDefinition
-  : ^(CLASSDECL  ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) t=typeName ^(TPARAMETERS typeParameters?) ^(CEXTENDS typeList?) ^(CIMPLEMENTS typeList?)
-                ^(UNITHEADER type_info)
-                ^(CPOOL constant_pool)
-                ^(UNITBODY classBody?)
-                ) {System.out.println($t.text);}
-  ;
+  : ^(CLASSDECL  ^(VMODIFIER cvm=class_visual_modifier?) ^(MODIFIER cm=class_modifier*) name=typeName ^(TPARAMETERS typeParams=typeParameters?) ^(CEXTENDS ex=typeList?) ^(CIMPLEMENTS impl=typeList?)
+                ^(UNITHEADER inf=type_info)
+                ^(CPOOL c=constant_pool)
+                ^(UNITBODY bodyPrint=classBody?)
+                )   ->  classDecl(vm={$cvm.st}, m={$cm.st}, name={$name.st}, typeParams={$typeParams.st}, ext={$ex.st}, impl={$impl.st},
+                      info={$inf.st},
+                      cp={$c.st},
+                      body={$bodyPrint.st}
+                      )
+  ; 
     
 class_visual_modifier
-  : PUBLIC
+  : PUBLIC      -> visualModifier(v={$PUBLIC.text})
   ;
     
 class_modifier
-  : ABSTRACT | FINAL | INTERFACE | CLASS
+  : ABSTRACT      -> modifier(v={$ABSTRACT.text})
+  | FINAL     -> modifier(v={$FINAL.text})
+  | INTERFACE     -> modifier(v={$INTERFACE.text})
+  | CLASS     -> modifier(v={$CLASS.text})
   ;
 
 //*******************************/
@@ -116,7 +126,7 @@ signature_info_addition
 innerclass_info
   : ^(InnerClasses innerclass_info_line+)
   ;
-  
+
 innerclass_info_line
   :  ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) innerclass_info_data
   ;
@@ -608,10 +618,11 @@ simpleBytecodeTypeArgument
 // Simple types
 //*******************************/
 
-identifier: IDENTIFIER;
+identifier: IDENTIFIER | BaseType | VoidType | Constant_type;
 
 keywordAggregate
-  : IDENTIFIER
+  : identifier | primitiveType
+  | EXTENDS | IMPLEMENTS  | DEFAULT  | CLASS  | THROWS  | SUPER | NATIVE
   ;
 
 primitiveType
@@ -654,4 +665,5 @@ literals
   ;
 
 pc
-  : INTLITERAL COLON;
+  : INTLITERAL COLON
+  ;
