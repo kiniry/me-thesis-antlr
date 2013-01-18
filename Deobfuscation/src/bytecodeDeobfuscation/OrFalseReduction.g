@@ -1,4 +1,4 @@
-tree grammar JVMWalker;
+tree grammar OrFalseReduction;
 
 options {
   language = Java;
@@ -10,6 +10,50 @@ options {
 
 @header {
   package bytecodeDeobfuscation;
+  import java.util.HashMap;
+}
+
+@members{
+	public HashMap<CommonTree, ArrayList<CodeLine>> codeblocks = new HashMap<CommonTree, ArrayList<CodeLine>>();
+	
+	public class CodeLine {
+	  public int pc;
+	  public CommonTree token;
+	  public ArrayList<CommonTree> operands = new ArrayList<CommonTree>();
+	  public CodeLine(CommonTree t, int pc)
+	  { 
+	    this.token=t; this.pc=pc;
+	  }
+	  
+	  public CodeLine(CommonTree t, int pc, CommonTree op1)
+	  { 
+	    this.token=t; this.pc=pc;
+	    if(op1 != null)
+	    	operands.add(op1);
+	  }
+	  	  
+	  public CodeLine(CommonTree t, int pc, ArrayList<CommonTree> ops)
+	  { 
+	    this.token=t; this.pc=pc;
+	    this.operands = ops;
+	  }
+	  	  
+	  public CodeLine(CommonTree t, int pc, CommonTree op1, CommonTree op2)
+	  { 
+	    this.token=t; this.pc=pc;
+	    if(op1 != null)
+	    	operands.add(op1);
+	    if(op2 != null)
+	    	operands.add(op2);
+	  }
+	  
+	  public void AddOp(CommonTree op) {
+	    operands.add(op);
+	  }	  
+	  public String toString() {
+	    return (token!=null?token.getText():"")+pc;
+	  }
+	}
 }
 
 //*******************************/
@@ -23,8 +67,8 @@ class_file
   )
   ;
   
-  class_file_header
-    : class_file_info
+class_file_header
+  : class_file_info
     modified_file_info
     checksum_file_info
     compiled_file_info?
@@ -54,7 +98,7 @@ classDefinition
                 ^(UNITHEADER type_info)
                 ^(CPOOL constant_pool)
                 ^(UNITBODY classBody?)
-                )
+                ) {System.out.println($t.text);}
   ;
     
 class_visual_modifier
@@ -163,7 +207,7 @@ annotationValue
   | AnnotationAssign
   ;
 brackedAnnotationAssign
-  : ^(ANNOTATIONBRACKETS brackedAnnotationAssignList?)
+  : brackedAnnotationAssignList?
   ;
 brackedAnnotationAssignList
   : brackedAnnotationAssignValue+
@@ -338,26 +382,51 @@ bodyExtension
   | ^(StackMap stackMapTypeTable)
   )
   ;
-
+  
 codeBlock
+scope{
+	ArrayList<CodeLine> instructions;
+	ArrayList<CommonTree> operands;
+	CodeLine cLine;
+}
+@init{
+$codeBlock::instructions = new ArrayList<CodeLine>();
+}
   : ^(VARINFO variables) ^(INSTRUCTION instructionSet* codeBlockEnd)
+  	{codeblocks.put($INSTRUCTION, $codeBlock::instructions);}
   ;
 
 instructionSet
-  : codeLine | javaSwitch
+@init{
+$codeBlock::operands = new ArrayList<CommonTree>();
+}
+  : codeLine 
+  | javaSwitch
   ;
 
 codeLine
-  : ^(IDENTIFIER pc ^(OPERAND operand1?) ^(OPERAND INTLITERAL?))
+  : ^(IDENTIFIER pc ^(OPERAND op1=operand1?) ^(OPERAND INTLITERAL?)) 
+  {
+      	$codeBlock::cLine = new CodeLine($IDENTIFIER, $pc.value, $codeBlock::operands);
+  	$codeBlock::instructions.add($codeBlock::cLine);
+  }
   ;
-
+  
 codeBlockEnd
-  : ^(IDENTIFIER pc INTLITERAL?)
+@init{
+$codeBlock::operands = new ArrayList<CommonTree>();
+}
+  : ^(IDENTIFIER pc INTLITERAL?) 
+  {
+    	$codeBlock::cLine = new CodeLine($IDENTIFIER, $pc.value);
+    	$codeBlock::cLine.AddOp($INTLITERAL);
+  	$codeBlock::instructions.add($codeBlock::cLine);
+  }
   ;
   
 operand1
   : CPINDEX 
-  | INTLITERAL
+  | INTLITERAL	{$codeBlock::operands.add($INTLITERAL);}
   | primitiveType
   ;
 
@@ -369,12 +438,16 @@ variable
   : ^(ASSIGN IDENTIFIER INTLITERAL)
   ;
 
-javaSwitch  
+javaSwitch
   : ^(SWITCH ^(IDENTIFIER pc switchLine* switchDefaultLine))
+  {
+  	$codeBlock::cLine = new CodeLine($IDENTIFIER, $pc.value, $codeBlock::operands);
+  	$codeBlock::instructions.add($codeBlock::cLine);
+  }
   ;
   
 switchLine
-  : pc INTLITERAL 
+  : pc INTLITERAL {$codeBlock::operands.add($INTLITERAL);}
   ;
 
 switchDefaultLine
@@ -653,5 +726,6 @@ literals
   | MINUS? IDENTIFIER
   ;
 
-pc
-  : INTLITERAL COLON;
+pc returns [int value]
+  : INTLITERAL COLON {$value = Integer.parseInt($INTLITERAL.text);}
+  ;

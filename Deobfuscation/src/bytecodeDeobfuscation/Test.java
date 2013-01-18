@@ -1,6 +1,7 @@
 package bytecodeDeobfuscation;
 
 import org.antlr.runtime.tree.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,8 +15,11 @@ import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.Token;
 import org.antlr.runtime.TokenStream;
+import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
+import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
 import bytecodeDeobfuscation.TreeConstructorParser.rule1_return;
 
@@ -158,16 +162,63 @@ public class Test {
 	}
 
 	private static void RunTest(String filetext) {
+		
 		CharStream charStream = new ANTLRStringStream(filetext);
 		JVMLexer lexer = new JVMLexer(charStream);
 		TokenStream tokenStream = new CommonTokenStream(lexer);
 		JVMParser parser = new JVMParser(tokenStream);
+		
 		try {
-			parser.program();
+			JVMParser.program_return ret = parser.program();
+
+			CommonTree theTree = (CommonTree)ret.getTree();
+			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree); 
+			nodes.setTokenStream(tokenStream); 
+			JVMWalker walker = new JVMWalker(nodes);
+			JVMWalker.program_return ret2 = walker.program();
+			
+
+			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/ThesisDeobfuscator/Deobfuscation/src/bytecodeDeobfuscation/JVM.stg");
+			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
+			theTree = (CommonTree)ret2.getTree();
+			nodes = new CommonTreeNodeStream(theTree);
+			nodes.setTokenStream(tokenStream);
+			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes);
+			printer.setTemplateLib(templates);
+			JVMPrettyPrinter.program_return ret3 = printer.program();
+			StringTemplate output = (StringTemplate)ret3.getTemplate();
+			System.out.println(output.toString());
+			String text = output.toString();
+			text = JavapOutputMassaging.massage(text);
+			
+
+			CharStream charStream2 = new ANTLRStringStream(text);
+			JVMLexer lexer2 = new JVMLexer(charStream);
+			TokenStream tokenStream2 = new CommonTokenStream(lexer);
+			CompareStreams(tokenStream, tokenStream2);
+			JVMParser parser2 = new JVMParser(tokenStream);
+			parser2.program();
 		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static boolean CompareStreams(TokenStream s1, TokenStream s2){
+		if(s1.size() != s2.size()){
+			System.out.println("Not the same amount of tokens in both streams!");
+			return false;
+		}
+		for(int i = 0; i < s1.size(); i++){
+			Token token1 = s1.get(i);
+			Token token2 = s2.get(i);
+			if(!token1.getText().equals(token2.getText())){
+				System.out.println("Tokens1: " + token1.getText() + " token2: " + token2.getText());
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**

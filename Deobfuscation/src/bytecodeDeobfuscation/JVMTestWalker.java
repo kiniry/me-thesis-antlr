@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Stack;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
@@ -54,14 +56,28 @@ public class JVMTestWalker {
 			JVMParser parser = new JVMParser(tokenStream);
 			program_return ret = parser.program();
 			
+			
+			
 			/*
 			 * Tree walker part		
 			 */
 			CommonTree theTree = (CommonTree)ret.getTree();
+//			theTree = new OrFalseDeobfuscation().FindSubtreeToRemove(theTree);
+
+			// Walk resulting tree; create treenode stream first
+			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree);
+			// AST nodes have payloads that point into token stream 
+			nodes.setTokenStream(tokenStream);
+			// Create a tree Walker attached to the nodes stream
+			OrFalseReduction orFalseWalker = new OrFalseReduction(nodes);
+			OrFalseReduction.program_return re = orFalseWalker.program();
+			theTree = new OrFalseDeobfuscation().ChangeTree(orFalseWalker.codeblocks);
+			
+			
 //			System.out.println("The walked tree:");
 //			System.out.println(theTree.toStringTree());
 			// Walk resulting tree; create treenode stream first
-			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree);
+			nodes = new CommonTreeNodeStream(theTree);
 			// AST nodes have payloads that point into token stream 
 			nodes.setTokenStream(tokenStream);
 			// Create a tree Walker attached to the nodes stream 
