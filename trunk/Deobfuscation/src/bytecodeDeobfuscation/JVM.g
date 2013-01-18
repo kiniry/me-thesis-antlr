@@ -23,6 +23,8 @@ TYPEARGS;
 ARRAYBRACKS;
 INFODATA1; INFODATA2;
 STANDINTOKEN;
+SMTTYPES;
+ANNOTATIONBRACKETS;
 }
 
 @header {
@@ -43,11 +45,10 @@ class_file
   : class_file_header classDefinition -> ^(CLASSFILE ^(CFHEADER class_file_header) classDefinition);
   
 class_file_header
-  : (class_file_info
-  | modified_file_info
-  | checksum_file_info
-  | compiled_file_info
-  )*
+  : class_file_info
+    modified_file_info
+    checksum_file_info
+    compiled_file_info?
   ;
 class_file_info
   : IDENTIFIER WINDOWSPATH -> ^(IDENTIFIER WINDOWSPATH)
@@ -156,8 +157,8 @@ innerclass_info_line
   ;
 
 innerclass_info_data
-  : CPINDEX (ASSIGN CPINDEX)? (IDENTIFIER CPINDEX)?
-                                           -> ^(CPINDEX ^(INFODATA1 (ASSIGN CPINDEX)?) ^(INFODATA2 (IDENTIFIER CPINDEX)?))
+  : CPINDEX (ASSIGN cp1=CPINDEX)? (IDENTIFIER cp2=CPINDEX)?
+                                           -> ^(CPINDEX ^(INFODATA1 (ASSIGN $cp1)?) ^(INFODATA2 (IDENTIFIER $cp2)?))
   ;
     
 minor_major_version_info
@@ -198,7 +199,7 @@ annotationValue
   | AnnotationAssign
   ;
 brackedAnnotationAssign
-  : LBRACK brackedAnnotationAssignList? RBRACK                            -> brackedAnnotationAssignList?
+  : LBRACK brackedAnnotationAssignList? RBRACK                            -> ^(ANNOTATIONBRACKETS brackedAnnotationAssignList?)
   ;
 brackedAnnotationAssignList
   : brackedAnnotationAssignValue (COMMA brackedAnnotationAssignValue)*    -> brackedAnnotationAssignValue+
@@ -253,14 +254,6 @@ classBodyEntryDecl
   | (fieldDefinition) => fieldDefinition
   | staticCtorDefinition
   ;
-//  ( 
-////    fieldDefinition
-////    |
-//    methodDefinition
-//  | ctorDefinition
-//  | fieldDefinition
-//  | staticCtorDefinition
-//  )+
 
 //*******************************/
 //        Field definition       /
@@ -550,7 +543,7 @@ stackMapTableTypesContainer
   ;
   
 stackMapTableTypes
-  : stackMapTableType? (COMMA stackMapTableType)* -> stackMapTableType*
+  : stackMapTableType? (COMMA stackMapTableType)* -> ^(SMTTYPES stackMapTableType*)
   ;
 
 stackMapTableType

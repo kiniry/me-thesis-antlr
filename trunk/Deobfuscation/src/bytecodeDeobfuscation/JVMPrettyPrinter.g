@@ -27,7 +27,7 @@ class_file_header
   : a=class_file_info
   b=modified_file_info
     c=checksum_file_info
-    d=compiled_file_info  ->  classFileHeader(f={$a.st},s={$b.st},t={$c.st},q={$d.st})
+    d=compiled_file_info?  ->  classFileHeader(f={$a.st},s={$b.st},t={$c.st},q={$d.st})
   
   ;
 class_file_info
