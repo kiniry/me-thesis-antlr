@@ -202,9 +202,6 @@ $f$ $s$$\t$$t$$if(q)$, $q$$endif$
 methodSign(in, out)::=<<
 Signature: ($list(in)$)$out$
 >>
-default(f)::=<<
-Default: $f$
->>
 tBound(f,ls)::=<<
 $f$ $andSeparatedList(s)$
 >>
