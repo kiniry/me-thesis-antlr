@@ -162,13 +162,15 @@ public class Test {
 	}
 
 	private static void RunTest(String filetext) {
-		
-		CharStream charStream = new ANTLRStringStream(filetext);
-		JVMLexer lexer = new JVMLexer(charStream);
-		TokenStream tokenStream = new CommonTokenStream(lexer);
-		JVMParser parser = new JVMParser(tokenStream);
-		
 		try {
+			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/ThesisDeobfuscator/Deobfuscation/src/bytecodeDeobfuscation/JVM.stg");
+			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
+			groupFile.close();
+			
+			CharStream input = new ANTLRStringStream(filetext);
+			JVMLexer lexer = new JVMLexer(input);
+			TokenStream tokenStream = new CommonTokenStream(lexer);
+			JVMParser parser = new JVMParser(tokenStream);
 			JVMParser.program_return ret = parser.program();
 
 			CommonTree theTree = (CommonTree)ret.getTree();
@@ -178,29 +180,31 @@ public class Test {
 			JVMWalker.program_return ret2 = walker.program();
 			
 
-			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/ThesisDeobfuscator/Deobfuscation/src/bytecodeDeobfuscation/JVM.stg");
-			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
-			theTree = (CommonTree)ret2.getTree();
-			nodes = new CommonTreeNodeStream(theTree);
-			nodes.setTokenStream(tokenStream);
-			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes);
+			
+			CommonTree theTree2 = (CommonTree)ret.getTree();
+			CommonTreeNodeStream nodes2 = new CommonTreeNodeStream(theTree2);
+			nodes2.setTokenStream(tokenStream);
+			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes2);
 			printer.setTemplateLib(templates);
 			JVMPrettyPrinter.program_return ret3 = printer.program();
+			
 			StringTemplate output = (StringTemplate)ret3.getTemplate();
 			System.out.println(output.toString());
 			String text = output.toString();
 			text = JavapOutputMassaging.massage(text);
-			
-
-			CharStream charStream2 = new ANTLRStringStream(text);
-			JVMLexer lexer2 = new JVMLexer(charStream);
-			TokenStream tokenStream2 = new CommonTokenStream(lexer);
-			CompareStreams(tokenStream, tokenStream2);
-			JVMParser parser2 = new JVMParser(tokenStream);
-			parser2.program();
+//			
+//
+//			CharStream charStream2 = new ANTLRStringStream(text);
+//			JVMLexer lexer2 = new JVMLexer(charStream);
+//			TokenStream tokenStream2 = new CommonTokenStream(lexer);
+//			CompareStreams(tokenStream, tokenStream2);
+//			JVMParser parser2 = new JVMParser(tokenStream);
+//			parser2.program();
 		} catch (RecognitionException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

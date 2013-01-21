@@ -236,3 +236,26 @@ $a$=$b$ $c$=$d$
 $e$=$f$
 $g$=$h$
 >>
+runtimeAnnotations(f,ls)::=<<
+$f$
+  $nlSeparatedList(ls)$
+>>
+runtimeAnnotationItem(f,s,t)::=<<
+$f$ $s$[$t$]
+>>
+annotationAssign(f,s,t)::=<<
+$f$$s$$t$
+>>
+brackedAnnotationAssign(f)::=<<
+[$f$]
+>>
+brackedAnnotationAssignValue(f,s)::=<<
+$f$($s$)
+>>
+parameterVisibilityInfo(f,s,ls)::=<<
+$f$ $s$
+  $nlSeparatedList(ls)$
+>>
+runtimeInvisibleAnnotationsItem(f,s,t,q)::=<<
+$f$ $s$ $t$ $q$
+>>

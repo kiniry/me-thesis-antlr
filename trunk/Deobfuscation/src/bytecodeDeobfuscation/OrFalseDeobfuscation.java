@@ -47,7 +47,7 @@ public class OrFalseDeobfuscation {
 		for(int i = pcIndex; i < tree.getChildCount();i++){
 			CommonTree codeLine = (CommonTree)tree.getChild(i);
 			int pc = Integer.parseInt(codeLine.getChild(0).getText())-4;
-			Object o = adaptor.create(72, pc+"");
+			Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, pc+"");
 			codeLine.replaceChildren(0, 0, o);
 		}
 		ReplaceGotos(tree, threshold);
@@ -93,7 +93,7 @@ public class OrFalseDeobfuscation {
 			if(child.getText().equals("OPERAND") && child.getChildCount() > 0){
 				CommonTree childchild = (CommonTree)child.getChild(0);
 				int pc = Integer.parseInt(childchild.getText()) - 4;
-				Object o = adaptor.create(72, pc+"");
+				Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, pc+"");
 				child.replaceChildren(0, 0, o);
 			}
 		}
@@ -119,7 +119,7 @@ public class OrFalseDeobfuscation {
 	}
 	private void ChangeProgramCounter(OrFalseReduction.CodeLine line, int changeIndex){
 		if(changeIndex <= line.pc){
-			Object o = adaptor.create(72, line.pc-4+"");
+			Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, line.pc-4+"");
 			line.token.replaceChildren(0, 0, o);
 		}
 	}
@@ -128,7 +128,7 @@ public class OrFalseDeobfuscation {
 			for(CommonTree op : line.operands){
 				int pc = Integer.parseInt(op.getText());
 				if(changeIndex <= pc){
-					Object o = adaptor.create(72, pc-4+"");
+					Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, pc-4+"");
 					op.parent.replaceChildren(op.childIndex, op.childIndex, o);
 				}
 			}
