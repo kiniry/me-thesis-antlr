@@ -170,44 +170,55 @@ flagType
 //*******************************/
 
 runtimeVisibleAnnotations_info
-  : ^(RuntimeVisibleAnnotations runtimeVisibleAnnotationsItem+)
+  : ^(RuntimeVisibleAnnotations (s+=runtimeVisibleAnnotationsItem)+)
+  		-> runtimeAnnotations(f={$RuntimeVisibleAnnotations.text},ls={$s})
   ;
 runtimeVisibleAnnotationsItem
-  : ^(CPINDEX pc runtimeVisibleAnnotationAssignList?)
+  : ^(CPINDEX p=pc r=runtimeVisibleAnnotationAssignList?)
+    		-> runtimeAnnotationItem(f={$p.st},s={$CPINDEX.text},t={$r.st})
   ;
 runtimeVisibleAnnotationAssignList
-  : annotationAssign+
+  : (s+=annotationAssign)+	-> list(ls={$s})
   ;
 annotationAssign
-  : ^(ASSIGN CPINDEX annotationValue)
+  : ^(ASSIGN CPINDEX s=annotationValue)
+  				-> annotationAssign(f={$ASSIGN.text},s={$CPINDEX.text},t={$s.st})
   ;
 annotationValue
-  : brackedAnnotationAssign 
-  | AnnotationAssign
+  : brackedAnnotationAssign 	-> noformat(f={$brackedAnnotationAssign.st})
+  | AnnotationAssign		-> noformat(f={$AnnotationAssign.text})
   ;
 brackedAnnotationAssign
-  : brackedAnnotationAssignList?
+  : ^(ANNOTATIONBRACKETS s=brackedAnnotationAssignList?)
+  				-> brackedAnnotationAssign(f={$s.st})
   ;
 brackedAnnotationAssignList
-  : brackedAnnotationAssignValue+
+  : (s+=brackedAnnotationAssignValue)+
+  				-> list(ls={$s})
   ;
 brackedAnnotationAssignValue
-  : ^(AnnotationAssign runtimeVisibleAnnotationAssignList?)
+  : ^(AnnotationAssign s=runtimeVisibleAnnotationAssignList?)
+  				-> brackedAnnotationAssign(f={$AnnotationAssign.text},s={$s.st})
   ;
 runtimeVisibleParameterAnnotations
-  : ^(RuntimeVisibleParameterAnnotations parameterVisibilityInfo+)
+  : ^(RuntimeVisibleParameterAnnotations (s+=parameterVisibilityInfo)+)
+    		-> runtimeAnnotations(f={$RuntimeVisibleParameterAnnotations.text},ls={$s})
   ;
 runtimeInvisibleParameterAnnotations
-  : ^(RuntimeInvisibleParameterAnnotations parameterVisibilityInfo+)
+  : ^(RuntimeInvisibleParameterAnnotations (s+=parameterVisibilityInfo)+)
+    		-> runtimeAnnotations(f={$RuntimeInvisibleParameterAnnotations.text},ls={$s})
   ;
 runtimeInvisibleAnnotations
-  : ^(RuntimeInvisibleAnnotations runtimeInvisibleAnnotationsItem+)
+  : ^(RuntimeInvisibleAnnotations (s+=runtimeInvisibleAnnotationsItem)+)
+    		-> runtimeAnnotations(f={$RuntimeInvisibleAnnotations.text},ls={$s})
   ;
 parameterVisibilityInfo
-  : ^(pc IDENTIFIER? runtimeVisibleAnnotationsItem*)
+  : ^(p=pc IDENTIFIER? (s+=runtimeVisibleAnnotationsItem)*)
+  		-> parameterVisibilityInfo(f={$p.st},f={$IDENTIFIER.text},ls={$s})
   ;
 runtimeInvisibleAnnotationsItem
-  : ^(pc pc? ^(CPINDEX runtimeVisibleAnnotationAssignList?))
+  : ^(p1=pc p2=pc? ^(CPINDEX s=runtimeVisibleAnnotationAssignList?))
+  		-> runtimeInvisibleAnnotationsItem(f={$p1.st},s={$p2.st},t={$CPINDEX.text},q={$s.st})
   ;
 
 //*******************************/
@@ -552,7 +563,7 @@ stackMapTableTypesContainer
   : s=stackMapTableTypes            -> smTableContainer(f={$s.st})
   ;
 stackMapTableTypes
-  : (s+=stackMapTableType)*   -> commaSeparatedList(ls={$s})
+  : ^(SMTTYPES (s+=stackMapTableType)*)   -> commaSeparatedList(ls={$s})
   ;
 stackMapTableType
   : s1=stackMapTableTypeObject    -> noformat(f={$s1.st})

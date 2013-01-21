@@ -40,25 +40,17 @@ public class JVMTestWalker {
 	
 	private static void Parse(String fileText){
 		try {
-			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/Repository/AntlrWorksProj/JVM.stg");
+			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/ThesisDeobfuscator/Deobfuscation/src/bytecodeDeobfuscation/JVM.stg");
 			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
 			groupFile.close();
 			
 			CharStream input =  new ANTLRStringStream(fileText);
-			
-			/*
-			 * Lexer and parser part
-			 */
 			JVMLexer lexer = new JVMLexer(input);
 			TokenStream tokenStream = new CommonTokenStream(lexer);
 			JVMParser parser = new JVMParser(tokenStream);
-			program_return ret = parser.program();
+			JVMParser.program_return ret = parser.program();
 			
 			
-			
-			/*
-			 * Tree walker part		
-			 */
 			CommonTree theTree = (CommonTree)ret.getTree();
 //			theTree = new OrFalseDeobfuscation().FindSubtreeToRemove(theTree);
 
@@ -72,21 +64,21 @@ public class JVMTestWalker {
 			theTree = new OrFalseDeobfuscation().ChangeTree(orFalseWalker.codeblocks);
 			
 			
-//			System.out.println("The walked tree:");
-//			System.out.println(theTree.toStringTree());
-			// Walk resulting tree; create treenode stream first
-			nodes = new CommonTreeNodeStream(theTree);
-			// AST nodes have payloads that point into token stream 
-			nodes.setTokenStream(tokenStream);
-			// Create a tree Walker attached to the nodes stream 
-			JVMWalker walker = new JVMWalker(nodes);
-			// Invoke the start symbol, rule program
-			JVMWalker.program_return ret2 = walker.program();
+////			System.out.println("The walked tree:");
+////			System.out.println(theTree.toStringTree());
+//			// Walk resulting tree; create treenode stream first
+//			nodes = new CommonTreeNodeStream(theTree);
+//			// AST nodes have payloads that point into token stream 
+//			nodes.setTokenStream(tokenStream);
+//			// Create a tree Walker attached to the nodes stream 
+//			JVMWalker walker = new JVMWalker(nodes);
+//			// Invoke the start symbol, rule program
+//			JVMWalker.program_return ret2 = walker.program();
 			
 			/*
 			 * Pretty printer part
 			 */
-			theTree = (CommonTree)ret2.getTree();
+//			theTree = (CommonTree)re.getTree();
 			nodes = new CommonTreeNodeStream(theTree);
 			nodes.setTokenStream(tokenStream);
 			// Create a tree Walker attached to the nodes stream 
@@ -97,13 +89,10 @@ public class JVMTestWalker {
 			StringTemplate output = (StringTemplate)ret3.getTemplate();
 			System.out.println(output.toString());
 		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
