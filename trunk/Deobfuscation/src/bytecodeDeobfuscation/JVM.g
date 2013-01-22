@@ -74,12 +74,12 @@ compiled_file_info
 //*******************************/
 
 classDefinition
-  : class_visual_modifier? class_modifier* typeName typeParameters? (EXTENDS typeList)? (IMPLEMENTS typeList)? 
+  : class_visual_modifier? class_modifier* typeName typeParameters? (EXTENDS ls1=typeList)? (IMPLEMENTS ls2=typeList)? 
     type_info
     constant_pool
     LBRACE 
     classBody?
-    RBRACE ->   ^(CLASSDECL ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) typeName ^(TPARAMETERS typeParameters?) ^(CEXTENDS typeList?) ^(CIMPLEMENTS typeList?)
+    RBRACE ->   ^(CLASSDECL ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) typeName ^(TPARAMETERS typeParameters?) ^(CEXTENDS $ls1?) ^(CIMPLEMENTS $ls2?)
                 ^(UNITHEADER type_info)
                 ^(CPOOL constant_pool)
                 ^(UNITBODY classBody?)

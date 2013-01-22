@@ -164,6 +164,7 @@ public class Test {
 	private static void RunTest(String filetext) {
 		try {
 			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/ThesisDeobfuscator/Deobfuscation/src/bytecodeDeobfuscation/JVM.stg");
+//			StringTemplate.setLintMode(true);
 			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
 			groupFile.close();
 			
@@ -173,15 +174,16 @@ public class Test {
 			JVMParser parser = new JVMParser(tokenStream);
 			JVMParser.program_return ret = parser.program();
 
-			CommonTree theTree = (CommonTree)ret.getTree();
-			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree); 
-			nodes.setTokenStream(tokenStream); 
-			JVMWalker walker = new JVMWalker(nodes);
-			JVMWalker.program_return ret2 = walker.program();
+//			CommonTree theTree = (CommonTree)ret.getTree();
+//			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree); 
+//			nodes.setTokenStream(tokenStream); 
+//			JVMWalker walker = new JVMWalker(nodes);
+//			JVMWalker.program_return ret2 = walker.program();
 			
 
 			
 			CommonTree theTree2 = (CommonTree)ret.getTree();
+			System.out.println(theTree2.toStringTree());
 			CommonTreeNodeStream nodes2 = new CommonTreeNodeStream(theTree2);
 			nodes2.setTokenStream(tokenStream);
 			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes2);

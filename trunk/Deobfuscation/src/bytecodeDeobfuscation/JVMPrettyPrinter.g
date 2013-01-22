@@ -182,7 +182,7 @@ runtimeVisibleAnnotationAssignList
   ;
 annotationAssign
   : ^(ASSIGN CPINDEX s=annotationValue)
-  				-> annotationAssign(f={$ASSIGN.text},s={$CPINDEX.text},t={$s.st})
+  				-> annotationAssign(f={$CPINDEX.text},s={$ASSIGN.text},t={$s.st})
   ;
 annotationValue
   : brackedAnnotationAssign 	-> noformat(f={$brackedAnnotationAssign.st})
@@ -621,10 +621,10 @@ wildcardBounds
   | ^(SUPER s2=type)      -> wildBoundsT(f={$SUPER.text}, f={$s2.st})
   ;
 typeParameters
-  : (s+=typeParameter)+     -> genericParam(ls={$s})
+  : (s+=typeParameter)+     -> typeParameters(ls={$s})
   ;
 typeParameter
-  : ^(id=identifier tb=typeBound?)  -> noformat2(f={$id.st}, s={$tb.st})
+  : ^(id=identifier tb=typeBound?)  -> noformatWithspace2(f={$id.st}, s={($tb.st==null?"":$tb.st)})
   ;
 typeBound
   : ^(EXTENDS (s+=referenceType)+)  -> tBound(f={$EXTENDS.text}, ls={$s})

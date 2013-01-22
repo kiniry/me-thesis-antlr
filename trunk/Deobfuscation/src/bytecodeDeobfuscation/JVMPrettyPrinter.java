@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g 2013-01-21 02:38:54
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g 2013-01-21 17:27:19
 
   package bytecodeDeobfuscation;
 
@@ -2834,25 +2834,25 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "annotationAssign"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:183:1: annotationAssign : ^( ASSIGN CPINDEX s= annotationValue ) -> annotationAssign(f=$ASSIGN.texts=$CPINDEX.textt=$s.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:183:1: annotationAssign : ^( ASSIGN CPINDEX s= annotationValue ) -> annotationAssign(f=$CPINDEX.texts=$ASSIGN.textt=$s.st);
     public final JVMPrettyPrinter.annotationAssign_return annotationAssign() throws RecognitionException {
         JVMPrettyPrinter.annotationAssign_return retval = new JVMPrettyPrinter.annotationAssign_return();
         retval.start = input.LT(1);
 
 
-        CommonTree ASSIGN23=null;
-        CommonTree CPINDEX24=null;
+        CommonTree CPINDEX23=null;
+        CommonTree ASSIGN24=null;
         JVMPrettyPrinter.annotationValue_return s =null;
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:184:3: ( ^( ASSIGN CPINDEX s= annotationValue ) -> annotationAssign(f=$ASSIGN.texts=$CPINDEX.textt=$s.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:184:3: ( ^( ASSIGN CPINDEX s= annotationValue ) -> annotationAssign(f=$CPINDEX.texts=$ASSIGN.textt=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:184:5: ^( ASSIGN CPINDEX s= annotationValue )
             {
-            ASSIGN23=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_annotationAssign1927); 
+            ASSIGN24=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_annotationAssign1927); 
 
             match(input, Token.DOWN, null); 
-            CPINDEX24=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_annotationAssign1929); 
+            CPINDEX23=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_annotationAssign1929); 
 
             pushFollow(FOLLOW_annotationValue_in_annotationAssign1933);
             s=annotationValue();
@@ -2864,9 +2864,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 185:7: -> annotationAssign(f=$ASSIGN.texts=$CPINDEX.textt=$s.st)
+            // 185:7: -> annotationAssign(f=$CPINDEX.texts=$ASSIGN.textt=$s.st)
             {
-                retval.st = templateLib.getInstanceOf("annotationAssign",new STAttrMap().put("f", (ASSIGN23!=null?ASSIGN23.getText():null)).put("s", (CPINDEX24!=null?CPINDEX24.getText():null)).put("t", (s!=null?s.st:null)));
+                retval.st = templateLib.getInstanceOf("annotationAssign",new STAttrMap().put("f", (CPINDEX23!=null?CPINDEX23.getText():null)).put("s", (ASSIGN24!=null?ASSIGN24.getText():null)).put("t", (s!=null?s.st:null)));
             }
 
 
@@ -10448,7 +10448,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "typeParameters"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:623:1: typeParameters : (s+= typeParameter )+ -> genericParam(ls=$s);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:623:1: typeParameters : (s+= typeParameter )+ -> typeParameters(ls=$s);
     public final JVMPrettyPrinter.typeParameters_return typeParameters() throws RecognitionException {
         JVMPrettyPrinter.typeParameters_return retval = new JVMPrettyPrinter.typeParameters_return();
         retval.start = input.LT(1);
@@ -10457,7 +10457,7 @@ public static class STAttrMap extends HashMap {
         List list_s=null;
         RuleReturnScope s = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:624:3: ( (s+= typeParameter )+ -> genericParam(ls=$s))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:624:3: ( (s+= typeParameter )+ -> typeParameters(ls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:624:5: (s+= typeParameter )+
             {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:624:5: (s+= typeParameter )+
@@ -10499,9 +10499,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 624:29: -> genericParam(ls=$s)
+            // 624:29: -> typeParameters(ls=$s)
             {
-                retval.st = templateLib.getInstanceOf("genericParam",new STAttrMap().put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("typeParameters",new STAttrMap().put("ls", list_s));
             }
 
 
@@ -10530,7 +10530,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "typeParameter"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:626:1: typeParameter : ^(id= identifier (tb= typeBound )? ) -> noformat2(f=$id.sts=$tb.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:626:1: typeParameter : ^(id= identifier (tb= typeBound )? ) -> noformatWithspace2(f=$id.sts=($tb.st==null?\"\":$tb.st));
     public final JVMPrettyPrinter.typeParameter_return typeParameter() throws RecognitionException {
         JVMPrettyPrinter.typeParameter_return retval = new JVMPrettyPrinter.typeParameter_return();
         retval.start = input.LT(1);
@@ -10542,7 +10542,7 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:627:3: ( ^(id= identifier (tb= typeBound )? ) -> noformat2(f=$id.sts=$tb.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:627:3: ( ^(id= identifier (tb= typeBound )? ) -> noformatWithspace2(f=$id.sts=($tb.st==null?\"\":$tb.st)))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:627:5: ^(id= identifier (tb= typeBound )? )
             {
             pushFollow(FOLLOW_identifier_in_typeParameter7179);
@@ -10581,9 +10581,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 627:37: -> noformat2(f=$id.sts=$tb.st)
+            // 627:37: -> noformatWithspace2(f=$id.sts=($tb.st==null?\"\":$tb.st))
             {
-                retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (id!=null?id.st:null)).put("s", (tb!=null?tb.st:null)));
+                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (id!=null?id.st:null)).put("s", ((tb!=null?tb.st:null)==null?"":(tb!=null?tb.st:null))));
             }
 
 
