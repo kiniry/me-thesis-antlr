@@ -53,12 +53,8 @@ public class JVMTestWalker {
 			
 			CommonTree theTree = (CommonTree)ret.getTree();
 //			theTree = new OrFalseDeobfuscation().FindSubtreeToRemove(theTree);
-
-			// Walk resulting tree; create treenode stream first
 			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree);
-			// AST nodes have payloads that point into token stream 
 			nodes.setTokenStream(tokenStream);
-			// Create a tree Walker attached to the nodes stream
 			OrFalseReduction orFalseWalker = new OrFalseReduction(nodes);
 			OrFalseReduction.program_return re = orFalseWalker.program();
 			theTree = new OrFalseDeobfuscation().ChangeTree(orFalseWalker.codeblocks);
@@ -81,10 +77,8 @@ public class JVMTestWalker {
 //			theTree = (CommonTree)re.getTree();
 			nodes = new CommonTreeNodeStream(theTree);
 			nodes.setTokenStream(tokenStream);
-			// Create a tree Walker attached to the nodes stream 
 			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes);
 			printer.setTemplateLib(templates);
-			// Invoke the start symbol, rule program
 			JVMPrettyPrinter.program_return ret3 = printer.program();
 			StringTemplate output = (StringTemplate)ret3.getTemplate();
 			System.out.println(output.toString());

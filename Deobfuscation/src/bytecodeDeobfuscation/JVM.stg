@@ -57,7 +57,7 @@ checksumFileInfo(hexNumber)::= "MD5 checksum $hexNumber$"
 compiledFileInfo(fileName)::= "Compiled from $fileName$"
 
 classDecl(vm, m, cn, typeParams, ext, impl, info, cp, body)::= <<
-$vm$$if(m)$ $list(m)$$endif$ $cn$ $typeParams$ $ext$ $impl$
+$vm$$if(m)$ $list(m)$$endif$ $cn$ $typeParams$$if(ext)$ extends $ext$$endif$$if(impl)$ implements $impl$$endif$
   $info$
 $cp${
   $body$
@@ -104,9 +104,8 @@ encl(cpin1, cpin2)::= "EnclosingMethod $cpin1$.$cpin2$"
 srcFile(file)::= "SourceFile $file$"
 
 scalaSig(id1, int1, int2, int3, int4)::= <<
-ScalaSig
-$id1$=$int1$
-$int2$$int3$$int4$
+ScalaSig: $id1$ = $int1$
+ $int2$ $int3$ $int4$
 >>
 
 scala(id1, int1)::= <<
@@ -203,7 +202,7 @@ methodSign(in, out)::=<<
 Signature: ($list(in)$)$out$
 >>
 tBound(f,ls)::=<<
-$f$ $andSeparatedList(s)$
+$f$ $andSeparatedList(ls)$
 >>
 genRetDesc(f,s,t)::=<<
 $f$ $s$ $t$
@@ -258,4 +257,7 @@ $f$ $s$
 >>
 runtimeInvisibleAnnotationsItem(f,s,t,q)::=<<
 $f$ $s$ $t$ $q$
+>>
+typeParameters(ls)::=<<
+<$commaSeparatedList(ls)$>
 >>
