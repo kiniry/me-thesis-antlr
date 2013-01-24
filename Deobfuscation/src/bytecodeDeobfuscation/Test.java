@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -26,7 +28,7 @@ import bytecodeDeobfuscation.TreeConstructorParser.rule1_return;
 public class Test {
 
 	private static int ParsedFilesCounter = 0;
-	private static int skip = 0;
+	private static int skip = 28187;
 	
 	// try {
 	// IterateFiles("D:\\Work and Projects\\Speciale\\Repository\\Libraries");
@@ -170,7 +172,7 @@ public class Test {
 			
 			CharStream input = new ANTLRStringStream(filetext);
 			JVMLexer lexer = new JVMLexer(input);
-			TokenStream tokenStream = new CommonTokenStream(lexer);
+			CommonTokenStream tokenStream = new CommonTokenStream(lexer);
 			JVMParser parser = new JVMParser(tokenStream);
 			JVMParser.program_return ret = parser.program();
 
@@ -183,7 +185,7 @@ public class Test {
 
 			
 			CommonTree theTree2 = (CommonTree)ret.getTree();
-			System.out.println(theTree2.toStringTree());
+//			System.out.println(theTree2.toStringTree());
 			CommonTreeNodeStream nodes2 = new CommonTreeNodeStream(theTree2);
 			nodes2.setTokenStream(tokenStream);
 			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes2);
@@ -191,17 +193,20 @@ public class Test {
 			JVMPrettyPrinter.program_return ret3 = printer.program();
 			
 			StringTemplate output = (StringTemplate)ret3.getTemplate();
-			System.out.println(output.toString());
 			String text = output.toString();
-			text = JavapOutputMassaging.massage(text);
-//			
-//
-//			CharStream charStream2 = new ANTLRStringStream(text);
-//			JVMLexer lexer2 = new JVMLexer(charStream);
-//			TokenStream tokenStream2 = new CommonTokenStream(lexer);
-//			CompareStreams(tokenStream, tokenStream2);
-//			JVMParser parser2 = new JVMParser(tokenStream);
-//			parser2.program();
+			text = JavapOutputMassaging.massage(text);		
+
+			CharStream charStream2 = new ANTLRStringStream(text);
+			JVMLexer lexer2 = new JVMLexer(charStream2);
+			CommonTokenStream tokenStream2 = new CommonTokenStream(lexer2);
+			JVMParser parser2 = new JVMParser(tokenStream2);
+			parser2.program();
+			if(!CompareStreams(tokenStream, tokenStream2)){
+				PrintWriter writer = new PrintWriter("TestFile.txt");
+				writer.print(text);
+				writer.close();
+//				System.out.println(text);
+			}
 		} catch (RecognitionException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
@@ -211,20 +216,44 @@ public class Test {
 		}
 	}
 	
-	private static boolean CompareStreams(TokenStream s1, TokenStream s2){
-		if(s1.size() != s2.size()){
-			System.out.println("Not the same amount of tokens in both streams!");
-			return false;
+	private static Token GetNextToken(Iterator iter){
+		while(iter.hasNext()){
+			Token token = (Token)iter.next();
+			int chan = token.getChannel();
+			if(chan != 99)
+				return token;
 		}
-		for(int i = 0; i < s1.size(); i++){
-			Token token1 = s1.get(i);
-			Token token2 = s2.get(i);
-			if(!token1.getText().equals(token2.getText())){
-				System.out.println("Tokens1: " + token1.getText() + " token2: " + token2.getText());
+		return null;
+	}
+	
+	private static boolean CompareStreams(CommonTokenStream s1, CommonTokenStream s2){
+		
+//		if(s1.getNumberOfOnChannelTokens() != s2.getNumberOfOnChannelTokens()){
+//			System.out.println("Not the same amount of tokens in both streams!");
+//			return false;
+//		}
+		Iterator iter1 = s1.getTokens().iterator();
+		Iterator iter2 = s2.getTokens().iterator();
+
+		while(true){
+			Token t1 = GetNextToken(iter1);
+			Token t2 = GetNextToken(iter2);
+			if(t1 == null && t2 == null)
+				return true;
+			if(t1 != null && t2 == null){
+				System.out.println("Original text: \"" + t1.getText() + "\" in line, index: " + t1.getLine() + ", " + t1.getCharPositionInLine());
+				return false;
+			}
+			if(t1 == null && t2 != null){
+				System.out.println("Parsed text: \"" + t2.getText() + "\" in line, index: " + t2.getLine() + ", " + t2.getCharPositionInLine());
+				return false;
+			}
+			if(!t1.getText().equals(t2.getText())){
+				System.out.println("Original text: \"" + t1.getText() + "\" in line, index: " + t1.getLine() + ", " + t1.getCharPositionInLine());
+				System.out.println("Parsed text: \"" + t2.getText() + "\" in line, index: " + t2.getLine() + ", " + t2.getCharPositionInLine());
 				return false;
 			}
 		}
-		return true;
 	}
 
 	/**

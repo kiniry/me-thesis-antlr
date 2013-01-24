@@ -25,6 +25,8 @@ INFODATA1; INFODATA2;
 STANDINTOKEN;
 SMTTYPES;
 ANNOTATIONBRACKETS;
+RIAI;
+PVI;
 }
 
 @header {
@@ -55,7 +57,7 @@ class_file_info
   ;
   
 modified_file_info
-  : i1=IDENTIFIER i2=IDENTIFIER DATE SEMI IDENTIFIER INTLITERAL IDENTIFIER -> ^($i1 $i2 DATE IDENTIFIER INTLITERAL IDENTIFIER)
+  : i1=IDENTIFIER i2=IDENTIFIER DATE SEMI i3=IDENTIFIER INTLITERAL i4=IDENTIFIER -> ^($i1 $i2 DATE $i3 INTLITERAL $i4)
   ;
   
 checksum_file_info
@@ -221,10 +223,10 @@ runtimeInvisibleAnnotations
   ;
 parameterVisibilityInfo
   : IDENTIFIER? pc
-    runtimeVisibleAnnotationsItem*          -> ^(pc IDENTIFIER? runtimeVisibleAnnotationsItem*)
+    runtimeVisibleAnnotationsItem*          -> ^(PVI pc IDENTIFIER? runtimeVisibleAnnotationsItem*)
   ;
 runtimeInvisibleAnnotationsItem
-  : pc pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN -> ^(pc pc? ^(CPINDEX runtimeVisibleAnnotationAssignList?))
+  : p1=pc p2=pc? CPINDEX LPAREN runtimeVisibleAnnotationAssignList? RPAREN -> ^(RIAI $p1 $p2? ^(CPINDEX runtimeVisibleAnnotationAssignList?))
   ;
 
 //*******************************/
@@ -280,8 +282,8 @@ fieldAdditionalInfo
   | Signature CPINDEX -> ^(Signature CPINDEX)
   | Deprecated BOOLEANLITERAL -> ^(Deprecated BOOLEANLITERAL)
   | Synthetic BOOLEANLITERAL -> ^(Synthetic BOOLEANLITERAL)
-  | runtimeVisibleAnnotations_info
-  | runtimeInvisibleAnnotations
+  | runtimeVisibleAnnotations_info -> runtimeVisibleAnnotations_info
+  | runtimeInvisibleAnnotations -> runtimeInvisibleAnnotations
   ) 
   ;
 
@@ -336,17 +338,21 @@ methodDefinition
 methodInfo
   : methodSignatureInfo flags -> ^(STANDINTOKEN methodSignatureInfo flags)
   ;
-
+  
 afterMethodInfo
-  : (Deprecated  BOOLEANLITERAL   -> ^(Deprecated  BOOLEANLITERAL)
+  : afterMethodInfoEntry+		-> afterMethodInfoEntry+
+  ;
+
+afterMethodInfoEntry
+  : Deprecated  BOOLEANLITERAL   	-> ^(Deprecated  BOOLEANLITERAL)
   | Signature CPINDEX                   -> ^(Signature CPINDEX)
-  | runtimeInvisibleParameterAnnotations
-  | runtimeVisibleAnnotations_info
-  | runtimeInvisibleAnnotations
-  | runtimeVisibleParameterAnnotations
+  | runtimeInvisibleParameterAnnotations-> runtimeInvisibleParameterAnnotations
+  | runtimeVisibleAnnotations_info	-> runtimeVisibleAnnotations_info
+  | runtimeInvisibleAnnotations		-> runtimeInvisibleAnnotations
+  | runtimeVisibleParameterAnnotations	-> runtimeVisibleParameterAnnotations
   | Exceptions  throwClause             -> ^(Exceptions  throwClause)
   | Synthetic BOOLEANLITERAL            -> ^(Synthetic BOOLEANLITERAL)
-  | annotationDefault)+
+  | annotationDefault
   ;
 
 annotationDefault
@@ -749,7 +755,8 @@ literals
   ;
 
 pc
-  : INTLITERAL COLON;
+  : INTLITERAL COLON	-> INTLITERAL COLON
+  ;
 //*******************************/
 // Lexer
 //*******************************/

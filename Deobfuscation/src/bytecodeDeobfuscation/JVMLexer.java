@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g 2013-01-22 13:37:56
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g 2013-01-23 01:01:44
 
   package bytecodeDeobfuscation;
 
@@ -113,63 +113,65 @@ public class JVMLexer extends Lexer {
     public static final int PRIVATE=103;
     public static final int PROTECTED=104;
     public static final int PUBLIC=105;
-    public static final int QUESTION=106;
-    public static final int QUOTE=107;
-    public static final int QualifiedType=108;
-    public static final int RBRACE=109;
-    public static final int RBRACK=110;
-    public static final int RETDESC=111;
-    public static final int RETVALUE=112;
-    public static final int RPAREN=113;
-    public static final int RuntimeInvisibleAnnotations=114;
-    public static final int RuntimeInvisibleParameterAnnotations=115;
-    public static final int RuntimeVisibleAnnotations=116;
-    public static final int RuntimeVisibleParameterAnnotations=117;
-    public static final int SEMI=118;
-    public static final int SHORT=119;
-    public static final int SLASH=120;
-    public static final int SMENTRY=121;
-    public static final int SMHEADER=122;
-    public static final int SMTENTRY=123;
-    public static final int SMTHEADER=124;
-    public static final int SMTTYPES=125;
-    public static final int STANDINTOKEN=126;
-    public static final int STAR=127;
-    public static final int STATIC=128;
-    public static final int STATICCTORDECL=129;
-    public static final int STRICTFP=130;
-    public static final int STRINGLITERAL=131;
-    public static final int SUPER=132;
-    public static final int SWITCH=133;
-    public static final int SYNCHRONIZED=134;
-    public static final int Scala=135;
-    public static final int ScalaSig=136;
-    public static final int Signature=137;
-    public static final int SourceFile=138;
-    public static final int StackMap=139;
-    public static final int StackMapTable=140;
-    public static final int Synthetic=141;
-    public static final int THROWCLAUSE=142;
-    public static final int THROWS=143;
-    public static final int TPARAMETERS=144;
-    public static final int TRANSIENT=145;
-    public static final int TRUE=146;
-    public static final int TYPEARGS=147;
-    public static final int Throws=148;
-    public static final int UNDERSCORE=149;
-    public static final int UNITARGUMENTS=150;
-    public static final int UNITATTR=151;
-    public static final int UNITBODY=152;
-    public static final int UNITHEADER=153;
-    public static final int UNITNAME=154;
-    public static final int UnicodeEscapeSequence=155;
-    public static final int VARINFO=156;
-    public static final int VMODIFIER=157;
-    public static final int VOID=158;
-    public static final int VOLATILE=159;
-    public static final int VoidType=160;
-    public static final int WINDOWSPATH=161;
-    public static final int WS=162;
+    public static final int PVI=106;
+    public static final int QUESTION=107;
+    public static final int QUOTE=108;
+    public static final int QualifiedType=109;
+    public static final int RBRACE=110;
+    public static final int RBRACK=111;
+    public static final int RETDESC=112;
+    public static final int RETVALUE=113;
+    public static final int RIAI=114;
+    public static final int RPAREN=115;
+    public static final int RuntimeInvisibleAnnotations=116;
+    public static final int RuntimeInvisibleParameterAnnotations=117;
+    public static final int RuntimeVisibleAnnotations=118;
+    public static final int RuntimeVisibleParameterAnnotations=119;
+    public static final int SEMI=120;
+    public static final int SHORT=121;
+    public static final int SLASH=122;
+    public static final int SMENTRY=123;
+    public static final int SMHEADER=124;
+    public static final int SMTENTRY=125;
+    public static final int SMTHEADER=126;
+    public static final int SMTTYPES=127;
+    public static final int STANDINTOKEN=128;
+    public static final int STAR=129;
+    public static final int STATIC=130;
+    public static final int STATICCTORDECL=131;
+    public static final int STRICTFP=132;
+    public static final int STRINGLITERAL=133;
+    public static final int SUPER=134;
+    public static final int SWITCH=135;
+    public static final int SYNCHRONIZED=136;
+    public static final int Scala=137;
+    public static final int ScalaSig=138;
+    public static final int Signature=139;
+    public static final int SourceFile=140;
+    public static final int StackMap=141;
+    public static final int StackMapTable=142;
+    public static final int Synthetic=143;
+    public static final int THROWCLAUSE=144;
+    public static final int THROWS=145;
+    public static final int TPARAMETERS=146;
+    public static final int TRANSIENT=147;
+    public static final int TRUE=148;
+    public static final int TYPEARGS=149;
+    public static final int Throws=150;
+    public static final int UNDERSCORE=151;
+    public static final int UNITARGUMENTS=152;
+    public static final int UNITATTR=153;
+    public static final int UNITBODY=154;
+    public static final int UNITHEADER=155;
+    public static final int UNITNAME=156;
+    public static final int UnicodeEscapeSequence=157;
+    public static final int VARINFO=158;
+    public static final int VMODIFIER=159;
+    public static final int VOID=160;
+    public static final int VOLATILE=161;
+    public static final int VoidType=162;
+    public static final int WINDOWSPATH=163;
+    public static final int WS=164;
 
     // delegates
     // delegators
@@ -191,8 +193,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Flag;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:776:15: ( 'flags' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:776:17: 'flags' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:783:15: ( 'flags' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:783:17: 'flags' COLON
             {
             match("flags"); 
 
@@ -217,8 +219,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = RuntimeVisibleAnnotations;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:776:27: ( 'RuntimeVisibleAnnotations' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:776:29: 'RuntimeVisibleAnnotations' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:783:27: ( 'RuntimeVisibleAnnotations' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:783:29: 'RuntimeVisibleAnnotations' COLON
             {
             match("RuntimeVisibleAnnotations"); 
 
@@ -243,8 +245,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Code;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:777:15: ( 'Code' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:777:17: 'Code' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:15: ( 'Code' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:17: 'Code' COLON
             {
             match("Code"); 
 
@@ -269,8 +271,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = SourceFile;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:777:27: ( 'SourceFile' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:777:29: 'SourceFile' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:27: ( 'SourceFile' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:29: 'SourceFile' COLON
             {
             match("SourceFile"); 
 
@@ -295,8 +297,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Scala;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:778:15: ( 'Scala' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:778:17: 'Scala' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:15: ( 'Scala' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:17: 'Scala' COLON
             {
             match("Scala"); 
 
@@ -321,8 +323,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Deprecated;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:778:27: ( 'Deprecated' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:778:29: 'Deprecated' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:27: ( 'Deprecated' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:29: 'Deprecated' COLON
             {
             match("Deprecated"); 
 
@@ -347,8 +349,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Signature;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:779:15: ( 'Signature' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:779:17: 'Signature' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:15: ( 'Signature' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:17: 'Signature' COLON
             {
             match("Signature"); 
 
@@ -373,8 +375,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Exceptions;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:779:27: ( 'Exceptions' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:779:29: 'Exceptions' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:27: ( 'Exceptions' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:29: 'Exceptions' COLON
             {
             match("Exceptions"); 
 
@@ -399,8 +401,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Constant;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:780:15: ( 'ConstantValue' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:780:17: 'ConstantValue' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:15: ( 'ConstantValue' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:17: 'ConstantValue' COLON
             {
             match("ConstantValue"); 
 
@@ -425,8 +427,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LineNumberTable;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:780:27: ( 'LineNumberTable' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:780:29: 'LineNumberTable' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:27: ( 'LineNumberTable' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:29: 'LineNumberTable' COLON
             {
             match("LineNumberTable"); 
 
@@ -451,8 +453,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = StackMapTable;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:781:15: ( 'StackMapTable' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:781:17: 'StackMapTable' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:788:15: ( 'StackMapTable' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:788:17: 'StackMapTable' COLON
             {
             match("StackMapTable"); 
 
@@ -477,8 +479,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LocalVariableTable;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:781:27: ( 'LocalVariableTable' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:781:29: 'LocalVariableTable' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:788:27: ( 'LocalVariableTable' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:788:29: 'LocalVariableTable' COLON
             {
             match("LocalVariableTable"); 
 
@@ -503,8 +505,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Throws;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:782:15: ( 'Throws' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:782:17: 'Throws' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:789:15: ( 'Throws' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:789:17: 'Throws' COLON
             {
             match("Throws"); 
 
@@ -529,8 +531,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = InnerClasses;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:782:27: ( 'InnerClasses' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:782:29: 'InnerClasses' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:789:27: ( 'InnerClasses' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:789:29: 'InnerClasses' COLON
             {
             match("InnerClasses"); 
 
@@ -555,8 +557,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = ScalaSig;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:15: ( 'ScalaSig' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:17: 'ScalaSig' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:791:15: ( 'ScalaSig' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:791:17: 'ScalaSig' COLON
             {
             match("ScalaSig"); 
 
@@ -581,8 +583,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = EnclosingMethod;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:27: ( 'EnclosingMethod' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:784:29: 'EnclosingMethod' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:791:27: ( 'EnclosingMethod' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:791:29: 'EnclosingMethod' COLON
             {
             match("EnclosingMethod"); 
 
@@ -607,8 +609,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = ExceptionTable;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:15: ( 'Exception table' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:17: 'Exception table' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:792:15: ( 'Exception table' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:792:17: 'Exception table' COLON
             {
             match("Exception table"); 
 
@@ -633,8 +635,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LocalVariableTypeTable;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:27: ( 'LocalVariableTypeTable' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:785:29: 'LocalVariableTypeTable' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:792:27: ( 'LocalVariableTypeTable' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:792:29: 'LocalVariableTypeTable' COLON
             {
             match("LocalVariableTypeTable"); 
 
@@ -659,8 +661,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Synthetic;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:15: ( 'Synthetic' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:17: 'Synthetic' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:15: ( 'Synthetic' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:17: 'Synthetic' COLON
             {
             match("Synthetic"); 
 
@@ -685,8 +687,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = StackMap;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:27: ( 'StackMap' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:786:29: 'StackMap' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:27: ( 'StackMap' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:29: 'StackMap' COLON
             {
             match("StackMap"); 
 
@@ -711,8 +713,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = DefaultValue;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:15: ( 'default_value' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:17: 'default_value' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:794:15: ( 'default_value' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:794:17: 'default_value' COLON
             {
             match("default_value"); 
 
@@ -737,8 +739,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = AnnotationDefault;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:27: ( 'AnnotationDefault' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:787:29: 'AnnotationDefault' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:794:27: ( 'AnnotationDefault' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:794:29: 'AnnotationDefault' COLON
             {
             match("AnnotationDefault"); 
 
@@ -763,8 +765,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = RuntimeInvisibleParameterAnnotations;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:788:39: ( 'RuntimeInvisibleParameterAnnotations' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:788:41: 'RuntimeInvisibleParameterAnnotations' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:795:39: ( 'RuntimeInvisibleParameterAnnotations' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:795:41: 'RuntimeInvisibleParameterAnnotations' COLON
             {
             match("RuntimeInvisibleParameterAnnotations"); 
 
@@ -789,8 +791,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = RuntimeVisibleParameterAnnotations;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:789:39: ( 'RuntimeVisibleParameterAnnotations' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:789:41: 'RuntimeVisibleParameterAnnotations' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:796:39: ( 'RuntimeVisibleParameterAnnotations' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:796:41: 'RuntimeVisibleParameterAnnotations' COLON
             {
             match("RuntimeVisibleParameterAnnotations"); 
 
@@ -815,8 +817,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = RuntimeInvisibleAnnotations;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:790:39: ( 'RuntimeInvisibleAnnotations' COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:790:41: 'RuntimeInvisibleAnnotations' COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:797:39: ( 'RuntimeInvisibleAnnotations' COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:797:41: 'RuntimeInvisibleAnnotations' COLON
             {
             match("RuntimeInvisibleAnnotations"); 
 
@@ -841,7 +843,7 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Constant_type;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:3: ( 'Class' | 'Fieldref' | 'Methodref' | 'InterfaceMethodref' | 'String' | 'Integer' | 'Float' | 'Long' | 'Double' | 'NameAndType' | 'Unicode' | 'Utf8' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:3: ( 'Class' | 'Fieldref' | 'Methodref' | 'InterfaceMethodref' | 'String' | 'Integer' | 'Float' | 'Long' | 'Double' | 'NameAndType' | 'Unicode' | 'Utf8' )
             int alt1=12;
             switch ( input.LA(1) ) {
             case 'C':
@@ -974,7 +976,7 @@ public class JVMLexer extends Lexer {
 
             switch (alt1) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:5: 'Class'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:5: 'Class'
                     {
                     match("Class"); 
 
@@ -983,7 +985,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:17: 'Fieldref'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:17: 'Fieldref'
                     {
                     match("Fieldref"); 
 
@@ -992,7 +994,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:793:31: 'Methodref'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:31: 'Methodref'
                     {
                     match("Methodref"); 
 
@@ -1001,7 +1003,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:794:5: 'InterfaceMethodref'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:5: 'InterfaceMethodref'
                     {
                     match("InterfaceMethodref"); 
 
@@ -1010,7 +1012,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:794:31: 'String'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:31: 'String'
                     {
                     match("String"); 
 
@@ -1019,7 +1021,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:795:5: 'Integer'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:5: 'Integer'
                     {
                     match("Integer"); 
 
@@ -1028,7 +1030,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 7 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:795:17: 'Float'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:17: 'Float'
                     {
                     match("Float"); 
 
@@ -1037,7 +1039,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 8 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:795:31: 'Long'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:31: 'Long'
                     {
                     match("Long"); 
 
@@ -1046,7 +1048,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 9 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:796:5: 'Double'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:5: 'Double'
                     {
                     match("Double"); 
 
@@ -1055,7 +1057,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 10 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:796:17: 'NameAndType'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:17: 'NameAndType'
                     {
                     match("NameAndType"); 
 
@@ -1064,7 +1066,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 11 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:797:5: 'Unicode'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:5: 'Unicode'
                     {
                     match("Unicode"); 
 
@@ -1073,7 +1075,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 12 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:797:17: 'Utf8'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:17: 'Utf8'
                     {
                     match("Utf8"); 
 
@@ -1097,8 +1099,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = EXTENDS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:11: ( 'extends' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:13: 'extends'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:11: ( 'extends' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:13: 'extends'
             {
             match("extends"); 
 
@@ -1120,8 +1122,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = IMPLEMENTS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:15: ( 'implements' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:17: 'implements'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:15: ( 'implements' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:17: 'implements'
             {
             match("implements"); 
 
@@ -1143,8 +1145,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = DEFAULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:11: ( 'default' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:800:13: 'default'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:11: ( 'default' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:13: 'default'
             {
             match("default"); 
 
@@ -1166,8 +1168,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = ABSTRACT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:11: ( 'abstract' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:13: 'abstract'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:808:11: ( 'abstract' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:808:13: 'abstract'
             {
             match("abstract"); 
 
@@ -1189,8 +1191,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = PUBLIC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:15: ( 'public' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:17: 'public'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:808:15: ( 'public' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:808:17: 'public'
             {
             match("public"); 
 
@@ -1212,8 +1214,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = FINAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:11: ( 'final' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:801:13: 'final'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:808:11: ( 'final' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:808:13: 'final'
             {
             match("final"); 
 
@@ -1235,8 +1237,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = STATIC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:11: ( 'static' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:13: 'static'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:11: ( 'static' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:13: 'static'
             {
             match("static"); 
 
@@ -1258,8 +1260,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = PRIVATE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:15: ( 'private' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:17: 'private'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:15: ( 'private' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:17: 'private'
             {
             match("private"); 
 
@@ -1281,8 +1283,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = PROTECTED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:11: ( 'protected' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:802:13: 'protected'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:11: ( 'protected' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:13: 'protected'
             {
             match("protected"); 
 
@@ -1304,8 +1306,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = INTERFACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:11: ( 'interface' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:13: 'interface'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:11: ( 'interface' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:13: 'interface'
             {
             match("interface"); 
 
@@ -1327,8 +1329,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = SYNCHRONIZED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:15: ( 'synchronized' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:17: 'synchronized'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:15: ( 'synchronized' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:17: 'synchronized'
             {
             match("synchronized"); 
 
@@ -1350,8 +1352,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = NATIVE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:11: ( 'native' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:803:13: 'native'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:11: ( 'native' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:13: 'native'
             {
             match("native"); 
 
@@ -1373,8 +1375,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = VOLATILE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:11: ( 'volatile' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:13: 'volatile'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:811:11: ( 'volatile' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:811:13: 'volatile'
             {
             match("volatile"); 
 
@@ -1396,8 +1398,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = TRANSIENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:15: ( 'transient' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:17: 'transient'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:811:15: ( 'transient' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:811:17: 'transient'
             {
             match("transient"); 
 
@@ -1419,8 +1421,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = CLASS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:11: ( 'class' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:804:13: 'class'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:811:11: ( 'class' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:811:13: 'class'
             {
             match("class"); 
 
@@ -1442,8 +1444,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = THROWS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:805:11: ( 'throws' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:805:13: 'throws'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:11: ( 'throws' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:13: 'throws'
             {
             match("throws"); 
 
@@ -1465,8 +1467,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = SUPER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:805:15: ( 'super' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:805:17: 'super'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:15: ( 'super' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:17: 'super'
             {
             match("super"); 
 
@@ -1488,8 +1490,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = STRICTFP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:805:11: ( 'strictfp' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:805:13: 'strictfp'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:11: ( 'strictfp' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:13: 'strictfp'
             {
             match("strictfp"); 
 
@@ -1511,7 +1513,7 @@ public class JVMLexer extends Lexer {
         try {
             int _type = BOOLEANLITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:17: ( TRUE | FALSE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:814:17: ( TRUE | FALSE )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -1530,7 +1532,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:19: TRUE
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:814:19: TRUE
                     {
                     mTRUE(); 
 
@@ -1538,7 +1540,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:807:26: FALSE
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:814:26: FALSE
                     {
                     mFALSE(); 
 
@@ -1559,8 +1561,8 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "FALSE"
     public final void mFALSE() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:19: ( 'false' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:809:22: 'false'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:816:19: ( 'false' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:816:22: 'false'
             {
             match("false"); 
 
@@ -1579,8 +1581,8 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "TRUE"
     public final void mTRUE() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:19: ( 'true' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:810:22: 'true'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:817:19: ( 'true' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:817:22: 'true'
             {
             match("true"); 
 
@@ -1599,8 +1601,8 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "QUOTE"
     public final void mQUOTE() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:21: ( '\\\"' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:812:23: '\\\"'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:819:21: ( '\\\"' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:819:23: '\\\"'
             {
             match('\"'); 
 
@@ -1617,8 +1619,8 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "SLASH"
     public final void mSLASH() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:813:21: ( '/' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:813:23: '/'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:820:21: ( '/' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:820:23: '/'
             {
             match('/'); 
 
@@ -1635,8 +1637,8 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "UNDERSCORE"
     public final void mUNDERSCORE() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:814:21: ( '_' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:814:23: '_'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:821:21: ( '_' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:821:23: '_'
             {
             match('_'); 
 
@@ -1653,8 +1655,8 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "HASH"
     public final void mHASH() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:815:21: ( '#' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:815:23: '#'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:822:21: ( '#' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:822:23: '#'
             {
             match('#'); 
 
@@ -1673,8 +1675,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:817:9: ( '-' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:817:11: '-'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:9: ( '-' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:11: '-'
             {
             match('-'); 
 
@@ -1694,8 +1696,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:817:9: ( '+' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:817:11: '+'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:9: ( '+' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:11: '+'
             {
             match('+'); 
 
@@ -1715,8 +1717,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = COLON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:818:9: ( ':' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:818:11: ':'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:9: ( ':' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:11: ':'
             {
             match(':'); 
 
@@ -1736,8 +1738,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = SEMI;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:818:9: ( ';' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:818:11: ';'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:9: ( ';' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:11: ';'
             {
             match(';'); 
 
@@ -1757,8 +1759,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:819:9: ( ',' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:819:11: ','
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:826:9: ( ',' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:826:11: ','
             {
             match(','); 
 
@@ -1778,8 +1780,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = DOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:819:9: ( '.' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:819:11: '.'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:826:9: ( '.' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:826:11: '.'
             {
             match('.'); 
 
@@ -1799,8 +1801,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LBRACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:820:9: ( '{' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:820:11: '{'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:827:9: ( '{' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:827:11: '{'
             {
             match('{'); 
 
@@ -1820,8 +1822,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = RBRACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:820:9: ( '}' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:820:11: '}'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:827:9: ( '}' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:827:11: '}'
             {
             match('}'); 
 
@@ -1841,8 +1843,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LBRACK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:821:9: ( '[' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:821:11: '['
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:828:9: ( '[' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:828:11: '['
             {
             match('['); 
 
@@ -1862,8 +1864,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = RBRACK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:821:9: ( ']' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:821:11: ']'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:828:9: ( ']' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:828:11: ']'
             {
             match(']'); 
 
@@ -1883,8 +1885,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:822:9: ( '(' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:822:11: '('
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:829:9: ( '(' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:829:11: '('
             {
             match('('); 
 
@@ -1904,8 +1906,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = RPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:822:9: ( ')' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:822:11: ')'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:829:9: ( ')' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:829:11: ')'
             {
             match(')'); 
 
@@ -1925,8 +1927,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LESST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:823:9: ( '<' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:823:11: '<'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:830:9: ( '<' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:830:11: '<'
             {
             match('<'); 
 
@@ -1946,8 +1948,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LARGET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:823:9: ( '>' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:823:11: '>'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:830:9: ( '>' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:830:11: '>'
             {
             match('>'); 
 
@@ -1967,8 +1969,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = ASSIGN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:9: ( '=' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:11: '='
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:831:9: ( '=' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:831:11: '='
             {
             match('='); 
 
@@ -1988,8 +1990,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:9: ( '&' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:824:11: '&'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:831:9: ( '&' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:831:11: '&'
             {
             match('&'); 
 
@@ -2009,8 +2011,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = QUESTION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:9: ( '?' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:11: '?'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:832:9: ( '?' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:832:11: '?'
             {
             match('?'); 
 
@@ -2030,8 +2032,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = STAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:9: ( '*' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:825:11: '*'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:832:9: ( '*' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:832:11: '*'
             {
             match('*'); 
 
@@ -2051,8 +2053,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = Marker;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:826:9: ( '%' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:826:11: '%'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:833:9: ( '%' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:833:11: '%'
             {
             match('%'); 
 
@@ -2072,8 +2074,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:832:11: ( 'boolean' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:832:14: 'boolean'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:839:11: ( 'boolean' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:839:14: 'boolean'
             {
             match("boolean"); 
 
@@ -2095,8 +2097,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = CHAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:833:11: ( 'char' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:833:14: 'char'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:840:11: ( 'char' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:840:14: 'char'
             {
             match("char"); 
 
@@ -2118,8 +2120,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = BYTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:834:11: ( 'byte' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:834:14: 'byte'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:841:11: ( 'byte' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:841:14: 'byte'
             {
             match("byte"); 
 
@@ -2141,8 +2143,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = DOUBLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:835:11: ( 'double' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:835:14: 'double'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:842:11: ( 'double' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:842:14: 'double'
             {
             match("double"); 
 
@@ -2164,8 +2166,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:836:11: ( 'float' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:836:14: 'float'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:843:11: ( 'float' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:843:14: 'float'
             {
             match("float"); 
 
@@ -2187,8 +2189,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LONG;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:837:11: ( 'long' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:837:14: 'long'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:844:11: ( 'long' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:844:14: 'long'
             {
             match("long"); 
 
@@ -2210,8 +2212,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:838:11: ( 'int' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:838:14: 'int'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:845:11: ( 'int' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:845:14: 'int'
             {
             match("int"); 
 
@@ -2233,8 +2235,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = VOID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:839:11: ( 'void' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:839:14: 'void'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:846:11: ( 'void' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:846:14: 'void'
             {
             match("void"); 
 
@@ -2256,8 +2258,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = SHORT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:840:11: ( 'short' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:840:14: 'short'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:847:11: ( 'short' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:847:14: 'short'
             {
             match("short"); 
 
@@ -2279,8 +2281,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = VoidType;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:843:9: ( 'V' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:843:11: 'V'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:850:9: ( 'V' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:850:11: 'V'
             {
             match('V'); 
 
@@ -2300,7 +2302,7 @@ public class JVMLexer extends Lexer {
         try {
             int _type = BaseType;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:844:9: ( 'B' | 'C' | 'D' | 'F' | 'I' | 'J' | 'S' | 'Z' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:9: ( 'B' | 'C' | 'D' | 'F' | 'I' | 'J' | 'S' | 'Z' )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( (input.LA(1) >= 'B' && input.LA(1) <= 'D')||input.LA(1)=='F'||(input.LA(1) >= 'I' && input.LA(1) <= 'J')||input.LA(1)=='S'||input.LA(1)=='Z' ) {
@@ -2329,13 +2331,13 @@ public class JVMLexer extends Lexer {
         try {
             int _type = CONSTANT_TYPE_ASSIGNABLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:3: ( Constant_type ( ' ' )+ ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )* (~ ( '\\n' | '\\r' | ' ' ) )* ( '\\r' )? '\\n' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:5: Constant_type ( ' ' )+ ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )* (~ ( '\\n' | '\\r' | ' ' ) )* ( '\\r' )? '\\n'
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:3: ( Constant_type ( ' ' )+ ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )* (~ ( '\\n' | '\\r' | ' ' ) )* ( '\\r' )? '\\n' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:5: Constant_type ( ' ' )+ ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )* (~ ( '\\n' | '\\r' | ' ' ) )* ( '\\r' )? '\\n'
             {
             mConstant_type(); 
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:19: ( ' ' )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:19: ( ' ' )+
             int cnt3=0;
             loop3:
             do {
@@ -2349,7 +2351,7 @@ public class JVMLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:20: ' '
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:20: ' '
             	    {
             	    match(' '); 
 
@@ -2366,16 +2368,16 @@ public class JVMLexer extends Lexer {
             } while (true);
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:26: ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:26: ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )*
             loop6:
             do {
                 int alt6=2;
                 alt6 = dfa6.predict(input);
                 switch (alt6) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:27: (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:27: (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+
             	    {
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:27: (~ ( '\\n' | '\\r' | ' ' ) )+
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:27: (~ ( '\\n' | '\\r' | ' ' ) )+
             	    int cnt4=0;
             	    loop4:
             	    do {
@@ -2414,7 +2416,7 @@ public class JVMLexer extends Lexer {
             	    } while (true);
 
 
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:45: ( ' ' )+
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:45: ( ' ' )+
             	    int cnt5=0;
             	    loop5:
             	    do {
@@ -2428,7 +2430,7 @@ public class JVMLexer extends Lexer {
 
             	        switch (alt5) {
             	    	case 1 :
-            	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:46: ' '
+            	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:46: ' '
             	    	    {
             	    	    match(' '); 
 
@@ -2454,7 +2456,7 @@ public class JVMLexer extends Lexer {
             } while (true);
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:54: (~ ( '\\n' | '\\r' | ' ' ) )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:54: (~ ( '\\n' | '\\r' | ' ' ) )*
             loop7:
             do {
                 int alt7=2;
@@ -2488,7 +2490,7 @@ public class JVMLexer extends Lexer {
             } while (true);
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:72: ( '\\r' )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:72: ( '\\r' )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -2497,7 +2499,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:851:72: '\\r'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:72: '\\r'
                     {
                     match('\r'); 
 
@@ -2525,8 +2527,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = CPINDEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:854:3: ( HASH INTLITERAL )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:854:5: HASH INTLITERAL
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:861:3: ( HASH INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:861:5: HASH INTLITERAL
             {
             mHASH(); 
 
@@ -2550,8 +2552,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:856:3: ( ( Letter | '_' | '$' ) ( Letter | IntDigit | '_' | '$' | '-' )* )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:856:5: ( Letter | '_' | '$' ) ( Letter | IntDigit | '_' | '$' | '-' )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:863:3: ( ( Letter | '_' | '$' ) ( Letter | IntDigit | '_' | '$' | '-' )* )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:863:5: ( Letter | '_' | '$' ) ( Letter | IntDigit | '_' | '$' | '-' )*
             {
             if ( input.LA(1)=='$'||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -2563,7 +2565,7 @@ public class JVMLexer extends Lexer {
             }
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:856:22: ( Letter | IntDigit | '_' | '$' | '-' )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:863:22: ( Letter | IntDigit | '_' | '$' | '-' )*
             loop9:
             do {
                 int alt9=2;
@@ -2613,13 +2615,13 @@ public class JVMLexer extends Lexer {
         try {
             int _type = QualifiedType;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:3: ( IDENTIFIER ( DOT ( IDENTIFIER | DOT DOT ) )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:5: IDENTIFIER ( DOT ( IDENTIFIER | DOT DOT ) )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:865:3: ( IDENTIFIER ( DOT ( IDENTIFIER | DOT DOT ) )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:865:5: IDENTIFIER ( DOT ( IDENTIFIER | DOT DOT ) )+
             {
             mIDENTIFIER(); 
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:16: ( DOT ( IDENTIFIER | DOT DOT ) )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:865:16: ( DOT ( IDENTIFIER | DOT DOT ) )+
             int cnt11=0;
             loop11:
             do {
@@ -2633,12 +2635,12 @@ public class JVMLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:17: DOT ( IDENTIFIER | DOT DOT )
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:865:17: DOT ( IDENTIFIER | DOT DOT )
             	    {
             	    mDOT(); 
 
 
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:21: ( IDENTIFIER | DOT DOT )
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:865:21: ( IDENTIFIER | DOT DOT )
             	    int alt10=2;
             	    int LA10_0 = input.LA(1);
 
@@ -2657,7 +2659,7 @@ public class JVMLexer extends Lexer {
             	    }
             	    switch (alt10) {
             	        case 1 :
-            	            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:22: IDENTIFIER
+            	            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:865:22: IDENTIFIER
             	            {
             	            mIDENTIFIER(); 
 
@@ -2665,7 +2667,7 @@ public class JVMLexer extends Lexer {
             	            }
             	            break;
             	        case 2 :
-            	            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:858:35: DOT DOT
+            	            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:865:35: DOT DOT
             	            {
             	            mDOT(); 
 
@@ -2708,13 +2710,13 @@ public class JVMLexer extends Lexer {
         try {
             int _type = INTERNALTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:860:3: ( IDENTIFIER ( SLASH IDENTIFIER )+ ( DOT IntegerNumber )? )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:860:5: IDENTIFIER ( SLASH IDENTIFIER )+ ( DOT IntegerNumber )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:867:3: ( IDENTIFIER ( SLASH IDENTIFIER )+ ( DOT IntegerNumber )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:867:5: IDENTIFIER ( SLASH IDENTIFIER )+ ( DOT IntegerNumber )?
             {
             mIDENTIFIER(); 
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:860:16: ( SLASH IDENTIFIER )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:867:16: ( SLASH IDENTIFIER )+
             int cnt12=0;
             loop12:
             do {
@@ -2728,7 +2730,7 @@ public class JVMLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:860:17: SLASH IDENTIFIER
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:867:17: SLASH IDENTIFIER
             	    {
             	    mSLASH(); 
 
@@ -2749,7 +2751,7 @@ public class JVMLexer extends Lexer {
             } while (true);
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:860:36: ( DOT IntegerNumber )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:867:36: ( DOT IntegerNumber )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2758,7 +2760,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:860:37: DOT IntegerNumber
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:867:37: DOT IntegerNumber
                     {
                     mDOT(); 
 
@@ -2788,8 +2790,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = WINDOWSPATH;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:13: ( SLASH Letter COLON ( SLASH ( IDENTIFIER ( WS )* )+ )+ DOT IDENTIFIER )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:15: SLASH Letter COLON ( SLASH ( IDENTIFIER ( WS )* )+ )+ DOT IDENTIFIER
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:13: ( SLASH Letter COLON ( SLASH ( IDENTIFIER ( WS )* )+ )+ DOT IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:15: SLASH Letter COLON ( SLASH ( IDENTIFIER ( WS )* )+ )+ DOT IDENTIFIER
             {
             mSLASH(); 
 
@@ -2800,7 +2802,7 @@ public class JVMLexer extends Lexer {
             mCOLON(); 
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:34: ( SLASH ( IDENTIFIER ( WS )* )+ )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:34: ( SLASH ( IDENTIFIER ( WS )* )+ )+
             int cnt16=0;
             loop16:
             do {
@@ -2814,12 +2816,12 @@ public class JVMLexer extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:35: SLASH ( IDENTIFIER ( WS )* )+
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:35: SLASH ( IDENTIFIER ( WS )* )+
             	    {
             	    mSLASH(); 
 
 
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:41: ( IDENTIFIER ( WS )* )+
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:41: ( IDENTIFIER ( WS )* )+
             	    int cnt15=0;
             	    loop15:
             	    do {
@@ -2833,12 +2835,12 @@ public class JVMLexer extends Lexer {
 
             	        switch (alt15) {
             	    	case 1 :
-            	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:42: IDENTIFIER ( WS )*
+            	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:42: IDENTIFIER ( WS )*
             	    	    {
             	    	    mIDENTIFIER(); 
 
 
-            	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:53: ( WS )*
+            	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:53: ( WS )*
             	    	    loop14:
             	    	    do {
             	    	        int alt14=2;
@@ -2851,7 +2853,7 @@ public class JVMLexer extends Lexer {
 
             	    	        switch (alt14) {
             	    	    	case 1 :
-            	    	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:862:53: WS
+            	    	    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:53: WS
             	    	    	    {
             	    	    	    mWS(); 
 
@@ -2913,8 +2915,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = DATE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:864:7: ( IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigit IntDigit )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:864:9: IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigit IntDigit
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:871:7: ( IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigit IntDigit )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:871:9: IntDigit IntDigit MINUS IntDigit IntDigit MINUS IntDigit IntDigit IntDigit IntDigit
             {
             mIntDigit(); 
 
@@ -2962,7 +2964,7 @@ public class JVMLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:868:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\n' | '\\r' ) | '/*' ( options {greedy=false; } : . )* '*/' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:875:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\n' | '\\r' ) | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -2992,13 +2994,13 @@ public class JVMLexer extends Lexer {
             }
             switch (alt20) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:868:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\n' | '\\r' )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:875:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r\\n' | '\\n' | '\\r' )
                     {
                     match("//"); 
 
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:868:14: (~ ( '\\n' | '\\r' ) )*
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:875:14: (~ ( '\\n' | '\\r' ) )*
                     loop17:
                     do {
                         int alt17=2;
@@ -3032,7 +3034,7 @@ public class JVMLexer extends Lexer {
                     } while (true);
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:868:28: ( '\\r\\n' | '\\n' | '\\r' )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:875:28: ( '\\r\\n' | '\\n' | '\\r' )
                     int alt18=3;
                     int LA18_0 = input.LA(1);
 
@@ -3058,7 +3060,7 @@ public class JVMLexer extends Lexer {
                     }
                     switch (alt18) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:868:29: '\\r\\n'
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:875:29: '\\r\\n'
                             {
                             match("\r\n"); 
 
@@ -3067,14 +3069,14 @@ public class JVMLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:868:36: '\\n'
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:875:36: '\\n'
                             {
                             match('\n'); 
 
                             }
                             break;
                         case 3 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:868:41: '\\r'
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:875:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3089,13 +3091,13 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:9: '/*' ( options {greedy=false; } : . )* '*/'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:876:9: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:14: ( options {greedy=false; } : . )*
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:876:14: ( options {greedy=false; } : . )*
                     loop19:
                     do {
                         int alt19=2;
@@ -3120,7 +3122,7 @@ public class JVMLexer extends Lexer {
 
                         switch (alt19) {
                     	case 1 :
-                    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:869:42: .
+                    	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:876:42: .
                     	    {
                     	    matchAny(); 
 
@@ -3157,8 +3159,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:872:5: ( ( ' ' | '\\t' ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:872:9: ( ' ' | '\\t' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:879:5: ( ( ' ' | '\\t' ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:879:9: ( ' ' | '\\t' )
             {
             if ( input.LA(1)=='\t'||input.LA(1)==' ' ) {
                 input.consume();
@@ -3188,10 +3190,10 @@ public class JVMLexer extends Lexer {
         try {
             int _type = NL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:877:3: ( ( '\\r' | '\\n' | '\\r\\n' ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:877:9: ( '\\r' | '\\n' | '\\r\\n' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:3: ( ( '\\r' | '\\n' | '\\r\\n' ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:9: ( '\\r' | '\\n' | '\\r\\n' )
             {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:877:9: ( '\\r' | '\\n' | '\\r\\n' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:9: ( '\\r' | '\\n' | '\\r\\n' )
             int alt21=3;
             int LA21_0 = input.LA(1);
 
@@ -3217,21 +3219,21 @@ public class JVMLexer extends Lexer {
             }
             switch (alt21) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:877:11: '\\r'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:11: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:878:11: '\\n'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:885:11: '\\n'
                     {
                     match('\n'); 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:879:11: '\\r\\n'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:886:11: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -3261,8 +3263,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = AnnotationAssign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:3: ( ( BaseType | LBRACK | '@' | 'c' | 'e' | 's' ) CPINDEX ( DOT CPINDEX )? )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:5: ( BaseType | LBRACK | '@' | 'c' | 'e' | 's' ) CPINDEX ( DOT CPINDEX )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:891:3: ( ( BaseType | LBRACK | '@' | 'c' | 'e' | 's' ) CPINDEX ( DOT CPINDEX )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:891:5: ( BaseType | LBRACK | '@' | 'c' | 'e' | 's' ) CPINDEX ( DOT CPINDEX )?
             {
             if ( input.LA(1)=='@'||(input.LA(1) >= 'B' && input.LA(1) <= 'D')||input.LA(1)=='F'||(input.LA(1) >= 'I' && input.LA(1) <= 'J')||input.LA(1)=='S'||(input.LA(1) >= 'Z' && input.LA(1) <= '[')||input.LA(1)=='c'||input.LA(1)=='e'||input.LA(1)=='s' ) {
                 input.consume();
@@ -3277,7 +3279,7 @@ public class JVMLexer extends Lexer {
             mCPINDEX(); 
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:57: ( DOT CPINDEX )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:891:57: ( DOT CPINDEX )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -3286,7 +3288,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt22) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:884:58: DOT CPINDEX
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:891:58: DOT CPINDEX
                     {
                     mDOT(); 
 
@@ -3316,8 +3318,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = LONGLITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:891:15: ( INTLITERAL LongSuffix )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:891:17: INTLITERAL LongSuffix
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:898:15: ( INTLITERAL LongSuffix )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:898:17: INTLITERAL LongSuffix
             {
             mINTLITERAL(); 
 
@@ -3341,10 +3343,10 @@ public class JVMLexer extends Lexer {
         try {
             int _type = INTLITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:892:13: ( ( PLUS | MINUS )? IntegerNumber )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:892:15: ( PLUS | MINUS )? IntegerNumber
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:899:13: ( ( PLUS | MINUS )? IntegerNumber )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:899:15: ( PLUS | MINUS )? IntegerNumber
             {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:892:15: ( PLUS | MINUS )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:899:15: ( PLUS | MINUS )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -3390,10 +3392,10 @@ public class JVMLexer extends Lexer {
         try {
             int _type = FLOATLITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:893:15: ( ( PLUS | MINUS )? NonIntegerNumber FloatSuffix )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:893:17: ( PLUS | MINUS )? NonIntegerNumber FloatSuffix
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:15: ( ( PLUS | MINUS )? NonIntegerNumber FloatSuffix )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:17: ( PLUS | MINUS )? NonIntegerNumber FloatSuffix
             {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:893:17: ( PLUS | MINUS )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:17: ( PLUS | MINUS )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -3442,10 +3444,10 @@ public class JVMLexer extends Lexer {
         try {
             int _type = DOUBLELITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:894:17: ( ( PLUS | MINUS )? NonIntegerNumber ( DoubleSuffix )? )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:894:19: ( PLUS | MINUS )? NonIntegerNumber ( DoubleSuffix )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:901:17: ( ( PLUS | MINUS )? NonIntegerNumber ( DoubleSuffix )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:901:19: ( PLUS | MINUS )? NonIntegerNumber ( DoubleSuffix )?
             {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:894:19: ( PLUS | MINUS )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:901:19: ( PLUS | MINUS )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -3475,7 +3477,7 @@ public class JVMLexer extends Lexer {
             mNonIntegerNumber(); 
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:894:54: ( DoubleSuffix )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:901:54: ( DoubleSuffix )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -3518,8 +3520,8 @@ public class JVMLexer extends Lexer {
         try {
             int _type = CHARLITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:895:15: ( '\\'' CharEscapeSequence '\\'' )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:895:17: '\\'' CharEscapeSequence '\\''
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:902:15: ( '\\'' CharEscapeSequence '\\'' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:902:17: '\\'' CharEscapeSequence '\\''
             {
             match('\''); 
 
@@ -3544,13 +3546,13 @@ public class JVMLexer extends Lexer {
         try {
             int _type = STRINGLITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:896:17: ( QUOTE ( EscapeSequence )* QUOTE )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:896:19: QUOTE ( EscapeSequence )* QUOTE
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:903:17: ( QUOTE ( EscapeSequence )* QUOTE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:903:19: QUOTE ( EscapeSequence )* QUOTE
             {
             mQUOTE(); 
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:896:25: ( EscapeSequence )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:903:25: ( EscapeSequence )*
             loop27:
             do {
                 int alt27=2;
@@ -3563,7 +3565,7 @@ public class JVMLexer extends Lexer {
 
                 switch (alt27) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:896:25: EscapeSequence
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:903:25: EscapeSequence
             	    {
             	    mEscapeSequence(); 
 
@@ -3596,10 +3598,10 @@ public class JVMLexer extends Lexer {
         try {
             int _type = HexDigits;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:898:11: ( ( HexDigit )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:898:13: ( HexDigit )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:11: ( ( HexDigit )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:13: ( HexDigit )+
             {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:898:13: ( HexDigit )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:13: ( HexDigit )+
             int cnt28=0;
             loop28:
             do {
@@ -3652,7 +3654,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "IntegerNumber"
     public final void mIntegerNumber() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:24: ( '0' | '1' .. '9' ( IntDigit )* | '0' ( Octal )+ | HexPrefix ( HexDigit )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:24: ( '0' | '1' .. '9' ( IntDigit )* | '0' ( Octal )+ | HexPrefix ( HexDigit )+ )
             int alt32=4;
             int LA32_0 = input.LA(1);
 
@@ -3693,18 +3695,18 @@ public class JVMLexer extends Lexer {
             }
             switch (alt32) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:26: '0'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:26: '0'
                     {
                     match('0'); 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:32: '1' .. '9' ( IntDigit )*
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:32: '1' .. '9' ( IntDigit )*
                     {
                     matchRange('1','9'); 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:41: ( IntDigit )*
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:41: ( IntDigit )*
                     loop29:
                     do {
                         int alt29=2;
@@ -3741,11 +3743,11 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:53: '0' ( Octal )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:53: '0' ( Octal )+
                     {
                     match('0'); 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:57: ( Octal )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:57: ( Octal )+
                     int cnt30=0;
                     loop30:
                     do {
@@ -3787,12 +3789,12 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:66: HexPrefix ( HexDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:66: HexPrefix ( HexDigit )+
                     {
                     mHexPrefix(); 
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:900:76: ( HexDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:76: ( HexDigit )+
                     int cnt31=0;
                     loop31:
                     do {
@@ -3846,7 +3848,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "IntDigit"
     public final void mIntDigit() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:901:19: ( '0' .. '9' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:908:19: ( '0' .. '9' )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -3872,7 +3874,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "HexPrefix"
     public final void mHexPrefix() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:902:20: ( '0x' | '0X' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:909:20: ( '0x' | '0X' )
             int alt33=2;
             int LA33_0 = input.LA(1);
 
@@ -3902,7 +3904,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt33) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:902:22: '0x'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:909:22: '0x'
                     {
                     match("0x"); 
 
@@ -3911,7 +3913,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:902:29: '0X'
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:909:29: '0X'
                     {
                     match("0X"); 
 
@@ -3932,7 +3934,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "HexDigit"
     public final void mHexDigit() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:903:19: ( ( IntDigit | ( 'a' .. 'f' ) | ( 'A' .. 'F' ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:910:19: ( ( IntDigit | ( 'a' .. 'f' ) | ( 'A' .. 'F' ) ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -3958,7 +3960,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "LongSuffix"
     public final void mLongSuffix() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:904:21: ( 'l' | 'L' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:911:21: ( 'l' | 'L' )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
@@ -3984,14 +3986,14 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "NonIntegerNumber"
     public final void mNonIntegerNumber() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:27: ( ( IntDigit )+ DOT ( IntDigit )* ( Exponent )? | '.' ( IntDigit )+ ( Exponent )? | ( IntDigit )+ Exponent | ( IntDigit )+ | HexPrefix ( HexDigit )* ( () | ( '.' ( HexDigit )* ) ) ( 'p' | 'P' ) ( PLUS | MINUS )? ( IntDigit )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:27: ( ( IntDigit )+ DOT ( IntDigit )* ( Exponent )? | '.' ( IntDigit )+ ( Exponent )? | ( IntDigit )+ Exponent | ( IntDigit )+ | HexPrefix ( HexDigit )* ( () | ( '.' ( HexDigit )* ) ) ( 'p' | 'P' ) ( PLUS | MINUS )? ( IntDigit )+ )
             int alt46=5;
             alt46 = dfa46.predict(input);
             switch (alt46) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:29: ( IntDigit )+ DOT ( IntDigit )* ( Exponent )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:29: ( IntDigit )+ DOT ( IntDigit )* ( Exponent )?
                     {
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:29: ( IntDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:29: ( IntDigit )+
                     int cnt34=0;
                     loop34:
                     do {
@@ -4033,7 +4035,7 @@ public class JVMLexer extends Lexer {
                     mDOT(); 
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:43: ( IntDigit )*
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:43: ( IntDigit )*
                     loop35:
                     do {
                         int alt35=2;
@@ -4067,7 +4069,7 @@ public class JVMLexer extends Lexer {
                     } while (true);
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:53: ( Exponent )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:53: ( Exponent )?
                     int alt36=2;
                     int LA36_0 = input.LA(1);
 
@@ -4076,7 +4078,7 @@ public class JVMLexer extends Lexer {
                     }
                     switch (alt36) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:53: Exponent
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:53: Exponent
                             {
                             mExponent(); 
 
@@ -4090,11 +4092,11 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:65: '.' ( IntDigit )+ ( Exponent )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:65: '.' ( IntDigit )+ ( Exponent )?
                     {
                     match('.'); 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:69: ( IntDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:69: ( IntDigit )+
                     int cnt37=0;
                     loop37:
                     do {
@@ -4133,7 +4135,7 @@ public class JVMLexer extends Lexer {
                     } while (true);
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:79: ( Exponent )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:79: ( Exponent )?
                     int alt38=2;
                     int LA38_0 = input.LA(1);
 
@@ -4142,7 +4144,7 @@ public class JVMLexer extends Lexer {
                     }
                     switch (alt38) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:79: Exponent
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:79: Exponent
                             {
                             mExponent(); 
 
@@ -4156,9 +4158,9 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:91: ( IntDigit )+ Exponent
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:91: ( IntDigit )+ Exponent
                     {
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:91: ( IntDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:91: ( IntDigit )+
                     int cnt39=0;
                     loop39:
                     do {
@@ -4203,9 +4205,9 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:112: ( IntDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:112: ( IntDigit )+
                     {
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:112: ( IntDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:112: ( IntDigit )+
                     int cnt40=0;
                     loop40:
                     do {
@@ -4247,12 +4249,12 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:124: HexPrefix ( HexDigit )* ( () | ( '.' ( HexDigit )* ) ) ( 'p' | 'P' ) ( PLUS | MINUS )? ( IntDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:124: HexPrefix ( HexDigit )* ( () | ( '.' ( HexDigit )* ) ) ( 'p' | 'P' ) ( PLUS | MINUS )? ( IntDigit )+
                     {
                     mHexPrefix(); 
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:134: ( HexDigit )*
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:134: ( HexDigit )*
                     loop41:
                     do {
                         int alt41=2;
@@ -4286,7 +4288,7 @@ public class JVMLexer extends Lexer {
                     } while (true);
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:144: ( () | ( '.' ( HexDigit )* ) )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:144: ( () | ( '.' ( HexDigit )* ) )
                     int alt43=2;
                     int LA43_0 = input.LA(1);
 
@@ -4305,10 +4307,10 @@ public class JVMLexer extends Lexer {
                     }
                     switch (alt43) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:146: ()
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:146: ()
                             {
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:146: ()
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:147: 
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:146: ()
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:147: 
                             {
                             }
 
@@ -4316,14 +4318,14 @@ public class JVMLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:151: ( '.' ( HexDigit )* )
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:151: ( '.' ( HexDigit )* )
                             {
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:151: ( '.' ( HexDigit )* )
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:152: '.' ( HexDigit )*
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:151: ( '.' ( HexDigit )* )
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:152: '.' ( HexDigit )*
                             {
                             match('.'); 
 
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:156: ( HexDigit )*
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:156: ( HexDigit )*
                             loop42:
                             do {
                                 int alt42=2;
@@ -4376,7 +4378,7 @@ public class JVMLexer extends Lexer {
                     }
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:183: ( PLUS | MINUS )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:183: ( PLUS | MINUS )?
                     int alt44=2;
                     int LA44_0 = input.LA(1);
 
@@ -4403,7 +4405,7 @@ public class JVMLexer extends Lexer {
                     }
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:905:201: ( IntDigit )+
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:201: ( IntDigit )+
                     int cnt45=0;
                     loop45:
                     do {
@@ -4457,8 +4459,8 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "Exponent"
     public final void mExponent() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:906:19: ( ( 'e' | 'E' ) ( PLUS | MINUS )? ( IntDigit )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:906:21: ( 'e' | 'E' ) ( PLUS | MINUS )? ( IntDigit )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:913:19: ( ( 'e' | 'E' ) ( PLUS | MINUS )? ( IntDigit )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:913:21: ( 'e' | 'E' ) ( PLUS | MINUS )? ( IntDigit )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -4470,7 +4472,7 @@ public class JVMLexer extends Lexer {
             }
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:906:35: ( PLUS | MINUS )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:913:35: ( PLUS | MINUS )?
             int alt47=2;
             int LA47_0 = input.LA(1);
 
@@ -4497,7 +4499,7 @@ public class JVMLexer extends Lexer {
             }
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:906:53: ( IntDigit )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:913:53: ( IntDigit )+
             int cnt48=0;
             loop48:
             do {
@@ -4549,7 +4551,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "FloatSuffix"
     public final void mFloatSuffix() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:907:22: ( 'f' | 'F' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:914:22: ( 'f' | 'F' )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
@@ -4575,7 +4577,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "DoubleSuffix"
     public final void mDoubleSuffix() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:908:23: ( 'd' | 'D' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:915:23: ( 'd' | 'D' )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
@@ -4601,7 +4603,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "Letter"
     public final void mLetter() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:909:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:916:17: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -4627,7 +4629,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "Octal"
     public final void mOctal() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:910:17: ( '0' .. '7' )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:917:17: ( '0' .. '7' )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -4653,7 +4655,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "OctalEscape"
     public final void mOctalEscape() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:5: ( '\\\\' ( '0' .. '3' ) Octal Octal | '\\\\' Octal Octal | '\\\\' Octal )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:919:5: ( '\\\\' ( '0' .. '3' ) Octal Octal | '\\\\' Octal Octal | '\\\\' Octal )
             int alt49=3;
             int LA49_0 = input.LA(1);
 
@@ -4704,7 +4706,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt49) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:912:9: '\\\\' ( '0' .. '3' ) Octal Octal
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:919:9: '\\\\' ( '0' .. '3' ) Octal Octal
                     {
                     match('\\'); 
 
@@ -4727,7 +4729,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:913:9: '\\\\' Octal Octal
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:920:9: '\\\\' Octal Octal
                     {
                     match('\\'); 
 
@@ -4740,7 +4742,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:914:9: '\\\\' Octal
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:921:9: '\\\\' Octal
                     {
                     match('\\'); 
 
@@ -4762,7 +4764,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "EscapeSequence"
     public final void mEscapeSequence() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:919:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '~' ) | UnicodeEscapeSequence | OctalEscape |~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' | '\\\"' ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:926:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '~' ) | UnicodeEscapeSequence | OctalEscape |~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' | '\\\"' ) )
             int alt50=4;
             int LA50_0 = input.LA(1);
 
@@ -4815,7 +4817,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt50) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:919:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '~' )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:926:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '~' )
                     {
                     match('\\'); 
 
@@ -4832,7 +4834,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:920:9: UnicodeEscapeSequence
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:927:9: UnicodeEscapeSequence
                     {
                     mUnicodeEscapeSequence(); 
 
@@ -4840,7 +4842,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:921:9: OctalEscape
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:928:9: OctalEscape
                     {
                     mOctalEscape(); 
 
@@ -4848,7 +4850,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:922:9: ~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' | '\\\"' )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:929:9: ~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' | '\\\"' )
                     {
                     if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '\u2027')||(input.LA(1) >= '\u202A' && input.LA(1) <= '\uFFFF') ) {
                         input.consume();
@@ -4875,7 +4877,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "CharEscapeSequence"
     public final void mCharEscapeSequence() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:926:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\\\' | '\\'' ) | CharUnicodeEscapeSequence | OctalEscape |~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:933:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\\\' | '\\'' ) | CharUnicodeEscapeSequence | OctalEscape |~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' ) )
             int alt51=4;
             int LA51_0 = input.LA(1);
 
@@ -4928,7 +4930,7 @@ public class JVMLexer extends Lexer {
             }
             switch (alt51) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:927:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\\\' | '\\'' )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:934:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\\\' | '\\'' )
                     {
                     match('\\'); 
 
@@ -4945,7 +4947,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:928:9: CharUnicodeEscapeSequence
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:935:9: CharUnicodeEscapeSequence
                     {
                     mCharUnicodeEscapeSequence(); 
 
@@ -4953,7 +4955,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:929:9: OctalEscape
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:936:9: OctalEscape
                     {
                     mOctalEscape(); 
 
@@ -4961,7 +4963,7 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:930:9: ~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:937:9: ~ ( '\\u000D' | '\\u000A' | '\\u2028' | '\\u2029' )
                     {
                     if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\u2027')||(input.LA(1) >= '\u202A' && input.LA(1) <= '\uFFFF') ) {
                         input.consume();
@@ -4988,12 +4990,12 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "CharUnicodeEscapeSequence"
     public final void mCharUnicodeEscapeSequence() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:934:3: ( '\\\\' ( ( 'u' HexDigit HexDigit HexDigit HexDigit ) | ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:934:5: '\\\\' ( ( 'u' HexDigit HexDigit HexDigit HexDigit ) | ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:3: ( '\\\\' ( ( 'u' HexDigit HexDigit HexDigit HexDigit ) | ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:5: '\\\\' ( ( 'u' HexDigit HexDigit HexDigit HexDigit ) | ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) )
             {
             match('\\'); 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:934:10: ( ( 'u' HexDigit HexDigit HexDigit HexDigit ) | ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:10: ( ( 'u' HexDigit HexDigit HexDigit HexDigit ) | ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) )
             int alt52=2;
             int LA52_0 = input.LA(1);
 
@@ -5012,10 +5014,10 @@ public class JVMLexer extends Lexer {
             }
             switch (alt52) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:934:11: ( 'u' HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:11: ( 'u' HexDigit HexDigit HexDigit HexDigit )
                     {
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:934:11: ( 'u' HexDigit HexDigit HexDigit HexDigit )
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:934:12: 'u' HexDigit HexDigit HexDigit HexDigit
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:11: ( 'u' HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:12: 'u' HexDigit HexDigit HexDigit HexDigit
                     {
                     match('u'); 
 
@@ -5037,10 +5039,10 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:935:5: ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:942:5: ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
                     {
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:935:5: ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:935:6: 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:942:5: ( 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:942:6: 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit
                     {
                     match('U'); 
 
@@ -5090,7 +5092,7 @@ public class JVMLexer extends Lexer {
     // $ANTLR start "UnicodeEscapeSequence"
     public final void mUnicodeEscapeSequence() throws RecognitionException {
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:940:3: ( ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit ) | ( '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:947:3: ( ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit ) | ( '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit ) )
             int alt53=2;
             int LA53_0 = input.LA(1);
 
@@ -5120,10 +5122,10 @@ public class JVMLexer extends Lexer {
             }
             switch (alt53) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:940:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:947:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
                     {
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:940:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:940:6: '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:947:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:947:6: '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit
                     {
                     match('\\'); 
 
@@ -5147,10 +5149,10 @@ public class JVMLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:5: ( '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:948:5: ( '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
                     {
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:5: ( '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:941:6: '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:948:5: ( '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:948:6: '\\\\' 'U' HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit HexDigit
                     {
                     match('\\'); 
 
@@ -6002,7 +6004,7 @@ public class JVMLexer extends Lexer {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "()* loopback of 851:26: ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )*";
+            return "()* loopback of 858:26: ( (~ ( '\\n' | '\\r' | ' ' ) )+ ( ' ' )+ )*";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
@@ -6093,7 +6095,7 @@ public class JVMLexer extends Lexer {
             this.transition = DFA46_transition;
         }
         public String getDescription() {
-            return "905:10: fragment NonIntegerNumber : ( ( IntDigit )+ DOT ( IntDigit )* ( Exponent )? | '.' ( IntDigit )+ ( Exponent )? | ( IntDigit )+ Exponent | ( IntDigit )+ | HexPrefix ( HexDigit )* ( () | ( '.' ( HexDigit )* ) ) ( 'p' | 'P' ) ( PLUS | MINUS )? ( IntDigit )+ );";
+            return "912:10: fragment NonIntegerNumber : ( ( IntDigit )+ DOT ( IntDigit )* ( Exponent )? | '.' ( IntDigit )+ ( Exponent )? | ( IntDigit )+ Exponent | ( IntDigit )+ | HexPrefix ( HexDigit )* ( () | ( '.' ( HexDigit )* ) ) ( 'p' | 'P' ) ( PLUS | MINUS )? ( IntDigit )+ );";
         }
     }
     static final String DFA54_eotS =
