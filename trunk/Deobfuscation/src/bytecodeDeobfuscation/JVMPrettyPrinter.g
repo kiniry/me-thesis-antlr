@@ -178,7 +178,7 @@ runtimeVisibleAnnotationsItem
     		-> runtimeAnnotationItem(f={$p.st},s={$CPINDEX.text},t={$r.st})
   ;
 runtimeVisibleAnnotationAssignList
-  : (s+=annotationAssign)+	-> list(ls={$s})
+  : (s+=annotationAssign)+	-> commaSeparatedList(ls={$s})
   ;
 annotationAssign
   : ^(ASSIGN CPINDEX s=annotationValue)
@@ -194,11 +194,11 @@ brackedAnnotationAssign
   ;
 brackedAnnotationAssignList
   : (s+=brackedAnnotationAssignValue)+
-  				-> list(ls={$s})
+  				-> commaSeparatedList(ls={$s})
   ;
 brackedAnnotationAssignValue
   : ^(AnnotationAssign s=runtimeVisibleAnnotationAssignList?)
-  				-> brackedAnnotationAssign(f={$AnnotationAssign.text},s={$s.st})
+  				-> brackedAnnotationAssignValue(f={$AnnotationAssign.text},s={$s.st})
   ;
 runtimeVisibleParameterAnnotations
   : ^(RuntimeVisibleParameterAnnotations (s+=parameterVisibilityInfo)+)
@@ -213,11 +213,11 @@ runtimeInvisibleAnnotations
     		-> runtimeAnnotations(f={$RuntimeInvisibleAnnotations.text},ls={$s})
   ;
 parameterVisibilityInfo
-  : ^(p=pc IDENTIFIER? (s+=runtimeVisibleAnnotationsItem)*)
-  		-> parameterVisibilityInfo(f={$p.st},f={$IDENTIFIER.text},ls={$s})
+  : ^(PVI p=pc IDENTIFIER? (s+=runtimeVisibleAnnotationsItem)*)
+  		-> parameterVisibilityInfo(f={$p.st},s={$IDENTIFIER.text},ls={$s})
   ;
 runtimeInvisibleAnnotationsItem
-  : ^(p1=pc p2=pc? ^(CPINDEX s=runtimeVisibleAnnotationAssignList?))
+  : ^(RIAI p1=pc p2=pc? ^(CPINDEX s=runtimeVisibleAnnotationAssignList?))
   		-> runtimeInvisibleAnnotationsItem(f={$p1.st},s={$p2.st},t={$CPINDEX.text},q={$s.st})
   ;
 
@@ -257,11 +257,11 @@ classBodyEntryDecl
 fieldDefinition
   : ^(FIELDDECL ^(VMODIFIER fvm=field_visual_modifier?) ^(MODIFIER (fm+=field_modifier)*) ^(RETVALUE ft=type) ^(UNITNAME fn=keywordAggregate) ^(FIELDVALUE lit=literals?)
             ^(UNITHEADER inf=fieldInfo)
-            ^(UNITATTR ainfo=fieldAdditionalInfo*)
+            ^(UNITATTR (ainfo+=fieldAdditionalInfo)*)
             )
             ->    fieldDecl(vm={$fvm.st}, m={$fm}, t={$ft.st}, n={$fn.st}, v={$lit.st},
                           info={$inf.st},
-                          xinf={$ainfo.st}
+                          xinf={$ainfo}
                           )
   ;
 
@@ -270,13 +270,13 @@ fieldInfo
   ;
 
 fieldAdditionalInfo
-  : ^(Constant pt=primitiveType l=literals) -> noformat3(f={$Constant.text},s={$pt.st},t={$l.st})
-  | ^(Constant CONSTANT_TYPE_ASSIGNABLE)  -> noformat2(f={$Constant.text},s={$CONSTANT_TYPE_ASSIGNABLE.text})
-  | ^(Signature CPINDEX)      -> noformat2(f={$Signature.text},s={$CPINDEX.text})
-  | ^(Deprecated BOOLEANLITERAL)    -> noformat2(f={$Deprecated.text},s={$BOOLEANLITERAL.text})
-  | ^(Synthetic BOOLEANLITERAL)     -> noformat2(f={$Synthetic.text},s={$BOOLEANLITERAL.text})
-  | s1=runtimeVisibleAnnotations_info   -> noformat(f={$s1.st})
-  | s2=runtimeInvisibleAnnotations    -> noformat(f={$s2.st})
+  : ^(Constant pt=primitiveType l=literals) 	-> noformat3(f={$Constant.text},s={$pt.st},t={$l.st})
+  | ^(Constant CONSTANT_TYPE_ASSIGNABLE)  	-> noformatWithspace2(f={$Constant.text},s={$CONSTANT_TYPE_ASSIGNABLE.text})
+  | ^(Signature CPINDEX)      			-> noformatWithspace2(f={$Signature.text},s={$CPINDEX.text})
+  | ^(Deprecated BOOLEANLITERAL)    		-> noformatWithspace2(f={$Deprecated.text},s={$BOOLEANLITERAL.text})
+  | ^(Synthetic BOOLEANLITERAL)     		-> noformatWithspace2(f={$Synthetic.text},s={$BOOLEANLITERAL.text})
+  | s1=runtimeVisibleAnnotations_info   	-> noformat(f={$s1.st})
+  | s2=runtimeInvisibleAnnotations    		-> noformat(f={$s2.st})
   ;
 
 field_visual_modifier
@@ -329,12 +329,12 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : ^(METHODDECL ^(VMODIFIER mvm=method_visual_modifier?) ^(MODIFIER mm=method_modifier*) ^(GENERICDESC g=genericDescriptor?) ^(RETVALUE mt=type) ^(UNITNAME mn=keywordAggregate) a=arguments ^(THROWCLAUSE t=throwClauseMethod?)
+  : ^(METHODDECL ^(VMODIFIER mvm=method_visual_modifier?) ^(MODIFIER (mm+=method_modifier)*) ^(GENERICDESC g=genericDescriptor?) ^(RETVALUE mt=type) ^(UNITNAME mn=keywordAggregate) a=arguments ^(THROWCLAUSE t=throwClauseMethod?)
                         ^(UNITHEADER inf=methodInfo)
                         ^(UNITBODY b=body?)
                         ^(UNITATTR ainfo=afterMethodInfo?)
                         )
-                        ->    methDecl(vm={$mvm.st}, m={$mm.st}, gd={$g.st}, t={$mt.st}, n={$mn.st}, args={$a.st}, thr={$t.st},
+                        ->    methDecl(vm={$mvm.st}, m={$mm}, gd={$g.st}, t={$mt.st}, n={$mn.st}, args={$a.st}, thr={$t.st},
                           info={$inf.st},
                           body={$b.st},
                           xinf={$ainfo.st}
@@ -351,20 +351,20 @@ afterMethodInfo
   ;
 
 afterMethodInfoEntry
-  : ^(Deprecated  BOOLEANLITERAL)   -> noformat2(f={$Deprecated.text},s={$BOOLEANLITERAL.text})
-  | ^(Signature CPINDEX)      -> noformat2(f={$Signature.text},s={$CPINDEX.text})
-  | s1=runtimeInvisibleParameterAnnotations -> noformat(f={$s1.st})
-  | s2=runtimeVisibleAnnotations_info   -> noformat(f={$s2.st})
-  | s3=runtimeInvisibleAnnotations    -> noformat(f={$s3.st})
-  | s4=runtimeVisibleParameterAnnotations -> noformat(f={$s4.st})
-  | ^(Exceptions  t=throwClause)    -> noformat2(f={$Exceptions.text},s={$t.st})
-  | ^(Synthetic BOOLEANLITERAL)     -> noformat2(f={$Synthetic.text},s={$BOOLEANLITERAL.text})
-  | s5=annotationDefault      -> noformat(f={$s5.st})
+  : ^(Deprecated  BOOLEANLITERAL)   		-> noformatWithspace2(f={$Deprecated.text},s={$BOOLEANLITERAL.text})
+  | ^(Signature CPINDEX)      			-> noformatWithspace2(f={$Signature.text},s={$CPINDEX.text})
+  | s1=runtimeInvisibleParameterAnnotations 	-> noformat(f={$s1.st})
+  | s2=runtimeVisibleAnnotations_info   	-> noformat(f={$s2.st})
+  | s3=runtimeInvisibleAnnotations    		-> noformat(f={$s3.st})
+  | s4=runtimeVisibleParameterAnnotations 	-> noformat(f={$s4.st})
+  | ^(Exceptions  t=throwClause)    		-> noformatWithspace2(f={$Exceptions.text},s={$t.st})
+  | ^(Synthetic BOOLEANLITERAL)     		-> noformatWithspace2(f={$Synthetic.text},s={$BOOLEANLITERAL.text})
+  | s5=annotationDefault      			-> noformat(f={$s5.st})
   ;
 
 annotationDefault
   : ^(AnnotationDefault  DefaultValue v=annotationValue)
-        -> noformat(f={$v.st})
+        -> annotationDefault(f={$v.st})
   ;
   
 methodSignatureInfo
@@ -461,7 +461,7 @@ switchLine
   ;
 
 switchDefaultLine
-  : ^(DEFAULT INTLITERAL)   -> noformatWithspace2(f={$DEFAULT.text},s={$INTLITERAL.text})
+  : ^(DEFAULT INTLITERAL)   -> switchDefault(f={$INTLITERAL.text})
   ;
 
 //*******************************/
@@ -617,8 +617,8 @@ wildcard
   : ^(QUESTION s1=wildcardBounds?)  -> wildT(f={$s1.st})
   ;
 wildcardBounds
-  : ^(EXTENDS s1=type)      -> wildBoundsT(f={$EXTENDS.text}, f={$s1.st})
-  | ^(SUPER s2=type)      -> wildBoundsT(f={$SUPER.text}, f={$s2.st})
+  : ^(EXTENDS s1=type)      -> wildBoundsT(f={$EXTENDS.text}, s={$s1.st})
+  | ^(SUPER s2=type)      -> wildBoundsT(f={$SUPER.text}, s={$s2.st})
   ;
 typeParameters
   : (s+=typeParameter)+     -> typeParameters(ls={$s})

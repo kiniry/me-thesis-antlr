@@ -14,7 +14,9 @@ $f$$s$
 noformat3(f,s,t)::=<<
 $f$ $s$ $t$
 >>
-
+spaceSeparatedList(ls)::=<<
+$ls; separator=" "$
+>>
 list(ls)::=<<
 $ls:{ x |$x$}$
 >>
@@ -57,38 +59,42 @@ checksumFileInfo(hexNumber)::= "MD5 checksum $hexNumber$"
 compiledFileInfo(fileName)::= "Compiled from $fileName$"
 
 classDecl(vm, m, cn, typeParams, ext, impl, info, cp, body)::= <<
-$vm$$if(m)$ $list(m)$$endif$ $cn$ $typeParams$$if(ext)$ extends $ext$$endif$$if(impl)$ implements $impl$$endif$
+$vm$$if(m)$ $spaceSeparatedList(m)$$endif$ $cn$ $typeParams$$if(ext)$ extends $ext$$endif$$if(impl)$ implements $impl$$endif$
   $info$
 $cp${
   $body$
 }
 >>
 
-fieldDecl(vm, m, t, n, v, info, xinfo)::= <<
-$vm$$if(m)$ $list(m)$$endif$ $t$ $n$$if(v)$ = $v$ $endif$;
+fieldDecl(vm, m, t, n, v, info, xinf)::= <<
+$vm$$if(m)$ $spaceSeparatedList(m)$$endif$ $t$ $n$$if(v)$ = $v$ $endif$;
   $info$
-  $xinfo$
+  $nlSeparatedList(xinf)$
+  
 >>
 fieldInf(f,s,t)::=<<
 $f$ $s$
 $t$
 >>
 statCtorDecl(vm, info, body)::=<<
-$vm$ Static { };
+$vm$ static {};
   $info$
   $body$
+  
 >>
 ctorDecl(vm, gd, n, args, thr, info, body, xinf)::=<<
-$vm$$if(gd)$ $gd$$endif$ $n$($args$) $thr$
+$vm$$if(gd)$ $gd$$endif$ $n$($args$)$if(thr)$ $thr$$endif$;
   $info$
   $body$
   $xinf$
+  
 >>
 methDecl(vm, m, gd, t, n, args, thr, info, body, xinf)::=<<
-$vm$$if(m)$ $list(m)$$endif$$if(gd)$ $gd$$endif$ $t$ $n$($args$) $thr$
+$vm$$if(m)$ $spaceSeparatedList(m)$$endif$$if(gd)$ $gd$$endif$ $t$ $n$($args$)$if(thr)$ $thr$$endif$;
   $info$
   $body$
   $xinf$
+  
 >>
 methodInfo(f,s)::=<<
 $f$
@@ -98,19 +104,18 @@ flags(ls)::=<<
 $commaSeparatedList(ls)$
 
 >>
-synt(b)::= "Synthetic $b$"
-depr(b)::= "Deprecated $b$"
-encl(cpin1, cpin2)::= "EnclosingMethod $cpin1$.$cpin2$"
-srcFile(file)::= "SourceFile $file$"
+synt(b)::= "Synthetic: $b$"
+depr(b)::= "Deprecated: $b$"
+encl(cpin1, cpin2)::= "EnclosingMethod: $cpin1$.$cpin2$"
+srcFile(file)::= "SourceFile: $file$"
 
 scalaSig(id1, int1, int2, int3, int4)::= <<
-ScalaSig: $id1$ = $int1$
- $int2$ $int3$ $int4$
+  ScalaSig: $id1$ = $int1$
+   $int2$ $int3$ $int4$
 >>
 
 scala(id1, int1)::= <<
-Scala
-$id1$=$int1$
+Scala: $id1$ = $int1$
 >>
 version(f,s,t)::=<<
 $f$ $s$: $t$
@@ -119,17 +124,17 @@ $f$ $s$: $t$
 sign(v)::= "Signature: $v$"
 innerC(l)::= <<
 InnerClasses:
-$l$
+    $nlSeparatedList(l)$
 >>
 bodyExt(f,s)::=<<
 $f$
   $s$
 >>
 innerCIL(vm, m, iid)::=<<
-$vm$ $m$ $iid$
+$vm$$if(m)$ $spaceSeparatedList(m)$$endif$ $iid$;
 >>
 innerCID(f,s,t)::=<<
-$f$ $if(s)$=$s$$endif$$if(t)$of $t$$endif$
+$f$$if(s)$= $s$$endif$$if(t)$ of $t$$endif$
 >>
 genericParam(ls)::=<<
 <$commaSeparatedList(ls)$>
@@ -144,7 +149,7 @@ cpoolline(f, s)::=<<
 body(f,s,t)::=<<
 $if(f)$Synthetic: $f$$\n$$endif$Code:
   $s$
-  $t$
+  $if(t)$$nlSeparatedList(t)$$endif$
 >>
 type(f,s)::=<<
 $f$$s:{ x |$x$]}$
@@ -160,7 +165,6 @@ $f$=$s$
 >>
 lnTable(ls)::=<<
 $nlSeparatedList(ls)$
-
 >>
 lnTableEntry(f,s,t)::=<<
 $f$ $s$ $t$
@@ -175,9 +179,12 @@ $f$ $s$ $t$ $q$ $c$
 >>
 switch(f,s,t,q)::=<<
 $f$ $s$ {
-  $t:{ x |$\n\n$$x$}$
-  $q$
+$\t$$t:{ x |$\n\n$$x$}$
+$\t$$q$
 }
+>>
+switchDefault(f)::=<<
+default: $f$
 >>
 smTable(f,s,ls)::=<<
 $f$=$s$
@@ -210,8 +217,8 @@ $f$ $s$ $t$
 bcGenericArgs(ls)::=<<
 <$list(ls)$>
 >>
-wildT(s)::=<<
-? $s$
+wildT(f)::=<<
+?$if(f)$ $f$$endif$
 >>
 wildBoundsT(f, s)::=<<
 $f$ $s$
@@ -239,8 +246,12 @@ runtimeAnnotations(f,ls)::=<<
 $f$
   $nlSeparatedList(ls)$
 >>
+annotationDefault(f)::=<<
+AnnotationDefault:
+  default_value: $f$
+>>
 runtimeAnnotationItem(f,s,t)::=<<
-$f$ $s$[$t$]
+$f$ $s$($t$)
 >>
 annotationAssign(f,s,t)::=<<
 $f$$s$$t$
@@ -249,14 +260,14 @@ brackedAnnotationAssign(f)::=<<
 [$f$]
 >>
 brackedAnnotationAssignValue(f,s)::=<<
-$f$($s$)
+$f$$if(s)$($s$)$endif$
 >>
 parameterVisibilityInfo(f,s,ls)::=<<
-$f$ $s$
+$if(s)$$s$ $endif$$f$
   $nlSeparatedList(ls)$
 >>
 runtimeInvisibleAnnotationsItem(f,s,t,q)::=<<
-$f$ $s$ $t$ $q$
+$f$ $s$ $t$($q$)
 >>
 typeParameters(ls)::=<<
 <$commaSeparatedList(ls)$>

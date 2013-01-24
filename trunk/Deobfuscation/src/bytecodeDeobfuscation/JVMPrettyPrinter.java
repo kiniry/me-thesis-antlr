@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g 2013-01-21 17:27:19
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g 2013-01-23 01:01:35
 
   package bytecodeDeobfuscation;
 
@@ -15,7 +15,7 @@ import java.util.HashMap;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class JVMPrettyPrinter extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ABSTRACT", "AND", "ANNOTATIONBRACKETS", "ARRAYBRACKS", "ASSIGN", "AnnotationAssign", "AnnotationDefault", "BANNOTATION", "BOOLEAN", "BOOLEANLITERAL", "BYTE", "BaseType", "CEXTENDS", "CFHEADER", "CHAR", "CHARLITERAL", "CIMPLEMENTS", "CLASS", "CLASSDECL", "CLASSFILE", "COLON", "COMMA", "COMMENT", "CONSTANT_TYPE_ASSIGNABLE", "CPINDEX", "CPOOL", "CTORDECL", "CharEscapeSequence", "CharUnicodeEscapeSequence", "Code", "Constant", "Constant_type", "DATE", "DEFAULT", "DOT", "DOUBLE", "DOUBLELITERAL", "DefaultValue", "Deprecated", "DoubleSuffix", "ETENTRY", "ETHEADER", "EXTENDS", "EnclosingMethod", "EscapeSequence", "ExceptionTable", "Exceptions", "Exponent", "FALSE", "FIELDDECL", "FIELDVALUE", "FINAL", "FLOAT", "FLOATLITERAL", "Flag", "FloatSuffix", "GENERICDESC", "HASH", "HexDigit", "HexDigits", "HexPrefix", "IDENTIFIER", "IMPLEMENTS", "INFODATA1", "INFODATA2", "INSTRUCTION", "INT", "INTERFACE", "INTERNALTYPE", "INTLITERAL", "InnerClasses", "IntDigit", "IntegerNumber", "LARGET", "LBRACE", "LBRACK", "LESST", "LONG", "LONGLITERAL", "LPAREN", "LVENTRY", "LVHEADER", "Letter", "LineNumberTable", "LocalVariableTable", "LocalVariableTypeTable", "LongSuffix", "METHODDECL", "MINUS", "MODIFIER", "Marker", "NATIVE", "NL", "NonIntegerNumber", "OPERAND", "Octal", "OctalEscape", "PARAMDESC", "PLUS", "PRIVATE", "PROTECTED", "PUBLIC", "QUESTION", "QUOTE", "QualifiedType", "RBRACE", "RBRACK", "RETDESC", "RETVALUE", "RPAREN", "RuntimeInvisibleAnnotations", "RuntimeInvisibleParameterAnnotations", "RuntimeVisibleAnnotations", "RuntimeVisibleParameterAnnotations", "SEMI", "SHORT", "SLASH", "SMENTRY", "SMHEADER", "SMTENTRY", "SMTHEADER", "SMTTYPES", "STANDINTOKEN", "STAR", "STATIC", "STATICCTORDECL", "STRICTFP", "STRINGLITERAL", "SUPER", "SWITCH", "SYNCHRONIZED", "Scala", "ScalaSig", "Signature", "SourceFile", "StackMap", "StackMapTable", "Synthetic", "THROWCLAUSE", "THROWS", "TPARAMETERS", "TRANSIENT", "TRUE", "TYPEARGS", "Throws", "UNDERSCORE", "UNITARGUMENTS", "UNITATTR", "UNITBODY", "UNITHEADER", "UNITNAME", "UnicodeEscapeSequence", "VARINFO", "VMODIFIER", "VOID", "VOLATILE", "VoidType", "WINDOWSPATH", "WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ABSTRACT", "AND", "ANNOTATIONBRACKETS", "ARRAYBRACKS", "ASSIGN", "AnnotationAssign", "AnnotationDefault", "BANNOTATION", "BOOLEAN", "BOOLEANLITERAL", "BYTE", "BaseType", "CEXTENDS", "CFHEADER", "CHAR", "CHARLITERAL", "CIMPLEMENTS", "CLASS", "CLASSDECL", "CLASSFILE", "COLON", "COMMA", "COMMENT", "CONSTANT_TYPE_ASSIGNABLE", "CPINDEX", "CPOOL", "CTORDECL", "CharEscapeSequence", "CharUnicodeEscapeSequence", "Code", "Constant", "Constant_type", "DATE", "DEFAULT", "DOT", "DOUBLE", "DOUBLELITERAL", "DefaultValue", "Deprecated", "DoubleSuffix", "ETENTRY", "ETHEADER", "EXTENDS", "EnclosingMethod", "EscapeSequence", "ExceptionTable", "Exceptions", "Exponent", "FALSE", "FIELDDECL", "FIELDVALUE", "FINAL", "FLOAT", "FLOATLITERAL", "Flag", "FloatSuffix", "GENERICDESC", "HASH", "HexDigit", "HexDigits", "HexPrefix", "IDENTIFIER", "IMPLEMENTS", "INFODATA1", "INFODATA2", "INSTRUCTION", "INT", "INTERFACE", "INTERNALTYPE", "INTLITERAL", "InnerClasses", "IntDigit", "IntegerNumber", "LARGET", "LBRACE", "LBRACK", "LESST", "LONG", "LONGLITERAL", "LPAREN", "LVENTRY", "LVHEADER", "Letter", "LineNumberTable", "LocalVariableTable", "LocalVariableTypeTable", "LongSuffix", "METHODDECL", "MINUS", "MODIFIER", "Marker", "NATIVE", "NL", "NonIntegerNumber", "OPERAND", "Octal", "OctalEscape", "PARAMDESC", "PLUS", "PRIVATE", "PROTECTED", "PUBLIC", "PVI", "QUESTION", "QUOTE", "QualifiedType", "RBRACE", "RBRACK", "RETDESC", "RETVALUE", "RIAI", "RPAREN", "RuntimeInvisibleAnnotations", "RuntimeInvisibleParameterAnnotations", "RuntimeVisibleAnnotations", "RuntimeVisibleParameterAnnotations", "SEMI", "SHORT", "SLASH", "SMENTRY", "SMHEADER", "SMTENTRY", "SMTHEADER", "SMTTYPES", "STANDINTOKEN", "STAR", "STATIC", "STATICCTORDECL", "STRICTFP", "STRINGLITERAL", "SUPER", "SWITCH", "SYNCHRONIZED", "Scala", "ScalaSig", "Signature", "SourceFile", "StackMap", "StackMapTable", "Synthetic", "THROWCLAUSE", "THROWS", "TPARAMETERS", "TRANSIENT", "TRUE", "TYPEARGS", "Throws", "UNDERSCORE", "UNITARGUMENTS", "UNITATTR", "UNITBODY", "UNITHEADER", "UNITNAME", "UnicodeEscapeSequence", "VARINFO", "VMODIFIER", "VOID", "VOLATILE", "VoidType", "WINDOWSPATH", "WS"
     };
 
     public static final int EOF=-1;
@@ -121,63 +121,65 @@ public class JVMPrettyPrinter extends TreeParser {
     public static final int PRIVATE=103;
     public static final int PROTECTED=104;
     public static final int PUBLIC=105;
-    public static final int QUESTION=106;
-    public static final int QUOTE=107;
-    public static final int QualifiedType=108;
-    public static final int RBRACE=109;
-    public static final int RBRACK=110;
-    public static final int RETDESC=111;
-    public static final int RETVALUE=112;
-    public static final int RPAREN=113;
-    public static final int RuntimeInvisibleAnnotations=114;
-    public static final int RuntimeInvisibleParameterAnnotations=115;
-    public static final int RuntimeVisibleAnnotations=116;
-    public static final int RuntimeVisibleParameterAnnotations=117;
-    public static final int SEMI=118;
-    public static final int SHORT=119;
-    public static final int SLASH=120;
-    public static final int SMENTRY=121;
-    public static final int SMHEADER=122;
-    public static final int SMTENTRY=123;
-    public static final int SMTHEADER=124;
-    public static final int SMTTYPES=125;
-    public static final int STANDINTOKEN=126;
-    public static final int STAR=127;
-    public static final int STATIC=128;
-    public static final int STATICCTORDECL=129;
-    public static final int STRICTFP=130;
-    public static final int STRINGLITERAL=131;
-    public static final int SUPER=132;
-    public static final int SWITCH=133;
-    public static final int SYNCHRONIZED=134;
-    public static final int Scala=135;
-    public static final int ScalaSig=136;
-    public static final int Signature=137;
-    public static final int SourceFile=138;
-    public static final int StackMap=139;
-    public static final int StackMapTable=140;
-    public static final int Synthetic=141;
-    public static final int THROWCLAUSE=142;
-    public static final int THROWS=143;
-    public static final int TPARAMETERS=144;
-    public static final int TRANSIENT=145;
-    public static final int TRUE=146;
-    public static final int TYPEARGS=147;
-    public static final int Throws=148;
-    public static final int UNDERSCORE=149;
-    public static final int UNITARGUMENTS=150;
-    public static final int UNITATTR=151;
-    public static final int UNITBODY=152;
-    public static final int UNITHEADER=153;
-    public static final int UNITNAME=154;
-    public static final int UnicodeEscapeSequence=155;
-    public static final int VARINFO=156;
-    public static final int VMODIFIER=157;
-    public static final int VOID=158;
-    public static final int VOLATILE=159;
-    public static final int VoidType=160;
-    public static final int WINDOWSPATH=161;
-    public static final int WS=162;
+    public static final int PVI=106;
+    public static final int QUESTION=107;
+    public static final int QUOTE=108;
+    public static final int QualifiedType=109;
+    public static final int RBRACE=110;
+    public static final int RBRACK=111;
+    public static final int RETDESC=112;
+    public static final int RETVALUE=113;
+    public static final int RIAI=114;
+    public static final int RPAREN=115;
+    public static final int RuntimeInvisibleAnnotations=116;
+    public static final int RuntimeInvisibleParameterAnnotations=117;
+    public static final int RuntimeVisibleAnnotations=118;
+    public static final int RuntimeVisibleParameterAnnotations=119;
+    public static final int SEMI=120;
+    public static final int SHORT=121;
+    public static final int SLASH=122;
+    public static final int SMENTRY=123;
+    public static final int SMHEADER=124;
+    public static final int SMTENTRY=125;
+    public static final int SMTHEADER=126;
+    public static final int SMTTYPES=127;
+    public static final int STANDINTOKEN=128;
+    public static final int STAR=129;
+    public static final int STATIC=130;
+    public static final int STATICCTORDECL=131;
+    public static final int STRICTFP=132;
+    public static final int STRINGLITERAL=133;
+    public static final int SUPER=134;
+    public static final int SWITCH=135;
+    public static final int SYNCHRONIZED=136;
+    public static final int Scala=137;
+    public static final int ScalaSig=138;
+    public static final int Signature=139;
+    public static final int SourceFile=140;
+    public static final int StackMap=141;
+    public static final int StackMapTable=142;
+    public static final int Synthetic=143;
+    public static final int THROWCLAUSE=144;
+    public static final int THROWS=145;
+    public static final int TPARAMETERS=146;
+    public static final int TRANSIENT=147;
+    public static final int TRUE=148;
+    public static final int TYPEARGS=149;
+    public static final int Throws=150;
+    public static final int UNDERSCORE=151;
+    public static final int UNITARGUMENTS=152;
+    public static final int UNITATTR=153;
+    public static final int UNITBODY=154;
+    public static final int UNITHEADER=155;
+    public static final int UNITNAME=156;
+    public static final int UnicodeEscapeSequence=157;
+    public static final int VARINFO=158;
+    public static final int VMODIFIER=159;
+    public static final int VOID=160;
+    public static final int VOLATILE=161;
+    public static final int VoidType=162;
+    public static final int WINDOWSPATH=163;
+    public static final int WS=164;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -2752,7 +2754,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "runtimeVisibleAnnotationAssignList"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:180:1: runtimeVisibleAnnotationAssignList : (s+= annotationAssign )+ -> list(ls=$s);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:180:1: runtimeVisibleAnnotationAssignList : (s+= annotationAssign )+ -> commaSeparatedList(ls=$s);
     public final JVMPrettyPrinter.runtimeVisibleAnnotationAssignList_return runtimeVisibleAnnotationAssignList() throws RecognitionException {
         JVMPrettyPrinter.runtimeVisibleAnnotationAssignList_return retval = new JVMPrettyPrinter.runtimeVisibleAnnotationAssignList_return();
         retval.start = input.LT(1);
@@ -2761,7 +2763,7 @@ public static class STAttrMap extends HashMap {
         List list_s=null;
         RuleReturnScope s = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:181:3: ( (s+= annotationAssign )+ -> list(ls=$s))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:181:3: ( (s+= annotationAssign )+ -> commaSeparatedList(ls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:181:5: (s+= annotationAssign )+
             {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:181:5: (s+= annotationAssign )+
@@ -2803,9 +2805,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 181:28: -> list(ls=$s)
+            // 181:28: -> commaSeparatedList(ls=$s)
             {
-                retval.st = templateLib.getInstanceOf("list",new STAttrMap().put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("commaSeparatedList",new STAttrMap().put("ls", list_s));
             }
 
 
@@ -3058,7 +3060,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "brackedAnnotationAssignList"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:195:1: brackedAnnotationAssignList : (s+= brackedAnnotationAssignValue )+ -> list(ls=$s);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:195:1: brackedAnnotationAssignList : (s+= brackedAnnotationAssignValue )+ -> commaSeparatedList(ls=$s);
     public final JVMPrettyPrinter.brackedAnnotationAssignList_return brackedAnnotationAssignList() throws RecognitionException {
         JVMPrettyPrinter.brackedAnnotationAssignList_return retval = new JVMPrettyPrinter.brackedAnnotationAssignList_return();
         retval.start = input.LT(1);
@@ -3067,7 +3069,7 @@ public static class STAttrMap extends HashMap {
         List list_s=null;
         RuleReturnScope s = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:196:3: ( (s+= brackedAnnotationAssignValue )+ -> list(ls=$s))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:196:3: ( (s+= brackedAnnotationAssignValue )+ -> commaSeparatedList(ls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:196:5: (s+= brackedAnnotationAssignValue )+
             {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:196:5: (s+= brackedAnnotationAssignValue )+
@@ -3109,9 +3111,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 197:7: -> list(ls=$s)
+            // 197:7: -> commaSeparatedList(ls=$s)
             {
-                retval.st = templateLib.getInstanceOf("list",new STAttrMap().put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("commaSeparatedList",new STAttrMap().put("ls", list_s));
             }
 
 
@@ -3140,7 +3142,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "brackedAnnotationAssignValue"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:199:1: brackedAnnotationAssignValue : ^( AnnotationAssign (s= runtimeVisibleAnnotationAssignList )? ) -> brackedAnnotationAssign(f=$AnnotationAssign.texts=$s.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:199:1: brackedAnnotationAssignValue : ^( AnnotationAssign (s= runtimeVisibleAnnotationAssignList )? ) -> brackedAnnotationAssignValue(f=$AnnotationAssign.texts=$s.st);
     public final JVMPrettyPrinter.brackedAnnotationAssignValue_return brackedAnnotationAssignValue() throws RecognitionException {
         JVMPrettyPrinter.brackedAnnotationAssignValue_return retval = new JVMPrettyPrinter.brackedAnnotationAssignValue_return();
         retval.start = input.LT(1);
@@ -3151,7 +3153,7 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:200:3: ( ^( AnnotationAssign (s= runtimeVisibleAnnotationAssignList )? ) -> brackedAnnotationAssign(f=$AnnotationAssign.texts=$s.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:200:3: ( ^( AnnotationAssign (s= runtimeVisibleAnnotationAssignList )? ) -> brackedAnnotationAssignValue(f=$AnnotationAssign.texts=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:200:5: ^( AnnotationAssign (s= runtimeVisibleAnnotationAssignList )? )
             {
             AnnotationAssign27=(CommonTree)match(input,AnnotationAssign,FOLLOW_AnnotationAssign_in_brackedAnnotationAssignValue2074); 
@@ -3186,9 +3188,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 201:7: -> brackedAnnotationAssign(f=$AnnotationAssign.texts=$s.st)
+            // 201:7: -> brackedAnnotationAssignValue(f=$AnnotationAssign.texts=$s.st)
             {
-                retval.st = templateLib.getInstanceOf("brackedAnnotationAssign",new STAttrMap().put("f", (AnnotationAssign27!=null?AnnotationAssign27.getText():null)).put("s", (s!=null?s.st:null)));
+                retval.st = templateLib.getInstanceOf("brackedAnnotationAssignValue",new STAttrMap().put("f", (AnnotationAssign27!=null?AnnotationAssign27.getText():null)).put("s", (s!=null?s.st:null)));
             }
 
 
@@ -3240,7 +3242,7 @@ public static class STAttrMap extends HashMap {
                 int alt27=2;
                 int LA27_0 = input.LA(1);
 
-                if ( (LA27_0==INTLITERAL) ) {
+                if ( (LA27_0==PVI) ) {
                     alt27=1;
                 }
 
@@ -3329,7 +3331,7 @@ public static class STAttrMap extends HashMap {
                 int alt28=2;
                 int LA28_0 = input.LA(1);
 
-                if ( (LA28_0==INTLITERAL) ) {
+                if ( (LA28_0==PVI) ) {
                     alt28=1;
                 }
 
@@ -3418,7 +3420,7 @@ public static class STAttrMap extends HashMap {
                 int alt29=2;
                 int LA29_0 = input.LA(1);
 
-                if ( (LA29_0==INTLITERAL) ) {
+                if ( (LA29_0==RIAI) ) {
                     alt29=1;
                 }
 
@@ -3484,7 +3486,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "parameterVisibilityInfo"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:215:1: parameterVisibilityInfo : ^(p= pc ( IDENTIFIER )? (s+= runtimeVisibleAnnotationsItem )* ) -> parameterVisibilityInfo(f=$p.stf=$IDENTIFIER.textls=$s);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:215:1: parameterVisibilityInfo : ^( PVI p= pc ( IDENTIFIER )? (s+= runtimeVisibleAnnotationsItem )* ) -> parameterVisibilityInfo(f=$p.sts=$IDENTIFIER.textls=$s);
     public final JVMPrettyPrinter.parameterVisibilityInfo_return parameterVisibilityInfo() throws RecognitionException {
         JVMPrettyPrinter.parameterVisibilityInfo_return retval = new JVMPrettyPrinter.parameterVisibilityInfo_return();
         retval.start = input.LT(1);
@@ -3496,77 +3498,77 @@ public static class STAttrMap extends HashMap {
 
         RuleReturnScope s = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:3: ( ^(p= pc ( IDENTIFIER )? (s+= runtimeVisibleAnnotationsItem )* ) -> parameterVisibilityInfo(f=$p.stf=$IDENTIFIER.textls=$s))
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:5: ^(p= pc ( IDENTIFIER )? (s+= runtimeVisibleAnnotationsItem )* )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:3: ( ^( PVI p= pc ( IDENTIFIER )? (s+= runtimeVisibleAnnotationsItem )* ) -> parameterVisibilityInfo(f=$p.sts=$IDENTIFIER.textls=$s))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:5: ^( PVI p= pc ( IDENTIFIER )? (s+= runtimeVisibleAnnotationsItem )* )
             {
-            pushFollow(FOLLOW_pc_in_parameterVisibilityInfo2234);
+            match(input,PVI,FOLLOW_PVI_in_parameterVisibilityInfo2232); 
+
+            match(input, Token.DOWN, null); 
+            pushFollow(FOLLOW_pc_in_parameterVisibilityInfo2236);
             p=pc();
 
             state._fsp--;
 
 
-            if ( input.LA(1)==Token.DOWN ) {
-                match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:12: ( IDENTIFIER )?
-                int alt30=2;
-                int LA30_0 = input.LA(1);
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:16: ( IDENTIFIER )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-                if ( (LA30_0==IDENTIFIER) ) {
-                    alt30=1;
-                }
-                switch (alt30) {
-                    case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:12: IDENTIFIER
-                        {
-                        IDENTIFIER31=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_parameterVisibilityInfo2236); 
+            if ( (LA30_0==IDENTIFIER) ) {
+                alt30=1;
+            }
+            switch (alt30) {
+                case 1 :
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:16: IDENTIFIER
+                    {
+                    IDENTIFIER31=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_parameterVisibilityInfo2238); 
 
-                        }
-                        break;
-
-                }
-
-
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:24: (s+= runtimeVisibleAnnotationsItem )*
-                loop31:
-                do {
-                    int alt31=2;
-                    int LA31_0 = input.LA(1);
-
-                    if ( (LA31_0==CPINDEX) ) {
-                        alt31=1;
                     }
+                    break;
 
-
-                    switch (alt31) {
-                	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:25: s+= runtimeVisibleAnnotationsItem
-                	    {
-                	    pushFollow(FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo2242);
-                	    s=runtimeVisibleAnnotationsItem();
-
-                	    state._fsp--;
-
-                	    if (list_s==null) list_s=new ArrayList();
-                	    list_s.add(s.getTemplate());
-
-
-                	    }
-                	    break;
-
-                	default :
-                	    break loop31;
-                    }
-                } while (true);
-
-
-                match(input, Token.UP, null); 
             }
 
 
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:28: (s+= runtimeVisibleAnnotationsItem )*
+            loop31:
+            do {
+                int alt31=2;
+                int LA31_0 = input.LA(1);
+
+                if ( (LA31_0==CPINDEX) ) {
+                    alt31=1;
+                }
+
+
+                switch (alt31) {
+            	case 1 :
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:216:29: s+= runtimeVisibleAnnotationsItem
+            	    {
+            	    pushFollow(FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo2244);
+            	    s=runtimeVisibleAnnotationsItem();
+
+            	    state._fsp--;
+
+            	    if (list_s==null) list_s=new ArrayList();
+            	    list_s.add(s.getTemplate());
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop31;
+                }
+            } while (true);
+
+
+            match(input, Token.UP, null); 
+
+
             // TEMPLATE REWRITE
-            // 217:5: -> parameterVisibilityInfo(f=$p.stf=$IDENTIFIER.textls=$s)
+            // 217:5: -> parameterVisibilityInfo(f=$p.sts=$IDENTIFIER.textls=$s)
             {
-                retval.st = templateLib.getInstanceOf("parameterVisibilityInfo",new STAttrMap().put("f", (p!=null?p.st:null)).put("f", (IDENTIFIER31!=null?IDENTIFIER31.getText():null)).put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("parameterVisibilityInfo",new STAttrMap().put("f", (p!=null?p.st:null)).put("s", (IDENTIFIER31!=null?IDENTIFIER31.getText():null)).put("ls", list_s));
             }
 
 
@@ -3595,7 +3597,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "runtimeInvisibleAnnotationsItem"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:219:1: runtimeInvisibleAnnotationsItem : ^(p1= pc (p2= pc )? ^( CPINDEX (s= runtimeVisibleAnnotationAssignList )? ) ) -> runtimeInvisibleAnnotationsItem(f=$p1.sts=$p2.stt=$CPINDEX.textq=$s.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:219:1: runtimeInvisibleAnnotationsItem : ^( RIAI p1= pc (p2= pc )? ^( CPINDEX (s= runtimeVisibleAnnotationAssignList )? ) ) -> runtimeInvisibleAnnotationsItem(f=$p1.sts=$p2.stt=$CPINDEX.textq=$s.st);
     public final JVMPrettyPrinter.runtimeInvisibleAnnotationsItem_return runtimeInvisibleAnnotationsItem() throws RecognitionException {
         JVMPrettyPrinter.runtimeInvisibleAnnotationsItem_return retval = new JVMPrettyPrinter.runtimeInvisibleAnnotationsItem_return();
         retval.start = input.LT(1);
@@ -3610,17 +3612,19 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:3: ( ^(p1= pc (p2= pc )? ^( CPINDEX (s= runtimeVisibleAnnotationAssignList )? ) ) -> runtimeInvisibleAnnotationsItem(f=$p1.sts=$p2.stt=$CPINDEX.textq=$s.st))
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:5: ^(p1= pc (p2= pc )? ^( CPINDEX (s= runtimeVisibleAnnotationAssignList )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:3: ( ^( RIAI p1= pc (p2= pc )? ^( CPINDEX (s= runtimeVisibleAnnotationAssignList )? ) ) -> runtimeInvisibleAnnotationsItem(f=$p1.sts=$p2.stt=$CPINDEX.textq=$s.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:5: ^( RIAI p1= pc (p2= pc )? ^( CPINDEX (s= runtimeVisibleAnnotationAssignList )? ) )
             {
-            pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2281);
+            match(input,RIAI,FOLLOW_RIAI_in_runtimeInvisibleAnnotationsItem2281); 
+
+            match(input, Token.DOWN, null); 
+            pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2285);
             p1=pc();
 
             state._fsp--;
 
 
-            match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:15: (p2= pc )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:20: (p2= pc )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
@@ -3629,9 +3633,9 @@ public static class STAttrMap extends HashMap {
             }
             switch (alt32) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:15: p2= pc
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:20: p2= pc
                     {
-                    pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2285);
+                    pushFollow(FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2289);
                     p2=pc();
 
                     state._fsp--;
@@ -3643,11 +3647,11 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            CPINDEX32=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem2289); 
+            CPINDEX32=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem2293); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:31: (s= runtimeVisibleAnnotationAssignList )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:36: (s= runtimeVisibleAnnotationAssignList )?
                 int alt33=2;
                 int LA33_0 = input.LA(1);
 
@@ -3656,9 +3660,9 @@ public static class STAttrMap extends HashMap {
                 }
                 switch (alt33) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:31: s= runtimeVisibleAnnotationAssignList
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:220:36: s= runtimeVisibleAnnotationAssignList
                         {
-                        pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem2293);
+                        pushFollow(FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem2297);
                         s=runtimeVisibleAnnotationAssignList();
 
                         state._fsp--;
@@ -3723,10 +3727,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:229:3: ( ^(id1= IDENTIFIER id2= IDENTIFIER (s+= contant_pool_line )* ) -> cpool(f=$id1.texts=$id2.textt=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:229:5: ^(id1= IDENTIFIER id2= IDENTIFIER (s+= contant_pool_line )* )
             {
-            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool2341); 
+            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool2345); 
 
             match(input, Token.DOWN, null); 
-            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool2345); 
+            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_constant_pool2349); 
 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:229:37: (s+= contant_pool_line )*
             loop34:
@@ -3743,7 +3747,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:229:38: s+= contant_pool_line
             	    {
-            	    pushFollow(FOLLOW_contant_pool_line_in_constant_pool2350);
+            	    pushFollow(FOLLOW_contant_pool_line_in_constant_pool2354);
             	    s=contant_pool_line();
 
             	    state._fsp--;
@@ -3809,12 +3813,12 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:234:3: ( ^( ASSIGN cp1= CPINDEX cta= CONSTANT_TYPE_ASSIGNABLE ) -> cpoolline(f=$cp1.texts=$cta.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:234:5: ^( ASSIGN cp1= CPINDEX cta= CONSTANT_TYPE_ASSIGNABLE )
             {
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_contant_pool_line2396); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_contant_pool_line2400); 
 
             match(input, Token.DOWN, null); 
-            cp1=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_contant_pool_line2400); 
+            cp1=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_contant_pool_line2404); 
 
-            cta=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line2404); 
+            cta=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line2408); 
 
             match(input, Token.UP, null); 
 
@@ -3879,7 +3883,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:243:6: s+= classBodyEntryDecl
             	    {
-            	    pushFollow(FOLLOW_classBodyEntryDecl_in_classBody2452);
+            	    pushFollow(FOLLOW_classBodyEntryDecl_in_classBody2456);
             	    s=classBodyEntryDecl();
 
             	    state._fsp--;
@@ -3984,7 +3988,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:247:5: s1= methodDefinition
                     {
-                    pushFollow(FOLLOW_methodDefinition_in_classBodyEntryDecl2481);
+                    pushFollow(FOLLOW_methodDefinition_in_classBodyEntryDecl2485);
                     s1=methodDefinition();
 
                     state._fsp--;
@@ -4003,7 +4007,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:248:5: s2= ctorDefinition
                     {
-                    pushFollow(FOLLOW_ctorDefinition_in_classBodyEntryDecl2500);
+                    pushFollow(FOLLOW_ctorDefinition_in_classBodyEntryDecl2504);
                     s2=ctorDefinition();
 
                     state._fsp--;
@@ -4022,7 +4026,7 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:249:5: s3= fieldDefinition
                     {
-                    pushFollow(FOLLOW_fieldDefinition_in_classBodyEntryDecl2519);
+                    pushFollow(FOLLOW_fieldDefinition_in_classBodyEntryDecl2523);
                     s3=fieldDefinition();
 
                     state._fsp--;
@@ -4041,7 +4045,7 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:250:5: s4= staticCtorDefinition
                     {
-                    pushFollow(FOLLOW_staticCtorDefinition_in_classBodyEntryDecl2539);
+                    pushFollow(FOLLOW_staticCtorDefinition_in_classBodyEntryDecl2543);
                     s4=staticCtorDefinition();
 
                     state._fsp--;
@@ -4081,13 +4085,14 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "fieldDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:257:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:257:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo);
     public final JVMPrettyPrinter.fieldDefinition_return fieldDefinition() throws RecognitionException {
         JVMPrettyPrinter.fieldDefinition_return retval = new JVMPrettyPrinter.fieldDefinition_return();
         retval.start = input.LT(1);
 
 
         List list_fm=null;
+        List list_ainfo=null;
         JVMPrettyPrinter.field_visual_modifier_return fvm =null;
 
         JVMPrettyPrinter.type_return ft =null;
@@ -4098,17 +4103,16 @@ public static class STAttrMap extends HashMap {
 
         JVMPrettyPrinter.fieldInfo_return inf =null;
 
-        JVMPrettyPrinter.fieldAdditionalInfo_return ainfo =null;
-
         RuleReturnScope fm = null;
+        RuleReturnScope ainfo = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:3: ( ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo.st))
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:5: ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo= fieldAdditionalInfo )* ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:3: ( ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:5: ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) )
             {
-            match(input,FIELDDECL,FOLLOW_FIELDDECL_in_fieldDefinition2566); 
+            match(input,FIELDDECL,FOLLOW_FIELDDECL_in_fieldDefinition2570); 
 
             match(input, Token.DOWN, null); 
-            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_fieldDefinition2569); 
+            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_fieldDefinition2573); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -4123,7 +4127,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:32: fvm= field_visual_modifier
                         {
-                        pushFollow(FOLLOW_field_visual_modifier_in_fieldDefinition2573);
+                        pushFollow(FOLLOW_field_visual_modifier_in_fieldDefinition2577);
                         fvm=field_visual_modifier();
 
                         state._fsp--;
@@ -4139,7 +4143,7 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,MODIFIER,FOLLOW_MODIFIER_in_fieldDefinition2578); 
+            match(input,MODIFIER,FOLLOW_MODIFIER_in_fieldDefinition2582); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -4158,7 +4162,7 @@ public static class STAttrMap extends HashMap {
                 	case 1 :
                 	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:69: fm+= field_modifier
                 	    {
-                	    pushFollow(FOLLOW_field_modifier_in_fieldDefinition2583);
+                	    pushFollow(FOLLOW_field_modifier_in_fieldDefinition2587);
                 	    fm=field_modifier();
 
                 	    state._fsp--;
@@ -4180,10 +4184,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,RETVALUE,FOLLOW_RETVALUE_in_fieldDefinition2589); 
+            match(input,RETVALUE,FOLLOW_RETVALUE_in_fieldDefinition2593); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_type_in_fieldDefinition2593);
+            pushFollow(FOLLOW_type_in_fieldDefinition2597);
             ft=type();
 
             state._fsp--;
@@ -4192,10 +4196,10 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,UNITNAME,FOLLOW_UNITNAME_in_fieldDefinition2597); 
+            match(input,UNITNAME,FOLLOW_UNITNAME_in_fieldDefinition2601); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_keywordAggregate_in_fieldDefinition2601);
+            pushFollow(FOLLOW_keywordAggregate_in_fieldDefinition2605);
             fn=keywordAggregate();
 
             state._fsp--;
@@ -4204,7 +4208,7 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,FIELDVALUE,FOLLOW_FIELDVALUE_in_fieldDefinition2605); 
+            match(input,FIELDVALUE,FOLLOW_FIELDVALUE_in_fieldDefinition2609); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -4219,7 +4223,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:159: lit= literals
                         {
-                        pushFollow(FOLLOW_literals_in_fieldDefinition2609);
+                        pushFollow(FOLLOW_literals_in_fieldDefinition2613);
                         lit=literals();
 
                         state._fsp--;
@@ -4235,10 +4239,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_fieldDefinition2626); 
+            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_fieldDefinition2630); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_fieldInfo_in_fieldDefinition2630);
+            pushFollow(FOLLOW_fieldInfo_in_fieldDefinition2634);
             inf=fieldInfo();
 
             state._fsp--;
@@ -4247,11 +4251,11 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,UNITATTR,FOLLOW_UNITATTR_in_fieldDefinition2646); 
+            match(input,UNITATTR,FOLLOW_UNITATTR_in_fieldDefinition2650); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:260:29: (ainfo= fieldAdditionalInfo )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:260:24: (ainfo+= fieldAdditionalInfo )*
                 loop40:
                 do {
                     int alt40=2;
@@ -4264,12 +4268,15 @@ public static class STAttrMap extends HashMap {
 
                     switch (alt40) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:260:29: ainfo= fieldAdditionalInfo
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:260:25: ainfo+= fieldAdditionalInfo
                 	    {
-                	    pushFollow(FOLLOW_fieldAdditionalInfo_in_fieldDefinition2650);
+                	    pushFollow(FOLLOW_fieldAdditionalInfo_in_fieldDefinition2655);
                 	    ainfo=fieldAdditionalInfo();
 
                 	    state._fsp--;
+
+                	    if (list_ainfo==null) list_ainfo=new ArrayList();
+                	    list_ainfo.add(ainfo.getTemplate());
 
 
                 	    }
@@ -4289,9 +4296,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 262:13: -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo.st)
+            // 262:13: -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo)
             {
-                retval.st = templateLib.getInstanceOf("fieldDecl",new STAttrMap().put("vm", (fvm!=null?fvm.st:null)).put("m", list_fm).put("t", (ft!=null?ft.st:null)).put("n", (fn!=null?fn.st:null)).put("v", (lit!=null?lit.st:null)).put("info", (inf!=null?inf.st:null)).put("xinf", (ainfo!=null?ainfo.st:null)));
+                retval.st = templateLib.getInstanceOf("fieldDecl",new STAttrMap().put("vm", (fvm!=null?fvm.st:null)).put("m", list_fm).put("t", (ft!=null?ft.st:null)).put("n", (fn!=null?fn.st:null)).put("v", (lit!=null?lit.st:null)).put("info", (inf!=null?inf.st:null)).put("xinf", list_ainfo));
             }
 
 
@@ -4336,10 +4343,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:269:3: ( ^(sig= Signature s1= bytecodeType ) s2= flags -> fieldInf(f=$sig.texts=$s1.stt=$s2.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:269:5: ^(sig= Signature s1= bytecodeType ) s2= flags
             {
-            sig=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldInfo2815); 
+            sig=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldInfo2821); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_bytecodeType_in_fieldInfo2819);
+            pushFollow(FOLLOW_bytecodeType_in_fieldInfo2825);
             s1=bytecodeType();
 
             state._fsp--;
@@ -4348,7 +4355,7 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            pushFollow(FOLLOW_flags_in_fieldInfo2824);
+            pushFollow(FOLLOW_flags_in_fieldInfo2830);
             s2=flags();
 
             state._fsp--;
@@ -4386,7 +4393,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "fieldAdditionalInfo"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:272:1: fieldAdditionalInfo : ( ^( Constant pt= primitiveType l= literals ) -> noformat3(f=$Constant.texts=$pt.stt=$l.st)| ^( Constant CONSTANT_TYPE_ASSIGNABLE ) -> noformat2(f=$Constant.texts=$CONSTANT_TYPE_ASSIGNABLE.text)| ^( Signature CPINDEX ) -> noformat2(f=$Signature.texts=$CPINDEX.text)| ^( Deprecated BOOLEANLITERAL ) -> noformat2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Synthetic BOOLEANLITERAL ) -> noformat2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s1= runtimeVisibleAnnotations_info -> noformat(f=$s1.st)|s2= runtimeInvisibleAnnotations -> noformat(f=$s2.st));
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:272:1: fieldAdditionalInfo : ( ^( Constant pt= primitiveType l= literals ) -> noformat3(f=$Constant.texts=$pt.stt=$l.st)| ^( Constant CONSTANT_TYPE_ASSIGNABLE ) -> noformatWithspace2(f=$Constant.texts=$CONSTANT_TYPE_ASSIGNABLE.text)| ^( Signature CPINDEX ) -> noformatWithspace2(f=$Signature.texts=$CPINDEX.text)| ^( Deprecated BOOLEANLITERAL ) -> noformatWithspace2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Synthetic BOOLEANLITERAL ) -> noformatWithspace2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s1= runtimeVisibleAnnotations_info -> noformat(f=$s1.st)|s2= runtimeInvisibleAnnotations -> noformat(f=$s2.st));
     public final JVMPrettyPrinter.fieldAdditionalInfo_return fieldAdditionalInfo() throws RecognitionException {
         JVMPrettyPrinter.fieldAdditionalInfo_return retval = new JVMPrettyPrinter.fieldAdditionalInfo_return();
         retval.start = input.LT(1);
@@ -4411,7 +4418,7 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:273:3: ( ^( Constant pt= primitiveType l= literals ) -> noformat3(f=$Constant.texts=$pt.stt=$l.st)| ^( Constant CONSTANT_TYPE_ASSIGNABLE ) -> noformat2(f=$Constant.texts=$CONSTANT_TYPE_ASSIGNABLE.text)| ^( Signature CPINDEX ) -> noformat2(f=$Signature.texts=$CPINDEX.text)| ^( Deprecated BOOLEANLITERAL ) -> noformat2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Synthetic BOOLEANLITERAL ) -> noformat2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s1= runtimeVisibleAnnotations_info -> noformat(f=$s1.st)|s2= runtimeInvisibleAnnotations -> noformat(f=$s2.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:273:3: ( ^( Constant pt= primitiveType l= literals ) -> noformat3(f=$Constant.texts=$pt.stt=$l.st)| ^( Constant CONSTANT_TYPE_ASSIGNABLE ) -> noformatWithspace2(f=$Constant.texts=$CONSTANT_TYPE_ASSIGNABLE.text)| ^( Signature CPINDEX ) -> noformatWithspace2(f=$Signature.texts=$CPINDEX.text)| ^( Deprecated BOOLEANLITERAL ) -> noformatWithspace2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Synthetic BOOLEANLITERAL ) -> noformatWithspace2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s1= runtimeVisibleAnnotations_info -> noformat(f=$s1.st)|s2= runtimeInvisibleAnnotations -> noformat(f=$s2.st))
             int alt41=7;
             switch ( input.LA(1) ) {
             case Constant:
@@ -4481,16 +4488,16 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:273:5: ^( Constant pt= primitiveType l= literals )
                     {
-                    Constant33=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2857); 
+                    Constant33=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2863); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo2861);
+                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo2867);
                     pt=primitiveType();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo2865);
+                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo2871);
                     l=literals();
 
                     state._fsp--;
@@ -4500,7 +4507,7 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 273:45: -> noformat3(f=$Constant.texts=$pt.stt=$l.st)
+                    // 273:46: -> noformat3(f=$Constant.texts=$pt.stt=$l.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat3",new STAttrMap().put("f", (Constant33!=null?Constant33.getText():null)).put("s", (pt!=null?pt.st:null)).put("t", (l!=null?l.st:null)));
                     }
@@ -4512,18 +4519,18 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:274:5: ^( Constant CONSTANT_TYPE_ASSIGNABLE )
                     {
-                    Constant34=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2890); 
+                    Constant34=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2897); 
 
                     match(input, Token.DOWN, null); 
-                    CONSTANT_TYPE_ASSIGNABLE35=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2892); 
+                    CONSTANT_TYPE_ASSIGNABLE35=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2899); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 274:43: -> noformat2(f=$Constant.texts=$CONSTANT_TYPE_ASSIGNABLE.text)
+                    // 274:44: -> noformatWithspace2(f=$Constant.texts=$CONSTANT_TYPE_ASSIGNABLE.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Constant34!=null?Constant34.getText():null)).put("s", (CONSTANT_TYPE_ASSIGNABLE35!=null?CONSTANT_TYPE_ASSIGNABLE35.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Constant34!=null?Constant34.getText():null)).put("s", (CONSTANT_TYPE_ASSIGNABLE35!=null?CONSTANT_TYPE_ASSIGNABLE35.getText():null)));
                     }
 
 
@@ -4533,18 +4540,18 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:275:5: ^( Signature CPINDEX )
                     {
-                    Signature36=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo2914); 
+                    Signature36=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo2922); 
 
                     match(input, Token.DOWN, null); 
-                    CPINDEX37=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo2916); 
+                    CPINDEX37=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo2924); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 275:31: -> noformat2(f=$Signature.texts=$CPINDEX.text)
+                    // 275:34: -> noformatWithspace2(f=$Signature.texts=$CPINDEX.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Signature36!=null?Signature36.getText():null)).put("s", (CPINDEX37!=null?CPINDEX37.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Signature36!=null?Signature36.getText():null)).put("s", (CPINDEX37!=null?CPINDEX37.getText():null)));
                     }
 
 
@@ -4554,18 +4561,18 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:276:5: ^( Deprecated BOOLEANLITERAL )
                     {
-                    Deprecated38=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo2942); 
+                    Deprecated38=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo2953); 
 
                     match(input, Token.DOWN, null); 
-                    BOOLEANLITERAL39=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2944); 
+                    BOOLEANLITERAL39=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2955); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 276:37: -> noformat2(f=$Deprecated.texts=$BOOLEANLITERAL.text)
+                    // 276:39: -> noformatWithspace2(f=$Deprecated.texts=$BOOLEANLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Deprecated38!=null?Deprecated38.getText():null)).put("s", (BOOLEANLITERAL39!=null?BOOLEANLITERAL39.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Deprecated38!=null?Deprecated38.getText():null)).put("s", (BOOLEANLITERAL39!=null?BOOLEANLITERAL39.getText():null)));
                     }
 
 
@@ -4575,18 +4582,18 @@ public static class STAttrMap extends HashMap {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:277:5: ^( Synthetic BOOLEANLITERAL )
                     {
-                    Synthetic40=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo2968); 
+                    Synthetic40=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo2981); 
 
                     match(input, Token.DOWN, null); 
-                    BOOLEANLITERAL41=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2970); 
+                    BOOLEANLITERAL41=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2983); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 277:37: -> noformat2(f=$Synthetic.texts=$BOOLEANLITERAL.text)
+                    // 277:39: -> noformatWithspace2(f=$Synthetic.texts=$BOOLEANLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Synthetic40!=null?Synthetic40.getText():null)).put("s", (BOOLEANLITERAL41!=null?BOOLEANLITERAL41.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Synthetic40!=null?Synthetic40.getText():null)).put("s", (BOOLEANLITERAL41!=null?BOOLEANLITERAL41.getText():null)));
                     }
 
 
@@ -4596,14 +4603,14 @@ public static class STAttrMap extends HashMap {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:278:5: s1= runtimeVisibleAnnotations_info
                     {
-                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo2996);
+                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo3011);
                     s1=runtimeVisibleAnnotations_info();
 
                     state._fsp--;
 
 
                     // TEMPLATE REWRITE
-                    // 278:41: -> noformat(f=$s1.st)
+                    // 278:42: -> noformat(f=$s1.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (s1!=null?s1.st:null)));
                     }
@@ -4615,14 +4622,14 @@ public static class STAttrMap extends HashMap {
                 case 7 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:279:5: s2= runtimeInvisibleAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo3015);
+                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo3031);
                     s2=runtimeInvisibleAnnotations();
 
                     state._fsp--;
 
 
                     // TEMPLATE REWRITE
-                    // 279:39: -> noformat(f=$s2.st)
+                    // 279:41: -> noformat(f=$s2.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (s2!=null?s2.st:null)));
                     }
@@ -4696,7 +4703,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:283:5: PUBLIC
                     {
-                    PUBLIC42=(CommonTree)match(input,PUBLIC,FOLLOW_PUBLIC_in_field_visual_modifier3040); 
+                    PUBLIC42=(CommonTree)match(input,PUBLIC,FOLLOW_PUBLIC_in_field_visual_modifier3058); 
 
                     // TEMPLATE REWRITE
                     // 283:19: -> noformat(f=$PUBLIC.text)
@@ -4711,7 +4718,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:284:5: PRIVATE
                     {
-                    PRIVATE43=(CommonTree)match(input,PRIVATE,FOLLOW_PRIVATE_in_field_visual_modifier3062); 
+                    PRIVATE43=(CommonTree)match(input,PRIVATE,FOLLOW_PRIVATE_in_field_visual_modifier3080); 
 
                     // TEMPLATE REWRITE
                     // 284:19: -> noformat(f=$PRIVATE.text)
@@ -4726,7 +4733,7 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:285:5: PROTECTED
                     {
-                    PROTECTED44=(CommonTree)match(input,PROTECTED,FOLLOW_PROTECTED_in_field_visual_modifier3083); 
+                    PROTECTED44=(CommonTree)match(input,PROTECTED,FOLLOW_PROTECTED_in_field_visual_modifier3101); 
 
                     // TEMPLATE REWRITE
                     // 285:19: -> noformat(f=$PROTECTED.text)
@@ -4809,7 +4816,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:289:5: FINAL
                     {
-                    FINAL45=(CommonTree)match(input,FINAL,FOLLOW_FINAL_in_field_modifier3113); 
+                    FINAL45=(CommonTree)match(input,FINAL,FOLLOW_FINAL_in_field_modifier3131); 
 
                     // TEMPLATE REWRITE
                     // 289:17: -> noformat(f=$FINAL.text)
@@ -4824,7 +4831,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:290:5: STATIC
                     {
-                    STATIC46=(CommonTree)match(input,STATIC,FOLLOW_STATIC_in_field_modifier3134); 
+                    STATIC46=(CommonTree)match(input,STATIC,FOLLOW_STATIC_in_field_modifier3152); 
 
                     // TEMPLATE REWRITE
                     // 290:19: -> noformat(f=$STATIC.text)
@@ -4839,7 +4846,7 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:291:5: TRANSIENT
                     {
-                    TRANSIENT47=(CommonTree)match(input,TRANSIENT,FOLLOW_TRANSIENT_in_field_modifier3156); 
+                    TRANSIENT47=(CommonTree)match(input,TRANSIENT,FOLLOW_TRANSIENT_in_field_modifier3174); 
 
                     // TEMPLATE REWRITE
                     // 291:21: -> noformat(f=$TRANSIENT.text)
@@ -4854,7 +4861,7 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:292:5: VOLATILE
                     {
-                    VOLATILE48=(CommonTree)match(input,VOLATILE,FOLLOW_VOLATILE_in_field_modifier3177); 
+                    VOLATILE48=(CommonTree)match(input,VOLATILE,FOLLOW_VOLATILE_in_field_modifier3195); 
 
                     // TEMPLATE REWRITE
                     // 292:19: -> noformat(f=$VOLATILE.text)
@@ -4907,10 +4914,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:300:3: ( ^( STATICCTORDECL ^( VMODIFIER (svm= field_visual_modifier )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY b= body ) ) -> statCtorDecl(vm=$svm.stinfo=$inf.stbody=$b.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:300:5: ^( STATICCTORDECL ^( VMODIFIER (svm= field_visual_modifier )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY b= body ) )
             {
-            match(input,STATICCTORDECL,FOLLOW_STATICCTORDECL_in_staticCtorDefinition3211); 
+            match(input,STATICCTORDECL,FOLLOW_STATICCTORDECL_in_staticCtorDefinition3229); 
 
             match(input, Token.DOWN, null); 
-            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_staticCtorDefinition3214); 
+            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_staticCtorDefinition3232); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -4925,7 +4932,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:300:37: svm= field_visual_modifier
                         {
-                        pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition3218);
+                        pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition3236);
                         svm=field_visual_modifier();
 
                         state._fsp--;
@@ -4941,10 +4948,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_staticCtorDefinition3228); 
+            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_staticCtorDefinition3246); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition3232);
+            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition3250);
             inf=methodInfo();
 
             state._fsp--;
@@ -4953,10 +4960,10 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,UNITBODY,FOLLOW_UNITBODY_in_staticCtorDefinition3241); 
+            match(input,UNITBODY,FOLLOW_UNITBODY_in_staticCtorDefinition3259); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_body_in_staticCtorDefinition3245);
+            pushFollow(FOLLOW_body_in_staticCtorDefinition3263);
             b=body();
 
             state._fsp--;
@@ -5027,10 +5034,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:315:3: ( ^( CTORDECL ^( VMODIFIER (cvm= field_visual_modifier )? ) ^( GENERICDESC (g= genericDescriptor )? ) ^( UNITNAME name= typeName ) a= arguments ^( THROWCLAUSE (t= throwClause )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY b= body ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> ctorDecl(vm=$cvm.stgd=$g.stn=$name.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:315:5: ^( CTORDECL ^( VMODIFIER (cvm= field_visual_modifier )? ) ^( GENERICDESC (g= genericDescriptor )? ) ^( UNITNAME name= typeName ) a= arguments ^( THROWCLAUSE (t= throwClause )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY b= body ) ^( UNITATTR (ainfo= afterMethodInfo )? ) )
             {
-            match(input,CTORDECL,FOLLOW_CTORDECL_in_ctorDefinition3397); 
+            match(input,CTORDECL,FOLLOW_CTORDECL_in_ctorDefinition3415); 
 
             match(input, Token.DOWN, null); 
-            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_ctorDefinition3400); 
+            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_ctorDefinition3418); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -5045,7 +5052,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:315:31: cvm= field_visual_modifier
                         {
-                        pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition3404);
+                        pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition3422);
                         cvm=field_visual_modifier();
 
                         state._fsp--;
@@ -5061,7 +5068,7 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,GENERICDESC,FOLLOW_GENERICDESC_in_ctorDefinition3409); 
+            match(input,GENERICDESC,FOLLOW_GENERICDESC_in_ctorDefinition3427); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -5076,7 +5083,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:315:71: g= genericDescriptor
                         {
-                        pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition3413);
+                        pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition3431);
                         g=genericDescriptor();
 
                         state._fsp--;
@@ -5092,10 +5099,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,UNITNAME,FOLLOW_UNITNAME_in_ctorDefinition3418); 
+            match(input,UNITNAME,FOLLOW_UNITNAME_in_ctorDefinition3436); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_typeName_in_ctorDefinition3422);
+            pushFollow(FOLLOW_typeName_in_ctorDefinition3440);
             name=typeName();
 
             state._fsp--;
@@ -5104,13 +5111,13 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            pushFollow(FOLLOW_arguments_in_ctorDefinition3427);
+            pushFollow(FOLLOW_arguments_in_ctorDefinition3445);
             a=arguments();
 
             state._fsp--;
 
 
-            match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_ctorDefinition3430); 
+            match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_ctorDefinition3448); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -5125,7 +5132,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:315:145: t= throwClause
                         {
-                        pushFollow(FOLLOW_throwClause_in_ctorDefinition3434);
+                        pushFollow(FOLLOW_throwClause_in_ctorDefinition3452);
                         t=throwClause();
 
                         state._fsp--;
@@ -5141,10 +5148,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_ctorDefinition3463); 
+            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_ctorDefinition3481); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_methodInfo_in_ctorDefinition3467);
+            pushFollow(FOLLOW_methodInfo_in_ctorDefinition3485);
             inf=methodInfo();
 
             state._fsp--;
@@ -5153,10 +5160,10 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,UNITBODY,FOLLOW_UNITBODY_in_ctorDefinition3495); 
+            match(input,UNITBODY,FOLLOW_UNITBODY_in_ctorDefinition3513); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_body_in_ctorDefinition3499);
+            pushFollow(FOLLOW_body_in_ctorDefinition3517);
             b=body();
 
             state._fsp--;
@@ -5165,7 +5172,7 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,UNITATTR,FOLLOW_UNITATTR_in_ctorDefinition3527); 
+            match(input,UNITATTR,FOLLOW_UNITATTR_in_ctorDefinition3545); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -5180,7 +5187,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:318:41: ainfo= afterMethodInfo
                         {
-                        pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition3531);
+                        pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition3549);
                         ainfo=afterMethodInfo();
 
                         state._fsp--;
@@ -5231,15 +5238,14 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "methodDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:331:1: methodDefinition : ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mm.stgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:331:1: methodDefinition : ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st);
     public final JVMPrettyPrinter.methodDefinition_return methodDefinition() throws RecognitionException {
         JVMPrettyPrinter.methodDefinition_return retval = new JVMPrettyPrinter.methodDefinition_return();
         retval.start = input.LT(1);
 
 
+        List list_mm=null;
         JVMPrettyPrinter.method_visual_modifier_return mvm =null;
-
-        JVMPrettyPrinter.method_modifier_return mm =null;
 
         JVMPrettyPrinter.genericDescriptor_return g =null;
 
@@ -5257,15 +5263,15 @@ public static class STAttrMap extends HashMap {
 
         JVMPrettyPrinter.afterMethodInfo_return ainfo =null;
 
-
+        RuleReturnScope mm = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:3: ( ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mm.stgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st))
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:5: ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:3: ( ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:5: ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) )
             {
-            match(input,METHODDECL,FOLLOW_METHODDECL_in_methodDefinition3753); 
+            match(input,METHODDECL,FOLLOW_METHODDECL_in_methodDefinition3771); 
 
             match(input, Token.DOWN, null); 
-            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_methodDefinition3756); 
+            match(input,VMODIFIER,FOLLOW_VMODIFIER_in_methodDefinition3774); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -5280,7 +5286,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:33: mvm= method_visual_modifier
                         {
-                        pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition3760);
+                        pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition3778);
                         mvm=method_visual_modifier();
 
                         state._fsp--;
@@ -5296,11 +5302,11 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,MODIFIER,FOLLOW_MODIFIER_in_methodDefinition3765); 
+            match(input,MODIFIER,FOLLOW_MODIFIER_in_methodDefinition3783); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:72: (mm= method_modifier )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:70: (mm+= method_modifier )*
                 loop50:
                 do {
                     int alt50=2;
@@ -5313,12 +5319,15 @@ public static class STAttrMap extends HashMap {
 
                     switch (alt50) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:72: mm= method_modifier
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:71: mm+= method_modifier
                 	    {
-                	    pushFollow(FOLLOW_method_modifier_in_methodDefinition3769);
+                	    pushFollow(FOLLOW_method_modifier_in_methodDefinition3788);
                 	    mm=method_modifier();
 
                 	    state._fsp--;
+
+                	    if (list_mm==null) list_mm=new ArrayList();
+                	    list_mm.add(mm.getTemplate());
 
 
                 	    }
@@ -5334,11 +5343,11 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,GENERICDESC,FOLLOW_GENERICDESC_in_methodDefinition3774); 
+            match(input,GENERICDESC,FOLLOW_GENERICDESC_in_methodDefinition3794); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:106: (g= genericDescriptor )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:109: (g= genericDescriptor )?
                 int alt51=2;
                 int LA51_0 = input.LA(1);
 
@@ -5347,9 +5356,9 @@ public static class STAttrMap extends HashMap {
                 }
                 switch (alt51) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:106: g= genericDescriptor
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:109: g= genericDescriptor
                         {
-                        pushFollow(FOLLOW_genericDescriptor_in_methodDefinition3778);
+                        pushFollow(FOLLOW_genericDescriptor_in_methodDefinition3798);
                         g=genericDescriptor();
 
                         state._fsp--;
@@ -5365,10 +5374,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,RETVALUE,FOLLOW_RETVALUE_in_methodDefinition3783); 
+            match(input,RETVALUE,FOLLOW_RETVALUE_in_methodDefinition3803); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_type_in_methodDefinition3787);
+            pushFollow(FOLLOW_type_in_methodDefinition3807);
             mt=type();
 
             state._fsp--;
@@ -5377,10 +5386,10 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,UNITNAME,FOLLOW_UNITNAME_in_methodDefinition3791); 
+            match(input,UNITNAME,FOLLOW_UNITNAME_in_methodDefinition3811); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition3795);
+            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition3815);
             mn=keywordAggregate();
 
             state._fsp--;
@@ -5389,17 +5398,17 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            pushFollow(FOLLOW_arguments_in_methodDefinition3800);
+            pushFollow(FOLLOW_arguments_in_methodDefinition3820);
             a=arguments();
 
             state._fsp--;
 
 
-            match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_methodDefinition3803); 
+            match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_methodDefinition3823); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:206: (t= throwClauseMethod )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:209: (t= throwClauseMethod )?
                 int alt52=2;
                 int LA52_0 = input.LA(1);
 
@@ -5408,9 +5417,9 @@ public static class STAttrMap extends HashMap {
                 }
                 switch (alt52) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:206: t= throwClauseMethod
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:209: t= throwClauseMethod
                         {
-                        pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition3807);
+                        pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition3827);
                         t=throwClauseMethod();
 
                         state._fsp--;
@@ -5426,10 +5435,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_methodDefinition3836); 
+            match(input,UNITHEADER,FOLLOW_UNITHEADER_in_methodDefinition3856); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_methodInfo_in_methodDefinition3840);
+            pushFollow(FOLLOW_methodInfo_in_methodDefinition3860);
             inf=methodInfo();
 
             state._fsp--;
@@ -5438,7 +5447,7 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,UNITBODY,FOLLOW_UNITBODY_in_methodDefinition3868); 
+            match(input,UNITBODY,FOLLOW_UNITBODY_in_methodDefinition3888); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -5453,7 +5462,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:334:37: b= body
                         {
-                        pushFollow(FOLLOW_body_in_methodDefinition3872);
+                        pushFollow(FOLLOW_body_in_methodDefinition3892);
                         b=body();
 
                         state._fsp--;
@@ -5469,7 +5478,7 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,UNITATTR,FOLLOW_UNITATTR_in_methodDefinition3901); 
+            match(input,UNITATTR,FOLLOW_UNITATTR_in_methodDefinition3921); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -5484,7 +5493,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:335:41: ainfo= afterMethodInfo
                         {
-                        pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition3905);
+                        pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition3925);
                         ainfo=afterMethodInfo();
 
                         state._fsp--;
@@ -5504,9 +5513,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 337:25: -> methDecl(vm=$mvm.stm=$mm.stgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st)
+            // 337:25: -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st)
             {
-                retval.st = templateLib.getInstanceOf("methDecl",new STAttrMap().put("vm", (mvm!=null?mvm.st:null)).put("m", (mm!=null?mm.st:null)).put("gd", (g!=null?g.st:null)).put("t", (mt!=null?mt.st:null)).put("n", (mn!=null?mn.st:null)).put("args", (a!=null?a.st:null)).put("thr", (t!=null?t.st:null)).put("info", (inf!=null?inf.st:null)).put("body", (b!=null?b.st:null)).put("xinf", (ainfo!=null?ainfo.st:null)));
+                retval.st = templateLib.getInstanceOf("methDecl",new STAttrMap().put("vm", (mvm!=null?mvm.st:null)).put("m", list_mm).put("gd", (g!=null?g.st:null)).put("t", (mt!=null?mt.st:null)).put("n", (mn!=null?mn.st:null)).put("args", (a!=null?a.st:null)).put("thr", (t!=null?t.st:null)).put("info", (inf!=null?inf.st:null)).put("body", (b!=null?b.st:null)).put("xinf", (ainfo!=null?ainfo.st:null)));
             }
 
 
@@ -5550,16 +5559,16 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:345:3: ( ^( STANDINTOKEN ms= methodSignatureInfo fl= flags ) -> methodInfo(f=$ms.sts=$fl.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:345:5: ^( STANDINTOKEN ms= methodSignatureInfo fl= flags )
             {
-            match(input,STANDINTOKEN,FOLLOW_STANDINTOKEN_in_methodInfo4133); 
+            match(input,STANDINTOKEN,FOLLOW_STANDINTOKEN_in_methodInfo4153); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo4137);
+            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo4157);
             ms=methodSignatureInfo();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_flags_in_methodInfo4141);
+            pushFollow(FOLLOW_flags_in_methodInfo4161);
             fl=flags();
 
             state._fsp--;
@@ -5628,7 +5637,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:350:6: s+= afterMethodInfoEntry
             	    {
-            	    pushFollow(FOLLOW_afterMethodInfoEntry_in_afterMethodInfo4186);
+            	    pushFollow(FOLLOW_afterMethodInfoEntry_in_afterMethodInfo4206);
             	    s=afterMethodInfoEntry();
 
             	    state._fsp--;
@@ -5682,7 +5691,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "afterMethodInfoEntry"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:353:1: afterMethodInfoEntry : ( ^( Deprecated BOOLEANLITERAL ) -> noformat2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Signature CPINDEX ) -> noformat2(f=$Signature.texts=$CPINDEX.text)|s1= runtimeInvisibleParameterAnnotations -> noformat(f=$s1.st)|s2= runtimeVisibleAnnotations_info -> noformat(f=$s2.st)|s3= runtimeInvisibleAnnotations -> noformat(f=$s3.st)|s4= runtimeVisibleParameterAnnotations -> noformat(f=$s4.st)| ^( Exceptions t= throwClause ) -> noformat2(f=$Exceptions.texts=$t.st)| ^( Synthetic BOOLEANLITERAL ) -> noformat2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s5= annotationDefault -> noformat(f=$s5.st));
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:353:1: afterMethodInfoEntry : ( ^( Deprecated BOOLEANLITERAL ) -> noformatWithspace2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Signature CPINDEX ) -> noformatWithspace2(f=$Signature.texts=$CPINDEX.text)|s1= runtimeInvisibleParameterAnnotations -> noformat(f=$s1.st)|s2= runtimeVisibleAnnotations_info -> noformat(f=$s2.st)|s3= runtimeInvisibleAnnotations -> noformat(f=$s3.st)|s4= runtimeVisibleParameterAnnotations -> noformat(f=$s4.st)| ^( Exceptions t= throwClause ) -> noformatWithspace2(f=$Exceptions.texts=$t.st)| ^( Synthetic BOOLEANLITERAL ) -> noformatWithspace2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s5= annotationDefault -> noformat(f=$s5.st));
     public final JVMPrettyPrinter.afterMethodInfoEntry_return afterMethodInfoEntry() throws RecognitionException {
         JVMPrettyPrinter.afterMethodInfoEntry_return retval = new JVMPrettyPrinter.afterMethodInfoEntry_return();
         retval.start = input.LT(1);
@@ -5709,7 +5718,7 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:354:3: ( ^( Deprecated BOOLEANLITERAL ) -> noformat2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Signature CPINDEX ) -> noformat2(f=$Signature.texts=$CPINDEX.text)|s1= runtimeInvisibleParameterAnnotations -> noformat(f=$s1.st)|s2= runtimeVisibleAnnotations_info -> noformat(f=$s2.st)|s3= runtimeInvisibleAnnotations -> noformat(f=$s3.st)|s4= runtimeVisibleParameterAnnotations -> noformat(f=$s4.st)| ^( Exceptions t= throwClause ) -> noformat2(f=$Exceptions.texts=$t.st)| ^( Synthetic BOOLEANLITERAL ) -> noformat2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s5= annotationDefault -> noformat(f=$s5.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:354:3: ( ^( Deprecated BOOLEANLITERAL ) -> noformatWithspace2(f=$Deprecated.texts=$BOOLEANLITERAL.text)| ^( Signature CPINDEX ) -> noformatWithspace2(f=$Signature.texts=$CPINDEX.text)|s1= runtimeInvisibleParameterAnnotations -> noformat(f=$s1.st)|s2= runtimeVisibleAnnotations_info -> noformat(f=$s2.st)|s3= runtimeInvisibleAnnotations -> noformat(f=$s3.st)|s4= runtimeVisibleParameterAnnotations -> noformat(f=$s4.st)| ^( Exceptions t= throwClause ) -> noformatWithspace2(f=$Exceptions.texts=$t.st)| ^( Synthetic BOOLEANLITERAL ) -> noformatWithspace2(f=$Synthetic.texts=$BOOLEANLITERAL.text)|s5= annotationDefault -> noformat(f=$s5.st))
             int alt56=9;
             switch ( input.LA(1) ) {
             case Deprecated:
@@ -5769,18 +5778,18 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:354:5: ^( Deprecated BOOLEANLITERAL )
                     {
-                    Deprecated49=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfoEntry4216); 
+                    Deprecated49=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfoEntry4236); 
 
                     match(input, Token.DOWN, null); 
-                    BOOLEANLITERAL50=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4219); 
+                    BOOLEANLITERAL50=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4239); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 354:37: -> noformat2(f=$Deprecated.texts=$BOOLEANLITERAL.text)
+                    // 354:39: -> noformatWithspace2(f=$Deprecated.texts=$BOOLEANLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Deprecated49!=null?Deprecated49.getText():null)).put("s", (BOOLEANLITERAL50!=null?BOOLEANLITERAL50.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Deprecated49!=null?Deprecated49.getText():null)).put("s", (BOOLEANLITERAL50!=null?BOOLEANLITERAL50.getText():null)));
                     }
 
 
@@ -5790,18 +5799,18 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:355:5: ^( Signature CPINDEX )
                     {
-                    Signature51=(CommonTree)match(input,Signature,FOLLOW_Signature_in_afterMethodInfoEntry4242); 
+                    Signature51=(CommonTree)match(input,Signature,FOLLOW_Signature_in_afterMethodInfoEntry4264); 
 
                     match(input, Token.DOWN, null); 
-                    CPINDEX52=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfoEntry4244); 
+                    CPINDEX52=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfoEntry4266); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 355:31: -> noformat2(f=$Signature.texts=$CPINDEX.text)
+                    // 355:34: -> noformatWithspace2(f=$Signature.texts=$CPINDEX.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Signature51!=null?Signature51.getText():null)).put("s", (CPINDEX52!=null?CPINDEX52.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Signature51!=null?Signature51.getText():null)).put("s", (CPINDEX52!=null?CPINDEX52.getText():null)));
                     }
 
 
@@ -5811,14 +5820,14 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:356:5: s1= runtimeInvisibleParameterAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry4271);
+                    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry4296);
                     s1=runtimeInvisibleParameterAnnotations();
 
                     state._fsp--;
 
 
                     // TEMPLATE REWRITE
-                    // 356:45: -> noformat(f=$s1.st)
+                    // 356:46: -> noformat(f=$s1.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (s1!=null?s1.st:null)));
                     }
@@ -5830,14 +5839,14 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:357:5: s2= runtimeVisibleAnnotations_info
                     {
-                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry4288);
+                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry4314);
                     s2=runtimeVisibleAnnotations_info();
 
                     state._fsp--;
 
 
                     // TEMPLATE REWRITE
-                    // 357:41: -> noformat(f=$s2.st)
+                    // 357:42: -> noformat(f=$s2.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (s2!=null?s2.st:null)));
                     }
@@ -5849,14 +5858,14 @@ public static class STAttrMap extends HashMap {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:358:5: s3= runtimeInvisibleAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry4307);
+                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry4334);
                     s3=runtimeInvisibleAnnotations();
 
                     state._fsp--;
 
 
                     // TEMPLATE REWRITE
-                    // 358:39: -> noformat(f=$s3.st)
+                    // 358:41: -> noformat(f=$s3.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (s3!=null?s3.st:null)));
                     }
@@ -5868,14 +5877,14 @@ public static class STAttrMap extends HashMap {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:359:5: s4= runtimeVisibleParameterAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry4327);
+                    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry4356);
                     s4=runtimeVisibleParameterAnnotations();
 
                     state._fsp--;
 
 
                     // TEMPLATE REWRITE
-                    // 359:43: -> noformat(f=$s4.st)
+                    // 359:44: -> noformat(f=$s4.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (s4!=null?s4.st:null)));
                     }
@@ -5887,10 +5896,10 @@ public static class STAttrMap extends HashMap {
                 case 7 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:360:5: ^( Exceptions t= throwClause )
                     {
-                    Exceptions53=(CommonTree)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfoEntry4343); 
+                    Exceptions53=(CommonTree)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfoEntry4373); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_throwClause_in_afterMethodInfoEntry4348);
+                    pushFollow(FOLLOW_throwClause_in_afterMethodInfoEntry4378);
                     t=throwClause();
 
                     state._fsp--;
@@ -5900,9 +5909,9 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 360:37: -> noformat2(f=$Exceptions.texts=$t.st)
+                    // 360:39: -> noformatWithspace2(f=$Exceptions.texts=$t.st)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Exceptions53!=null?Exceptions53.getText():null)).put("s", (t!=null?t.st:null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Exceptions53!=null?Exceptions53.getText():null)).put("s", (t!=null?t.st:null)));
                     }
 
 
@@ -5912,18 +5921,18 @@ public static class STAttrMap extends HashMap {
                 case 8 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:361:5: ^( Synthetic BOOLEANLITERAL )
                     {
-                    Synthetic54=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfoEntry4372); 
+                    Synthetic54=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfoEntry4404); 
 
                     match(input, Token.DOWN, null); 
-                    BOOLEANLITERAL55=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4374); 
+                    BOOLEANLITERAL55=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4406); 
 
                     match(input, Token.UP, null); 
 
 
                     // TEMPLATE REWRITE
-                    // 361:37: -> noformat2(f=$Synthetic.texts=$BOOLEANLITERAL.text)
+                    // 361:39: -> noformatWithspace2(f=$Synthetic.texts=$BOOLEANLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (Synthetic54!=null?Synthetic54.getText():null)).put("s", (BOOLEANLITERAL55!=null?BOOLEANLITERAL55.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (Synthetic54!=null?Synthetic54.getText():null)).put("s", (BOOLEANLITERAL55!=null?BOOLEANLITERAL55.getText():null)));
                     }
 
 
@@ -5933,14 +5942,14 @@ public static class STAttrMap extends HashMap {
                 case 9 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:362:5: s5= annotationDefault
                     {
-                    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfoEntry4400);
+                    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfoEntry4434);
                     s5=annotationDefault();
 
                     state._fsp--;
 
 
                     // TEMPLATE REWRITE
-                    // 362:31: -> noformat(f=$s5.st)
+                    // 362:34: -> noformat(f=$s5.st)
                     {
                         retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (s5!=null?s5.st:null)));
                     }
@@ -5973,7 +5982,7 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "annotationDefault"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:365:1: annotationDefault : ^( AnnotationDefault DefaultValue v= annotationValue ) -> noformat(f=$v.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:365:1: annotationDefault : ^( AnnotationDefault DefaultValue v= annotationValue ) -> annotationDefault(f=$v.st);
     public final JVMPrettyPrinter.annotationDefault_return annotationDefault() throws RecognitionException {
         JVMPrettyPrinter.annotationDefault_return retval = new JVMPrettyPrinter.annotationDefault_return();
         retval.start = input.LT(1);
@@ -5983,15 +5992,15 @@ public static class STAttrMap extends HashMap {
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:366:3: ( ^( AnnotationDefault DefaultValue v= annotationValue ) -> noformat(f=$v.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:366:3: ( ^( AnnotationDefault DefaultValue v= annotationValue ) -> annotationDefault(f=$v.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:366:5: ^( AnnotationDefault DefaultValue v= annotationValue )
             {
-            match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault4428); 
+            match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault4465); 
 
             match(input, Token.DOWN, null); 
-            match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault4431); 
+            match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault4468); 
 
-            pushFollow(FOLLOW_annotationValue_in_annotationDefault4435);
+            pushFollow(FOLLOW_annotationValue_in_annotationDefault4472);
             v=annotationValue();
 
             state._fsp--;
@@ -6001,9 +6010,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 367:9: -> noformat(f=$v.st)
+            // 367:9: -> annotationDefault(f=$v.st)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (v!=null?v.st:null)));
+                retval.st = templateLib.getInstanceOf("annotationDefault",new STAttrMap().put("f", (v!=null?v.st:null)));
             }
 
 
@@ -6046,10 +6055,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:371:3: ( ^( Signature ^( PARAMDESC (s+= bytecodeType )* ) ^( RETDESC r= returnDescriptor ) ) -> methodSign(in=$sout=$r.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:371:5: ^( Signature ^( PARAMDESC (s+= bytecodeType )* ) ^( RETDESC r= returnDescriptor ) )
             {
-            match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo4469); 
+            match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo4506); 
 
             match(input, Token.DOWN, null); 
-            match(input,PARAMDESC,FOLLOW_PARAMDESC_in_methodSignatureInfo4472); 
+            match(input,PARAMDESC,FOLLOW_PARAMDESC_in_methodSignatureInfo4509); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -6068,7 +6077,7 @@ public static class STAttrMap extends HashMap {
                 	case 1 :
                 	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:371:30: s+= bytecodeType
                 	    {
-                	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo4477);
+                	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo4514);
                 	    s=bytecodeType();
 
                 	    state._fsp--;
@@ -6090,10 +6099,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,RETDESC,FOLLOW_RETDESC_in_methodSignatureInfo4483); 
+            match(input,RETDESC,FOLLOW_RETDESC_in_methodSignatureInfo4520); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo4487);
+            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo4524);
             r=returnDescriptor();
 
             state._fsp--;
@@ -6169,7 +6178,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:376:5: s= bytecodeType
                     {
-                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor4525);
+                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor4562);
                     s=bytecodeType();
 
                     state._fsp--;
@@ -6188,7 +6197,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:377:5: VoidType
                     {
-                    VoidType56=(CommonTree)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor4541); 
+                    VoidType56=(CommonTree)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor4578); 
 
                     // TEMPLATE REWRITE
                     // 377:17: -> noformat(f=$VoidType.text)
@@ -6283,7 +6292,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:381:5: ABSTRACT
                     {
-                    ABSTRACT57=(CommonTree)match(input,ABSTRACT,FOLLOW_ABSTRACT_in_method_modifier4566); 
+                    ABSTRACT57=(CommonTree)match(input,ABSTRACT,FOLLOW_ABSTRACT_in_method_modifier4603); 
 
                     // TEMPLATE REWRITE
                     // 381:17: -> noformat(f=$ABSTRACT.text)
@@ -6298,7 +6307,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:382:5: FINAL
                     {
-                    FINAL58=(CommonTree)match(input,FINAL,FOLLOW_FINAL_in_method_modifier4584); 
+                    FINAL58=(CommonTree)match(input,FINAL,FOLLOW_FINAL_in_method_modifier4621); 
 
                     // TEMPLATE REWRITE
                     // 382:15: -> noformat(f=$FINAL.text)
@@ -6313,7 +6322,7 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:383:5: STATIC
                     {
-                    STATIC59=(CommonTree)match(input,STATIC,FOLLOW_STATIC_in_method_modifier4603); 
+                    STATIC59=(CommonTree)match(input,STATIC,FOLLOW_STATIC_in_method_modifier4640); 
 
                     // TEMPLATE REWRITE
                     // 383:17: -> noformat(f=$STATIC.text)
@@ -6328,7 +6337,7 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:384:5: SYNCHRONIZED
                     {
-                    SYNCHRONIZED60=(CommonTree)match(input,SYNCHRONIZED,FOLLOW_SYNCHRONIZED_in_method_modifier4623); 
+                    SYNCHRONIZED60=(CommonTree)match(input,SYNCHRONIZED,FOLLOW_SYNCHRONIZED_in_method_modifier4660); 
 
                     // TEMPLATE REWRITE
                     // 384:21: -> noformat(f=$SYNCHRONIZED.text)
@@ -6343,7 +6352,7 @@ public static class STAttrMap extends HashMap {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:385:5: NATIVE
                     {
-                    NATIVE61=(CommonTree)match(input,NATIVE,FOLLOW_NATIVE_in_method_modifier4641); 
+                    NATIVE61=(CommonTree)match(input,NATIVE,FOLLOW_NATIVE_in_method_modifier4678); 
 
                     // TEMPLATE REWRITE
                     // 385:15: -> noformat(f=$NATIVE.text)
@@ -6358,7 +6367,7 @@ public static class STAttrMap extends HashMap {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:386:5: STRICTFP
                     {
-                    STRICTFP62=(CommonTree)match(input,STRICTFP,FOLLOW_STRICTFP_in_method_modifier4659); 
+                    STRICTFP62=(CommonTree)match(input,STRICTFP,FOLLOW_STRICTFP_in_method_modifier4696); 
 
                     // TEMPLATE REWRITE
                     // 386:17: -> noformat(f=$STRICTFP.text)
@@ -6435,7 +6444,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:390:5: PUBLIC
                     {
-                    PUBLIC63=(CommonTree)match(input,PUBLIC,FOLLOW_PUBLIC_in_method_visual_modifier4685); 
+                    PUBLIC63=(CommonTree)match(input,PUBLIC,FOLLOW_PUBLIC_in_method_visual_modifier4722); 
 
                     // TEMPLATE REWRITE
                     // 390:15: -> noformat(f=$PUBLIC.text)
@@ -6450,7 +6459,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:391:5: PRIVATE
                     {
-                    PRIVATE64=(CommonTree)match(input,PRIVATE,FOLLOW_PRIVATE_in_method_visual_modifier4703); 
+                    PRIVATE64=(CommonTree)match(input,PRIVATE,FOLLOW_PRIVATE_in_method_visual_modifier4740); 
 
                     // TEMPLATE REWRITE
                     // 391:17: -> noformat(f=$PRIVATE.text)
@@ -6465,7 +6474,7 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:392:5: PROTECTED
                     {
-                    PROTECTED65=(CommonTree)match(input,PROTECTED,FOLLOW_PROTECTED_in_method_visual_modifier4722); 
+                    PROTECTED65=(CommonTree)match(input,PROTECTED,FOLLOW_PROTECTED_in_method_visual_modifier4759); 
 
                     // TEMPLATE REWRITE
                     // 392:17: -> noformat(f=$PROTECTED.text)
@@ -6515,7 +6524,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:396:3: ( ^( UNITARGUMENTS (tl= typeList )? (d= DOT DOT DOT )? ) -> args(f=$tl.sts=$d.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:396:5: ^( UNITARGUMENTS (tl= typeList )? (d= DOT DOT DOT )? )
             {
-            match(input,UNITARGUMENTS,FOLLOW_UNITARGUMENTS_in_arguments4747); 
+            match(input,UNITARGUMENTS,FOLLOW_UNITARGUMENTS_in_arguments4784); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -6530,7 +6539,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:396:23: tl= typeList
                         {
-                        pushFollow(FOLLOW_typeList_in_arguments4751);
+                        pushFollow(FOLLOW_typeList_in_arguments4788);
                         tl=typeList();
 
                         state._fsp--;
@@ -6553,11 +6562,11 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:396:35: d= DOT DOT DOT
                         {
-                        d=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments4757); 
+                        d=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments4794); 
 
-                        match(input,DOT,FOLLOW_DOT_in_arguments4759); 
+                        match(input,DOT,FOLLOW_DOT_in_arguments4796); 
 
-                        match(input,DOT,FOLLOW_DOT_in_arguments4761); 
+                        match(input,DOT,FOLLOW_DOT_in_arguments4798); 
 
                         }
                         break;
@@ -6627,9 +6636,9 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:405:6: Synthetic BOOLEANLITERAL
                     {
-                    match(input,Synthetic,FOLLOW_Synthetic_in_body4807); 
+                    match(input,Synthetic,FOLLOW_Synthetic_in_body4844); 
 
-                    BOOLEANLITERAL66=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body4809); 
+                    BOOLEANLITERAL66=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body4846); 
 
                     }
                     break;
@@ -6637,10 +6646,10 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,Code,FOLLOW_Code_in_body4814); 
+            match(input,Code,FOLLOW_Code_in_body4851); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_codeBlock_in_body4818);
+            pushFollow(FOLLOW_codeBlock_in_body4855);
             c=codeBlock();
 
             state._fsp--;
@@ -6664,7 +6673,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:405:54: e+= bodyExtension
             	    {
-            	    pushFollow(FOLLOW_bodyExtension_in_body4824);
+            	    pushFollow(FOLLOW_bodyExtension_in_body4861);
             	    e=bodyExtension();
 
             	    state._fsp--;
@@ -6785,10 +6794,10 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:410:5: ^( ExceptionTable s1= exceptionTable )
                     {
-                    ExceptionTable67=(CommonTree)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension4867); 
+                    ExceptionTable67=(CommonTree)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension4904); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension4872);
+                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension4909);
                     s1=exceptionTable();
 
                     state._fsp--;
@@ -6810,7 +6819,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:411:5: ^( LineNumberTable (s2= lineNumberTable )? )
                     {
-                    LineNumberTable68=(CommonTree)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension4896); 
+                    LineNumberTable68=(CommonTree)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension4933); 
 
                     if ( input.LA(1)==Token.DOWN ) {
                         match(input, Token.DOWN, null); 
@@ -6825,7 +6834,7 @@ public static class STAttrMap extends HashMap {
                             case 1 :
                                 // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:411:26: s2= lineNumberTable
                                 {
-                                pushFollow(FOLLOW_lineNumberTable_in_bodyExtension4901);
+                                pushFollow(FOLLOW_lineNumberTable_in_bodyExtension4938);
                                 s2=lineNumberTable();
 
                                 state._fsp--;
@@ -6854,10 +6863,10 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:412:5: ^( LocalVariableTable s3= localVariableTable )
                     {
-                    LocalVariableTable69=(CommonTree)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension4925); 
+                    LocalVariableTable69=(CommonTree)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension4962); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension4930);
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension4967);
                     s3=localVariableTable();
 
                     state._fsp--;
@@ -6879,10 +6888,10 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:413:5: ^( LocalVariableTypeTable s4= localVariableTable )
                     {
-                    LocalVariableTypeTable70=(CommonTree)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension4952); 
+                    LocalVariableTypeTable70=(CommonTree)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension4989); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension4956);
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension4993);
                     s4=localVariableTable();
 
                     state._fsp--;
@@ -6904,10 +6913,10 @@ public static class STAttrMap extends HashMap {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:414:5: ^( StackMapTable s5= stackMapTable )
                     {
-                    StackMapTable71=(CommonTree)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension4977); 
+                    StackMapTable71=(CommonTree)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension5014); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension4981);
+                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension5018);
                     s5=stackMapTable();
 
                     state._fsp--;
@@ -6929,10 +6938,10 @@ public static class STAttrMap extends HashMap {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:415:5: ^( StackMap s6= stackMapTypeTable )
                     {
-                    StackMap72=(CommonTree)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension5006); 
+                    StackMap72=(CommonTree)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension5043); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension5010);
+                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension5047);
                     s6=stackMapTypeTable();
 
                     state._fsp--;
@@ -6991,10 +7000,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:419:3: ( ^( VARINFO v= variables ) ^( INSTRUCTION (i+= instructionSet )* e= codeBlockEnd ) -> codeblock(f=$v.sts=$it=$e.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:419:5: ^( VARINFO v= variables ) ^( INSTRUCTION (i+= instructionSet )* e= codeBlockEnd )
             {
-            match(input,VARINFO,FOLLOW_VARINFO_in_codeBlock5043); 
+            match(input,VARINFO,FOLLOW_VARINFO_in_codeBlock5080); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_variables_in_codeBlock5047);
+            pushFollow(FOLLOW_variables_in_codeBlock5084);
             v=variables();
 
             state._fsp--;
@@ -7003,7 +7012,7 @@ public static class STAttrMap extends HashMap {
             match(input, Token.UP, null); 
 
 
-            match(input,INSTRUCTION,FOLLOW_INSTRUCTION_in_codeBlock5051); 
+            match(input,INSTRUCTION,FOLLOW_INSTRUCTION_in_codeBlock5088); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:419:42: (i+= instructionSet )*
@@ -7048,7 +7057,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:419:43: i+= instructionSet
             	    {
-            	    pushFollow(FOLLOW_instructionSet_in_codeBlock5056);
+            	    pushFollow(FOLLOW_instructionSet_in_codeBlock5093);
             	    i=instructionSet();
 
             	    state._fsp--;
@@ -7066,7 +7075,7 @@ public static class STAttrMap extends HashMap {
             } while (true);
 
 
-            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock5062);
+            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock5099);
             e=codeBlockEnd();
 
             state._fsp--;
@@ -7140,7 +7149,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:424:5: s1= codeLine
                     {
-                    pushFollow(FOLLOW_codeLine_in_instructionSet5105);
+                    pushFollow(FOLLOW_codeLine_in_instructionSet5142);
                     s1=codeLine();
 
                     state._fsp--;
@@ -7159,7 +7168,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:425:5: s2= javaSwitch
                     {
-                    pushFollow(FOLLOW_javaSwitch_in_instructionSet5126);
+                    pushFollow(FOLLOW_javaSwitch_in_instructionSet5163);
                     s2=javaSwitch();
 
                     state._fsp--;
@@ -7216,16 +7225,16 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:429:3: ( ^( IDENTIFIER p= pc ^( OPERAND (o= operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) -> codeline(f=$p.sts=$IDENTIFIER.textt=$o.stq=$INTLITERAL.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:429:5: ^( IDENTIFIER p= pc ^( OPERAND (o= operand1 )? ) ^( OPERAND ( INTLITERAL )? ) )
             {
-            IDENTIFIER73=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine5151); 
+            IDENTIFIER73=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine5188); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_pc_in_codeLine5155);
+            pushFollow(FOLLOW_pc_in_codeLine5192);
             p=pc();
 
             state._fsp--;
 
 
-            match(input,OPERAND,FOLLOW_OPERAND_in_codeLine5158); 
+            match(input,OPERAND,FOLLOW_OPERAND_in_codeLine5195); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -7240,7 +7249,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:429:34: o= operand1
                         {
-                        pushFollow(FOLLOW_operand1_in_codeLine5162);
+                        pushFollow(FOLLOW_operand1_in_codeLine5199);
                         o=operand1();
 
                         state._fsp--;
@@ -7256,7 +7265,7 @@ public static class STAttrMap extends HashMap {
             }
 
 
-            match(input,OPERAND,FOLLOW_OPERAND_in_codeLine5167); 
+            match(input,OPERAND,FOLLOW_OPERAND_in_codeLine5204); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -7271,7 +7280,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:429:56: INTLITERAL
                         {
-                        INTLITERAL74=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine5169); 
+                        INTLITERAL74=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine5206); 
 
                         }
                         break;
@@ -7333,10 +7342,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:434:3: ( ^( IDENTIFIER p= pc ( INTLITERAL )? ) -> codeline(f=$p.sts=$IDENTIFIER.textt=$INTLITERAL.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:434:5: ^( IDENTIFIER p= pc ( INTLITERAL )? )
             {
-            IDENTIFIER75=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd5217); 
+            IDENTIFIER75=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd5254); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_pc_in_codeBlockEnd5221);
+            pushFollow(FOLLOW_pc_in_codeBlockEnd5258);
             p=pc();
 
             state._fsp--;
@@ -7353,7 +7362,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:434:23: INTLITERAL
                     {
-                    INTLITERAL76=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd5223); 
+                    INTLITERAL76=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd5260); 
 
                     }
                     break;
@@ -7446,7 +7455,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:439:5: CPINDEX
                     {
-                    CPINDEX77=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand15267); 
+                    CPINDEX77=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand15304); 
 
                     // TEMPLATE REWRITE
                     // 439:19: -> noformat(f=$CPINDEX.text)
@@ -7461,7 +7470,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:440:5: INTLITERAL
                     {
-                    INTLITERAL78=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand15288); 
+                    INTLITERAL78=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand15325); 
 
                     // TEMPLATE REWRITE
                     // 440:21: -> noformat(f=$INTLITERAL.text)
@@ -7476,7 +7485,7 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:441:5: s= primitiveType
                     {
-                    pushFollow(FOLLOW_primitiveType_in_operand15310);
+                    pushFollow(FOLLOW_primitiveType_in_operand15347);
                     s=primitiveType();
 
                     state._fsp--;
@@ -7533,19 +7542,19 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:445:3: (s1= variable s2= variable s3= variable -> variables(f=$s1.sts=$s2.stt=$s3.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:445:5: s1= variable s2= variable s3= variable
             {
-            pushFollow(FOLLOW_variable_in_variables5336);
+            pushFollow(FOLLOW_variable_in_variables5373);
             s1=variable();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_variable_in_variables5340);
+            pushFollow(FOLLOW_variable_in_variables5377);
             s2=variable();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_variable_in_variables5344);
+            pushFollow(FOLLOW_variable_in_variables5381);
             s3=variable();
 
             state._fsp--;
@@ -7596,12 +7605,12 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:450:3: ( ^( ASSIGN IDENTIFIER INTLITERAL ) -> variable(f=$IDENTIFIER.texts=$INTLITERAL.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:450:5: ^( ASSIGN IDENTIFIER INTLITERAL )
             {
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_variable5386); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_variable5423); 
 
             match(input, Token.DOWN, null); 
-            IDENTIFIER79=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable5388); 
+            IDENTIFIER79=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable5425); 
 
-            INTLITERAL80=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable5390); 
+            INTLITERAL80=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable5427); 
 
             match(input, Token.UP, null); 
 
@@ -7655,13 +7664,13 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:455:3: ( ^( SWITCH ^( IDENTIFIER p= pc (s+= switchLine )* s1= switchDefaultLine ) ) -> switch(f=$p.sts=$IDENTIFIER.textt=$sq=$s1.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:455:5: ^( SWITCH ^( IDENTIFIER p= pc (s+= switchLine )* s1= switchDefaultLine ) )
             {
-            match(input,SWITCH,FOLLOW_SWITCH_in_javaSwitch5428); 
+            match(input,SWITCH,FOLLOW_SWITCH_in_javaSwitch5465); 
 
             match(input, Token.DOWN, null); 
-            IDENTIFIER81=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch5431); 
+            IDENTIFIER81=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch5468); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_pc_in_javaSwitch5435);
+            pushFollow(FOLLOW_pc_in_javaSwitch5472);
             p=pc();
 
             state._fsp--;
@@ -7682,7 +7691,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:455:33: s+= switchLine
             	    {
-            	    pushFollow(FOLLOW_switchLine_in_javaSwitch5440);
+            	    pushFollow(FOLLOW_switchLine_in_javaSwitch5477);
             	    s=switchLine();
 
             	    state._fsp--;
@@ -7700,7 +7709,7 @@ public static class STAttrMap extends HashMap {
             } while (true);
 
 
-            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch5446);
+            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch5483);
             s1=switchDefaultLine();
 
             state._fsp--;
@@ -7758,13 +7767,13 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:460:3: (p= pc INTLITERAL -> noformatWithspace2(f=$p.sts=$INTLITERAL.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:460:5: p= pc INTLITERAL
             {
-            pushFollow(FOLLOW_pc_in_switchLine5496);
+            pushFollow(FOLLOW_pc_in_switchLine5533);
             p=pc();
 
             state._fsp--;
 
 
-            INTLITERAL82=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine5498); 
+            INTLITERAL82=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine5535); 
 
             // TEMPLATE REWRITE
             // 460:25: -> noformatWithspace2(f=$p.sts=$INTLITERAL.text)
@@ -7798,31 +7807,30 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "switchDefaultLine"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:463:1: switchDefaultLine : ^( DEFAULT INTLITERAL ) -> noformatWithspace2(f=$DEFAULT.texts=$INTLITERAL.text);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:463:1: switchDefaultLine : ^( DEFAULT INTLITERAL ) -> switchDefault(f=$INTLITERAL.text);
     public final JVMPrettyPrinter.switchDefaultLine_return switchDefaultLine() throws RecognitionException {
         JVMPrettyPrinter.switchDefaultLine_return retval = new JVMPrettyPrinter.switchDefaultLine_return();
         retval.start = input.LT(1);
 
 
-        CommonTree DEFAULT83=null;
-        CommonTree INTLITERAL84=null;
+        CommonTree INTLITERAL83=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:464:3: ( ^( DEFAULT INTLITERAL ) -> noformatWithspace2(f=$DEFAULT.texts=$INTLITERAL.text))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:464:3: ( ^( DEFAULT INTLITERAL ) -> switchDefault(f=$INTLITERAL.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:464:5: ^( DEFAULT INTLITERAL )
             {
-            DEFAULT83=(CommonTree)match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine5529); 
+            match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine5566); 
 
             match(input, Token.DOWN, null); 
-            INTLITERAL84=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine5531); 
+            INTLITERAL83=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine5568); 
 
             match(input, Token.UP, null); 
 
 
             // TEMPLATE REWRITE
-            // 464:29: -> noformatWithspace2(f=$DEFAULT.texts=$INTLITERAL.text)
+            // 464:29: -> switchDefault(f=$INTLITERAL.text)
             {
-                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (DEFAULT83!=null?DEFAULT83.getText():null)).put("s", (INTLITERAL84!=null?INTLITERAL84.getText():null)));
+                retval.st = templateLib.getInstanceOf("switchDefault",new STAttrMap().put("f", (INTLITERAL83!=null?INTLITERAL83.getText():null)));
             }
 
 
@@ -7857,7 +7865,7 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree THROWS85=null;
+        CommonTree THROWS84=null;
         JVMPrettyPrinter.typeList_return s =null;
 
 
@@ -7865,10 +7873,10 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:472:3: ( ^( THROWS s= typeList ) -> noformatWithspace2(f=$THROWS.texts=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:472:5: ^( THROWS s= typeList )
             {
-            THROWS85=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClause5565); 
+            THROWS84=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClause5598); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_typeList_in_throwClause5569);
+            pushFollow(FOLLOW_typeList_in_throwClause5602);
             s=typeList();
 
             state._fsp--;
@@ -7880,7 +7888,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 472:27: -> noformatWithspace2(f=$THROWS.texts=$s.st)
             {
-                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (THROWS85!=null?THROWS85.getText():null)).put("s", (s!=null?s.st:null)));
+                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (THROWS84!=null?THROWS84.getText():null)).put("s", (s!=null?s.st:null)));
             }
 
 
@@ -7915,14 +7923,14 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree THROWS86=null;
+        CommonTree THROWS85=null;
         List list_s=null;
         RuleReturnScope s = null;
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:476:3: ( ^( THROWS (s+= throwType )+ ) -> throwC(f=$THROWS.textls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:476:5: ^( THROWS (s+= throwType )+ )
             {
-            THROWS86=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod5600); 
+            THROWS85=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod5633); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:476:14: (s+= throwType )+
@@ -7941,7 +7949,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:476:15: s+= throwType
             	    {
-            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod5605);
+            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod5638);
             	    s=throwType();
 
             	    state._fsp--;
@@ -7969,7 +7977,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 476:31: -> throwC(f=$THROWS.textls=$s)
             {
-                retval.st = templateLib.getInstanceOf("throwC",new STAttrMap().put("f", (THROWS86!=null?THROWS86.getText():null)).put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("throwC",new STAttrMap().put("f", (THROWS85!=null?THROWS85.getText():null)).put("ls", list_s));
             }
 
 
@@ -8004,9 +8012,9 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree INTERNALTYPE87=null;
-        CommonTree IDENTIFIER88=null;
-        CommonTree QualifiedType89=null;
+        CommonTree INTERNALTYPE86=null;
+        CommonTree IDENTIFIER87=null;
+        CommonTree QualifiedType88=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:480:3: ( INTERNALTYPE -> noformat(f=$INTERNALTYPE.text)| IDENTIFIER -> noformat(f=$IDENTIFIER.text)| QualifiedType -> noformat(f=$QualifiedType.text))
@@ -8039,12 +8047,12 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:480:5: INTERNALTYPE
                     {
-                    INTERNALTYPE87=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_throwType5634); 
+                    INTERNALTYPE86=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_throwType5667); 
 
                     // TEMPLATE REWRITE
                     // 480:23: -> noformat(f=$INTERNALTYPE.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTERNALTYPE87!=null?INTERNALTYPE87.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTERNALTYPE86!=null?INTERNALTYPE86.getText():null)));
                     }
 
 
@@ -8054,12 +8062,12 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:481:5: IDENTIFIER
                     {
-                    IDENTIFIER88=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_throwType5654); 
+                    IDENTIFIER87=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_throwType5687); 
 
                     // TEMPLATE REWRITE
                     // 481:21: -> noformat(f=$IDENTIFIER.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER88!=null?IDENTIFIER88.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER87!=null?IDENTIFIER87.getText():null)));
                     }
 
 
@@ -8069,12 +8077,12 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:482:5: QualifiedType
                     {
-                    QualifiedType89=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_throwType5674); 
+                    QualifiedType88=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_throwType5707); 
 
                     // TEMPLATE REWRITE
                     // 482:21: -> noformat(f=$QualifiedType.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (QualifiedType89!=null?QualifiedType89.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (QualifiedType88!=null?QualifiedType88.getText():null)));
                     }
 
 
@@ -8121,21 +8129,21 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:486:3: ( ^( ETHEADER id1= IDENTIFIER id2= IDENTIFIER id3= IDENTIFIER id4= IDENTIFIER ) ^( ETENTRY (s+= exceptionTableEntry )+ ) -> excTable(f=$id1.texts=$id2.textt=$id3.textq=$id4.textls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:486:5: ^( ETHEADER id1= IDENTIFIER id2= IDENTIFIER id3= IDENTIFIER id4= IDENTIFIER ) ^( ETENTRY (s+= exceptionTableEntry )+ )
             {
-            match(input,ETHEADER,FOLLOW_ETHEADER_in_exceptionTable5699); 
+            match(input,ETHEADER,FOLLOW_ETHEADER_in_exceptionTable5732); 
 
             match(input, Token.DOWN, null); 
-            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5703); 
+            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5736); 
 
-            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5707); 
+            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5740); 
 
-            id3=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5711); 
+            id3=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5744); 
 
-            id4=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5715); 
+            id4=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable5748); 
 
             match(input, Token.UP, null); 
 
 
-            match(input,ETENTRY,FOLLOW_ETENTRY_in_exceptionTable5719); 
+            match(input,ETENTRY,FOLLOW_ETENTRY_in_exceptionTable5752); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:486:87: (s+= exceptionTableEntry )+
@@ -8154,7 +8162,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:486:88: s+= exceptionTableEntry
             	    {
-            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable5724);
+            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable5757);
             	    s=exceptionTableEntry();
 
             	    state._fsp--;
@@ -8227,13 +8235,13 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:491:3: (id1= INTLITERAL id2= INTLITERAL id3= INTLITERAL s1= exceptionTableEntryValue -> excTableEntry(f=$id1.texts=$id2.textt=$id3.textq=$s1.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:491:5: id1= INTLITERAL id2= INTLITERAL id3= INTLITERAL s1= exceptionTableEntryValue
             {
-            id1=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry5777); 
+            id1=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry5810); 
 
-            id2=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry5781); 
+            id2=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry5814); 
 
-            id3=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry5785); 
+            id3=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry5818); 
 
-            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry5789);
+            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry5822);
             s1=exceptionTableEntryValue();
 
             state._fsp--;
@@ -8277,8 +8285,8 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER90=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE91=null;
+        CommonTree IDENTIFIER89=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE90=null;
         JVMPrettyPrinter.primitiveType_return s =null;
 
 
@@ -8321,7 +8329,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:495:5: s= primitiveType
                     {
-                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue5834);
+                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue5867);
                     s=primitiveType();
 
                     state._fsp--;
@@ -8340,12 +8348,12 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:496:5: IDENTIFIER
                     {
-                    IDENTIFIER90=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue5851); 
+                    IDENTIFIER89=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue5884); 
 
                     // TEMPLATE REWRITE
                     // 496:21: -> noformat(f=$IDENTIFIER.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER90!=null?IDENTIFIER90.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER89!=null?IDENTIFIER89.getText():null)));
                     }
 
 
@@ -8355,12 +8363,12 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:497:5: CONSTANT_TYPE_ASSIGNABLE
                     {
-                    CONSTANT_TYPE_ASSIGNABLE91=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue5871); 
+                    CONSTANT_TYPE_ASSIGNABLE90=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue5904); 
 
                     // TEMPLATE REWRITE
                     // 497:31: -> noformat(f=$CONSTANT_TYPE_ASSIGNABLE.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (CONSTANT_TYPE_ASSIGNABLE91!=null?CONSTANT_TYPE_ASSIGNABLE91.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (CONSTANT_TYPE_ASSIGNABLE90!=null?CONSTANT_TYPE_ASSIGNABLE90.getText():null)));
                     }
 
 
@@ -8419,7 +8427,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:505:6: s+= lineNumberTableLine
             	    {
-            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable5903);
+            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable5936);
             	    s=lineNumberTableLine();
 
             	    state._fsp--;
@@ -8479,8 +8487,8 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER92=null;
-        CommonTree INTLITERAL93=null;
+        CommonTree IDENTIFIER91=null;
+        CommonTree INTLITERAL92=null;
         JVMPrettyPrinter.pc_return p =null;
 
 
@@ -8488,16 +8496,16 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:509:3: ( ^( IDENTIFIER p= pc INTLITERAL ) -> lnTableEntry(f=$IDENTIFIER.texts=$p.stt=$INTLITERAL.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:509:5: ^( IDENTIFIER p= pc INTLITERAL )
             {
-            IDENTIFIER92=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine5930); 
+            IDENTIFIER91=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine5963); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_pc_in_lineNumberTableLine5934);
+            pushFollow(FOLLOW_pc_in_lineNumberTableLine5967);
             p=pc();
 
             state._fsp--;
 
 
-            INTLITERAL93=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine5936); 
+            INTLITERAL92=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine5969); 
 
             match(input, Token.UP, null); 
 
@@ -8505,7 +8513,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 509:35: -> lnTableEntry(f=$IDENTIFIER.texts=$p.stt=$INTLITERAL.text)
             {
-                retval.st = templateLib.getInstanceOf("lnTableEntry",new STAttrMap().put("f", (IDENTIFIER92!=null?IDENTIFIER92.getText():null)).put("s", (p!=null?p.st:null)).put("t", (INTLITERAL93!=null?INTLITERAL93.getText():null)));
+                retval.st = templateLib.getInstanceOf("lnTableEntry",new STAttrMap().put("f", (IDENTIFIER91!=null?IDENTIFIER91.getText():null)).put("s", (p!=null?p.st:null)).put("t", (INTLITERAL92!=null?INTLITERAL92.getText():null)));
             }
 
 
@@ -8551,23 +8559,23 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:517:3: ( ^( LVHEADER id1= IDENTIFIER id2= IDENTIFIER id3= IDENTIFIER id4= IDENTIFIER id5= IDENTIFIER ) ^( LVENTRY (s+= localVariableTableLine )* ) -> lvTable(f=$id1.texts=$id2.textt=$id3.textq=$id4.textc=$id5.textls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:517:5: ^( LVHEADER id1= IDENTIFIER id2= IDENTIFIER id3= IDENTIFIER id4= IDENTIFIER id5= IDENTIFIER ) ^( LVENTRY (s+= localVariableTableLine )* )
             {
-            match(input,LVHEADER,FOLLOW_LVHEADER_in_localVariableTable5976); 
+            match(input,LVHEADER,FOLLOW_LVHEADER_in_localVariableTable6009); 
 
             match(input, Token.DOWN, null); 
-            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable5980); 
+            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable6013); 
 
-            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable5984); 
+            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable6017); 
 
-            id3=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable5988); 
+            id3=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable6021); 
 
-            id4=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable5992); 
+            id4=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable6025); 
 
-            id5=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable5996); 
+            id5=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable6029); 
 
             match(input, Token.UP, null); 
 
 
-            match(input,LVENTRY,FOLLOW_LVENTRY_in_localVariableTable6000); 
+            match(input,LVENTRY,FOLLOW_LVENTRY_in_localVariableTable6033); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -8586,7 +8594,7 @@ public static class STAttrMap extends HashMap {
                 	case 1 :
                 	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:517:103: s+= localVariableTableLine
                 	    {
-                	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable6005);
+                	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable6038);
                 	    s=localVariableTableLine();
 
                 	    state._fsp--;
@@ -8658,19 +8666,19 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:522:3: (id1= INTLITERAL id2= INTLITERAL id3= INTLITERAL s1= localVariableTableLineIdentifier s2= bytecodeType -> lvTableEntry(f=$id1.texts=$id2.textt=$id3.textq=$s1.stc=$s2.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:522:5: id1= INTLITERAL id2= INTLITERAL id3= INTLITERAL s1= localVariableTableLineIdentifier s2= bytecodeType
             {
-            id1=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine6066); 
+            id1=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine6099); 
 
-            id2=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine6070); 
+            id2=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine6103); 
 
-            id3=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine6074); 
+            id3=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine6107); 
 
-            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine6078);
+            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine6111);
             s1=localVariableTableLineIdentifier();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine6082);
+            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine6115);
             s2=bytecodeType();
 
             state._fsp--;
@@ -8714,18 +8722,18 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER94=null;
+        CommonTree IDENTIFIER93=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:527:3: ( IDENTIFIER -> noformat(f=$IDENTIFIER.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:527:5: IDENTIFIER
             {
-            IDENTIFIER94=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier6135); 
+            IDENTIFIER93=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier6168); 
 
             // TEMPLATE REWRITE
             // 527:23: -> noformat(f=$IDENTIFIER.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER94!=null?IDENTIFIER94.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER93!=null?IDENTIFIER93.getText():null)));
             }
 
 
@@ -8760,27 +8768,27 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER95=null;
-        CommonTree INTLITERAL96=null;
+        CommonTree IDENTIFIER94=null;
+        CommonTree INTLITERAL95=null;
         List list_s=null;
         RuleReturnScope s = null;
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:535:3: ( ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY (s+= stackMapTypeTableEntry )+ ) -> smtTable(f=$IDENTIFIER.texts=$INTLITERAL.textls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:535:5: ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY (s+= stackMapTypeTableEntry )+ )
             {
-            match(input,SMTHEADER,FOLLOW_SMTHEADER_in_stackMapTypeTable6171); 
+            match(input,SMTHEADER,FOLLOW_SMTHEADER_in_stackMapTypeTable6204); 
 
             match(input, Token.DOWN, null); 
-            IDENTIFIER95=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable6173); 
+            IDENTIFIER94=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable6206); 
 
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable6175); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable6208); 
 
-            INTLITERAL96=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable6177); 
+            INTLITERAL95=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable6210); 
 
             match(input, Token.UP, null); 
 
 
-            match(input,SMTENTRY,FOLLOW_SMTENTRY_in_stackMapTypeTable6181); 
+            match(input,SMTENTRY,FOLLOW_SMTENTRY_in_stackMapTypeTable6214); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:535:58: (s+= stackMapTypeTableEntry )+
@@ -8799,7 +8807,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:535:59: s+= stackMapTypeTableEntry
             	    {
-            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable6186);
+            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable6219);
             	    s=stackMapTypeTableEntry();
 
             	    state._fsp--;
@@ -8827,7 +8835,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 536:13: -> smtTable(f=$IDENTIFIER.texts=$INTLITERAL.textls=$s)
             {
-                retval.st = templateLib.getInstanceOf("smtTable",new STAttrMap().put("f", (IDENTIFIER95!=null?IDENTIFIER95.getText():null)).put("s", (INTLITERAL96!=null?INTLITERAL96.getText():null)).put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("smtTable",new STAttrMap().put("f", (IDENTIFIER94!=null?IDENTIFIER94.getText():null)).put("s", (INTLITERAL95!=null?INTLITERAL95.getText():null)).put("ls", list_s));
             }
 
 
@@ -8877,33 +8885,33 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:540:3: (id1= IDENTIFIER ASSIGN i1= INTLITERAL id2= IDENTIFIER ASSIGN i2= INTLITERAL id3= IDENTIFIER ASSIGN s1= stackMapTableTypesContainer id4= IDENTIFIER ASSIGN s2= stackMapTableTypesContainer -> smtTableEntry(a=$id1.textb=$i1.textc=$id2.textd=$i2.texte=$id3.textf=$s1.stg=$id4.texth=$s2.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:540:5: id1= IDENTIFIER ASSIGN i1= INTLITERAL id2= IDENTIFIER ASSIGN i2= INTLITERAL id3= IDENTIFIER ASSIGN s1= stackMapTableTypesContainer id4= IDENTIFIER ASSIGN s2= stackMapTableTypesContainer
             {
-            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6233); 
+            id1=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6266); 
 
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6235); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6268); 
 
-            i1=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6239); 
+            i1=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6272); 
 
-            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6243); 
+            id2=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6276); 
 
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6245); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6278); 
 
-            i2=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6249); 
+            i2=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6282); 
 
-            id3=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6258); 
+            id3=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6291); 
 
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6260); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6293); 
 
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6264);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6297);
             s1=stackMapTableTypesContainer();
 
             state._fsp--;
 
 
-            id4=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6273); 
+            id4=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6306); 
 
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6275); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry6308); 
 
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6279);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6312);
             s2=stackMapTableTypesContainer();
 
             state._fsp--;
@@ -8947,27 +8955,27 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER97=null;
-        CommonTree INTLITERAL98=null;
+        CommonTree IDENTIFIER96=null;
+        CommonTree INTLITERAL97=null;
         List list_s=null;
         RuleReturnScope s = null;
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:551:3: ( ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY (s+= stackMapTableEntry )+ ) -> smTable(f=$IDENTIFIER.texts=$INTLITERAL.textls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:551:5: ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY (s+= stackMapTableEntry )+ )
             {
-            match(input,SMHEADER,FOLLOW_SMHEADER_in_stackMapTable6348); 
+            match(input,SMHEADER,FOLLOW_SMHEADER_in_stackMapTable6381); 
 
             match(input, Token.DOWN, null); 
-            IDENTIFIER97=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable6350); 
+            IDENTIFIER96=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable6383); 
 
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable6352); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable6385); 
 
-            INTLITERAL98=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable6354); 
+            INTLITERAL97=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable6387); 
 
             match(input, Token.UP, null); 
 
 
-            match(input,SMENTRY,FOLLOW_SMENTRY_in_stackMapTable6358); 
+            match(input,SMENTRY,FOLLOW_SMENTRY_in_stackMapTable6391); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:551:56: (s+= stackMapTableEntry )+
@@ -8986,7 +8994,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:551:57: s+= stackMapTableEntry
             	    {
-            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable6363);
+            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable6396);
             	    s=stackMapTableEntry();
 
             	    state._fsp--;
@@ -9014,7 +9022,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 552:13: -> smTable(f=$IDENTIFIER.texts=$INTLITERAL.textls=$s)
             {
-                retval.st = templateLib.getInstanceOf("smTable",new STAttrMap().put("f", (IDENTIFIER97!=null?IDENTIFIER97.getText():null)).put("s", (INTLITERAL98!=null?INTLITERAL98.getText():null)).put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("smTable",new STAttrMap().put("f", (IDENTIFIER96!=null?IDENTIFIER96.getText():null)).put("s", (INTLITERAL97!=null?INTLITERAL97.getText():null)).put("ls", list_s));
             }
 
 
@@ -9049,7 +9057,7 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER99=null;
+        CommonTree IDENTIFIER98=null;
         JVMPrettyPrinter.stackMapTableEntryValue_return s =null;
 
 
@@ -9057,12 +9065,12 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:555:3: ( ^( ASSIGN IDENTIFIER s= stackMapTableEntryValue ) -> smTableEntry(f=$IDENTIFIER.texts=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:555:5: ^( ASSIGN IDENTIFIER s= stackMapTableEntryValue )
             {
-            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry6408); 
+            match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry6441); 
 
             match(input, Token.DOWN, null); 
-            IDENTIFIER99=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry6410); 
+            IDENTIFIER98=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry6443); 
 
-            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry6414);
+            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry6447);
             s=stackMapTableEntryValue();
 
             state._fsp--;
@@ -9074,7 +9082,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 556:13: -> smTableEntry(f=$IDENTIFIER.texts=$s.st)
             {
-                retval.st = templateLib.getInstanceOf("smTableEntry",new STAttrMap().put("f", (IDENTIFIER99!=null?IDENTIFIER99.getText():null)).put("s", (s!=null?s.st:null)));
+                retval.st = templateLib.getInstanceOf("smTableEntry",new STAttrMap().put("f", (IDENTIFIER98!=null?IDENTIFIER98.getText():null)).put("s", (s!=null?s.st:null)));
             }
 
 
@@ -9109,7 +9117,7 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree INTLITERAL100=null;
+        CommonTree INTLITERAL99=null;
         JVMPrettyPrinter.stackMapTableTypesContainer_return s =null;
 
 
@@ -9135,12 +9143,12 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:559:5: INTLITERAL
                     {
-                    INTLITERAL100=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue6452); 
+                    INTLITERAL99=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue6485); 
 
                     // TEMPLATE REWRITE
                     // 559:23: -> noformat(f=$INTLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTLITERAL100!=null?INTLITERAL100.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTLITERAL99!=null?INTLITERAL99.getText():null)));
                     }
 
 
@@ -9150,7 +9158,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:560:5: s= stackMapTableTypesContainer
                     {
-                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue6476);
+                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue6509);
                     s=stackMapTableTypesContainer();
 
                     state._fsp--;
@@ -9203,7 +9211,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:563:3: (s= stackMapTableTypes -> smTableContainer(f=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:563:5: s= stackMapTableTypes
             {
-            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer6499);
+            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer6532);
             s=stackMapTableTypes();
 
             state._fsp--;
@@ -9253,7 +9261,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:566:3: ( ^( SMTTYPES (s+= stackMapTableType )* ) -> commaSeparatedList(ls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:566:5: ^( SMTTYPES (s+= stackMapTableType )* )
             {
-            match(input,SMTTYPES,FOLLOW_SMTTYPES_in_stackMapTableTypes6532); 
+            match(input,SMTTYPES,FOLLOW_SMTTYPES_in_stackMapTableTypes6565); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -9272,7 +9280,7 @@ public static class STAttrMap extends HashMap {
                 	case 1 :
                 	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:566:17: s+= stackMapTableType
                 	    {
-                	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes6537);
+                	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes6570);
                 	    s=stackMapTableType();
 
                 	    state._fsp--;
@@ -9332,8 +9340,8 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER101=null;
-        CommonTree INTLITERAL102=null;
+        CommonTree IDENTIFIER100=null;
+        CommonTree INTLITERAL101=null;
         JVMPrettyPrinter.stackMapTableTypeObject_return s1 =null;
 
         JVMPrettyPrinter.stackMapTableTypePlainObject_return s2 =null;
@@ -9394,7 +9402,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:569:5: s1= stackMapTableTypeObject
                     {
-                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType6565);
+                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType6598);
                     s1=stackMapTableTypeObject();
 
                     state._fsp--;
@@ -9413,7 +9421,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:570:5: s2= stackMapTableTypePlainObject
                     {
-                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType6585);
+                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType6618);
                     s2=stackMapTableTypePlainObject();
 
                     state._fsp--;
@@ -9432,7 +9440,7 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:571:5: s3= primitiveType
                     {
-                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType6602);
+                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType6635);
                     s3=primitiveType();
 
                     state._fsp--;
@@ -9451,7 +9459,7 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:572:5: IDENTIFIER ( INTLITERAL )?
                     {
-                    IDENTIFIER101=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType6622); 
+                    IDENTIFIER100=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType6655); 
 
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:572:16: ( INTLITERAL )?
                     int alt84=2;
@@ -9464,7 +9472,7 @@ public static class STAttrMap extends HashMap {
                         case 1 :
                             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:572:16: INTLITERAL
                             {
-                            INTLITERAL102=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType6624); 
+                            INTLITERAL101=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType6657); 
 
                             }
                             break;
@@ -9475,7 +9483,7 @@ public static class STAttrMap extends HashMap {
                     // TEMPLATE REWRITE
                     // 572:31: -> noformatWithspace2(f=$IDENTIFIER.texts=$INTLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (IDENTIFIER101!=null?IDENTIFIER101.getText():null)).put("s", (INTLITERAL102!=null?INTLITERAL102.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (IDENTIFIER100!=null?IDENTIFIER100.getText():null)).put("s", (INTLITERAL101!=null?INTLITERAL101.getText():null)));
                     }
 
 
@@ -9512,21 +9520,21 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree CLASS103=null;
-        CommonTree INTERNALTYPE104=null;
+        CommonTree CLASS102=null;
+        CommonTree INTERNALTYPE103=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:575:3: ( CLASS INTERNALTYPE -> noformatWithspace2(f=$CLASS.texts=$INTERNALTYPE.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:575:5: CLASS INTERNALTYPE
             {
-            CLASS103=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject6653); 
+            CLASS102=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject6686); 
 
-            INTERNALTYPE104=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject6655); 
+            INTERNALTYPE103=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject6688); 
 
             // TEMPLATE REWRITE
             // 575:29: -> noformatWithspace2(f=$CLASS.texts=$INTERNALTYPE.text)
             {
-                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (CLASS103!=null?CLASS103.getText():null)).put("s", (INTERNALTYPE104!=null?INTERNALTYPE104.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (CLASS102!=null?CLASS102.getText():null)).put("s", (INTERNALTYPE103!=null?INTERNALTYPE103.getText():null)));
             }
 
 
@@ -9561,21 +9569,21 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree CLASS105=null;
-        CommonTree STRINGLITERAL106=null;
+        CommonTree CLASS104=null;
+        CommonTree STRINGLITERAL105=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:578:3: ( CLASS STRINGLITERAL -> noformatWithspace2(f=$CLASS.texts=$STRINGLITERAL.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:578:5: CLASS STRINGLITERAL
             {
-            CLASS105=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject6685); 
+            CLASS104=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject6718); 
 
-            STRINGLITERAL106=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject6687); 
+            STRINGLITERAL105=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject6720); 
 
             // TEMPLATE REWRITE
             // 578:29: -> noformatWithspace2(f=$CLASS.texts=$STRINGLITERAL.text)
             {
-                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (CLASS105!=null?CLASS105.getText():null)).put("s", (STRINGLITERAL106!=null?STRINGLITERAL106.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (CLASS104!=null?CLASS104.getText():null)).put("s", (STRINGLITERAL105!=null?STRINGLITERAL105.getText():null)));
             }
 
 
@@ -9632,7 +9640,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:589:6: s+= type
             	    {
-            	    pushFollow(FOLLOW_type_in_typeList6727);
+            	    pushFollow(FOLLOW_type_in_typeList6760);
             	    s=type();
 
             	    state._fsp--;
@@ -9701,13 +9709,13 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:592:3: (s= combinedJavaType ^( ARRAYBRACKS (b+= LBRACK RBRACK )* ) -> type(f=$s.sts=$b))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:592:5: s= combinedJavaType ^( ARRAYBRACKS (b+= LBRACK RBRACK )* )
             {
-            pushFollow(FOLLOW_combinedJavaType_in_type6759);
+            pushFollow(FOLLOW_combinedJavaType_in_type6792);
             s=combinedJavaType();
 
             state._fsp--;
 
 
-            match(input,ARRAYBRACKS,FOLLOW_ARRAYBRACKS_in_type6762); 
+            match(input,ARRAYBRACKS,FOLLOW_ARRAYBRACKS_in_type6795); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -9726,12 +9734,12 @@ public static class STAttrMap extends HashMap {
                 	case 1 :
                 	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:592:39: b+= LBRACK RBRACK
                 	    {
-                	    b=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_type6767); 
+                	    b=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_type6800); 
                 	    if (list_b==null) list_b=new ArrayList();
                 	    list_b.add(b);
 
 
-                	    match(input,RBRACK,FOLLOW_RBRACK_in_type6769); 
+                	    match(input,RBRACK,FOLLOW_RBRACK_in_type6802); 
 
                 	    }
                 	    break;
@@ -9811,7 +9819,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:596:5: s1= primitiveType
                     {
-                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType6812);
+                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType6845);
                     s1=primitiveType();
 
                     state._fsp--;
@@ -9830,7 +9838,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:597:5: s2= referenceType
                     {
-                    pushFollow(FOLLOW_referenceType_in_combinedJavaType6834);
+                    pushFollow(FOLLOW_referenceType_in_combinedJavaType6867);
                     s2=referenceType();
 
                     state._fsp--;
@@ -9882,7 +9890,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:600:3: ( ^( UNITNAME (s+= typeDeclSpecifier )+ ) -> dotSeparatedList(ls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:600:5: ^( UNITNAME (s+= typeDeclSpecifier )+ )
             {
-            match(input,UNITNAME,FOLLOW_UNITNAME_in_referenceType6861); 
+            match(input,UNITNAME,FOLLOW_UNITNAME_in_referenceType6894); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:600:16: (s+= typeDeclSpecifier )+
@@ -9901,7 +9909,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:600:17: s+= typeDeclSpecifier
             	    {
-            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType6866);
+            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType6899);
             	    s=typeDeclSpecifier();
 
             	    state._fsp--;
@@ -9973,14 +9981,14 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:603:3: ( ^(s1= typeName ^( TYPEARGS (s2= typeArguments )? ) ) -> noformat2(f=$s1.sts=$s2.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:603:5: ^(s1= typeName ^( TYPEARGS (s2= typeArguments )? ) )
             {
-            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier6893);
+            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier6926);
             s1=typeName();
 
             state._fsp--;
 
 
             match(input, Token.DOWN, null); 
-            match(input,TYPEARGS,FOLLOW_TYPEARGS_in_typeDeclSpecifier6896); 
+            match(input,TYPEARGS,FOLLOW_TYPEARGS_in_typeDeclSpecifier6929); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -9995,7 +10003,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:603:32: s2= typeArguments
                         {
-                        pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier6900);
+                        pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier6933);
                         s2=typeArguments();
 
                         state._fsp--;
@@ -10052,18 +10060,18 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree QualifiedType107=null;
+        CommonTree QualifiedType106=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:607:3: ( QualifiedType -> noformat(f=$QualifiedType.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:607:5: QualifiedType
             {
-            QualifiedType107=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName6941); 
+            QualifiedType106=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName6974); 
 
             // TEMPLATE REWRITE
             // 607:23: -> noformat(f=$QualifiedType.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (QualifiedType107!=null?QualifiedType107.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (QualifiedType106!=null?QualifiedType106.getText():null)));
             }
 
 
@@ -10120,7 +10128,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:610:6: s+= typeArgument
             	    {
-            	    pushFollow(FOLLOW_typeArgument_in_typeArguments6969);
+            	    pushFollow(FOLLOW_typeArgument_in_typeArguments7002);
             	    s=typeArgument();
 
             	    state._fsp--;
@@ -10207,7 +10215,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:613:5: s1= type
                     {
-                    pushFollow(FOLLOW_type_in_typeArgument6999);
+                    pushFollow(FOLLOW_type_in_typeArgument7032);
                     s1=type();
 
                     state._fsp--;
@@ -10226,7 +10234,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:614:5: s2= wildcard
                     {
-                    pushFollow(FOLLOW_wildcard_in_typeArgument7022);
+                    pushFollow(FOLLOW_wildcard_in_typeArgument7055);
                     s2=wildcard();
 
                     state._fsp--;
@@ -10279,7 +10287,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:617:3: ( ^( QUESTION (s1= wildcardBounds )? ) -> wildT(f=$s1.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:617:5: ^( QUESTION (s1= wildcardBounds )? )
             {
-            match(input,QUESTION,FOLLOW_QUESTION_in_wildcard7050); 
+            match(input,QUESTION,FOLLOW_QUESTION_in_wildcard7083); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -10294,7 +10302,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:617:18: s1= wildcardBounds
                         {
-                        pushFollow(FOLLOW_wildcardBounds_in_wildcard7054);
+                        pushFollow(FOLLOW_wildcardBounds_in_wildcard7087);
                         s1=wildcardBounds();
 
                         state._fsp--;
@@ -10342,21 +10350,21 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "wildcardBounds"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:619:1: wildcardBounds : ( ^( EXTENDS s1= type ) -> wildBoundsT(f=$EXTENDS.textf=$s1.st)| ^( SUPER s2= type ) -> wildBoundsT(f=$SUPER.textf=$s2.st));
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:619:1: wildcardBounds : ( ^( EXTENDS s1= type ) -> wildBoundsT(f=$EXTENDS.texts=$s1.st)| ^( SUPER s2= type ) -> wildBoundsT(f=$SUPER.texts=$s2.st));
     public final JVMPrettyPrinter.wildcardBounds_return wildcardBounds() throws RecognitionException {
         JVMPrettyPrinter.wildcardBounds_return retval = new JVMPrettyPrinter.wildcardBounds_return();
         retval.start = input.LT(1);
 
 
-        CommonTree EXTENDS108=null;
-        CommonTree SUPER109=null;
+        CommonTree EXTENDS107=null;
+        CommonTree SUPER108=null;
         JVMPrettyPrinter.type_return s1 =null;
 
         JVMPrettyPrinter.type_return s2 =null;
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:620:3: ( ^( EXTENDS s1= type ) -> wildBoundsT(f=$EXTENDS.textf=$s1.st)| ^( SUPER s2= type ) -> wildBoundsT(f=$SUPER.textf=$s2.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:620:3: ( ^( EXTENDS s1= type ) -> wildBoundsT(f=$EXTENDS.texts=$s1.st)| ^( SUPER s2= type ) -> wildBoundsT(f=$SUPER.texts=$s2.st))
             int alt94=2;
             int LA94_0 = input.LA(1);
 
@@ -10377,10 +10385,10 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:620:5: ^( EXTENDS s1= type )
                     {
-                    EXTENDS108=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds7079); 
+                    EXTENDS107=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds7112); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_type_in_wildcardBounds7083);
+                    pushFollow(FOLLOW_type_in_wildcardBounds7116);
                     s1=type();
 
                     state._fsp--;
@@ -10390,9 +10398,9 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 620:29: -> wildBoundsT(f=$EXTENDS.textf=$s1.st)
+                    // 620:29: -> wildBoundsT(f=$EXTENDS.texts=$s1.st)
                     {
-                        retval.st = templateLib.getInstanceOf("wildBoundsT",new STAttrMap().put("f", (EXTENDS108!=null?EXTENDS108.getText():null)).put("f", (s1!=null?s1.st:null)));
+                        retval.st = templateLib.getInstanceOf("wildBoundsT",new STAttrMap().put("f", (EXTENDS107!=null?EXTENDS107.getText():null)).put("s", (s1!=null?s1.st:null)));
                     }
 
 
@@ -10402,10 +10410,10 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:621:5: ^( SUPER s2= type )
                     {
-                    SUPER109=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds7110); 
+                    SUPER108=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds7143); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_type_in_wildcardBounds7114);
+                    pushFollow(FOLLOW_type_in_wildcardBounds7147);
                     s2=type();
 
                     state._fsp--;
@@ -10415,9 +10423,9 @@ public static class STAttrMap extends HashMap {
 
 
                     // TEMPLATE REWRITE
-                    // 621:27: -> wildBoundsT(f=$SUPER.textf=$s2.st)
+                    // 621:27: -> wildBoundsT(f=$SUPER.texts=$s2.st)
                     {
-                        retval.st = templateLib.getInstanceOf("wildBoundsT",new STAttrMap().put("f", (SUPER109!=null?SUPER109.getText():null)).put("f", (s2!=null?s2.st:null)));
+                        retval.st = templateLib.getInstanceOf("wildBoundsT",new STAttrMap().put("f", (SUPER108!=null?SUPER108.getText():null)).put("s", (s2!=null?s2.st:null)));
                     }
 
 
@@ -10476,7 +10484,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:624:6: s+= typeParameter
             	    {
-            	    pushFollow(FOLLOW_typeParameter_in_typeParameters7149);
+            	    pushFollow(FOLLOW_typeParameter_in_typeParameters7182);
             	    s=typeParameter();
 
             	    state._fsp--;
@@ -10545,7 +10553,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:627:3: ( ^(id= identifier (tb= typeBound )? ) -> noformatWithspace2(f=$id.sts=($tb.st==null?\"\":$tb.st)))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:627:5: ^(id= identifier (tb= typeBound )? )
             {
-            pushFollow(FOLLOW_identifier_in_typeParameter7179);
+            pushFollow(FOLLOW_identifier_in_typeParameter7212);
             id=identifier();
 
             state._fsp--;
@@ -10564,7 +10572,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:627:23: tb= typeBound
                         {
-                        pushFollow(FOLLOW_typeBound_in_typeParameter7183);
+                        pushFollow(FOLLOW_typeBound_in_typeParameter7216);
                         tb=typeBound();
 
                         state._fsp--;
@@ -10618,14 +10626,14 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree EXTENDS110=null;
+        CommonTree EXTENDS109=null;
         List list_s=null;
         RuleReturnScope s = null;
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:630:3: ( ^( EXTENDS (s+= referenceType )+ ) -> tBound(f=$EXTENDS.textls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:630:5: ^( EXTENDS (s+= referenceType )+ )
             {
-            EXTENDS110=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound7213); 
+            EXTENDS109=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound7246); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:630:15: (s+= referenceType )+
@@ -10644,7 +10652,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:630:16: s+= referenceType
             	    {
-            	    pushFollow(FOLLOW_referenceType_in_typeBound7218);
+            	    pushFollow(FOLLOW_referenceType_in_typeBound7251);
             	    s=referenceType();
 
             	    state._fsp--;
@@ -10672,7 +10680,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 630:37: -> tBound(f=$EXTENDS.textls=$s)
             {
-                retval.st = templateLib.getInstanceOf("tBound",new STAttrMap().put("f", (EXTENDS110!=null?EXTENDS110.getText():null)).put("ls", list_s));
+                retval.st = templateLib.getInstanceOf("tBound",new STAttrMap().put("f", (EXTENDS109!=null?EXTENDS109.getText():null)).put("ls", list_s));
             }
 
 
@@ -10729,7 +10737,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:636:6: s+= genericReturnDescriptor
             	    {
-            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor7254);
+            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor7287);
             	    s=genericReturnDescriptor();
 
             	    state._fsp--;
@@ -10789,7 +10797,7 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree EXTENDS111=null;
+        CommonTree EXTENDS110=null;
         JVMPrettyPrinter.identifier_return s1 =null;
 
         JVMPrettyPrinter.bytecodeReferenceTypeList_return s2 =null;
@@ -10799,16 +10807,16 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:639:3: ( ^( EXTENDS s1= identifier s2= bytecodeReferenceTypeList ) -> genRetDesc(f=$s1.sts=$EXTENDS.textt=$s2.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:639:5: ^( EXTENDS s1= identifier s2= bytecodeReferenceTypeList )
             {
-            EXTENDS111=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor7280); 
+            EXTENDS110=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor7313); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor7284);
+            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor7317);
             s1=identifier();
 
             state._fsp--;
 
 
-            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor7288);
+            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor7321);
             s2=bytecodeReferenceTypeList();
 
             state._fsp--;
@@ -10820,7 +10828,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 640:15: -> genRetDesc(f=$s1.sts=$EXTENDS.textt=$s2.st)
             {
-                retval.st = templateLib.getInstanceOf("genRetDesc",new STAttrMap().put("f", (s1!=null?s1.st:null)).put("s", (EXTENDS111!=null?EXTENDS111.getText():null)).put("t", (s2!=null?s2.st:null)));
+                retval.st = templateLib.getInstanceOf("genRetDesc",new STAttrMap().put("f", (s1!=null?s1.st:null)).put("s", (EXTENDS110!=null?EXTENDS110.getText():null)).put("t", (s2!=null?s2.st:null)));
             }
 
 
@@ -10877,7 +10885,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:643:6: s+= bytecodeReferenceType
             	    {
-            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList7336);
+            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList7369);
             	    s=bytecodeReferenceType();
 
             	    state._fsp--;
@@ -10943,7 +10951,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:646:3: ( ^( UNITNAME (s+= bytecodeTypeDeclSpecifier )+ ) -> dotSeparatedList(ls=$s))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:646:5: ^( UNITNAME (s+= bytecodeTypeDeclSpecifier )+ )
             {
-            match(input,UNITNAME,FOLLOW_UNITNAME_in_bytecodeReferenceType7364); 
+            match(input,UNITNAME,FOLLOW_UNITNAME_in_bytecodeReferenceType7397); 
 
             match(input, Token.DOWN, null); 
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:646:16: (s+= bytecodeTypeDeclSpecifier )+
@@ -10962,7 +10970,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:646:17: s+= bytecodeTypeDeclSpecifier
             	    {
-            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType7369);
+            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType7402);
             	    s=bytecodeTypeDeclSpecifier();
 
             	    state._fsp--;
@@ -11034,13 +11042,13 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:649:3: (s1= bytecodeTypeName ^( TYPEARGS (s2= bytecodeTypeArguments )? ) -> noformat2(f=$s1.sts=$s2.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:649:5: s1= bytecodeTypeName ^( TYPEARGS (s2= bytecodeTypeArguments )? )
             {
-            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier7395);
+            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier7428);
             s1=bytecodeTypeName();
 
             state._fsp--;
 
 
-            match(input,TYPEARGS,FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier7398); 
+            match(input,TYPEARGS,FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier7431); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -11055,7 +11063,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:649:38: s2= bytecodeTypeArguments
                         {
-                        pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier7402);
+                        pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier7435);
                         s2=bytecodeTypeArguments();
 
                         state._fsp--;
@@ -11109,18 +11117,18 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree INTERNALTYPE112=null;
+        CommonTree INTERNALTYPE111=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:653:3: ( INTERNALTYPE -> noformat(f=$INTERNALTYPE.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:653:5: INTERNALTYPE
             {
-            INTERNALTYPE112=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName7444); 
+            INTERNALTYPE111=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName7477); 
 
             // TEMPLATE REWRITE
             // 653:25: -> noformat(f=$INTERNALTYPE.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTERNALTYPE112!=null?INTERNALTYPE112.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTERNALTYPE111!=null?INTERNALTYPE111.getText():null)));
             }
 
 
@@ -11162,7 +11170,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:656:3: (s= bytecodeTypeArgumentList -> noformat(f=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:656:5: s= bytecodeTypeArgumentList
             {
-            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments7474);
+            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments7507);
             s=bytecodeTypeArgumentList();
 
             state._fsp--;
@@ -11228,7 +11236,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:659:6: s+= bytecodeTypeArgument
             	    {
-            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList7504);
+            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList7537);
             	    s=bytecodeTypeArgument();
 
             	    state._fsp--;
@@ -11315,7 +11323,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:662:5: s1= bytecodeReferenceType
                     {
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument7534);
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument7567);
                     s1=bytecodeReferenceType();
 
                     state._fsp--;
@@ -11334,7 +11342,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:663:5: s2= bytecodeWildcard
                     {
-                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument7554);
+                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument7587);
                     s2=bytecodeWildcard();
 
                     state._fsp--;
@@ -11380,7 +11388,7 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree QUESTION113=null;
+        CommonTree QUESTION112=null;
         JVMPrettyPrinter.bytecodeWildcardBounds_return s =null;
 
 
@@ -11388,7 +11396,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:666:3: ( ^( QUESTION (s= bytecodeWildcardBounds )? ) -> noformatWithspace2(f=$QUESTION.texts=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:666:5: ^( QUESTION (s= bytecodeWildcardBounds )? )
             {
-            QUESTION113=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard7580); 
+            QUESTION112=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard7613); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -11403,7 +11411,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:666:17: s= bytecodeWildcardBounds
                         {
-                        pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard7584);
+                        pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard7617);
                         s=bytecodeWildcardBounds();
 
                         state._fsp--;
@@ -11422,7 +11430,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 666:43: -> noformatWithspace2(f=$QUESTION.texts=$s.st)
             {
-                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (QUESTION113!=null?QUESTION113.getText():null)).put("s", (s!=null?s.st:null)));
+                retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (QUESTION112!=null?QUESTION112.getText():null)).put("s", (s!=null?s.st:null)));
             }
 
 
@@ -11457,8 +11465,8 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree EXTENDS114=null;
-        CommonTree SUPER115=null;
+        CommonTree EXTENDS113=null;
+        CommonTree SUPER114=null;
         JVMPrettyPrinter.bytecodeReferenceType_return s1 =null;
 
         JVMPrettyPrinter.bytecodeReferenceType_return s2 =null;
@@ -11486,10 +11494,10 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:669:5: ^( EXTENDS s1= bytecodeReferenceType )
                     {
-                    EXTENDS114=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds7612); 
+                    EXTENDS113=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds7645); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7616);
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7649);
                     s1=bytecodeReferenceType();
 
                     state._fsp--;
@@ -11501,7 +11509,7 @@ public static class STAttrMap extends HashMap {
                     // TEMPLATE REWRITE
                     // 669:43: -> noformatWithspace2(f=$EXTENDS.texts=$s1.st)
                     {
-                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (EXTENDS114!=null?EXTENDS114.getText():null)).put("s", (s1!=null?s1.st:null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (EXTENDS113!=null?EXTENDS113.getText():null)).put("s", (s1!=null?s1.st:null)));
                     }
 
 
@@ -11511,10 +11519,10 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:670:5: ^( SUPER s2= bytecodeReferenceType )
                     {
-                    SUPER115=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds7639); 
+                    SUPER114=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds7672); 
 
                     match(input, Token.DOWN, null); 
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7643);
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7676);
                     s2=bytecodeReferenceType();
 
                     state._fsp--;
@@ -11526,7 +11534,7 @@ public static class STAttrMap extends HashMap {
                     // TEMPLATE REWRITE
                     // 670:41: -> noformatWithspace2(f=$SUPER.texts=$s2.st)
                     {
-                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (SUPER115!=null?SUPER115.getText():null)).put("s", (s2!=null?s2.st:null)));
+                        retval.st = templateLib.getInstanceOf("noformatWithspace2",new STAttrMap().put("f", (SUPER114!=null?SUPER114.getText():null)).put("s", (s2!=null?s2.st:null)));
                     }
 
 
@@ -11563,9 +11571,9 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree BaseType116=null;
-        CommonTree SEMI117=null;
-        CommonTree IDENTIFIER118=null;
+        CommonTree BaseType115=null;
+        CommonTree SEMI116=null;
+        CommonTree IDENTIFIER117=null;
         JVMPrettyPrinter.bytecodeArrayType_return s1 =null;
 
         JVMPrettyPrinter.simpleBytecodeObjectType_return s2 =null;
@@ -11607,7 +11615,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:678:5: s1= bytecodeArrayType
                     {
-                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType7678);
+                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType7711);
                     s1=bytecodeArrayType();
 
                     state._fsp--;
@@ -11626,12 +11634,12 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:679:5: BaseType
                     {
-                    BaseType116=(CommonTree)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType7696); 
+                    BaseType115=(CommonTree)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType7729); 
 
                     // TEMPLATE REWRITE
                     // 679:21: -> noformat(f=$BaseType.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BaseType116!=null?BaseType116.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BaseType115!=null?BaseType115.getText():null)));
                     }
 
 
@@ -11641,18 +11649,18 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:680:5: s2= simpleBytecodeObjectType SEMI
                     {
-                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType7720);
+                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType7753);
                     s2=simpleBytecodeObjectType();
 
                     state._fsp--;
 
 
-                    SEMI117=(CommonTree)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType7722); 
+                    SEMI116=(CommonTree)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType7755); 
 
                     // TEMPLATE REWRITE
                     // 680:39: -> noformat2(f=$s2.sts=$SEMI.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (s2!=null?s2.st:null)).put("s", (SEMI117!=null?SEMI117.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (s2!=null?s2.st:null)).put("s", (SEMI116!=null?SEMI116.getText():null)));
                     }
 
 
@@ -11662,12 +11670,12 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:681:5: IDENTIFIER
                     {
-                    IDENTIFIER118=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType7742); 
+                    IDENTIFIER117=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType7775); 
 
                     // TEMPLATE REWRITE
                     // 681:23: -> noformat(f=$IDENTIFIER.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER118!=null?IDENTIFIER118.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER117!=null?IDENTIFIER117.getText():null)));
                     }
 
 
@@ -11704,7 +11712,7 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree LBRACK119=null;
+        CommonTree LBRACK118=null;
         JVMPrettyPrinter.bytecodeType_return s =null;
 
 
@@ -11712,9 +11720,9 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:685:3: ( LBRACK s= bytecodeType -> noformat2(f=$LBRACK.texts=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:685:5: LBRACK s= bytecodeType
             {
-            LBRACK119=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType7773); 
+            LBRACK118=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType7806); 
 
-            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType7777);
+            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType7810);
             s=bytecodeType();
 
             state._fsp--;
@@ -11723,7 +11731,7 @@ public static class STAttrMap extends HashMap {
             // TEMPLATE REWRITE
             // 685:29: -> noformat2(f=$LBRACK.texts=$s.st)
             {
-                retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (LBRACK119!=null?LBRACK119.getText():null)).put("s", (s!=null?s.st:null)));
+                retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (LBRACK118!=null?LBRACK118.getText():null)).put("s", (s!=null?s.st:null)));
             }
 
 
@@ -11780,7 +11788,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:688:6: s+= simpleBytecodeReferenceType
             	    {
-            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType7808);
+            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType7841);
             	    s=simpleBytecodeReferenceType();
 
             	    state._fsp--;
@@ -11849,13 +11857,13 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:691:3: (s1= simpleBytecodeReferenceTypeName ^( TYPEARGS (s2= simpleBytecodeTypeArguments )? ) -> noformat2(f=$s1.sts=$s2.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:691:5: s1= simpleBytecodeReferenceTypeName ^( TYPEARGS (s2= simpleBytecodeTypeArguments )? )
             {
-            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType7833);
+            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType7866);
             s1=simpleBytecodeReferenceTypeName();
 
             state._fsp--;
 
 
-            match(input,TYPEARGS,FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType7836); 
+            match(input,TYPEARGS,FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType7869); 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
@@ -11870,7 +11878,7 @@ public static class STAttrMap extends HashMap {
                     case 1 :
                         // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:691:53: s2= simpleBytecodeTypeArguments
                         {
-                        pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType7840);
+                        pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType7873);
                         s2=simpleBytecodeTypeArguments();
 
                         state._fsp--;
@@ -11924,18 +11932,18 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree INTERNALTYPE120=null;
+        CommonTree INTERNALTYPE119=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:695:3: ( INTERNALTYPE -> noformat(f=$INTERNALTYPE.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:695:5: INTERNALTYPE
             {
-            INTERNALTYPE120=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName7879); 
+            INTERNALTYPE119=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName7912); 
 
             // TEMPLATE REWRITE
             // 695:23: -> noformat(f=$INTERNALTYPE.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTERNALTYPE120!=null?INTERNALTYPE120.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTERNALTYPE119!=null?INTERNALTYPE119.getText():null)));
             }
 
 
@@ -11977,7 +11985,7 @@ public static class STAttrMap extends HashMap {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:698:3: (s= simpleBytecodeTypeArgumentList -> noformat(f=$s.st))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:698:5: s= simpleBytecodeTypeArgumentList
             {
-            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments7907);
+            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments7940);
             s=simpleBytecodeTypeArgumentList();
 
             state._fsp--;
@@ -12043,7 +12051,7 @@ public static class STAttrMap extends HashMap {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:701:6: s+= simpleBytecodeTypeArgument
             	    {
-            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList7932);
+            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList7965);
             	    s=simpleBytecodeTypeArgument();
 
             	    state._fsp--;
@@ -12103,9 +12111,9 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree MINUS121=null;
-        CommonTree PLUS122=null;
-        CommonTree STAR123=null;
+        CommonTree MINUS120=null;
+        CommonTree PLUS121=null;
+        CommonTree STAR122=null;
         JVMPrettyPrinter.bytecodeType_return s1 =null;
 
         JVMPrettyPrinter.bytecodeType_return s2 =null;
@@ -12152,7 +12160,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:704:5: s1= bytecodeType
                     {
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument7958);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument7991);
                     s1=bytecodeType();
 
                     state._fsp--;
@@ -12171,9 +12179,9 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:705:5: MINUS s2= bytecodeType
                     {
-                    MINUS121=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument7977); 
+                    MINUS120=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument8010); 
 
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument7981);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument8014);
                     s2=bytecodeType();
 
                     state._fsp--;
@@ -12182,7 +12190,7 @@ public static class STAttrMap extends HashMap {
                     // TEMPLATE REWRITE
                     // 705:31: -> noformat2(f=$MINUS.texts=$s2.st)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (MINUS121!=null?MINUS121.getText():null)).put("s", (s2!=null?s2.st:null)));
+                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (MINUS120!=null?MINUS120.getText():null)).put("s", (s2!=null?s2.st:null)));
                     }
 
 
@@ -12192,9 +12200,9 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:706:5: PLUS s3= bytecodeType
                     {
-                    PLUS122=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument8004); 
+                    PLUS121=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument8037); 
 
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument8008);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument8041);
                     s3=bytecodeType();
 
                     state._fsp--;
@@ -12203,7 +12211,7 @@ public static class STAttrMap extends HashMap {
                     // TEMPLATE REWRITE
                     // 706:31: -> noformat2(f=$PLUS.texts=$s3.st)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (PLUS122!=null?PLUS122.getText():null)).put("s", (s3!=null?s3.st:null)));
+                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (PLUS121!=null?PLUS121.getText():null)).put("s", (s3!=null?s3.st:null)));
                     }
 
 
@@ -12213,12 +12221,12 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:707:5: STAR
                     {
-                    STAR123=(CommonTree)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument8032); 
+                    STAR122=(CommonTree)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument8065); 
 
                     // TEMPLATE REWRITE
                     // 707:17: -> noformat(f=$STAR.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (STAR123!=null?STAR123.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (STAR122!=null?STAR122.getText():null)));
                     }
 
 
@@ -12255,18 +12263,18 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER124=null;
+        CommonTree IDENTIFIER123=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:715:3: ( IDENTIFIER -> noformat(f=$IDENTIFIER.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:715:5: IDENTIFIER
             {
-            IDENTIFIER124=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier8065); 
+            IDENTIFIER123=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier8098); 
 
             // TEMPLATE REWRITE
             // 715:19: -> noformat(f=$IDENTIFIER.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER124!=null?IDENTIFIER124.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER123!=null?IDENTIFIER123.getText():null)));
             }
 
 
@@ -12301,18 +12309,18 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree IDENTIFIER125=null;
+        CommonTree IDENTIFIER124=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:719:3: ( IDENTIFIER -> noformat(f=$IDENTIFIER.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:719:6: IDENTIFIER
             {
-            IDENTIFIER125=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_keywordAggregate8091); 
+            IDENTIFIER124=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_keywordAggregate8124); 
 
             // TEMPLATE REWRITE
             // 719:21: -> noformat(f=$IDENTIFIER.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER125!=null?IDENTIFIER125.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (IDENTIFIER124!=null?IDENTIFIER124.getText():null)));
             }
 
 
@@ -12347,7 +12355,7 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree VOID126=null;
+        CommonTree VOID125=null;
         JVMPrettyPrinter.boolean_type_return s1 =null;
 
         JVMPrettyPrinter.numeric_type_return s2 =null;
@@ -12390,7 +12398,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:723:5: s1= boolean_type
                     {
-                    pushFollow(FOLLOW_boolean_type_in_primitiveType8119);
+                    pushFollow(FOLLOW_boolean_type_in_primitiveType8152);
                     s1=boolean_type();
 
                     state._fsp--;
@@ -12409,7 +12417,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:724:5: s2= numeric_type
                     {
-                    pushFollow(FOLLOW_numeric_type_in_primitiveType8138);
+                    pushFollow(FOLLOW_numeric_type_in_primitiveType8171);
                     s2=numeric_type();
 
                     state._fsp--;
@@ -12428,12 +12436,12 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:725:5: VOID
                     {
-                    VOID126=(CommonTree)match(input,VOID,FOLLOW_VOID_in_primitiveType8155); 
+                    VOID125=(CommonTree)match(input,VOID,FOLLOW_VOID_in_primitiveType8188); 
 
                     // TEMPLATE REWRITE
                     // 725:15: -> noformat(f=$VOID.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (VOID126!=null?VOID126.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (VOID125!=null?VOID125.getText():null)));
                     }
 
 
@@ -12470,18 +12478,18 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree BOOLEAN127=null;
+        CommonTree BOOLEAN126=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:729:3: ( BOOLEAN -> noformat(f=$BOOLEAN.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:729:5: BOOLEAN
             {
-            BOOLEAN127=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type8182); 
+            BOOLEAN126=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type8215); 
 
             // TEMPLATE REWRITE
             // 729:17: -> noformat(f=$BOOLEAN.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BOOLEAN127!=null?BOOLEAN127.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BOOLEAN126!=null?BOOLEAN126.getText():null)));
             }
 
 
@@ -12543,7 +12551,7 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:733:5: s1= floating_point_type
                     {
-                    pushFollow(FOLLOW_floating_point_type_in_numeric_type8210);
+                    pushFollow(FOLLOW_floating_point_type_in_numeric_type8243);
                     s1=floating_point_type();
 
                     state._fsp--;
@@ -12562,7 +12570,7 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:734:5: s2= integral_type
                     {
-                    pushFollow(FOLLOW_integral_type_in_numeric_type8228);
+                    pushFollow(FOLLOW_integral_type_in_numeric_type8261);
                     s2=integral_type();
 
                     state._fsp--;
@@ -12608,11 +12616,11 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree BYTE128=null;
-        CommonTree SHORT129=null;
-        CommonTree INT130=null;
-        CommonTree LONG131=null;
-        CommonTree CHAR132=null;
+        CommonTree BYTE127=null;
+        CommonTree SHORT128=null;
+        CommonTree INT129=null;
+        CommonTree LONG130=null;
+        CommonTree CHAR131=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:738:3: ( BYTE -> noformat(f=$BYTE.text)| SHORT -> noformat(f=$SHORT.text)| INT -> noformat(f=$INT.text)| LONG -> noformat(f=$LONG.text)| CHAR -> noformat(f=$CHAR.text))
@@ -12655,12 +12663,12 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:738:5: BYTE
                     {
-                    BYTE128=(CommonTree)match(input,BYTE,FOLLOW_BYTE_in_integral_type8253); 
+                    BYTE127=(CommonTree)match(input,BYTE,FOLLOW_BYTE_in_integral_type8286); 
 
                     // TEMPLATE REWRITE
                     // 738:13: -> noformat(f=$BYTE.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BYTE128!=null?BYTE128.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BYTE127!=null?BYTE127.getText():null)));
                     }
 
 
@@ -12670,12 +12678,12 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:739:5: SHORT
                     {
-                    SHORT129=(CommonTree)match(input,SHORT,FOLLOW_SHORT_in_integral_type8271); 
+                    SHORT128=(CommonTree)match(input,SHORT,FOLLOW_SHORT_in_integral_type8304); 
 
                     // TEMPLATE REWRITE
                     // 739:13: -> noformat(f=$SHORT.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (SHORT129!=null?SHORT129.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (SHORT128!=null?SHORT128.getText():null)));
                     }
 
 
@@ -12685,12 +12693,12 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:740:5: INT
                     {
-                    INT130=(CommonTree)match(input,INT,FOLLOW_INT_in_integral_type8288); 
+                    INT129=(CommonTree)match(input,INT,FOLLOW_INT_in_integral_type8321); 
 
                     // TEMPLATE REWRITE
                     // 740:13: -> noformat(f=$INT.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INT130!=null?INT130.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INT129!=null?INT129.getText():null)));
                     }
 
 
@@ -12700,12 +12708,12 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:741:5: LONG
                     {
-                    LONG131=(CommonTree)match(input,LONG,FOLLOW_LONG_in_integral_type8307); 
+                    LONG130=(CommonTree)match(input,LONG,FOLLOW_LONG_in_integral_type8340); 
 
                     // TEMPLATE REWRITE
                     // 741:13: -> noformat(f=$LONG.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (LONG131!=null?LONG131.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (LONG130!=null?LONG130.getText():null)));
                     }
 
 
@@ -12715,12 +12723,12 @@ public static class STAttrMap extends HashMap {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:742:5: CHAR
                     {
-                    CHAR132=(CommonTree)match(input,CHAR,FOLLOW_CHAR_in_integral_type8325); 
+                    CHAR131=(CommonTree)match(input,CHAR,FOLLOW_CHAR_in_integral_type8358); 
 
                     // TEMPLATE REWRITE
                     // 742:13: -> noformat(f=$CHAR.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (CHAR132!=null?CHAR132.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (CHAR131!=null?CHAR131.getText():null)));
                     }
 
 
@@ -12757,8 +12765,8 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree FLOAT133=null;
-        CommonTree DOUBLE134=null;
+        CommonTree FLOAT132=null;
+        CommonTree DOUBLE133=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:746:3: ( FLOAT -> noformat(f=$FLOAT.text)| DOUBLE -> noformat(f=$DOUBLE.text))
@@ -12782,12 +12790,12 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:746:5: FLOAT
                     {
-                    FLOAT133=(CommonTree)match(input,FLOAT,FOLLOW_FLOAT_in_floating_point_type8350); 
+                    FLOAT132=(CommonTree)match(input,FLOAT,FOLLOW_FLOAT_in_floating_point_type8383); 
 
                     // TEMPLATE REWRITE
                     // 746:13: -> noformat(f=$FLOAT.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (FLOAT133!=null?FLOAT133.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (FLOAT132!=null?FLOAT132.getText():null)));
                     }
 
 
@@ -12797,12 +12805,12 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:747:5: DOUBLE
                     {
-                    DOUBLE134=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_floating_point_type8367); 
+                    DOUBLE133=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_floating_point_type8400); 
 
                     // TEMPLATE REWRITE
                     // 747:15: -> noformat(f=$DOUBLE.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (DOUBLE134!=null?DOUBLE134.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (DOUBLE133!=null?DOUBLE133.getText():null)));
                     }
 
 
@@ -12839,15 +12847,15 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree LONGLITERAL135=null;
-        CommonTree INTLITERAL136=null;
-        CommonTree FLOATLITERAL137=null;
-        CommonTree DOUBLELITERAL138=null;
-        CommonTree CHARLITERAL139=null;
-        CommonTree STRINGLITERAL140=null;
-        CommonTree BOOLEANLITERAL141=null;
-        CommonTree MINUS142=null;
-        CommonTree IDENTIFIER143=null;
+        CommonTree LONGLITERAL134=null;
+        CommonTree INTLITERAL135=null;
+        CommonTree FLOATLITERAL136=null;
+        CommonTree DOUBLELITERAL137=null;
+        CommonTree CHARLITERAL138=null;
+        CommonTree STRINGLITERAL139=null;
+        CommonTree BOOLEANLITERAL140=null;
+        CommonTree MINUS141=null;
+        CommonTree IDENTIFIER142=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:751:3: ( LONGLITERAL -> noformat(f=$LONGLITERAL.text)| INTLITERAL -> noformat(f=$INTLITERAL.text)| FLOATLITERAL -> noformat(f=$FLOATLITERAL.text)| DOUBLELITERAL -> noformat(f=$DOUBLELITERAL.text)| CHARLITERAL -> noformat(f=$CHARLITERAL.text)| STRINGLITERAL -> noformat(f=$STRINGLITERAL.text)| BOOLEANLITERAL -> noformat(f=$BOOLEANLITERAL.text)| ( MINUS )? IDENTIFIER -> noformat2(f=$MINUS.texts=$IDENTIFIER.text))
@@ -12906,12 +12914,12 @@ public static class STAttrMap extends HashMap {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:751:5: LONGLITERAL
                     {
-                    LONGLITERAL135=(CommonTree)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals8392); 
+                    LONGLITERAL134=(CommonTree)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals8425); 
 
                     // TEMPLATE REWRITE
                     // 751:19: -> noformat(f=$LONGLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (LONGLITERAL135!=null?LONGLITERAL135.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (LONGLITERAL134!=null?LONGLITERAL134.getText():null)));
                     }
 
 
@@ -12921,12 +12929,12 @@ public static class STAttrMap extends HashMap {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:752:5: INTLITERAL
                     {
-                    INTLITERAL136=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals8409); 
+                    INTLITERAL135=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals8442); 
 
                     // TEMPLATE REWRITE
                     // 752:19: -> noformat(f=$INTLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTLITERAL136!=null?INTLITERAL136.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (INTLITERAL135!=null?INTLITERAL135.getText():null)));
                     }
 
 
@@ -12936,12 +12944,12 @@ public static class STAttrMap extends HashMap {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:753:5: FLOATLITERAL
                     {
-                    FLOATLITERAL137=(CommonTree)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals8427); 
+                    FLOATLITERAL136=(CommonTree)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals8460); 
 
                     // TEMPLATE REWRITE
                     // 753:19: -> noformat(f=$FLOATLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (FLOATLITERAL137!=null?FLOATLITERAL137.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (FLOATLITERAL136!=null?FLOATLITERAL136.getText():null)));
                     }
 
 
@@ -12951,12 +12959,12 @@ public static class STAttrMap extends HashMap {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:754:5: DOUBLELITERAL
                     {
-                    DOUBLELITERAL138=(CommonTree)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals8443); 
+                    DOUBLELITERAL137=(CommonTree)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals8476); 
 
                     // TEMPLATE REWRITE
                     // 754:19: -> noformat(f=$DOUBLELITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (DOUBLELITERAL138!=null?DOUBLELITERAL138.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (DOUBLELITERAL137!=null?DOUBLELITERAL137.getText():null)));
                     }
 
 
@@ -12966,12 +12974,12 @@ public static class STAttrMap extends HashMap {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:755:5: CHARLITERAL
                     {
-                    CHARLITERAL139=(CommonTree)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals8458); 
+                    CHARLITERAL138=(CommonTree)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals8491); 
 
                     // TEMPLATE REWRITE
                     // 755:19: -> noformat(f=$CHARLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (CHARLITERAL139!=null?CHARLITERAL139.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (CHARLITERAL138!=null?CHARLITERAL138.getText():null)));
                     }
 
 
@@ -12981,12 +12989,12 @@ public static class STAttrMap extends HashMap {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:756:5: STRINGLITERAL
                     {
-                    STRINGLITERAL140=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals8475); 
+                    STRINGLITERAL139=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals8508); 
 
                     // TEMPLATE REWRITE
                     // 756:19: -> noformat(f=$STRINGLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (STRINGLITERAL140!=null?STRINGLITERAL140.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (STRINGLITERAL139!=null?STRINGLITERAL139.getText():null)));
                     }
 
 
@@ -12996,12 +13004,12 @@ public static class STAttrMap extends HashMap {
                 case 7 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:757:5: BOOLEANLITERAL
                     {
-                    BOOLEANLITERAL141=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals8490); 
+                    BOOLEANLITERAL140=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals8523); 
 
                     // TEMPLATE REWRITE
                     // 757:21: -> noformat(f=$BOOLEANLITERAL.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BOOLEANLITERAL141!=null?BOOLEANLITERAL141.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat",new STAttrMap().put("f", (BOOLEANLITERAL140!=null?BOOLEANLITERAL140.getText():null)));
                     }
 
 
@@ -13022,7 +13030,7 @@ public static class STAttrMap extends HashMap {
                         case 1 :
                             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:758:5: MINUS
                             {
-                            MINUS142=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_literals8506); 
+                            MINUS141=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_literals8539); 
 
                             }
                             break;
@@ -13030,12 +13038,12 @@ public static class STAttrMap extends HashMap {
                     }
 
 
-                    IDENTIFIER143=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals8509); 
+                    IDENTIFIER142=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals8542); 
 
                     // TEMPLATE REWRITE
                     // 758:23: -> noformat2(f=$MINUS.texts=$IDENTIFIER.text)
                     {
-                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (MINUS142!=null?MINUS142.getText():null)).put("s", (IDENTIFIER143!=null?IDENTIFIER143.getText():null)));
+                        retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (MINUS141!=null?MINUS141.getText():null)).put("s", (IDENTIFIER142!=null?IDENTIFIER142.getText():null)));
                     }
 
 
@@ -13072,21 +13080,21 @@ public static class STAttrMap extends HashMap {
         retval.start = input.LT(1);
 
 
-        CommonTree INTLITERAL144=null;
-        CommonTree COLON145=null;
+        CommonTree INTLITERAL143=null;
+        CommonTree COLON144=null;
 
         try {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:762:3: ( INTLITERAL COLON -> noformat2(f=$INTLITERAL.texts=$COLON.text))
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:762:5: INTLITERAL COLON
             {
-            INTLITERAL144=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc8535); 
+            INTLITERAL143=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc8568); 
 
-            COLON145=(CommonTree)match(input,COLON,FOLLOW_COLON_in_pc8537); 
+            COLON144=(CommonTree)match(input,COLON,FOLLOW_COLON_in_pc8570); 
 
             // TEMPLATE REWRITE
             // 762:23: -> noformat2(f=$INTLITERAL.texts=$COLON.text)
             {
-                retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (INTLITERAL144!=null?INTLITERAL144.getText():null)).put("s", (COLON145!=null?COLON145.getText():null)));
+                retval.st = templateLib.getInstanceOf("noformat2",new STAttrMap().put("f", (INTLITERAL143!=null?INTLITERAL143.getText():null)).put("s", (COLON144!=null?COLON144.getText():null)));
             }
 
 
@@ -13132,14 +13140,14 @@ public static class STAttrMap extends HashMap {
     public static final BitSet FOLLOW_IDENTIFIER_in_checksum_file_info318 = new BitSet(new long[]{0x8000000000000000L});
     public static final BitSet FOLLOW_HexDigits_in_checksum_file_info320 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info359 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info361 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info361 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
     public static final BitSet FOLLOW_STRINGLITERAL_in_compiled_file_info363 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_CLASSDECL_in_classDefinition404 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_VMODIFIER_in_classDefinition408 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_class_visual_modifier_in_classDefinition412 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MODIFIER_in_classDefinition417 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_class_modifier_in_classDefinition422 = new BitSet(new long[]{0x0080000000200018L,0x0000000000000080L});
-    public static final BitSet FOLLOW_typeName_in_classDefinition429 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_typeName_in_classDefinition429 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000040000L});
     public static final BitSet FOLLOW_TPARAMETERS_in_classDefinition432 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_typeParameters_in_classDefinition436 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_CEXTENDS_in_classDefinition441 = new BitSet(new long[]{0x0000000000000004L});
@@ -13157,7 +13165,7 @@ public static class STAttrMap extends HashMap {
     public static final BitSet FOLLOW_FINAL_in_class_modifier772 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_INTERFACE_in_class_modifier791 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_CLASS_in_class_modifier810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_info2_in_type_info1842 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
+    public static final BitSet FOLLOW_type_info2_in_type_info1842 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
     public static final BitSet FOLLOW_sourcefile_info_in_type_info2871 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_minor_major_version_info_in_type_info2893 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_flags_in_type_info2912 = new BitSet(new long[]{0x0000000000000002L});
@@ -13193,11 +13201,11 @@ public static class STAttrMap extends HashMap {
     public static final BitSet FOLLOW_Signature_in_signature_info_addition1417 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_CPINDEX_in_signature_info_addition1419 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_InnerClasses_in_innerclass_info1444 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_innerclass_info_line_in_innerclass_info1449 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000020000000L});
+    public static final BitSet FOLLOW_innerclass_info_line_in_innerclass_info1449 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000080000000L});
     public static final BitSet FOLLOW_VMODIFIER_in_innerclass_info_line1502 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_method_visual_modifier_in_innerclass_info_line1506 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MODIFIER_in_innerclass_info_line1511 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_modifier_in_innerclass_info_line1516 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000045L});
+    public static final BitSet FOLLOW_method_modifier_in_innerclass_info_line1516 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000114L});
     public static final BitSet FOLLOW_innerclass_info_data_in_innerclass_info_line1523 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data1566 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_INFODATA1_in_innerclass_info_data1569 = new BitSet(new long[]{0x0000000000000004L});
@@ -13232,375 +13240,377 @@ public static class STAttrMap extends HashMap {
     public static final BitSet FOLLOW_AnnotationAssign_in_brackedAnnotationAssignValue2074 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_brackedAnnotationAssignValue2078 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_RuntimeVisibleParameterAnnotations_in_runtimeVisibleParameterAnnotations2112 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeVisibleParameterAnnotations2117 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeVisibleParameterAnnotations2117 = new BitSet(new long[]{0x0000000000000008L,0x0000040000000000L});
     public static final BitSet FOLLOW_RuntimeInvisibleParameterAnnotations_in_runtimeInvisibleParameterAnnotations2152 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeInvisibleParameterAnnotations2157 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_parameterVisibilityInfo_in_runtimeInvisibleParameterAnnotations2157 = new BitSet(new long[]{0x0000000000000008L,0x0000040000000000L});
     public static final BitSet FOLLOW_RuntimeInvisibleAnnotations_in_runtimeInvisibleAnnotations2192 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotationsItem_in_runtimeInvisibleAnnotations2197 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
-    public static final BitSet FOLLOW_pc_in_parameterVisibilityInfo2234 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_parameterVisibilityInfo2236 = new BitSet(new long[]{0x0000000010000008L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo2242 = new BitSet(new long[]{0x0000000010000008L});
-    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2281 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2285 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem2289 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem2293 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool2341 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool2345 = new BitSet(new long[]{0x0000000000000108L});
-    public static final BitSet FOLLOW_contant_pool_line_in_constant_pool2350 = new BitSet(new long[]{0x0000000000000108L});
-    public static final BitSet FOLLOW_ASSIGN_in_contant_pool_line2396 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_contant_pool_line2400 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line2404 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody2452 = new BitSet(new long[]{0x0020000040000002L,0x0000000008000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_methodDefinition_in_classBodyEntryDecl2481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ctorDefinition_in_classBodyEntryDecl2500 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_fieldDefinition_in_classBodyEntryDecl2519 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_staticCtorDefinition_in_classBodyEntryDecl2539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FIELDDECL_in_fieldDefinition2566 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_fieldDefinition2569 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_fieldDefinition2573 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_MODIFIER_in_fieldDefinition2578 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition2583 = new BitSet(new long[]{0x0080000000000008L,0x0000000000000000L,0x0000000080020001L});
-    public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition2589 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_fieldDefinition2593 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition2597 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_fieldDefinition2601 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition2605 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_literals_in_fieldDefinition2609 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition2626 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition2630 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_fieldDefinition2646 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition2650 = new BitSet(new long[]{0x0000040400000008L,0x0014000000000000L,0x0000000000002200L});
-    public static final BitSet FOLLOW_Signature_in_fieldInfo2815 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo2819 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_flags_in_fieldInfo2824 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2857 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo2861 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000008L});
-    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo2865 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2890 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2892 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo2914 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo2916 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo2942 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2944 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo2968 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2970 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo2996 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo3015 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PUBLIC_in_field_visual_modifier3040 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRIVATE_in_field_visual_modifier3062 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PROTECTED_in_field_visual_modifier3083 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FINAL_in_field_modifier3113 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STATIC_in_field_modifier3134 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRANSIENT_in_field_modifier3156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VOLATILE_in_field_modifier3177 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STATICCTORDECL_in_staticCtorDefinition3211 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_staticCtorDefinition3214 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition3218 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_staticCtorDefinition3228 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition3232 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_staticCtorDefinition3241 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_staticCtorDefinition3245 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CTORDECL_in_ctorDefinition3397 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_ctorDefinition3400 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition3404 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_GENERICDESC_in_ctorDefinition3409 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition3413 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_ctorDefinition3418 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeName_in_ctorDefinition3422 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_ctorDefinition3427 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_THROWCLAUSE_in_ctorDefinition3430 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClause_in_ctorDefinition3434 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_ctorDefinition3463 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition3467 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_ctorDefinition3495 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_ctorDefinition3499 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_ctorDefinition3527 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition3531 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_METHODDECL_in_methodDefinition3753 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_methodDefinition3756 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition3760 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_MODIFIER_in_methodDefinition3765 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_modifier_in_methodDefinition3769 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000045L});
-    public static final BitSet FOLLOW_GENERICDESC_in_methodDefinition3774 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition3778 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_RETVALUE_in_methodDefinition3783 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_methodDefinition3787 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_methodDefinition3791 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition3795 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_methodDefinition3800 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition3803 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition3807 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_methodDefinition3836 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_methodDefinition3840 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_methodDefinition3868 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_methodDefinition3872 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_methodDefinition3901 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition3905 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_STANDINTOKEN_in_methodInfo4133 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo4137 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_flags_in_methodInfo4141 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_afterMethodInfoEntry_in_afterMethodInfo4186 = new BitSet(new long[]{0x0004040000000402L,0x003C000000000000L,0x0000000000002200L});
-    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfoEntry4216 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4219 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_afterMethodInfoEntry4242 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfoEntry4244 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry4271 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry4288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry4307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry4327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfoEntry4343 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClause_in_afterMethodInfoEntry4348 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfoEntry4372 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4374 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfoEntry4400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault4428 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault4431 = new BitSet(new long[]{0x0000000000000240L});
-    public static final BitSet FOLLOW_annotationValue_in_annotationDefault4435 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo4469 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_PARAMDESC_in_methodSignatureInfo4472 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo4477 = new BitSet(new long[]{0x0000000000008008L,0x0000000000008102L});
-    public static final BitSet FOLLOW_RETDESC_in_methodSignatureInfo4483 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo4487 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor4525 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VoidType_in_returnDescriptor4541 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ABSTRACT_in_method_modifier4566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FINAL_in_method_modifier4584 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STATIC_in_method_modifier4603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SYNCHRONIZED_in_method_modifier4623 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NATIVE_in_method_modifier4641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRICTFP_in_method_modifier4659 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PUBLIC_in_method_visual_modifier4685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRIVATE_in_method_visual_modifier4703 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PROTECTED_in_method_visual_modifier4722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNITARGUMENTS_in_arguments4747 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_arguments4751 = new BitSet(new long[]{0x0000004000000008L});
-    public static final BitSet FOLLOW_DOT_in_arguments4757 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments4759 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments4761 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_body4807 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body4809 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_Code_in_body4814 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_codeBlock_in_body4818 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bodyExtension_in_body4824 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000001800L});
-    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension4867 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension4872 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension4896 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension4901 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension4925 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension4930 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension4952 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension4956 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension4977 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension4981 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_StackMap_in_bodyExtension5006 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension5010 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_VARINFO_in_codeBlock5043 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_variables_in_codeBlock5047 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INSTRUCTION_in_codeBlock5051 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_instructionSet_in_codeBlock5056 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x0000000000000020L});
-    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock5062 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_codeLine_in_instructionSet5105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_javaSwitch_in_instructionSet5126 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine5151 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_codeLine5155 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
-    public static final BitSet FOLLOW_OPERAND_in_codeLine5158 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_operand1_in_codeLine5162 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_OPERAND_in_codeLine5167 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeLine5169 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd5217 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_codeBlockEnd5221 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd5223 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CPINDEX_in_operand15267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_operand15288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_operand15310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variables5336 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_variable_in_variables5340 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_variable_in_variables5344 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ASSIGN_in_variable5386 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_variable5388 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_variable5390 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SWITCH_in_javaSwitch5428 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch5431 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_javaSwitch5435 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_switchLine_in_javaSwitch5440 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch5446 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_pc_in_switchLine5496 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchLine5498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine5529 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine5531 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_THROWS_in_throwClause5565 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_throwClause5569 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod5600 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwType_in_throwClauseMethod5605 = new BitSet(new long[]{0x0000000000000008L,0x0000100000000102L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_throwType5634 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_throwType5654 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QualifiedType_in_throwType5674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ETHEADER_in_exceptionTable5699 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5703 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5707 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5711 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5715 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ETENTRY_in_exceptionTable5719 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable5724 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry5777 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry5781 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry5785 = new BitSet(new long[]{0x0100008008045000L,0x0080000000020042L,0x0000000040000000L});
-    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry5789 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue5834 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue5851 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue5871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable5903 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine5930 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_lineNumberTableLine5934 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine5936 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LVHEADER_in_localVariableTable5976 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable5980 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable5984 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable5988 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable5992 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable5996 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LVENTRY_in_localVariableTable6000 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable6005 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine6066 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine6070 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine6074 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine6078 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine6082 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier6135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMTHEADER_in_stackMapTypeTable6171 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable6173 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable6175 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable6177 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SMTENTRY_in_stackMapTypeTable6181 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable6186 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6233 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6235 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6239 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6243 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6245 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6249 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6258 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6260 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6264 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6273 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6275 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6279 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMHEADER_in_stackMapTable6348 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable6350 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable6352 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable6354 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SMENTRY_in_stackMapTable6358 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable6363 = new BitSet(new long[]{0x0000000000000108L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry6408 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry6410 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000200L});
-    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry6414 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue6452 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue6476 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer6499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMTTYPES_in_stackMapTableTypes6532 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes6537 = new BitSet(new long[]{0x0100008000245008L,0x0080000000020042L,0x0000000040000000L});
-    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType6565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType6585 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType6602 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType6622 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType6624 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject6653 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject6655 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject6685 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject6687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_typeList6727 = new BitSet(new long[]{0x0100008000045002L,0x0080000000020040L,0x0000000044000000L});
-    public static final BitSet FOLLOW_combinedJavaType_in_type6759 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ARRAYBRACKS_in_type6762 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_LBRACK_in_type6767 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_RBRACK_in_type6769 = new BitSet(new long[]{0x0000000000000008L,0x0000000000008000L});
-    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType6812 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_referenceType_in_combinedJavaType6834 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNITNAME_in_referenceType6861 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType6866 = new BitSet(new long[]{0x0000000000000008L,0x0000100000000000L});
-    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier6893 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TYPEARGS_in_typeDeclSpecifier6896 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier6900 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_QualifiedType_in_typeName6941 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeArgument_in_typeArguments6969 = new BitSet(new long[]{0x0100008000045002L,0x0080040000020040L,0x0000000044000000L});
-    public static final BitSet FOLLOW_type_in_typeArgument6999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_wildcard_in_typeArgument7022 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_wildcard7050 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_wildcardBounds_in_wildcard7054 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds7079 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds7083 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SUPER_in_wildcardBounds7110 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds7114 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_typeParameter_in_typeParameters7149 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_typeParameter7179 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeBound_in_typeParameter7183 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_typeBound7213 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_referenceType_in_typeBound7218 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor7254 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor7280 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor7284 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor7288 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList7336 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_UNITNAME_in_bytecodeReferenceType7364 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType7369 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier7395 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000080000L});
-    public static final BitSet FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier7398 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier7402 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName7444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments7474 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList7504 = new BitSet(new long[]{0x0000000000000002L,0x0000040000000000L,0x0000000004000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument7534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument7554 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard7580 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard7584 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds7612 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7616 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds7639 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7643 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType7678 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BaseType_in_bytecodeType7696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType7720 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
-    public static final BitSet FOLLOW_SEMI_in_bytecodeType7722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType7742 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType7773 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType7777 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType7808 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType7833 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000080000L});
-    public static final BitSet FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType7836 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType7840 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName7879 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments7907 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList7932 = new BitSet(new long[]{0x0000000000008002L,0x8000004010008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument7958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument7977 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument7981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument8004 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument8008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument8032 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_identifier8065 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_keywordAggregate8091 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolean_type_in_primitiveType8119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numeric_type_in_primitiveType8138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VOID_in_primitiveType8155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type8182 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_floating_point_type_in_numeric_type8210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integral_type_in_numeric_type8228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BYTE_in_integral_type8253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SHORT_in_integral_type8271 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_integral_type8288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LONG_in_integral_type8307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHAR_in_integral_type8325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOAT_in_floating_point_type8350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLE_in_floating_point_type8367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LONGLITERAL_in_literals8392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_literals8409 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOATLITERAL_in_literals8427 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals8443 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHARLITERAL_in_literals8458 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_literals8475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals8490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_literals8506 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_literals8509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_pc8535 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_COLON_in_pc8537 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotationsItem_in_runtimeInvisibleAnnotations2197 = new BitSet(new long[]{0x0000000000000008L,0x0004000000000000L});
+    public static final BitSet FOLLOW_PVI_in_parameterVisibilityInfo2232 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_parameterVisibilityInfo2236 = new BitSet(new long[]{0x0000000010000008L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_parameterVisibilityInfo2238 = new BitSet(new long[]{0x0000000010000008L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotationsItem_in_parameterVisibilityInfo2244 = new BitSet(new long[]{0x0000000010000008L});
+    public static final BitSet FOLLOW_RIAI_in_runtimeInvisibleAnnotationsItem2281 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2285 = new BitSet(new long[]{0x0000000010000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_pc_in_runtimeInvisibleAnnotationsItem2289 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_CPINDEX_in_runtimeInvisibleAnnotationsItem2293 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotationAssignList_in_runtimeInvisibleAnnotationsItem2297 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool2345 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool2349 = new BitSet(new long[]{0x0000000000000108L});
+    public static final BitSet FOLLOW_contant_pool_line_in_constant_pool2354 = new BitSet(new long[]{0x0000000000000108L});
+    public static final BitSet FOLLOW_ASSIGN_in_contant_pool_line2400 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_contant_pool_line2404 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line2408 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody2456 = new BitSet(new long[]{0x0020000040000002L,0x0000000008000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_methodDefinition_in_classBodyEntryDecl2485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ctorDefinition_in_classBodyEntryDecl2504 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fieldDefinition_in_classBodyEntryDecl2523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_staticCtorDefinition_in_classBodyEntryDecl2543 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FIELDDECL_in_fieldDefinition2570 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_fieldDefinition2573 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_fieldDefinition2577 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_MODIFIER_in_fieldDefinition2582 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition2587 = new BitSet(new long[]{0x0080000000000008L,0x0000000000000000L,0x0000000200080004L});
+    public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition2593 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_fieldDefinition2597 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition2601 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_keywordAggregate_in_fieldDefinition2605 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition2609 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_literals_in_fieldDefinition2613 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition2630 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition2634 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_fieldDefinition2650 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition2655 = new BitSet(new long[]{0x0000040400000008L,0x0050000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_Signature_in_fieldInfo2821 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo2825 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_flags_in_fieldInfo2830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2863 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo2867 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000020L});
+    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo2871 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2897 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2899 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo2922 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo2924 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo2953 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2955 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo2981 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2983 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo3011 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo3031 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PUBLIC_in_field_visual_modifier3058 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRIVATE_in_field_visual_modifier3080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PROTECTED_in_field_visual_modifier3101 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FINAL_in_field_modifier3131 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STATIC_in_field_modifier3152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRANSIENT_in_field_modifier3174 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VOLATILE_in_field_modifier3195 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STATICCTORDECL_in_staticCtorDefinition3229 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_staticCtorDefinition3232 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition3236 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_staticCtorDefinition3246 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition3250 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_staticCtorDefinition3259 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_staticCtorDefinition3263 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CTORDECL_in_ctorDefinition3415 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_ctorDefinition3418 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition3422 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_GENERICDESC_in_ctorDefinition3427 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition3431 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_ctorDefinition3436 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeName_in_ctorDefinition3440 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_arguments_in_ctorDefinition3445 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_THROWCLAUSE_in_ctorDefinition3448 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClause_in_ctorDefinition3452 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_ctorDefinition3481 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition3485 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_ctorDefinition3513 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_ctorDefinition3517 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_ctorDefinition3545 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition3549 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_METHODDECL_in_methodDefinition3771 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_methodDefinition3774 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition3778 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_MODIFIER_in_methodDefinition3783 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_modifier_in_methodDefinition3788 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000114L});
+    public static final BitSet FOLLOW_GENERICDESC_in_methodDefinition3794 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition3798 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_RETVALUE_in_methodDefinition3803 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_methodDefinition3807 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_methodDefinition3811 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition3815 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_arguments_in_methodDefinition3820 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition3823 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition3827 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_methodDefinition3856 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_methodDefinition3860 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_methodDefinition3888 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_methodDefinition3892 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_methodDefinition3921 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition3925 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_STANDINTOKEN_in_methodInfo4153 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo4157 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_flags_in_methodInfo4161 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_afterMethodInfoEntry_in_afterMethodInfo4206 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfoEntry4236 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4239 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_afterMethodInfoEntry4264 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfoEntry4266 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry4296 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry4314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry4334 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry4356 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfoEntry4373 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClause_in_afterMethodInfoEntry4378 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfoEntry4404 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry4406 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfoEntry4434 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault4465 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault4468 = new BitSet(new long[]{0x0000000000000240L});
+    public static final BitSet FOLLOW_annotationValue_in_annotationDefault4472 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo4506 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_PARAMDESC_in_methodSignatureInfo4509 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo4514 = new BitSet(new long[]{0x0000000000008008L,0x0000000000008102L});
+    public static final BitSet FOLLOW_RETDESC_in_methodSignatureInfo4520 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo4524 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor4562 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VoidType_in_returnDescriptor4578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ABSTRACT_in_method_modifier4603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FINAL_in_method_modifier4621 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STATIC_in_method_modifier4640 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SYNCHRONIZED_in_method_modifier4660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NATIVE_in_method_modifier4678 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRICTFP_in_method_modifier4696 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PUBLIC_in_method_visual_modifier4722 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRIVATE_in_method_visual_modifier4740 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PROTECTED_in_method_visual_modifier4759 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNITARGUMENTS_in_arguments4784 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_arguments4788 = new BitSet(new long[]{0x0000004000000008L});
+    public static final BitSet FOLLOW_DOT_in_arguments4794 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_DOT_in_arguments4796 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_DOT_in_arguments4798 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_body4844 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body4846 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_Code_in_body4851 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_codeBlock_in_body4855 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bodyExtension_in_body4861 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
+    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension4904 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension4909 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension4933 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension4938 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension4962 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension4967 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension4989 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension4993 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension5014 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension5018 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_StackMap_in_bodyExtension5043 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension5047 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_VARINFO_in_codeBlock5080 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_variables_in_codeBlock5084 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INSTRUCTION_in_codeBlock5088 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_instructionSet_in_codeBlock5093 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock5099 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_codeLine_in_instructionSet5142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_javaSwitch_in_instructionSet5163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine5188 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_codeLine5192 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_OPERAND_in_codeLine5195 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_operand1_in_codeLine5199 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_OPERAND_in_codeLine5204 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeLine5206 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd5254 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_codeBlockEnd5258 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd5260 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CPINDEX_in_operand15304 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_operand15325 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_operand15347 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variables5373 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_variable_in_variables5377 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_variable_in_variables5381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ASSIGN_in_variable5423 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_variable5425 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_variable5427 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SWITCH_in_javaSwitch5465 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch5468 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_javaSwitch5472 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_switchLine_in_javaSwitch5477 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch5483 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_pc_in_switchLine5533 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchLine5535 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine5566 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine5568 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_THROWS_in_throwClause5598 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_throwClause5602 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod5633 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwType_in_throwClauseMethod5638 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000102L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_throwType5667 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_throwType5687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QualifiedType_in_throwType5707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ETHEADER_in_exceptionTable5732 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5736 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5740 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5744 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable5748 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ETENTRY_in_exceptionTable5752 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable5757 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry5810 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry5814 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry5818 = new BitSet(new long[]{0x0100008008045000L,0x0200000000020042L,0x0000000100000000L});
+    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry5822 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue5867 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue5884 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue5904 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable5936 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine5963 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_lineNumberTableLine5967 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine5969 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LVHEADER_in_localVariableTable6009 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable6013 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable6017 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable6021 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable6025 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable6029 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LVENTRY_in_localVariableTable6033 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable6038 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine6099 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine6103 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine6107 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine6111 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine6115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier6168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMTHEADER_in_stackMapTypeTable6204 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable6206 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable6208 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable6210 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SMTENTRY_in_stackMapTypeTable6214 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable6219 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6266 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6268 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6272 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6276 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6278 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry6282 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6291 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6293 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6297 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry6306 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry6308 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry6312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMHEADER_in_stackMapTable6381 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable6383 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable6385 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable6387 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SMENTRY_in_stackMapTable6391 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable6396 = new BitSet(new long[]{0x0000000000000108L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry6441 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry6443 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000200L});
+    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry6447 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue6485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue6509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer6532 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMTTYPES_in_stackMapTableTypes6565 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes6570 = new BitSet(new long[]{0x0100008000245008L,0x0200000000020042L,0x0000000100000000L});
+    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType6598 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType6618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType6635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType6655 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType6657 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject6686 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject6688 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject6718 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject6720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_typeList6760 = new BitSet(new long[]{0x0100008000045002L,0x0200000000020040L,0x0000000110000000L});
+    public static final BitSet FOLLOW_combinedJavaType_in_type6792 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ARRAYBRACKS_in_type6795 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_LBRACK_in_type6800 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+    public static final BitSet FOLLOW_RBRACK_in_type6802 = new BitSet(new long[]{0x0000000000000008L,0x0000000000008000L});
+    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType6845 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_referenceType_in_combinedJavaType6867 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNITNAME_in_referenceType6894 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType6899 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000000L});
+    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier6926 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TYPEARGS_in_typeDeclSpecifier6929 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier6933 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_QualifiedType_in_typeName6974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeArgument_in_typeArguments7002 = new BitSet(new long[]{0x0100008000045002L,0x0200080000020040L,0x0000000110000000L});
+    public static final BitSet FOLLOW_type_in_typeArgument7032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_wildcard_in_typeArgument7055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_wildcard7083 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_wildcardBounds_in_wildcard7087 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds7112 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds7116 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SUPER_in_wildcardBounds7143 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds7147 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_typeParameter_in_typeParameters7182 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_typeParameter7212 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeBound_in_typeParameter7216 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_typeBound7246 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_referenceType_in_typeBound7251 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor7287 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor7313 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor7317 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor7321 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList7369 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_UNITNAME_in_bytecodeReferenceType7397 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType7402 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier7428 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier7431 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier7435 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName7477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments7507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList7537 = new BitSet(new long[]{0x0000000000000002L,0x0000080000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument7567 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument7587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard7613 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard7617 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds7645 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7649 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds7672 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds7676 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType7711 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BaseType_in_bytecodeType7729 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType7753 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_SEMI_in_bytecodeType7755 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType7775 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType7806 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType7810 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType7841 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType7866 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType7869 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType7873 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName7912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments7940 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList7965 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument7991 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument8010 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument8014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument8037 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument8041 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument8065 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_identifier8098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_keywordAggregate8124 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolean_type_in_primitiveType8152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numeric_type_in_primitiveType8171 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VOID_in_primitiveType8188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type8215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_floating_point_type_in_numeric_type8243 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integral_type_in_numeric_type8261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BYTE_in_integral_type8286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SHORT_in_integral_type8304 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_integral_type8321 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LONG_in_integral_type8340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHAR_in_integral_type8358 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOAT_in_floating_point_type8383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_in_floating_point_type8400 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LONGLITERAL_in_literals8425 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_literals8442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOATLITERAL_in_literals8460 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals8476 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHARLITERAL_in_literals8491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_literals8508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals8523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_literals8539 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_literals8542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_pc8568 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_COLON_in_pc8570 = new BitSet(new long[]{0x0000000000000002L});
 
 }
