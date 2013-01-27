@@ -1,4 +1,4 @@
-tree grammar JVMWalker;
+tree grammar JVMScramblingInformationGatherer;
 
 options {
   language = Java;
@@ -10,6 +10,127 @@ options {
 
 @header {
   package bytecodeDeobfuscation;
+  import java.util.HashMap;
+  import java.util.regex.*;
+}
+
+
+@members{
+	public HashMap<String, ConstantPoolLine> codeblocks = new HashMap<String, ConstantPoolLine>();
+	public HashMap<String, ConstantPoolLine> valueLineMapping = new HashMap<String, ConstantPoolLine>();
+    	
+       	private void rename(String originalName, String newName){
+       		if(valueLineMapping.containsKey(originalName)){
+       			ConstantPoolLine changingLine = valueLineMapping.get(originalName).constantPoolLine2.constantPoolLine1;
+       			CommonTree tokenToReplace = changingLine.token;
+
+			Object o = adaptor.create(JVMScramblingInformationGatherer.CONSTANT_TYPE_ASSIGNABLE, tokenToReplace.getText().replace(changingLine.value, newName));
+			tokenToReplace.parent.replaceChildren(tokenToReplace.childIndex, tokenToReplace.childIndex, o);
+       		}
+       	}
+
+    	private String getValue(String text)
+    	{
+    		int commentIndex = text.indexOf(" ");
+    		return text.substring(commentIndex, text.length()).trim();
+    	}
+
+    	private String getType(String text)
+    	{
+    		int commentIndex = text.indexOf(" ");
+    		return text.substring(0, commentIndex);
+    	}
+    	
+       	private void setConstantPool(HashMap<String, CommonTree> lines){
+       		for(String key : lines.keySet()){
+       			if(!codeblocks.containsKey(key))
+       				codeblocks.put(key, setTokens(lines, lines.get(key)));
+       		}
+       		MapValueLine();
+       	}
+       	
+       	private void MapValueLine(){
+       		for(ConstantPoolLine cpl : codeblocks.values()){
+       			valueLineMapping.put(cpl.value, cpl);
+       		}
+       	}
+    	
+    	private ConstantPoolLine getConstantPoolLine(String key, HashMap<String, CommonTree> lines){
+			if(codeblocks.containsKey(key))
+				return codeblocks.get(key);
+			ConstantPoolLine ret = setTokens(lines, lines.get(key));
+			codeblocks.put(key, ret);
+			return ret;
+    	}
+    	
+    	private ConstantPoolLine setTokens(HashMap<String, CommonTree> lines, CommonTree token)
+    	{
+    		String text = token.getText();
+    		String value = getValue(text);
+    		String type = getType(text);
+    		ConstantPoolLine line;
+    		String[] refs = getReferences(value);
+    		ConstantPoolLine ref1;
+    		ConstantPoolLine ref2;
+    		switch(type){
+    			case "Class":
+    			case "String":
+    				ConstantPoolLine ref = getConstantPoolLine(refs[0], lines);
+    				line = new ConstantPoolLine(type, ref.value, ref, null, token);
+    				break;
+    			case "NameAndType":
+    				ref1 = getConstantPoolLine(refs[0], lines);
+    				ref2 = getConstantPoolLine(refs[1], lines);
+    				value =  ref1.value + ":" + ref2.value;
+    				line = new ConstantPoolLine(type, value, codeblocks.get(refs[0]), codeblocks.get(refs[1]), token);
+    				break;
+    			case "Methodref":
+    			case "Fieldref":
+    			case "InterfaceMethodref":
+    			        ref1 = getConstantPoolLine(refs[0], lines);
+        			ref2 = getConstantPoolLine(refs[1], lines);
+    				value =  ref1.value + "." + ref2.value;
+    				line = new ConstantPoolLine(type, value, codeblocks.get(refs[0]), codeblocks.get(refs[1]), token);
+    				break;
+    			default:
+    				return new ConstantPoolLine(type, value, null, null, token);
+    		}
+    		return line;
+    	}
+
+      	public class ConstantPoolLine {
+    	  public String type;
+    	  public String value;
+    	  public ConstantPoolLine constantPoolLine1;
+    	  public ConstantPoolLine constantPoolLine2;
+    	  public CommonTree token;
+    	  
+    	  public ConstantPoolLine(String type, String value, ConstantPoolLine ref1, ConstantPoolLine ref2, CommonTree token){
+    		  this.type = type;
+    		  this.value = value;
+    		  this.constantPoolLine1 = ref1;
+    		  this.constantPoolLine2 = ref2;
+    		  this.token = token;
+    	  }
+    	}
+    	private String[] getReferences(String value)
+    	{
+    		String[] ret = new String[2];
+    		
+    	      // String to be scanned to find the pattern.
+    	      String pattern = "#\\d+";
+
+    	      // Create a Pattern object
+    	      Pattern r = Pattern.compile(pattern);
+
+    	      // Now create matcher object.
+    	      Matcher m = r.matcher(value);
+    	      int index = 0;
+    	      while(m.find()){
+    	    	  ret[index++] = m.group();
+    	      }
+    	      return ret;
+    	}
 }
 
 //*******************************/
@@ -50,7 +171,10 @@ compiled_file_info
 //*******************************/
 
 classDefinition
-  : ^(CLASSDECL  ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) t=typeName ^(TPARAMETERS typeParameters?) ^(CEXTENDS typeList?) ^(CIMPLEMENTS typeList?)
+scope{
+	String className;
+}
+  : ^(CLASSDECL  ^(VMODIFIER class_visual_modifier?) ^(MODIFIER class_modifier*) typeName {$classDefinition::className = $typeName.text;} ^(TPARAMETERS typeParameters?) ^(CEXTENDS typeList?) ^(CIMPLEMENTS typeList?)
                 ^(UNITHEADER type_info)
                 ^(CPOOL constant_pool)
                 ^(UNITBODY classBody?)
@@ -192,11 +316,21 @@ runtimeInvisibleAnnotationsItem
 //*******************************/
 
 constant_pool
+scope{
+	private HashMap<String, CommonTree> lines;
+}
+@init{
+	$constant_pool::lines = new HashMap<String, CommonTree>();
+}
+@after{
+	setConstantPool($constant_pool::lines);
+}
   : ^(IDENTIFIER IDENTIFIER contant_pool_line*)
   ;
   
 contant_pool_line
   : ^(ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE)
+      	{$constant_pool::lines.put($CPINDEX.text, $CONSTANT_TYPE_ASSIGNABLE);}
   ;
 
 //*******************************/
@@ -204,6 +338,16 @@ contant_pool_line
 //*******************************/
   
 classBody
+scope{
+	int fieldCount;
+	int methodCount;
+	int ctorCount;
+}
+@init{
+	$classBody::fieldCount = 0;
+	$classBody::methodCount = 0;
+	$classBody::ctorCount = 0;
+}
   : classBodyEntryDecl+
   ;
   
@@ -219,14 +363,22 @@ classBodyEntryDecl
 //*******************************/
 
 fieldDefinition
-  : ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME keywordAggregate) ^(FIELDVALUE literals?)
+@after{
+	$classBody::fieldCount++;
+}
+  : ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME IDENTIFIER) ^(FIELDVALUE literals?)
+            ^(UNITHEADER fieldInfo)
+            ^(UNITATTR fieldAdditionalInfo*)
+            )
+            {rename($classDefinition::className + "." + $IDENTIFIER.text + ":" + $fieldInfo.value, "datField" + $classBody::fieldCount);} 
+            -> ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME IDENTIFIER["datField" + $classBody::fieldCount]) ^(FIELDVALUE literals?)
             ^(UNITHEADER fieldInfo)
             ^(UNITATTR fieldAdditionalInfo*)
             )
   ;
 
-fieldInfo
-  : ^(Signature bytecodeType) flags
+fieldInfo returns [String value]
+  : ^(Signature bytecodeType) flags {$value = $bytecodeType.text;}
   ;
 
 fieldAdditionalInfo
@@ -261,6 +413,9 @@ staticCtorDefinition
 //*******************************/
 
 ctorDefinition
+@after{
+	$classBody::ctorCount++;
+}
   : ^(CTORDECL ^(VMODIFIER field_visual_modifier?) ^(GENERICDESC genericDescriptor?) ^(UNITNAME typeName) arguments ^(THROWCLAUSE throwClause?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body)
@@ -273,15 +428,25 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
+@after{
+	$classBody::methodCount++;
+}
+  : ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME IDENTIFIER) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)
                         )
+                        {rename($classDefinition::className + "." + $IDENTIFIER.text + ":" + $methodInfo.value, "method" + $classBody::methodCount);} 
+                        -> ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME IDENTIFIER["method" + $classBody::ctorCount]) arguments ^(THROWCLAUSE throwClauseMethod?)
+                        ^(UNITHEADER methodInfo)
+                        ^(UNITBODY body?)
+                        ^(UNITATTR afterMethodInfo?)
+                        )
+                        
   ;
 
-methodInfo
-  : ^(STANDINTOKEN methodSignatureInfo flags)
+methodInfo returns [String value]
+  : ^(STANDINTOKEN methodSignatureInfo flags) {$value = $methodSignatureInfo.text;}
   ;
 
 afterMethodInfo
@@ -654,4 +819,5 @@ literals
   ;
 
 pc
-  : INTLITERAL COLON;
+  : INTLITERAL COLON
+  ;

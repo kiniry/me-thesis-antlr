@@ -1,4 +1,4 @@
-package bytecodeDeobfuscation;
+package Runners;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,7 +15,10 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
+import bytecodeDeobfuscation.TemplateTestLexer;
+import bytecodeDeobfuscation.TemplateTestParser;
 import bytecodeDeobfuscation.TemplateTestParser.rule1_return;
+import bytecodeDeobfuscation.TemplateTestPrinter;
 
 public class TemplateTestRunner {
 

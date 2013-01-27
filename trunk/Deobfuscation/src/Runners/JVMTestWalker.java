@@ -1,4 +1,4 @@
-package bytecodeDeobfuscation;
+package Runners;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +18,11 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
+import bytecodeDeobfuscation.JVMLexer;
+import bytecodeDeobfuscation.JVMParser;
+import bytecodeDeobfuscation.JVMPrettyPrinter;
+import bytecodeDeobfuscation.OrFalseDeobfuscation;
+import bytecodeDeobfuscation.OrFalseReduction;
 import bytecodeDeobfuscation.JVMParser.program_return;
 public class JVMTestWalker {
 

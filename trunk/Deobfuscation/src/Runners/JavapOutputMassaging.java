@@ -1,4 +1,4 @@
-package bytecodeDeobfuscation;
+package Runners;
 
 import java.io.File;
 import java.io.FileInputStream;

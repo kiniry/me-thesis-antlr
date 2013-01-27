@@ -1,4 +1,4 @@
-package bytecodeDeobfuscation;
+package Runners;
 
 import org.antlr.runtime.tree.*;
 
@@ -23,6 +23,11 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
+import bytecodeDeobfuscation.JVMLexer;
+import bytecodeDeobfuscation.JVMParser;
+import bytecodeDeobfuscation.JVMPrettyPrinter;
+import bytecodeDeobfuscation.JVMWalker;
+import bytecodeDeobfuscation.JVMWalker.program_return;
 import bytecodeDeobfuscation.TreeConstructorParser.rule1_return;
 
 public class Test {
@@ -176,11 +181,11 @@ public class Test {
 			JVMParser parser = new JVMParser(tokenStream);
 			JVMParser.program_return ret = parser.program();
 
-//			CommonTree theTree = (CommonTree)ret.getTree();
-//			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree); 
-//			nodes.setTokenStream(tokenStream); 
-//			JVMWalker walker = new JVMWalker(nodes);
-//			JVMWalker.program_return ret2 = walker.program();
+			CommonTree theTree = (CommonTree)ret.getTree();
+			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree); 
+			nodes.setTokenStream(tokenStream); 
+			JVMWalker walker = new JVMWalker(nodes);
+			JVMWalker.program_return ret2 = walker.program();
 			
 
 			

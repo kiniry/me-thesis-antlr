@@ -1,4 +1,4 @@
-// $ANTLR 3.4 TemplateTestWalker.g 2013-01-10 20:09:27
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g 2013-01-27 22:47:50
 
   package bytecodeDeobfuscation;
 
@@ -9,10 +9,11 @@ import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
+
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class TemplateTestWalker extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "DOT", "HASH", "IDENTIFIER", "INT", "IntDigit", "Letter", "WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "DOT", "HASH", "IDENTIFIER", "INT", "IntDigit", "Letter", "TOKEN", "WS"
     };
 
     public static final int EOF=-1;
@@ -22,7 +23,8 @@ public class TemplateTestWalker extends TreeParser {
     public static final int INT=7;
     public static final int IntDigit=8;
     public static final int Letter=9;
-    public static final int WS=10;
+    public static final int TOKEN=10;
+    public static final int WS=11;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -39,19 +41,48 @@ public class TemplateTestWalker extends TreeParser {
         super(input, state);
     }
 
-    public String[] getTokenNames() { return TemplateTestWalker.tokenNames; }
-    public String getGrammarFileName() { return "TemplateTestWalker.g"; }
+protected TreeAdaptor adaptor = new CommonTreeAdaptor();
 
+public void setTreeAdaptor(TreeAdaptor adaptor) {
+    this.adaptor = adaptor;
+}
+public TreeAdaptor getTreeAdaptor() {
+    return adaptor;
+}
+    public String[] getTokenNames() { return TemplateTestWalker.tokenNames; }
+    public String getGrammarFileName() { return "D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g"; }
+
+
+    public static class rule1_return extends TreeRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
 
 
     // $ANTLR start "rule1"
-    // TemplateTestWalker.g:13:1: rule1 : ( rule2 )+ ;
-    public final void rule1() throws RecognitionException {
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:15:1: rule1 : ( rule2 )+ ;
+    public final TemplateTestWalker.rule1_return rule1() throws RecognitionException {
+        TemplateTestWalker.rule1_return retval = new TemplateTestWalker.rule1_return();
+        retval.start = input.LT(1);
+
+
+        CommonTree root_0 = null;
+
+        CommonTree _first_0 = null;
+        CommonTree _last = null;
+
+        TemplateTestWalker.rule2_return rule21 =null;
+
+
+
         try {
-            // TemplateTestWalker.g:13:6: ( ( rule2 )+ )
-            // TemplateTestWalker.g:13:8: ( rule2 )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:15:6: ( ( rule2 )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:15:8: ( rule2 )+
             {
-            // TemplateTestWalker.g:13:8: ( rule2 )+
+            root_0 = (CommonTree)adaptor.nil();
+
+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:15:8: ( rule2 )+
             int cnt1=0;
             loop1:
             do {
@@ -65,12 +96,15 @@ public class TemplateTestWalker extends TreeParser {
 
                 switch (alt1) {
             	case 1 :
-            	    // TemplateTestWalker.g:13:8: rule2
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:15:8: rule2
             	    {
-            	    pushFollow(FOLLOW_rule2_in_rule137);
-            	    rule2();
+            	    _last = (CommonTree)input.LT(1);
+            	    pushFollow(FOLLOW_rule2_in_rule155);
+            	    rule21=rule2();
 
             	    state._fsp--;
+
+            	    adaptor.addChild(root_0, rule21.getTree());
 
 
             	    }
@@ -88,6 +122,8 @@ public class TemplateTestWalker extends TreeParser {
 
             }
 
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -97,20 +133,37 @@ public class TemplateTestWalker extends TreeParser {
         finally {
         	// do for sure before leaving
         }
-        return ;
+        return retval;
     }
     // $ANTLR end "rule1"
 
 
+    public static class rule2_return extends TreeRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
 
     // $ANTLR start "rule2"
-    // TemplateTestWalker.g:14:1: rule2 : (id= IDENTIFIER | INT );
-    public final void rule2() throws RecognitionException {
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:16:1: rule2 : (id= IDENTIFIER | INT );
+    public final TemplateTestWalker.rule2_return rule2() throws RecognitionException {
+        TemplateTestWalker.rule2_return retval = new TemplateTestWalker.rule2_return();
+        retval.start = input.LT(1);
+
+
+        CommonTree root_0 = null;
+
+        CommonTree _first_0 = null;
+        CommonTree _last = null;
+
         CommonTree id=null;
-        CommonTree INT1=null;
+        CommonTree INT2=null;
+
+        CommonTree id_tree=null;
+        CommonTree INT2_tree=null;
 
         try {
-            // TemplateTestWalker.g:14:6: (id= IDENTIFIER | INT )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:16:6: (id= IDENTIFIER | INT )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -129,25 +182,45 @@ public class TemplateTestWalker extends TreeParser {
             }
             switch (alt2) {
                 case 1 :
-                    // TemplateTestWalker.g:15:6: id= IDENTIFIER
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:17:6: id= IDENTIFIER
                     {
-                    id=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_rule252); 
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    _last = (CommonTree)input.LT(1);
+                    id=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_rule270); 
+                    id_tree = (CommonTree)adaptor.dupNode(id);
+
+
+                    adaptor.addChild(root_0, id_tree);
+
 
                     System.out.println("Id: '"+(id!=null?id.getText():null)+"'");
 
                     }
                     break;
                 case 2 :
-                    // TemplateTestWalker.g:16:6: INT
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\TemplateTestWalker.g:18:6: INT
                     {
-                    INT1=(CommonTree)match(input,INT,FOLLOW_INT_in_rule261); 
+                    root_0 = (CommonTree)adaptor.nil();
 
-                    System.out.println("Int: '"+(INT1!=null?INT1.getText():null)+"'");
+
+                    _last = (CommonTree)input.LT(1);
+                    INT2=(CommonTree)match(input,INT,FOLLOW_INT_in_rule279); 
+                    INT2_tree = (CommonTree)adaptor.dupNode(INT2);
+
+
+                    adaptor.addChild(root_0, INT2_tree);
+
+
+                    System.out.println("Int: '"+(INT2!=null?INT2.getText():null)+"'");
 
                     }
                     break;
 
             }
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -157,7 +230,7 @@ public class TemplateTestWalker extends TreeParser {
         finally {
         	// do for sure before leaving
         }
-        return ;
+        return retval;
     }
     // $ANTLR end "rule2"
 
@@ -166,8 +239,8 @@ public class TemplateTestWalker extends TreeParser {
 
  
 
-    public static final BitSet FOLLOW_rule2_in_rule137 = new BitSet(new long[]{0x00000000000000C2L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_rule252 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_rule261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule2_in_rule155 = new BitSet(new long[]{0x00000000000000C2L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_rule270 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_rule279 = new BitSet(new long[]{0x0000000000000002L});
 
 }

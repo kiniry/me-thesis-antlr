@@ -255,11 +255,11 @@ classBodyEntryDecl
 //*******************************/
 
 fieldDefinition
-  : ^(FIELDDECL ^(VMODIFIER fvm=field_visual_modifier?) ^(MODIFIER (fm+=field_modifier)*) ^(RETVALUE ft=type) ^(UNITNAME fn=keywordAggregate) ^(FIELDVALUE lit=literals?)
+  : ^(FIELDDECL ^(VMODIFIER fvm=field_visual_modifier?) ^(MODIFIER (fm+=field_modifier)*) ^(RETVALUE ft=type) ^(UNITNAME fn=IDENTIFIER) ^(FIELDVALUE lit=literals?)
             ^(UNITHEADER inf=fieldInfo)
             ^(UNITATTR (ainfo+=fieldAdditionalInfo)*)
             )
-            ->    fieldDecl(vm={$fvm.st}, m={$fm}, t={$ft.st}, n={$fn.st}, v={$lit.st},
+            ->    fieldDecl(vm={$fvm.st}, m={$fm}, t={$ft.st}, n={$fn.text}, v={$lit.st},
                           info={$inf.st},
                           xinf={$ainfo}
                           )
@@ -329,12 +329,12 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : ^(METHODDECL ^(VMODIFIER mvm=method_visual_modifier?) ^(MODIFIER (mm+=method_modifier)*) ^(GENERICDESC g=genericDescriptor?) ^(RETVALUE mt=type) ^(UNITNAME mn=keywordAggregate) a=arguments ^(THROWCLAUSE t=throwClauseMethod?)
+  : ^(METHODDECL ^(VMODIFIER mvm=method_visual_modifier?) ^(MODIFIER (mm+=method_modifier)*) ^(GENERICDESC g=genericDescriptor?) ^(RETVALUE mt=type) ^(UNITNAME mn=IDENTIFIER) a=arguments ^(THROWCLAUSE t=throwClauseMethod?)
                         ^(UNITHEADER inf=methodInfo)
                         ^(UNITBODY b=body?)
                         ^(UNITATTR ainfo=afterMethodInfo?)
                         )
-                        ->    methDecl(vm={$mvm.st}, m={$mm}, gd={$g.st}, t={$mt.st}, n={$mn.st}, args={$a.st}, thr={$t.st},
+                        ->    methDecl(vm={$mvm.st}, m={$mm}, gd={$g.st}, t={$mt.st}, n={$mn.text}, args={$a.st}, thr={$t.st},
                           info={$inf.st},
                           body={$b.st},
                           xinf={$ainfo.st}

@@ -1,9 +1,9 @@
 tree grammar TemplateTestPrinter;
 
 options {
-  tokenVocab = TemplateTest;
   output = template;
-    ASTLabelType = CommonTree;
+  tokenVocab = TemplateTest;
+  ASTLabelType = CommonTree;
 }
 
 @header {

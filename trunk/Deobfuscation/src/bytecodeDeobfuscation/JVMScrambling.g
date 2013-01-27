@@ -1,4 +1,4 @@
-tree grammar JVMWalker;
+tree grammar JVMScrambling;
 
 options {
   language = Java;
@@ -10,6 +10,93 @@ options {
 
 @header {
   package bytecodeDeobfuscation;
+  import java.util.HashMap;
+  import java.util.regex.*;
+}
+
+
+@members{
+	public HashMap<String, ConstantPoolLine> codeblocks = new HashMap<String, ConstantPoolLine>();
+	public HashMap<String, String> renamings = new HashMap<String, String>();
+
+	private String getValue(String text)
+	{
+		int commentIndex = text.indexOf(" ");
+		return text.substring(commentIndex, text.length()).trim();
+	}
+
+	private String getType(String text)
+	{
+		int commentIndex = text.indexOf(" ");
+		return text.substring(0, commentIndex);
+	}
+
+	private ConstantPoolLine setTokens(CommonTree token, String text)
+	{
+		String value = getValue(text);
+		String type = getType(text);
+		ConstantPoolLine line;
+		String[] refs = getReferences(value);
+		ConstantPoolLine ref1;
+		ConstantPoolLine ref2;
+		switch(type){
+			case "Class":
+				ConstantPoolLine ref = codeblocks.get(refs[0]);
+				line = new ConstantPoolLine(type, ref.value, ref, null, token);
+				break;
+			case "NameAndType":
+				ref1 = codeblocks.get(refs[0]);
+				ref2 = codeblocks.get(refs[1]);
+				value =  ref1.value + ":" + ref2.value;
+				line = new ConstantPoolLine(type, value, codeblocks.get(refs[0]), codeblocks.get(refs[1]), token);
+				break;
+			case "Methodref":
+			case "Fieldref":
+			case "InterfaceMethodref":
+				ref1 = codeblocks.get(refs[0]);
+				ref2 = codeblocks.get(refs[1]);
+				value =  ref1.value + "." + ref2.value;
+				line = new ConstantPoolLine(type, value, codeblocks.get(refs[0]), codeblocks.get(refs[1]), token);
+				break;
+			default:
+				return new ConstantPoolLine(type, value, null, null, token);
+		}
+		return line;
+	}
+
+  	public class ConstantPoolLine {
+	  public String type;
+	  public String value;
+	  public ConstantPoolLine constantPoolLine1;
+	  public ConstantPoolLine constantPoolLine2;
+	  public CommonTree token;
+	  
+	  public ConstantPoolLine(String type, String value, ConstantPoolLine ref1, ConstantPoolLine ref2, CommonTree token){
+		  this.type = type;
+		  this.value = value;
+		  this.constantPoolLine1 = ref1;
+		  this.constantPoolLine2 = ref2;
+		  this.token = token;
+	  }
+	}
+	private String[] getReferences(String value)
+	{
+		String[] ret = new String[2];
+		
+	      // String to be scanned to find the pattern.
+	      String pattern = "#\\d+";
+
+	      // Create a Pattern object
+	      Pattern r = Pattern.compile(pattern);
+
+	      // Now create matcher object.
+	      Matcher m = r.matcher(value);
+	      int index = 0;
+	      while(m.find()){
+	    	  ret[index++] = m.group();
+	      }
+	      return ret;
+	}
 }
 
 //*******************************/
@@ -197,6 +284,7 @@ constant_pool
   
 contant_pool_line
   : ^(ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE)
+      	{codeblocks.put($ASSIGN.text, setTokens($CONSTANT_TYPE_ASSIGNABLE, $CONSTANT_TYPE_ASSIGNABLE.text));}
   ;
 
 //*******************************/
@@ -654,4 +742,5 @@ literals
   ;
 
 pc
-  : INTLITERAL COLON;
+  : INTLITERAL COLON
+  ;

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g 2013-01-23 01:01:35
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g 2013-01-25 16:21:40
 
   package bytecodeDeobfuscation;
 
@@ -4085,19 +4085,18 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "fieldDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:257:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:257:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= IDENTIFIER ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.textv=$lit.stinfo=$inf.stxinf=$ainfo);
     public final JVMPrettyPrinter.fieldDefinition_return fieldDefinition() throws RecognitionException {
         JVMPrettyPrinter.fieldDefinition_return retval = new JVMPrettyPrinter.fieldDefinition_return();
         retval.start = input.LT(1);
 
 
+        CommonTree fn=null;
         List list_fm=null;
         List list_ainfo=null;
         JVMPrettyPrinter.field_visual_modifier_return fvm =null;
 
         JVMPrettyPrinter.type_return ft =null;
-
-        JVMPrettyPrinter.keywordAggregate_return fn =null;
 
         JVMPrettyPrinter.literals_return lit =null;
 
@@ -4106,8 +4105,8 @@ public static class STAttrMap extends HashMap {
         RuleReturnScope fm = null;
         RuleReturnScope ainfo = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:3: ( ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo))
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:5: ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= keywordAggregate ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:3: ( ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= IDENTIFIER ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) ) -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.textv=$lit.stinfo=$inf.stxinf=$ainfo))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:5: ^( FIELDDECL ^( VMODIFIER (fvm= field_visual_modifier )? ) ^( MODIFIER (fm+= field_modifier )* ) ^( RETVALUE ft= type ) ^( UNITNAME fn= IDENTIFIER ) ^( FIELDVALUE (lit= literals )? ) ^( UNITHEADER inf= fieldInfo ) ^( UNITATTR (ainfo+= fieldAdditionalInfo )* ) )
             {
             match(input,FIELDDECL,FOLLOW_FIELDDECL_in_fieldDefinition2570); 
 
@@ -4199,11 +4198,7 @@ public static class STAttrMap extends HashMap {
             match(input,UNITNAME,FOLLOW_UNITNAME_in_fieldDefinition2601); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_keywordAggregate_in_fieldDefinition2605);
-            fn=keywordAggregate();
-
-            state._fsp--;
-
+            fn=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_fieldDefinition2605); 
 
             match(input, Token.UP, null); 
 
@@ -4212,7 +4207,7 @@ public static class STAttrMap extends HashMap {
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:159: (lit= literals )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:153: (lit= literals )?
                 int alt39=2;
                 int LA39_0 = input.LA(1);
 
@@ -4221,7 +4216,7 @@ public static class STAttrMap extends HashMap {
                 }
                 switch (alt39) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:159: lit= literals
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:258:153: lit= literals
                         {
                         pushFollow(FOLLOW_literals_in_fieldDefinition2613);
                         lit=literals();
@@ -4296,9 +4291,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 262:13: -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.stv=$lit.stinfo=$inf.stxinf=$ainfo)
+            // 262:13: -> fieldDecl(vm=$fvm.stm=$fmt=$ft.stn=$fn.textv=$lit.stinfo=$inf.stxinf=$ainfo)
             {
-                retval.st = templateLib.getInstanceOf("fieldDecl",new STAttrMap().put("vm", (fvm!=null?fvm.st:null)).put("m", list_fm).put("t", (ft!=null?ft.st:null)).put("n", (fn!=null?fn.st:null)).put("v", (lit!=null?lit.st:null)).put("info", (inf!=null?inf.st:null)).put("xinf", list_ainfo));
+                retval.st = templateLib.getInstanceOf("fieldDecl",new STAttrMap().put("vm", (fvm!=null?fvm.st:null)).put("m", list_fm).put("t", (ft!=null?ft.st:null)).put("n", (fn!=null?fn.getText():null)).put("v", (lit!=null?lit.st:null)).put("info", (inf!=null?inf.st:null)).put("xinf", list_ainfo));
             }
 
 
@@ -5238,20 +5233,19 @@ public static class STAttrMap extends HashMap {
 
 
     // $ANTLR start "methodDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:331:1: methodDefinition : ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st);
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:331:1: methodDefinition : ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= IDENTIFIER ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.textargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st);
     public final JVMPrettyPrinter.methodDefinition_return methodDefinition() throws RecognitionException {
         JVMPrettyPrinter.methodDefinition_return retval = new JVMPrettyPrinter.methodDefinition_return();
         retval.start = input.LT(1);
 
 
+        CommonTree mn=null;
         List list_mm=null;
         JVMPrettyPrinter.method_visual_modifier_return mvm =null;
 
         JVMPrettyPrinter.genericDescriptor_return g =null;
 
         JVMPrettyPrinter.type_return mt =null;
-
-        JVMPrettyPrinter.keywordAggregate_return mn =null;
 
         JVMPrettyPrinter.arguments_return a =null;
 
@@ -5265,8 +5259,8 @@ public static class STAttrMap extends HashMap {
 
         RuleReturnScope mm = null;
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:3: ( ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st))
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:5: ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= keywordAggregate ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:3: ( ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= IDENTIFIER ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) ) -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.textargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st))
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:5: ^( METHODDECL ^( VMODIFIER (mvm= method_visual_modifier )? ) ^( MODIFIER (mm+= method_modifier )* ) ^( GENERICDESC (g= genericDescriptor )? ) ^( RETVALUE mt= type ) ^( UNITNAME mn= IDENTIFIER ) a= arguments ^( THROWCLAUSE (t= throwClauseMethod )? ) ^( UNITHEADER inf= methodInfo ) ^( UNITBODY (b= body )? ) ^( UNITATTR (ainfo= afterMethodInfo )? ) )
             {
             match(input,METHODDECL,FOLLOW_METHODDECL_in_methodDefinition3771); 
 
@@ -5389,11 +5383,7 @@ public static class STAttrMap extends HashMap {
             match(input,UNITNAME,FOLLOW_UNITNAME_in_methodDefinition3811); 
 
             match(input, Token.DOWN, null); 
-            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition3815);
-            mn=keywordAggregate();
-
-            state._fsp--;
-
+            mn=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_methodDefinition3815); 
 
             match(input, Token.UP, null); 
 
@@ -5408,7 +5398,7 @@ public static class STAttrMap extends HashMap {
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:209: (t= throwClauseMethod )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:203: (t= throwClauseMethod )?
                 int alt52=2;
                 int LA52_0 = input.LA(1);
 
@@ -5417,7 +5407,7 @@ public static class STAttrMap extends HashMap {
                 }
                 switch (alt52) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:209: t= throwClauseMethod
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMPrettyPrinter.g:332:203: t= throwClauseMethod
                         {
                         pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition3827);
                         t=throwClauseMethod();
@@ -5513,9 +5503,9 @@ public static class STAttrMap extends HashMap {
 
 
             // TEMPLATE REWRITE
-            // 337:25: -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.stargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st)
+            // 337:25: -> methDecl(vm=$mvm.stm=$mmgd=$g.stt=$mt.stn=$mn.textargs=$a.stthr=$t.stinfo=$inf.stbody=$b.stxinf=$ainfo.st)
             {
-                retval.st = templateLib.getInstanceOf("methDecl",new STAttrMap().put("vm", (mvm!=null?mvm.st:null)).put("m", list_mm).put("gd", (g!=null?g.st:null)).put("t", (mt!=null?mt.st:null)).put("n", (mn!=null?mn.st:null)).put("args", (a!=null?a.st:null)).put("thr", (t!=null?t.st:null)).put("info", (inf!=null?inf.st:null)).put("body", (b!=null?b.st:null)).put("xinf", (ainfo!=null?ainfo.st:null)));
+                retval.st = templateLib.getInstanceOf("methDecl",new STAttrMap().put("vm", (mvm!=null?mvm.st:null)).put("m", list_mm).put("gd", (g!=null?g.st:null)).put("t", (mt!=null?mt.st:null)).put("n", (mn!=null?mn.getText():null)).put("args", (a!=null?a.st:null)).put("thr", (t!=null?t.st:null)).put("info", (inf!=null?inf.st:null)).put("body", (b!=null?b.st:null)).put("xinf", (ainfo!=null?ainfo.st:null)));
             }
 
 
@@ -13273,7 +13263,7 @@ public static class STAttrMap extends HashMap {
     public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition2593 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_type_in_fieldDefinition2597 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition2601 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_fieldDefinition2605 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_fieldDefinition2605 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition2609 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_literals_in_fieldDefinition2613 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition2630 = new BitSet(new long[]{0x0000000000000004L});
@@ -13336,7 +13326,7 @@ public static class STAttrMap extends HashMap {
     public static final BitSet FOLLOW_RETVALUE_in_methodDefinition3803 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_type_in_methodDefinition3807 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITNAME_in_methodDefinition3811 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition3815 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_methodDefinition3815 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_arguments_in_methodDefinition3820 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
     public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition3823 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition3827 = new BitSet(new long[]{0x0000000000000008L});
