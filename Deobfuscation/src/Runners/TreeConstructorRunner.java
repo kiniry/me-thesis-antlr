@@ -1,4 +1,4 @@
-package bytecodeDeobfuscation;
+package Runners;
 
 import java.io.IOException;
 
@@ -10,6 +10,8 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.Tree;
 
+import bytecodeDeobfuscation.TreeConstructorLexer;
+import bytecodeDeobfuscation.TreeConstructorParser;
 import bytecodeDeobfuscation.TreeConstructorParser.rule1_return;
 
 /**
@@ -44,13 +46,12 @@ public class TreeConstructorRunner {
 			rule1_return ret = parser.rule1();
 			
 			System.out.println("The tree:");
-			System.out.println(((Tree)ret.tree).toStringTree());
+			System.out.println(((Tree)ret.getTree()).toStringTree());
 			
 		} catch (IOException e) {
 			System.out.println("Could not read anything!");
 			e.printStackTrace();
 		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

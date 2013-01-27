@@ -1,0 +1,187 @@
+
+Classfile /D:/Libs/ExtractedJars/org/fusesource/jansi/internal/Kernel32$INPUT_RECORD.class
+  Last modified 11-06-2012; size 1861 bytes
+  MD5 checksum 86f21dbfdd7f6cff487e97480e7d17a6
+  Compiled from "Kernel32.java"
+public class org.fusesource.jansi.internal.Kernel32$INPUT_RECORD 
+  SourceFile: "Kernel32.java"
+  InnerClasses:
+      public static #17= #14 of #16;
+      public static #18= #2 of #16;
+  RuntimeVisibleAnnotations:
+    0: #6(#7=[e#8.#9, e#8.#10], #11=s#12)
+  minor version: 0
+  major version: 49
+  flags: ACC_PUBLIC, ACC_SUPER
+%
+
+Constant pool:
+  #1 = Utf8               org/fusesource/jansi/internal/Kernel32$INPUT_RECORD
+  #2 = Class              #1             //  org/fusesource/jansi/internal/Kernel32$INPUT_RECORD
+  #3 = Utf8               java/lang/Object
+  #4 = Class              #3             //  java/lang/Object
+  #5 = Utf8               Kernel32.java
+  #6 = Utf8               Lorg/fusesource/hawtjni/runtime/JniClass;
+  #7 = Utf8               flags
+  #8 = Utf8               Lorg/fusesource/hawtjni/runtime/ClassFlag;
+  #9 = Utf8               STRUCT
+  #10 = Utf8               TYPEDEF
+  #11 = Utf8               conditional
+  #12 = Utf8               defined(_WIN32) || defined(_WIN64)
+  #13 = Utf8               org/fusesource/jansi/internal/Kernel32$KEY_EVENT_RECORD
+  #14 = Class              #13            //  org/fusesource/jansi/internal/Kernel32$KEY_EVENT_RECORD
+  #15 = Utf8               org/fusesource/jansi/internal/Kernel32
+  #16 = Class              #15            //  org/fusesource/jansi/internal/Kernel32
+  #17 = Utf8               KEY_EVENT_RECORD
+  #18 = Utf8               INPUT_RECORD
+  #19 = Utf8               SIZEOF
+  #20 = Utf8               I
+  #21 = Utf8               Lorg/fusesource/hawtjni/runtime/JniField;
+  #22 = Utf8               Lorg/fusesource/hawtjni/runtime/FieldFlag;
+  #23 = Utf8               CONSTANT
+  #24 = Utf8               accessor
+  #25 = Utf8               sizeof(INPUT_RECORD)
+  #26 = Utf8               KEY_EVENT
+  #27 = Utf8               S
+  #28 = Utf8               eventType
+  #29 = Utf8               EventType
+  #30 = Utf8               keyEvent
+  #31 = Utf8               Lorg/fusesource/jansi/internal/Kernel32$KEY_EVENT_RECORD;
+  #32 = Utf8               Event.KeyEvent
+  #33 = Utf8               <init>
+  #34 = Utf8               ()V
+  #35 = NameAndType        #33:#34        //  "<init>":()V
+  #36 = Methodref          #4.#35         //  java/lang/Object."<init>":()V
+  #37 = Methodref          #14.#35        //  org/fusesource/jansi/internal/Kernel32$KEY_EVENT_RECORD."<init>":()V
+  #38 = NameAndType        #30:#31        //  keyEvent:Lorg/fusesource/jansi/internal/Kernel32$KEY_EVENT_RECORD;
+  #39 = Fieldref           #2.#38         //  org/fusesource/jansi/internal/Kernel32$INPUT_RECORD.keyEvent:Lorg/fusesource/jansi/internal/Kernel32$KEY_EVENT_RECORD;
+  #40 = Utf8               this
+  #41 = Utf8               Lorg/fusesource/jansi/internal/Kernel32$INPUT_RECORD;
+  #42 = Utf8               init
+  #43 = Utf8               Lorg/fusesource/hawtjni/runtime/JniMethod;
+  #44 = Utf8               Lorg/fusesource/hawtjni/runtime/MethodFlag;
+  #45 = Utf8               CONSTANT_INITIALIZER
+  #46 = Utf8               memmove
+  #47 = Utf8               (Lorg/fusesource/jansi/internal/Kernel32$INPUT_RECORD;JJ)V
+  #48 = Utf8               Lorg/fusesource/hawtjni/runtime/JniArg;
+  #49 = Utf8               cast
+  #50 = Utf8               void *
+  #51 = Utf8               Lorg/fusesource/hawtjni/runtime/ArgFlag;
+  #52 = Utf8               NO_IN
+  #53 = Utf8               CRITICAL
+  #54 = Utf8               const void *
+  #55 = Utf8               NO_OUT
+  #56 = Utf8               size_t
+  #57 = Utf8               <clinit>
+  #58 = Utf8               access$000
+  #59 = Utf8               ()Lorg/fusesource/hawtjni/runtime/Library;
+  #60 = NameAndType        #58:#59        //  access$000:()Lorg/fusesource/hawtjni/runtime/Library;
+  #61 = Methodref          #16.#60        //  org/fusesource/jansi/internal/Kernel32.access$000:()Lorg/fusesource/hawtjni/runtime/Library;
+  #62 = Utf8               org/fusesource/hawtjni/runtime/Library
+  #63 = Class              #62            //  org/fusesource/hawtjni/runtime/Library
+  #64 = Utf8               load
+  #65 = NameAndType        #64:#34        //  load:()V
+  #66 = Methodref          #63.#65        //  org/fusesource/hawtjni/runtime/Library.load:()V
+  #67 = NameAndType        #42:#34        //  init:()V
+  #68 = Methodref          #2.#67         //  org/fusesource/jansi/internal/Kernel32$INPUT_RECORD.init:()V
+  #69 = Utf8               RuntimeVisibleAnnotations
+  #70 = Utf8               Code
+  #71 = Utf8               LocalVariableTable
+  #72 = Utf8               LineNumberTable
+  #73 = Utf8               RuntimeVisibleParameterAnnotations
+  #74 = Utf8               SourceFile
+  #75 = Utf8               InnerClasses
+{
+  public static int SIZEOF;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+
+    RuntimeVisibleAnnotations:
+      0: #21(#7=[e#22.#23], #24=s#25)
+    
+  public static short KEY_EVENT;
+    Signature: S
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+
+    RuntimeVisibleAnnotations:
+      0: #21(#7=[e#22.#23], #24=s#26)
+    
+  public short eventType;
+    Signature: S
+    flags: ACC_PUBLIC
+%
+
+    RuntimeVisibleAnnotations:
+      0: #21(#24=s#29)
+    
+  public org.fusesource.jansi.internal.Kernel32$KEY_EVENT_RECORD keyEvent;
+    Signature: Lorg/fusesource/jansi/internal/Kernel32$KEY_EVENT_RECORD;
+    flags: ACC_PUBLIC
+%
+
+    RuntimeVisibleAnnotations:
+      0: #21(#24=s#32)
+    
+  public org.fusesource.jansi.internal.Kernel32$INPUT_RECORD();
+    Signature: ()V
+    flags: ACC_PUBLIC
+%
+
+    Code:
+      stack=3, locals=1, args_size=1
+        0: aload_0	
+        1: invokespecial	#36
+        4: aload_0	
+        5: new	#14
+        8: dup	
+        9: invokespecial	#37
+        12: putfield	#39
+        15: return	
+      LocalVariableTable:
+        Start Length Slot Name Signature
+          0 16 0 this Lorg/fusesource/jansi/internal/Kernel32$INPUT_RECORD;
+
+      LineNumberTable:
+        line 656: 0
+        line 681: 4
+    
+  private static final native void init();
+    Signature: ()V
+    flags: ACC_PRIVATE, ACC_STATIC, ACC_FINAL, ACC_NATIVE
+%
+
+    RuntimeVisibleAnnotations:
+      0: #43(#7=[e#44.#45])
+    
+  public static final native void memmove(org.fusesource.jansi.internal.Kernel32$INPUT_RECORD, long, long);
+    Signature: (Lorg/fusesource/jansi/internal/Kernel32$INPUT_RECORD;JJ)V
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL, ACC_NATIVE
+%
+
+    RuntimeVisibleParameterAnnotations:
+      0: parameter
+        0: #48(#49=s#50, #7=[e#51.#52, e#51.#53])
+      1: parameter
+        0: #48(#49=s#54, #7=[e#51.#55, e#51.#53])
+      2: parameter
+        0: #48(#49=s#56)
+    
+   static {};
+    Signature: ()V
+    flags: ACC_STATIC
+%
+
+    Code:
+      stack=1, locals=0, args_size=0
+        0: invokestatic	#61
+        3: invokevirtual	#66
+        6: invokestatic	#68
+        9: return	
+      LineNumberTable:
+        line 659: 0
+        line 660: 6
+        line 661: 9
+    
+} 

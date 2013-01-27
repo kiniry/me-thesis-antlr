@@ -263,7 +263,7 @@ classBodyEntryDecl
 //*******************************/
 
 fieldDefinition
-  : ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME keywordAggregate) ^(FIELDVALUE literals?)
+  : ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME IDENTIFIER) ^(FIELDVALUE literals?)
             ^(UNITHEADER fieldInfo)
             ^(UNITATTR fieldAdditionalInfo*)
             )
@@ -317,7 +317,7 @@ ctorDefinition
 //*******************************/
 
 methodDefinition
-  : ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME keywordAggregate) arguments ^(THROWCLAUSE throwClauseMethod?)
+  : ^(METHODDECL ^(VMODIFIER method_visual_modifier?) ^(MODIFIER method_modifier*) ^(GENERICDESC genericDescriptor?) ^(RETVALUE type) ^(UNITNAME IDENTIFIER) arguments ^(THROWCLAUSE throwClauseMethod?)
                         ^(UNITHEADER methodInfo)
                         ^(UNITBODY body?)
                         ^(UNITATTR afterMethodInfo?)

@@ -673,7 +673,7 @@ bytecodeWildcard
 bytecodeWildcardBounds
   : EXTENDS bytecodeReferenceType                       -> ^(EXTENDS bytecodeReferenceType)
   | SUPER bytecodeReferenceType                         -> ^(SUPER bytecodeReferenceType)
-  ;
+  ; 
   
 //*******************************/
 // Bytecode Types

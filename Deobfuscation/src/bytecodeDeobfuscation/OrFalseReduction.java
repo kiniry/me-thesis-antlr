@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g 2013-01-18 12:17:11
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g 2013-01-25 16:19:19
 
   package bytecodeDeobfuscation;
   import java.util.HashMap;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class OrFalseReduction extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ABSTRACT", "AND", "ANNOTATIONBRACKETS", "ARRAYBRACKS", "ASSIGN", "AnnotationAssign", "AnnotationDefault", "BANNOTATION", "BOOLEAN", "BOOLEANLITERAL", "BYTE", "BaseType", "CEXTENDS", "CFHEADER", "CHAR", "CHARLITERAL", "CIMPLEMENTS", "CLASS", "CLASSDECL", "CLASSFILE", "COLON", "COMMA", "COMMENT", "CONSTANT_TYPE_ASSIGNABLE", "CPINDEX", "CPOOL", "CTORDECL", "CharEscapeSequence", "CharUnicodeEscapeSequence", "Code", "Constant", "Constant_type", "DATE", "DEFAULT", "DOT", "DOUBLE", "DOUBLELITERAL", "DefaultValue", "Deprecated", "DoubleSuffix", "ETENTRY", "ETHEADER", "EXTENDS", "EnclosingMethod", "EscapeSequence", "ExceptionTable", "Exceptions", "Exponent", "FALSE", "FIELDDECL", "FIELDVALUE", "FINAL", "FLOAT", "FLOATLITERAL", "Flag", "FloatSuffix", "GENERICDESC", "HASH", "HexDigit", "HexDigits", "HexPrefix", "IDENTIFIER", "IMPLEMENTS", "INFODATA1", "INFODATA2", "INSTRUCTION", "INT", "INTERFACE", "INTERNALTYPE", "INTLITERAL", "InnerClasses", "IntDigit", "IntegerNumber", "LARGET", "LBRACE", "LBRACK", "LESST", "LONG", "LONGLITERAL", "LPAREN", "LVENTRY", "LVHEADER", "Letter", "LineNumberTable", "LocalVariableTable", "LocalVariableTypeTable", "LongSuffix", "METHODDECL", "MINUS", "MODIFIER", "Marker", "NATIVE", "NL", "NonIntegerNumber", "OPERAND", "Octal", "OctalEscape", "PARAMDESC", "PLUS", "PRIVATE", "PROTECTED", "PUBLIC", "QUESTION", "QUOTE", "QualifiedType", "RBRACE", "RBRACK", "RETDESC", "RETVALUE", "RPAREN", "RuntimeInvisibleAnnotations", "RuntimeInvisibleParameterAnnotations", "RuntimeVisibleAnnotations", "RuntimeVisibleParameterAnnotations", "SEMI", "SHORT", "SLASH", "SMENTRY", "SMHEADER", "SMTENTRY", "SMTHEADER", "SMTTYPES", "STANDINTOKEN", "STAR", "STATIC", "STATICCTORDECL", "STRICTFP", "STRINGLITERAL", "SUPER", "SWITCH", "SYNCHRONIZED", "Scala", "ScalaSig", "Signature", "SourceFile", "StackMap", "StackMapTable", "Synthetic", "THROWCLAUSE", "THROWS", "TPARAMETERS", "TRANSIENT", "TRUE", "TYPEARGS", "Throws", "UNDERSCORE", "UNITARGUMENTS", "UNITATTR", "UNITBODY", "UNITHEADER", "UNITNAME", "UnicodeEscapeSequence", "VARINFO", "VMODIFIER", "VOID", "VOLATILE", "VoidType", "WINDOWSPATH", "WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ABSTRACT", "AND", "ANNOTATIONBRACKETS", "ARRAYBRACKS", "ASSIGN", "AnnotationAssign", "AnnotationDefault", "BANNOTATION", "BOOLEAN", "BOOLEANLITERAL", "BYTE", "BaseType", "CEXTENDS", "CFHEADER", "CHAR", "CHARLITERAL", "CIMPLEMENTS", "CLASS", "CLASSDECL", "CLASSFILE", "COLON", "COMMA", "COMMENT", "CONSTANT_TYPE_ASSIGNABLE", "CPINDEX", "CPOOL", "CTORDECL", "CharEscapeSequence", "CharUnicodeEscapeSequence", "Code", "Constant", "Constant_type", "DATE", "DEFAULT", "DOT", "DOUBLE", "DOUBLELITERAL", "DefaultValue", "Deprecated", "DoubleSuffix", "ETENTRY", "ETHEADER", "EXTENDS", "EnclosingMethod", "EscapeSequence", "ExceptionTable", "Exceptions", "Exponent", "FALSE", "FIELDDECL", "FIELDVALUE", "FINAL", "FLOAT", "FLOATLITERAL", "Flag", "FloatSuffix", "GENERICDESC", "HASH", "HexDigit", "HexDigits", "HexPrefix", "IDENTIFIER", "IMPLEMENTS", "INFODATA1", "INFODATA2", "INSTRUCTION", "INT", "INTERFACE", "INTERNALTYPE", "INTLITERAL", "InnerClasses", "IntDigit", "IntegerNumber", "LARGET", "LBRACE", "LBRACK", "LESST", "LONG", "LONGLITERAL", "LPAREN", "LVENTRY", "LVHEADER", "Letter", "LineNumberTable", "LocalVariableTable", "LocalVariableTypeTable", "LongSuffix", "METHODDECL", "MINUS", "MODIFIER", "Marker", "NATIVE", "NL", "NonIntegerNumber", "OPERAND", "Octal", "OctalEscape", "PARAMDESC", "PLUS", "PRIVATE", "PROTECTED", "PUBLIC", "PVI", "QUESTION", "QUOTE", "QualifiedType", "RBRACE", "RBRACK", "RETDESC", "RETVALUE", "RIAI", "RPAREN", "RuntimeInvisibleAnnotations", "RuntimeInvisibleParameterAnnotations", "RuntimeVisibleAnnotations", "RuntimeVisibleParameterAnnotations", "SEMI", "SHORT", "SLASH", "SMENTRY", "SMHEADER", "SMTENTRY", "SMTHEADER", "SMTTYPES", "STANDINTOKEN", "STAR", "STATIC", "STATICCTORDECL", "STRICTFP", "STRINGLITERAL", "SUPER", "SWITCH", "SYNCHRONIZED", "Scala", "ScalaSig", "Signature", "SourceFile", "StackMap", "StackMapTable", "Synthetic", "THROWCLAUSE", "THROWS", "TPARAMETERS", "TRANSIENT", "TRUE", "TYPEARGS", "Throws", "UNDERSCORE", "UNITARGUMENTS", "UNITATTR", "UNITBODY", "UNITHEADER", "UNITNAME", "UnicodeEscapeSequence", "VARINFO", "VMODIFIER", "VOID", "VOLATILE", "VoidType", "WINDOWSPATH", "WS"
     };
 
     public static final int EOF=-1;
@@ -120,63 +120,65 @@ public class OrFalseReduction extends TreeParser {
     public static final int PRIVATE=103;
     public static final int PROTECTED=104;
     public static final int PUBLIC=105;
-    public static final int QUESTION=106;
-    public static final int QUOTE=107;
-    public static final int QualifiedType=108;
-    public static final int RBRACE=109;
-    public static final int RBRACK=110;
-    public static final int RETDESC=111;
-    public static final int RETVALUE=112;
-    public static final int RPAREN=113;
-    public static final int RuntimeInvisibleAnnotations=114;
-    public static final int RuntimeInvisibleParameterAnnotations=115;
-    public static final int RuntimeVisibleAnnotations=116;
-    public static final int RuntimeVisibleParameterAnnotations=117;
-    public static final int SEMI=118;
-    public static final int SHORT=119;
-    public static final int SLASH=120;
-    public static final int SMENTRY=121;
-    public static final int SMHEADER=122;
-    public static final int SMTENTRY=123;
-    public static final int SMTHEADER=124;
-    public static final int SMTTYPES=125;
-    public static final int STANDINTOKEN=126;
-    public static final int STAR=127;
-    public static final int STATIC=128;
-    public static final int STATICCTORDECL=129;
-    public static final int STRICTFP=130;
-    public static final int STRINGLITERAL=131;
-    public static final int SUPER=132;
-    public static final int SWITCH=133;
-    public static final int SYNCHRONIZED=134;
-    public static final int Scala=135;
-    public static final int ScalaSig=136;
-    public static final int Signature=137;
-    public static final int SourceFile=138;
-    public static final int StackMap=139;
-    public static final int StackMapTable=140;
-    public static final int Synthetic=141;
-    public static final int THROWCLAUSE=142;
-    public static final int THROWS=143;
-    public static final int TPARAMETERS=144;
-    public static final int TRANSIENT=145;
-    public static final int TRUE=146;
-    public static final int TYPEARGS=147;
-    public static final int Throws=148;
-    public static final int UNDERSCORE=149;
-    public static final int UNITARGUMENTS=150;
-    public static final int UNITATTR=151;
-    public static final int UNITBODY=152;
-    public static final int UNITHEADER=153;
-    public static final int UNITNAME=154;
-    public static final int UnicodeEscapeSequence=155;
-    public static final int VARINFO=156;
-    public static final int VMODIFIER=157;
-    public static final int VOID=158;
-    public static final int VOLATILE=159;
-    public static final int VoidType=160;
-    public static final int WINDOWSPATH=161;
-    public static final int WS=162;
+    public static final int PVI=106;
+    public static final int QUESTION=107;
+    public static final int QUOTE=108;
+    public static final int QualifiedType=109;
+    public static final int RBRACE=110;
+    public static final int RBRACK=111;
+    public static final int RETDESC=112;
+    public static final int RETVALUE=113;
+    public static final int RIAI=114;
+    public static final int RPAREN=115;
+    public static final int RuntimeInvisibleAnnotations=116;
+    public static final int RuntimeInvisibleParameterAnnotations=117;
+    public static final int RuntimeVisibleAnnotations=118;
+    public static final int RuntimeVisibleParameterAnnotations=119;
+    public static final int SEMI=120;
+    public static final int SHORT=121;
+    public static final int SLASH=122;
+    public static final int SMENTRY=123;
+    public static final int SMHEADER=124;
+    public static final int SMTENTRY=125;
+    public static final int SMTHEADER=126;
+    public static final int SMTTYPES=127;
+    public static final int STANDINTOKEN=128;
+    public static final int STAR=129;
+    public static final int STATIC=130;
+    public static final int STATICCTORDECL=131;
+    public static final int STRICTFP=132;
+    public static final int STRINGLITERAL=133;
+    public static final int SUPER=134;
+    public static final int SWITCH=135;
+    public static final int SYNCHRONIZED=136;
+    public static final int Scala=137;
+    public static final int ScalaSig=138;
+    public static final int Signature=139;
+    public static final int SourceFile=140;
+    public static final int StackMap=141;
+    public static final int StackMapTable=142;
+    public static final int Synthetic=143;
+    public static final int THROWCLAUSE=144;
+    public static final int THROWS=145;
+    public static final int TPARAMETERS=146;
+    public static final int TRANSIENT=147;
+    public static final int TRUE=148;
+    public static final int TYPEARGS=149;
+    public static final int Throws=150;
+    public static final int UNDERSCORE=151;
+    public static final int UNITARGUMENTS=152;
+    public static final int UNITATTR=153;
+    public static final int UNITBODY=154;
+    public static final int UNITHEADER=155;
+    public static final int UNITNAME=156;
+    public static final int UnicodeEscapeSequence=157;
+    public static final int VARINFO=158;
+    public static final int VMODIFIER=159;
+    public static final int VOID=160;
+    public static final int VOLATILE=161;
+    public static final int VoidType=162;
+    public static final int WINDOWSPATH=163;
+    public static final int WS=164;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -5083,7 +5085,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:265:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:265:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
     public final OrFalseReduction.fieldDefinition_return fieldDefinition() throws RecognitionException {
         OrFalseReduction.fieldDefinition_return retval = new OrFalseReduction.fieldDefinition_return();
         retval.start = input.LT(1);
@@ -5099,6 +5101,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree MODIFIER141=null;
         CommonTree RETVALUE143=null;
         CommonTree UNITNAME145=null;
+        CommonTree IDENTIFIER146=null;
         CommonTree FIELDVALUE147=null;
         CommonTree UNITHEADER149=null;
         CommonTree UNITATTR151=null;
@@ -5107,8 +5110,6 @@ public TreeAdaptor getTreeAdaptor() {
         OrFalseReduction.field_modifier_return field_modifier142 =null;
 
         OrFalseReduction.type_return type144 =null;
-
-        OrFalseReduction.keywordAggregate_return keywordAggregate146 =null;
 
         OrFalseReduction.literals_return literals148 =null;
 
@@ -5122,13 +5123,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree MODIFIER141_tree=null;
         CommonTree RETVALUE143_tree=null;
         CommonTree UNITNAME145_tree=null;
+        CommonTree IDENTIFIER146_tree=null;
         CommonTree FIELDVALUE147_tree=null;
         CommonTree UNITHEADER149_tree=null;
         CommonTree UNITATTR151_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:3: ( ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:5: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:3: ( ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:5: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -5294,12 +5296,11 @@ public TreeAdaptor getTreeAdaptor() {
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_keywordAggregate_in_fieldDefinition1199);
-            keywordAggregate146=keywordAggregate();
+            IDENTIFIER146=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_fieldDefinition1199); 
+            IDENTIFIER146_tree = (CommonTree)adaptor.dupNode(IDENTIFIER146);
 
-            state._fsp--;
 
-            adaptor.addChild(root_2, keywordAggregate146.getTree());
+            adaptor.addChild(root_2, IDENTIFIER146_tree);
 
 
             match(input, Token.UP, null); 
@@ -5323,7 +5324,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:140: ( literals )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:134: ( literals )?
                 int alt39=2;
                 int LA39_0 = input.LA(1);
 
@@ -5332,7 +5333,7 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt39) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:140: literals
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:266:134: literals
                         {
                         _last = (CommonTree)input.LT(1);
                         pushFollow(FOLLOW_literals_in_fieldDefinition1205);
@@ -6618,7 +6619,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "methodDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:319:1: methodDefinition : ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:319:1: methodDefinition : ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
     public final OrFalseReduction.methodDefinition_return methodDefinition() throws RecognitionException {
         OrFalseReduction.methodDefinition_return retval = new OrFalseReduction.methodDefinition_return();
         retval.start = input.LT(1);
@@ -6635,6 +6636,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree GENERICDESC199=null;
         CommonTree RETVALUE201=null;
         CommonTree UNITNAME203=null;
+        CommonTree IDENTIFIER204=null;
         CommonTree THROWCLAUSE206=null;
         CommonTree UNITHEADER208=null;
         CommonTree UNITBODY210=null;
@@ -6646,8 +6648,6 @@ public TreeAdaptor getTreeAdaptor() {
         OrFalseReduction.genericDescriptor_return genericDescriptor200 =null;
 
         OrFalseReduction.type_return type202 =null;
-
-        OrFalseReduction.keywordAggregate_return keywordAggregate204 =null;
 
         OrFalseReduction.arguments_return arguments205 =null;
 
@@ -6666,14 +6666,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree GENERICDESC199_tree=null;
         CommonTree RETVALUE201_tree=null;
         CommonTree UNITNAME203_tree=null;
+        CommonTree IDENTIFIER204_tree=null;
         CommonTree THROWCLAUSE206_tree=null;
         CommonTree UNITHEADER208_tree=null;
         CommonTree UNITBODY210_tree=null;
         CommonTree UNITATTR212_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:3: ( ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:5: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:3: ( ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:5: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -6887,12 +6888,11 @@ public TreeAdaptor getTreeAdaptor() {
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition1657);
-            keywordAggregate204=keywordAggregate();
+            IDENTIFIER204=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_methodDefinition1657); 
+            IDENTIFIER204_tree = (CommonTree)adaptor.dupNode(IDENTIFIER204);
 
-            state._fsp--;
 
-            adaptor.addChild(root_2, keywordAggregate204.getTree());
+            adaptor.addChild(root_2, IDENTIFIER204_tree);
 
 
             match(input, Token.UP, null); 
@@ -6925,7 +6925,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:188: ( throwClauseMethod )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:182: ( throwClauseMethod )?
                 int alt50=2;
                 int LA50_0 = input.LA(1);
 
@@ -6934,7 +6934,7 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt50) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:188: throwClauseMethod
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\OrFalseReduction.g:320:182: throwClauseMethod
                         {
                         _last = (CommonTree)input.LT(1);
                         pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition1665);
@@ -16106,14 +16106,14 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_IDENTIFIER_in_checksum_file_info188 = new BitSet(new long[]{0x8000000000000000L});
     public static final BitSet FOLLOW_HexDigits_in_checksum_file_info190 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info209 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info211 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_compiled_file_info211 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
     public static final BitSet FOLLOW_STRINGLITERAL_in_compiled_file_info213 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_CLASSDECL_in_classDefinition232 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_VMODIFIER_in_classDefinition236 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_class_visual_modifier_in_classDefinition238 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MODIFIER_in_classDefinition243 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_class_modifier_in_classDefinition245 = new BitSet(new long[]{0x0080000000200018L,0x0000000000000080L});
-    public static final BitSet FOLLOW_typeName_in_classDefinition251 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_typeName_in_classDefinition251 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000040000L});
     public static final BitSet FOLLOW_TPARAMETERS_in_classDefinition254 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_typeParameters_in_classDefinition256 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_CEXTENDS_in_classDefinition261 = new BitSet(new long[]{0x0000000000000004L});
@@ -16127,17 +16127,17 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_UNITBODY_in_classDefinition335 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_classBody_in_classDefinition337 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_PUBLIC_in_class_visual_modifier376 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_sourcefile_info_in_type_info423 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_minor_major_version_info_in_type_info429 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_flags_in_type_info435 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_scalaSig_info_in_type_info441 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_type_info448 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_innerclass_info_in_type_info454 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_enclosingMethod_in_type_info460 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_signature_info_addition_in_type_info466 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_deprecated_in_type_info472 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_synthetic_in_type_info478 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
-    public static final BitSet FOLLOW_scala_info_in_type_info484 = new BitSet(new long[]{0x0400840000000002L,0x0010000000000402L,0x0000000000002780L});
+    public static final BitSet FOLLOW_sourcefile_info_in_type_info423 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_minor_major_version_info_in_type_info429 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_flags_in_type_info435 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_scalaSig_info_in_type_info441 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_type_info448 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_innerclass_info_in_type_info454 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_enclosingMethod_in_type_info460 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_signature_info_addition_in_type_info466 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_deprecated_in_type_info472 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_synthetic_in_type_info478 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
+    public static final BitSet FOLLOW_scala_info_in_type_info484 = new BitSet(new long[]{0x0400840000000002L,0x0040000000000402L,0x0000000000009E00L});
     public static final BitSet FOLLOW_Synthetic_in_synthetic500 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_BOOLEANLITERAL_in_synthetic502 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_Deprecated_in_deprecated517 = new BitSet(new long[]{0x0000000000000004L});
@@ -16162,11 +16162,11 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_Signature_in_signature_info_addition651 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_CPINDEX_in_signature_info_addition653 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_InnerClasses_in_innerclass_info669 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_innerclass_info_line_in_innerclass_info671 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000020000000L});
+    public static final BitSet FOLLOW_innerclass_info_line_in_innerclass_info671 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000080000000L});
     public static final BitSet FOLLOW_VMODIFIER_in_innerclass_info_line690 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_method_visual_modifier_in_innerclass_info_line692 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MODIFIER_in_innerclass_info_line697 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_modifier_in_innerclass_info_line699 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000045L});
+    public static final BitSet FOLLOW_method_modifier_in_innerclass_info_line699 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000114L});
     public static final BitSet FOLLOW_innerclass_info_data_in_innerclass_info_line703 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_CPINDEX_in_innerclass_info_data717 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_INFODATA1_in_innerclass_info_data720 = new BitSet(new long[]{0x0000000000000004L});
@@ -16218,7 +16218,7 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_ASSIGN_in_contant_pool_line1098 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_CPINDEX_in_contant_pool_line1100 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1102 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody1122 = new BitSet(new long[]{0x0020000040000002L,0x0000000008000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody1122 = new BitSet(new long[]{0x0020000040000002L,0x0000000008000000L,0x0000000000000008L});
     public static final BitSet FOLLOW_methodDefinition_in_classBodyEntryDecl1138 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ctorDefinition_in_classBodyEntryDecl1144 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_fieldDefinition_in_classBodyEntryDecl1150 = new BitSet(new long[]{0x0000000000000002L});
@@ -16227,22 +16227,22 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_VMODIFIER_in_fieldDefinition1177 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_field_visual_modifier_in_fieldDefinition1179 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MODIFIER_in_fieldDefinition1184 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition1186 = new BitSet(new long[]{0x0080000000000008L,0x0000000000000000L,0x0000000080020001L});
+    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition1186 = new BitSet(new long[]{0x0080000000000008L,0x0000000000000000L,0x0000000200080004L});
     public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition1191 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_type_in_fieldDefinition1193 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition1197 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_fieldDefinition1199 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_fieldDefinition1199 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition1203 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_literals_in_fieldDefinition1205 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition1222 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition1224 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITATTR_in_fieldDefinition1240 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition1242 = new BitSet(new long[]{0x0000040400000008L,0x0014000000000000L,0x0000000000002200L});
+    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition1242 = new BitSet(new long[]{0x0000040400000008L,0x0050000000000000L,0x0000000000008800L});
     public static final BitSet FOLLOW_Signature_in_fieldInfo1272 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_bytecodeType_in_fieldInfo1274 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_flags_in_fieldInfo1277 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1291 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo1293 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000008L});
+    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo1293 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000020L});
     public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo1295 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1303 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1305 = new BitSet(new long[]{0x0000000000000008L});
@@ -16268,7 +16268,7 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition1473 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITNAME_in_ctorDefinition1478 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_typeName_in_ctorDefinition1480 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_ctorDefinition1483 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_arguments_in_ctorDefinition1483 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
     public static final BitSet FOLLOW_THROWCLAUSE_in_ctorDefinition1486 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_throwClause_in_ctorDefinition1488 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITHEADER_in_ctorDefinition1517 = new BitSet(new long[]{0x0000000000000004L});
@@ -16281,14 +16281,14 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_VMODIFIER_in_methodDefinition1628 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition1630 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_MODIFIER_in_methodDefinition1635 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_modifier_in_methodDefinition1637 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000045L});
+    public static final BitSet FOLLOW_method_modifier_in_methodDefinition1637 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000114L});
     public static final BitSet FOLLOW_GENERICDESC_in_methodDefinition1642 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition1644 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_RETVALUE_in_methodDefinition1649 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_type_in_methodDefinition1651 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITNAME_in_methodDefinition1655 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition1657 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_methodDefinition1660 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_methodDefinition1657 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_arguments_in_methodDefinition1660 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
     public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition1663 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition1665 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_UNITHEADER_in_methodDefinition1694 = new BitSet(new long[]{0x0000000000000004L});
@@ -16304,15 +16304,15 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1822 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_Signature_in_afterMethodInfo1830 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfo1832 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo1839 = new BitSet(new long[]{0x0004040000000402L,0x003C000000000000L,0x0000000000002200L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo1845 = new BitSet(new long[]{0x0004040000000402L,0x003C000000000000L,0x0000000000002200L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo1851 = new BitSet(new long[]{0x0004040000000402L,0x003C000000000000L,0x0000000000002200L});
-    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo1857 = new BitSet(new long[]{0x0004040000000402L,0x003C000000000000L,0x0000000000002200L});
+    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo1839 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo1845 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo1851 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo1857 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
     public static final BitSet FOLLOW_Exceptions_in_afterMethodInfo1864 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_throwClause_in_afterMethodInfo1867 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_Synthetic_in_afterMethodInfo1875 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo1877 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfo1884 = new BitSet(new long[]{0x0004040000000402L,0x003C000000000000L,0x0000000000002200L});
+    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfo1884 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
     public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault1900 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_DefaultValue_in_annotationDefault1903 = new BitSet(new long[]{0x0000000000000200L});
     public static final BitSet FOLLOW_annotationValue_in_annotationDefault1905 = new BitSet(new long[]{0x0000000000000008L});
@@ -16332,7 +16332,7 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_BOOLEANLITERAL_in_body2062 = new BitSet(new long[]{0x0000000200000000L});
     public static final BitSet FOLLOW_Code_in_body2067 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_codeBlock_in_body2069 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bodyExtension_in_body2072 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000001800L});
+    public static final BitSet FOLLOW_bodyExtension_in_body2072 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
     public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension2093 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_exceptionTable_in_bodyExtension2096 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension2104 = new BitSet(new long[]{0x0000000000000004L});
@@ -16348,7 +16348,7 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_VARINFO_in_codeBlock2178 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_variables_in_codeBlock2180 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INSTRUCTION_in_codeBlock2184 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_instructionSet_in_codeBlock2186 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x0000000000000020L});
+    public static final BitSet FOLLOW_instructionSet_in_codeBlock2186 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x0000000000000080L});
     public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock2189 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_codeLine_in_instructionSet2212 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_javaSwitch_in_instructionSet2219 = new BitSet(new long[]{0x0000000000000002L});
@@ -16382,7 +16382,7 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_THROWS_in_throwClause2439 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_typeList_in_throwClause2441 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_THROWS_in_throwClauseMethod2458 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwType_in_throwClauseMethod2460 = new BitSet(new long[]{0x0000000000000008L,0x0000100000000102L});
+    public static final BitSet FOLLOW_throwType_in_throwClauseMethod2460 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000102L});
     public static final BitSet FOLLOW_ETHEADER_in_exceptionTable2499 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2501 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2503 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
@@ -16392,7 +16392,7 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable2513 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
     public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2528 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
     public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2530 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2532 = new BitSet(new long[]{0x0100008008045000L,0x0080000000020042L,0x0000000040000000L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2532 = new BitSet(new long[]{0x0100008008045000L,0x0200000000020042L,0x0000000100000000L});
     public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2534 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue2546 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2552 = new BitSet(new long[]{0x0000000000000002L});
@@ -16428,10 +16428,10 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2729 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
     public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry2731 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2738 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2740 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2740 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
     public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2742 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry2749 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2751 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry2751 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
     public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry2753 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_SMHEADER_in_stackMapTable2772 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable2774 = new BitSet(new long[]{0x0000000000000100L});
@@ -16440,13 +16440,13 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_SMENTRY_in_stackMapTable2782 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable2784 = new BitSet(new long[]{0x0000000000000108L});
     public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry2799 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry2801 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000200L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry2801 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000200L});
     public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry2803 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue2816 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue2820 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer2832 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_SMTTYPES_in_stackMapTableTypes2856 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes2858 = new BitSet(new long[]{0x0100008000245008L,0x0080000000020042L,0x0000000040000000L});
+    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes2858 = new BitSet(new long[]{0x0100008000245008L,0x0200000000020042L,0x0000000100000000L});
     public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType2872 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType2874 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_primitiveType_in_stackMapTableType2876 = new BitSet(new long[]{0x0000000000000002L});
@@ -16454,23 +16454,23 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType2880 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject2893 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
     public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject2895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject2907 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject2907 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
     public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject2909 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_typeList2929 = new BitSet(new long[]{0x0100008000045002L,0x0080000000020040L,0x0000000044000000L});
+    public static final BitSet FOLLOW_type_in_typeList2929 = new BitSet(new long[]{0x0100008000045002L,0x0200000000020040L,0x0000000110000000L});
     public static final BitSet FOLLOW_combinedJavaType_in_type2942 = new BitSet(new long[]{0x0000000000000080L});
     public static final BitSet FOLLOW_ARRAYBRACKS_in_type2945 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_LBRACK_in_type2948 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_LBRACK_in_type2948 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
     public static final BitSet FOLLOW_RBRACK_in_type2950 = new BitSet(new long[]{0x0000000000000008L,0x0000000000008000L});
     public static final BitSet FOLLOW_primitiveType_in_combinedJavaType2965 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_referenceType_in_combinedJavaType2971 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_UNITNAME_in_referenceType2984 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType2986 = new BitSet(new long[]{0x0000000000000008L,0x0000100000000000L});
+    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType2986 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000000L});
     public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier3001 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_TYPEARGS_in_typeDeclSpecifier3004 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier3006 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_QualifiedType_in_typeName3021 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_typeArgumentList_in_typeArguments3033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList3046 = new BitSet(new long[]{0x0100008000045002L,0x0080040000020040L,0x0000000044000000L});
+    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList3046 = new BitSet(new long[]{0x0100008000045002L,0x0200080000020040L,0x0000000110000000L});
     public static final BitSet FOLLOW_type_in_typeArgument3059 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_wildcard_in_typeArgument3065 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_QUESTION_in_wildcard3078 = new BitSet(new long[]{0x0000000000000004L});
@@ -16483,20 +16483,20 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_identifier_in_typeParameter3134 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_typeBound_in_typeParameter3136 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_EXTENDS_in_typeBound3151 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_referenceType_in_typeBound3153 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_referenceType_in_typeBound3153 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000010000000L});
     public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor3170 = new BitSet(new long[]{0x0000400000000002L});
     public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor3184 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor3186 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor3186 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000010000000L});
     public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3188 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3202 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3202 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000010000000L});
     public static final BitSet FOLLOW_UNITNAME_in_bytecodeReferenceType3216 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3218 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3232 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3232 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
     public static final BitSet FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3235 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3237 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName3251 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3263 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3276 = new BitSet(new long[]{0x0000000000000002L,0x0000040000000000L,0x0000000004000000L});
+    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3276 = new BitSet(new long[]{0x0000000000000002L,0x0000080000000000L,0x0000000010000000L});
     public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3289 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3295 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard3308 = new BitSet(new long[]{0x0000000000000004L});
@@ -16507,18 +16507,18 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3337 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType3355 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_BaseType_in_bytecodeType3359 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType3363 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
+    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType3363 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
     public static final BitSet FOLLOW_SEMI_in_bytecodeType3365 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType3369 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType3382 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
     public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType3384 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3397 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3410 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3410 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
     public static final BitSet FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3413 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3415 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3429 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3453 = new BitSet(new long[]{0x0000000000008002L,0x8000004010008102L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3453 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
     public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3466 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument3472 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
     public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3474 = new BitSet(new long[]{0x0000000000000002L});
