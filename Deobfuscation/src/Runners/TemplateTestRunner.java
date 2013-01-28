@@ -20,18 +20,21 @@ import bytecodeDeobfuscation.TemplateTestParser;
 import bytecodeDeobfuscation.TemplateTestParser.rule1_return;
 import bytecodeDeobfuscation.TemplateTestPrinter;
 
+/**
+ * Runner created to visualize the tree structure and to learn how the StringTemplate framework works.
+ * 
+ * Testing consists of:
+ * <ul>
+ * <li> Read a manual created string.</li>
+ * <li> Parses the input text.</li>
+ * <li> Prints the tree structure.</li>
+ * <li> Load templates and print the final generated text.</li>  
+ * </ul>
+ * @author Mikkel Nielsen
+ */
 public class TemplateTestRunner {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		try {
-
-			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/Repository/AntlrWorksProj/TemplateTest.stg");
-			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
-			groupFile.close();
-			
 			CharStream input =  new ANTLRStringStream("foo 56.bar 1.2 234243234. TOKEN hah hha hahhah hahaha");
 			
 			TemplateTestLexer lexer = new TemplateTestLexer(input);
@@ -41,31 +44,24 @@ public class TemplateTestRunner {
 			CommonTree theTree = (CommonTree)ret.getTree();
 			System.out.println("The pretty-printed tree:");
 			System.out.println(theTree.toStringTree());
-			// Walk resulting tree; create treenode stream first
 			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree);
-			// AST nodes have payloads that point into token stream 
 			nodes.setTokenStream(tokenStream);
-			// Create a tree Walker attached to the nodes stream 
 			TemplateTestPrinter walker = new TemplateTestPrinter(nodes);
+
+			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/Repository/AntlrWorksProj/TemplateTest.stg");
+			StringTemplateGroup templates = new StringTemplateGroup(groupFile, DefaultTemplateLexer.class);
+			groupFile.close();
 			walker.setTemplateLib(templates);
-			// Invoke the start symbol, rule program
 			TemplateTestPrinter.rule1_return ret2 = walker.rule1();
 
 			StringTemplate output = (StringTemplate)ret2.getTemplate();
 			System.out.println(output.toString());
-			
-			
-			
 		} catch (RecognitionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
-
 }

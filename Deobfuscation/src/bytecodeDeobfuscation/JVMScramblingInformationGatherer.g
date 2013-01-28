@@ -329,8 +329,11 @@ scope{
   ;
   
 contant_pool_line
-  : ^(ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE)
-      	{$constant_pool::lines.put($CPINDEX.text, $CONSTANT_TYPE_ASSIGNABLE);}
+@after{
+	$constant_pool::lines.put($cpi.text, (CommonTree)$tree.getChild(1));
+}
+  : ^(ASSIGN cpi=CPINDEX cta=CONSTANT_TYPE_ASSIGNABLE)
+  -> ^(ASSIGN $cpi $cta)
   ;
 
 //*******************************/
@@ -378,7 +381,7 @@ fieldDefinition
   ;
 
 fieldInfo returns [String value]
-  : ^(Signature bytecodeType) flags {$value = $bytecodeType.text;}
+  : ^(Signature bytecodeType) flags {$value = $bytecodeType.value;}
   ;
 
 fieldAdditionalInfo
@@ -446,7 +449,7 @@ methodDefinition
   ;
 
 methodInfo returns [String value]
-  : ^(STANDINTOKEN methodSignatureInfo flags) {$value = $methodSignatureInfo.text;}
+  : ^(STANDINTOKEN methodSignatureInfo flags) {$value = $methodSignatureInfo.value;}
   ;
 
 afterMethodInfo
@@ -465,8 +468,9 @@ annotationDefault
   : ^(AnnotationDefault  DefaultValue annotationValue)
   ;
   
-methodSignatureInfo
+methodSignatureInfo returns [String value]
   : ^(Signature ^(PARAMDESC bytecodeType*) ^(RETDESC returnDescriptor))
+  	{$value = "(" + (($bytecodeType.value == null) ? "" : $bytecodeType.value) + ")" + $returnDescriptor.text;}
   ;
 
 returnDescriptor
@@ -741,8 +745,11 @@ bytecodeWildcardBounds
 // Bytecode Types
 //*******************************/
 
-bytecodeType
-  : bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER // More than one BaseType will instead be an IDENTIFIER
+bytecodeType returns [String value]
+  : bytecodeArrayType {$value = $bytecodeArrayType.text;}
+  | BaseType {$value = $BaseType.text;}
+  | simpleBytecodeObjectType SEMI {$value = $simpleBytecodeObjectType.text + $SEMI.text;}
+  | IDENTIFIER {$value = $IDENTIFIER.text;} // More than one BaseType will instead be an IDENTIFIER
   ;
 bytecodeArrayType
   : LBRACK bytecodeType

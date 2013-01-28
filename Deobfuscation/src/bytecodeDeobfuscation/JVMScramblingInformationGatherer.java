@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g 2013-01-27 21:02:01
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g 2013-01-28 14:57:44
 
   package bytecodeDeobfuscation;
   import java.util.HashMap;
@@ -4892,7 +4892,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "contant_pool_line"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:331:1: contant_pool_line : ^( ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:331:1: contant_pool_line : ^( ASSIGN cpi= CPINDEX cta= CONSTANT_TYPE_ASSIGNABLE ) -> ^( ASSIGN $cpi $cta) ;
     public final JVMScramblingInformationGatherer.contant_pool_line_return contant_pool_line() throws RecognitionException {
         JVMScramblingInformationGatherer.contant_pool_line_return retval = new JVMScramblingInformationGatherer.contant_pool_line_return();
         retval.start = input.LT(1);
@@ -4903,49 +4903,40 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
+        CommonTree cpi=null;
+        CommonTree cta=null;
         CommonTree ASSIGN134=null;
-        CommonTree CPINDEX135=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE136=null;
 
+        CommonTree cpi_tree=null;
+        CommonTree cta_tree=null;
         CommonTree ASSIGN134_tree=null;
-        CommonTree CPINDEX135_tree=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE136_tree=null;
+        RewriteRuleNodeStream stream_CPINDEX=new RewriteRuleNodeStream(adaptor,"token CPINDEX");
+        RewriteRuleNodeStream stream_ASSIGN=new RewriteRuleNodeStream(adaptor,"token ASSIGN");
+        RewriteRuleNodeStream stream_CONSTANT_TYPE_ASSIGNABLE=new RewriteRuleNodeStream(adaptor,"token CONSTANT_TYPE_ASSIGNABLE");
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:332:3: ( ^( ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:332:5: ^( ASSIGN CPINDEX CONSTANT_TYPE_ASSIGNABLE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:335:3: ( ^( ASSIGN cpi= CPINDEX cta= CONSTANT_TYPE_ASSIGNABLE ) -> ^( ASSIGN $cpi $cta) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:335:5: ^( ASSIGN cpi= CPINDEX cta= CONSTANT_TYPE_ASSIGNABLE )
             {
-            root_0 = (CommonTree)adaptor.nil();
-
-
             _last = (CommonTree)input.LT(1);
             {
             CommonTree _save_last_1 = _last;
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ASSIGN134=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_contant_pool_line1123); 
-            ASSIGN134_tree = (CommonTree)adaptor.dupNode(ASSIGN134);
-
-
-            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN134_tree, root_1);
+            ASSIGN134=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_contant_pool_line1127);  
+            stream_ASSIGN.add(ASSIGN134);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            CPINDEX135=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_contant_pool_line1125); 
-            CPINDEX135_tree = (CommonTree)adaptor.dupNode(CPINDEX135);
-
-
-            adaptor.addChild(root_1, CPINDEX135_tree);
+            cpi=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_contant_pool_line1131);  
+            stream_CPINDEX.add(cpi);
 
 
             _last = (CommonTree)input.LT(1);
-            CONSTANT_TYPE_ASSIGNABLE136=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1127); 
-            CONSTANT_TYPE_ASSIGNABLE136_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE136);
-
-
-            adaptor.addChild(root_1, CONSTANT_TYPE_ASSIGNABLE136_tree);
+            cta=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1135);  
+            stream_CONSTANT_TYPE_ASSIGNABLE.add(cta);
 
 
             match(input, Token.UP, null); 
@@ -4954,11 +4945,46 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            ((constant_pool_scope)constant_pool_stack.peek()).lines.put((CPINDEX135!=null?CPINDEX135.getText():null), (CommonTree)root_0.getChild(0).getChild(1));
+            // AST REWRITE
+            // elements: cpi, cta, ASSIGN
+            // token labels: cta, cpi
+            // rule labels: retval
+            // token list labels: 
+            // rule list labels: 
+            // wildcard labels: 
+            retval.tree = root_0;
+            RewriteRuleNodeStream stream_cta=new RewriteRuleNodeStream(adaptor,"token cta",cta);
+            RewriteRuleNodeStream stream_cpi=new RewriteRuleNodeStream(adaptor,"token cpi",cpi);
+            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+            root_0 = (CommonTree)adaptor.nil();
+            // 336:3: -> ^( ASSIGN $cpi $cta)
+            {
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:336:6: ^( ASSIGN $cpi $cta)
+                {
+                CommonTree root_1 = (CommonTree)adaptor.nil();
+                root_1 = (CommonTree)adaptor.becomeRoot(
+                stream_ASSIGN.nextNode()
+                , root_1);
+
+                adaptor.addChild(root_1, stream_cpi.nextNode());
+
+                adaptor.addChild(root_1, stream_cta.nextNode());
+
+                adaptor.addChild(root_0, root_1);
+                }
+
+            }
+
+
+            retval.tree = root_0;
 
             }
 
             retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+
+
+            	((constant_pool_scope)constant_pool_stack.peek()).lines.put((cpi!=null?cpi.getText():null), (CommonTree)((CommonTree)retval.tree).getChild(1));
 
         }
         catch (RecognitionException re) {
@@ -4989,7 +5015,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "classBody"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:340:1: classBody : ( classBodyEntryDecl )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:343:1: classBody : ( classBodyEntryDecl )+ ;
     public final JVMScramblingInformationGatherer.classBody_return classBody() throws RecognitionException {
         classBody_stack.push(new classBody_scope());
         JVMScramblingInformationGatherer.classBody_return retval = new JVMScramblingInformationGatherer.classBody_return();
@@ -5001,7 +5027,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.classBodyEntryDecl_return classBodyEntryDecl137 =null;
+        JVMScramblingInformationGatherer.classBodyEntryDecl_return classBodyEntryDecl135 =null;
 
 
 
@@ -5011,13 +5037,13 @@ public TreeAdaptor getTreeAdaptor() {
         	((classBody_scope)classBody_stack.peek()).ctorCount = 0;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:351:3: ( ( classBodyEntryDecl )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:351:5: ( classBodyEntryDecl )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:354:3: ( ( classBodyEntryDecl )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:354:5: ( classBodyEntryDecl )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:351:5: ( classBodyEntryDecl )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:354:5: ( classBodyEntryDecl )+
             int cnt35=0;
             loop35:
             do {
@@ -5031,15 +5057,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt35) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:351:5: classBodyEntryDecl
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:354:5: classBodyEntryDecl
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_classBodyEntryDecl_in_classBody1163);
-            	    classBodyEntryDecl137=classBodyEntryDecl();
+            	    pushFollow(FOLLOW_classBodyEntryDecl_in_classBody1176);
+            	    classBodyEntryDecl135=classBodyEntryDecl();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, classBodyEntryDecl137.getTree());
+            	    adaptor.addChild(root_0, classBodyEntryDecl135.getTree());
 
 
             	    }
@@ -5081,7 +5107,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "classBodyEntryDecl"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:354:1: classBodyEntryDecl : ( methodDefinition | ctorDefinition | fieldDefinition | staticCtorDefinition );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:357:1: classBodyEntryDecl : ( methodDefinition | ctorDefinition | fieldDefinition | staticCtorDefinition );
     public final JVMScramblingInformationGatherer.classBodyEntryDecl_return classBodyEntryDecl() throws RecognitionException {
         JVMScramblingInformationGatherer.classBodyEntryDecl_return retval = new JVMScramblingInformationGatherer.classBodyEntryDecl_return();
         retval.start = input.LT(1);
@@ -5092,18 +5118,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.methodDefinition_return methodDefinition138 =null;
+        JVMScramblingInformationGatherer.methodDefinition_return methodDefinition136 =null;
 
-        JVMScramblingInformationGatherer.ctorDefinition_return ctorDefinition139 =null;
+        JVMScramblingInformationGatherer.ctorDefinition_return ctorDefinition137 =null;
 
-        JVMScramblingInformationGatherer.fieldDefinition_return fieldDefinition140 =null;
+        JVMScramblingInformationGatherer.fieldDefinition_return fieldDefinition138 =null;
 
-        JVMScramblingInformationGatherer.staticCtorDefinition_return staticCtorDefinition141 =null;
+        JVMScramblingInformationGatherer.staticCtorDefinition_return staticCtorDefinition139 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:355:3: ( methodDefinition | ctorDefinition | fieldDefinition | staticCtorDefinition )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:358:3: ( methodDefinition | ctorDefinition | fieldDefinition | staticCtorDefinition )
             int alt36=4;
             switch ( input.LA(1) ) {
             case METHODDECL:
@@ -5136,69 +5162,69 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt36) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:355:5: methodDefinition
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:358:5: methodDefinition
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_methodDefinition_in_classBodyEntryDecl1179);
-                    methodDefinition138=methodDefinition();
+                    pushFollow(FOLLOW_methodDefinition_in_classBodyEntryDecl1192);
+                    methodDefinition136=methodDefinition();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, methodDefinition138.getTree());
+                    adaptor.addChild(root_0, methodDefinition136.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:356:5: ctorDefinition
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:359:5: ctorDefinition
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_ctorDefinition_in_classBodyEntryDecl1185);
-                    ctorDefinition139=ctorDefinition();
+                    pushFollow(FOLLOW_ctorDefinition_in_classBodyEntryDecl1198);
+                    ctorDefinition137=ctorDefinition();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, ctorDefinition139.getTree());
+                    adaptor.addChild(root_0, ctorDefinition137.getTree());
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:357:5: fieldDefinition
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:360:5: fieldDefinition
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_fieldDefinition_in_classBodyEntryDecl1191);
-                    fieldDefinition140=fieldDefinition();
+                    pushFollow(FOLLOW_fieldDefinition_in_classBodyEntryDecl1204);
+                    fieldDefinition138=fieldDefinition();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, fieldDefinition140.getTree());
+                    adaptor.addChild(root_0, fieldDefinition138.getTree());
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:358:5: staticCtorDefinition
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:361:5: staticCtorDefinition
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1197);
-                    staticCtorDefinition141=staticCtorDefinition();
+                    pushFollow(FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1210);
+                    staticCtorDefinition139=staticCtorDefinition();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, staticCtorDefinition141.getTree());
+                    adaptor.addChild(root_0, staticCtorDefinition139.getTree());
 
 
                     }
@@ -5228,7 +5254,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:365:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:368:1: fieldDefinition : ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
     public final JVMScramblingInformationGatherer.fieldDefinition_return fieldDefinition() throws RecognitionException {
         JVMScramblingInformationGatherer.fieldDefinition_return retval = new JVMScramblingInformationGatherer.fieldDefinition_return();
         retval.start = input.LT(1);
@@ -5239,37 +5265,37 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree FIELDDECL142=null;
-        CommonTree VMODIFIER143=null;
-        CommonTree MODIFIER145=null;
-        CommonTree RETVALUE147=null;
-        CommonTree UNITNAME149=null;
-        CommonTree IDENTIFIER150=null;
-        CommonTree FIELDVALUE151=null;
-        CommonTree UNITHEADER153=null;
-        CommonTree UNITATTR155=null;
-        JVMScramblingInformationGatherer.field_visual_modifier_return field_visual_modifier144 =null;
+        CommonTree FIELDDECL140=null;
+        CommonTree VMODIFIER141=null;
+        CommonTree MODIFIER143=null;
+        CommonTree RETVALUE145=null;
+        CommonTree UNITNAME147=null;
+        CommonTree IDENTIFIER148=null;
+        CommonTree FIELDVALUE149=null;
+        CommonTree UNITHEADER151=null;
+        CommonTree UNITATTR153=null;
+        JVMScramblingInformationGatherer.field_visual_modifier_return field_visual_modifier142 =null;
 
-        JVMScramblingInformationGatherer.field_modifier_return field_modifier146 =null;
+        JVMScramblingInformationGatherer.field_modifier_return field_modifier144 =null;
 
-        JVMScramblingInformationGatherer.type_return type148 =null;
+        JVMScramblingInformationGatherer.type_return type146 =null;
 
-        JVMScramblingInformationGatherer.literals_return literals152 =null;
+        JVMScramblingInformationGatherer.literals_return literals150 =null;
 
-        JVMScramblingInformationGatherer.fieldInfo_return fieldInfo154 =null;
+        JVMScramblingInformationGatherer.fieldInfo_return fieldInfo152 =null;
 
-        JVMScramblingInformationGatherer.fieldAdditionalInfo_return fieldAdditionalInfo156 =null;
+        JVMScramblingInformationGatherer.fieldAdditionalInfo_return fieldAdditionalInfo154 =null;
 
 
-        CommonTree FIELDDECL142_tree=null;
-        CommonTree VMODIFIER143_tree=null;
-        CommonTree MODIFIER145_tree=null;
-        CommonTree RETVALUE147_tree=null;
-        CommonTree UNITNAME149_tree=null;
-        CommonTree IDENTIFIER150_tree=null;
-        CommonTree FIELDVALUE151_tree=null;
-        CommonTree UNITHEADER153_tree=null;
-        CommonTree UNITATTR155_tree=null;
+        CommonTree FIELDDECL140_tree=null;
+        CommonTree VMODIFIER141_tree=null;
+        CommonTree MODIFIER143_tree=null;
+        CommonTree RETVALUE145_tree=null;
+        CommonTree UNITNAME147_tree=null;
+        CommonTree IDENTIFIER148_tree=null;
+        CommonTree FIELDVALUE149_tree=null;
+        CommonTree UNITHEADER151_tree=null;
+        CommonTree UNITATTR153_tree=null;
         RewriteRuleNodeStream stream_UNITNAME=new RewriteRuleNodeStream(adaptor,"token UNITNAME");
         RewriteRuleNodeStream stream_UNITATTR=new RewriteRuleNodeStream(adaptor,"token UNITATTR");
         RewriteRuleNodeStream stream_UNITHEADER=new RewriteRuleNodeStream(adaptor,"token UNITHEADER");
@@ -5286,8 +5312,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         RewriteRuleSubtreeStream stream_fieldAdditionalInfo=new RewriteRuleSubtreeStream(adaptor,"rule fieldAdditionalInfo");
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:3: ( ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:5: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:3: ( ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:5: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
             {
             _last = (CommonTree)input.LT(1);
             {
@@ -5295,8 +5321,8 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            FIELDDECL142=(CommonTree)match(input,FIELDDECL,FOLLOW_FIELDDECL_in_fieldDefinition1219);  
-            stream_FIELDDECL.add(FIELDDECL142);
+            FIELDDECL140=(CommonTree)match(input,FIELDDECL,FOLLOW_FIELDDECL_in_fieldDefinition1232);  
+            stream_FIELDDECL.add(FIELDDECL140);
 
 
             match(input, Token.DOWN, null); 
@@ -5306,13 +5332,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER143=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_fieldDefinition1222);  
-            stream_VMODIFIER.add(VMODIFIER143);
+            VMODIFIER141=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_fieldDefinition1235);  
+            stream_VMODIFIER.add(VMODIFIER141);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:29: ( field_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:29: ( field_visual_modifier )?
                 int alt37=2;
                 int LA37_0 = input.LA(1);
 
@@ -5321,15 +5347,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt37) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:29: field_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:29: field_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_field_visual_modifier_in_fieldDefinition1224);
-                        field_visual_modifier144=field_visual_modifier();
+                        pushFollow(FOLLOW_field_visual_modifier_in_fieldDefinition1237);
+                        field_visual_modifier142=field_visual_modifier();
 
                         state._fsp--;
 
-                        stream_field_visual_modifier.add(field_visual_modifier144.getTree());
+                        stream_field_visual_modifier.add(field_visual_modifier142.getTree());
 
                         }
                         break;
@@ -5350,13 +5376,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            MODIFIER145=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_fieldDefinition1229);  
-            stream_MODIFIER.add(MODIFIER145);
+            MODIFIER143=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_fieldDefinition1242);  
+            stream_MODIFIER.add(MODIFIER143);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:64: ( field_modifier )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:64: ( field_modifier )*
                 loop38:
                 do {
                     int alt38=2;
@@ -5369,15 +5395,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt38) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:64: field_modifier
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:64: field_modifier
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_field_modifier_in_fieldDefinition1231);
-                	    field_modifier146=field_modifier();
+                	    pushFollow(FOLLOW_field_modifier_in_fieldDefinition1244);
+                	    field_modifier144=field_modifier();
 
                 	    state._fsp--;
 
-                	    stream_field_modifier.add(field_modifier146.getTree());
+                	    stream_field_modifier.add(field_modifier144.getTree());
 
                 	    }
                 	    break;
@@ -5401,18 +5427,18 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RETVALUE147=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_fieldDefinition1236);  
-            stream_RETVALUE.add(RETVALUE147);
+            RETVALUE145=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_fieldDefinition1249);  
+            stream_RETVALUE.add(RETVALUE145);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_type_in_fieldDefinition1238);
-            type148=type();
+            pushFollow(FOLLOW_type_in_fieldDefinition1251);
+            type146=type();
 
             state._fsp--;
 
-            stream_type.add(type148.getTree());
+            stream_type.add(type146.getTree());
 
             match(input, Token.UP, null); 
             adaptor.addChild(root_1, root_2);
@@ -5426,14 +5452,14 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME149=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_fieldDefinition1242);  
-            stream_UNITNAME.add(UNITNAME149);
+            UNITNAME147=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_fieldDefinition1255);  
+            stream_UNITNAME.add(UNITNAME147);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER150=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_fieldDefinition1244);  
-            stream_IDENTIFIER.add(IDENTIFIER150);
+            IDENTIFIER148=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_fieldDefinition1257);  
+            stream_IDENTIFIER.add(IDENTIFIER148);
 
 
             match(input, Token.UP, null); 
@@ -5448,13 +5474,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            FIELDVALUE151=(CommonTree)match(input,FIELDVALUE,FOLLOW_FIELDVALUE_in_fieldDefinition1248);  
-            stream_FIELDVALUE.add(FIELDVALUE151);
+            FIELDVALUE149=(CommonTree)match(input,FIELDVALUE,FOLLOW_FIELDVALUE_in_fieldDefinition1261);  
+            stream_FIELDVALUE.add(FIELDVALUE149);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:134: ( literals )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:134: ( literals )?
                 int alt39=2;
                 int LA39_0 = input.LA(1);
 
@@ -5463,15 +5489,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt39) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:369:134: literals
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:372:134: literals
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_literals_in_fieldDefinition1250);
-                        literals152=literals();
+                        pushFollow(FOLLOW_literals_in_fieldDefinition1263);
+                        literals150=literals();
 
                         state._fsp--;
 
-                        stream_literals.add(literals152.getTree());
+                        stream_literals.add(literals150.getTree());
 
                         }
                         break;
@@ -5492,18 +5518,18 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER153=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_fieldDefinition1267);  
-            stream_UNITHEADER.add(UNITHEADER153);
+            UNITHEADER151=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_fieldDefinition1280);  
+            stream_UNITHEADER.add(UNITHEADER151);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_fieldInfo_in_fieldDefinition1269);
-            fieldInfo154=fieldInfo();
+            pushFollow(FOLLOW_fieldInfo_in_fieldDefinition1282);
+            fieldInfo152=fieldInfo();
 
             state._fsp--;
 
-            stream_fieldInfo.add(fieldInfo154.getTree());
+            stream_fieldInfo.add(fieldInfo152.getTree());
 
             match(input, Token.UP, null); 
             adaptor.addChild(root_1, root_2);
@@ -5517,13 +5543,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITATTR155=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_fieldDefinition1285);  
-            stream_UNITATTR.add(UNITATTR155);
+            UNITATTR153=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_fieldDefinition1298);  
+            stream_UNITATTR.add(UNITATTR153);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:371:24: ( fieldAdditionalInfo )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:24: ( fieldAdditionalInfo )*
                 loop40:
                 do {
                     int alt40=2;
@@ -5536,15 +5562,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt40) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:371:24: fieldAdditionalInfo
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:24: fieldAdditionalInfo
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_fieldAdditionalInfo_in_fieldDefinition1287);
-                	    fieldAdditionalInfo156=fieldAdditionalInfo();
+                	    pushFollow(FOLLOW_fieldAdditionalInfo_in_fieldDefinition1300);
+                	    fieldAdditionalInfo154=fieldAdditionalInfo();
 
                 	    state._fsp--;
 
-                	    stream_fieldAdditionalInfo.add(fieldAdditionalInfo156.getTree());
+                	    stream_fieldAdditionalInfo.add(fieldAdditionalInfo154.getTree());
 
                 	    }
                 	    break;
@@ -5568,10 +5594,10 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            rename(((classDefinition_scope)classDefinition_stack.peek()).className + "." + (IDENTIFIER150!=null?IDENTIFIER150.getText():null) + ":" + (fieldInfo154!=null?fieldInfo154.value:null), "datField" + ((classBody_scope)classBody_stack.peek()).fieldCount);
+            rename(((classDefinition_scope)classDefinition_stack.peek()).className + "." + (IDENTIFIER148!=null?IDENTIFIER148.getText():null) + ":" + (fieldInfo152!=null?fieldInfo152.value:null), "datField" + ((classBody_scope)classBody_stack.peek()).fieldCount);
 
             // AST REWRITE
-            // elements: fieldInfo, field_visual_modifier, literals, RETVALUE, fieldAdditionalInfo, VMODIFIER, type, UNITHEADER, FIELDVALUE, UNITATTR, FIELDDECL, IDENTIFIER, field_modifier, MODIFIER, UNITNAME
+            // elements: fieldInfo, field_modifier, fieldAdditionalInfo, literals, type, VMODIFIER, UNITATTR, MODIFIER, FIELDVALUE, field_visual_modifier, RETVALUE, FIELDDECL, UNITNAME, IDENTIFIER, UNITHEADER
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5581,23 +5607,23 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 374:13: -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
+            // 377:13: -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
             {
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:16: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:16: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 stream_FIELDDECL.nextNode()
                 , root_1);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:28: ^( VMODIFIER ( field_visual_modifier )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:28: ^( VMODIFIER ( field_visual_modifier )? )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_VMODIFIER.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:40: ( field_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:40: ( field_visual_modifier )?
                 if ( stream_field_visual_modifier.hasNext() ) {
                     adaptor.addChild(root_2, stream_field_visual_modifier.nextTree());
 
@@ -5607,14 +5633,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:64: ^( MODIFIER ( field_modifier )* )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:64: ^( MODIFIER ( field_modifier )* )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_MODIFIER.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:75: ( field_modifier )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:75: ( field_modifier )*
                 while ( stream_field_modifier.hasNext() ) {
                     adaptor.addChild(root_2, stream_field_modifier.nextTree());
 
@@ -5624,7 +5650,7 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:92: ^( RETVALUE type )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:92: ^( RETVALUE type )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -5636,7 +5662,7 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:109: ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:109: ^( UNITNAME IDENTIFIER[\"datField\" + $classBody::fieldCount] )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -5650,14 +5676,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:169: ^( FIELDVALUE ( literals )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:169: ^( FIELDVALUE ( literals )? )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_FIELDVALUE.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:374:182: ( literals )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:377:182: ( literals )?
                 if ( stream_literals.hasNext() ) {
                     adaptor.addChild(root_2, stream_literals.nextTree());
 
@@ -5667,7 +5693,7 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:375:13: ^( UNITHEADER fieldInfo )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:378:13: ^( UNITHEADER fieldInfo )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -5679,14 +5705,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:376:13: ^( UNITATTR ( fieldAdditionalInfo )* )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:379:13: ^( UNITATTR ( fieldAdditionalInfo )* )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_UNITATTR.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:376:24: ( fieldAdditionalInfo )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:379:24: ( fieldAdditionalInfo )*
                 while ( stream_fieldAdditionalInfo.hasNext() ) {
                     adaptor.addChild(root_2, stream_fieldAdditionalInfo.nextTree());
 
@@ -5733,7 +5759,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldInfo"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:380:1: fieldInfo returns [String value] : ^( Signature bytecodeType ) flags ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:383:1: fieldInfo returns [String value] : ^( Signature bytecodeType ) flags ;
     public final JVMScramblingInformationGatherer.fieldInfo_return fieldInfo() throws RecognitionException {
         JVMScramblingInformationGatherer.fieldInfo_return retval = new JVMScramblingInformationGatherer.fieldInfo_return();
         retval.start = input.LT(1);
@@ -5744,17 +5770,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Signature157=null;
-        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType158 =null;
+        CommonTree Signature155=null;
+        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType156 =null;
 
-        JVMScramblingInformationGatherer.flags_return flags159 =null;
+        JVMScramblingInformationGatherer.flags_return flags157 =null;
 
 
-        CommonTree Signature157_tree=null;
+        CommonTree Signature155_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:381:3: ( ^( Signature bytecodeType ) flags )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:381:5: ^( Signature bytecodeType ) flags
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:384:3: ( ^( Signature bytecodeType ) flags )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:384:5: ^( Signature bytecodeType ) flags
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -5765,21 +5791,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Signature157=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldInfo1438); 
-            Signature157_tree = (CommonTree)adaptor.dupNode(Signature157);
+            Signature155=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldInfo1451); 
+            Signature155_tree = (CommonTree)adaptor.dupNode(Signature155);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Signature157_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Signature155_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeType_in_fieldInfo1440);
-            bytecodeType158=bytecodeType();
+            pushFollow(FOLLOW_bytecodeType_in_fieldInfo1453);
+            bytecodeType156=bytecodeType();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, bytecodeType158.getTree());
+            adaptor.addChild(root_1, bytecodeType156.getTree());
 
 
             match(input, Token.UP, null); 
@@ -5789,15 +5815,15 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_flags_in_fieldInfo1443);
-            flags159=flags();
+            pushFollow(FOLLOW_flags_in_fieldInfo1456);
+            flags157=flags();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, flags159.getTree());
+            adaptor.addChild(root_0, flags157.getTree());
 
 
-            retval.value = (bytecodeType158!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(bytecodeType158.start),input.getTreeAdaptor().getTokenStopIndex(bytecodeType158.start))):null);
+            retval.value = (bytecodeType156!=null?bytecodeType156.value:null);
 
             }
 
@@ -5824,7 +5850,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldAdditionalInfo"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:384:1: fieldAdditionalInfo : ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:387:1: fieldAdditionalInfo : ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations );
     public final JVMScramblingInformationGatherer.fieldAdditionalInfo_return fieldAdditionalInfo() throws RecognitionException {
         JVMScramblingInformationGatherer.fieldAdditionalInfo_return retval = new JVMScramblingInformationGatherer.fieldAdditionalInfo_return();
         retval.start = input.LT(1);
@@ -5835,36 +5861,36 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Constant160=null;
-        CommonTree Constant163=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE164=null;
-        CommonTree Signature165=null;
-        CommonTree CPINDEX166=null;
-        CommonTree Deprecated167=null;
+        CommonTree Constant158=null;
+        CommonTree Constant161=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE162=null;
+        CommonTree Signature163=null;
+        CommonTree CPINDEX164=null;
+        CommonTree Deprecated165=null;
+        CommonTree BOOLEANLITERAL166=null;
+        CommonTree Synthetic167=null;
         CommonTree BOOLEANLITERAL168=null;
-        CommonTree Synthetic169=null;
-        CommonTree BOOLEANLITERAL170=null;
-        JVMScramblingInformationGatherer.primitiveType_return primitiveType161 =null;
+        JVMScramblingInformationGatherer.primitiveType_return primitiveType159 =null;
 
-        JVMScramblingInformationGatherer.literals_return literals162 =null;
+        JVMScramblingInformationGatherer.literals_return literals160 =null;
 
-        JVMScramblingInformationGatherer.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info171 =null;
+        JVMScramblingInformationGatherer.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info169 =null;
 
-        JVMScramblingInformationGatherer.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations172 =null;
+        JVMScramblingInformationGatherer.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations170 =null;
 
 
-        CommonTree Constant160_tree=null;
-        CommonTree Constant163_tree=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE164_tree=null;
-        CommonTree Signature165_tree=null;
-        CommonTree CPINDEX166_tree=null;
-        CommonTree Deprecated167_tree=null;
+        CommonTree Constant158_tree=null;
+        CommonTree Constant161_tree=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE162_tree=null;
+        CommonTree Signature163_tree=null;
+        CommonTree CPINDEX164_tree=null;
+        CommonTree Deprecated165_tree=null;
+        CommonTree BOOLEANLITERAL166_tree=null;
+        CommonTree Synthetic167_tree=null;
         CommonTree BOOLEANLITERAL168_tree=null;
-        CommonTree Synthetic169_tree=null;
-        CommonTree BOOLEANLITERAL170_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:385:3: ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:388:3: ( ^( Constant primitiveType literals ) | ^( Constant CONSTANT_TYPE_ASSIGNABLE ) | ^( Signature CPINDEX ) | ^( Deprecated BOOLEANLITERAL ) | ^( Synthetic BOOLEANLITERAL ) | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations )
             int alt41=7;
             switch ( input.LA(1) ) {
             case Constant:
@@ -5932,7 +5958,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt41) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:385:5: ^( Constant primitiveType literals )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:388:5: ^( Constant primitiveType literals )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -5943,30 +5969,30 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Constant160=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1459); 
-                    Constant160_tree = (CommonTree)adaptor.dupNode(Constant160);
+                    Constant158=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1472); 
+                    Constant158_tree = (CommonTree)adaptor.dupNode(Constant158);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Constant160_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Constant158_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo1461);
-                    primitiveType161=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo1474);
+                    primitiveType159=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, primitiveType161.getTree());
+                    adaptor.addChild(root_1, primitiveType159.getTree());
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo1463);
-                    literals162=literals();
+                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo1476);
+                    literals160=literals();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, literals162.getTree());
+                    adaptor.addChild(root_1, literals160.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -5978,7 +6004,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:386:5: ^( Constant CONSTANT_TYPE_ASSIGNABLE )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:389:5: ^( Constant CONSTANT_TYPE_ASSIGNABLE )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -5989,20 +6015,20 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Constant163=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1471); 
-                    Constant163_tree = (CommonTree)adaptor.dupNode(Constant163);
+                    Constant161=(CommonTree)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo1484); 
+                    Constant161_tree = (CommonTree)adaptor.dupNode(Constant161);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Constant163_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Constant161_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    CONSTANT_TYPE_ASSIGNABLE164=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1473); 
-                    CONSTANT_TYPE_ASSIGNABLE164_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE164);
+                    CONSTANT_TYPE_ASSIGNABLE162=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1486); 
+                    CONSTANT_TYPE_ASSIGNABLE162_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE162);
 
 
-                    adaptor.addChild(root_1, CONSTANT_TYPE_ASSIGNABLE164_tree);
+                    adaptor.addChild(root_1, CONSTANT_TYPE_ASSIGNABLE162_tree);
 
 
                     match(input, Token.UP, null); 
@@ -6014,7 +6040,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:387:5: ^( Signature CPINDEX )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:390:5: ^( Signature CPINDEX )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -6025,20 +6051,20 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Signature165=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo1481); 
-                    Signature165_tree = (CommonTree)adaptor.dupNode(Signature165);
+                    Signature163=(CommonTree)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo1494); 
+                    Signature163_tree = (CommonTree)adaptor.dupNode(Signature163);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Signature165_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Signature163_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    CPINDEX166=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo1483); 
-                    CPINDEX166_tree = (CommonTree)adaptor.dupNode(CPINDEX166);
+                    CPINDEX164=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo1496); 
+                    CPINDEX164_tree = (CommonTree)adaptor.dupNode(CPINDEX164);
 
 
-                    adaptor.addChild(root_1, CPINDEX166_tree);
+                    adaptor.addChild(root_1, CPINDEX164_tree);
 
 
                     match(input, Token.UP, null); 
@@ -6050,7 +6076,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:388:5: ^( Deprecated BOOLEANLITERAL )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:391:5: ^( Deprecated BOOLEANLITERAL )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -6061,16 +6087,52 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    Deprecated167=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo1491); 
-                    Deprecated167_tree = (CommonTree)adaptor.dupNode(Deprecated167);
+                    Deprecated165=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo1504); 
+                    Deprecated165_tree = (CommonTree)adaptor.dupNode(Deprecated165);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated167_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated165_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL168=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1493); 
+                    BOOLEANLITERAL166=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1506); 
+                    BOOLEANLITERAL166_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL166);
+
+
+                    adaptor.addChild(root_1, BOOLEANLITERAL166_tree);
+
+
+                    match(input, Token.UP, null); 
+                    adaptor.addChild(root_0, root_1);
+                    _last = _save_last_1;
+                    }
+
+
+                    }
+                    break;
+                case 5 :
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:392:5: ^( Synthetic BOOLEANLITERAL )
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    _last = (CommonTree)input.LT(1);
+                    {
+                    CommonTree _save_last_1 = _last;
+                    CommonTree _first_1 = null;
+                    CommonTree root_1 = (CommonTree)adaptor.nil();
+                    _last = (CommonTree)input.LT(1);
+                    Synthetic167=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo1514); 
+                    Synthetic167_tree = (CommonTree)adaptor.dupNode(Synthetic167);
+
+
+                    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic167_tree, root_1);
+
+
+                    match(input, Token.DOWN, null); 
+                    _last = (CommonTree)input.LT(1);
+                    BOOLEANLITERAL168=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1516); 
                     BOOLEANLITERAL168_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL168);
 
 
@@ -6085,72 +6147,36 @@ public TreeAdaptor getTreeAdaptor() {
 
                     }
                     break;
-                case 5 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:389:5: ^( Synthetic BOOLEANLITERAL )
-                    {
-                    root_0 = (CommonTree)adaptor.nil();
-
-
-                    _last = (CommonTree)input.LT(1);
-                    {
-                    CommonTree _save_last_1 = _last;
-                    CommonTree _first_1 = null;
-                    CommonTree root_1 = (CommonTree)adaptor.nil();
-                    _last = (CommonTree)input.LT(1);
-                    Synthetic169=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo1501); 
-                    Synthetic169_tree = (CommonTree)adaptor.dupNode(Synthetic169);
-
-
-                    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic169_tree, root_1);
-
-
-                    match(input, Token.DOWN, null); 
-                    _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL170=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1503); 
-                    BOOLEANLITERAL170_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL170);
-
-
-                    adaptor.addChild(root_1, BOOLEANLITERAL170_tree);
-
-
-                    match(input, Token.UP, null); 
-                    adaptor.addChild(root_0, root_1);
-                    _last = _save_last_1;
-                    }
-
-
-                    }
-                    break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:390:5: runtimeVisibleAnnotations_info
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:393:5: runtimeVisibleAnnotations_info
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1510);
-                    runtimeVisibleAnnotations_info171=runtimeVisibleAnnotations_info();
+                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1523);
+                    runtimeVisibleAnnotations_info169=runtimeVisibleAnnotations_info();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, runtimeVisibleAnnotations_info171.getTree());
+                    adaptor.addChild(root_0, runtimeVisibleAnnotations_info169.getTree());
 
 
                     }
                     break;
                 case 7 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:391:5: runtimeInvisibleAnnotations
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:394:5: runtimeInvisibleAnnotations
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1516);
-                    runtimeInvisibleAnnotations172=runtimeInvisibleAnnotations();
+                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1529);
+                    runtimeInvisibleAnnotations170=runtimeInvisibleAnnotations();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, runtimeInvisibleAnnotations172.getTree());
+                    adaptor.addChild(root_0, runtimeInvisibleAnnotations170.getTree());
 
 
                     }
@@ -6180,7 +6206,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "field_visual_modifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:394:1: field_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:397:1: field_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
     public final JVMScramblingInformationGatherer.field_visual_modifier_return field_visual_modifier() throws RecognitionException {
         JVMScramblingInformationGatherer.field_visual_modifier_return retval = new JVMScramblingInformationGatherer.field_visual_modifier_return();
         retval.start = input.LT(1);
@@ -6191,26 +6217,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set173=null;
+        CommonTree set171=null;
 
-        CommonTree set173_tree=null;
+        CommonTree set171_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:395:3: ( PUBLIC | PRIVATE | PROTECTED )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:398:3: ( PUBLIC | PRIVATE | PROTECTED )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set173=(CommonTree)input.LT(1);
+            set171=(CommonTree)input.LT(1);
 
             if ( (input.LA(1) >= PRIVATE && input.LA(1) <= PUBLIC) ) {
                 input.consume();
-                set173_tree = (CommonTree)adaptor.dupNode(set173);
+                set171_tree = (CommonTree)adaptor.dupNode(set171);
 
 
-                adaptor.addChild(root_0, set173_tree);
+                adaptor.addChild(root_0, set171_tree);
 
                 state.errorRecovery=false;
             }
@@ -6246,7 +6272,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "field_modifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:398:1: field_modifier : ( FINAL | STATIC | TRANSIENT | VOLATILE );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:401:1: field_modifier : ( FINAL | STATIC | TRANSIENT | VOLATILE );
     public final JVMScramblingInformationGatherer.field_modifier_return field_modifier() throws RecognitionException {
         JVMScramblingInformationGatherer.field_modifier_return retval = new JVMScramblingInformationGatherer.field_modifier_return();
         retval.start = input.LT(1);
@@ -6257,26 +6283,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set174=null;
+        CommonTree set172=null;
 
-        CommonTree set174_tree=null;
+        CommonTree set172_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:399:3: ( FINAL | STATIC | TRANSIENT | VOLATILE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:402:3: ( FINAL | STATIC | TRANSIENT | VOLATILE )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set174=(CommonTree)input.LT(1);
+            set172=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==FINAL||input.LA(1)==STATIC||input.LA(1)==TRANSIENT||input.LA(1)==VOLATILE ) {
                 input.consume();
-                set174_tree = (CommonTree)adaptor.dupNode(set174);
+                set172_tree = (CommonTree)adaptor.dupNode(set172);
 
 
-                adaptor.addChild(root_0, set174_tree);
+                adaptor.addChild(root_0, set172_tree);
 
                 state.errorRecovery=false;
             }
@@ -6312,7 +6338,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "staticCtorDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:406:1: staticCtorDefinition : ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:409:1: staticCtorDefinition : ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) ;
     public final JVMScramblingInformationGatherer.staticCtorDefinition_return staticCtorDefinition() throws RecognitionException {
         JVMScramblingInformationGatherer.staticCtorDefinition_return retval = new JVMScramblingInformationGatherer.staticCtorDefinition_return();
         retval.start = input.LT(1);
@@ -6323,25 +6349,25 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree STATICCTORDECL175=null;
-        CommonTree VMODIFIER176=null;
-        CommonTree UNITHEADER178=null;
-        CommonTree UNITBODY180=null;
-        JVMScramblingInformationGatherer.field_visual_modifier_return field_visual_modifier177 =null;
+        CommonTree STATICCTORDECL173=null;
+        CommonTree VMODIFIER174=null;
+        CommonTree UNITHEADER176=null;
+        CommonTree UNITBODY178=null;
+        JVMScramblingInformationGatherer.field_visual_modifier_return field_visual_modifier175 =null;
 
-        JVMScramblingInformationGatherer.methodInfo_return methodInfo179 =null;
+        JVMScramblingInformationGatherer.methodInfo_return methodInfo177 =null;
 
-        JVMScramblingInformationGatherer.body_return body181 =null;
+        JVMScramblingInformationGatherer.body_return body179 =null;
 
 
-        CommonTree STATICCTORDECL175_tree=null;
-        CommonTree VMODIFIER176_tree=null;
-        CommonTree UNITHEADER178_tree=null;
-        CommonTree UNITBODY180_tree=null;
+        CommonTree STATICCTORDECL173_tree=null;
+        CommonTree VMODIFIER174_tree=null;
+        CommonTree UNITHEADER176_tree=null;
+        CommonTree UNITBODY178_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:407:3: ( ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:407:5: ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:410:3: ( ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:410:5: ^( STATICCTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -6352,11 +6378,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            STATICCTORDECL175=(CommonTree)match(input,STATICCTORDECL,FOLLOW_STATICCTORDECL_in_staticCtorDefinition1588); 
-            STATICCTORDECL175_tree = (CommonTree)adaptor.dupNode(STATICCTORDECL175);
+            STATICCTORDECL173=(CommonTree)match(input,STATICCTORDECL,FOLLOW_STATICCTORDECL_in_staticCtorDefinition1601); 
+            STATICCTORDECL173_tree = (CommonTree)adaptor.dupNode(STATICCTORDECL173);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(STATICCTORDECL175_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(STATICCTORDECL173_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -6366,16 +6392,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER176=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_staticCtorDefinition1591); 
-            VMODIFIER176_tree = (CommonTree)adaptor.dupNode(VMODIFIER176);
+            VMODIFIER174=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_staticCtorDefinition1604); 
+            VMODIFIER174_tree = (CommonTree)adaptor.dupNode(VMODIFIER174);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER176_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER174_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:407:34: ( field_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:410:34: ( field_visual_modifier )?
                 int alt42=2;
                 int LA42_0 = input.LA(1);
 
@@ -6384,15 +6410,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt42) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:407:34: field_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:410:34: field_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition1593);
-                        field_visual_modifier177=field_visual_modifier();
+                        pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition1606);
+                        field_visual_modifier175=field_visual_modifier();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, field_visual_modifier177.getTree());
+                        adaptor.addChild(root_2, field_visual_modifier175.getTree());
 
 
                         }
@@ -6414,21 +6440,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER178=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_staticCtorDefinition1598); 
-            UNITHEADER178_tree = (CommonTree)adaptor.dupNode(UNITHEADER178);
+            UNITHEADER176=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_staticCtorDefinition1611); 
+            UNITHEADER176_tree = (CommonTree)adaptor.dupNode(UNITHEADER176);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER178_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER176_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition1600);
-            methodInfo179=methodInfo();
+            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition1613);
+            methodInfo177=methodInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, methodInfo179.getTree());
+            adaptor.addChild(root_2, methodInfo177.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6443,21 +6469,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITBODY180=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_staticCtorDefinition1604); 
-            UNITBODY180_tree = (CommonTree)adaptor.dupNode(UNITBODY180);
+            UNITBODY178=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_staticCtorDefinition1617); 
+            UNITBODY178_tree = (CommonTree)adaptor.dupNode(UNITBODY178);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY180_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY178_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_body_in_staticCtorDefinition1606);
-            body181=body();
+            pushFollow(FOLLOW_body_in_staticCtorDefinition1619);
+            body179=body();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, body181.getTree());
+            adaptor.addChild(root_2, body179.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6497,7 +6523,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "ctorDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:415:1: ctorDefinition : ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:418:1: ctorDefinition : ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
     public final JVMScramblingInformationGatherer.ctorDefinition_return ctorDefinition() throws RecognitionException {
         JVMScramblingInformationGatherer.ctorDefinition_return retval = new JVMScramblingInformationGatherer.ctorDefinition_return();
         retval.start = input.LT(1);
@@ -6508,43 +6534,43 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CTORDECL182=null;
-        CommonTree VMODIFIER183=null;
-        CommonTree GENERICDESC185=null;
-        CommonTree UNITNAME187=null;
-        CommonTree THROWCLAUSE190=null;
-        CommonTree UNITHEADER192=null;
-        CommonTree UNITBODY194=null;
-        CommonTree UNITATTR196=null;
-        JVMScramblingInformationGatherer.field_visual_modifier_return field_visual_modifier184 =null;
+        CommonTree CTORDECL180=null;
+        CommonTree VMODIFIER181=null;
+        CommonTree GENERICDESC183=null;
+        CommonTree UNITNAME185=null;
+        CommonTree THROWCLAUSE188=null;
+        CommonTree UNITHEADER190=null;
+        CommonTree UNITBODY192=null;
+        CommonTree UNITATTR194=null;
+        JVMScramblingInformationGatherer.field_visual_modifier_return field_visual_modifier182 =null;
 
-        JVMScramblingInformationGatherer.genericDescriptor_return genericDescriptor186 =null;
+        JVMScramblingInformationGatherer.genericDescriptor_return genericDescriptor184 =null;
 
-        JVMScramblingInformationGatherer.typeName_return typeName188 =null;
+        JVMScramblingInformationGatherer.typeName_return typeName186 =null;
 
-        JVMScramblingInformationGatherer.arguments_return arguments189 =null;
+        JVMScramblingInformationGatherer.arguments_return arguments187 =null;
 
-        JVMScramblingInformationGatherer.throwClause_return throwClause191 =null;
+        JVMScramblingInformationGatherer.throwClause_return throwClause189 =null;
 
-        JVMScramblingInformationGatherer.methodInfo_return methodInfo193 =null;
+        JVMScramblingInformationGatherer.methodInfo_return methodInfo191 =null;
 
-        JVMScramblingInformationGatherer.body_return body195 =null;
+        JVMScramblingInformationGatherer.body_return body193 =null;
 
-        JVMScramblingInformationGatherer.afterMethodInfo_return afterMethodInfo197 =null;
+        JVMScramblingInformationGatherer.afterMethodInfo_return afterMethodInfo195 =null;
 
 
-        CommonTree CTORDECL182_tree=null;
-        CommonTree VMODIFIER183_tree=null;
-        CommonTree GENERICDESC185_tree=null;
-        CommonTree UNITNAME187_tree=null;
-        CommonTree THROWCLAUSE190_tree=null;
-        CommonTree UNITHEADER192_tree=null;
-        CommonTree UNITBODY194_tree=null;
-        CommonTree UNITATTR196_tree=null;
+        CommonTree CTORDECL180_tree=null;
+        CommonTree VMODIFIER181_tree=null;
+        CommonTree GENERICDESC183_tree=null;
+        CommonTree UNITNAME185_tree=null;
+        CommonTree THROWCLAUSE188_tree=null;
+        CommonTree UNITHEADER190_tree=null;
+        CommonTree UNITBODY192_tree=null;
+        CommonTree UNITATTR194_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:3: ( ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:5: ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:3: ( ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:5: ^( CTORDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( GENERICDESC ( genericDescriptor )? ) ^( UNITNAME typeName ) arguments ^( THROWCLAUSE ( throwClause )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY body ) ^( UNITATTR ( afterMethodInfo )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -6555,11 +6581,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            CTORDECL182=(CommonTree)match(input,CTORDECL,FOLLOW_CTORDECL_in_ctorDefinition1633); 
-            CTORDECL182_tree = (CommonTree)adaptor.dupNode(CTORDECL182);
+            CTORDECL180=(CommonTree)match(input,CTORDECL,FOLLOW_CTORDECL_in_ctorDefinition1646); 
+            CTORDECL180_tree = (CommonTree)adaptor.dupNode(CTORDECL180);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(CTORDECL182_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(CTORDECL180_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -6569,16 +6595,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER183=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_ctorDefinition1636); 
-            VMODIFIER183_tree = (CommonTree)adaptor.dupNode(VMODIFIER183);
+            VMODIFIER181=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_ctorDefinition1649); 
+            VMODIFIER181_tree = (CommonTree)adaptor.dupNode(VMODIFIER181);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER183_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(VMODIFIER181_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:28: ( field_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:28: ( field_visual_modifier )?
                 int alt43=2;
                 int LA43_0 = input.LA(1);
 
@@ -6587,15 +6613,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt43) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:28: field_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:28: field_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition1638);
-                        field_visual_modifier184=field_visual_modifier();
+                        pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition1651);
+                        field_visual_modifier182=field_visual_modifier();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, field_visual_modifier184.getTree());
+                        adaptor.addChild(root_2, field_visual_modifier182.getTree());
 
 
                         }
@@ -6617,16 +6643,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            GENERICDESC185=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_ctorDefinition1643); 
-            GENERICDESC185_tree = (CommonTree)adaptor.dupNode(GENERICDESC185);
+            GENERICDESC183=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_ctorDefinition1656); 
+            GENERICDESC183_tree = (CommonTree)adaptor.dupNode(GENERICDESC183);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(GENERICDESC185_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(GENERICDESC183_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:66: ( genericDescriptor )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:66: ( genericDescriptor )?
                 int alt44=2;
                 int LA44_0 = input.LA(1);
 
@@ -6635,15 +6661,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt44) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:66: genericDescriptor
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:66: genericDescriptor
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition1645);
-                        genericDescriptor186=genericDescriptor();
+                        pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition1658);
+                        genericDescriptor184=genericDescriptor();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, genericDescriptor186.getTree());
+                        adaptor.addChild(root_2, genericDescriptor184.getTree());
 
 
                         }
@@ -6665,21 +6691,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME187=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_ctorDefinition1650); 
-            UNITNAME187_tree = (CommonTree)adaptor.dupNode(UNITNAME187);
+            UNITNAME185=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_ctorDefinition1663); 
+            UNITNAME185_tree = (CommonTree)adaptor.dupNode(UNITNAME185);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME187_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITNAME185_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeName_in_ctorDefinition1652);
-            typeName188=typeName();
+            pushFollow(FOLLOW_typeName_in_ctorDefinition1665);
+            typeName186=typeName();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, typeName188.getTree());
+            adaptor.addChild(root_2, typeName186.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6689,12 +6715,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_arguments_in_ctorDefinition1655);
-            arguments189=arguments();
+            pushFollow(FOLLOW_arguments_in_ctorDefinition1668);
+            arguments187=arguments();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, arguments189.getTree());
+            adaptor.addChild(root_1, arguments187.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -6703,16 +6729,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWCLAUSE190=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_ctorDefinition1658); 
-            THROWCLAUSE190_tree = (CommonTree)adaptor.dupNode(THROWCLAUSE190);
+            THROWCLAUSE188=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_ctorDefinition1671); 
+            THROWCLAUSE188_tree = (CommonTree)adaptor.dupNode(THROWCLAUSE188);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(THROWCLAUSE190_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(THROWCLAUSE188_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:131: ( throwClause )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:131: ( throwClause )?
                 int alt45=2;
                 int LA45_0 = input.LA(1);
 
@@ -6721,15 +6747,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt45) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:419:131: throwClause
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:131: throwClause
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_throwClause_in_ctorDefinition1660);
-                        throwClause191=throwClause();
+                        pushFollow(FOLLOW_throwClause_in_ctorDefinition1673);
+                        throwClause189=throwClause();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, throwClause191.getTree());
+                        adaptor.addChild(root_2, throwClause189.getTree());
 
 
                         }
@@ -6751,21 +6777,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER192=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_ctorDefinition1689); 
-            UNITHEADER192_tree = (CommonTree)adaptor.dupNode(UNITHEADER192);
+            UNITHEADER190=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_ctorDefinition1702); 
+            UNITHEADER190_tree = (CommonTree)adaptor.dupNode(UNITHEADER190);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER192_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITHEADER190_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodInfo_in_ctorDefinition1691);
-            methodInfo193=methodInfo();
+            pushFollow(FOLLOW_methodInfo_in_ctorDefinition1704);
+            methodInfo191=methodInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, methodInfo193.getTree());
+            adaptor.addChild(root_2, methodInfo191.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6780,21 +6806,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITBODY194=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_ctorDefinition1719); 
-            UNITBODY194_tree = (CommonTree)adaptor.dupNode(UNITBODY194);
+            UNITBODY192=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_ctorDefinition1732); 
+            UNITBODY192_tree = (CommonTree)adaptor.dupNode(UNITBODY192);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY194_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITBODY192_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_body_in_ctorDefinition1721);
-            body195=body();
+            pushFollow(FOLLOW_body_in_ctorDefinition1734);
+            body193=body();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, body195.getTree());
+            adaptor.addChild(root_2, body193.getTree());
 
 
             match(input, Token.UP, null); 
@@ -6809,16 +6835,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITATTR196=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_ctorDefinition1749); 
-            UNITATTR196_tree = (CommonTree)adaptor.dupNode(UNITATTR196);
+            UNITATTR194=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_ctorDefinition1762); 
+            UNITATTR194_tree = (CommonTree)adaptor.dupNode(UNITATTR194);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR196_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(UNITATTR194_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:36: ( afterMethodInfo )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:425:36: ( afterMethodInfo )?
                 int alt46=2;
                 int LA46_0 = input.LA(1);
 
@@ -6827,15 +6853,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt46) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:422:36: afterMethodInfo
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:425:36: afterMethodInfo
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition1751);
-                        afterMethodInfo197=afterMethodInfo();
+                        pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition1764);
+                        afterMethodInfo195=afterMethodInfo();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, afterMethodInfo197.getTree());
+                        adaptor.addChild(root_2, afterMethodInfo195.getTree());
 
 
                         }
@@ -6885,7 +6911,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "methodDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:430:1: methodDefinition : ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:433:1: methodDefinition : ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
     public final JVMScramblingInformationGatherer.methodDefinition_return methodDefinition() throws RecognitionException {
         JVMScramblingInformationGatherer.methodDefinition_return retval = new JVMScramblingInformationGatherer.methodDefinition_return();
         retval.start = input.LT(1);
@@ -6896,47 +6922,47 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree METHODDECL198=null;
-        CommonTree VMODIFIER199=null;
-        CommonTree MODIFIER201=null;
-        CommonTree GENERICDESC203=null;
-        CommonTree RETVALUE205=null;
-        CommonTree UNITNAME207=null;
-        CommonTree IDENTIFIER208=null;
-        CommonTree THROWCLAUSE210=null;
-        CommonTree UNITHEADER212=null;
-        CommonTree UNITBODY214=null;
-        CommonTree UNITATTR216=null;
-        JVMScramblingInformationGatherer.method_visual_modifier_return method_visual_modifier200 =null;
+        CommonTree METHODDECL196=null;
+        CommonTree VMODIFIER197=null;
+        CommonTree MODIFIER199=null;
+        CommonTree GENERICDESC201=null;
+        CommonTree RETVALUE203=null;
+        CommonTree UNITNAME205=null;
+        CommonTree IDENTIFIER206=null;
+        CommonTree THROWCLAUSE208=null;
+        CommonTree UNITHEADER210=null;
+        CommonTree UNITBODY212=null;
+        CommonTree UNITATTR214=null;
+        JVMScramblingInformationGatherer.method_visual_modifier_return method_visual_modifier198 =null;
 
-        JVMScramblingInformationGatherer.method_modifier_return method_modifier202 =null;
+        JVMScramblingInformationGatherer.method_modifier_return method_modifier200 =null;
 
-        JVMScramblingInformationGatherer.genericDescriptor_return genericDescriptor204 =null;
+        JVMScramblingInformationGatherer.genericDescriptor_return genericDescriptor202 =null;
 
-        JVMScramblingInformationGatherer.type_return type206 =null;
+        JVMScramblingInformationGatherer.type_return type204 =null;
 
-        JVMScramblingInformationGatherer.arguments_return arguments209 =null;
+        JVMScramblingInformationGatherer.arguments_return arguments207 =null;
 
-        JVMScramblingInformationGatherer.throwClauseMethod_return throwClauseMethod211 =null;
+        JVMScramblingInformationGatherer.throwClauseMethod_return throwClauseMethod209 =null;
 
-        JVMScramblingInformationGatherer.methodInfo_return methodInfo213 =null;
+        JVMScramblingInformationGatherer.methodInfo_return methodInfo211 =null;
 
-        JVMScramblingInformationGatherer.body_return body215 =null;
+        JVMScramblingInformationGatherer.body_return body213 =null;
 
-        JVMScramblingInformationGatherer.afterMethodInfo_return afterMethodInfo217 =null;
+        JVMScramblingInformationGatherer.afterMethodInfo_return afterMethodInfo215 =null;
 
 
-        CommonTree METHODDECL198_tree=null;
-        CommonTree VMODIFIER199_tree=null;
-        CommonTree MODIFIER201_tree=null;
-        CommonTree GENERICDESC203_tree=null;
-        CommonTree RETVALUE205_tree=null;
-        CommonTree UNITNAME207_tree=null;
-        CommonTree IDENTIFIER208_tree=null;
-        CommonTree THROWCLAUSE210_tree=null;
-        CommonTree UNITHEADER212_tree=null;
-        CommonTree UNITBODY214_tree=null;
-        CommonTree UNITATTR216_tree=null;
+        CommonTree METHODDECL196_tree=null;
+        CommonTree VMODIFIER197_tree=null;
+        CommonTree MODIFIER199_tree=null;
+        CommonTree GENERICDESC201_tree=null;
+        CommonTree RETVALUE203_tree=null;
+        CommonTree UNITNAME205_tree=null;
+        CommonTree IDENTIFIER206_tree=null;
+        CommonTree THROWCLAUSE208_tree=null;
+        CommonTree UNITHEADER210_tree=null;
+        CommonTree UNITBODY212_tree=null;
+        CommonTree UNITATTR214_tree=null;
         RewriteRuleNodeStream stream_UNITNAME=new RewriteRuleNodeStream(adaptor,"token UNITNAME");
         RewriteRuleNodeStream stream_UNITATTR=new RewriteRuleNodeStream(adaptor,"token UNITATTR");
         RewriteRuleNodeStream stream_UNITHEADER=new RewriteRuleNodeStream(adaptor,"token UNITHEADER");
@@ -6958,8 +6984,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_method_visual_modifier=new RewriteRuleSubtreeStream(adaptor,"rule method_visual_modifier");
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:3: ( ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:5: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:3: ( ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:5: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
             {
             _last = (CommonTree)input.LT(1);
             {
@@ -6967,8 +6993,8 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            METHODDECL198=(CommonTree)match(input,METHODDECL,FOLLOW_METHODDECL_in_methodDefinition1801);  
-            stream_METHODDECL.add(METHODDECL198);
+            METHODDECL196=(CommonTree)match(input,METHODDECL,FOLLOW_METHODDECL_in_methodDefinition1814);  
+            stream_METHODDECL.add(METHODDECL196);
 
 
             match(input, Token.DOWN, null); 
@@ -6978,13 +7004,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VMODIFIER199=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_methodDefinition1804);  
-            stream_VMODIFIER.add(VMODIFIER199);
+            VMODIFIER197=(CommonTree)match(input,VMODIFIER,FOLLOW_VMODIFIER_in_methodDefinition1817);  
+            stream_VMODIFIER.add(VMODIFIER197);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:30: ( method_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:30: ( method_visual_modifier )?
                 int alt47=2;
                 int LA47_0 = input.LA(1);
 
@@ -6993,15 +7019,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt47) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:30: method_visual_modifier
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:30: method_visual_modifier
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition1806);
-                        method_visual_modifier200=method_visual_modifier();
+                        pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition1819);
+                        method_visual_modifier198=method_visual_modifier();
 
                         state._fsp--;
 
-                        stream_method_visual_modifier.add(method_visual_modifier200.getTree());
+                        stream_method_visual_modifier.add(method_visual_modifier198.getTree());
 
                         }
                         break;
@@ -7022,13 +7048,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            MODIFIER201=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_methodDefinition1811);  
-            stream_MODIFIER.add(MODIFIER201);
+            MODIFIER199=(CommonTree)match(input,MODIFIER,FOLLOW_MODIFIER_in_methodDefinition1824);  
+            stream_MODIFIER.add(MODIFIER199);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:66: ( method_modifier )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:66: ( method_modifier )*
                 loop48:
                 do {
                     int alt48=2;
@@ -7041,15 +7067,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt48) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:66: method_modifier
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:66: method_modifier
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_method_modifier_in_methodDefinition1813);
-                	    method_modifier202=method_modifier();
+                	    pushFollow(FOLLOW_method_modifier_in_methodDefinition1826);
+                	    method_modifier200=method_modifier();
 
                 	    state._fsp--;
 
-                	    stream_method_modifier.add(method_modifier202.getTree());
+                	    stream_method_modifier.add(method_modifier200.getTree());
 
                 	    }
                 	    break;
@@ -7073,13 +7099,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            GENERICDESC203=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_methodDefinition1818);  
-            stream_GENERICDESC.add(GENERICDESC203);
+            GENERICDESC201=(CommonTree)match(input,GENERICDESC,FOLLOW_GENERICDESC_in_methodDefinition1831);  
+            stream_GENERICDESC.add(GENERICDESC201);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:98: ( genericDescriptor )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:98: ( genericDescriptor )?
                 int alt49=2;
                 int LA49_0 = input.LA(1);
 
@@ -7088,15 +7114,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt49) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:98: genericDescriptor
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:98: genericDescriptor
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_genericDescriptor_in_methodDefinition1820);
-                        genericDescriptor204=genericDescriptor();
+                        pushFollow(FOLLOW_genericDescriptor_in_methodDefinition1833);
+                        genericDescriptor202=genericDescriptor();
 
                         state._fsp--;
 
-                        stream_genericDescriptor.add(genericDescriptor204.getTree());
+                        stream_genericDescriptor.add(genericDescriptor202.getTree());
 
                         }
                         break;
@@ -7117,18 +7143,18 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RETVALUE205=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_methodDefinition1825);  
-            stream_RETVALUE.add(RETVALUE205);
+            RETVALUE203=(CommonTree)match(input,RETVALUE,FOLLOW_RETVALUE_in_methodDefinition1838);  
+            stream_RETVALUE.add(RETVALUE203);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_type_in_methodDefinition1827);
-            type206=type();
+            pushFollow(FOLLOW_type_in_methodDefinition1840);
+            type204=type();
 
             state._fsp--;
 
-            stream_type.add(type206.getTree());
+            stream_type.add(type204.getTree());
 
             match(input, Token.UP, null); 
             adaptor.addChild(root_1, root_2);
@@ -7142,14 +7168,14 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME207=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_methodDefinition1831);  
-            stream_UNITNAME.add(UNITNAME207);
+            UNITNAME205=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_methodDefinition1844);  
+            stream_UNITNAME.add(UNITNAME205);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER208=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_methodDefinition1833);  
-            stream_IDENTIFIER.add(IDENTIFIER208);
+            IDENTIFIER206=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_methodDefinition1846);  
+            stream_IDENTIFIER.add(IDENTIFIER206);
 
 
             match(input, Token.UP, null); 
@@ -7159,12 +7185,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_arguments_in_methodDefinition1836);
-            arguments209=arguments();
+            pushFollow(FOLLOW_arguments_in_methodDefinition1849);
+            arguments207=arguments();
 
             state._fsp--;
 
-            stream_arguments.add(arguments209.getTree());
+            stream_arguments.add(arguments207.getTree());
 
             _last = (CommonTree)input.LT(1);
             {
@@ -7172,13 +7198,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWCLAUSE210=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_methodDefinition1839);  
-            stream_THROWCLAUSE.add(THROWCLAUSE210);
+            THROWCLAUSE208=(CommonTree)match(input,THROWCLAUSE,FOLLOW_THROWCLAUSE_in_methodDefinition1852);  
+            stream_THROWCLAUSE.add(THROWCLAUSE208);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:182: ( throwClauseMethod )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:182: ( throwClauseMethod )?
                 int alt50=2;
                 int LA50_0 = input.LA(1);
 
@@ -7187,15 +7213,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt50) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:434:182: throwClauseMethod
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:182: throwClauseMethod
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition1841);
-                        throwClauseMethod211=throwClauseMethod();
+                        pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition1854);
+                        throwClauseMethod209=throwClauseMethod();
 
                         state._fsp--;
 
-                        stream_throwClauseMethod.add(throwClauseMethod211.getTree());
+                        stream_throwClauseMethod.add(throwClauseMethod209.getTree());
 
                         }
                         break;
@@ -7216,18 +7242,18 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITHEADER212=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_methodDefinition1870);  
-            stream_UNITHEADER.add(UNITHEADER212);
+            UNITHEADER210=(CommonTree)match(input,UNITHEADER,FOLLOW_UNITHEADER_in_methodDefinition1883);  
+            stream_UNITHEADER.add(UNITHEADER210);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodInfo_in_methodDefinition1872);
-            methodInfo213=methodInfo();
+            pushFollow(FOLLOW_methodInfo_in_methodDefinition1885);
+            methodInfo211=methodInfo();
 
             state._fsp--;
 
-            stream_methodInfo.add(methodInfo213.getTree());
+            stream_methodInfo.add(methodInfo211.getTree());
 
             match(input, Token.UP, null); 
             adaptor.addChild(root_1, root_2);
@@ -7241,13 +7267,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITBODY214=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_methodDefinition1900);  
-            stream_UNITBODY.add(UNITBODY214);
+            UNITBODY212=(CommonTree)match(input,UNITBODY,FOLLOW_UNITBODY_in_methodDefinition1913);  
+            stream_UNITBODY.add(UNITBODY212);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:436:36: ( body )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:439:36: ( body )?
                 int alt51=2;
                 int LA51_0 = input.LA(1);
 
@@ -7256,15 +7282,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt51) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:436:36: body
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:439:36: body
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_body_in_methodDefinition1902);
-                        body215=body();
+                        pushFollow(FOLLOW_body_in_methodDefinition1915);
+                        body213=body();
 
                         state._fsp--;
 
-                        stream_body.add(body215.getTree());
+                        stream_body.add(body213.getTree());
 
                         }
                         break;
@@ -7285,13 +7311,13 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITATTR216=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_methodDefinition1931);  
-            stream_UNITATTR.add(UNITATTR216);
+            UNITATTR214=(CommonTree)match(input,UNITATTR,FOLLOW_UNITATTR_in_methodDefinition1944);  
+            stream_UNITATTR.add(UNITATTR214);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:36: ( afterMethodInfo )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:36: ( afterMethodInfo )?
                 int alt52=2;
                 int LA52_0 = input.LA(1);
 
@@ -7300,15 +7326,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt52) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:437:36: afterMethodInfo
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:36: afterMethodInfo
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition1933);
-                        afterMethodInfo217=afterMethodInfo();
+                        pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition1946);
+                        afterMethodInfo215=afterMethodInfo();
 
                         state._fsp--;
 
-                        stream_afterMethodInfo.add(afterMethodInfo217.getTree());
+                        stream_afterMethodInfo.add(afterMethodInfo215.getTree());
 
                         }
                         break;
@@ -7329,10 +7355,10 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            rename(((classDefinition_scope)classDefinition_stack.peek()).className + "." + (IDENTIFIER208!=null?IDENTIFIER208.getText():null) + ":" + (methodInfo213!=null?methodInfo213.value:null), "method" + ((classBody_scope)classBody_stack.peek()).methodCount);
+            rename(((classDefinition_scope)classDefinition_stack.peek()).className + "." + (IDENTIFIER206!=null?IDENTIFIER206.getText():null) + ":" + (methodInfo211!=null?methodInfo211.value:null), "method" + ((classBody_scope)classBody_stack.peek()).methodCount);
 
             // AST REWRITE
-            // elements: type, UNITHEADER, IDENTIFIER, method_modifier, methodInfo, RETVALUE, METHODDECL, VMODIFIER, UNITNAME, body, THROWCLAUSE, afterMethodInfo, GENERICDESC, arguments, UNITBODY, method_visual_modifier, MODIFIER, throwClauseMethod, genericDescriptor, UNITATTR
+            // elements: method_modifier, MODIFIER, THROWCLAUSE, arguments, RETVALUE, throwClauseMethod, body, UNITHEADER, type, methodInfo, genericDescriptor, UNITATTR, UNITBODY, IDENTIFIER, UNITNAME, METHODDECL, VMODIFIER, method_visual_modifier, GENERICDESC, afterMethodInfo
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -7342,23 +7368,23 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 440:25: -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
+            // 443:25: -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
             {
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:28: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:28: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 stream_METHODDECL.nextNode()
                 , root_1);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:41: ^( VMODIFIER ( method_visual_modifier )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:41: ^( VMODIFIER ( method_visual_modifier )? )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_VMODIFIER.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:53: ( method_visual_modifier )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:53: ( method_visual_modifier )?
                 if ( stream_method_visual_modifier.hasNext() ) {
                     adaptor.addChild(root_2, stream_method_visual_modifier.nextTree());
 
@@ -7368,14 +7394,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:78: ^( MODIFIER ( method_modifier )* )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:78: ^( MODIFIER ( method_modifier )* )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_MODIFIER.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:89: ( method_modifier )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:89: ( method_modifier )*
                 while ( stream_method_modifier.hasNext() ) {
                     adaptor.addChild(root_2, stream_method_modifier.nextTree());
 
@@ -7385,14 +7411,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:107: ^( GENERICDESC ( genericDescriptor )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:107: ^( GENERICDESC ( genericDescriptor )? )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_GENERICDESC.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:121: ( genericDescriptor )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:121: ( genericDescriptor )?
                 if ( stream_genericDescriptor.hasNext() ) {
                     adaptor.addChild(root_2, stream_genericDescriptor.nextTree());
 
@@ -7402,7 +7428,7 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:141: ^( RETVALUE type )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:141: ^( RETVALUE type )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -7414,7 +7440,7 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:158: ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:158: ^( UNITNAME IDENTIFIER[\"method\" + $classBody::ctorCount] )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -7430,14 +7456,14 @@ public TreeAdaptor getTreeAdaptor() {
 
                 adaptor.addChild(root_1, stream_arguments.nextTree());
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:225: ^( THROWCLAUSE ( throwClauseMethod )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:225: ^( THROWCLAUSE ( throwClauseMethod )? )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_THROWCLAUSE.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:440:239: ( throwClauseMethod )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:239: ( throwClauseMethod )?
                 if ( stream_throwClauseMethod.hasNext() ) {
                     adaptor.addChild(root_2, stream_throwClauseMethod.nextTree());
 
@@ -7447,7 +7473,7 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:441:25: ^( UNITHEADER methodInfo )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:444:25: ^( UNITHEADER methodInfo )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -7459,14 +7485,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:442:25: ^( UNITBODY ( body )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:445:25: ^( UNITBODY ( body )? )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_UNITBODY.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:442:36: ( body )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:445:36: ( body )?
                 if ( stream_body.hasNext() ) {
                     adaptor.addChild(root_2, stream_body.nextTree());
 
@@ -7476,14 +7502,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:25: ^( UNITATTR ( afterMethodInfo )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:446:25: ^( UNITATTR ( afterMethodInfo )? )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 stream_UNITATTR.nextNode()
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:443:36: ( afterMethodInfo )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:446:36: ( afterMethodInfo )?
                 if ( stream_afterMethodInfo.hasNext() ) {
                     adaptor.addChild(root_2, stream_afterMethodInfo.nextTree());
 
@@ -7530,7 +7556,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "methodInfo"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:448:1: methodInfo returns [String value] : ^( STANDINTOKEN methodSignatureInfo flags ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:451:1: methodInfo returns [String value] : ^( STANDINTOKEN methodSignatureInfo flags ) ;
     public final JVMScramblingInformationGatherer.methodInfo_return methodInfo() throws RecognitionException {
         JVMScramblingInformationGatherer.methodInfo_return retval = new JVMScramblingInformationGatherer.methodInfo_return();
         retval.start = input.LT(1);
@@ -7541,17 +7567,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree STANDINTOKEN218=null;
-        JVMScramblingInformationGatherer.methodSignatureInfo_return methodSignatureInfo219 =null;
+        CommonTree STANDINTOKEN216=null;
+        JVMScramblingInformationGatherer.methodSignatureInfo_return methodSignatureInfo217 =null;
 
-        JVMScramblingInformationGatherer.flags_return flags220 =null;
+        JVMScramblingInformationGatherer.flags_return flags218 =null;
 
 
-        CommonTree STANDINTOKEN218_tree=null;
+        CommonTree STANDINTOKEN216_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:449:3: ( ^( STANDINTOKEN methodSignatureInfo flags ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:449:5: ^( STANDINTOKEN methodSignatureInfo flags )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:452:3: ( ^( STANDINTOKEN methodSignatureInfo flags ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:452:5: ^( STANDINTOKEN methodSignatureInfo flags )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -7562,30 +7588,30 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            STANDINTOKEN218=(CommonTree)match(input,STANDINTOKEN,FOLLOW_STANDINTOKEN_in_methodInfo2221); 
-            STANDINTOKEN218_tree = (CommonTree)adaptor.dupNode(STANDINTOKEN218);
+            STANDINTOKEN216=(CommonTree)match(input,STANDINTOKEN,FOLLOW_STANDINTOKEN_in_methodInfo2234); 
+            STANDINTOKEN216_tree = (CommonTree)adaptor.dupNode(STANDINTOKEN216);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(STANDINTOKEN218_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(STANDINTOKEN216_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo2223);
-            methodSignatureInfo219=methodSignatureInfo();
+            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo2236);
+            methodSignatureInfo217=methodSignatureInfo();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, methodSignatureInfo219.getTree());
+            adaptor.addChild(root_1, methodSignatureInfo217.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_flags_in_methodInfo2225);
-            flags220=flags();
+            pushFollow(FOLLOW_flags_in_methodInfo2238);
+            flags218=flags();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, flags220.getTree());
+            adaptor.addChild(root_1, flags218.getTree());
 
 
             match(input, Token.UP, null); 
@@ -7594,7 +7620,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            retval.value = (methodSignatureInfo219!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(methodSignatureInfo219.start),input.getTreeAdaptor().getTokenStopIndex(methodSignatureInfo219.start))):null);
+            retval.value = (methodSignatureInfo217!=null?methodSignatureInfo217.value:null);
 
             }
 
@@ -7621,7 +7647,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "afterMethodInfo"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:452:1: afterMethodInfo : ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:455:1: afterMethodInfo : ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ ;
     public final JVMScramblingInformationGatherer.afterMethodInfo_return afterMethodInfo() throws RecognitionException {
         JVMScramblingInformationGatherer.afterMethodInfo_return retval = new JVMScramblingInformationGatherer.afterMethodInfo_return();
         retval.start = input.LT(1);
@@ -7632,42 +7658,42 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Deprecated221=null;
-        CommonTree BOOLEANLITERAL222=null;
-        CommonTree Signature223=null;
-        CommonTree CPINDEX224=null;
-        CommonTree Exceptions229=null;
-        CommonTree Synthetic231=null;
-        CommonTree BOOLEANLITERAL232=null;
-        JVMScramblingInformationGatherer.runtimeInvisibleParameterAnnotations_return runtimeInvisibleParameterAnnotations225 =null;
+        CommonTree Deprecated219=null;
+        CommonTree BOOLEANLITERAL220=null;
+        CommonTree Signature221=null;
+        CommonTree CPINDEX222=null;
+        CommonTree Exceptions227=null;
+        CommonTree Synthetic229=null;
+        CommonTree BOOLEANLITERAL230=null;
+        JVMScramblingInformationGatherer.runtimeInvisibleParameterAnnotations_return runtimeInvisibleParameterAnnotations223 =null;
 
-        JVMScramblingInformationGatherer.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info226 =null;
+        JVMScramblingInformationGatherer.runtimeVisibleAnnotations_info_return runtimeVisibleAnnotations_info224 =null;
 
-        JVMScramblingInformationGatherer.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations227 =null;
+        JVMScramblingInformationGatherer.runtimeInvisibleAnnotations_return runtimeInvisibleAnnotations225 =null;
 
-        JVMScramblingInformationGatherer.runtimeVisibleParameterAnnotations_return runtimeVisibleParameterAnnotations228 =null;
+        JVMScramblingInformationGatherer.runtimeVisibleParameterAnnotations_return runtimeVisibleParameterAnnotations226 =null;
 
-        JVMScramblingInformationGatherer.throwClause_return throwClause230 =null;
+        JVMScramblingInformationGatherer.throwClause_return throwClause228 =null;
 
-        JVMScramblingInformationGatherer.annotationDefault_return annotationDefault233 =null;
+        JVMScramblingInformationGatherer.annotationDefault_return annotationDefault231 =null;
 
 
-        CommonTree Deprecated221_tree=null;
-        CommonTree BOOLEANLITERAL222_tree=null;
-        CommonTree Signature223_tree=null;
-        CommonTree CPINDEX224_tree=null;
-        CommonTree Exceptions229_tree=null;
-        CommonTree Synthetic231_tree=null;
-        CommonTree BOOLEANLITERAL232_tree=null;
+        CommonTree Deprecated219_tree=null;
+        CommonTree BOOLEANLITERAL220_tree=null;
+        CommonTree Signature221_tree=null;
+        CommonTree CPINDEX222_tree=null;
+        CommonTree Exceptions227_tree=null;
+        CommonTree Synthetic229_tree=null;
+        CommonTree BOOLEANLITERAL230_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:453:3: ( ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:453:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:456:3: ( ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:456:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:453:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:456:5: ( ^( Deprecated BOOLEANLITERAL ) | ^( Signature CPINDEX ) | runtimeInvisibleParameterAnnotations | runtimeVisibleAnnotations_info | runtimeInvisibleAnnotations | runtimeVisibleParameterAnnotations | ^( Exceptions throwClause ) | ^( Synthetic BOOLEANLITERAL ) | annotationDefault )+
             int cnt53=0;
             loop53:
             do {
@@ -7723,7 +7749,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt53) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:453:6: ^( Deprecated BOOLEANLITERAL )
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:456:6: ^( Deprecated BOOLEANLITERAL )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7731,20 +7757,20 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Deprecated221=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfo2243); 
-            	    Deprecated221_tree = (CommonTree)adaptor.dupNode(Deprecated221);
+            	    Deprecated219=(CommonTree)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfo2256); 
+            	    Deprecated219_tree = (CommonTree)adaptor.dupNode(Deprecated219);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated221_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Deprecated219_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    BOOLEANLITERAL222=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2246); 
-            	    BOOLEANLITERAL222_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL222);
+            	    BOOLEANLITERAL220=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2259); 
+            	    BOOLEANLITERAL220_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL220);
 
 
-            	    adaptor.addChild(root_1, BOOLEANLITERAL222_tree);
+            	    adaptor.addChild(root_1, BOOLEANLITERAL220_tree);
 
 
             	    match(input, Token.UP, null); 
@@ -7756,7 +7782,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:454:5: ^( Signature CPINDEX )
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:457:5: ^( Signature CPINDEX )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7764,20 +7790,20 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Signature223=(CommonTree)match(input,Signature,FOLLOW_Signature_in_afterMethodInfo2254); 
-            	    Signature223_tree = (CommonTree)adaptor.dupNode(Signature223);
+            	    Signature221=(CommonTree)match(input,Signature,FOLLOW_Signature_in_afterMethodInfo2267); 
+            	    Signature221_tree = (CommonTree)adaptor.dupNode(Signature221);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Signature223_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Signature221_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    CPINDEX224=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfo2256); 
-            	    CPINDEX224_tree = (CommonTree)adaptor.dupNode(CPINDEX224);
+            	    CPINDEX222=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfo2269); 
+            	    CPINDEX222_tree = (CommonTree)adaptor.dupNode(CPINDEX222);
 
 
-            	    adaptor.addChild(root_1, CPINDEX224_tree);
+            	    adaptor.addChild(root_1, CPINDEX222_tree);
 
 
             	    match(input, Token.UP, null); 
@@ -7789,63 +7815,63 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 3 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:455:5: runtimeInvisibleParameterAnnotations
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:458:5: runtimeInvisibleParameterAnnotations
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo2263);
-            	    runtimeInvisibleParameterAnnotations225=runtimeInvisibleParameterAnnotations();
+            	    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo2276);
+            	    runtimeInvisibleParameterAnnotations223=runtimeInvisibleParameterAnnotations();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeInvisibleParameterAnnotations225.getTree());
+            	    adaptor.addChild(root_0, runtimeInvisibleParameterAnnotations223.getTree());
 
 
             	    }
             	    break;
             	case 4 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:456:5: runtimeVisibleAnnotations_info
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:459:5: runtimeVisibleAnnotations_info
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo2269);
-            	    runtimeVisibleAnnotations_info226=runtimeVisibleAnnotations_info();
+            	    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo2282);
+            	    runtimeVisibleAnnotations_info224=runtimeVisibleAnnotations_info();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeVisibleAnnotations_info226.getTree());
+            	    adaptor.addChild(root_0, runtimeVisibleAnnotations_info224.getTree());
 
 
             	    }
             	    break;
             	case 5 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:457:5: runtimeInvisibleAnnotations
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:460:5: runtimeInvisibleAnnotations
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo2275);
-            	    runtimeInvisibleAnnotations227=runtimeInvisibleAnnotations();
+            	    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo2288);
+            	    runtimeInvisibleAnnotations225=runtimeInvisibleAnnotations();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeInvisibleAnnotations227.getTree());
+            	    adaptor.addChild(root_0, runtimeInvisibleAnnotations225.getTree());
 
 
             	    }
             	    break;
             	case 6 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:458:5: runtimeVisibleParameterAnnotations
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:461:5: runtimeVisibleParameterAnnotations
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo2281);
-            	    runtimeVisibleParameterAnnotations228=runtimeVisibleParameterAnnotations();
+            	    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo2294);
+            	    runtimeVisibleParameterAnnotations226=runtimeVisibleParameterAnnotations();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, runtimeVisibleParameterAnnotations228.getTree());
+            	    adaptor.addChild(root_0, runtimeVisibleParameterAnnotations226.getTree());
 
 
             	    }
             	    break;
             	case 7 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:459:5: ^( Exceptions throwClause )
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:462:5: ^( Exceptions throwClause )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7853,21 +7879,21 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Exceptions229=(CommonTree)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfo2288); 
-            	    Exceptions229_tree = (CommonTree)adaptor.dupNode(Exceptions229);
+            	    Exceptions227=(CommonTree)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfo2301); 
+            	    Exceptions227_tree = (CommonTree)adaptor.dupNode(Exceptions227);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Exceptions229_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Exceptions227_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_throwClause_in_afterMethodInfo2291);
-            	    throwClause230=throwClause();
+            	    pushFollow(FOLLOW_throwClause_in_afterMethodInfo2304);
+            	    throwClause228=throwClause();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, throwClause230.getTree());
+            	    adaptor.addChild(root_1, throwClause228.getTree());
 
 
             	    match(input, Token.UP, null); 
@@ -7879,7 +7905,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 8 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:460:5: ^( Synthetic BOOLEANLITERAL )
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:463:5: ^( Synthetic BOOLEANLITERAL )
             	    {
             	    _last = (CommonTree)input.LT(1);
             	    {
@@ -7887,20 +7913,20 @@ public TreeAdaptor getTreeAdaptor() {
             	    CommonTree _first_1 = null;
             	    CommonTree root_1 = (CommonTree)adaptor.nil();
             	    _last = (CommonTree)input.LT(1);
-            	    Synthetic231=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfo2299); 
-            	    Synthetic231_tree = (CommonTree)adaptor.dupNode(Synthetic231);
+            	    Synthetic229=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfo2312); 
+            	    Synthetic229_tree = (CommonTree)adaptor.dupNode(Synthetic229);
 
 
-            	    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic231_tree, root_1);
+            	    root_1 = (CommonTree)adaptor.becomeRoot(Synthetic229_tree, root_1);
 
 
             	    match(input, Token.DOWN, null); 
             	    _last = (CommonTree)input.LT(1);
-            	    BOOLEANLITERAL232=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2301); 
-            	    BOOLEANLITERAL232_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL232);
+            	    BOOLEANLITERAL230=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2314); 
+            	    BOOLEANLITERAL230_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL230);
 
 
-            	    adaptor.addChild(root_1, BOOLEANLITERAL232_tree);
+            	    adaptor.addChild(root_1, BOOLEANLITERAL230_tree);
 
 
             	    match(input, Token.UP, null); 
@@ -7912,15 +7938,15 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    break;
             	case 9 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:461:5: annotationDefault
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:464:5: annotationDefault
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfo2308);
-            	    annotationDefault233=annotationDefault();
+            	    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfo2321);
+            	    annotationDefault231=annotationDefault();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, annotationDefault233.getTree());
+            	    adaptor.addChild(root_0, annotationDefault231.getTree());
 
 
             	    }
@@ -7961,7 +7987,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "annotationDefault"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:464:1: annotationDefault : ^( AnnotationDefault DefaultValue annotationValue ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:467:1: annotationDefault : ^( AnnotationDefault DefaultValue annotationValue ) ;
     public final JVMScramblingInformationGatherer.annotationDefault_return annotationDefault() throws RecognitionException {
         JVMScramblingInformationGatherer.annotationDefault_return retval = new JVMScramblingInformationGatherer.annotationDefault_return();
         retval.start = input.LT(1);
@@ -7972,17 +7998,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree AnnotationDefault234=null;
-        CommonTree DefaultValue235=null;
-        JVMScramblingInformationGatherer.annotationValue_return annotationValue236 =null;
+        CommonTree AnnotationDefault232=null;
+        CommonTree DefaultValue233=null;
+        JVMScramblingInformationGatherer.annotationValue_return annotationValue234 =null;
 
 
-        CommonTree AnnotationDefault234_tree=null;
-        CommonTree DefaultValue235_tree=null;
+        CommonTree AnnotationDefault232_tree=null;
+        CommonTree DefaultValue233_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:465:3: ( ^( AnnotationDefault DefaultValue annotationValue ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:465:5: ^( AnnotationDefault DefaultValue annotationValue )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:468:3: ( ^( AnnotationDefault DefaultValue annotationValue ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:468:5: ^( AnnotationDefault DefaultValue annotationValue )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -7993,29 +8019,29 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            AnnotationDefault234=(CommonTree)match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault2324); 
-            AnnotationDefault234_tree = (CommonTree)adaptor.dupNode(AnnotationDefault234);
+            AnnotationDefault232=(CommonTree)match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault2337); 
+            AnnotationDefault232_tree = (CommonTree)adaptor.dupNode(AnnotationDefault232);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(AnnotationDefault234_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(AnnotationDefault232_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            DefaultValue235=(CommonTree)match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault2327); 
-            DefaultValue235_tree = (CommonTree)adaptor.dupNode(DefaultValue235);
+            DefaultValue233=(CommonTree)match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault2340); 
+            DefaultValue233_tree = (CommonTree)adaptor.dupNode(DefaultValue233);
 
 
-            adaptor.addChild(root_1, DefaultValue235_tree);
+            adaptor.addChild(root_1, DefaultValue233_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_annotationValue_in_annotationDefault2329);
-            annotationValue236=annotationValue();
+            pushFollow(FOLLOW_annotationValue_in_annotationDefault2342);
+            annotationValue234=annotationValue();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, annotationValue236.getTree());
+            adaptor.addChild(root_1, annotationValue234.getTree());
 
 
             match(input, Token.UP, null); 
@@ -8043,13 +8069,14 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     public static class methodSignatureInfo_return extends TreeRuleReturnScope {
+        public String value;
         CommonTree tree;
         public Object getTree() { return tree; }
     };
 
 
     // $ANTLR start "methodSignatureInfo"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:468:1: methodSignatureInfo : ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:471:1: methodSignatureInfo returns [String value] : ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) ;
     public final JVMScramblingInformationGatherer.methodSignatureInfo_return methodSignatureInfo() throws RecognitionException {
         JVMScramblingInformationGatherer.methodSignatureInfo_return retval = new JVMScramblingInformationGatherer.methodSignatureInfo_return();
         retval.start = input.LT(1);
@@ -8060,21 +8087,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Signature237=null;
-        CommonTree PARAMDESC238=null;
-        CommonTree RETDESC240=null;
-        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType239 =null;
+        CommonTree Signature235=null;
+        CommonTree PARAMDESC236=null;
+        CommonTree RETDESC238=null;
+        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType237 =null;
 
-        JVMScramblingInformationGatherer.returnDescriptor_return returnDescriptor241 =null;
+        JVMScramblingInformationGatherer.returnDescriptor_return returnDescriptor239 =null;
 
 
-        CommonTree Signature237_tree=null;
-        CommonTree PARAMDESC238_tree=null;
-        CommonTree RETDESC240_tree=null;
+        CommonTree Signature235_tree=null;
+        CommonTree PARAMDESC236_tree=null;
+        CommonTree RETDESC238_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:469:3: ( ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:469:5: ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:472:3: ( ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:472:5: ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -8085,11 +8112,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Signature237=(CommonTree)match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo2346); 
-            Signature237_tree = (CommonTree)adaptor.dupNode(Signature237);
+            Signature235=(CommonTree)match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo2363); 
+            Signature235_tree = (CommonTree)adaptor.dupNode(Signature235);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Signature237_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Signature235_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -8099,16 +8126,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            PARAMDESC238=(CommonTree)match(input,PARAMDESC,FOLLOW_PARAMDESC_in_methodSignatureInfo2349); 
-            PARAMDESC238_tree = (CommonTree)adaptor.dupNode(PARAMDESC238);
+            PARAMDESC236=(CommonTree)match(input,PARAMDESC,FOLLOW_PARAMDESC_in_methodSignatureInfo2366); 
+            PARAMDESC236_tree = (CommonTree)adaptor.dupNode(PARAMDESC236);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(PARAMDESC238_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(PARAMDESC236_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:469:29: ( bytecodeType )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:472:29: ( bytecodeType )*
                 loop54:
                 do {
                     int alt54=2;
@@ -8121,15 +8148,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt54) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:469:29: bytecodeType
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:472:29: bytecodeType
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo2351);
-                	    bytecodeType239=bytecodeType();
+                	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo2368);
+                	    bytecodeType237=bytecodeType();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_2, bytecodeType239.getTree());
+                	    adaptor.addChild(root_2, bytecodeType237.getTree());
 
 
                 	    }
@@ -8154,21 +8181,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            RETDESC240=(CommonTree)match(input,RETDESC,FOLLOW_RETDESC_in_methodSignatureInfo2356); 
-            RETDESC240_tree = (CommonTree)adaptor.dupNode(RETDESC240);
+            RETDESC238=(CommonTree)match(input,RETDESC,FOLLOW_RETDESC_in_methodSignatureInfo2373); 
+            RETDESC238_tree = (CommonTree)adaptor.dupNode(RETDESC238);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(RETDESC240_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(RETDESC238_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo2358);
-            returnDescriptor241=returnDescriptor();
+            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo2375);
+            returnDescriptor239=returnDescriptor();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, returnDescriptor241.getTree());
+            adaptor.addChild(root_2, returnDescriptor239.getTree());
 
 
             match(input, Token.UP, null); 
@@ -8182,6 +8209,8 @@ public TreeAdaptor getTreeAdaptor() {
             _last = _save_last_1;
             }
 
+
+            retval.value = "(" + (((bytecodeType237!=null?bytecodeType237.value:null) == null) ? "" : (bytecodeType237!=null?bytecodeType237.value:null)) + ")" + (returnDescriptor239!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(returnDescriptor239.start),input.getTreeAdaptor().getTokenStopIndex(returnDescriptor239.start))):null);
 
             }
 
@@ -8208,7 +8237,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "returnDescriptor"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:472:1: returnDescriptor : ( bytecodeType | VoidType );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:476:1: returnDescriptor : ( bytecodeType | VoidType );
     public final JVMScramblingInformationGatherer.returnDescriptor_return returnDescriptor() throws RecognitionException {
         JVMScramblingInformationGatherer.returnDescriptor_return retval = new JVMScramblingInformationGatherer.returnDescriptor_return();
         retval.start = input.LT(1);
@@ -8219,14 +8248,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree VoidType243=null;
-        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType242 =null;
+        CommonTree VoidType241=null;
+        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType240 =null;
 
 
-        CommonTree VoidType243_tree=null;
+        CommonTree VoidType241_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:473:3: ( bytecodeType | VoidType )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:477:3: ( bytecodeType | VoidType )
             int alt55=2;
             int LA55_0 = input.LA(1);
 
@@ -8245,34 +8274,34 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt55) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:473:5: bytecodeType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:477:5: bytecodeType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor2373);
-                    bytecodeType242=bytecodeType();
+                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor2395);
+                    bytecodeType240=bytecodeType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeType242.getTree());
+                    adaptor.addChild(root_0, bytecodeType240.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:473:20: VoidType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:477:20: VoidType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    VoidType243=(CommonTree)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor2377); 
-                    VoidType243_tree = (CommonTree)adaptor.dupNode(VoidType243);
+                    VoidType241=(CommonTree)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor2399); 
+                    VoidType241_tree = (CommonTree)adaptor.dupNode(VoidType241);
 
 
-                    adaptor.addChild(root_0, VoidType243_tree);
+                    adaptor.addChild(root_0, VoidType241_tree);
 
 
                     }
@@ -8302,7 +8331,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "method_modifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:476:1: method_modifier : ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:480:1: method_modifier : ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP );
     public final JVMScramblingInformationGatherer.method_modifier_return method_modifier() throws RecognitionException {
         JVMScramblingInformationGatherer.method_modifier_return retval = new JVMScramblingInformationGatherer.method_modifier_return();
         retval.start = input.LT(1);
@@ -8313,26 +8342,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set244=null;
+        CommonTree set242=null;
 
-        CommonTree set244_tree=null;
+        CommonTree set242_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:477:3: ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:481:3: ( ABSTRACT | FINAL | STATIC | SYNCHRONIZED | NATIVE | STRICTFP )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set244=(CommonTree)input.LT(1);
+            set242=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==ABSTRACT||input.LA(1)==FINAL||input.LA(1)==NATIVE||input.LA(1)==STATIC||input.LA(1)==STRICTFP||input.LA(1)==SYNCHRONIZED ) {
                 input.consume();
-                set244_tree = (CommonTree)adaptor.dupNode(set244);
+                set242_tree = (CommonTree)adaptor.dupNode(set242);
 
 
-                adaptor.addChild(root_0, set244_tree);
+                adaptor.addChild(root_0, set242_tree);
 
                 state.errorRecovery=false;
             }
@@ -8368,7 +8397,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "method_visual_modifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:480:1: method_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:484:1: method_visual_modifier : ( PUBLIC | PRIVATE | PROTECTED );
     public final JVMScramblingInformationGatherer.method_visual_modifier_return method_visual_modifier() throws RecognitionException {
         JVMScramblingInformationGatherer.method_visual_modifier_return retval = new JVMScramblingInformationGatherer.method_visual_modifier_return();
         retval.start = input.LT(1);
@@ -8379,26 +8408,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set245=null;
+        CommonTree set243=null;
 
-        CommonTree set245_tree=null;
+        CommonTree set243_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:481:3: ( PUBLIC | PRIVATE | PROTECTED )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:485:3: ( PUBLIC | PRIVATE | PROTECTED )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set245=(CommonTree)input.LT(1);
+            set243=(CommonTree)input.LT(1);
 
             if ( (input.LA(1) >= PRIVATE && input.LA(1) <= PUBLIC) ) {
                 input.consume();
-                set245_tree = (CommonTree)adaptor.dupNode(set245);
+                set243_tree = (CommonTree)adaptor.dupNode(set243);
 
 
-                adaptor.addChild(root_0, set245_tree);
+                adaptor.addChild(root_0, set243_tree);
 
                 state.errorRecovery=false;
             }
@@ -8434,7 +8463,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "arguments"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:484:1: arguments : ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:488:1: arguments : ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) ;
     public final JVMScramblingInformationGatherer.arguments_return arguments() throws RecognitionException {
         JVMScramblingInformationGatherer.arguments_return retval = new JVMScramblingInformationGatherer.arguments_return();
         retval.start = input.LT(1);
@@ -8445,21 +8474,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree UNITARGUMENTS246=null;
+        CommonTree UNITARGUMENTS244=null;
+        CommonTree DOT246=null;
+        CommonTree DOT247=null;
         CommonTree DOT248=null;
-        CommonTree DOT249=null;
-        CommonTree DOT250=null;
-        JVMScramblingInformationGatherer.typeList_return typeList247 =null;
+        JVMScramblingInformationGatherer.typeList_return typeList245 =null;
 
 
-        CommonTree UNITARGUMENTS246_tree=null;
+        CommonTree UNITARGUMENTS244_tree=null;
+        CommonTree DOT246_tree=null;
+        CommonTree DOT247_tree=null;
         CommonTree DOT248_tree=null;
-        CommonTree DOT249_tree=null;
-        CommonTree DOT250_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:485:3: ( ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:485:5: ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:489:3: ( ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:489:5: ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -8470,16 +8499,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITARGUMENTS246=(CommonTree)match(input,UNITARGUMENTS,FOLLOW_UNITARGUMENTS_in_arguments2449); 
-            UNITARGUMENTS246_tree = (CommonTree)adaptor.dupNode(UNITARGUMENTS246);
+            UNITARGUMENTS244=(CommonTree)match(input,UNITARGUMENTS,FOLLOW_UNITARGUMENTS_in_arguments2471); 
+            UNITARGUMENTS244_tree = (CommonTree)adaptor.dupNode(UNITARGUMENTS244);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(UNITARGUMENTS246_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(UNITARGUMENTS244_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:485:21: ( typeList )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:489:21: ( typeList )?
                 int alt56=2;
                 int LA56_0 = input.LA(1);
 
@@ -8488,15 +8517,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt56) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:485:21: typeList
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:489:21: typeList
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeList_in_arguments2451);
-                        typeList247=typeList();
+                        pushFollow(FOLLOW_typeList_in_arguments2473);
+                        typeList245=typeList();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, typeList247.getTree());
+                        adaptor.addChild(root_1, typeList245.getTree());
 
 
                         }
@@ -8505,7 +8534,7 @@ public TreeAdaptor getTreeAdaptor() {
                 }
 
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:485:31: ( DOT DOT DOT )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:489:31: ( DOT DOT DOT )?
                 int alt57=2;
                 int LA57_0 = input.LA(1);
 
@@ -8514,30 +8543,30 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt57) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:485:32: DOT DOT DOT
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:489:32: DOT DOT DOT
                         {
                         _last = (CommonTree)input.LT(1);
-                        DOT248=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2455); 
+                        DOT246=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2477); 
+                        DOT246_tree = (CommonTree)adaptor.dupNode(DOT246);
+
+
+                        adaptor.addChild(root_1, DOT246_tree);
+
+
+                        _last = (CommonTree)input.LT(1);
+                        DOT247=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2479); 
+                        DOT247_tree = (CommonTree)adaptor.dupNode(DOT247);
+
+
+                        adaptor.addChild(root_1, DOT247_tree);
+
+
+                        _last = (CommonTree)input.LT(1);
+                        DOT248=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2481); 
                         DOT248_tree = (CommonTree)adaptor.dupNode(DOT248);
 
 
                         adaptor.addChild(root_1, DOT248_tree);
-
-
-                        _last = (CommonTree)input.LT(1);
-                        DOT249=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2457); 
-                        DOT249_tree = (CommonTree)adaptor.dupNode(DOT249);
-
-
-                        adaptor.addChild(root_1, DOT249_tree);
-
-
-                        _last = (CommonTree)input.LT(1);
-                        DOT250=(CommonTree)match(input,DOT,FOLLOW_DOT_in_arguments2459); 
-                        DOT250_tree = (CommonTree)adaptor.dupNode(DOT250);
-
-
-                        adaptor.addChild(root_1, DOT250_tree);
 
 
                         }
@@ -8578,7 +8607,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "body"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:492:1: body : ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )* ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:496:1: body : ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )* ;
     public final JVMScramblingInformationGatherer.body_return body() throws RecognitionException {
         JVMScramblingInformationGatherer.body_return retval = new JVMScramblingInformationGatherer.body_return();
         retval.start = input.LT(1);
@@ -8589,26 +8618,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree Synthetic251=null;
-        CommonTree BOOLEANLITERAL252=null;
-        CommonTree Code253=null;
-        JVMScramblingInformationGatherer.codeBlock_return codeBlock254 =null;
+        CommonTree Synthetic249=null;
+        CommonTree BOOLEANLITERAL250=null;
+        CommonTree Code251=null;
+        JVMScramblingInformationGatherer.codeBlock_return codeBlock252 =null;
 
-        JVMScramblingInformationGatherer.bodyExtension_return bodyExtension255 =null;
+        JVMScramblingInformationGatherer.bodyExtension_return bodyExtension253 =null;
 
 
-        CommonTree Synthetic251_tree=null;
-        CommonTree BOOLEANLITERAL252_tree=null;
-        CommonTree Code253_tree=null;
+        CommonTree Synthetic249_tree=null;
+        CommonTree BOOLEANLITERAL250_tree=null;
+        CommonTree Code251_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:493:3: ( ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )* )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:493:5: ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:497:3: ( ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )* )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:497:5: ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:493:5: ( Synthetic BOOLEANLITERAL )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:497:5: ( Synthetic BOOLEANLITERAL )?
             int alt58=2;
             int LA58_0 = input.LA(1);
 
@@ -8617,22 +8646,22 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt58) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:493:6: Synthetic BOOLEANLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:497:6: Synthetic BOOLEANLITERAL
                     {
                     _last = (CommonTree)input.LT(1);
-                    Synthetic251=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_body2484); 
-                    Synthetic251_tree = (CommonTree)adaptor.dupNode(Synthetic251);
+                    Synthetic249=(CommonTree)match(input,Synthetic,FOLLOW_Synthetic_in_body2506); 
+                    Synthetic249_tree = (CommonTree)adaptor.dupNode(Synthetic249);
 
 
-                    adaptor.addChild(root_0, Synthetic251_tree);
+                    adaptor.addChild(root_0, Synthetic249_tree);
 
 
                     _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL252=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body2486); 
-                    BOOLEANLITERAL252_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL252);
+                    BOOLEANLITERAL250=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body2508); 
+                    BOOLEANLITERAL250_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL250);
 
 
-                    adaptor.addChild(root_0, BOOLEANLITERAL252_tree);
+                    adaptor.addChild(root_0, BOOLEANLITERAL250_tree);
 
 
                     }
@@ -8647,21 +8676,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            Code253=(CommonTree)match(input,Code,FOLLOW_Code_in_body2491); 
-            Code253_tree = (CommonTree)adaptor.dupNode(Code253);
+            Code251=(CommonTree)match(input,Code,FOLLOW_Code_in_body2513); 
+            Code251_tree = (CommonTree)adaptor.dupNode(Code251);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(Code253_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(Code251_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_codeBlock_in_body2493);
-            codeBlock254=codeBlock();
+            pushFollow(FOLLOW_codeBlock_in_body2515);
+            codeBlock252=codeBlock();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, codeBlock254.getTree());
+            adaptor.addChild(root_1, codeBlock252.getTree());
 
 
             match(input, Token.UP, null); 
@@ -8670,7 +8699,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:493:51: ( bodyExtension )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:497:51: ( bodyExtension )*
             loop59:
             do {
                 int alt59=2;
@@ -8683,15 +8712,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt59) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:493:51: bodyExtension
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:497:51: bodyExtension
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bodyExtension_in_body2496);
-            	    bodyExtension255=bodyExtension();
+            	    pushFollow(FOLLOW_bodyExtension_in_body2518);
+            	    bodyExtension253=bodyExtension();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, bodyExtension255.getTree());
+            	    adaptor.addChild(root_0, bodyExtension253.getTree());
 
 
             	    }
@@ -8728,7 +8757,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bodyExtension"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:496:1: bodyExtension : ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:500:1: bodyExtension : ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) ;
     public final JVMScramblingInformationGatherer.bodyExtension_return bodyExtension() throws RecognitionException {
         JVMScramblingInformationGatherer.bodyExtension_return retval = new JVMScramblingInformationGatherer.bodyExtension_return();
         retval.start = input.LT(1);
@@ -8739,40 +8768,40 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ExceptionTable256=null;
-        CommonTree LineNumberTable258=null;
-        CommonTree LocalVariableTable260=null;
-        CommonTree LocalVariableTypeTable262=null;
-        CommonTree StackMapTable264=null;
-        CommonTree StackMap266=null;
-        JVMScramblingInformationGatherer.exceptionTable_return exceptionTable257 =null;
+        CommonTree ExceptionTable254=null;
+        CommonTree LineNumberTable256=null;
+        CommonTree LocalVariableTable258=null;
+        CommonTree LocalVariableTypeTable260=null;
+        CommonTree StackMapTable262=null;
+        CommonTree StackMap264=null;
+        JVMScramblingInformationGatherer.exceptionTable_return exceptionTable255 =null;
 
-        JVMScramblingInformationGatherer.lineNumberTable_return lineNumberTable259 =null;
+        JVMScramblingInformationGatherer.lineNumberTable_return lineNumberTable257 =null;
+
+        JVMScramblingInformationGatherer.localVariableTable_return localVariableTable259 =null;
 
         JVMScramblingInformationGatherer.localVariableTable_return localVariableTable261 =null;
 
-        JVMScramblingInformationGatherer.localVariableTable_return localVariableTable263 =null;
+        JVMScramblingInformationGatherer.stackMapTable_return stackMapTable263 =null;
 
-        JVMScramblingInformationGatherer.stackMapTable_return stackMapTable265 =null;
-
-        JVMScramblingInformationGatherer.stackMapTypeTable_return stackMapTypeTable267 =null;
+        JVMScramblingInformationGatherer.stackMapTypeTable_return stackMapTypeTable265 =null;
 
 
-        CommonTree ExceptionTable256_tree=null;
-        CommonTree LineNumberTable258_tree=null;
-        CommonTree LocalVariableTable260_tree=null;
-        CommonTree LocalVariableTypeTable262_tree=null;
-        CommonTree StackMapTable264_tree=null;
-        CommonTree StackMap266_tree=null;
+        CommonTree ExceptionTable254_tree=null;
+        CommonTree LineNumberTable256_tree=null;
+        CommonTree LocalVariableTable258_tree=null;
+        CommonTree LocalVariableTypeTable260_tree=null;
+        CommonTree StackMapTable262_tree=null;
+        CommonTree StackMap264_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:497:3: ( ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:498:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:501:3: ( ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:502:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:498:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:502:3: ( ^( ExceptionTable exceptionTable ) | ^( LineNumberTable ( lineNumberTable )? ) | ^( LocalVariableTable localVariableTable ) | ^( LocalVariableTypeTable localVariableTable ) | ^( StackMapTable stackMapTable ) | ^( StackMap stackMapTypeTable ) )
             int alt61=6;
             switch ( input.LA(1) ) {
             case ExceptionTable:
@@ -8815,7 +8844,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt61) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:498:5: ^( ExceptionTable exceptionTable )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:502:5: ^( ExceptionTable exceptionTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8823,21 +8852,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    ExceptionTable256=(CommonTree)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension2517); 
-                    ExceptionTable256_tree = (CommonTree)adaptor.dupNode(ExceptionTable256);
+                    ExceptionTable254=(CommonTree)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension2539); 
+                    ExceptionTable254_tree = (CommonTree)adaptor.dupNode(ExceptionTable254);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(ExceptionTable256_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(ExceptionTable254_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension2520);
-                    exceptionTable257=exceptionTable();
+                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension2542);
+                    exceptionTable255=exceptionTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, exceptionTable257.getTree());
+                    adaptor.addChild(root_1, exceptionTable255.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -8849,7 +8878,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:499:5: ^( LineNumberTable ( lineNumberTable )? )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:503:5: ^( LineNumberTable ( lineNumberTable )? )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8857,16 +8886,16 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    LineNumberTable258=(CommonTree)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension2528); 
-                    LineNumberTable258_tree = (CommonTree)adaptor.dupNode(LineNumberTable258);
+                    LineNumberTable256=(CommonTree)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension2550); 
+                    LineNumberTable256_tree = (CommonTree)adaptor.dupNode(LineNumberTable256);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(LineNumberTable258_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(LineNumberTable256_tree, root_1);
 
 
                     if ( input.LA(1)==Token.DOWN ) {
                         match(input, Token.DOWN, null); 
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:499:24: ( lineNumberTable )?
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:503:24: ( lineNumberTable )?
                         int alt60=2;
                         int LA60_0 = input.LA(1);
 
@@ -8875,15 +8904,15 @@ public TreeAdaptor getTreeAdaptor() {
                         }
                         switch (alt60) {
                             case 1 :
-                                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:499:24: lineNumberTable
+                                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:503:24: lineNumberTable
                                 {
                                 _last = (CommonTree)input.LT(1);
-                                pushFollow(FOLLOW_lineNumberTable_in_bodyExtension2531);
-                                lineNumberTable259=lineNumberTable();
+                                pushFollow(FOLLOW_lineNumberTable_in_bodyExtension2553);
+                                lineNumberTable257=lineNumberTable();
 
                                 state._fsp--;
 
-                                adaptor.addChild(root_1, lineNumberTable259.getTree());
+                                adaptor.addChild(root_1, lineNumberTable257.getTree());
 
 
                                 }
@@ -8902,7 +8931,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:500:5: ^( LocalVariableTable localVariableTable )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:504:5: ^( LocalVariableTable localVariableTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8910,16 +8939,50 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    LocalVariableTable260=(CommonTree)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension2540); 
-                    LocalVariableTable260_tree = (CommonTree)adaptor.dupNode(LocalVariableTable260);
+                    LocalVariableTable258=(CommonTree)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension2562); 
+                    LocalVariableTable258_tree = (CommonTree)adaptor.dupNode(LocalVariableTable258);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTable260_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTable258_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2543);
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2565);
+                    localVariableTable259=localVariableTable();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_1, localVariableTable259.getTree());
+
+
+                    match(input, Token.UP, null); 
+                    adaptor.addChild(root_0, root_1);
+                    _last = _save_last_1;
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:505:5: ^( LocalVariableTypeTable localVariableTable )
+                    {
+                    _last = (CommonTree)input.LT(1);
+                    {
+                    CommonTree _save_last_1 = _last;
+                    CommonTree _first_1 = null;
+                    CommonTree root_1 = (CommonTree)adaptor.nil();
+                    _last = (CommonTree)input.LT(1);
+                    LocalVariableTypeTable260=(CommonTree)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension2573); 
+                    LocalVariableTypeTable260_tree = (CommonTree)adaptor.dupNode(LocalVariableTypeTable260);
+
+
+                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTypeTable260_tree, root_1);
+
+
+                    match(input, Token.DOWN, null); 
+                    _last = (CommonTree)input.LT(1);
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2576);
                     localVariableTable261=localVariableTable();
 
                     state._fsp--;
@@ -8935,42 +8998,8 @@ public TreeAdaptor getTreeAdaptor() {
 
                     }
                     break;
-                case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:501:5: ^( LocalVariableTypeTable localVariableTable )
-                    {
-                    _last = (CommonTree)input.LT(1);
-                    {
-                    CommonTree _save_last_1 = _last;
-                    CommonTree _first_1 = null;
-                    CommonTree root_1 = (CommonTree)adaptor.nil();
-                    _last = (CommonTree)input.LT(1);
-                    LocalVariableTypeTable262=(CommonTree)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension2551); 
-                    LocalVariableTypeTable262_tree = (CommonTree)adaptor.dupNode(LocalVariableTypeTable262);
-
-
-                    root_1 = (CommonTree)adaptor.becomeRoot(LocalVariableTypeTable262_tree, root_1);
-
-
-                    match(input, Token.DOWN, null); 
-                    _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension2554);
-                    localVariableTable263=localVariableTable();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_1, localVariableTable263.getTree());
-
-
-                    match(input, Token.UP, null); 
-                    adaptor.addChild(root_0, root_1);
-                    _last = _save_last_1;
-                    }
-
-
-                    }
-                    break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:502:5: ^( StackMapTable stackMapTable )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:506:5: ^( StackMapTable stackMapTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -8978,21 +9007,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    StackMapTable264=(CommonTree)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension2562); 
-                    StackMapTable264_tree = (CommonTree)adaptor.dupNode(StackMapTable264);
+                    StackMapTable262=(CommonTree)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension2584); 
+                    StackMapTable262_tree = (CommonTree)adaptor.dupNode(StackMapTable262);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(StackMapTable264_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(StackMapTable262_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension2564);
-                    stackMapTable265=stackMapTable();
+                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension2586);
+                    stackMapTable263=stackMapTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, stackMapTable265.getTree());
+                    adaptor.addChild(root_1, stackMapTable263.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -9004,7 +9033,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:503:5: ^( StackMap stackMapTypeTable )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:507:5: ^( StackMap stackMapTypeTable )
                     {
                     _last = (CommonTree)input.LT(1);
                     {
@@ -9012,21 +9041,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    StackMap266=(CommonTree)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension2572); 
-                    StackMap266_tree = (CommonTree)adaptor.dupNode(StackMap266);
+                    StackMap264=(CommonTree)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension2594); 
+                    StackMap264_tree = (CommonTree)adaptor.dupNode(StackMap264);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(StackMap266_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(StackMap264_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension2574);
-                    stackMapTypeTable267=stackMapTypeTable();
+                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension2596);
+                    stackMapTypeTable265=stackMapTypeTable();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, stackMapTypeTable267.getTree());
+                    adaptor.addChild(root_1, stackMapTypeTable265.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -9066,7 +9095,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "codeBlock"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:507:1: codeBlock : ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:511:1: codeBlock : ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) ;
     public final JVMScramblingInformationGatherer.codeBlock_return codeBlock() throws RecognitionException {
         JVMScramblingInformationGatherer.codeBlock_return retval = new JVMScramblingInformationGatherer.codeBlock_return();
         retval.start = input.LT(1);
@@ -9077,21 +9106,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree VARINFO268=null;
-        CommonTree INSTRUCTION270=null;
-        JVMScramblingInformationGatherer.variables_return variables269 =null;
+        CommonTree VARINFO266=null;
+        CommonTree INSTRUCTION268=null;
+        JVMScramblingInformationGatherer.variables_return variables267 =null;
 
-        JVMScramblingInformationGatherer.instructionSet_return instructionSet271 =null;
+        JVMScramblingInformationGatherer.instructionSet_return instructionSet269 =null;
 
-        JVMScramblingInformationGatherer.codeBlockEnd_return codeBlockEnd272 =null;
+        JVMScramblingInformationGatherer.codeBlockEnd_return codeBlockEnd270 =null;
 
 
-        CommonTree VARINFO268_tree=null;
-        CommonTree INSTRUCTION270_tree=null;
+        CommonTree VARINFO266_tree=null;
+        CommonTree INSTRUCTION268_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:508:3: ( ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:508:5: ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:512:3: ( ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:512:5: ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9102,21 +9131,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            VARINFO268=(CommonTree)match(input,VARINFO,FOLLOW_VARINFO_in_codeBlock2593); 
-            VARINFO268_tree = (CommonTree)adaptor.dupNode(VARINFO268);
+            VARINFO266=(CommonTree)match(input,VARINFO,FOLLOW_VARINFO_in_codeBlock2615); 
+            VARINFO266_tree = (CommonTree)adaptor.dupNode(VARINFO266);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(VARINFO268_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(VARINFO266_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variables_in_codeBlock2595);
-            variables269=variables();
+            pushFollow(FOLLOW_variables_in_codeBlock2617);
+            variables267=variables();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, variables269.getTree());
+            adaptor.addChild(root_1, variables267.getTree());
 
 
             match(input, Token.UP, null); 
@@ -9131,15 +9160,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            INSTRUCTION270=(CommonTree)match(input,INSTRUCTION,FOLLOW_INSTRUCTION_in_codeBlock2599); 
-            INSTRUCTION270_tree = (CommonTree)adaptor.dupNode(INSTRUCTION270);
+            INSTRUCTION268=(CommonTree)match(input,INSTRUCTION,FOLLOW_INSTRUCTION_in_codeBlock2621); 
+            INSTRUCTION268_tree = (CommonTree)adaptor.dupNode(INSTRUCTION268);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(INSTRUCTION270_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(INSTRUCTION268_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:508:40: ( instructionSet )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:512:40: ( instructionSet )*
             loop62:
             do {
                 int alt62=2;
@@ -9179,15 +9208,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt62) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:508:40: instructionSet
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:512:40: instructionSet
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_instructionSet_in_codeBlock2601);
-            	    instructionSet271=instructionSet();
+            	    pushFollow(FOLLOW_instructionSet_in_codeBlock2623);
+            	    instructionSet269=instructionSet();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, instructionSet271.getTree());
+            	    adaptor.addChild(root_1, instructionSet269.getTree());
 
 
             	    }
@@ -9200,12 +9229,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock2604);
-            codeBlockEnd272=codeBlockEnd();
+            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock2626);
+            codeBlockEnd270=codeBlockEnd();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, codeBlockEnd272.getTree());
+            adaptor.addChild(root_1, codeBlockEnd270.getTree());
 
 
             match(input, Token.UP, null); 
@@ -9239,7 +9268,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instructionSet"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:511:1: instructionSet : ( codeLine | javaSwitch );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:515:1: instructionSet : ( codeLine | javaSwitch );
     public final JVMScramblingInformationGatherer.instructionSet_return instructionSet() throws RecognitionException {
         JVMScramblingInformationGatherer.instructionSet_return retval = new JVMScramblingInformationGatherer.instructionSet_return();
         retval.start = input.LT(1);
@@ -9250,14 +9279,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.codeLine_return codeLine273 =null;
+        JVMScramblingInformationGatherer.codeLine_return codeLine271 =null;
 
-        JVMScramblingInformationGatherer.javaSwitch_return javaSwitch274 =null;
+        JVMScramblingInformationGatherer.javaSwitch_return javaSwitch272 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:512:3: ( codeLine | javaSwitch )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:3: ( codeLine | javaSwitch )
             int alt63=2;
             int LA63_0 = input.LA(1);
 
@@ -9276,35 +9305,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt63) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:512:5: codeLine
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:5: codeLine
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_codeLine_in_instructionSet2618);
-                    codeLine273=codeLine();
+                    pushFollow(FOLLOW_codeLine_in_instructionSet2640);
+                    codeLine271=codeLine();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, codeLine273.getTree());
+                    adaptor.addChild(root_0, codeLine271.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:512:16: javaSwitch
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:16: javaSwitch
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_javaSwitch_in_instructionSet2622);
-                    javaSwitch274=javaSwitch();
+                    pushFollow(FOLLOW_javaSwitch_in_instructionSet2644);
+                    javaSwitch272=javaSwitch();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, javaSwitch274.getTree());
+                    adaptor.addChild(root_0, javaSwitch272.getTree());
 
 
                     }
@@ -9334,7 +9363,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "codeLine"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:515:1: codeLine : ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:519:1: codeLine : ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) ;
     public final JVMScramblingInformationGatherer.codeLine_return codeLine() throws RecognitionException {
         JVMScramblingInformationGatherer.codeLine_return retval = new JVMScramblingInformationGatherer.codeLine_return();
         retval.start = input.LT(1);
@@ -9345,23 +9374,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER275=null;
+        CommonTree IDENTIFIER273=null;
+        CommonTree OPERAND275=null;
         CommonTree OPERAND277=null;
-        CommonTree OPERAND279=null;
-        CommonTree INTLITERAL280=null;
-        JVMScramblingInformationGatherer.pc_return pc276 =null;
+        CommonTree INTLITERAL278=null;
+        JVMScramblingInformationGatherer.pc_return pc274 =null;
 
-        JVMScramblingInformationGatherer.operand1_return operand1278 =null;
+        JVMScramblingInformationGatherer.operand1_return operand1276 =null;
 
 
-        CommonTree IDENTIFIER275_tree=null;
+        CommonTree IDENTIFIER273_tree=null;
+        CommonTree OPERAND275_tree=null;
         CommonTree OPERAND277_tree=null;
-        CommonTree OPERAND279_tree=null;
-        CommonTree INTLITERAL280_tree=null;
+        CommonTree INTLITERAL278_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:3: ( ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:5: ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:3: ( ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:5: ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9372,21 +9401,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER275=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine2636); 
-            IDENTIFIER275_tree = (CommonTree)adaptor.dupNode(IDENTIFIER275);
+            IDENTIFIER273=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine2658); 
+            IDENTIFIER273_tree = (CommonTree)adaptor.dupNode(IDENTIFIER273);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER275_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER273_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_codeLine2638);
-            pc276=pc();
+            pushFollow(FOLLOW_pc_in_codeLine2660);
+            pc274=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, pc276.getTree());
+            adaptor.addChild(root_1, pc274.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -9395,16 +9424,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            OPERAND277=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2641); 
-            OPERAND277_tree = (CommonTree)adaptor.dupNode(OPERAND277);
+            OPERAND275=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2663); 
+            OPERAND275_tree = (CommonTree)adaptor.dupNode(OPERAND275);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND277_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND275_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:31: ( operand1 )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:31: ( operand1 )?
                 int alt64=2;
                 int LA64_0 = input.LA(1);
 
@@ -9413,15 +9442,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt64) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:31: operand1
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:31: operand1
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_operand1_in_codeLine2643);
-                        operand1278=operand1();
+                        pushFollow(FOLLOW_operand1_in_codeLine2665);
+                        operand1276=operand1();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, operand1278.getTree());
+                        adaptor.addChild(root_2, operand1276.getTree());
 
 
                         }
@@ -9443,16 +9472,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            OPERAND279=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2648); 
-            OPERAND279_tree = (CommonTree)adaptor.dupNode(OPERAND279);
+            OPERAND277=(CommonTree)match(input,OPERAND,FOLLOW_OPERAND_in_codeLine2670); 
+            OPERAND277_tree = (CommonTree)adaptor.dupNode(OPERAND277);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND279_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(OPERAND277_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:52: ( INTLITERAL )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:52: ( INTLITERAL )?
                 int alt65=2;
                 int LA65_0 = input.LA(1);
 
@@ -9461,14 +9490,14 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt65) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:516:52: INTLITERAL
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:52: INTLITERAL
                         {
                         _last = (CommonTree)input.LT(1);
-                        INTLITERAL280=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine2650); 
-                        INTLITERAL280_tree = (CommonTree)adaptor.dupNode(INTLITERAL280);
+                        INTLITERAL278=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine2672); 
+                        INTLITERAL278_tree = (CommonTree)adaptor.dupNode(INTLITERAL278);
 
 
-                        adaptor.addChild(root_2, INTLITERAL280_tree);
+                        adaptor.addChild(root_2, INTLITERAL278_tree);
 
 
                         }
@@ -9515,7 +9544,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "codeBlockEnd"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:519:1: codeBlockEnd : ^( IDENTIFIER pc ( INTLITERAL )? ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:523:1: codeBlockEnd : ^( IDENTIFIER pc ( INTLITERAL )? ) ;
     public final JVMScramblingInformationGatherer.codeBlockEnd_return codeBlockEnd() throws RecognitionException {
         JVMScramblingInformationGatherer.codeBlockEnd_return retval = new JVMScramblingInformationGatherer.codeBlockEnd_return();
         retval.start = input.LT(1);
@@ -9526,17 +9555,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER281=null;
-        CommonTree INTLITERAL283=null;
-        JVMScramblingInformationGatherer.pc_return pc282 =null;
+        CommonTree IDENTIFIER279=null;
+        CommonTree INTLITERAL281=null;
+        JVMScramblingInformationGatherer.pc_return pc280 =null;
 
 
-        CommonTree IDENTIFIER281_tree=null;
-        CommonTree INTLITERAL283_tree=null;
+        CommonTree IDENTIFIER279_tree=null;
+        CommonTree INTLITERAL281_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:3: ( ^( IDENTIFIER pc ( INTLITERAL )? ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:5: ^( IDENTIFIER pc ( INTLITERAL )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:524:3: ( ^( IDENTIFIER pc ( INTLITERAL )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:524:5: ^( IDENTIFIER pc ( INTLITERAL )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9547,24 +9576,24 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER281=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd2667); 
-            IDENTIFIER281_tree = (CommonTree)adaptor.dupNode(IDENTIFIER281);
+            IDENTIFIER279=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd2689); 
+            IDENTIFIER279_tree = (CommonTree)adaptor.dupNode(IDENTIFIER279);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER281_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER279_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_codeBlockEnd2669);
-            pc282=pc();
+            pushFollow(FOLLOW_pc_in_codeBlockEnd2691);
+            pc280=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, pc282.getTree());
+            adaptor.addChild(root_1, pc280.getTree());
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:21: ( INTLITERAL )?
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:524:21: ( INTLITERAL )?
             int alt66=2;
             int LA66_0 = input.LA(1);
 
@@ -9573,14 +9602,14 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt66) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:520:21: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:524:21: INTLITERAL
                     {
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL283=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd2671); 
-                    INTLITERAL283_tree = (CommonTree)adaptor.dupNode(INTLITERAL283);
+                    INTLITERAL281=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd2693); 
+                    INTLITERAL281_tree = (CommonTree)adaptor.dupNode(INTLITERAL281);
 
 
-                    adaptor.addChild(root_1, INTLITERAL283_tree);
+                    adaptor.addChild(root_1, INTLITERAL281_tree);
 
 
                     }
@@ -9620,7 +9649,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "operand1"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:523:1: operand1 : ( CPINDEX | INTLITERAL | primitiveType );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:527:1: operand1 : ( CPINDEX | INTLITERAL | primitiveType );
     public final JVMScramblingInformationGatherer.operand1_return operand1() throws RecognitionException {
         JVMScramblingInformationGatherer.operand1_return retval = new JVMScramblingInformationGatherer.operand1_return();
         retval.start = input.LT(1);
@@ -9631,16 +9660,16 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CPINDEX284=null;
-        CommonTree INTLITERAL285=null;
-        JVMScramblingInformationGatherer.primitiveType_return primitiveType286 =null;
+        CommonTree CPINDEX282=null;
+        CommonTree INTLITERAL283=null;
+        JVMScramblingInformationGatherer.primitiveType_return primitiveType284 =null;
 
 
-        CommonTree CPINDEX284_tree=null;
-        CommonTree INTLITERAL285_tree=null;
+        CommonTree CPINDEX282_tree=null;
+        CommonTree INTLITERAL283_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:524:3: ( CPINDEX | INTLITERAL | primitiveType )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:528:3: ( CPINDEX | INTLITERAL | primitiveType )
             int alt67=3;
             switch ( input.LA(1) ) {
             case CPINDEX:
@@ -9676,50 +9705,50 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt67) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:524:5: CPINDEX
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:528:5: CPINDEX
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    CPINDEX284=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand12688); 
-                    CPINDEX284_tree = (CommonTree)adaptor.dupNode(CPINDEX284);
+                    CPINDEX282=(CommonTree)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand12710); 
+                    CPINDEX282_tree = (CommonTree)adaptor.dupNode(CPINDEX282);
 
 
-                    adaptor.addChild(root_0, CPINDEX284_tree);
+                    adaptor.addChild(root_0, CPINDEX282_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:525:5: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:529:5: INTLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL285=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand12695); 
-                    INTLITERAL285_tree = (CommonTree)adaptor.dupNode(INTLITERAL285);
+                    INTLITERAL283=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand12717); 
+                    INTLITERAL283_tree = (CommonTree)adaptor.dupNode(INTLITERAL283);
 
 
-                    adaptor.addChild(root_0, INTLITERAL285_tree);
+                    adaptor.addChild(root_0, INTLITERAL283_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:526:5: primitiveType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:530:5: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_operand12701);
-                    primitiveType286=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_operand12723);
+                    primitiveType284=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType286.getTree());
+                    adaptor.addChild(root_0, primitiveType284.getTree());
 
 
                     }
@@ -9749,7 +9778,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variables"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:529:1: variables : variable variable variable ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:533:1: variables : variable variable variable ;
     public final JVMScramblingInformationGatherer.variables_return variables() throws RecognitionException {
         JVMScramblingInformationGatherer.variables_return retval = new JVMScramblingInformationGatherer.variables_return();
         retval.start = input.LT(1);
@@ -9760,46 +9789,46 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
+        JVMScramblingInformationGatherer.variable_return variable285 =null;
+
+        JVMScramblingInformationGatherer.variable_return variable286 =null;
+
         JVMScramblingInformationGatherer.variable_return variable287 =null;
-
-        JVMScramblingInformationGatherer.variable_return variable288 =null;
-
-        JVMScramblingInformationGatherer.variable_return variable289 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:530:3: ( variable variable variable )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:530:5: variable variable variable
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:534:3: ( variable variable variable )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:534:5: variable variable variable
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variable_in_variables2714);
+            pushFollow(FOLLOW_variable_in_variables2736);
+            variable285=variable();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, variable285.getTree());
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_variable_in_variables2738);
+            variable286=variable();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, variable286.getTree());
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_variable_in_variables2740);
             variable287=variable();
 
             state._fsp--;
 
             adaptor.addChild(root_0, variable287.getTree());
-
-
-            _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variable_in_variables2716);
-            variable288=variable();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, variable288.getTree());
-
-
-            _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_variable_in_variables2718);
-            variable289=variable();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, variable289.getTree());
 
 
             }
@@ -9827,7 +9856,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "variable"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:533:1: variable : ^( ASSIGN IDENTIFIER INTLITERAL ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:537:1: variable : ^( ASSIGN IDENTIFIER INTLITERAL ) ;
     public final JVMScramblingInformationGatherer.variable_return variable() throws RecognitionException {
         JVMScramblingInformationGatherer.variable_return retval = new JVMScramblingInformationGatherer.variable_return();
         retval.start = input.LT(1);
@@ -9838,17 +9867,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ASSIGN290=null;
-        CommonTree IDENTIFIER291=null;
-        CommonTree INTLITERAL292=null;
+        CommonTree ASSIGN288=null;
+        CommonTree IDENTIFIER289=null;
+        CommonTree INTLITERAL290=null;
 
-        CommonTree ASSIGN290_tree=null;
-        CommonTree IDENTIFIER291_tree=null;
-        CommonTree INTLITERAL292_tree=null;
+        CommonTree ASSIGN288_tree=null;
+        CommonTree IDENTIFIER289_tree=null;
+        CommonTree INTLITERAL290_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:534:3: ( ^( ASSIGN IDENTIFIER INTLITERAL ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:534:5: ^( ASSIGN IDENTIFIER INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:538:3: ( ^( ASSIGN IDENTIFIER INTLITERAL ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:538:5: ^( ASSIGN IDENTIFIER INTLITERAL )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9859,28 +9888,28 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ASSIGN290=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_variable2732); 
-            ASSIGN290_tree = (CommonTree)adaptor.dupNode(ASSIGN290);
+            ASSIGN288=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_variable2754); 
+            ASSIGN288_tree = (CommonTree)adaptor.dupNode(ASSIGN288);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN290_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN288_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER291=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable2734); 
-            IDENTIFIER291_tree = (CommonTree)adaptor.dupNode(IDENTIFIER291);
+            IDENTIFIER289=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable2756); 
+            IDENTIFIER289_tree = (CommonTree)adaptor.dupNode(IDENTIFIER289);
 
 
-            adaptor.addChild(root_1, IDENTIFIER291_tree);
+            adaptor.addChild(root_1, IDENTIFIER289_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL292=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable2736); 
-            INTLITERAL292_tree = (CommonTree)adaptor.dupNode(INTLITERAL292);
+            INTLITERAL290=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable2758); 
+            INTLITERAL290_tree = (CommonTree)adaptor.dupNode(INTLITERAL290);
 
 
-            adaptor.addChild(root_1, INTLITERAL292_tree);
+            adaptor.addChild(root_1, INTLITERAL290_tree);
 
 
             match(input, Token.UP, null); 
@@ -9914,7 +9943,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "javaSwitch"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:537:1: javaSwitch : ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:541:1: javaSwitch : ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) ;
     public final JVMScramblingInformationGatherer.javaSwitch_return javaSwitch() throws RecognitionException {
         JVMScramblingInformationGatherer.javaSwitch_return retval = new JVMScramblingInformationGatherer.javaSwitch_return();
         retval.start = input.LT(1);
@@ -9925,21 +9954,21 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SWITCH293=null;
-        CommonTree IDENTIFIER294=null;
-        JVMScramblingInformationGatherer.pc_return pc295 =null;
+        CommonTree SWITCH291=null;
+        CommonTree IDENTIFIER292=null;
+        JVMScramblingInformationGatherer.pc_return pc293 =null;
 
-        JVMScramblingInformationGatherer.switchLine_return switchLine296 =null;
+        JVMScramblingInformationGatherer.switchLine_return switchLine294 =null;
 
-        JVMScramblingInformationGatherer.switchDefaultLine_return switchDefaultLine297 =null;
+        JVMScramblingInformationGatherer.switchDefaultLine_return switchDefaultLine295 =null;
 
 
-        CommonTree SWITCH293_tree=null;
-        CommonTree IDENTIFIER294_tree=null;
+        CommonTree SWITCH291_tree=null;
+        CommonTree IDENTIFIER292_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:538:3: ( ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:538:5: ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:542:3: ( ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:542:5: ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -9950,11 +9979,11 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SWITCH293=(CommonTree)match(input,SWITCH,FOLLOW_SWITCH_in_javaSwitch2753); 
-            SWITCH293_tree = (CommonTree)adaptor.dupNode(SWITCH293);
+            SWITCH291=(CommonTree)match(input,SWITCH,FOLLOW_SWITCH_in_javaSwitch2775); 
+            SWITCH291_tree = (CommonTree)adaptor.dupNode(SWITCH291);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SWITCH293_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SWITCH291_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -9964,24 +9993,24 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER294=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch2756); 
-            IDENTIFIER294_tree = (CommonTree)adaptor.dupNode(IDENTIFIER294);
+            IDENTIFIER292=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch2778); 
+            IDENTIFIER292_tree = (CommonTree)adaptor.dupNode(IDENTIFIER292);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(IDENTIFIER294_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(IDENTIFIER292_tree, root_2);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_javaSwitch2758);
-            pc295=pc();
+            pushFollow(FOLLOW_pc_in_javaSwitch2780);
+            pc293=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, pc295.getTree());
+            adaptor.addChild(root_2, pc293.getTree());
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:538:30: ( switchLine )*
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:542:30: ( switchLine )*
             loop68:
             do {
                 int alt68=2;
@@ -9994,15 +10023,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt68) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:538:30: switchLine
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:542:30: switchLine
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_switchLine_in_javaSwitch2760);
-            	    switchLine296=switchLine();
+            	    pushFollow(FOLLOW_switchLine_in_javaSwitch2782);
+            	    switchLine294=switchLine();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_2, switchLine296.getTree());
+            	    adaptor.addChild(root_2, switchLine294.getTree());
 
 
             	    }
@@ -10015,12 +10044,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch2763);
-            switchDefaultLine297=switchDefaultLine();
+            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch2785);
+            switchDefaultLine295=switchDefaultLine();
 
             state._fsp--;
 
-            adaptor.addChild(root_2, switchDefaultLine297.getTree());
+            adaptor.addChild(root_2, switchDefaultLine295.getTree());
 
 
             match(input, Token.UP, null); 
@@ -10060,7 +10089,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "switchLine"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:541:1: switchLine : pc INTLITERAL ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:545:1: switchLine : pc INTLITERAL ;
     public final JVMScramblingInformationGatherer.switchLine_return switchLine() throws RecognitionException {
         JVMScramblingInformationGatherer.switchLine_return retval = new JVMScramblingInformationGatherer.switchLine_return();
         retval.start = input.LT(1);
@@ -10071,34 +10100,34 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL299=null;
-        JVMScramblingInformationGatherer.pc_return pc298 =null;
+        CommonTree INTLITERAL297=null;
+        JVMScramblingInformationGatherer.pc_return pc296 =null;
 
 
-        CommonTree INTLITERAL299_tree=null;
+        CommonTree INTLITERAL297_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:542:3: ( pc INTLITERAL )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:542:5: pc INTLITERAL
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:546:3: ( pc INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:546:5: pc INTLITERAL
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_switchLine2780);
-            pc298=pc();
+            pushFollow(FOLLOW_pc_in_switchLine2802);
+            pc296=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, pc298.getTree());
+            adaptor.addChild(root_0, pc296.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL299=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine2782); 
-            INTLITERAL299_tree = (CommonTree)adaptor.dupNode(INTLITERAL299);
+            INTLITERAL297=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine2804); 
+            INTLITERAL297_tree = (CommonTree)adaptor.dupNode(INTLITERAL297);
 
 
-            adaptor.addChild(root_0, INTLITERAL299_tree);
+            adaptor.addChild(root_0, INTLITERAL297_tree);
 
 
             }
@@ -10126,7 +10155,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "switchDefaultLine"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:545:1: switchDefaultLine : ^( DEFAULT INTLITERAL ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:549:1: switchDefaultLine : ^( DEFAULT INTLITERAL ) ;
     public final JVMScramblingInformationGatherer.switchDefaultLine_return switchDefaultLine() throws RecognitionException {
         JVMScramblingInformationGatherer.switchDefaultLine_return retval = new JVMScramblingInformationGatherer.switchDefaultLine_return();
         retval.start = input.LT(1);
@@ -10137,15 +10166,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree DEFAULT300=null;
-        CommonTree INTLITERAL301=null;
+        CommonTree DEFAULT298=null;
+        CommonTree INTLITERAL299=null;
 
-        CommonTree DEFAULT300_tree=null;
-        CommonTree INTLITERAL301_tree=null;
+        CommonTree DEFAULT298_tree=null;
+        CommonTree INTLITERAL299_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:546:3: ( ^( DEFAULT INTLITERAL ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:546:5: ^( DEFAULT INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:550:3: ( ^( DEFAULT INTLITERAL ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:550:5: ^( DEFAULT INTLITERAL )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10156,20 +10185,20 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            DEFAULT300=(CommonTree)match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine2797); 
-            DEFAULT300_tree = (CommonTree)adaptor.dupNode(DEFAULT300);
+            DEFAULT298=(CommonTree)match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine2819); 
+            DEFAULT298_tree = (CommonTree)adaptor.dupNode(DEFAULT298);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(DEFAULT300_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(DEFAULT298_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL301=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine2799); 
-            INTLITERAL301_tree = (CommonTree)adaptor.dupNode(INTLITERAL301);
+            INTLITERAL299=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine2821); 
+            INTLITERAL299_tree = (CommonTree)adaptor.dupNode(INTLITERAL299);
 
 
-            adaptor.addChild(root_1, INTLITERAL301_tree);
+            adaptor.addChild(root_1, INTLITERAL299_tree);
 
 
             match(input, Token.UP, null); 
@@ -10203,7 +10232,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "throwClause"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:553:1: throwClause : ^( THROWS typeList ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:557:1: throwClause : ^( THROWS typeList ) ;
     public final JVMScramblingInformationGatherer.throwClause_return throwClause() throws RecognitionException {
         JVMScramblingInformationGatherer.throwClause_return retval = new JVMScramblingInformationGatherer.throwClause_return();
         retval.start = input.LT(1);
@@ -10214,15 +10243,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree THROWS302=null;
-        JVMScramblingInformationGatherer.typeList_return typeList303 =null;
+        CommonTree THROWS300=null;
+        JVMScramblingInformationGatherer.typeList_return typeList301 =null;
 
 
-        CommonTree THROWS302_tree=null;
+        CommonTree THROWS300_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:554:3: ( ^( THROWS typeList ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:554:5: ^( THROWS typeList )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:558:3: ( ^( THROWS typeList ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:558:5: ^( THROWS typeList )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10233,21 +10262,21 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWS302=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClause2819); 
-            THROWS302_tree = (CommonTree)adaptor.dupNode(THROWS302);
+            THROWS300=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClause2841); 
+            THROWS300_tree = (CommonTree)adaptor.dupNode(THROWS300);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(THROWS302_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(THROWS300_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeList_in_throwClause2821);
-            typeList303=typeList();
+            pushFollow(FOLLOW_typeList_in_throwClause2843);
+            typeList301=typeList();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, typeList303.getTree());
+            adaptor.addChild(root_1, typeList301.getTree());
 
 
             match(input, Token.UP, null); 
@@ -10281,7 +10310,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "throwClauseMethod"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:557:1: throwClauseMethod : ^( THROWS ( throwType )+ ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:561:1: throwClauseMethod : ^( THROWS ( throwType )+ ) ;
     public final JVMScramblingInformationGatherer.throwClauseMethod_return throwClauseMethod() throws RecognitionException {
         JVMScramblingInformationGatherer.throwClauseMethod_return retval = new JVMScramblingInformationGatherer.throwClauseMethod_return();
         retval.start = input.LT(1);
@@ -10292,15 +10321,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree THROWS304=null;
-        JVMScramblingInformationGatherer.throwType_return throwType305 =null;
+        CommonTree THROWS302=null;
+        JVMScramblingInformationGatherer.throwType_return throwType303 =null;
 
 
-        CommonTree THROWS304_tree=null;
+        CommonTree THROWS302_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:558:3: ( ^( THROWS ( throwType )+ ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:558:5: ^( THROWS ( throwType )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:562:3: ( ^( THROWS ( throwType )+ ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:562:5: ^( THROWS ( throwType )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10311,15 +10340,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            THROWS304=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod2838); 
-            THROWS304_tree = (CommonTree)adaptor.dupNode(THROWS304);
+            THROWS302=(CommonTree)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod2860); 
+            THROWS302_tree = (CommonTree)adaptor.dupNode(THROWS302);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(THROWS304_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(THROWS302_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:558:14: ( throwType )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:562:14: ( throwType )+
             int cnt69=0;
             loop69:
             do {
@@ -10333,15 +10362,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt69) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:558:14: throwType
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:562:14: throwType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod2840);
-            	    throwType305=throwType();
+            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod2862);
+            	    throwType303=throwType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, throwType305.getTree());
+            	    adaptor.addChild(root_1, throwType303.getTree());
 
 
             	    }
@@ -10388,7 +10417,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "throwType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:561:1: throwType : ( INTERNALTYPE | IDENTIFIER | QualifiedType );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:565:1: throwType : ( INTERNALTYPE | IDENTIFIER | QualifiedType );
     public final JVMScramblingInformationGatherer.throwType_return throwType() throws RecognitionException {
         JVMScramblingInformationGatherer.throwType_return retval = new JVMScramblingInformationGatherer.throwType_return();
         retval.start = input.LT(1);
@@ -10399,26 +10428,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set306=null;
+        CommonTree set304=null;
 
-        CommonTree set306_tree=null;
+        CommonTree set304_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:562:3: ( INTERNALTYPE | IDENTIFIER | QualifiedType )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:566:3: ( INTERNALTYPE | IDENTIFIER | QualifiedType )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set306=(CommonTree)input.LT(1);
+            set304=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==IDENTIFIER||input.LA(1)==INTERNALTYPE||input.LA(1)==QualifiedType ) {
                 input.consume();
-                set306_tree = (CommonTree)adaptor.dupNode(set306);
+                set304_tree = (CommonTree)adaptor.dupNode(set304);
 
 
-                adaptor.addChild(root_0, set306_tree);
+                adaptor.addChild(root_0, set304_tree);
 
                 state.errorRecovery=false;
             }
@@ -10454,7 +10483,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "exceptionTable"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:565:1: exceptionTable : ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:569:1: exceptionTable : ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) ;
     public final JVMScramblingInformationGatherer.exceptionTable_return exceptionTable() throws RecognitionException {
         JVMScramblingInformationGatherer.exceptionTable_return retval = new JVMScramblingInformationGatherer.exceptionTable_return();
         retval.start = input.LT(1);
@@ -10465,25 +10494,25 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ETHEADER307=null;
+        CommonTree ETHEADER305=null;
+        CommonTree IDENTIFIER306=null;
+        CommonTree IDENTIFIER307=null;
         CommonTree IDENTIFIER308=null;
         CommonTree IDENTIFIER309=null;
-        CommonTree IDENTIFIER310=null;
-        CommonTree IDENTIFIER311=null;
-        CommonTree ETENTRY312=null;
-        JVMScramblingInformationGatherer.exceptionTableEntry_return exceptionTableEntry313 =null;
+        CommonTree ETENTRY310=null;
+        JVMScramblingInformationGatherer.exceptionTableEntry_return exceptionTableEntry311 =null;
 
 
-        CommonTree ETHEADER307_tree=null;
+        CommonTree ETHEADER305_tree=null;
+        CommonTree IDENTIFIER306_tree=null;
+        CommonTree IDENTIFIER307_tree=null;
         CommonTree IDENTIFIER308_tree=null;
         CommonTree IDENTIFIER309_tree=null;
-        CommonTree IDENTIFIER310_tree=null;
-        CommonTree IDENTIFIER311_tree=null;
-        CommonTree ETENTRY312_tree=null;
+        CommonTree ETENTRY310_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:566:3: ( ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:566:5: ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:570:3: ( ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:570:5: ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10494,16 +10523,32 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ETHEADER307=(CommonTree)match(input,ETHEADER,FOLLOW_ETHEADER_in_exceptionTable2879); 
-            ETHEADER307_tree = (CommonTree)adaptor.dupNode(ETHEADER307);
+            ETHEADER305=(CommonTree)match(input,ETHEADER,FOLLOW_ETHEADER_in_exceptionTable2901); 
+            ETHEADER305_tree = (CommonTree)adaptor.dupNode(ETHEADER305);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ETHEADER307_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ETHEADER305_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER308=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2881); 
+            IDENTIFIER306=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2903); 
+            IDENTIFIER306_tree = (CommonTree)adaptor.dupNode(IDENTIFIER306);
+
+
+            adaptor.addChild(root_1, IDENTIFIER306_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER307=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2905); 
+            IDENTIFIER307_tree = (CommonTree)adaptor.dupNode(IDENTIFIER307);
+
+
+            adaptor.addChild(root_1, IDENTIFIER307_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER308=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2907); 
             IDENTIFIER308_tree = (CommonTree)adaptor.dupNode(IDENTIFIER308);
 
 
@@ -10511,27 +10556,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER309=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2883); 
+            IDENTIFIER309=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2909); 
             IDENTIFIER309_tree = (CommonTree)adaptor.dupNode(IDENTIFIER309);
 
 
             adaptor.addChild(root_1, IDENTIFIER309_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER310=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2885); 
-            IDENTIFIER310_tree = (CommonTree)adaptor.dupNode(IDENTIFIER310);
-
-
-            adaptor.addChild(root_1, IDENTIFIER310_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER311=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable2887); 
-            IDENTIFIER311_tree = (CommonTree)adaptor.dupNode(IDENTIFIER311);
-
-
-            adaptor.addChild(root_1, IDENTIFIER311_tree);
 
 
             match(input, Token.UP, null); 
@@ -10546,15 +10575,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ETENTRY312=(CommonTree)match(input,ETENTRY,FOLLOW_ETENTRY_in_exceptionTable2891); 
-            ETENTRY312_tree = (CommonTree)adaptor.dupNode(ETENTRY312);
+            ETENTRY310=(CommonTree)match(input,ETENTRY,FOLLOW_ETENTRY_in_exceptionTable2913); 
+            ETENTRY310_tree = (CommonTree)adaptor.dupNode(ETENTRY310);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ETENTRY312_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ETENTRY310_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:566:71: ( exceptionTableEntry )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:570:71: ( exceptionTableEntry )+
             int cnt70=0;
             loop70:
             do {
@@ -10568,15 +10597,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt70) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:566:71: exceptionTableEntry
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:570:71: exceptionTableEntry
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable2893);
-            	    exceptionTableEntry313=exceptionTableEntry();
+            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable2915);
+            	    exceptionTableEntry311=exceptionTableEntry();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, exceptionTableEntry313.getTree());
+            	    adaptor.addChild(root_1, exceptionTableEntry311.getTree());
 
 
             	    }
@@ -10623,7 +10652,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "exceptionTableEntry"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:569:1: exceptionTableEntry : INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:573:1: exceptionTableEntry : INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue ;
     public final JVMScramblingInformationGatherer.exceptionTableEntry_return exceptionTableEntry() throws RecognitionException {
         JVMScramblingInformationGatherer.exceptionTableEntry_return retval = new JVMScramblingInformationGatherer.exceptionTableEntry_return();
         retval.start = input.LT(1);
@@ -10634,25 +10663,41 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
+        CommonTree INTLITERAL312=null;
+        CommonTree INTLITERAL313=null;
         CommonTree INTLITERAL314=null;
-        CommonTree INTLITERAL315=null;
-        CommonTree INTLITERAL316=null;
-        JVMScramblingInformationGatherer.exceptionTableEntryValue_return exceptionTableEntryValue317 =null;
+        JVMScramblingInformationGatherer.exceptionTableEntryValue_return exceptionTableEntryValue315 =null;
 
 
+        CommonTree INTLITERAL312_tree=null;
+        CommonTree INTLITERAL313_tree=null;
         CommonTree INTLITERAL314_tree=null;
-        CommonTree INTLITERAL315_tree=null;
-        CommonTree INTLITERAL316_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:570:3: ( INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:570:5: INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:574:3: ( INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:574:5: INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL314=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2908); 
+            INTLITERAL312=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2930); 
+            INTLITERAL312_tree = (CommonTree)adaptor.dupNode(INTLITERAL312);
+
+
+            adaptor.addChild(root_0, INTLITERAL312_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL313=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2932); 
+            INTLITERAL313_tree = (CommonTree)adaptor.dupNode(INTLITERAL313);
+
+
+            adaptor.addChild(root_0, INTLITERAL313_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL314=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2934); 
             INTLITERAL314_tree = (CommonTree)adaptor.dupNode(INTLITERAL314);
 
 
@@ -10660,28 +10705,12 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL315=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2910); 
-            INTLITERAL315_tree = (CommonTree)adaptor.dupNode(INTLITERAL315);
-
-
-            adaptor.addChild(root_0, INTLITERAL315_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            INTLITERAL316=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry2912); 
-            INTLITERAL316_tree = (CommonTree)adaptor.dupNode(INTLITERAL316);
-
-
-            adaptor.addChild(root_0, INTLITERAL316_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2914);
-            exceptionTableEntryValue317=exceptionTableEntryValue();
+            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2936);
+            exceptionTableEntryValue315=exceptionTableEntryValue();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, exceptionTableEntryValue317.getTree());
+            adaptor.addChild(root_0, exceptionTableEntryValue315.getTree());
 
 
             }
@@ -10709,7 +10738,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "exceptionTableEntryValue"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:572:1: exceptionTableEntryValue : ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:576:1: exceptionTableEntryValue : ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE );
     public final JVMScramblingInformationGatherer.exceptionTableEntryValue_return exceptionTableEntryValue() throws RecognitionException {
         JVMScramblingInformationGatherer.exceptionTableEntryValue_return retval = new JVMScramblingInformationGatherer.exceptionTableEntryValue_return();
         retval.start = input.LT(1);
@@ -10720,16 +10749,16 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER319=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE320=null;
-        JVMScramblingInformationGatherer.primitiveType_return primitiveType318 =null;
+        CommonTree IDENTIFIER317=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE318=null;
+        JVMScramblingInformationGatherer.primitiveType_return primitiveType316 =null;
 
 
-        CommonTree IDENTIFIER319_tree=null;
-        CommonTree CONSTANT_TYPE_ASSIGNABLE320_tree=null;
+        CommonTree IDENTIFIER317_tree=null;
+        CommonTree CONSTANT_TYPE_ASSIGNABLE318_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:573:3: ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:577:3: ( primitiveType | IDENTIFIER | CONSTANT_TYPE_ASSIGNABLE )
             int alt71=3;
             switch ( input.LA(1) ) {
             case BOOLEAN:
@@ -10765,50 +10794,50 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt71) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:573:5: primitiveType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:577:5: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue2926);
-                    primitiveType318=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue2948);
+                    primitiveType316=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType318.getTree());
+                    adaptor.addChild(root_0, primitiveType316.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:574:5: IDENTIFIER
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:578:5: IDENTIFIER
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER319=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2932); 
-                    IDENTIFIER319_tree = (CommonTree)adaptor.dupNode(IDENTIFIER319);
+                    IDENTIFIER317=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2954); 
+                    IDENTIFIER317_tree = (CommonTree)adaptor.dupNode(IDENTIFIER317);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER319_tree);
+                    adaptor.addChild(root_0, IDENTIFIER317_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:575:5: CONSTANT_TYPE_ASSIGNABLE
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:579:5: CONSTANT_TYPE_ASSIGNABLE
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    CONSTANT_TYPE_ASSIGNABLE320=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2938); 
-                    CONSTANT_TYPE_ASSIGNABLE320_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE320);
+                    CONSTANT_TYPE_ASSIGNABLE318=(CommonTree)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2960); 
+                    CONSTANT_TYPE_ASSIGNABLE318_tree = (CommonTree)adaptor.dupNode(CONSTANT_TYPE_ASSIGNABLE318);
 
 
-                    adaptor.addChild(root_0, CONSTANT_TYPE_ASSIGNABLE320_tree);
+                    adaptor.addChild(root_0, CONSTANT_TYPE_ASSIGNABLE318_tree);
 
 
                     }
@@ -10838,7 +10867,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "lineNumberTable"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:582:1: lineNumberTable : ( lineNumberTableLine )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:586:1: lineNumberTable : ( lineNumberTableLine )+ ;
     public final JVMScramblingInformationGatherer.lineNumberTable_return lineNumberTable() throws RecognitionException {
         JVMScramblingInformationGatherer.lineNumberTable_return retval = new JVMScramblingInformationGatherer.lineNumberTable_return();
         retval.start = input.LT(1);
@@ -10849,18 +10878,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.lineNumberTableLine_return lineNumberTableLine321 =null;
+        JVMScramblingInformationGatherer.lineNumberTableLine_return lineNumberTableLine319 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:583:3: ( ( lineNumberTableLine )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:583:5: ( lineNumberTableLine )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:587:3: ( ( lineNumberTableLine )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:587:5: ( lineNumberTableLine )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:583:5: ( lineNumberTableLine )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:587:5: ( lineNumberTableLine )+
             int cnt72=0;
             loop72:
             do {
@@ -10874,15 +10903,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt72) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:583:5: lineNumberTableLine
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:587:5: lineNumberTableLine
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable2957);
-            	    lineNumberTableLine321=lineNumberTableLine();
+            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable2979);
+            	    lineNumberTableLine319=lineNumberTableLine();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, lineNumberTableLine321.getTree());
+            	    adaptor.addChild(root_0, lineNumberTableLine319.getTree());
 
 
             	    }
@@ -10923,7 +10952,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "lineNumberTableLine"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:586:1: lineNumberTableLine : ^( IDENTIFIER pc INTLITERAL ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:590:1: lineNumberTableLine : ^( IDENTIFIER pc INTLITERAL ) ;
     public final JVMScramblingInformationGatherer.lineNumberTableLine_return lineNumberTableLine() throws RecognitionException {
         JVMScramblingInformationGatherer.lineNumberTableLine_return retval = new JVMScramblingInformationGatherer.lineNumberTableLine_return();
         retval.start = input.LT(1);
@@ -10934,17 +10963,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER322=null;
-        CommonTree INTLITERAL324=null;
-        JVMScramblingInformationGatherer.pc_return pc323 =null;
+        CommonTree IDENTIFIER320=null;
+        CommonTree INTLITERAL322=null;
+        JVMScramblingInformationGatherer.pc_return pc321 =null;
 
 
-        CommonTree IDENTIFIER322_tree=null;
-        CommonTree INTLITERAL324_tree=null;
+        CommonTree IDENTIFIER320_tree=null;
+        CommonTree INTLITERAL322_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:587:3: ( ^( IDENTIFIER pc INTLITERAL ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:587:5: ^( IDENTIFIER pc INTLITERAL )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:591:3: ( ^( IDENTIFIER pc INTLITERAL ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:591:5: ^( IDENTIFIER pc INTLITERAL )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -10955,29 +10984,29 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER322=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine2972); 
-            IDENTIFIER322_tree = (CommonTree)adaptor.dupNode(IDENTIFIER322);
+            IDENTIFIER320=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine2994); 
+            IDENTIFIER320_tree = (CommonTree)adaptor.dupNode(IDENTIFIER320);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER322_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(IDENTIFIER320_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_pc_in_lineNumberTableLine2974);
-            pc323=pc();
+            pushFollow(FOLLOW_pc_in_lineNumberTableLine2996);
+            pc321=pc();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, pc323.getTree());
+            adaptor.addChild(root_1, pc321.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL324=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine2976); 
-            INTLITERAL324_tree = (CommonTree)adaptor.dupNode(INTLITERAL324);
+            INTLITERAL322=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine2998); 
+            INTLITERAL322_tree = (CommonTree)adaptor.dupNode(INTLITERAL322);
 
 
-            adaptor.addChild(root_1, INTLITERAL324_tree);
+            adaptor.addChild(root_1, INTLITERAL322_tree);
 
 
             match(input, Token.UP, null); 
@@ -11011,7 +11040,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "localVariableTable"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:594:1: localVariableTable : ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:598:1: localVariableTable : ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) ;
     public final JVMScramblingInformationGatherer.localVariableTable_return localVariableTable() throws RecognitionException {
         JVMScramblingInformationGatherer.localVariableTable_return retval = new JVMScramblingInformationGatherer.localVariableTable_return();
         retval.start = input.LT(1);
@@ -11022,27 +11051,27 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree LVHEADER325=null;
+        CommonTree LVHEADER323=null;
+        CommonTree IDENTIFIER324=null;
+        CommonTree IDENTIFIER325=null;
         CommonTree IDENTIFIER326=null;
         CommonTree IDENTIFIER327=null;
         CommonTree IDENTIFIER328=null;
-        CommonTree IDENTIFIER329=null;
-        CommonTree IDENTIFIER330=null;
-        CommonTree LVENTRY331=null;
-        JVMScramblingInformationGatherer.localVariableTableLine_return localVariableTableLine332 =null;
+        CommonTree LVENTRY329=null;
+        JVMScramblingInformationGatherer.localVariableTableLine_return localVariableTableLine330 =null;
 
 
-        CommonTree LVHEADER325_tree=null;
+        CommonTree LVHEADER323_tree=null;
+        CommonTree IDENTIFIER324_tree=null;
+        CommonTree IDENTIFIER325_tree=null;
         CommonTree IDENTIFIER326_tree=null;
         CommonTree IDENTIFIER327_tree=null;
         CommonTree IDENTIFIER328_tree=null;
-        CommonTree IDENTIFIER329_tree=null;
-        CommonTree IDENTIFIER330_tree=null;
-        CommonTree LVENTRY331_tree=null;
+        CommonTree LVENTRY329_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:595:3: ( ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:595:5: ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:599:3: ( ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:599:5: ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -11053,16 +11082,32 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            LVHEADER325=(CommonTree)match(input,LVHEADER,FOLLOW_LVHEADER_in_localVariableTable2999); 
-            LVHEADER325_tree = (CommonTree)adaptor.dupNode(LVHEADER325);
+            LVHEADER323=(CommonTree)match(input,LVHEADER,FOLLOW_LVHEADER_in_localVariableTable3021); 
+            LVHEADER323_tree = (CommonTree)adaptor.dupNode(LVHEADER323);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(LVHEADER325_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(LVHEADER323_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER326=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3001); 
+            IDENTIFIER324=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3023); 
+            IDENTIFIER324_tree = (CommonTree)adaptor.dupNode(IDENTIFIER324);
+
+
+            adaptor.addChild(root_1, IDENTIFIER324_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER325=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3025); 
+            IDENTIFIER325_tree = (CommonTree)adaptor.dupNode(IDENTIFIER325);
+
+
+            adaptor.addChild(root_1, IDENTIFIER325_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER326=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3027); 
             IDENTIFIER326_tree = (CommonTree)adaptor.dupNode(IDENTIFIER326);
 
 
@@ -11070,7 +11115,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER327=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3003); 
+            IDENTIFIER327=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3029); 
             IDENTIFIER327_tree = (CommonTree)adaptor.dupNode(IDENTIFIER327);
 
 
@@ -11078,27 +11123,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER328=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3005); 
+            IDENTIFIER328=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3031); 
             IDENTIFIER328_tree = (CommonTree)adaptor.dupNode(IDENTIFIER328);
 
 
             adaptor.addChild(root_1, IDENTIFIER328_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER329=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3007); 
-            IDENTIFIER329_tree = (CommonTree)adaptor.dupNode(IDENTIFIER329);
-
-
-            adaptor.addChild(root_1, IDENTIFIER329_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER330=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable3009); 
-            IDENTIFIER330_tree = (CommonTree)adaptor.dupNode(IDENTIFIER330);
-
-
-            adaptor.addChild(root_1, IDENTIFIER330_tree);
 
 
             match(input, Token.UP, null); 
@@ -11113,16 +11142,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            LVENTRY331=(CommonTree)match(input,LVENTRY,FOLLOW_LVENTRY_in_localVariableTable3013); 
-            LVENTRY331_tree = (CommonTree)adaptor.dupNode(LVENTRY331);
+            LVENTRY329=(CommonTree)match(input,LVENTRY,FOLLOW_LVENTRY_in_localVariableTable3035); 
+            LVENTRY329_tree = (CommonTree)adaptor.dupNode(LVENTRY329);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(LVENTRY331_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(LVENTRY329_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:595:82: ( localVariableTableLine )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:599:82: ( localVariableTableLine )*
                 loop73:
                 do {
                     int alt73=2;
@@ -11135,15 +11164,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt73) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:595:82: localVariableTableLine
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:599:82: localVariableTableLine
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable3015);
-                	    localVariableTableLine332=localVariableTableLine();
+                	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable3037);
+                	    localVariableTableLine330=localVariableTableLine();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_1, localVariableTableLine332.getTree());
+                	    adaptor.addChild(root_1, localVariableTableLine330.getTree());
 
 
                 	    }
@@ -11187,7 +11216,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "localVariableTableLine"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:598:1: localVariableTableLine : INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:602:1: localVariableTableLine : INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType ;
     public final JVMScramblingInformationGatherer.localVariableTableLine_return localVariableTableLine() throws RecognitionException {
         JVMScramblingInformationGatherer.localVariableTableLine_return retval = new JVMScramblingInformationGatherer.localVariableTableLine_return();
         retval.start = input.LT(1);
@@ -11198,27 +11227,43 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
+        CommonTree INTLITERAL331=null;
+        CommonTree INTLITERAL332=null;
         CommonTree INTLITERAL333=null;
-        CommonTree INTLITERAL334=null;
-        CommonTree INTLITERAL335=null;
-        JVMScramblingInformationGatherer.localVariableTableLineIdentifier_return localVariableTableLineIdentifier336 =null;
+        JVMScramblingInformationGatherer.localVariableTableLineIdentifier_return localVariableTableLineIdentifier334 =null;
 
-        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType337 =null;
+        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType335 =null;
 
 
+        CommonTree INTLITERAL331_tree=null;
+        CommonTree INTLITERAL332_tree=null;
         CommonTree INTLITERAL333_tree=null;
-        CommonTree INTLITERAL334_tree=null;
-        CommonTree INTLITERAL335_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:599:3: ( INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:599:5: INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:603:3: ( INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:603:5: INTLITERAL INTLITERAL INTLITERAL localVariableTableLineIdentifier bytecodeType
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL333=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine3032); 
+            INTLITERAL331=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine3054); 
+            INTLITERAL331_tree = (CommonTree)adaptor.dupNode(INTLITERAL331);
+
+
+            adaptor.addChild(root_0, INTLITERAL331_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL332=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine3056); 
+            INTLITERAL332_tree = (CommonTree)adaptor.dupNode(INTLITERAL332);
+
+
+            adaptor.addChild(root_0, INTLITERAL332_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL333=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine3058); 
             INTLITERAL333_tree = (CommonTree)adaptor.dupNode(INTLITERAL333);
 
 
@@ -11226,37 +11271,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL334=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine3034); 
-            INTLITERAL334_tree = (CommonTree)adaptor.dupNode(INTLITERAL334);
-
-
-            adaptor.addChild(root_0, INTLITERAL334_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            INTLITERAL335=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine3036); 
-            INTLITERAL335_tree = (CommonTree)adaptor.dupNode(INTLITERAL335);
-
-
-            adaptor.addChild(root_0, INTLITERAL335_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine3038);
-            localVariableTableLineIdentifier336=localVariableTableLineIdentifier();
+            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine3060);
+            localVariableTableLineIdentifier334=localVariableTableLineIdentifier();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, localVariableTableLineIdentifier336.getTree());
+            adaptor.addChild(root_0, localVariableTableLineIdentifier334.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine3040);
-            bytecodeType337=bytecodeType();
+            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine3062);
+            bytecodeType335=bytecodeType();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeType337.getTree());
+            adaptor.addChild(root_0, bytecodeType335.getTree());
 
 
             }
@@ -11284,7 +11313,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "localVariableTableLineIdentifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:602:1: localVariableTableLineIdentifier : IDENTIFIER ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:606:1: localVariableTableLineIdentifier : IDENTIFIER ;
     public final JVMScramblingInformationGatherer.localVariableTableLineIdentifier_return localVariableTableLineIdentifier() throws RecognitionException {
         JVMScramblingInformationGatherer.localVariableTableLineIdentifier_return retval = new JVMScramblingInformationGatherer.localVariableTableLineIdentifier_return();
         retval.start = input.LT(1);
@@ -11295,23 +11324,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER338=null;
+        CommonTree IDENTIFIER336=null;
 
-        CommonTree IDENTIFIER338_tree=null;
+        CommonTree IDENTIFIER336_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:603:3: ( IDENTIFIER )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:603:5: IDENTIFIER
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:607:3: ( IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:607:5: IDENTIFIER
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER338=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier3054); 
-            IDENTIFIER338_tree = (CommonTree)adaptor.dupNode(IDENTIFIER338);
+            IDENTIFIER336=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier3076); 
+            IDENTIFIER336_tree = (CommonTree)adaptor.dupNode(IDENTIFIER336);
 
 
-            adaptor.addChild(root_0, IDENTIFIER338_tree);
+            adaptor.addChild(root_0, IDENTIFIER336_tree);
 
 
             }
@@ -11339,7 +11368,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTypeTable"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:610:1: stackMapTypeTable : ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:614:1: stackMapTypeTable : ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) ;
     public final JVMScramblingInformationGatherer.stackMapTypeTable_return stackMapTypeTable() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTypeTable_return retval = new JVMScramblingInformationGatherer.stackMapTypeTable_return();
         retval.start = input.LT(1);
@@ -11350,23 +11379,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SMTHEADER339=null;
-        CommonTree IDENTIFIER340=null;
-        CommonTree ASSIGN341=null;
-        CommonTree INTLITERAL342=null;
-        CommonTree SMTENTRY343=null;
-        JVMScramblingInformationGatherer.stackMapTypeTableEntry_return stackMapTypeTableEntry344 =null;
+        CommonTree SMTHEADER337=null;
+        CommonTree IDENTIFIER338=null;
+        CommonTree ASSIGN339=null;
+        CommonTree INTLITERAL340=null;
+        CommonTree SMTENTRY341=null;
+        JVMScramblingInformationGatherer.stackMapTypeTableEntry_return stackMapTypeTableEntry342 =null;
 
 
-        CommonTree SMTHEADER339_tree=null;
-        CommonTree IDENTIFIER340_tree=null;
-        CommonTree ASSIGN341_tree=null;
-        CommonTree INTLITERAL342_tree=null;
-        CommonTree SMTENTRY343_tree=null;
+        CommonTree SMTHEADER337_tree=null;
+        CommonTree IDENTIFIER338_tree=null;
+        CommonTree ASSIGN339_tree=null;
+        CommonTree INTLITERAL340_tree=null;
+        CommonTree SMTENTRY341_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:611:3: ( ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:611:5: ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:615:3: ( ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:615:5: ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -11377,36 +11406,36 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMTHEADER339=(CommonTree)match(input,SMTHEADER,FOLLOW_SMTHEADER_in_stackMapTypeTable3074); 
-            SMTHEADER339_tree = (CommonTree)adaptor.dupNode(SMTHEADER339);
+            SMTHEADER337=(CommonTree)match(input,SMTHEADER,FOLLOW_SMTHEADER_in_stackMapTypeTable3096); 
+            SMTHEADER337_tree = (CommonTree)adaptor.dupNode(SMTHEADER337);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMTHEADER339_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMTHEADER337_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER340=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable3076); 
-            IDENTIFIER340_tree = (CommonTree)adaptor.dupNode(IDENTIFIER340);
+            IDENTIFIER338=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable3098); 
+            IDENTIFIER338_tree = (CommonTree)adaptor.dupNode(IDENTIFIER338);
 
 
-            adaptor.addChild(root_1, IDENTIFIER340_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN341=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable3078); 
-            ASSIGN341_tree = (CommonTree)adaptor.dupNode(ASSIGN341);
-
-
-            adaptor.addChild(root_1, ASSIGN341_tree);
+            adaptor.addChild(root_1, IDENTIFIER338_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL342=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable3080); 
-            INTLITERAL342_tree = (CommonTree)adaptor.dupNode(INTLITERAL342);
+            ASSIGN339=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable3100); 
+            ASSIGN339_tree = (CommonTree)adaptor.dupNode(ASSIGN339);
 
 
-            adaptor.addChild(root_1, INTLITERAL342_tree);
+            adaptor.addChild(root_1, ASSIGN339_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL340=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable3102); 
+            INTLITERAL340_tree = (CommonTree)adaptor.dupNode(INTLITERAL340);
+
+
+            adaptor.addChild(root_1, INTLITERAL340_tree);
 
 
             match(input, Token.UP, null); 
@@ -11421,15 +11450,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMTENTRY343=(CommonTree)match(input,SMTENTRY,FOLLOW_SMTENTRY_in_stackMapTypeTable3084); 
-            SMTENTRY343_tree = (CommonTree)adaptor.dupNode(SMTENTRY343);
+            SMTENTRY341=(CommonTree)match(input,SMTENTRY,FOLLOW_SMTENTRY_in_stackMapTypeTable3106); 
+            SMTENTRY341_tree = (CommonTree)adaptor.dupNode(SMTENTRY341);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMTENTRY343_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMTENTRY341_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:611:58: ( stackMapTypeTableEntry )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:615:58: ( stackMapTypeTableEntry )+
             int cnt74=0;
             loop74:
             do {
@@ -11443,15 +11472,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt74) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:611:58: stackMapTypeTableEntry
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:615:58: stackMapTypeTableEntry
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable3086);
-            	    stackMapTypeTableEntry344=stackMapTypeTableEntry();
+            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable3108);
+            	    stackMapTypeTableEntry342=stackMapTypeTableEntry();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, stackMapTypeTableEntry344.getTree());
+            	    adaptor.addChild(root_1, stackMapTypeTableEntry342.getTree());
 
 
             	    }
@@ -11498,7 +11527,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTypeTableEntry"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:614:1: stackMapTypeTableEntry : IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:618:1: stackMapTypeTableEntry : IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer ;
     public final JVMScramblingInformationGatherer.stackMapTypeTableEntry_return stackMapTypeTableEntry() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTypeTableEntry_return retval = new JVMScramblingInformationGatherer.stackMapTypeTableEntry_return();
         retval.start = input.LT(1);
@@ -11509,135 +11538,135 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER345=null;
-        CommonTree ASSIGN346=null;
-        CommonTree INTLITERAL347=null;
-        CommonTree IDENTIFIER348=null;
-        CommonTree ASSIGN349=null;
-        CommonTree INTLITERAL350=null;
-        CommonTree IDENTIFIER351=null;
-        CommonTree ASSIGN352=null;
-        CommonTree IDENTIFIER354=null;
-        CommonTree ASSIGN355=null;
-        JVMScramblingInformationGatherer.stackMapTableTypesContainer_return stackMapTableTypesContainer353 =null;
+        CommonTree IDENTIFIER343=null;
+        CommonTree ASSIGN344=null;
+        CommonTree INTLITERAL345=null;
+        CommonTree IDENTIFIER346=null;
+        CommonTree ASSIGN347=null;
+        CommonTree INTLITERAL348=null;
+        CommonTree IDENTIFIER349=null;
+        CommonTree ASSIGN350=null;
+        CommonTree IDENTIFIER352=null;
+        CommonTree ASSIGN353=null;
+        JVMScramblingInformationGatherer.stackMapTableTypesContainer_return stackMapTableTypesContainer351 =null;
 
-        JVMScramblingInformationGatherer.stackMapTableTypesContainer_return stackMapTableTypesContainer356 =null;
+        JVMScramblingInformationGatherer.stackMapTableTypesContainer_return stackMapTableTypesContainer354 =null;
 
 
-        CommonTree IDENTIFIER345_tree=null;
-        CommonTree ASSIGN346_tree=null;
-        CommonTree INTLITERAL347_tree=null;
-        CommonTree IDENTIFIER348_tree=null;
-        CommonTree ASSIGN349_tree=null;
-        CommonTree INTLITERAL350_tree=null;
-        CommonTree IDENTIFIER351_tree=null;
-        CommonTree ASSIGN352_tree=null;
-        CommonTree IDENTIFIER354_tree=null;
-        CommonTree ASSIGN355_tree=null;
+        CommonTree IDENTIFIER343_tree=null;
+        CommonTree ASSIGN344_tree=null;
+        CommonTree INTLITERAL345_tree=null;
+        CommonTree IDENTIFIER346_tree=null;
+        CommonTree ASSIGN347_tree=null;
+        CommonTree INTLITERAL348_tree=null;
+        CommonTree IDENTIFIER349_tree=null;
+        CommonTree ASSIGN350_tree=null;
+        CommonTree IDENTIFIER352_tree=null;
+        CommonTree ASSIGN353_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:615:3: ( IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:615:5: IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:619:3: ( IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:619:5: IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN INTLITERAL IDENTIFIER ASSIGN stackMapTableTypesContainer IDENTIFIER ASSIGN stackMapTableTypesContainer
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER345=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3101); 
-            IDENTIFIER345_tree = (CommonTree)adaptor.dupNode(IDENTIFIER345);
+            IDENTIFIER343=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3123); 
+            IDENTIFIER343_tree = (CommonTree)adaptor.dupNode(IDENTIFIER343);
 
 
-            adaptor.addChild(root_0, IDENTIFIER345_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN346=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3103); 
-            ASSIGN346_tree = (CommonTree)adaptor.dupNode(ASSIGN346);
-
-
-            adaptor.addChild(root_0, ASSIGN346_tree);
+            adaptor.addChild(root_0, IDENTIFIER343_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL347=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3105); 
-            INTLITERAL347_tree = (CommonTree)adaptor.dupNode(INTLITERAL347);
+            ASSIGN344=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3125); 
+            ASSIGN344_tree = (CommonTree)adaptor.dupNode(ASSIGN344);
 
 
-            adaptor.addChild(root_0, INTLITERAL347_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            IDENTIFIER348=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3107); 
-            IDENTIFIER348_tree = (CommonTree)adaptor.dupNode(IDENTIFIER348);
-
-
-            adaptor.addChild(root_0, IDENTIFIER348_tree);
+            adaptor.addChild(root_0, ASSIGN344_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            ASSIGN349=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3109); 
-            ASSIGN349_tree = (CommonTree)adaptor.dupNode(ASSIGN349);
+            INTLITERAL345=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3127); 
+            INTLITERAL345_tree = (CommonTree)adaptor.dupNode(INTLITERAL345);
 
 
-            adaptor.addChild(root_0, ASSIGN349_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            INTLITERAL350=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3111); 
-            INTLITERAL350_tree = (CommonTree)adaptor.dupNode(INTLITERAL350);
-
-
-            adaptor.addChild(root_0, INTLITERAL350_tree);
+            adaptor.addChild(root_0, INTLITERAL345_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER351=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3118); 
-            IDENTIFIER351_tree = (CommonTree)adaptor.dupNode(IDENTIFIER351);
+            IDENTIFIER346=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3129); 
+            IDENTIFIER346_tree = (CommonTree)adaptor.dupNode(IDENTIFIER346);
 
 
-            adaptor.addChild(root_0, IDENTIFIER351_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN352=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3120); 
-            ASSIGN352_tree = (CommonTree)adaptor.dupNode(ASSIGN352);
-
-
-            adaptor.addChild(root_0, ASSIGN352_tree);
+            adaptor.addChild(root_0, IDENTIFIER346_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3122);
-            stackMapTableTypesContainer353=stackMapTableTypesContainer();
+            ASSIGN347=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3131); 
+            ASSIGN347_tree = (CommonTree)adaptor.dupNode(ASSIGN347);
+
+
+            adaptor.addChild(root_0, ASSIGN347_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL348=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3133); 
+            INTLITERAL348_tree = (CommonTree)adaptor.dupNode(INTLITERAL348);
+
+
+            adaptor.addChild(root_0, INTLITERAL348_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            IDENTIFIER349=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3140); 
+            IDENTIFIER349_tree = (CommonTree)adaptor.dupNode(IDENTIFIER349);
+
+
+            adaptor.addChild(root_0, IDENTIFIER349_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            ASSIGN350=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3142); 
+            ASSIGN350_tree = (CommonTree)adaptor.dupNode(ASSIGN350);
+
+
+            adaptor.addChild(root_0, ASSIGN350_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3144);
+            stackMapTableTypesContainer351=stackMapTableTypesContainer();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, stackMapTableTypesContainer353.getTree());
+            adaptor.addChild(root_0, stackMapTableTypesContainer351.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER354=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3129); 
-            IDENTIFIER354_tree = (CommonTree)adaptor.dupNode(IDENTIFIER354);
+            IDENTIFIER352=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3151); 
+            IDENTIFIER352_tree = (CommonTree)adaptor.dupNode(IDENTIFIER352);
 
 
-            adaptor.addChild(root_0, IDENTIFIER354_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN355=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3131); 
-            ASSIGN355_tree = (CommonTree)adaptor.dupNode(ASSIGN355);
-
-
-            adaptor.addChild(root_0, ASSIGN355_tree);
+            adaptor.addChild(root_0, IDENTIFIER352_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3133);
-            stackMapTableTypesContainer356=stackMapTableTypesContainer();
+            ASSIGN353=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry3153); 
+            ASSIGN353_tree = (CommonTree)adaptor.dupNode(ASSIGN353);
+
+
+            adaptor.addChild(root_0, ASSIGN353_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3155);
+            stackMapTableTypesContainer354=stackMapTableTypesContainer();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, stackMapTableTypesContainer356.getTree());
+            adaptor.addChild(root_0, stackMapTableTypesContainer354.getTree());
 
 
             }
@@ -11665,7 +11694,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTable"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:624:1: stackMapTable : ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:628:1: stackMapTable : ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) ;
     public final JVMScramblingInformationGatherer.stackMapTable_return stackMapTable() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTable_return retval = new JVMScramblingInformationGatherer.stackMapTable_return();
         retval.start = input.LT(1);
@@ -11676,23 +11705,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SMHEADER357=null;
-        CommonTree IDENTIFIER358=null;
-        CommonTree ASSIGN359=null;
-        CommonTree INTLITERAL360=null;
-        CommonTree SMENTRY361=null;
-        JVMScramblingInformationGatherer.stackMapTableEntry_return stackMapTableEntry362 =null;
+        CommonTree SMHEADER355=null;
+        CommonTree IDENTIFIER356=null;
+        CommonTree ASSIGN357=null;
+        CommonTree INTLITERAL358=null;
+        CommonTree SMENTRY359=null;
+        JVMScramblingInformationGatherer.stackMapTableEntry_return stackMapTableEntry360 =null;
 
 
-        CommonTree SMHEADER357_tree=null;
-        CommonTree IDENTIFIER358_tree=null;
-        CommonTree ASSIGN359_tree=null;
-        CommonTree INTLITERAL360_tree=null;
-        CommonTree SMENTRY361_tree=null;
+        CommonTree SMHEADER355_tree=null;
+        CommonTree IDENTIFIER356_tree=null;
+        CommonTree ASSIGN357_tree=null;
+        CommonTree INTLITERAL358_tree=null;
+        CommonTree SMENTRY359_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:625:3: ( ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:625:5: ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:629:3: ( ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:629:5: ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -11703,36 +11732,36 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMHEADER357=(CommonTree)match(input,SMHEADER,FOLLOW_SMHEADER_in_stackMapTable3152); 
-            SMHEADER357_tree = (CommonTree)adaptor.dupNode(SMHEADER357);
+            SMHEADER355=(CommonTree)match(input,SMHEADER,FOLLOW_SMHEADER_in_stackMapTable3174); 
+            SMHEADER355_tree = (CommonTree)adaptor.dupNode(SMHEADER355);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMHEADER357_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMHEADER355_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER358=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable3154); 
-            IDENTIFIER358_tree = (CommonTree)adaptor.dupNode(IDENTIFIER358);
+            IDENTIFIER356=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable3176); 
+            IDENTIFIER356_tree = (CommonTree)adaptor.dupNode(IDENTIFIER356);
 
 
-            adaptor.addChild(root_1, IDENTIFIER358_tree);
-
-
-            _last = (CommonTree)input.LT(1);
-            ASSIGN359=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable3156); 
-            ASSIGN359_tree = (CommonTree)adaptor.dupNode(ASSIGN359);
-
-
-            adaptor.addChild(root_1, ASSIGN359_tree);
+            adaptor.addChild(root_1, IDENTIFIER356_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL360=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable3158); 
-            INTLITERAL360_tree = (CommonTree)adaptor.dupNode(INTLITERAL360);
+            ASSIGN357=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable3178); 
+            ASSIGN357_tree = (CommonTree)adaptor.dupNode(ASSIGN357);
 
 
-            adaptor.addChild(root_1, INTLITERAL360_tree);
+            adaptor.addChild(root_1, ASSIGN357_tree);
+
+
+            _last = (CommonTree)input.LT(1);
+            INTLITERAL358=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable3180); 
+            INTLITERAL358_tree = (CommonTree)adaptor.dupNode(INTLITERAL358);
+
+
+            adaptor.addChild(root_1, INTLITERAL358_tree);
 
 
             match(input, Token.UP, null); 
@@ -11747,15 +11776,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMENTRY361=(CommonTree)match(input,SMENTRY,FOLLOW_SMENTRY_in_stackMapTable3162); 
-            SMENTRY361_tree = (CommonTree)adaptor.dupNode(SMENTRY361);
+            SMENTRY359=(CommonTree)match(input,SMENTRY,FOLLOW_SMENTRY_in_stackMapTable3184); 
+            SMENTRY359_tree = (CommonTree)adaptor.dupNode(SMENTRY359);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMENTRY361_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMENTRY359_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:625:56: ( stackMapTableEntry )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:629:56: ( stackMapTableEntry )+
             int cnt75=0;
             loop75:
             do {
@@ -11769,15 +11798,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt75) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:625:56: stackMapTableEntry
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:629:56: stackMapTableEntry
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable3164);
-            	    stackMapTableEntry362=stackMapTableEntry();
+            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable3186);
+            	    stackMapTableEntry360=stackMapTableEntry();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, stackMapTableEntry362.getTree());
+            	    adaptor.addChild(root_1, stackMapTableEntry360.getTree());
 
 
             	    }
@@ -11824,7 +11853,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableEntry"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:627:1: stackMapTableEntry : ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:631:1: stackMapTableEntry : ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) ;
     public final JVMScramblingInformationGatherer.stackMapTableEntry_return stackMapTableEntry() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTableEntry_return retval = new JVMScramblingInformationGatherer.stackMapTableEntry_return();
         retval.start = input.LT(1);
@@ -11835,17 +11864,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ASSIGN363=null;
-        CommonTree IDENTIFIER364=null;
-        JVMScramblingInformationGatherer.stackMapTableEntryValue_return stackMapTableEntryValue365 =null;
+        CommonTree ASSIGN361=null;
+        CommonTree IDENTIFIER362=null;
+        JVMScramblingInformationGatherer.stackMapTableEntryValue_return stackMapTableEntryValue363 =null;
 
 
-        CommonTree ASSIGN363_tree=null;
-        CommonTree IDENTIFIER364_tree=null;
+        CommonTree ASSIGN361_tree=null;
+        CommonTree IDENTIFIER362_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:628:3: ( ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:628:5: ^( ASSIGN IDENTIFIER stackMapTableEntryValue )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:632:3: ( ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:632:5: ^( ASSIGN IDENTIFIER stackMapTableEntryValue )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -11856,29 +11885,29 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ASSIGN363=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry3179); 
-            ASSIGN363_tree = (CommonTree)adaptor.dupNode(ASSIGN363);
+            ASSIGN361=(CommonTree)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry3201); 
+            ASSIGN361_tree = (CommonTree)adaptor.dupNode(ASSIGN361);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN363_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ASSIGN361_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER364=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry3181); 
-            IDENTIFIER364_tree = (CommonTree)adaptor.dupNode(IDENTIFIER364);
+            IDENTIFIER362=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry3203); 
+            IDENTIFIER362_tree = (CommonTree)adaptor.dupNode(IDENTIFIER362);
 
 
-            adaptor.addChild(root_1, IDENTIFIER364_tree);
+            adaptor.addChild(root_1, IDENTIFIER362_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry3183);
-            stackMapTableEntryValue365=stackMapTableEntryValue();
+            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry3205);
+            stackMapTableEntryValue363=stackMapTableEntryValue();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, stackMapTableEntryValue365.getTree());
+            adaptor.addChild(root_1, stackMapTableEntryValue363.getTree());
 
 
             match(input, Token.UP, null); 
@@ -11912,7 +11941,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableEntryValue"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:630:1: stackMapTableEntryValue : ( INTLITERAL | stackMapTableTypesContainer );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:634:1: stackMapTableEntryValue : ( INTLITERAL | stackMapTableTypesContainer );
     public final JVMScramblingInformationGatherer.stackMapTableEntryValue_return stackMapTableEntryValue() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTableEntryValue_return retval = new JVMScramblingInformationGatherer.stackMapTableEntryValue_return();
         retval.start = input.LT(1);
@@ -11923,14 +11952,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL366=null;
-        JVMScramblingInformationGatherer.stackMapTableTypesContainer_return stackMapTableTypesContainer367 =null;
+        CommonTree INTLITERAL364=null;
+        JVMScramblingInformationGatherer.stackMapTableTypesContainer_return stackMapTableTypesContainer365 =null;
 
 
-        CommonTree INTLITERAL366_tree=null;
+        CommonTree INTLITERAL364_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:631:3: ( INTLITERAL | stackMapTableTypesContainer )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:635:3: ( INTLITERAL | stackMapTableTypesContainer )
             int alt76=2;
             int LA76_0 = input.LA(1);
 
@@ -11949,34 +11978,34 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt76) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:631:5: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:635:5: INTLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL366=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue3196); 
-                    INTLITERAL366_tree = (CommonTree)adaptor.dupNode(INTLITERAL366);
+                    INTLITERAL364=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue3218); 
+                    INTLITERAL364_tree = (CommonTree)adaptor.dupNode(INTLITERAL364);
 
 
-                    adaptor.addChild(root_0, INTLITERAL366_tree);
+                    adaptor.addChild(root_0, INTLITERAL364_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:631:18: stackMapTableTypesContainer
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:635:18: stackMapTableTypesContainer
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue3200);
-                    stackMapTableTypesContainer367=stackMapTableTypesContainer();
+                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue3222);
+                    stackMapTableTypesContainer365=stackMapTableTypesContainer();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, stackMapTableTypesContainer367.getTree());
+                    adaptor.addChild(root_0, stackMapTableTypesContainer365.getTree());
 
 
                     }
@@ -12006,7 +12035,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypesContainer"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:633:1: stackMapTableTypesContainer : stackMapTableTypes ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:637:1: stackMapTableTypesContainer : stackMapTableTypes ;
     public final JVMScramblingInformationGatherer.stackMapTableTypesContainer_return stackMapTableTypesContainer() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTableTypesContainer_return retval = new JVMScramblingInformationGatherer.stackMapTableTypesContainer_return();
         retval.start = input.LT(1);
@@ -12017,24 +12046,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.stackMapTableTypes_return stackMapTableTypes368 =null;
+        JVMScramblingInformationGatherer.stackMapTableTypes_return stackMapTableTypes366 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:634:3: ( stackMapTableTypes )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:634:5: stackMapTableTypes
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:638:3: ( stackMapTableTypes )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:638:5: stackMapTableTypes
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer3212);
-            stackMapTableTypes368=stackMapTableTypes();
+            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer3234);
+            stackMapTableTypes366=stackMapTableTypes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, stackMapTableTypes368.getTree());
+            adaptor.addChild(root_0, stackMapTableTypes366.getTree());
 
 
             }
@@ -12062,7 +12091,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypes"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:636:1: stackMapTableTypes : ^( SMTTYPES ( stackMapTableType )* ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:1: stackMapTableTypes : ^( SMTTYPES ( stackMapTableType )* ) ;
     public final JVMScramblingInformationGatherer.stackMapTableTypes_return stackMapTableTypes() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTableTypes_return retval = new JVMScramblingInformationGatherer.stackMapTableTypes_return();
         retval.start = input.LT(1);
@@ -12073,15 +12102,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree SMTTYPES369=null;
-        JVMScramblingInformationGatherer.stackMapTableType_return stackMapTableType370 =null;
+        CommonTree SMTTYPES367=null;
+        JVMScramblingInformationGatherer.stackMapTableType_return stackMapTableType368 =null;
 
 
-        CommonTree SMTTYPES369_tree=null;
+        CommonTree SMTTYPES367_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:637:3: ( ^( SMTTYPES ( stackMapTableType )* ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:637:5: ^( SMTTYPES ( stackMapTableType )* )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:641:3: ( ^( SMTTYPES ( stackMapTableType )* ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:641:5: ^( SMTTYPES ( stackMapTableType )* )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -12092,16 +12121,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            SMTTYPES369=(CommonTree)match(input,SMTTYPES,FOLLOW_SMTTYPES_in_stackMapTableTypes3236); 
-            SMTTYPES369_tree = (CommonTree)adaptor.dupNode(SMTTYPES369);
+            SMTTYPES367=(CommonTree)match(input,SMTTYPES,FOLLOW_SMTTYPES_in_stackMapTableTypes3258); 
+            SMTTYPES367_tree = (CommonTree)adaptor.dupNode(SMTTYPES367);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(SMTTYPES369_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(SMTTYPES367_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:637:16: ( stackMapTableType )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:641:16: ( stackMapTableType )*
                 loop77:
                 do {
                     int alt77=2;
@@ -12114,15 +12143,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt77) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:637:16: stackMapTableType
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:641:16: stackMapTableType
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes3238);
-                	    stackMapTableType370=stackMapTableType();
+                	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes3260);
+                	    stackMapTableType368=stackMapTableType();
 
                 	    state._fsp--;
 
-                	    adaptor.addChild(root_1, stackMapTableType370.getTree());
+                	    adaptor.addChild(root_1, stackMapTableType368.getTree());
 
 
                 	    }
@@ -12166,7 +12195,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:639:1: stackMapTableType : ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:643:1: stackMapTableType : ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? );
     public final JVMScramblingInformationGatherer.stackMapTableType_return stackMapTableType() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTableType_return retval = new JVMScramblingInformationGatherer.stackMapTableType_return();
         retval.start = input.LT(1);
@@ -12177,20 +12206,20 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER374=null;
-        CommonTree INTLITERAL375=null;
-        JVMScramblingInformationGatherer.stackMapTableTypeObject_return stackMapTableTypeObject371 =null;
+        CommonTree IDENTIFIER372=null;
+        CommonTree INTLITERAL373=null;
+        JVMScramblingInformationGatherer.stackMapTableTypeObject_return stackMapTableTypeObject369 =null;
 
-        JVMScramblingInformationGatherer.stackMapTableTypePlainObject_return stackMapTableTypePlainObject372 =null;
+        JVMScramblingInformationGatherer.stackMapTableTypePlainObject_return stackMapTableTypePlainObject370 =null;
 
-        JVMScramblingInformationGatherer.primitiveType_return primitiveType373 =null;
+        JVMScramblingInformationGatherer.primitiveType_return primitiveType371 =null;
 
 
-        CommonTree IDENTIFIER374_tree=null;
-        CommonTree INTLITERAL375_tree=null;
+        CommonTree IDENTIFIER372_tree=null;
+        CommonTree INTLITERAL373_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:3: ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:644:3: ( stackMapTableTypeObject | stackMapTableTypePlainObject | primitiveType | IDENTIFIER ( INTLITERAL )? )
             int alt79=4;
             switch ( input.LA(1) ) {
             case CLASS:
@@ -12240,71 +12269,71 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt79) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:5: stackMapTableTypeObject
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:644:5: stackMapTableTypeObject
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType3252);
-                    stackMapTableTypeObject371=stackMapTableTypeObject();
+                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType3274);
+                    stackMapTableTypeObject369=stackMapTableTypeObject();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, stackMapTableTypeObject371.getTree());
+                    adaptor.addChild(root_0, stackMapTableTypeObject369.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:29: stackMapTableTypePlainObject
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:644:29: stackMapTableTypePlainObject
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType3254);
-                    stackMapTableTypePlainObject372=stackMapTableTypePlainObject();
+                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType3276);
+                    stackMapTableTypePlainObject370=stackMapTableTypePlainObject();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, stackMapTableTypePlainObject372.getTree());
+                    adaptor.addChild(root_0, stackMapTableTypePlainObject370.getTree());
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:58: primitiveType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:644:58: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType3256);
-                    primitiveType373=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType3278);
+                    primitiveType371=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType373.getTree());
+                    adaptor.addChild(root_0, primitiveType371.getTree());
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:72: IDENTIFIER ( INTLITERAL )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:644:72: IDENTIFIER ( INTLITERAL )?
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER374=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType3258); 
-                    IDENTIFIER374_tree = (CommonTree)adaptor.dupNode(IDENTIFIER374);
+                    IDENTIFIER372=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType3280); 
+                    IDENTIFIER372_tree = (CommonTree)adaptor.dupNode(IDENTIFIER372);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER374_tree);
+                    adaptor.addChild(root_0, IDENTIFIER372_tree);
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:83: ( INTLITERAL )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:644:83: ( INTLITERAL )?
                     int alt78=2;
                     int LA78_0 = input.LA(1);
 
@@ -12313,14 +12342,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt78) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:640:83: INTLITERAL
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:644:83: INTLITERAL
                             {
                             _last = (CommonTree)input.LT(1);
-                            INTLITERAL375=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType3260); 
-                            INTLITERAL375_tree = (CommonTree)adaptor.dupNode(INTLITERAL375);
+                            INTLITERAL373=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType3282); 
+                            INTLITERAL373_tree = (CommonTree)adaptor.dupNode(INTLITERAL373);
 
 
-                            adaptor.addChild(root_0, INTLITERAL375_tree);
+                            adaptor.addChild(root_0, INTLITERAL373_tree);
 
 
                             }
@@ -12356,7 +12385,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypePlainObject"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:642:1: stackMapTableTypePlainObject : CLASS INTERNALTYPE ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:646:1: stackMapTableTypePlainObject : CLASS INTERNALTYPE ;
     public final JVMScramblingInformationGatherer.stackMapTableTypePlainObject_return stackMapTableTypePlainObject() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTableTypePlainObject_return retval = new JVMScramblingInformationGatherer.stackMapTableTypePlainObject_return();
         retval.start = input.LT(1);
@@ -12367,33 +12396,33 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CLASS376=null;
-        CommonTree INTERNALTYPE377=null;
+        CommonTree CLASS374=null;
+        CommonTree INTERNALTYPE375=null;
 
-        CommonTree CLASS376_tree=null;
-        CommonTree INTERNALTYPE377_tree=null;
+        CommonTree CLASS374_tree=null;
+        CommonTree INTERNALTYPE375_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:643:3: ( CLASS INTERNALTYPE )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:643:5: CLASS INTERNALTYPE
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:647:3: ( CLASS INTERNALTYPE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:647:5: CLASS INTERNALTYPE
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            CLASS376=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject3273); 
-            CLASS376_tree = (CommonTree)adaptor.dupNode(CLASS376);
+            CLASS374=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject3295); 
+            CLASS374_tree = (CommonTree)adaptor.dupNode(CLASS374);
 
 
-            adaptor.addChild(root_0, CLASS376_tree);
+            adaptor.addChild(root_0, CLASS374_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            INTERNALTYPE377=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject3275); 
-            INTERNALTYPE377_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE377);
+            INTERNALTYPE375=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject3297); 
+            INTERNALTYPE375_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE375);
 
 
-            adaptor.addChild(root_0, INTERNALTYPE377_tree);
+            adaptor.addChild(root_0, INTERNALTYPE375_tree);
 
 
             }
@@ -12421,7 +12450,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stackMapTableTypeObject"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:645:1: stackMapTableTypeObject : CLASS STRINGLITERAL ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:649:1: stackMapTableTypeObject : CLASS STRINGLITERAL ;
     public final JVMScramblingInformationGatherer.stackMapTableTypeObject_return stackMapTableTypeObject() throws RecognitionException {
         JVMScramblingInformationGatherer.stackMapTableTypeObject_return retval = new JVMScramblingInformationGatherer.stackMapTableTypeObject_return();
         retval.start = input.LT(1);
@@ -12432,33 +12461,33 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree CLASS378=null;
-        CommonTree STRINGLITERAL379=null;
+        CommonTree CLASS376=null;
+        CommonTree STRINGLITERAL377=null;
 
-        CommonTree CLASS378_tree=null;
-        CommonTree STRINGLITERAL379_tree=null;
+        CommonTree CLASS376_tree=null;
+        CommonTree STRINGLITERAL377_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:646:3: ( CLASS STRINGLITERAL )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:646:5: CLASS STRINGLITERAL
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:650:3: ( CLASS STRINGLITERAL )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:650:5: CLASS STRINGLITERAL
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            CLASS378=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject3287); 
-            CLASS378_tree = (CommonTree)adaptor.dupNode(CLASS378);
+            CLASS376=(CommonTree)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject3309); 
+            CLASS376_tree = (CommonTree)adaptor.dupNode(CLASS376);
 
 
-            adaptor.addChild(root_0, CLASS378_tree);
+            adaptor.addChild(root_0, CLASS376_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            STRINGLITERAL379=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject3289); 
-            STRINGLITERAL379_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL379);
+            STRINGLITERAL377=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject3311); 
+            STRINGLITERAL377_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL377);
 
 
-            adaptor.addChild(root_0, STRINGLITERAL379_tree);
+            adaptor.addChild(root_0, STRINGLITERAL377_tree);
 
 
             }
@@ -12486,7 +12515,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeList"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:656:1: typeList : ( type )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:660:1: typeList : ( type )+ ;
     public final JVMScramblingInformationGatherer.typeList_return typeList() throws RecognitionException {
         JVMScramblingInformationGatherer.typeList_return retval = new JVMScramblingInformationGatherer.typeList_return();
         retval.start = input.LT(1);
@@ -12497,18 +12526,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.type_return type380 =null;
+        JVMScramblingInformationGatherer.type_return type378 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:657:3: ( ( type )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:657:5: ( type )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:661:3: ( ( type )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:661:5: ( type )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:657:5: ( type )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:661:5: ( type )+
             int cnt80=0;
             loop80:
             do {
@@ -12522,15 +12551,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt80) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:657:5: type
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:661:5: type
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_type_in_typeList3309);
-            	    type380=type();
+            	    pushFollow(FOLLOW_type_in_typeList3331);
+            	    type378=type();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, type380.getTree());
+            	    adaptor.addChild(root_0, type378.getTree());
 
 
             	    }
@@ -12571,7 +12600,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "type"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:659:1: type : combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:663:1: type : combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) ;
     public final JVMScramblingInformationGatherer.type_return type() throws RecognitionException {
         JVMScramblingInformationGatherer.type_return retval = new JVMScramblingInformationGatherer.type_return();
         retval.start = input.LT(1);
@@ -12582,30 +12611,30 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree ARRAYBRACKS382=null;
-        CommonTree LBRACK383=null;
-        CommonTree RBRACK384=null;
-        JVMScramblingInformationGatherer.combinedJavaType_return combinedJavaType381 =null;
+        CommonTree ARRAYBRACKS380=null;
+        CommonTree LBRACK381=null;
+        CommonTree RBRACK382=null;
+        JVMScramblingInformationGatherer.combinedJavaType_return combinedJavaType379 =null;
 
 
-        CommonTree ARRAYBRACKS382_tree=null;
-        CommonTree LBRACK383_tree=null;
-        CommonTree RBRACK384_tree=null;
+        CommonTree ARRAYBRACKS380_tree=null;
+        CommonTree LBRACK381_tree=null;
+        CommonTree RBRACK382_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:660:3: ( combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:660:5: combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:664:3: ( combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:664:5: combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* )
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_combinedJavaType_in_type3322);
-            combinedJavaType381=combinedJavaType();
+            pushFollow(FOLLOW_combinedJavaType_in_type3344);
+            combinedJavaType379=combinedJavaType();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, combinedJavaType381.getTree());
+            adaptor.addChild(root_0, combinedJavaType379.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -12614,16 +12643,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            ARRAYBRACKS382=(CommonTree)match(input,ARRAYBRACKS,FOLLOW_ARRAYBRACKS_in_type3325); 
-            ARRAYBRACKS382_tree = (CommonTree)adaptor.dupNode(ARRAYBRACKS382);
+            ARRAYBRACKS380=(CommonTree)match(input,ARRAYBRACKS,FOLLOW_ARRAYBRACKS_in_type3347); 
+            ARRAYBRACKS380_tree = (CommonTree)adaptor.dupNode(ARRAYBRACKS380);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(ARRAYBRACKS382_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(ARRAYBRACKS380_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:660:36: ( LBRACK RBRACK )*
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:664:36: ( LBRACK RBRACK )*
                 loop81:
                 do {
                     int alt81=2;
@@ -12636,22 +12665,22 @@ public TreeAdaptor getTreeAdaptor() {
 
                     switch (alt81) {
                 	case 1 :
-                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:660:37: LBRACK RBRACK
+                	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:664:37: LBRACK RBRACK
                 	    {
                 	    _last = (CommonTree)input.LT(1);
-                	    LBRACK383=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_type3328); 
-                	    LBRACK383_tree = (CommonTree)adaptor.dupNode(LBRACK383);
+                	    LBRACK381=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_type3350); 
+                	    LBRACK381_tree = (CommonTree)adaptor.dupNode(LBRACK381);
 
 
-                	    adaptor.addChild(root_1, LBRACK383_tree);
+                	    adaptor.addChild(root_1, LBRACK381_tree);
 
 
                 	    _last = (CommonTree)input.LT(1);
-                	    RBRACK384=(CommonTree)match(input,RBRACK,FOLLOW_RBRACK_in_type3330); 
-                	    RBRACK384_tree = (CommonTree)adaptor.dupNode(RBRACK384);
+                	    RBRACK382=(CommonTree)match(input,RBRACK,FOLLOW_RBRACK_in_type3352); 
+                	    RBRACK382_tree = (CommonTree)adaptor.dupNode(RBRACK382);
 
 
-                	    adaptor.addChild(root_1, RBRACK384_tree);
+                	    adaptor.addChild(root_1, RBRACK382_tree);
 
 
                 	    }
@@ -12695,7 +12724,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "combinedJavaType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:662:1: combinedJavaType : ( primitiveType | referenceType );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:666:1: combinedJavaType : ( primitiveType | referenceType );
     public final JVMScramblingInformationGatherer.combinedJavaType_return combinedJavaType() throws RecognitionException {
         JVMScramblingInformationGatherer.combinedJavaType_return retval = new JVMScramblingInformationGatherer.combinedJavaType_return();
         retval.start = input.LT(1);
@@ -12706,14 +12735,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.primitiveType_return primitiveType385 =null;
+        JVMScramblingInformationGatherer.primitiveType_return primitiveType383 =null;
 
-        JVMScramblingInformationGatherer.referenceType_return referenceType386 =null;
+        JVMScramblingInformationGatherer.referenceType_return referenceType384 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:663:3: ( primitiveType | referenceType )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:667:3: ( primitiveType | referenceType )
             int alt82=2;
             int LA82_0 = input.LA(1);
 
@@ -12732,35 +12761,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt82) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:663:5: primitiveType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:667:5: primitiveType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType3345);
-                    primitiveType385=primitiveType();
+                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType3367);
+                    primitiveType383=primitiveType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primitiveType385.getTree());
+                    adaptor.addChild(root_0, primitiveType383.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:664:5: referenceType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:668:5: referenceType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_referenceType_in_combinedJavaType3351);
-                    referenceType386=referenceType();
+                    pushFollow(FOLLOW_referenceType_in_combinedJavaType3373);
+                    referenceType384=referenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, referenceType386.getTree());
+                    adaptor.addChild(root_0, referenceType384.getTree());
 
 
                     }
@@ -12790,7 +12819,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "referenceType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:666:1: referenceType : ^( UNITNAME ( typeDeclSpecifier )+ ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:670:1: referenceType : ^( UNITNAME ( typeDeclSpecifier )+ ) ;
     public final JVMScramblingInformationGatherer.referenceType_return referenceType() throws RecognitionException {
         JVMScramblingInformationGatherer.referenceType_return retval = new JVMScramblingInformationGatherer.referenceType_return();
         retval.start = input.LT(1);
@@ -12801,15 +12830,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree UNITNAME387=null;
-        JVMScramblingInformationGatherer.typeDeclSpecifier_return typeDeclSpecifier388 =null;
+        CommonTree UNITNAME385=null;
+        JVMScramblingInformationGatherer.typeDeclSpecifier_return typeDeclSpecifier386 =null;
 
 
-        CommonTree UNITNAME387_tree=null;
+        CommonTree UNITNAME385_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:667:3: ( ^( UNITNAME ( typeDeclSpecifier )+ ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:667:5: ^( UNITNAME ( typeDeclSpecifier )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:671:3: ( ^( UNITNAME ( typeDeclSpecifier )+ ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:671:5: ^( UNITNAME ( typeDeclSpecifier )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -12820,15 +12849,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME387=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_referenceType3364); 
-            UNITNAME387_tree = (CommonTree)adaptor.dupNode(UNITNAME387);
+            UNITNAME385=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_referenceType3386); 
+            UNITNAME385_tree = (CommonTree)adaptor.dupNode(UNITNAME385);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME387_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME385_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:667:16: ( typeDeclSpecifier )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:671:16: ( typeDeclSpecifier )+
             int cnt83=0;
             loop83:
             do {
@@ -12842,15 +12871,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt83) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:667:16: typeDeclSpecifier
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:671:16: typeDeclSpecifier
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType3366);
-            	    typeDeclSpecifier388=typeDeclSpecifier();
+            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType3388);
+            	    typeDeclSpecifier386=typeDeclSpecifier();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, typeDeclSpecifier388.getTree());
+            	    adaptor.addChild(root_1, typeDeclSpecifier386.getTree());
 
 
             	    }
@@ -12897,7 +12926,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeDeclSpecifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:669:1: typeDeclSpecifier : ^( typeName ^( TYPEARGS ( typeArguments )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:673:1: typeDeclSpecifier : ^( typeName ^( TYPEARGS ( typeArguments )? ) ) ;
     public final JVMScramblingInformationGatherer.typeDeclSpecifier_return typeDeclSpecifier() throws RecognitionException {
         JVMScramblingInformationGatherer.typeDeclSpecifier_return retval = new JVMScramblingInformationGatherer.typeDeclSpecifier_return();
         retval.start = input.LT(1);
@@ -12908,17 +12937,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree TYPEARGS390=null;
-        JVMScramblingInformationGatherer.typeName_return typeName389 =null;
+        CommonTree TYPEARGS388=null;
+        JVMScramblingInformationGatherer.typeName_return typeName387 =null;
 
-        JVMScramblingInformationGatherer.typeArguments_return typeArguments391 =null;
+        JVMScramblingInformationGatherer.typeArguments_return typeArguments389 =null;
 
 
-        CommonTree TYPEARGS390_tree=null;
+        CommonTree TYPEARGS388_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:670:3: ( ^( typeName ^( TYPEARGS ( typeArguments )? ) ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:670:5: ^( typeName ^( TYPEARGS ( typeArguments )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:674:3: ( ^( typeName ^( TYPEARGS ( typeArguments )? ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:674:5: ^( typeName ^( TYPEARGS ( typeArguments )? ) )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -12929,12 +12958,12 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier3381);
-            typeName389=typeName();
+            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier3403);
+            typeName387=typeName();
 
             state._fsp--;
 
-            root_1 = (CommonTree)adaptor.becomeRoot(typeName389.getTree(), root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(typeName387.getTree(), root_1);
 
 
             match(input, Token.DOWN, null); 
@@ -12944,16 +12973,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_2 = null;
             CommonTree root_2 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            TYPEARGS390=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_typeDeclSpecifier3384); 
-            TYPEARGS390_tree = (CommonTree)adaptor.dupNode(TYPEARGS390);
+            TYPEARGS388=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_typeDeclSpecifier3406); 
+            TYPEARGS388_tree = (CommonTree)adaptor.dupNode(TYPEARGS388);
 
 
-            root_2 = (CommonTree)adaptor.becomeRoot(TYPEARGS390_tree, root_2);
+            root_2 = (CommonTree)adaptor.becomeRoot(TYPEARGS388_tree, root_2);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:670:27: ( typeArguments )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:674:27: ( typeArguments )?
                 int alt84=2;
                 int LA84_0 = input.LA(1);
 
@@ -12962,15 +12991,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt84) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:670:27: typeArguments
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:674:27: typeArguments
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier3386);
-                        typeArguments391=typeArguments();
+                        pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier3408);
+                        typeArguments389=typeArguments();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_2, typeArguments391.getTree());
+                        adaptor.addChild(root_2, typeArguments389.getTree());
 
 
                         }
@@ -13017,7 +13046,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeName"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:672:1: typeName : QualifiedType ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:676:1: typeName : QualifiedType ;
     public final JVMScramblingInformationGatherer.typeName_return typeName() throws RecognitionException {
         JVMScramblingInformationGatherer.typeName_return retval = new JVMScramblingInformationGatherer.typeName_return();
         retval.start = input.LT(1);
@@ -13028,23 +13057,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree QualifiedType392=null;
+        CommonTree QualifiedType390=null;
 
-        CommonTree QualifiedType392_tree=null;
+        CommonTree QualifiedType390_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:673:3: ( QualifiedType )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:673:5: QualifiedType
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:677:3: ( QualifiedType )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:677:5: QualifiedType
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            QualifiedType392=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName3401); 
-            QualifiedType392_tree = (CommonTree)adaptor.dupNode(QualifiedType392);
+            QualifiedType390=(CommonTree)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName3423); 
+            QualifiedType390_tree = (CommonTree)adaptor.dupNode(QualifiedType390);
 
 
-            adaptor.addChild(root_0, QualifiedType392_tree);
+            adaptor.addChild(root_0, QualifiedType390_tree);
 
 
             }
@@ -13072,7 +13101,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeArguments"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:675:1: typeArguments : typeArgumentList ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:679:1: typeArguments : typeArgumentList ;
     public final JVMScramblingInformationGatherer.typeArguments_return typeArguments() throws RecognitionException {
         JVMScramblingInformationGatherer.typeArguments_return retval = new JVMScramblingInformationGatherer.typeArguments_return();
         retval.start = input.LT(1);
@@ -13083,24 +13112,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.typeArgumentList_return typeArgumentList393 =null;
+        JVMScramblingInformationGatherer.typeArgumentList_return typeArgumentList391 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:676:3: ( typeArgumentList )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:676:5: typeArgumentList
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:680:3: ( typeArgumentList )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:680:5: typeArgumentList
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_typeArgumentList_in_typeArguments3413);
-            typeArgumentList393=typeArgumentList();
+            pushFollow(FOLLOW_typeArgumentList_in_typeArguments3435);
+            typeArgumentList391=typeArgumentList();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, typeArgumentList393.getTree());
+            adaptor.addChild(root_0, typeArgumentList391.getTree());
 
 
             }
@@ -13128,7 +13157,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeArgumentList"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:678:1: typeArgumentList : ( typeArgument )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:682:1: typeArgumentList : ( typeArgument )+ ;
     public final JVMScramblingInformationGatherer.typeArgumentList_return typeArgumentList() throws RecognitionException {
         JVMScramblingInformationGatherer.typeArgumentList_return retval = new JVMScramblingInformationGatherer.typeArgumentList_return();
         retval.start = input.LT(1);
@@ -13139,18 +13168,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.typeArgument_return typeArgument394 =null;
+        JVMScramblingInformationGatherer.typeArgument_return typeArgument392 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:679:3: ( ( typeArgument )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:679:5: ( typeArgument )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:683:3: ( ( typeArgument )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:683:5: ( typeArgument )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:679:5: ( typeArgument )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:683:5: ( typeArgument )+
             int cnt85=0;
             loop85:
             do {
@@ -13164,15 +13193,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt85) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:679:5: typeArgument
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:683:5: typeArgument
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_typeArgument_in_typeArgumentList3426);
-            	    typeArgument394=typeArgument();
+            	    pushFollow(FOLLOW_typeArgument_in_typeArgumentList3448);
+            	    typeArgument392=typeArgument();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, typeArgument394.getTree());
+            	    adaptor.addChild(root_0, typeArgument392.getTree());
 
 
             	    }
@@ -13213,7 +13242,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeArgument"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:681:1: typeArgument : ( type | wildcard );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:685:1: typeArgument : ( type | wildcard );
     public final JVMScramblingInformationGatherer.typeArgument_return typeArgument() throws RecognitionException {
         JVMScramblingInformationGatherer.typeArgument_return retval = new JVMScramblingInformationGatherer.typeArgument_return();
         retval.start = input.LT(1);
@@ -13224,14 +13253,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.type_return type395 =null;
+        JVMScramblingInformationGatherer.type_return type393 =null;
 
-        JVMScramblingInformationGatherer.wildcard_return wildcard396 =null;
+        JVMScramblingInformationGatherer.wildcard_return wildcard394 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:682:3: ( type | wildcard )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:686:3: ( type | wildcard )
             int alt86=2;
             int LA86_0 = input.LA(1);
 
@@ -13250,35 +13279,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt86) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:682:5: type
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:686:5: type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_type_in_typeArgument3439);
-                    type395=type();
+                    pushFollow(FOLLOW_type_in_typeArgument3461);
+                    type393=type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, type395.getTree());
+                    adaptor.addChild(root_0, type393.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:683:5: wildcard
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:687:5: wildcard
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_wildcard_in_typeArgument3445);
-                    wildcard396=wildcard();
+                    pushFollow(FOLLOW_wildcard_in_typeArgument3467);
+                    wildcard394=wildcard();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, wildcard396.getTree());
+                    adaptor.addChild(root_0, wildcard394.getTree());
 
 
                     }
@@ -13308,7 +13337,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "wildcard"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:685:1: wildcard : ^( QUESTION ( wildcardBounds )? ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:689:1: wildcard : ^( QUESTION ( wildcardBounds )? ) ;
     public final JVMScramblingInformationGatherer.wildcard_return wildcard() throws RecognitionException {
         JVMScramblingInformationGatherer.wildcard_return retval = new JVMScramblingInformationGatherer.wildcard_return();
         retval.start = input.LT(1);
@@ -13319,15 +13348,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree QUESTION397=null;
-        JVMScramblingInformationGatherer.wildcardBounds_return wildcardBounds398 =null;
+        CommonTree QUESTION395=null;
+        JVMScramblingInformationGatherer.wildcardBounds_return wildcardBounds396 =null;
 
 
-        CommonTree QUESTION397_tree=null;
+        CommonTree QUESTION395_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:686:3: ( ^( QUESTION ( wildcardBounds )? ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:686:5: ^( QUESTION ( wildcardBounds )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:690:3: ( ^( QUESTION ( wildcardBounds )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:690:5: ^( QUESTION ( wildcardBounds )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13338,16 +13367,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            QUESTION397=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_wildcard3458); 
-            QUESTION397_tree = (CommonTree)adaptor.dupNode(QUESTION397);
+            QUESTION395=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_wildcard3480); 
+            QUESTION395_tree = (CommonTree)adaptor.dupNode(QUESTION395);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION397_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION395_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:686:16: ( wildcardBounds )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:690:16: ( wildcardBounds )?
                 int alt87=2;
                 int LA87_0 = input.LA(1);
 
@@ -13356,15 +13385,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt87) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:686:16: wildcardBounds
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:690:16: wildcardBounds
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_wildcardBounds_in_wildcard3460);
-                        wildcardBounds398=wildcardBounds();
+                        pushFollow(FOLLOW_wildcardBounds_in_wildcard3482);
+                        wildcardBounds396=wildcardBounds();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, wildcardBounds398.getTree());
+                        adaptor.addChild(root_1, wildcardBounds396.getTree());
 
 
                         }
@@ -13405,7 +13434,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "wildcardBounds"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:688:1: wildcardBounds : ( ^( EXTENDS type ) | ^( SUPER type ) );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:692:1: wildcardBounds : ( ^( EXTENDS type ) | ^( SUPER type ) );
     public final JVMScramblingInformationGatherer.wildcardBounds_return wildcardBounds() throws RecognitionException {
         JVMScramblingInformationGatherer.wildcardBounds_return retval = new JVMScramblingInformationGatherer.wildcardBounds_return();
         retval.start = input.LT(1);
@@ -13416,18 +13445,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS399=null;
-        CommonTree SUPER401=null;
+        CommonTree EXTENDS397=null;
+        CommonTree SUPER399=null;
+        JVMScramblingInformationGatherer.type_return type398 =null;
+
         JVMScramblingInformationGatherer.type_return type400 =null;
 
-        JVMScramblingInformationGatherer.type_return type402 =null;
 
-
-        CommonTree EXTENDS399_tree=null;
-        CommonTree SUPER401_tree=null;
+        CommonTree EXTENDS397_tree=null;
+        CommonTree SUPER399_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:689:3: ( ^( EXTENDS type ) | ^( SUPER type ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:693:3: ( ^( EXTENDS type ) | ^( SUPER type ) )
             int alt88=2;
             int LA88_0 = input.LA(1);
 
@@ -13446,7 +13475,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt88) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:689:5: ^( EXTENDS type )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:693:5: ^( EXTENDS type )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -13457,21 +13486,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    EXTENDS399=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds3475); 
-                    EXTENDS399_tree = (CommonTree)adaptor.dupNode(EXTENDS399);
+                    EXTENDS397=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds3497); 
+                    EXTENDS397_tree = (CommonTree)adaptor.dupNode(EXTENDS397);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS399_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS397_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_type_in_wildcardBounds3477);
-                    type400=type();
+                    pushFollow(FOLLOW_type_in_wildcardBounds3499);
+                    type398=type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, type400.getTree());
+                    adaptor.addChild(root_1, type398.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -13483,7 +13512,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:690:5: ^( SUPER type )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:694:5: ^( SUPER type )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -13494,21 +13523,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    SUPER401=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds3485); 
-                    SUPER401_tree = (CommonTree)adaptor.dupNode(SUPER401);
+                    SUPER399=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds3507); 
+                    SUPER399_tree = (CommonTree)adaptor.dupNode(SUPER399);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER401_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER399_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_type_in_wildcardBounds3487);
-                    type402=type();
+                    pushFollow(FOLLOW_type_in_wildcardBounds3509);
+                    type400=type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, type402.getTree());
+                    adaptor.addChild(root_1, type400.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -13544,7 +13573,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeParameters"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:692:1: typeParameters : ( typeParameter )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:696:1: typeParameters : ( typeParameter )+ ;
     public final JVMScramblingInformationGatherer.typeParameters_return typeParameters() throws RecognitionException {
         JVMScramblingInformationGatherer.typeParameters_return retval = new JVMScramblingInformationGatherer.typeParameters_return();
         retval.start = input.LT(1);
@@ -13555,18 +13584,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.typeParameter_return typeParameter403 =null;
+        JVMScramblingInformationGatherer.typeParameter_return typeParameter401 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:693:3: ( ( typeParameter )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:693:5: ( typeParameter )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:697:3: ( ( typeParameter )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:697:5: ( typeParameter )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:693:5: ( typeParameter )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:697:5: ( typeParameter )+
             int cnt89=0;
             loop89:
             do {
@@ -13580,15 +13609,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt89) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:693:5: typeParameter
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:697:5: typeParameter
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_typeParameter_in_typeParameters3500);
-            	    typeParameter403=typeParameter();
+            	    pushFollow(FOLLOW_typeParameter_in_typeParameters3522);
+            	    typeParameter401=typeParameter();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, typeParameter403.getTree());
+            	    adaptor.addChild(root_0, typeParameter401.getTree());
 
 
             	    }
@@ -13629,7 +13658,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeParameter"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:695:1: typeParameter : ^( identifier ( typeBound )? ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:699:1: typeParameter : ^( identifier ( typeBound )? ) ;
     public final JVMScramblingInformationGatherer.typeParameter_return typeParameter() throws RecognitionException {
         JVMScramblingInformationGatherer.typeParameter_return retval = new JVMScramblingInformationGatherer.typeParameter_return();
         retval.start = input.LT(1);
@@ -13640,15 +13669,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.identifier_return identifier404 =null;
+        JVMScramblingInformationGatherer.identifier_return identifier402 =null;
 
-        JVMScramblingInformationGatherer.typeBound_return typeBound405 =null;
+        JVMScramblingInformationGatherer.typeBound_return typeBound403 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:696:3: ( ^( identifier ( typeBound )? ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:696:5: ^( identifier ( typeBound )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:700:3: ( ^( identifier ( typeBound )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:700:5: ^( identifier ( typeBound )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13659,17 +13688,17 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_identifier_in_typeParameter3514);
-            identifier404=identifier();
+            pushFollow(FOLLOW_identifier_in_typeParameter3536);
+            identifier402=identifier();
 
             state._fsp--;
 
-            root_1 = (CommonTree)adaptor.becomeRoot(identifier404.getTree(), root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(identifier402.getTree(), root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:696:18: ( typeBound )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:700:18: ( typeBound )?
                 int alt90=2;
                 int LA90_0 = input.LA(1);
 
@@ -13678,15 +13707,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt90) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:696:18: typeBound
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:700:18: typeBound
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_typeBound_in_typeParameter3516);
-                        typeBound405=typeBound();
+                        pushFollow(FOLLOW_typeBound_in_typeParameter3538);
+                        typeBound403=typeBound();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, typeBound405.getTree());
+                        adaptor.addChild(root_1, typeBound403.getTree());
 
 
                         }
@@ -13727,7 +13756,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "typeBound"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:698:1: typeBound : ^( EXTENDS ( referenceType )+ ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:702:1: typeBound : ^( EXTENDS ( referenceType )+ ) ;
     public final JVMScramblingInformationGatherer.typeBound_return typeBound() throws RecognitionException {
         JVMScramblingInformationGatherer.typeBound_return retval = new JVMScramblingInformationGatherer.typeBound_return();
         retval.start = input.LT(1);
@@ -13738,15 +13767,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS406=null;
-        JVMScramblingInformationGatherer.referenceType_return referenceType407 =null;
+        CommonTree EXTENDS404=null;
+        JVMScramblingInformationGatherer.referenceType_return referenceType405 =null;
 
 
-        CommonTree EXTENDS406_tree=null;
+        CommonTree EXTENDS404_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:699:3: ( ^( EXTENDS ( referenceType )+ ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:699:5: ^( EXTENDS ( referenceType )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:703:3: ( ^( EXTENDS ( referenceType )+ ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:703:5: ^( EXTENDS ( referenceType )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13757,15 +13786,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            EXTENDS406=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound3531); 
-            EXTENDS406_tree = (CommonTree)adaptor.dupNode(EXTENDS406);
+            EXTENDS404=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound3553); 
+            EXTENDS404_tree = (CommonTree)adaptor.dupNode(EXTENDS404);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS406_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS404_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:699:15: ( referenceType )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:703:15: ( referenceType )+
             int cnt91=0;
             loop91:
             do {
@@ -13779,15 +13808,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt91) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:699:15: referenceType
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:703:15: referenceType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_referenceType_in_typeBound3533);
-            	    referenceType407=referenceType();
+            	    pushFollow(FOLLOW_referenceType_in_typeBound3555);
+            	    referenceType405=referenceType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, referenceType407.getTree());
+            	    adaptor.addChild(root_1, referenceType405.getTree());
 
 
             	    }
@@ -13834,7 +13863,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "genericDescriptor"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:704:1: genericDescriptor : ( genericReturnDescriptor )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:708:1: genericDescriptor : ( genericReturnDescriptor )+ ;
     public final JVMScramblingInformationGatherer.genericDescriptor_return genericDescriptor() throws RecognitionException {
         JVMScramblingInformationGatherer.genericDescriptor_return retval = new JVMScramblingInformationGatherer.genericDescriptor_return();
         retval.start = input.LT(1);
@@ -13845,18 +13874,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.genericReturnDescriptor_return genericReturnDescriptor408 =null;
+        JVMScramblingInformationGatherer.genericReturnDescriptor_return genericReturnDescriptor406 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:705:3: ( ( genericReturnDescriptor )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:705:5: ( genericReturnDescriptor )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:709:3: ( ( genericReturnDescriptor )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:709:5: ( genericReturnDescriptor )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:705:5: ( genericReturnDescriptor )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:709:5: ( genericReturnDescriptor )+
             int cnt92=0;
             loop92:
             do {
@@ -13870,15 +13899,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt92) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:705:5: genericReturnDescriptor
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:709:5: genericReturnDescriptor
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor3550);
-            	    genericReturnDescriptor408=genericReturnDescriptor();
+            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor3572);
+            	    genericReturnDescriptor406=genericReturnDescriptor();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, genericReturnDescriptor408.getTree());
+            	    adaptor.addChild(root_0, genericReturnDescriptor406.getTree());
 
 
             	    }
@@ -13919,7 +13948,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "genericReturnDescriptor"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:707:1: genericReturnDescriptor : ^( EXTENDS identifier bytecodeReferenceTypeList ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:711:1: genericReturnDescriptor : ^( EXTENDS identifier bytecodeReferenceTypeList ) ;
     public final JVMScramblingInformationGatherer.genericReturnDescriptor_return genericReturnDescriptor() throws RecognitionException {
         JVMScramblingInformationGatherer.genericReturnDescriptor_return retval = new JVMScramblingInformationGatherer.genericReturnDescriptor_return();
         retval.start = input.LT(1);
@@ -13930,17 +13959,17 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS409=null;
-        JVMScramblingInformationGatherer.identifier_return identifier410 =null;
+        CommonTree EXTENDS407=null;
+        JVMScramblingInformationGatherer.identifier_return identifier408 =null;
 
-        JVMScramblingInformationGatherer.bytecodeReferenceTypeList_return bytecodeReferenceTypeList411 =null;
+        JVMScramblingInformationGatherer.bytecodeReferenceTypeList_return bytecodeReferenceTypeList409 =null;
 
 
-        CommonTree EXTENDS409_tree=null;
+        CommonTree EXTENDS407_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:708:3: ( ^( EXTENDS identifier bytecodeReferenceTypeList ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:708:5: ^( EXTENDS identifier bytecodeReferenceTypeList )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:712:3: ( ^( EXTENDS identifier bytecodeReferenceTypeList ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:712:5: ^( EXTENDS identifier bytecodeReferenceTypeList )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -13951,30 +13980,30 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            EXTENDS409=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor3564); 
-            EXTENDS409_tree = (CommonTree)adaptor.dupNode(EXTENDS409);
+            EXTENDS407=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor3586); 
+            EXTENDS407_tree = (CommonTree)adaptor.dupNode(EXTENDS407);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS409_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS407_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor3566);
-            identifier410=identifier();
+            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor3588);
+            identifier408=identifier();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, identifier410.getTree());
+            adaptor.addChild(root_1, identifier408.getTree());
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3568);
-            bytecodeReferenceTypeList411=bytecodeReferenceTypeList();
+            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3590);
+            bytecodeReferenceTypeList409=bytecodeReferenceTypeList();
 
             state._fsp--;
 
-            adaptor.addChild(root_1, bytecodeReferenceTypeList411.getTree());
+            adaptor.addChild(root_1, bytecodeReferenceTypeList409.getTree());
 
 
             match(input, Token.UP, null); 
@@ -14008,7 +14037,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeReferenceTypeList"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:710:1: bytecodeReferenceTypeList : ( bytecodeReferenceType )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:714:1: bytecodeReferenceTypeList : ( bytecodeReferenceType )+ ;
     public final JVMScramblingInformationGatherer.bytecodeReferenceTypeList_return bytecodeReferenceTypeList() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeReferenceTypeList_return retval = new JVMScramblingInformationGatherer.bytecodeReferenceTypeList_return();
         retval.start = input.LT(1);
@@ -14019,18 +14048,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType412 =null;
+        JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType410 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:711:3: ( ( bytecodeReferenceType )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:711:5: ( bytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:715:3: ( ( bytecodeReferenceType )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:715:5: ( bytecodeReferenceType )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:711:5: ( bytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:715:5: ( bytecodeReferenceType )+
             int cnt93=0;
             loop93:
             do {
@@ -14044,15 +14073,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt93) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:711:5: bytecodeReferenceType
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:715:5: bytecodeReferenceType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3582);
-            	    bytecodeReferenceType412=bytecodeReferenceType();
+            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3604);
+            	    bytecodeReferenceType410=bytecodeReferenceType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, bytecodeReferenceType412.getTree());
+            	    adaptor.addChild(root_0, bytecodeReferenceType410.getTree());
 
 
             	    }
@@ -14093,7 +14122,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeReferenceType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:713:1: bytecodeReferenceType : ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:717:1: bytecodeReferenceType : ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) ;
     public final JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeReferenceType_return retval = new JVMScramblingInformationGatherer.bytecodeReferenceType_return();
         retval.start = input.LT(1);
@@ -14104,15 +14133,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree UNITNAME413=null;
-        JVMScramblingInformationGatherer.bytecodeTypeDeclSpecifier_return bytecodeTypeDeclSpecifier414 =null;
+        CommonTree UNITNAME411=null;
+        JVMScramblingInformationGatherer.bytecodeTypeDeclSpecifier_return bytecodeTypeDeclSpecifier412 =null;
 
 
-        CommonTree UNITNAME413_tree=null;
+        CommonTree UNITNAME411_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:714:3: ( ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:714:5: ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:718:3: ( ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:718:5: ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -14123,15 +14152,15 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            UNITNAME413=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_bytecodeReferenceType3596); 
-            UNITNAME413_tree = (CommonTree)adaptor.dupNode(UNITNAME413);
+            UNITNAME411=(CommonTree)match(input,UNITNAME,FOLLOW_UNITNAME_in_bytecodeReferenceType3618); 
+            UNITNAME411_tree = (CommonTree)adaptor.dupNode(UNITNAME411);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME413_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(UNITNAME411_tree, root_1);
 
 
             match(input, Token.DOWN, null); 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:714:16: ( bytecodeTypeDeclSpecifier )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:718:16: ( bytecodeTypeDeclSpecifier )+
             int cnt94=0;
             loop94:
             do {
@@ -14145,15 +14174,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt94) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:714:16: bytecodeTypeDeclSpecifier
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:718:16: bytecodeTypeDeclSpecifier
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3598);
-            	    bytecodeTypeDeclSpecifier414=bytecodeTypeDeclSpecifier();
+            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3620);
+            	    bytecodeTypeDeclSpecifier412=bytecodeTypeDeclSpecifier();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_1, bytecodeTypeDeclSpecifier414.getTree());
+            	    adaptor.addChild(root_1, bytecodeTypeDeclSpecifier412.getTree());
 
 
             	    }
@@ -14200,7 +14229,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeDeclSpecifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:716:1: bytecodeTypeDeclSpecifier : bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:720:1: bytecodeTypeDeclSpecifier : bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) ;
     public final JVMScramblingInformationGatherer.bytecodeTypeDeclSpecifier_return bytecodeTypeDeclSpecifier() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeTypeDeclSpecifier_return retval = new JVMScramblingInformationGatherer.bytecodeTypeDeclSpecifier_return();
         retval.start = input.LT(1);
@@ -14211,28 +14240,28 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree TYPEARGS416=null;
-        JVMScramblingInformationGatherer.bytecodeTypeName_return bytecodeTypeName415 =null;
+        CommonTree TYPEARGS414=null;
+        JVMScramblingInformationGatherer.bytecodeTypeName_return bytecodeTypeName413 =null;
 
-        JVMScramblingInformationGatherer.bytecodeTypeArguments_return bytecodeTypeArguments417 =null;
+        JVMScramblingInformationGatherer.bytecodeTypeArguments_return bytecodeTypeArguments415 =null;
 
 
-        CommonTree TYPEARGS416_tree=null;
+        CommonTree TYPEARGS414_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:717:3: ( bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:717:5: bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:721:3: ( bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:721:5: bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3612);
-            bytecodeTypeName415=bytecodeTypeName();
+            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3634);
+            bytecodeTypeName413=bytecodeTypeName();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeTypeName415.getTree());
+            adaptor.addChild(root_0, bytecodeTypeName413.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -14241,16 +14270,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            TYPEARGS416=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3615); 
-            TYPEARGS416_tree = (CommonTree)adaptor.dupNode(TYPEARGS416);
+            TYPEARGS414=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3637); 
+            TYPEARGS414_tree = (CommonTree)adaptor.dupNode(TYPEARGS414);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS416_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS414_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:717:33: ( bytecodeTypeArguments )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:721:33: ( bytecodeTypeArguments )?
                 int alt95=2;
                 int LA95_0 = input.LA(1);
 
@@ -14259,15 +14288,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt95) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:717:33: bytecodeTypeArguments
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:721:33: bytecodeTypeArguments
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3617);
-                        bytecodeTypeArguments417=bytecodeTypeArguments();
+                        pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3639);
+                        bytecodeTypeArguments415=bytecodeTypeArguments();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, bytecodeTypeArguments417.getTree());
+                        adaptor.addChild(root_1, bytecodeTypeArguments415.getTree());
 
 
                         }
@@ -14308,7 +14337,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeName"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:719:1: bytecodeTypeName : INTERNALTYPE ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:723:1: bytecodeTypeName : INTERNALTYPE ;
     public final JVMScramblingInformationGatherer.bytecodeTypeName_return bytecodeTypeName() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeTypeName_return retval = new JVMScramblingInformationGatherer.bytecodeTypeName_return();
         retval.start = input.LT(1);
@@ -14319,23 +14348,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTERNALTYPE418=null;
+        CommonTree INTERNALTYPE416=null;
 
-        CommonTree INTERNALTYPE418_tree=null;
+        CommonTree INTERNALTYPE416_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:720:3: ( INTERNALTYPE )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:720:5: INTERNALTYPE
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:724:3: ( INTERNALTYPE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:724:5: INTERNALTYPE
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTERNALTYPE418=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName3631); 
-            INTERNALTYPE418_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE418);
+            INTERNALTYPE416=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName3653); 
+            INTERNALTYPE416_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE416);
 
 
-            adaptor.addChild(root_0, INTERNALTYPE418_tree);
+            adaptor.addChild(root_0, INTERNALTYPE416_tree);
 
 
             }
@@ -14363,7 +14392,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeArguments"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:722:1: bytecodeTypeArguments : bytecodeTypeArgumentList ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:726:1: bytecodeTypeArguments : bytecodeTypeArgumentList ;
     public final JVMScramblingInformationGatherer.bytecodeTypeArguments_return bytecodeTypeArguments() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeTypeArguments_return retval = new JVMScramblingInformationGatherer.bytecodeTypeArguments_return();
         retval.start = input.LT(1);
@@ -14374,24 +14403,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.bytecodeTypeArgumentList_return bytecodeTypeArgumentList419 =null;
+        JVMScramblingInformationGatherer.bytecodeTypeArgumentList_return bytecodeTypeArgumentList417 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:723:3: ( bytecodeTypeArgumentList )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:723:5: bytecodeTypeArgumentList
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:727:3: ( bytecodeTypeArgumentList )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:727:5: bytecodeTypeArgumentList
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3643);
-            bytecodeTypeArgumentList419=bytecodeTypeArgumentList();
+            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3665);
+            bytecodeTypeArgumentList417=bytecodeTypeArgumentList();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeTypeArgumentList419.getTree());
+            adaptor.addChild(root_0, bytecodeTypeArgumentList417.getTree());
 
 
             }
@@ -14419,7 +14448,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeArgumentList"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:725:1: bytecodeTypeArgumentList : ( bytecodeTypeArgument )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:729:1: bytecodeTypeArgumentList : ( bytecodeTypeArgument )+ ;
     public final JVMScramblingInformationGatherer.bytecodeTypeArgumentList_return bytecodeTypeArgumentList() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeTypeArgumentList_return retval = new JVMScramblingInformationGatherer.bytecodeTypeArgumentList_return();
         retval.start = input.LT(1);
@@ -14430,18 +14459,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.bytecodeTypeArgument_return bytecodeTypeArgument420 =null;
+        JVMScramblingInformationGatherer.bytecodeTypeArgument_return bytecodeTypeArgument418 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:726:3: ( ( bytecodeTypeArgument )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:726:5: ( bytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:730:3: ( ( bytecodeTypeArgument )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:730:5: ( bytecodeTypeArgument )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:726:5: ( bytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:730:5: ( bytecodeTypeArgument )+
             int cnt96=0;
             loop96:
             do {
@@ -14455,15 +14484,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt96) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:726:5: bytecodeTypeArgument
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:730:5: bytecodeTypeArgument
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3656);
-            	    bytecodeTypeArgument420=bytecodeTypeArgument();
+            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3678);
+            	    bytecodeTypeArgument418=bytecodeTypeArgument();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, bytecodeTypeArgument420.getTree());
+            	    adaptor.addChild(root_0, bytecodeTypeArgument418.getTree());
 
 
             	    }
@@ -14504,7 +14533,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeTypeArgument"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:728:1: bytecodeTypeArgument : ( bytecodeReferenceType | bytecodeWildcard );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:732:1: bytecodeTypeArgument : ( bytecodeReferenceType | bytecodeWildcard );
     public final JVMScramblingInformationGatherer.bytecodeTypeArgument_return bytecodeTypeArgument() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeTypeArgument_return retval = new JVMScramblingInformationGatherer.bytecodeTypeArgument_return();
         retval.start = input.LT(1);
@@ -14515,14 +14544,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType421 =null;
+        JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType419 =null;
 
-        JVMScramblingInformationGatherer.bytecodeWildcard_return bytecodeWildcard422 =null;
+        JVMScramblingInformationGatherer.bytecodeWildcard_return bytecodeWildcard420 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:729:3: ( bytecodeReferenceType | bytecodeWildcard )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:733:3: ( bytecodeReferenceType | bytecodeWildcard )
             int alt97=2;
             int LA97_0 = input.LA(1);
 
@@ -14541,35 +14570,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt97) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:729:5: bytecodeReferenceType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:733:5: bytecodeReferenceType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3669);
-                    bytecodeReferenceType421=bytecodeReferenceType();
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3691);
+                    bytecodeReferenceType419=bytecodeReferenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeReferenceType421.getTree());
+                    adaptor.addChild(root_0, bytecodeReferenceType419.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:730:5: bytecodeWildcard
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:734:5: bytecodeWildcard
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3675);
-                    bytecodeWildcard422=bytecodeWildcard();
+                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3697);
+                    bytecodeWildcard420=bytecodeWildcard();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeWildcard422.getTree());
+                    adaptor.addChild(root_0, bytecodeWildcard420.getTree());
 
 
                     }
@@ -14599,7 +14628,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeWildcard"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:732:1: bytecodeWildcard : ^( QUESTION ( bytecodeWildcardBounds )? ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:736:1: bytecodeWildcard : ^( QUESTION ( bytecodeWildcardBounds )? ) ;
     public final JVMScramblingInformationGatherer.bytecodeWildcard_return bytecodeWildcard() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeWildcard_return retval = new JVMScramblingInformationGatherer.bytecodeWildcard_return();
         retval.start = input.LT(1);
@@ -14610,15 +14639,15 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree QUESTION423=null;
-        JVMScramblingInformationGatherer.bytecodeWildcardBounds_return bytecodeWildcardBounds424 =null;
+        CommonTree QUESTION421=null;
+        JVMScramblingInformationGatherer.bytecodeWildcardBounds_return bytecodeWildcardBounds422 =null;
 
 
-        CommonTree QUESTION423_tree=null;
+        CommonTree QUESTION421_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:733:3: ( ^( QUESTION ( bytecodeWildcardBounds )? ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:733:5: ^( QUESTION ( bytecodeWildcardBounds )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:737:3: ( ^( QUESTION ( bytecodeWildcardBounds )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:737:5: ^( QUESTION ( bytecodeWildcardBounds )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -14629,16 +14658,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            QUESTION423=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard3688); 
-            QUESTION423_tree = (CommonTree)adaptor.dupNode(QUESTION423);
+            QUESTION421=(CommonTree)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard3710); 
+            QUESTION421_tree = (CommonTree)adaptor.dupNode(QUESTION421);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION423_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(QUESTION421_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:733:16: ( bytecodeWildcardBounds )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:737:16: ( bytecodeWildcardBounds )?
                 int alt98=2;
                 int LA98_0 = input.LA(1);
 
@@ -14647,15 +14676,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt98) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:733:16: bytecodeWildcardBounds
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:737:16: bytecodeWildcardBounds
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3690);
-                        bytecodeWildcardBounds424=bytecodeWildcardBounds();
+                        pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3712);
+                        bytecodeWildcardBounds422=bytecodeWildcardBounds();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, bytecodeWildcardBounds424.getTree());
+                        adaptor.addChild(root_1, bytecodeWildcardBounds422.getTree());
 
 
                         }
@@ -14696,7 +14725,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeWildcardBounds"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:735:1: bytecodeWildcardBounds : ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:739:1: bytecodeWildcardBounds : ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) );
     public final JVMScramblingInformationGatherer.bytecodeWildcardBounds_return bytecodeWildcardBounds() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeWildcardBounds_return retval = new JVMScramblingInformationGatherer.bytecodeWildcardBounds_return();
         retval.start = input.LT(1);
@@ -14707,18 +14736,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree EXTENDS425=null;
-        CommonTree SUPER427=null;
+        CommonTree EXTENDS423=null;
+        CommonTree SUPER425=null;
+        JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType424 =null;
+
         JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType426 =null;
 
-        JVMScramblingInformationGatherer.bytecodeReferenceType_return bytecodeReferenceType428 =null;
 
-
-        CommonTree EXTENDS425_tree=null;
-        CommonTree SUPER427_tree=null;
+        CommonTree EXTENDS423_tree=null;
+        CommonTree SUPER425_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:736:3: ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:740:3: ( ^( EXTENDS bytecodeReferenceType ) | ^( SUPER bytecodeReferenceType ) )
             int alt99=2;
             int LA99_0 = input.LA(1);
 
@@ -14737,7 +14766,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt99) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:736:5: ^( EXTENDS bytecodeReferenceType )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:740:5: ^( EXTENDS bytecodeReferenceType )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -14748,21 +14777,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    EXTENDS425=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds3705); 
-                    EXTENDS425_tree = (CommonTree)adaptor.dupNode(EXTENDS425);
+                    EXTENDS423=(CommonTree)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds3727); 
+                    EXTENDS423_tree = (CommonTree)adaptor.dupNode(EXTENDS423);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS425_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(EXTENDS423_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3707);
-                    bytecodeReferenceType426=bytecodeReferenceType();
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3729);
+                    bytecodeReferenceType424=bytecodeReferenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, bytecodeReferenceType426.getTree());
+                    adaptor.addChild(root_1, bytecodeReferenceType424.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -14774,7 +14803,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:737:5: ^( SUPER bytecodeReferenceType )
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:741:5: ^( SUPER bytecodeReferenceType )
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -14785,21 +14814,21 @@ public TreeAdaptor getTreeAdaptor() {
                     CommonTree _first_1 = null;
                     CommonTree root_1 = (CommonTree)adaptor.nil();
                     _last = (CommonTree)input.LT(1);
-                    SUPER427=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds3715); 
-                    SUPER427_tree = (CommonTree)adaptor.dupNode(SUPER427);
+                    SUPER425=(CommonTree)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds3737); 
+                    SUPER425_tree = (CommonTree)adaptor.dupNode(SUPER425);
 
 
-                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER427_tree, root_1);
+                    root_1 = (CommonTree)adaptor.becomeRoot(SUPER425_tree, root_1);
 
 
                     match(input, Token.DOWN, null); 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3717);
-                    bytecodeReferenceType428=bytecodeReferenceType();
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3739);
+                    bytecodeReferenceType426=bytecodeReferenceType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_1, bytecodeReferenceType428.getTree());
+                    adaptor.addChild(root_1, bytecodeReferenceType426.getTree());
 
 
                     match(input, Token.UP, null); 
@@ -14829,13 +14858,14 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     public static class bytecodeType_return extends TreeRuleReturnScope {
+        public String value;
         CommonTree tree;
         public Object getTree() { return tree; }
     };
 
 
     // $ANTLR start "bytecodeType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:744:1: bytecodeType : ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:748:1: bytecodeType returns [String value] : ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER );
     public final JVMScramblingInformationGatherer.bytecodeType_return bytecodeType() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeType_return retval = new JVMScramblingInformationGatherer.bytecodeType_return();
         retval.start = input.LT(1);
@@ -14846,20 +14876,20 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree BaseType430=null;
-        CommonTree SEMI432=null;
-        CommonTree IDENTIFIER433=null;
-        JVMScramblingInformationGatherer.bytecodeArrayType_return bytecodeArrayType429 =null;
+        CommonTree BaseType428=null;
+        CommonTree SEMI430=null;
+        CommonTree IDENTIFIER431=null;
+        JVMScramblingInformationGatherer.bytecodeArrayType_return bytecodeArrayType427 =null;
 
-        JVMScramblingInformationGatherer.simpleBytecodeObjectType_return simpleBytecodeObjectType431 =null;
+        JVMScramblingInformationGatherer.simpleBytecodeObjectType_return simpleBytecodeObjectType429 =null;
 
 
-        CommonTree BaseType430_tree=null;
-        CommonTree SEMI432_tree=null;
-        CommonTree IDENTIFIER433_tree=null;
+        CommonTree BaseType428_tree=null;
+        CommonTree SEMI430_tree=null;
+        CommonTree IDENTIFIER431_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:745:3: ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:749:3: ( bytecodeArrayType | BaseType | simpleBytecodeObjectType SEMI | IDENTIFIER )
             int alt100=4;
             switch ( input.LA(1) ) {
             case LBRACK:
@@ -14892,76 +14922,84 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt100) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:745:5: bytecodeArrayType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:749:5: bytecodeArrayType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType3735);
-                    bytecodeArrayType429=bytecodeArrayType();
+                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType3761);
+                    bytecodeArrayType427=bytecodeArrayType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bytecodeArrayType429.getTree());
+                    adaptor.addChild(root_0, bytecodeArrayType427.getTree());
 
+
+                    retval.value = (bytecodeArrayType427!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(bytecodeArrayType427.start),input.getTreeAdaptor().getTokenStopIndex(bytecodeArrayType427.start))):null);
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:745:25: BaseType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:750:5: BaseType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    BaseType430=(CommonTree)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType3739); 
-                    BaseType430_tree = (CommonTree)adaptor.dupNode(BaseType430);
+                    BaseType428=(CommonTree)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType3769); 
+                    BaseType428_tree = (CommonTree)adaptor.dupNode(BaseType428);
 
 
-                    adaptor.addChild(root_0, BaseType430_tree);
+                    adaptor.addChild(root_0, BaseType428_tree);
 
+
+                    retval.value = (BaseType428!=null?BaseType428.getText():null);
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:745:36: simpleBytecodeObjectType SEMI
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:751:5: simpleBytecodeObjectType SEMI
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType3743);
-                    simpleBytecodeObjectType431=simpleBytecodeObjectType();
+                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType3777);
+                    simpleBytecodeObjectType429=simpleBytecodeObjectType();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, simpleBytecodeObjectType431.getTree());
+                    adaptor.addChild(root_0, simpleBytecodeObjectType429.getTree());
 
 
                     _last = (CommonTree)input.LT(1);
-                    SEMI432=(CommonTree)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType3745); 
-                    SEMI432_tree = (CommonTree)adaptor.dupNode(SEMI432);
+                    SEMI430=(CommonTree)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType3779); 
+                    SEMI430_tree = (CommonTree)adaptor.dupNode(SEMI430);
 
 
-                    adaptor.addChild(root_0, SEMI432_tree);
+                    adaptor.addChild(root_0, SEMI430_tree);
 
+
+                    retval.value = (simpleBytecodeObjectType429!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(simpleBytecodeObjectType429.start),input.getTreeAdaptor().getTokenStopIndex(simpleBytecodeObjectType429.start))):null) + (SEMI430!=null?SEMI430.getText():null);
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:745:68: IDENTIFIER
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:752:5: IDENTIFIER
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER433=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType3749); 
-                    IDENTIFIER433_tree = (CommonTree)adaptor.dupNode(IDENTIFIER433);
+                    IDENTIFIER431=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType3787); 
+                    IDENTIFIER431_tree = (CommonTree)adaptor.dupNode(IDENTIFIER431);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER433_tree);
+                    adaptor.addChild(root_0, IDENTIFIER431_tree);
 
+
+                    retval.value = (IDENTIFIER431!=null?IDENTIFIER431.getText():null);
 
                     }
                     break;
@@ -14990,7 +15028,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bytecodeArrayType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:747:1: bytecodeArrayType : LBRACK bytecodeType ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:754:1: bytecodeArrayType : LBRACK bytecodeType ;
     public final JVMScramblingInformationGatherer.bytecodeArrayType_return bytecodeArrayType() throws RecognitionException {
         JVMScramblingInformationGatherer.bytecodeArrayType_return retval = new JVMScramblingInformationGatherer.bytecodeArrayType_return();
         retval.start = input.LT(1);
@@ -15001,34 +15039,34 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree LBRACK434=null;
-        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType435 =null;
+        CommonTree LBRACK432=null;
+        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType433 =null;
 
 
-        CommonTree LBRACK434_tree=null;
+        CommonTree LBRACK432_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:748:3: ( LBRACK bytecodeType )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:748:5: LBRACK bytecodeType
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:755:3: ( LBRACK bytecodeType )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:755:5: LBRACK bytecodeType
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            LBRACK434=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType3762); 
-            LBRACK434_tree = (CommonTree)adaptor.dupNode(LBRACK434);
+            LBRACK432=(CommonTree)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType3802); 
+            LBRACK432_tree = (CommonTree)adaptor.dupNode(LBRACK432);
 
 
-            adaptor.addChild(root_0, LBRACK434_tree);
+            adaptor.addChild(root_0, LBRACK432_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType3764);
-            bytecodeType435=bytecodeType();
+            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType3804);
+            bytecodeType433=bytecodeType();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, bytecodeType435.getTree());
+            adaptor.addChild(root_0, bytecodeType433.getTree());
 
 
             }
@@ -15056,7 +15094,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeObjectType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:750:1: simpleBytecodeObjectType : ( simpleBytecodeReferenceType )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:757:1: simpleBytecodeObjectType : ( simpleBytecodeReferenceType )+ ;
     public final JVMScramblingInformationGatherer.simpleBytecodeObjectType_return simpleBytecodeObjectType() throws RecognitionException {
         JVMScramblingInformationGatherer.simpleBytecodeObjectType_return retval = new JVMScramblingInformationGatherer.simpleBytecodeObjectType_return();
         retval.start = input.LT(1);
@@ -15067,18 +15105,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.simpleBytecodeReferenceType_return simpleBytecodeReferenceType436 =null;
+        JVMScramblingInformationGatherer.simpleBytecodeReferenceType_return simpleBytecodeReferenceType434 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:751:3: ( ( simpleBytecodeReferenceType )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:751:5: ( simpleBytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:758:3: ( ( simpleBytecodeReferenceType )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:758:5: ( simpleBytecodeReferenceType )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:751:5: ( simpleBytecodeReferenceType )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:758:5: ( simpleBytecodeReferenceType )+
             int cnt101=0;
             loop101:
             do {
@@ -15092,15 +15130,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt101) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:751:5: simpleBytecodeReferenceType
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:758:5: simpleBytecodeReferenceType
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3777);
-            	    simpleBytecodeReferenceType436=simpleBytecodeReferenceType();
+            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3817);
+            	    simpleBytecodeReferenceType434=simpleBytecodeReferenceType();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, simpleBytecodeReferenceType436.getTree());
+            	    adaptor.addChild(root_0, simpleBytecodeReferenceType434.getTree());
 
 
             	    }
@@ -15141,7 +15179,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeReferenceType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:753:1: simpleBytecodeReferenceType : simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:760:1: simpleBytecodeReferenceType : simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) ;
     public final JVMScramblingInformationGatherer.simpleBytecodeReferenceType_return simpleBytecodeReferenceType() throws RecognitionException {
         JVMScramblingInformationGatherer.simpleBytecodeReferenceType_return retval = new JVMScramblingInformationGatherer.simpleBytecodeReferenceType_return();
         retval.start = input.LT(1);
@@ -15152,28 +15190,28 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree TYPEARGS438=null;
-        JVMScramblingInformationGatherer.simpleBytecodeReferenceTypeName_return simpleBytecodeReferenceTypeName437 =null;
+        CommonTree TYPEARGS436=null;
+        JVMScramblingInformationGatherer.simpleBytecodeReferenceTypeName_return simpleBytecodeReferenceTypeName435 =null;
 
-        JVMScramblingInformationGatherer.simpleBytecodeTypeArguments_return simpleBytecodeTypeArguments439 =null;
+        JVMScramblingInformationGatherer.simpleBytecodeTypeArguments_return simpleBytecodeTypeArguments437 =null;
 
 
-        CommonTree TYPEARGS438_tree=null;
+        CommonTree TYPEARGS436_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:754:3: ( simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:754:5: simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:761:3: ( simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:761:5: simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? )
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3790);
-            simpleBytecodeReferenceTypeName437=simpleBytecodeReferenceTypeName();
+            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3830);
+            simpleBytecodeReferenceTypeName435=simpleBytecodeReferenceTypeName();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, simpleBytecodeReferenceTypeName437.getTree());
+            adaptor.addChild(root_0, simpleBytecodeReferenceTypeName435.getTree());
 
 
             _last = (CommonTree)input.LT(1);
@@ -15182,16 +15220,16 @@ public TreeAdaptor getTreeAdaptor() {
             CommonTree _first_1 = null;
             CommonTree root_1 = (CommonTree)adaptor.nil();
             _last = (CommonTree)input.LT(1);
-            TYPEARGS438=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3793); 
-            TYPEARGS438_tree = (CommonTree)adaptor.dupNode(TYPEARGS438);
+            TYPEARGS436=(CommonTree)match(input,TYPEARGS,FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3833); 
+            TYPEARGS436_tree = (CommonTree)adaptor.dupNode(TYPEARGS436);
 
 
-            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS438_tree, root_1);
+            root_1 = (CommonTree)adaptor.becomeRoot(TYPEARGS436_tree, root_1);
 
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:754:48: ( simpleBytecodeTypeArguments )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:761:48: ( simpleBytecodeTypeArguments )?
                 int alt102=2;
                 int LA102_0 = input.LA(1);
 
@@ -15200,15 +15238,15 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 switch (alt102) {
                     case 1 :
-                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:754:48: simpleBytecodeTypeArguments
+                        // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:761:48: simpleBytecodeTypeArguments
                         {
                         _last = (CommonTree)input.LT(1);
-                        pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3795);
-                        simpleBytecodeTypeArguments439=simpleBytecodeTypeArguments();
+                        pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3835);
+                        simpleBytecodeTypeArguments437=simpleBytecodeTypeArguments();
 
                         state._fsp--;
 
-                        adaptor.addChild(root_1, simpleBytecodeTypeArguments439.getTree());
+                        adaptor.addChild(root_1, simpleBytecodeTypeArguments437.getTree());
 
 
                         }
@@ -15249,7 +15287,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeReferenceTypeName"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:756:1: simpleBytecodeReferenceTypeName : INTERNALTYPE ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:763:1: simpleBytecodeReferenceTypeName : INTERNALTYPE ;
     public final JVMScramblingInformationGatherer.simpleBytecodeReferenceTypeName_return simpleBytecodeReferenceTypeName() throws RecognitionException {
         JVMScramblingInformationGatherer.simpleBytecodeReferenceTypeName_return retval = new JVMScramblingInformationGatherer.simpleBytecodeReferenceTypeName_return();
         retval.start = input.LT(1);
@@ -15260,23 +15298,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTERNALTYPE440=null;
+        CommonTree INTERNALTYPE438=null;
 
-        CommonTree INTERNALTYPE440_tree=null;
+        CommonTree INTERNALTYPE438_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:757:3: ( INTERNALTYPE )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:757:5: INTERNALTYPE
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:764:3: ( INTERNALTYPE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:764:5: INTERNALTYPE
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTERNALTYPE440=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3809); 
-            INTERNALTYPE440_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE440);
+            INTERNALTYPE438=(CommonTree)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3849); 
+            INTERNALTYPE438_tree = (CommonTree)adaptor.dupNode(INTERNALTYPE438);
 
 
-            adaptor.addChild(root_0, INTERNALTYPE440_tree);
+            adaptor.addChild(root_0, INTERNALTYPE438_tree);
 
 
             }
@@ -15304,7 +15342,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeTypeArguments"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:759:1: simpleBytecodeTypeArguments : simpleBytecodeTypeArgumentList ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:766:1: simpleBytecodeTypeArguments : simpleBytecodeTypeArgumentList ;
     public final JVMScramblingInformationGatherer.simpleBytecodeTypeArguments_return simpleBytecodeTypeArguments() throws RecognitionException {
         JVMScramblingInformationGatherer.simpleBytecodeTypeArguments_return retval = new JVMScramblingInformationGatherer.simpleBytecodeTypeArguments_return();
         retval.start = input.LT(1);
@@ -15315,24 +15353,24 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.simpleBytecodeTypeArgumentList_return simpleBytecodeTypeArgumentList441 =null;
+        JVMScramblingInformationGatherer.simpleBytecodeTypeArgumentList_return simpleBytecodeTypeArgumentList439 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:760:3: ( simpleBytecodeTypeArgumentList )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:760:5: simpleBytecodeTypeArgumentList
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:767:3: ( simpleBytecodeTypeArgumentList )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:767:5: simpleBytecodeTypeArgumentList
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3821);
-            simpleBytecodeTypeArgumentList441=simpleBytecodeTypeArgumentList();
+            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3861);
+            simpleBytecodeTypeArgumentList439=simpleBytecodeTypeArgumentList();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, simpleBytecodeTypeArgumentList441.getTree());
+            adaptor.addChild(root_0, simpleBytecodeTypeArgumentList439.getTree());
 
 
             }
@@ -15360,7 +15398,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeTypeArgumentList"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:762:1: simpleBytecodeTypeArgumentList : ( simpleBytecodeTypeArgument )+ ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:769:1: simpleBytecodeTypeArgumentList : ( simpleBytecodeTypeArgument )+ ;
     public final JVMScramblingInformationGatherer.simpleBytecodeTypeArgumentList_return simpleBytecodeTypeArgumentList() throws RecognitionException {
         JVMScramblingInformationGatherer.simpleBytecodeTypeArgumentList_return retval = new JVMScramblingInformationGatherer.simpleBytecodeTypeArgumentList_return();
         retval.start = input.LT(1);
@@ -15371,18 +15409,18 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.simpleBytecodeTypeArgument_return simpleBytecodeTypeArgument442 =null;
+        JVMScramblingInformationGatherer.simpleBytecodeTypeArgument_return simpleBytecodeTypeArgument440 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:763:3: ( ( simpleBytecodeTypeArgument )+ )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:763:5: ( simpleBytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:770:3: ( ( simpleBytecodeTypeArgument )+ )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:770:5: ( simpleBytecodeTypeArgument )+
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:763:5: ( simpleBytecodeTypeArgument )+
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:770:5: ( simpleBytecodeTypeArgument )+
             int cnt103=0;
             loop103:
             do {
@@ -15396,15 +15434,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt103) {
             	case 1 :
-            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:763:5: simpleBytecodeTypeArgument
+            	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:770:5: simpleBytecodeTypeArgument
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3833);
-            	    simpleBytecodeTypeArgument442=simpleBytecodeTypeArgument();
+            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3873);
+            	    simpleBytecodeTypeArgument440=simpleBytecodeTypeArgument();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, simpleBytecodeTypeArgument442.getTree());
+            	    adaptor.addChild(root_0, simpleBytecodeTypeArgument440.getTree());
 
 
             	    }
@@ -15445,7 +15483,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "simpleBytecodeTypeArgument"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:765:1: simpleBytecodeTypeArgument : ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:772:1: simpleBytecodeTypeArgument : ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR );
     public final JVMScramblingInformationGatherer.simpleBytecodeTypeArgument_return simpleBytecodeTypeArgument() throws RecognitionException {
         JVMScramblingInformationGatherer.simpleBytecodeTypeArgument_return retval = new JVMScramblingInformationGatherer.simpleBytecodeTypeArgument_return();
         retval.start = input.LT(1);
@@ -15456,22 +15494,22 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree MINUS444=null;
-        CommonTree PLUS446=null;
-        CommonTree STAR448=null;
+        CommonTree MINUS442=null;
+        CommonTree PLUS444=null;
+        CommonTree STAR446=null;
+        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType441 =null;
+
         JVMScramblingInformationGatherer.bytecodeType_return bytecodeType443 =null;
 
         JVMScramblingInformationGatherer.bytecodeType_return bytecodeType445 =null;
 
-        JVMScramblingInformationGatherer.bytecodeType_return bytecodeType447 =null;
 
-
-        CommonTree MINUS444_tree=null;
-        CommonTree PLUS446_tree=null;
-        CommonTree STAR448_tree=null;
+        CommonTree MINUS442_tree=null;
+        CommonTree PLUS444_tree=null;
+        CommonTree STAR446_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:766:3: ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:773:3: ( bytecodeType | MINUS bytecodeType | PLUS bytecodeType | STAR )
             int alt104=4;
             switch ( input.LA(1) ) {
             case BaseType:
@@ -15507,13 +15545,38 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt104) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:766:5: bytecodeType
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:773:5: bytecodeType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3846);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3886);
+                    bytecodeType441=bytecodeType();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, bytecodeType441.getTree());
+
+
+                    }
+                    break;
+                case 2 :
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:774:5: MINUS bytecodeType
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    _last = (CommonTree)input.LT(1);
+                    MINUS442=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument3892); 
+                    MINUS442_tree = (CommonTree)adaptor.dupNode(MINUS442);
+
+
+                    adaptor.addChild(root_0, MINUS442_tree);
+
+
+                    _last = (CommonTree)input.LT(1);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3894);
                     bytecodeType443=bytecodeType();
 
                     state._fsp--;
@@ -15523,22 +15586,22 @@ public TreeAdaptor getTreeAdaptor() {
 
                     }
                     break;
-                case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:767:5: MINUS bytecodeType
+                case 3 :
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:775:5: PLUS bytecodeType
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    MINUS444=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument3852); 
-                    MINUS444_tree = (CommonTree)adaptor.dupNode(MINUS444);
+                    PLUS444=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument3900); 
+                    PLUS444_tree = (CommonTree)adaptor.dupNode(PLUS444);
 
 
-                    adaptor.addChild(root_0, MINUS444_tree);
+                    adaptor.addChild(root_0, PLUS444_tree);
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3854);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3902);
                     bytecodeType445=bytecodeType();
 
                     state._fsp--;
@@ -15548,43 +15611,18 @@ public TreeAdaptor getTreeAdaptor() {
 
                     }
                     break;
-                case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:768:5: PLUS bytecodeType
-                    {
-                    root_0 = (CommonTree)adaptor.nil();
-
-
-                    _last = (CommonTree)input.LT(1);
-                    PLUS446=(CommonTree)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument3860); 
-                    PLUS446_tree = (CommonTree)adaptor.dupNode(PLUS446);
-
-
-                    adaptor.addChild(root_0, PLUS446_tree);
-
-
-                    _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3862);
-                    bytecodeType447=bytecodeType();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, bytecodeType447.getTree());
-
-
-                    }
-                    break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:769:5: STAR
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:776:5: STAR
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    STAR448=(CommonTree)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument3868); 
-                    STAR448_tree = (CommonTree)adaptor.dupNode(STAR448);
+                    STAR446=(CommonTree)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument3908); 
+                    STAR446_tree = (CommonTree)adaptor.dupNode(STAR446);
 
 
-                    adaptor.addChild(root_0, STAR448_tree);
+                    adaptor.addChild(root_0, STAR446_tree);
 
 
                     }
@@ -15614,7 +15652,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "identifier"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:776:1: identifier : IDENTIFIER ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:783:1: identifier : IDENTIFIER ;
     public final JVMScramblingInformationGatherer.identifier_return identifier() throws RecognitionException {
         JVMScramblingInformationGatherer.identifier_return retval = new JVMScramblingInformationGatherer.identifier_return();
         retval.start = input.LT(1);
@@ -15625,23 +15663,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER449=null;
+        CommonTree IDENTIFIER447=null;
 
-        CommonTree IDENTIFIER449_tree=null;
+        CommonTree IDENTIFIER447_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:776:11: ( IDENTIFIER )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:776:13: IDENTIFIER
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:783:11: ( IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:783:13: IDENTIFIER
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER449=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier3882); 
-            IDENTIFIER449_tree = (CommonTree)adaptor.dupNode(IDENTIFIER449);
+            IDENTIFIER447=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier3922); 
+            IDENTIFIER447_tree = (CommonTree)adaptor.dupNode(IDENTIFIER447);
 
 
-            adaptor.addChild(root_0, IDENTIFIER449_tree);
+            adaptor.addChild(root_0, IDENTIFIER447_tree);
 
 
             }
@@ -15669,7 +15707,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "keywordAggregate"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:778:1: keywordAggregate : IDENTIFIER ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:785:1: keywordAggregate : IDENTIFIER ;
     public final JVMScramblingInformationGatherer.keywordAggregate_return keywordAggregate() throws RecognitionException {
         JVMScramblingInformationGatherer.keywordAggregate_return retval = new JVMScramblingInformationGatherer.keywordAggregate_return();
         retval.start = input.LT(1);
@@ -15680,23 +15718,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree IDENTIFIER450=null;
+        CommonTree IDENTIFIER448=null;
 
-        CommonTree IDENTIFIER450_tree=null;
+        CommonTree IDENTIFIER448_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:779:3: ( IDENTIFIER )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:779:5: IDENTIFIER
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:786:3: ( IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:786:5: IDENTIFIER
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            IDENTIFIER450=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_keywordAggregate3892); 
-            IDENTIFIER450_tree = (CommonTree)adaptor.dupNode(IDENTIFIER450);
+            IDENTIFIER448=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_keywordAggregate3932); 
+            IDENTIFIER448_tree = (CommonTree)adaptor.dupNode(IDENTIFIER448);
 
 
-            adaptor.addChild(root_0, IDENTIFIER450_tree);
+            adaptor.addChild(root_0, IDENTIFIER448_tree);
 
 
             }
@@ -15724,7 +15762,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "primitiveType"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:782:1: primitiveType : ( boolean_type | numeric_type | VOID );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:789:1: primitiveType : ( boolean_type | numeric_type | VOID );
     public final JVMScramblingInformationGatherer.primitiveType_return primitiveType() throws RecognitionException {
         JVMScramblingInformationGatherer.primitiveType_return retval = new JVMScramblingInformationGatherer.primitiveType_return();
         retval.start = input.LT(1);
@@ -15735,16 +15773,16 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree VOID453=null;
-        JVMScramblingInformationGatherer.boolean_type_return boolean_type451 =null;
+        CommonTree VOID451=null;
+        JVMScramblingInformationGatherer.boolean_type_return boolean_type449 =null;
 
-        JVMScramblingInformationGatherer.numeric_type_return numeric_type452 =null;
+        JVMScramblingInformationGatherer.numeric_type_return numeric_type450 =null;
 
 
-        CommonTree VOID453_tree=null;
+        CommonTree VOID451_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:783:3: ( boolean_type | numeric_type | VOID )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:790:3: ( boolean_type | numeric_type | VOID )
             int alt105=3;
             switch ( input.LA(1) ) {
             case BOOLEAN:
@@ -15778,51 +15816,51 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt105) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:783:5: boolean_type
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:790:5: boolean_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_boolean_type_in_primitiveType3905);
-                    boolean_type451=boolean_type();
+                    pushFollow(FOLLOW_boolean_type_in_primitiveType3945);
+                    boolean_type449=boolean_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, boolean_type451.getTree());
+                    adaptor.addChild(root_0, boolean_type449.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:784:5: numeric_type
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:791:5: numeric_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_numeric_type_in_primitiveType3911);
-                    numeric_type452=numeric_type();
+                    pushFollow(FOLLOW_numeric_type_in_primitiveType3951);
+                    numeric_type450=numeric_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, numeric_type452.getTree());
+                    adaptor.addChild(root_0, numeric_type450.getTree());
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:785:5: VOID
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:792:5: VOID
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    VOID453=(CommonTree)match(input,VOID,FOLLOW_VOID_in_primitiveType3917); 
-                    VOID453_tree = (CommonTree)adaptor.dupNode(VOID453);
+                    VOID451=(CommonTree)match(input,VOID,FOLLOW_VOID_in_primitiveType3957); 
+                    VOID451_tree = (CommonTree)adaptor.dupNode(VOID451);
 
 
-                    adaptor.addChild(root_0, VOID453_tree);
+                    adaptor.addChild(root_0, VOID451_tree);
 
 
                     }
@@ -15852,7 +15890,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "boolean_type"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:788:1: boolean_type : BOOLEAN ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:795:1: boolean_type : BOOLEAN ;
     public final JVMScramblingInformationGatherer.boolean_type_return boolean_type() throws RecognitionException {
         JVMScramblingInformationGatherer.boolean_type_return retval = new JVMScramblingInformationGatherer.boolean_type_return();
         retval.start = input.LT(1);
@@ -15863,23 +15901,23 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree BOOLEAN454=null;
+        CommonTree BOOLEAN452=null;
 
-        CommonTree BOOLEAN454_tree=null;
+        CommonTree BOOLEAN452_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:789:3: ( BOOLEAN )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:789:5: BOOLEAN
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:796:3: ( BOOLEAN )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:796:5: BOOLEAN
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            BOOLEAN454=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type3930); 
-            BOOLEAN454_tree = (CommonTree)adaptor.dupNode(BOOLEAN454);
+            BOOLEAN452=(CommonTree)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type3970); 
+            BOOLEAN452_tree = (CommonTree)adaptor.dupNode(BOOLEAN452);
 
 
-            adaptor.addChild(root_0, BOOLEAN454_tree);
+            adaptor.addChild(root_0, BOOLEAN452_tree);
 
 
             }
@@ -15907,7 +15945,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "numeric_type"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:792:1: numeric_type : ( floating_point_type | integral_type );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:799:1: numeric_type : ( floating_point_type | integral_type );
     public final JVMScramblingInformationGatherer.numeric_type_return numeric_type() throws RecognitionException {
         JVMScramblingInformationGatherer.numeric_type_return retval = new JVMScramblingInformationGatherer.numeric_type_return();
         retval.start = input.LT(1);
@@ -15918,14 +15956,14 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        JVMScramblingInformationGatherer.floating_point_type_return floating_point_type455 =null;
+        JVMScramblingInformationGatherer.floating_point_type_return floating_point_type453 =null;
 
-        JVMScramblingInformationGatherer.integral_type_return integral_type456 =null;
+        JVMScramblingInformationGatherer.integral_type_return integral_type454 =null;
 
 
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:793:3: ( floating_point_type | integral_type )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:800:3: ( floating_point_type | integral_type )
             int alt106=2;
             int LA106_0 = input.LA(1);
 
@@ -15944,35 +15982,35 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt106) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:793:5: floating_point_type
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:800:5: floating_point_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_floating_point_type_in_numeric_type3943);
-                    floating_point_type455=floating_point_type();
+                    pushFollow(FOLLOW_floating_point_type_in_numeric_type3983);
+                    floating_point_type453=floating_point_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, floating_point_type455.getTree());
+                    adaptor.addChild(root_0, floating_point_type453.getTree());
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:794:5: integral_type
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:801:5: integral_type
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_integral_type_in_numeric_type3949);
-                    integral_type456=integral_type();
+                    pushFollow(FOLLOW_integral_type_in_numeric_type3989);
+                    integral_type454=integral_type();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, integral_type456.getTree());
+                    adaptor.addChild(root_0, integral_type454.getTree());
 
 
                     }
@@ -16002,7 +16040,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "integral_type"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:797:1: integral_type : ( BYTE | SHORT | INT | LONG | CHAR );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:804:1: integral_type : ( BYTE | SHORT | INT | LONG | CHAR );
     public final JVMScramblingInformationGatherer.integral_type_return integral_type() throws RecognitionException {
         JVMScramblingInformationGatherer.integral_type_return retval = new JVMScramblingInformationGatherer.integral_type_return();
         retval.start = input.LT(1);
@@ -16013,26 +16051,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set457=null;
+        CommonTree set455=null;
 
-        CommonTree set457_tree=null;
+        CommonTree set455_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:798:3: ( BYTE | SHORT | INT | LONG | CHAR )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:805:3: ( BYTE | SHORT | INT | LONG | CHAR )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set457=(CommonTree)input.LT(1);
+            set455=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==BYTE||input.LA(1)==CHAR||input.LA(1)==INT||input.LA(1)==LONG||input.LA(1)==SHORT ) {
                 input.consume();
-                set457_tree = (CommonTree)adaptor.dupNode(set457);
+                set455_tree = (CommonTree)adaptor.dupNode(set455);
 
 
-                adaptor.addChild(root_0, set457_tree);
+                adaptor.addChild(root_0, set455_tree);
 
                 state.errorRecovery=false;
             }
@@ -16068,7 +16106,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "floating_point_type"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:805:1: floating_point_type : ( FLOAT | DOUBLE );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:812:1: floating_point_type : ( FLOAT | DOUBLE );
     public final JVMScramblingInformationGatherer.floating_point_type_return floating_point_type() throws RecognitionException {
         JVMScramblingInformationGatherer.floating_point_type_return retval = new JVMScramblingInformationGatherer.floating_point_type_return();
         retval.start = input.LT(1);
@@ -16079,26 +16117,26 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree set458=null;
+        CommonTree set456=null;
 
-        CommonTree set458_tree=null;
+        CommonTree set456_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:806:3: ( FLOAT | DOUBLE )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:813:3: ( FLOAT | DOUBLE )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            set458=(CommonTree)input.LT(1);
+            set456=(CommonTree)input.LT(1);
 
             if ( input.LA(1)==DOUBLE||input.LA(1)==FLOAT ) {
                 input.consume();
-                set458_tree = (CommonTree)adaptor.dupNode(set458);
+                set456_tree = (CommonTree)adaptor.dupNode(set456);
 
 
-                adaptor.addChild(root_0, set458_tree);
+                adaptor.addChild(root_0, set456_tree);
 
                 state.errorRecovery=false;
             }
@@ -16134,7 +16172,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "literals"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:810:1: literals : ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER );
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:817:1: literals : ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER );
     public final JVMScramblingInformationGatherer.literals_return literals() throws RecognitionException {
         JVMScramblingInformationGatherer.literals_return retval = new JVMScramblingInformationGatherer.literals_return();
         retval.start = input.LT(1);
@@ -16145,28 +16183,28 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree LONGLITERAL459=null;
-        CommonTree INTLITERAL460=null;
-        CommonTree FLOATLITERAL461=null;
-        CommonTree DOUBLELITERAL462=null;
-        CommonTree CHARLITERAL463=null;
-        CommonTree STRINGLITERAL464=null;
-        CommonTree BOOLEANLITERAL465=null;
-        CommonTree MINUS466=null;
-        CommonTree IDENTIFIER467=null;
+        CommonTree LONGLITERAL457=null;
+        CommonTree INTLITERAL458=null;
+        CommonTree FLOATLITERAL459=null;
+        CommonTree DOUBLELITERAL460=null;
+        CommonTree CHARLITERAL461=null;
+        CommonTree STRINGLITERAL462=null;
+        CommonTree BOOLEANLITERAL463=null;
+        CommonTree MINUS464=null;
+        CommonTree IDENTIFIER465=null;
 
-        CommonTree LONGLITERAL459_tree=null;
-        CommonTree INTLITERAL460_tree=null;
-        CommonTree FLOATLITERAL461_tree=null;
-        CommonTree DOUBLELITERAL462_tree=null;
-        CommonTree CHARLITERAL463_tree=null;
-        CommonTree STRINGLITERAL464_tree=null;
-        CommonTree BOOLEANLITERAL465_tree=null;
-        CommonTree MINUS466_tree=null;
-        CommonTree IDENTIFIER467_tree=null;
+        CommonTree LONGLITERAL457_tree=null;
+        CommonTree INTLITERAL458_tree=null;
+        CommonTree FLOATLITERAL459_tree=null;
+        CommonTree DOUBLELITERAL460_tree=null;
+        CommonTree CHARLITERAL461_tree=null;
+        CommonTree STRINGLITERAL462_tree=null;
+        CommonTree BOOLEANLITERAL463_tree=null;
+        CommonTree MINUS464_tree=null;
+        CommonTree IDENTIFIER465_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:811:3: ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:818:3: ( LONGLITERAL | INTLITERAL | FLOATLITERAL | DOUBLELITERAL | CHARLITERAL | STRINGLITERAL | BOOLEANLITERAL | ( MINUS )? IDENTIFIER )
             int alt108=8;
             switch ( input.LA(1) ) {
             case LONGLITERAL:
@@ -16220,124 +16258,124 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt108) {
                 case 1 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:811:5: LONGLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:818:5: LONGLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    LONGLITERAL459=(CommonTree)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals4018); 
-                    LONGLITERAL459_tree = (CommonTree)adaptor.dupNode(LONGLITERAL459);
+                    LONGLITERAL457=(CommonTree)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals4058); 
+                    LONGLITERAL457_tree = (CommonTree)adaptor.dupNode(LONGLITERAL457);
 
 
-                    adaptor.addChild(root_0, LONGLITERAL459_tree);
+                    adaptor.addChild(root_0, LONGLITERAL457_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:812:5: INTLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:819:5: INTLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    INTLITERAL460=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals4024); 
-                    INTLITERAL460_tree = (CommonTree)adaptor.dupNode(INTLITERAL460);
+                    INTLITERAL458=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals4064); 
+                    INTLITERAL458_tree = (CommonTree)adaptor.dupNode(INTLITERAL458);
 
 
-                    adaptor.addChild(root_0, INTLITERAL460_tree);
+                    adaptor.addChild(root_0, INTLITERAL458_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:813:5: FLOATLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:820:5: FLOATLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    FLOATLITERAL461=(CommonTree)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals4030); 
-                    FLOATLITERAL461_tree = (CommonTree)adaptor.dupNode(FLOATLITERAL461);
+                    FLOATLITERAL459=(CommonTree)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals4070); 
+                    FLOATLITERAL459_tree = (CommonTree)adaptor.dupNode(FLOATLITERAL459);
 
 
-                    adaptor.addChild(root_0, FLOATLITERAL461_tree);
+                    adaptor.addChild(root_0, FLOATLITERAL459_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:814:5: DOUBLELITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:821:5: DOUBLELITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    DOUBLELITERAL462=(CommonTree)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals4036); 
-                    DOUBLELITERAL462_tree = (CommonTree)adaptor.dupNode(DOUBLELITERAL462);
+                    DOUBLELITERAL460=(CommonTree)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals4076); 
+                    DOUBLELITERAL460_tree = (CommonTree)adaptor.dupNode(DOUBLELITERAL460);
 
 
-                    adaptor.addChild(root_0, DOUBLELITERAL462_tree);
+                    adaptor.addChild(root_0, DOUBLELITERAL460_tree);
 
 
                     }
                     break;
                 case 5 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:815:5: CHARLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:822:5: CHARLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    CHARLITERAL463=(CommonTree)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals4042); 
-                    CHARLITERAL463_tree = (CommonTree)adaptor.dupNode(CHARLITERAL463);
+                    CHARLITERAL461=(CommonTree)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals4082); 
+                    CHARLITERAL461_tree = (CommonTree)adaptor.dupNode(CHARLITERAL461);
 
 
-                    adaptor.addChild(root_0, CHARLITERAL463_tree);
+                    adaptor.addChild(root_0, CHARLITERAL461_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:816:5: STRINGLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:823:5: STRINGLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    STRINGLITERAL464=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals4048); 
-                    STRINGLITERAL464_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL464);
+                    STRINGLITERAL462=(CommonTree)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals4088); 
+                    STRINGLITERAL462_tree = (CommonTree)adaptor.dupNode(STRINGLITERAL462);
 
 
-                    adaptor.addChild(root_0, STRINGLITERAL464_tree);
+                    adaptor.addChild(root_0, STRINGLITERAL462_tree);
 
 
                     }
                     break;
                 case 7 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:817:5: BOOLEANLITERAL
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:824:5: BOOLEANLITERAL
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    BOOLEANLITERAL465=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals4054); 
-                    BOOLEANLITERAL465_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL465);
+                    BOOLEANLITERAL463=(CommonTree)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals4094); 
+                    BOOLEANLITERAL463_tree = (CommonTree)adaptor.dupNode(BOOLEANLITERAL463);
 
 
-                    adaptor.addChild(root_0, BOOLEANLITERAL465_tree);
+                    adaptor.addChild(root_0, BOOLEANLITERAL463_tree);
 
 
                     }
                     break;
                 case 8 :
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:818:5: ( MINUS )? IDENTIFIER
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:825:5: ( MINUS )? IDENTIFIER
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:818:5: ( MINUS )?
+                    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:825:5: ( MINUS )?
                     int alt107=2;
                     int LA107_0 = input.LA(1);
 
@@ -16346,14 +16384,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt107) {
                         case 1 :
-                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:818:5: MINUS
+                            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:825:5: MINUS
                             {
                             _last = (CommonTree)input.LT(1);
-                            MINUS466=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_literals4060); 
-                            MINUS466_tree = (CommonTree)adaptor.dupNode(MINUS466);
+                            MINUS464=(CommonTree)match(input,MINUS,FOLLOW_MINUS_in_literals4100); 
+                            MINUS464_tree = (CommonTree)adaptor.dupNode(MINUS464);
 
 
-                            adaptor.addChild(root_0, MINUS466_tree);
+                            adaptor.addChild(root_0, MINUS464_tree);
 
 
                             }
@@ -16363,11 +16401,11 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     _last = (CommonTree)input.LT(1);
-                    IDENTIFIER467=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals4063); 
-                    IDENTIFIER467_tree = (CommonTree)adaptor.dupNode(IDENTIFIER467);
+                    IDENTIFIER465=(CommonTree)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals4103); 
+                    IDENTIFIER465_tree = (CommonTree)adaptor.dupNode(IDENTIFIER465);
 
 
-                    adaptor.addChild(root_0, IDENTIFIER467_tree);
+                    adaptor.addChild(root_0, IDENTIFIER465_tree);
 
 
                     }
@@ -16397,7 +16435,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "pc"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:821:1: pc : INTLITERAL COLON ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:828:1: pc : INTLITERAL COLON ;
     public final JVMScramblingInformationGatherer.pc_return pc() throws RecognitionException {
         JVMScramblingInformationGatherer.pc_return retval = new JVMScramblingInformationGatherer.pc_return();
         retval.start = input.LT(1);
@@ -16408,33 +16446,33 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INTLITERAL468=null;
-        CommonTree COLON469=null;
+        CommonTree INTLITERAL466=null;
+        CommonTree COLON467=null;
 
-        CommonTree INTLITERAL468_tree=null;
-        CommonTree COLON469_tree=null;
+        CommonTree INTLITERAL466_tree=null;
+        CommonTree COLON467_tree=null;
 
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:822:3: ( INTLITERAL COLON )
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:822:5: INTLITERAL COLON
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:829:3: ( INTLITERAL COLON )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVMScramblingInformationGatherer.g:829:5: INTLITERAL COLON
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
             _last = (CommonTree)input.LT(1);
-            INTLITERAL468=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc4076); 
-            INTLITERAL468_tree = (CommonTree)adaptor.dupNode(INTLITERAL468);
+            INTLITERAL466=(CommonTree)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc4116); 
+            INTLITERAL466_tree = (CommonTree)adaptor.dupNode(INTLITERAL466);
 
 
-            adaptor.addChild(root_0, INTLITERAL468_tree);
+            adaptor.addChild(root_0, INTLITERAL466_tree);
 
 
             _last = (CommonTree)input.LT(1);
-            COLON469=(CommonTree)match(input,COLON,FOLLOW_COLON_in_pc4078); 
-            COLON469_tree = (CommonTree)adaptor.dupNode(COLON469);
+            COLON467=(CommonTree)match(input,COLON,FOLLOW_COLON_in_pc4118); 
+            COLON467_tree = (CommonTree)adaptor.dupNode(COLON467);
 
 
-            adaptor.addChild(root_0, COLON469_tree);
+            adaptor.addChild(root_0, COLON467_tree);
 
 
             }
@@ -16592,334 +16630,334 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool1101 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_IDENTIFIER_in_constant_pool1103 = new BitSet(new long[]{0x0000000000000108L});
     public static final BitSet FOLLOW_contant_pool_line_in_constant_pool1105 = new BitSet(new long[]{0x0000000000000108L});
-    public static final BitSet FOLLOW_ASSIGN_in_contant_pool_line1123 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_contant_pool_line1125 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1127 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody1163 = new BitSet(new long[]{0x0020000040000002L,0x0000000008000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_methodDefinition_in_classBodyEntryDecl1179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ctorDefinition_in_classBodyEntryDecl1185 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_fieldDefinition_in_classBodyEntryDecl1191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FIELDDECL_in_fieldDefinition1219 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_fieldDefinition1222 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_fieldDefinition1224 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_MODIFIER_in_fieldDefinition1229 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition1231 = new BitSet(new long[]{0x0080000000000008L,0x0000000000000000L,0x0000000200080004L});
-    public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition1236 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_fieldDefinition1238 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition1242 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_fieldDefinition1244 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition1248 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_literals_in_fieldDefinition1250 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition1267 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition1269 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_fieldDefinition1285 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition1287 = new BitSet(new long[]{0x0000040400000008L,0x0050000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_Signature_in_fieldInfo1438 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo1440 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_flags_in_fieldInfo1443 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1459 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo1461 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000020L});
-    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo1463 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1471 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1473 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo1481 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo1483 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo1491 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1493 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo1501 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1503 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1510 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STATICCTORDECL_in_staticCtorDefinition1588 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_staticCtorDefinition1591 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition1593 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_staticCtorDefinition1598 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition1600 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_staticCtorDefinition1604 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_staticCtorDefinition1606 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CTORDECL_in_ctorDefinition1633 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_ctorDefinition1636 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition1638 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_GENERICDESC_in_ctorDefinition1643 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition1645 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_ctorDefinition1650 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeName_in_ctorDefinition1652 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_ctorDefinition1655 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_THROWCLAUSE_in_ctorDefinition1658 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClause_in_ctorDefinition1660 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_ctorDefinition1689 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition1691 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_ctorDefinition1719 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_ctorDefinition1721 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_ctorDefinition1749 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition1751 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_METHODDECL_in_methodDefinition1801 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_VMODIFIER_in_methodDefinition1804 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition1806 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_MODIFIER_in_methodDefinition1811 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_method_modifier_in_methodDefinition1813 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000114L});
-    public static final BitSet FOLLOW_GENERICDESC_in_methodDefinition1818 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition1820 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_RETVALUE_in_methodDefinition1825 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_methodDefinition1827 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITNAME_in_methodDefinition1831 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_methodDefinition1833 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_arguments_in_methodDefinition1836 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition1839 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition1841 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITHEADER_in_methodDefinition1870 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodInfo_in_methodDefinition1872 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITBODY_in_methodDefinition1900 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_body_in_methodDefinition1902 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNITATTR_in_methodDefinition1931 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition1933 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_STANDINTOKEN_in_methodInfo2221 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo2223 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_flags_in_methodInfo2225 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfo2243 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2246 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_afterMethodInfo2254 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfo2256 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo2263 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo2269 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo2275 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo2281 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfo2288 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwClause_in_afterMethodInfo2291 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfo2299 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2301 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfo2308 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault2324 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault2327 = new BitSet(new long[]{0x0000000000000240L});
-    public static final BitSet FOLLOW_annotationValue_in_annotationDefault2329 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo2346 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_PARAMDESC_in_methodSignatureInfo2349 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo2351 = new BitSet(new long[]{0x0000000000008008L,0x0000000000008102L});
-    public static final BitSet FOLLOW_RETDESC_in_methodSignatureInfo2356 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo2358 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor2373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VoidType_in_returnDescriptor2377 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNITARGUMENTS_in_arguments2449 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_arguments2451 = new BitSet(new long[]{0x0000004000000008L});
-    public static final BitSet FOLLOW_DOT_in_arguments2455 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments2457 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments2459 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_Synthetic_in_body2484 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body2486 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_Code_in_body2491 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_codeBlock_in_body2493 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bodyExtension_in_body2496 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
-    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension2517 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension2520 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension2528 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension2531 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension2540 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2543 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension2551 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2554 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension2562 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension2564 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_StackMap_in_bodyExtension2572 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension2574 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_VARINFO_in_codeBlock2593 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_variables_in_codeBlock2595 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INSTRUCTION_in_codeBlock2599 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_instructionSet_in_codeBlock2601 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock2604 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_codeLine_in_instructionSet2618 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_javaSwitch_in_instructionSet2622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine2636 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_codeLine2638 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
-    public static final BitSet FOLLOW_OPERAND_in_codeLine2641 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_operand1_in_codeLine2643 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_OPERAND_in_codeLine2648 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeLine2650 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd2667 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_codeBlockEnd2669 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd2671 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CPINDEX_in_operand12688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_operand12695 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_operand12701 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variables2714 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_variable_in_variables2716 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_variable_in_variables2718 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ASSIGN_in_variable2732 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_variable2734 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_variable2736 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SWITCH_in_javaSwitch2753 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch2756 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_javaSwitch2758 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_switchLine_in_javaSwitch2760 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch2763 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_pc_in_switchLine2780 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchLine2782 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine2797 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine2799 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_THROWS_in_throwClause2819 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeList_in_throwClause2821 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod2838 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_throwType_in_throwClauseMethod2840 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000102L});
-    public static final BitSet FOLLOW_ETHEADER_in_exceptionTable2879 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2881 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2883 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2885 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2887 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ETENTRY_in_exceptionTable2891 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable2893 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2908 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2910 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2912 = new BitSet(new long[]{0x0100008008045000L,0x0200000000020042L,0x0000000100000000L});
-    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2914 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue2926 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2938 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable2957 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine2972 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pc_in_lineNumberTableLine2974 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine2976 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LVHEADER_in_localVariableTable2999 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3001 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3003 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3005 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3007 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3009 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LVENTRY_in_localVariableTable3013 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable3015 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine3032 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine3034 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine3036 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine3038 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine3040 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier3054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMTHEADER_in_stackMapTypeTable3074 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable3076 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable3078 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable3080 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SMTENTRY_in_stackMapTypeTable3084 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable3086 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3101 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3103 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3105 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3107 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3109 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3111 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3118 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3120 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3122 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_ASSIGN_in_contant_pool_line1127 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_contant_pool_line1131 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_contant_pool_line1135 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_classBodyEntryDecl_in_classBody1176 = new BitSet(new long[]{0x0020000040000002L,0x0000000008000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_methodDefinition_in_classBodyEntryDecl1192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ctorDefinition_in_classBodyEntryDecl1198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_fieldDefinition_in_classBodyEntryDecl1204 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_staticCtorDefinition_in_classBodyEntryDecl1210 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FIELDDECL_in_fieldDefinition1232 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_fieldDefinition1235 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_fieldDefinition1237 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_MODIFIER_in_fieldDefinition1242 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_modifier_in_fieldDefinition1244 = new BitSet(new long[]{0x0080000000000008L,0x0000000000000000L,0x0000000200080004L});
+    public static final BitSet FOLLOW_RETVALUE_in_fieldDefinition1249 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_fieldDefinition1251 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_fieldDefinition1255 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_fieldDefinition1257 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_FIELDVALUE_in_fieldDefinition1261 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_literals_in_fieldDefinition1263 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_fieldDefinition1280 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition1282 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_fieldDefinition1298 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition1300 = new BitSet(new long[]{0x0000040400000008L,0x0050000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_Signature_in_fieldInfo1451 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo1453 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_flags_in_fieldInfo1456 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1472 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo1474 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000020L});
+    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo1476 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo1484 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo1486 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo1494 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo1496 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo1504 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1506 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo1514 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo1516 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo1523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo1529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STATICCTORDECL_in_staticCtorDefinition1601 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_staticCtorDefinition1604 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition1606 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_staticCtorDefinition1611 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition1613 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_staticCtorDefinition1617 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_staticCtorDefinition1619 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CTORDECL_in_ctorDefinition1646 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_ctorDefinition1649 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition1651 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_GENERICDESC_in_ctorDefinition1656 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition1658 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_ctorDefinition1663 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeName_in_ctorDefinition1665 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_arguments_in_ctorDefinition1668 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_THROWCLAUSE_in_ctorDefinition1671 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClause_in_ctorDefinition1673 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_ctorDefinition1702 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition1704 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_ctorDefinition1732 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_ctorDefinition1734 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_ctorDefinition1762 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition1764 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_METHODDECL_in_methodDefinition1814 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_VMODIFIER_in_methodDefinition1817 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition1819 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_MODIFIER_in_methodDefinition1824 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_method_modifier_in_methodDefinition1826 = new BitSet(new long[]{0x0080000000000018L,0x0000000080000000L,0x0000000000000114L});
+    public static final BitSet FOLLOW_GENERICDESC_in_methodDefinition1831 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition1833 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_RETVALUE_in_methodDefinition1838 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_methodDefinition1840 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITNAME_in_methodDefinition1844 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_methodDefinition1846 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_arguments_in_methodDefinition1849 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_THROWCLAUSE_in_methodDefinition1852 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition1854 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITHEADER_in_methodDefinition1883 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodInfo_in_methodDefinition1885 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITBODY_in_methodDefinition1913 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_body_in_methodDefinition1915 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNITATTR_in_methodDefinition1944 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition1946 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_STANDINTOKEN_in_methodInfo2234 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo2236 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_flags_in_methodInfo2238 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfo2256 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2259 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_afterMethodInfo2267 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfo2269 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfo2276 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfo2282 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfo2288 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfo2294 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfo2301 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwClause_in_afterMethodInfo2304 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfo2312 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfo2314 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfo2321 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault2337 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault2340 = new BitSet(new long[]{0x0000000000000240L});
+    public static final BitSet FOLLOW_annotationValue_in_annotationDefault2342 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo2363 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_PARAMDESC_in_methodSignatureInfo2366 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo2368 = new BitSet(new long[]{0x0000000000008008L,0x0000000000008102L});
+    public static final BitSet FOLLOW_RETDESC_in_methodSignatureInfo2373 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo2375 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor2395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VoidType_in_returnDescriptor2399 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNITARGUMENTS_in_arguments2471 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_arguments2473 = new BitSet(new long[]{0x0000004000000008L});
+    public static final BitSet FOLLOW_DOT_in_arguments2477 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_DOT_in_arguments2479 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_DOT_in_arguments2481 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_Synthetic_in_body2506 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body2508 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_Code_in_body2513 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_codeBlock_in_body2515 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bodyExtension_in_body2518 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
+    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension2539 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension2542 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension2550 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension2553 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension2562 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2565 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension2573 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension2576 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension2584 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension2586 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_StackMap_in_bodyExtension2594 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension2596 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_VARINFO_in_codeBlock2615 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_variables_in_codeBlock2617 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INSTRUCTION_in_codeBlock2621 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_instructionSet_in_codeBlock2623 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock2626 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_codeLine_in_instructionSet2640 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_javaSwitch_in_instructionSet2644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine2658 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_codeLine2660 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_OPERAND_in_codeLine2663 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_operand1_in_codeLine2665 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_OPERAND_in_codeLine2670 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeLine2672 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd2689 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_codeBlockEnd2691 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd2693 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CPINDEX_in_operand12710 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_operand12717 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_operand12723 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variables2736 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_variable_in_variables2738 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_variable_in_variables2740 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ASSIGN_in_variable2754 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_variable2756 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_variable2758 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SWITCH_in_javaSwitch2775 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch2778 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_javaSwitch2780 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_switchLine_in_javaSwitch2782 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch2785 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_pc_in_switchLine2802 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchLine2804 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine2819 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine2821 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_THROWS_in_throwClause2841 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeList_in_throwClause2843 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod2860 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_throwType_in_throwClauseMethod2862 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000102L});
+    public static final BitSet FOLLOW_ETHEADER_in_exceptionTable2901 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2903 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2905 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2907 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable2909 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ETENTRY_in_exceptionTable2913 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable2915 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2930 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2932 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry2934 = new BitSet(new long[]{0x0100008008045000L,0x0200000000020042L,0x0000000100000000L});
+    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry2936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue2948 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue2954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue2960 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable2979 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine2994 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pc_in_lineNumberTableLine2996 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine2998 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LVHEADER_in_localVariableTable3021 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3023 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3025 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3027 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3029 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable3031 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LVENTRY_in_localVariableTable3035 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable3037 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine3054 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine3056 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine3058 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine3060 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine3062 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTableLineIdentifier3076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMTHEADER_in_stackMapTypeTable3096 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable3098 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable3100 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable3102 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SMTENTRY_in_stackMapTypeTable3106 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable3108 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3123 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3125 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3127 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3129 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3131 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMHEADER_in_stackMapTable3152 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable3154 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable3156 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable3158 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SMENTRY_in_stackMapTable3162 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable3164 = new BitSet(new long[]{0x0000000000000108L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry3179 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry3181 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000200L});
-    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry3183 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue3196 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue3200 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer3212 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SMTTYPES_in_stackMapTableTypes3236 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes3238 = new BitSet(new long[]{0x0100008000245008L,0x0200000000020042L,0x0000000100000000L});
-    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType3252 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType3254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType3256 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType3258 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType3260 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject3273 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject3275 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject3287 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject3289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_typeList3309 = new BitSet(new long[]{0x0100008000045002L,0x0200000000020040L,0x0000000110000000L});
-    public static final BitSet FOLLOW_combinedJavaType_in_type3322 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ARRAYBRACKS_in_type3325 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_LBRACK_in_type3328 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
-    public static final BitSet FOLLOW_RBRACK_in_type3330 = new BitSet(new long[]{0x0000000000000008L,0x0000000000008000L});
-    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType3345 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_referenceType_in_combinedJavaType3351 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_UNITNAME_in_referenceType3364 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType3366 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000000L});
-    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier3381 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TYPEARGS_in_typeDeclSpecifier3384 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier3386 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_QualifiedType_in_typeName3401 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeArgumentList_in_typeArguments3413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList3426 = new BitSet(new long[]{0x0100008000045002L,0x0200080000020040L,0x0000000110000000L});
-    public static final BitSet FOLLOW_type_in_typeArgument3439 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_wildcard_in_typeArgument3445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_wildcard3458 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_wildcardBounds_in_wildcard3460 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds3475 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds3477 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SUPER_in_wildcardBounds3485 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds3487 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_typeParameter_in_typeParameters3500 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_typeParameter3514 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_typeBound_in_typeParameter3516 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_typeBound3531 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_referenceType_in_typeBound3533 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000010000000L});
-    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor3550 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor3564 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor3566 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000010000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3568 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3582 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000010000000L});
-    public static final BitSet FOLLOW_UNITNAME_in_bytecodeReferenceType3596 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3598 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
-    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3612 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
-    public static final BitSet FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3615 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3617 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName3631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3656 = new BitSet(new long[]{0x0000000000000002L,0x0000080000000000L,0x0000000010000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard3688 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3690 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds3705 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3707 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds3715 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3717 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType3735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BaseType_in_bytecodeType3739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType3743 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_SEMI_in_bytecodeType3745 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType3749 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType3762 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType3764 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3777 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3790 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
-    public static final BitSet FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3793 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3795 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3833 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3846 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument3852 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3854 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument3860 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3862 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument3868 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_identifier3882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_keywordAggregate3892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolean_type_in_primitiveType3905 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numeric_type_in_primitiveType3911 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VOID_in_primitiveType3917 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type3930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_floating_point_type_in_numeric_type3943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integral_type_in_numeric_type3949 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LONGLITERAL_in_literals4018 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_literals4024 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOATLITERAL_in_literals4030 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals4036 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHARLITERAL_in_literals4042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_literals4048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals4054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_literals4060 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_literals4063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_pc4076 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_COLON_in_pc4078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3131 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry3133 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3140 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3142 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3144 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry3151 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry3153 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry3155 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMHEADER_in_stackMapTable3174 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable3176 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable3178 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable3180 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SMENTRY_in_stackMapTable3184 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable3186 = new BitSet(new long[]{0x0000000000000108L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry3201 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry3203 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000200L});
+    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry3205 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue3218 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue3222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer3234 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SMTTYPES_in_stackMapTableTypes3258 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes3260 = new BitSet(new long[]{0x0100008000245008L,0x0200000000020042L,0x0000000100000000L});
+    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType3274 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType3276 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType3278 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType3280 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType3282 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject3295 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject3297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject3309 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject3311 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_typeList3331 = new BitSet(new long[]{0x0100008000045002L,0x0200000000020040L,0x0000000110000000L});
+    public static final BitSet FOLLOW_combinedJavaType_in_type3344 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ARRAYBRACKS_in_type3347 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_LBRACK_in_type3350 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+    public static final BitSet FOLLOW_RBRACK_in_type3352 = new BitSet(new long[]{0x0000000000000008L,0x0000000000008000L});
+    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType3367 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_referenceType_in_combinedJavaType3373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_UNITNAME_in_referenceType3386 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType3388 = new BitSet(new long[]{0x0000000000000008L,0x0000200000000000L});
+    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier3403 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TYPEARGS_in_typeDeclSpecifier3406 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier3408 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_QualifiedType_in_typeName3423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeArgumentList_in_typeArguments3435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList3448 = new BitSet(new long[]{0x0100008000045002L,0x0200080000020040L,0x0000000110000000L});
+    public static final BitSet FOLLOW_type_in_typeArgument3461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_wildcard_in_typeArgument3467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_wildcard3480 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_wildcardBounds_in_wildcard3482 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds3497 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds3499 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SUPER_in_wildcardBounds3507 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds3509 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_typeParameter_in_typeParameters3522 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_typeParameter3536 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_typeBound_in_typeParameter3538 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_typeBound3553 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_referenceType_in_typeBound3555 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor3572 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor3586 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor3588 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor3590 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList3604 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_UNITNAME_in_bytecodeReferenceType3618 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType3620 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000100L});
+    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier3634 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_TYPEARGS_in_bytecodeTypeDeclSpecifier3637 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier3639 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName3653 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments3665 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList3678 = new BitSet(new long[]{0x0000000000000002L,0x0000080000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument3691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument3697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard3710 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard3712 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds3727 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3729 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds3737 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds3739 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType3761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BaseType_in_bytecodeType3769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType3777 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_SEMI_in_bytecodeType3779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType3787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType3802 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType3804 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType3817 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType3830 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_TYPEARGS_in_simpleBytecodeReferenceType3833 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType3835 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName3849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments3861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList3873 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument3892 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3894 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument3900 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument3902 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument3908 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_identifier3922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_keywordAggregate3932 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolean_type_in_primitiveType3945 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numeric_type_in_primitiveType3951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VOID_in_primitiveType3957 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type3970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_floating_point_type_in_numeric_type3983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integral_type_in_numeric_type3989 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LONGLITERAL_in_literals4058 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_literals4064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOATLITERAL_in_literals4070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals4076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHARLITERAL_in_literals4082 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_literals4088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals4094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_literals4100 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_literals4103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_pc4116 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_COLON_in_pc4118 = new BitSet(new long[]{0x0000000000000002L});
 
 }

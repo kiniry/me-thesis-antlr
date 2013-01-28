@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Stack;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
@@ -23,22 +21,28 @@ import bytecodeDeobfuscation.JVMParser;
 import bytecodeDeobfuscation.JVMPrettyPrinter;
 import bytecodeDeobfuscation.OrFalseDeobfuscation;
 import bytecodeDeobfuscation.OrFalseReduction;
-import bytecodeDeobfuscation.JVMParser.program_return;
-public class JVMTestWalker {
 
-	/**
-	 * @param args
-	 */
+/**
+ * Iterates and parses a single file and runs the descrambling tree walker.
+ * 
+ * Testing consists of:
+ * <ul>
+ * <li> Read the file.</li>
+ * <li> Parses the massaged input text.</li>
+ * <li> Walk the input text with the OrFalse walker and change the tree with the OrFalse deobfuscator.</li>
+ * <li> Load templates and print the final text.</li>  
+ * </ul>
+ * @author Mikkel Nielsen
+ */
+public class JVMTestWalker {
 	public static void main(String[] args) {
 		try {
 			File file = new File("D:/Work and Projects/Speciale/HelloWorldBytecode.txt");
 			System.out.println(file.getName());
 			String filetext;
-			filetext = deserializeString(file.getAbsolutePath());
-//			filetext = JavapOutputMassaging.massage(filetext);
+			filetext = FileUtil.deserializeString(file.getAbsolutePath());
 			Parse(filetext);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -57,29 +61,15 @@ public class JVMTestWalker {
 			
 			
 			CommonTree theTree = (CommonTree)ret.getTree();
-//			theTree = new OrFalseDeobfuscation().FindSubtreeToRemove(theTree);
 			CommonTreeNodeStream nodes = new CommonTreeNodeStream(theTree);
 			nodes.setTokenStream(tokenStream);
 			OrFalseReduction orFalseWalker = new OrFalseReduction(nodes);
 			OrFalseReduction.program_return re = orFalseWalker.program();
 			theTree = new OrFalseDeobfuscation().ChangeTree(orFalseWalker.codeblocks);
 			
-			
-////			System.out.println("The walked tree:");
-////			System.out.println(theTree.toStringTree());
-//			// Walk resulting tree; create treenode stream first
-//			nodes = new CommonTreeNodeStream(theTree);
-//			// AST nodes have payloads that point into token stream 
-//			nodes.setTokenStream(tokenStream);
-//			// Create a tree Walker attached to the nodes stream 
-//			JVMWalker walker = new JVMWalker(nodes);
-//			// Invoke the start symbol, rule program
-//			JVMWalker.program_return ret2 = walker.program();
-			
 			/*
 			 * Pretty printer part
 			 */
-//			theTree = (CommonTree)re.getTree();
 			nodes = new CommonTreeNodeStream(theTree);
 			nodes.setTokenStream(tokenStream);
 			JVMPrettyPrinter printer = new JVMPrettyPrinter(nodes);
@@ -94,31 +84,5 @@ public class JVMTestWalker {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}		
-	}
-
-	/**
-	 * Load a text file contents as a <code>String<code>.
-	 * This method does not perform enconding conversions
-	 * 
-	 * @param file
-	 *            The input file
-	 * @return The file contents as a <code>String</code>
-	 * @exception IOException
-	 *                IO Error
-	 */
-	public static String deserializeString(String filename) throws IOException {
-		int len;
-		char[] chr = new char[4096];
-		File file = new File(filename);
-		final StringBuffer buffer = new StringBuffer();
-		final FileReader reader = new FileReader(file);
-		try {
-			while ((len = reader.read(chr)) > 0) {
-				buffer.append(chr, 0, len);
-			}
-		} finally {
-			reader.close();
-		}
-		return buffer.toString();
 	}
 }

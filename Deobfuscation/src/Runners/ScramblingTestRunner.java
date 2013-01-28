@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
@@ -21,9 +20,19 @@ import bytecodeDeobfuscation.JVMLexer;
 import bytecodeDeobfuscation.JVMParser;
 import bytecodeDeobfuscation.JVMPrettyPrinter;
 import bytecodeDeobfuscation.JVMScramblingInformationGatherer;
-import bytecodeDeobfuscation.JVMPrettyPrinter.program_return;
-import bytecodeDeobfuscation.JVMScramblingInformationGatherer.ConstantPoolLine;
 
+/**
+ * Iterates and parses a single file and runs the descrambling tree walker.
+ * 
+ * Testing consists of:
+ * <ul>
+ * <li> Read the file.</li>
+ * <li> Parses the massaged input text.</li>
+ * <li> Walk and descramble the input text.</li>
+ * <li> Load templates and print the final text.</li>  
+ * </ul>
+ * @author Mikkel Nielsen
+ */
 public class ScramblingTestRunner {
 
 	/**
@@ -34,8 +43,7 @@ public class ScramblingTestRunner {
 			File file = new File("D:/Work and Projects/Speciale/HelloWorldBytecode.txt");
 			System.out.println(file.getName());
 			String filetext;
-			filetext = deserializeString(file.getAbsolutePath());
-//			filetext = JavapOutputMassaging.massage(filetext);
+			filetext = FileUtil.deserializeString(file.getAbsolutePath());
 			Parse(filetext);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -76,31 +84,5 @@ public class ScramblingTestRunner {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}		
-	}
-
-	/**
-	 * Load a text file contents as a <code>String<code>.
-	 * This method does not perform enconding conversions
-	 * 
-	 * @param file
-	 *            The input file
-	 * @return The file contents as a <code>String</code>
-	 * @exception IOException
-	 *                IO Error
-	 */
-	public static String deserializeString(String filename) throws IOException {
-		int len;
-		char[] chr = new char[4096];
-		File file = new File(filename);
-		final StringBuffer buffer = new StringBuffer();
-		final FileReader reader = new FileReader(file);
-		try {
-			while ((len = reader.read(chr)) > 0) {
-				buffer.append(chr, 0, len);
-			}
-		} finally {
-			reader.close();
-		}
-		return buffer.toString();
 	}
 }

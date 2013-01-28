@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g 2013-01-23 01:01:43
+// $ANTLR 3.4 D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g 2013-01-28 15:06:29
 
   package bytecodeDeobfuscation;
 
@@ -333,7 +333,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_classDefinition.add(classDefinition3.getTree());
 
             // AST REWRITE
-            // elements: class_file_header, classDefinition
+            // elements: classDefinition, class_file_header
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -678,7 +678,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: i4, i3, INTLITERAL, DATE, i2, i1
+            // elements: INTLITERAL, DATE, i4, i3, i2, i1
             // token labels: i4, i3, i2, i1
             // rule labels: retval
             // token list labels: 
@@ -864,7 +864,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: HexDigits, IDENTIFIER, IDENTIFIER
+                    // elements: IDENTIFIER, HexDigits, IDENTIFIER
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -976,7 +976,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: STRINGLITERAL, IDENTIFIER, IDENTIFIER
+            // elements: IDENTIFIER, IDENTIFIER, STRINGLITERAL
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1287,7 +1287,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: constant_pool, typeParameters, classBody, typeName, class_visual_modifier, type_info, ls2, class_modifier, ls1
+            // elements: classBody, type_info, typeName, constant_pool, class_modifier, ls2, ls1, class_visual_modifier, typeParameters
             // token labels: 
             // rule labels: retval, ls1, ls2
             // token list labels: 
@@ -1937,7 +1937,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: Synthetic, BOOLEANLITERAL
+            // elements: BOOLEANLITERAL, Synthetic
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2033,7 +2033,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: BOOLEANLITERAL, Deprecated
+            // elements: Deprecated, BOOLEANLITERAL
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2159,7 +2159,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: CPINDEX, DOT, EnclosingMethod, CPINDEX
+            // elements: DOT, CPINDEX, CPINDEX, EnclosingMethod
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2396,7 +2396,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ASSIGN, INTLITERAL, IDENTIFIER, INTLITERAL, INTLITERAL, INTLITERAL, ScalaSig
+            // elements: IDENTIFIER, ASSIGN, ScalaSig, INTLITERAL, INTLITERAL, INTLITERAL, INTLITERAL
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2526,7 +2526,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: IDENTIFIER, INTLITERAL, ASSIGN, Scala
+            // elements: INTLITERAL, Scala, ASSIGN, IDENTIFIER
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2647,7 +2647,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: Signature, CPINDEX
+            // elements: CPINDEX, Signature
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2780,7 +2780,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: InnerClasses, innerclass_info_line
+            // elements: innerclass_info_line, InnerClasses
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2961,7 +2961,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: innerclass_info_data, method_visual_modifier, method_modifier
+            // elements: method_modifier, innerclass_info_data, method_visual_modifier
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3136,7 +3136,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: CPINDEX, ASSIGN, IDENTIFIER, cp2, cp1
+            // elements: CPINDEX, cp1, IDENTIFIER, ASSIGN, cp2
             // token labels: cp2, cp1
             // rule labels: retval
             // token list labels: 
@@ -3167,7 +3167,7 @@ public TreeAdaptor getTreeAdaptor() {
                 , root_2);
 
                 // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:163:69: ( ASSIGN $cp1)?
-                if ( stream_ASSIGN.hasNext()||stream_cp1.hasNext() ) {
+                if ( stream_cp1.hasNext()||stream_ASSIGN.hasNext() ) {
                     adaptor.addChild(root_2, 
                     stream_ASSIGN.nextNode()
                     );
@@ -3175,8 +3175,8 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_2, stream_cp1.nextNode());
 
                 }
-                stream_ASSIGN.reset();
                 stream_cp1.reset();
+                stream_ASSIGN.reset();
 
                 adaptor.addChild(root_1, root_2);
                 }
@@ -3287,7 +3287,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: IDENTIFIER, IDENTIFIER, COLON, INTLITERAL
+            // elements: IDENTIFIER, INTLITERAL, IDENTIFIER, COLON
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3887,7 +3887,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: CPINDEX, pc, runtimeVisibleAnnotationAssignList
+            // elements: runtimeVisibleAnnotationAssignList, CPINDEX, pc
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4123,7 +4123,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_annotationValue.add(annotationValue98.getTree());
 
             // AST REWRITE
-            // elements: CPINDEX, ASSIGN, annotationValue
+            // elements: ASSIGN, annotationValue, CPINDEX
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4603,7 +4603,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: AnnotationAssign, runtimeVisibleAnnotationAssignList
+            // elements: runtimeVisibleAnnotationAssignList, AnnotationAssign
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5018,7 +5018,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: runtimeInvisibleAnnotationsItem, RuntimeInvisibleAnnotations
+            // elements: RuntimeInvisibleAnnotations, runtimeInvisibleAnnotationsItem
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5184,7 +5184,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: runtimeVisibleAnnotationsItem, pc, IDENTIFIER
+            // elements: IDENTIFIER, runtimeVisibleAnnotationsItem, pc
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5363,7 +5363,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: runtimeVisibleAnnotationAssignList, p1, CPINDEX, p2
+            // elements: runtimeVisibleAnnotationAssignList, CPINDEX, p2, p1
             // token labels: 
             // rule labels: retval, p2, p1
             // token list labels: 
@@ -5632,7 +5632,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: CPINDEX, ASSIGN, CONSTANT_TYPE_ASSIGNABLE
+            // elements: ASSIGN, CONSTANT_TYPE_ASSIGNABLE, CPINDEX
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6181,7 +6181,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "fieldDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:264:1: fieldDefinition : ( field_visual_modifier )? ( field_modifier )* type keywordAggregate ( ASSIGN literals )? SEMI fieldInfo ( fieldAdditionalInfo )* -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:264:1: fieldDefinition : ( field_visual_modifier )? ( field_modifier )* type keywordAggregate ( ASSIGN literals )? SEMI fieldInfo ( fieldAdditionalInfo )* -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) ;
     public final JVMParser.fieldDefinition_return fieldDefinition() throws RecognitionException {
         JVMParser.fieldDefinition_return retval = new JVMParser.fieldDefinition_return();
         retval.start = input.LT(1);
@@ -6218,7 +6218,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         RewriteRuleSubtreeStream stream_fieldAdditionalInfo=new RewriteRuleSubtreeStream(adaptor,"rule fieldAdditionalInfo");
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:265:3: ( ( field_visual_modifier )? ( field_modifier )* type keywordAggregate ( ASSIGN literals )? SEMI fieldInfo ( fieldAdditionalInfo )* -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:265:3: ( ( field_visual_modifier )? ( field_modifier )* type keywordAggregate ( ASSIGN literals )? SEMI fieldInfo ( fieldAdditionalInfo )* -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:265:5: ( field_visual_modifier )? ( field_modifier )* type keywordAggregate ( ASSIGN literals )? SEMI fieldInfo ( fieldAdditionalInfo )*
             {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:265:5: ( field_visual_modifier )?
@@ -6361,7 +6361,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: fieldInfo, keywordAggregate, fieldAdditionalInfo, literals, field_visual_modifier, field_modifier, type
+            // elements: fieldInfo, type, fieldAdditionalInfo, literals, field_visual_modifier, field_modifier
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6373,9 +6373,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 268:13: -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
+            // 268:13: -> ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
             {
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:16: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:16: ^( FIELDDECL ^( VMODIFIER ( field_visual_modifier )? ) ^( MODIFIER ( field_modifier )* ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) ^( FIELDVALUE ( literals )? ) ^( UNITHEADER fieldInfo ) ^( UNITATTR ( fieldAdditionalInfo )* ) )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
@@ -6428,26 +6428,28 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:109: ^( UNITNAME keywordAggregate )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:109: ^( UNITNAME IDENTIFIER[$keywordAggregate.text] )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(UNITNAME, "UNITNAME")
                 , root_2);
 
-                adaptor.addChild(root_2, stream_keywordAggregate.nextTree());
+                adaptor.addChild(root_2, 
+                (Object)adaptor.create(IDENTIFIER, (keywordAggregate139!=null?input.toString(keywordAggregate139.start,keywordAggregate139.stop):null))
+                );
 
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:138: ^( FIELDVALUE ( literals )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:156: ^( FIELDVALUE ( literals )? )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(FIELDVALUE, "FIELDVALUE")
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:151: ( literals )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:268:169: ( literals )?
                 if ( stream_literals.hasNext() ) {
                     adaptor.addChild(root_2, stream_literals.nextTree());
 
@@ -6550,18 +6552,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:275:3: ( Signature bytecodeType flags -> ^( Signature bytecodeType ) flags )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:275:5: Signature bytecodeType flags
             {
-            Signature145=(Token)match(input,Signature,FOLLOW_Signature_in_fieldInfo2088); if (state.failed) return retval; 
+            Signature145=(Token)match(input,Signature,FOLLOW_Signature_in_fieldInfo2089); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_Signature.add(Signature145);
 
 
-            pushFollow(FOLLOW_bytecodeType_in_fieldInfo2090);
+            pushFollow(FOLLOW_bytecodeType_in_fieldInfo2091);
             bytecodeType146=bytecodeType();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_bytecodeType.add(bytecodeType146.getTree());
 
-            pushFollow(FOLLOW_flags_in_fieldInfo2096);
+            pushFollow(FOLLOW_flags_in_fieldInfo2097);
             flags147=flags();
 
             state._fsp--;
@@ -6747,18 +6749,18 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:280:6: Constant primitiveType literals
                     {
-                    Constant148=(Token)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2120); if (state.failed) return retval; 
+                    Constant148=(Token)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2121); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Constant.add(Constant148);
 
 
-                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo2122);
+                    pushFollow(FOLLOW_primitiveType_in_fieldAdditionalInfo2123);
                     primitiveType149=primitiveType();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) stream_primitiveType.add(primitiveType149.getTree());
 
-                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo2124);
+                    pushFollow(FOLLOW_literals_in_fieldAdditionalInfo2125);
                     literals150=literals();
 
                     state._fsp--;
@@ -6805,11 +6807,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:281:5: Constant CONSTANT_TYPE_ASSIGNABLE
                     {
-                    Constant151=(Token)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2140); if (state.failed) return retval; 
+                    Constant151=(Token)match(input,Constant,FOLLOW_Constant_in_fieldAdditionalInfo2141); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Constant.add(Constant151);
 
 
-                    CONSTANT_TYPE_ASSIGNABLE152=(Token)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2142); if (state.failed) return retval; 
+                    CONSTANT_TYPE_ASSIGNABLE152=(Token)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2143); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_CONSTANT_TYPE_ASSIGNABLE.add(CONSTANT_TYPE_ASSIGNABLE152);
 
 
@@ -6853,11 +6855,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:282:5: Signature CPINDEX
                     {
-                    Signature153=(Token)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo2156); if (state.failed) return retval; 
+                    Signature153=(Token)match(input,Signature,FOLLOW_Signature_in_fieldAdditionalInfo2157); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Signature.add(Signature153);
 
 
-                    CPINDEX154=(Token)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo2158); if (state.failed) return retval; 
+                    CPINDEX154=(Token)match(input,CPINDEX,FOLLOW_CPINDEX_in_fieldAdditionalInfo2159); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_CPINDEX.add(CPINDEX154);
 
 
@@ -6901,11 +6903,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:283:5: Deprecated BOOLEANLITERAL
                     {
-                    Deprecated155=(Token)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo2172); if (state.failed) return retval; 
+                    Deprecated155=(Token)match(input,Deprecated,FOLLOW_Deprecated_in_fieldAdditionalInfo2173); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Deprecated.add(Deprecated155);
 
 
-                    BOOLEANLITERAL156=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2174); if (state.failed) return retval; 
+                    BOOLEANLITERAL156=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2175); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_BOOLEANLITERAL.add(BOOLEANLITERAL156);
 
 
@@ -6949,11 +6951,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:284:5: Synthetic BOOLEANLITERAL
                     {
-                    Synthetic157=(Token)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo2188); if (state.failed) return retval; 
+                    Synthetic157=(Token)match(input,Synthetic,FOLLOW_Synthetic_in_fieldAdditionalInfo2189); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Synthetic.add(Synthetic157);
 
 
-                    BOOLEANLITERAL158=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2190); if (state.failed) return retval; 
+                    BOOLEANLITERAL158=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2191); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_BOOLEANLITERAL.add(BOOLEANLITERAL158);
 
 
@@ -6997,7 +6999,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:285:5: runtimeVisibleAnnotations_info
                     {
-                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo2204);
+                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo2205);
                     runtimeVisibleAnnotations_info159=runtimeVisibleAnnotations_info();
 
                     state._fsp--;
@@ -7032,7 +7034,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 7 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:286:5: runtimeInvisibleAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo2214);
+                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo2215);
                     runtimeInvisibleAnnotations160=runtimeInvisibleAnnotations();
 
                     state._fsp--;
@@ -7284,7 +7286,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:303:5: field_visual_modifier
                     {
-                    pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition2294);
+                    pushFollow(FOLLOW_field_visual_modifier_in_staticCtorDefinition2295);
                     field_visual_modifier163=field_visual_modifier();
 
                     state._fsp--;
@@ -7297,30 +7299,30 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            STATIC164=(Token)match(input,STATIC,FOLLOW_STATIC_in_staticCtorDefinition2297); if (state.failed) return retval; 
+            STATIC164=(Token)match(input,STATIC,FOLLOW_STATIC_in_staticCtorDefinition2298); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_STATIC.add(STATIC164);
 
 
-            LBRACE165=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_staticCtorDefinition2299); if (state.failed) return retval; 
+            LBRACE165=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_staticCtorDefinition2300); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LBRACE.add(LBRACE165);
 
 
-            RBRACE166=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_staticCtorDefinition2301); if (state.failed) return retval; 
+            RBRACE166=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_staticCtorDefinition2302); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RBRACE.add(RBRACE166);
 
 
-            SEMI167=(Token)match(input,SEMI,FOLLOW_SEMI_in_staticCtorDefinition2303); if (state.failed) return retval; 
+            SEMI167=(Token)match(input,SEMI,FOLLOW_SEMI_in_staticCtorDefinition2304); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_SEMI.add(SEMI167);
 
 
-            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition2310);
+            pushFollow(FOLLOW_methodInfo_in_staticCtorDefinition2311);
             methodInfo168=methodInfo();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_methodInfo.add(methodInfo168.getTree());
 
-            pushFollow(FOLLOW_body_in_staticCtorDefinition2316);
+            pushFollow(FOLLOW_body_in_staticCtorDefinition2317);
             body169=body();
 
             state._fsp--;
@@ -7483,7 +7485,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:313:5: field_visual_modifier
                     {
-                    pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition2360);
+                    pushFollow(FOLLOW_field_visual_modifier_in_ctorDefinition2361);
                     field_visual_modifier170=field_visual_modifier();
 
                     state._fsp--;
@@ -7507,7 +7509,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:313:28: genericDescriptor
                     {
-                    pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition2363);
+                    pushFollow(FOLLOW_genericDescriptor_in_ctorDefinition2364);
                     genericDescriptor171=genericDescriptor();
 
                     state._fsp--;
@@ -7520,14 +7522,14 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_typeName_in_ctorDefinition2366);
+            pushFollow(FOLLOW_typeName_in_ctorDefinition2367);
             typeName172=typeName();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_typeName.add(typeName172.getTree());
 
-            pushFollow(FOLLOW_arguments_in_ctorDefinition2368);
+            pushFollow(FOLLOW_arguments_in_ctorDefinition2369);
             arguments173=arguments();
 
             state._fsp--;
@@ -7545,7 +7547,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:313:66: throwClause
                     {
-                    pushFollow(FOLLOW_throwClause_in_ctorDefinition2370);
+                    pushFollow(FOLLOW_throwClause_in_ctorDefinition2371);
                     throwClause174=throwClause();
 
                     state._fsp--;
@@ -7558,18 +7560,18 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            SEMI175=(Token)match(input,SEMI,FOLLOW_SEMI_in_ctorDefinition2373); if (state.failed) return retval; 
+            SEMI175=(Token)match(input,SEMI,FOLLOW_SEMI_in_ctorDefinition2374); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_SEMI.add(SEMI175);
 
 
-            pushFollow(FOLLOW_methodInfo_in_ctorDefinition2380);
+            pushFollow(FOLLOW_methodInfo_in_ctorDefinition2381);
             methodInfo176=methodInfo();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_methodInfo.add(methodInfo176.getTree());
 
-            pushFollow(FOLLOW_body_in_ctorDefinition2386);
+            pushFollow(FOLLOW_body_in_ctorDefinition2387);
             body177=body();
 
             state._fsp--;
@@ -7587,7 +7589,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:316:5: afterMethodInfo
                     {
-                    pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition2392);
+                    pushFollow(FOLLOW_afterMethodInfo_in_ctorDefinition2393);
                     afterMethodInfo178=afterMethodInfo();
 
                     state._fsp--;
@@ -7770,7 +7772,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "methodDefinition"
-    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:327:1: methodDefinition : ( method_visual_modifier )? ( method_modifier )* ( genericDescriptor )? type keywordAggregate arguments ( throwClauseMethod )? SEMI methodInfo ( body )? ( afterMethodInfo )? -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
+    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:327:1: methodDefinition : ( method_visual_modifier )? ( method_modifier )* ( genericDescriptor )? type keywordAggregate arguments ( throwClauseMethod )? SEMI methodInfo ( body )? ( afterMethodInfo )? -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) ;
     public final JVMParser.methodDefinition_return methodDefinition() throws RecognitionException {
         JVMParser.methodDefinition_return retval = new JVMParser.methodDefinition_return();
         retval.start = input.LT(1);
@@ -7813,7 +7815,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_method_visual_modifier=new RewriteRuleSubtreeStream(adaptor,"rule method_visual_modifier");
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
-            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:3: ( ( method_visual_modifier )? ( method_modifier )* ( genericDescriptor )? type keywordAggregate arguments ( throwClauseMethod )? SEMI methodInfo ( body )? ( afterMethodInfo )? -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
+            // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:3: ( ( method_visual_modifier )? ( method_modifier )* ( genericDescriptor )? type keywordAggregate arguments ( throwClauseMethod )? SEMI methodInfo ( body )? ( afterMethodInfo )? -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:5: ( method_visual_modifier )? ( method_modifier )* ( genericDescriptor )? type keywordAggregate arguments ( throwClauseMethod )? SEMI methodInfo ( body )? ( afterMethodInfo )?
             {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:5: ( method_visual_modifier )?
@@ -7827,7 +7829,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:5: method_visual_modifier
                     {
-                    pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition2561);
+                    pushFollow(FOLLOW_method_visual_modifier_in_methodDefinition2562);
                     method_visual_modifier179=method_visual_modifier();
 
                     state._fsp--;
@@ -7855,7 +7857,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:29: method_modifier
             	    {
-            	    pushFollow(FOLLOW_method_modifier_in_methodDefinition2564);
+            	    pushFollow(FOLLOW_method_modifier_in_methodDefinition2565);
             	    method_modifier180=method_modifier();
 
             	    state._fsp--;
@@ -7882,7 +7884,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:46: genericDescriptor
                     {
-                    pushFollow(FOLLOW_genericDescriptor_in_methodDefinition2567);
+                    pushFollow(FOLLOW_genericDescriptor_in_methodDefinition2568);
                     genericDescriptor181=genericDescriptor();
 
                     state._fsp--;
@@ -7895,21 +7897,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_type_in_methodDefinition2570);
+            pushFollow(FOLLOW_type_in_methodDefinition2571);
             type182=type();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_type.add(type182.getTree());
 
-            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition2572);
+            pushFollow(FOLLOW_keywordAggregate_in_methodDefinition2573);
             keywordAggregate183=keywordAggregate();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_keywordAggregate.add(keywordAggregate183.getTree());
 
-            pushFollow(FOLLOW_arguments_in_methodDefinition2574);
+            pushFollow(FOLLOW_arguments_in_methodDefinition2575);
             arguments184=arguments();
 
             state._fsp--;
@@ -7927,7 +7929,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:328:97: throwClauseMethod
                     {
-                    pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition2576);
+                    pushFollow(FOLLOW_throwClauseMethod_in_methodDefinition2577);
                     throwClauseMethod185=throwClauseMethod();
 
                     state._fsp--;
@@ -7940,11 +7942,11 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            SEMI186=(Token)match(input,SEMI,FOLLOW_SEMI_in_methodDefinition2579); if (state.failed) return retval; 
+            SEMI186=(Token)match(input,SEMI,FOLLOW_SEMI_in_methodDefinition2580); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_SEMI.add(SEMI186);
 
 
-            pushFollow(FOLLOW_methodInfo_in_methodDefinition2586);
+            pushFollow(FOLLOW_methodInfo_in_methodDefinition2587);
             methodInfo187=methodInfo();
 
             state._fsp--;
@@ -7973,7 +7975,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:330:5: body
                     {
-                    pushFollow(FOLLOW_body_in_methodDefinition2592);
+                    pushFollow(FOLLOW_body_in_methodDefinition2593);
                     body188=body();
 
                     state._fsp--;
@@ -7997,7 +7999,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:5: afterMethodInfo
                     {
-                    pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition2599);
+                    pushFollow(FOLLOW_afterMethodInfo_in_methodDefinition2600);
                     afterMethodInfo189=afterMethodInfo();
 
                     state._fsp--;
@@ -8011,7 +8013,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: methodInfo, arguments, method_modifier, body, method_visual_modifier, type, genericDescriptor, keywordAggregate, afterMethodInfo, throwClauseMethod
+            // elements: body, throwClauseMethod, method_modifier, afterMethodInfo, method_visual_modifier, type, genericDescriptor, arguments, methodInfo
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -8023,9 +8025,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 331:22: -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
+            // 331:22: -> ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
             {
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:25: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME keywordAggregate ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:25: ^( METHODDECL ^( VMODIFIER ( method_visual_modifier )? ) ^( MODIFIER ( method_modifier )* ) ^( GENERICDESC ( genericDescriptor )? ) ^( RETVALUE type ) ^( UNITNAME IDENTIFIER[$keywordAggregate.text] ) arguments ^( THROWCLAUSE ( throwClauseMethod )? ) ^( UNITHEADER methodInfo ) ^( UNITBODY ( body )? ) ^( UNITATTR ( afterMethodInfo )? ) )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
@@ -8095,28 +8097,30 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:155: ^( UNITNAME keywordAggregate )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:155: ^( UNITNAME IDENTIFIER[$keywordAggregate.text] )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(UNITNAME, "UNITNAME")
                 , root_2);
 
-                adaptor.addChild(root_2, stream_keywordAggregate.nextTree());
+                adaptor.addChild(root_2, 
+                (Object)adaptor.create(IDENTIFIER, (keywordAggregate183!=null?input.toString(keywordAggregate183.start,keywordAggregate183.stop):null))
+                );
 
                 adaptor.addChild(root_1, root_2);
                 }
 
                 adaptor.addChild(root_1, stream_arguments.nextTree());
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:194: ^( THROWCLAUSE ( throwClauseMethod )? )
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:212: ^( THROWCLAUSE ( throwClauseMethod )? )
                 {
                 Object root_2 = (Object)adaptor.nil();
                 root_2 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(THROWCLAUSE, "THROWCLAUSE")
                 , root_2);
 
-                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:208: ( throwClauseMethod )?
+                // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:331:226: ( throwClauseMethod )?
                 if ( stream_throwClauseMethod.hasNext() ) {
                     adaptor.addChild(root_2, stream_throwClauseMethod.nextTree());
 
@@ -8233,14 +8237,14 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:339:3: ( methodSignatureInfo flags -> ^( STANDINTOKEN methodSignatureInfo flags ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:339:5: methodSignatureInfo flags
             {
-            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo2778);
+            pushFollow(FOLLOW_methodSignatureInfo_in_methodInfo2780);
             methodSignatureInfo190=methodSignatureInfo();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_methodSignatureInfo.add(methodSignatureInfo190.getTree());
 
-            pushFollow(FOLLOW_flags_in_methodInfo2780);
+            pushFollow(FOLLOW_flags_in_methodInfo2782);
             flags191=flags();
 
             state._fsp--;
@@ -8347,7 +8351,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:343:5: afterMethodInfoEntry
             	    {
-            	    pushFollow(FOLLOW_afterMethodInfoEntry_in_afterMethodInfo2805);
+            	    pushFollow(FOLLOW_afterMethodInfoEntry_in_afterMethodInfo2807);
             	    afterMethodInfoEntry192=afterMethodInfoEntry();
 
             	    state._fsp--;
@@ -8539,16 +8543,16 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:347:5: Deprecated BOOLEANLITERAL
                     {
-                    Deprecated193=(Token)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfoEntry2825); if (state.failed) return retval; 
+                    Deprecated193=(Token)match(input,Deprecated,FOLLOW_Deprecated_in_afterMethodInfoEntry2827); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Deprecated.add(Deprecated193);
 
 
-                    BOOLEANLITERAL194=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2828); if (state.failed) return retval; 
+                    BOOLEANLITERAL194=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2830); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_BOOLEANLITERAL.add(BOOLEANLITERAL194);
 
 
                     // AST REWRITE
-                    // elements: Deprecated, BOOLEANLITERAL
+                    // elements: BOOLEANLITERAL, Deprecated
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -8587,11 +8591,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:348:5: Signature CPINDEX
                     {
-                    Signature195=(Token)match(input,Signature,FOLLOW_Signature_in_afterMethodInfoEntry2846); if (state.failed) return retval; 
+                    Signature195=(Token)match(input,Signature,FOLLOW_Signature_in_afterMethodInfoEntry2848); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Signature.add(Signature195);
 
 
-                    CPINDEX196=(Token)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfoEntry2848); if (state.failed) return retval; 
+                    CPINDEX196=(Token)match(input,CPINDEX,FOLLOW_CPINDEX_in_afterMethodInfoEntry2850); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_CPINDEX.add(CPINDEX196);
 
 
@@ -8635,7 +8639,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:349:5: runtimeInvisibleParameterAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry2880);
+                    pushFollow(FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry2882);
                     runtimeInvisibleParameterAnnotations197=runtimeInvisibleParameterAnnotations();
 
                     state._fsp--;
@@ -8670,7 +8674,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:350:5: runtimeVisibleAnnotations_info
                     {
-                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry2889);
+                    pushFollow(FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry2891);
                     runtimeVisibleAnnotations_info198=runtimeVisibleAnnotations_info();
 
                     state._fsp--;
@@ -8705,7 +8709,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:351:5: runtimeInvisibleAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry2899);
+                    pushFollow(FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry2901);
                     runtimeInvisibleAnnotations199=runtimeInvisibleAnnotations();
 
                     state._fsp--;
@@ -8740,7 +8744,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:352:5: runtimeVisibleParameterAnnotations
                     {
-                    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry2910);
+                    pushFollow(FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry2912);
                     runtimeVisibleParameterAnnotations200=runtimeVisibleParameterAnnotations();
 
                     state._fsp--;
@@ -8775,11 +8779,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 7 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:353:5: Exceptions throwClause
                     {
-                    Exceptions201=(Token)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfoEntry2920); if (state.failed) return retval; 
+                    Exceptions201=(Token)match(input,Exceptions,FOLLOW_Exceptions_in_afterMethodInfoEntry2922); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Exceptions.add(Exceptions201);
 
 
-                    pushFollow(FOLLOW_throwClause_in_afterMethodInfoEntry2923);
+                    pushFollow(FOLLOW_throwClause_in_afterMethodInfoEntry2925);
                     throwClause202=throwClause();
 
                     state._fsp--;
@@ -8787,7 +8791,7 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) stream_throwClause.add(throwClause202.getTree());
 
                     // AST REWRITE
-                    // elements: throwClause, Exceptions
+                    // elements: Exceptions, throwClause
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -8824,11 +8828,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 8 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:354:5: Synthetic BOOLEANLITERAL
                     {
-                    Synthetic203=(Token)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfoEntry2950); if (state.failed) return retval; 
+                    Synthetic203=(Token)match(input,Synthetic,FOLLOW_Synthetic_in_afterMethodInfoEntry2952); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Synthetic.add(Synthetic203);
 
 
-                    BOOLEANLITERAL204=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2952); if (state.failed) return retval; 
+                    BOOLEANLITERAL204=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2954); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_BOOLEANLITERAL.add(BOOLEANLITERAL204);
 
 
@@ -8875,7 +8879,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfoEntry2977);
+                    pushFollow(FOLLOW_annotationDefault_in_afterMethodInfoEntry2979);
                     annotationDefault205=annotationDefault();
 
                     state._fsp--;
@@ -8939,15 +8943,15 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:359:3: ( AnnotationDefault DefaultValue annotationValue -> ^( AnnotationDefault DefaultValue annotationValue ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:359:5: AnnotationDefault DefaultValue annotationValue
             {
-            AnnotationDefault206=(Token)match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault2990); if (state.failed) return retval; 
+            AnnotationDefault206=(Token)match(input,AnnotationDefault,FOLLOW_AnnotationDefault_in_annotationDefault2992); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_AnnotationDefault.add(AnnotationDefault206);
 
 
-            DefaultValue207=(Token)match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault2993); if (state.failed) return retval; 
+            DefaultValue207=(Token)match(input,DefaultValue,FOLLOW_DefaultValue_in_annotationDefault2995); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DefaultValue.add(DefaultValue207);
 
 
-            pushFollow(FOLLOW_annotationValue_in_annotationDefault2995);
+            pushFollow(FOLLOW_annotationValue_in_annotationDefault2997);
             annotationValue208=annotationValue();
 
             state._fsp--;
@@ -8955,7 +8959,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_annotationValue.add(annotationValue208.getTree());
 
             // AST REWRITE
-            // elements: AnnotationDefault, annotationValue, DefaultValue
+            // elements: AnnotationDefault, DefaultValue, annotationValue
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -9052,11 +9056,11 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:363:3: ( Signature LPAREN ( bytecodeType )* RPAREN returnDescriptor -> ^( Signature ^( PARAMDESC ( bytecodeType )* ) ^( RETDESC returnDescriptor ) ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:363:5: Signature LPAREN ( bytecodeType )* RPAREN returnDescriptor
             {
-            Signature209=(Token)match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo3021); if (state.failed) return retval; 
+            Signature209=(Token)match(input,Signature,FOLLOW_Signature_in_methodSignatureInfo3023); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_Signature.add(Signature209);
 
 
-            LPAREN210=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_methodSignatureInfo3023); if (state.failed) return retval; 
+            LPAREN210=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_methodSignatureInfo3025); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN210);
 
 
@@ -9075,7 +9079,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:363:22: bytecodeType
             	    {
-            	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo3025);
+            	    pushFollow(FOLLOW_bytecodeType_in_methodSignatureInfo3027);
             	    bytecodeType211=bytecodeType();
 
             	    state._fsp--;
@@ -9091,11 +9095,11 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            RPAREN212=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_methodSignatureInfo3028); if (state.failed) return retval; 
+            RPAREN212=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_methodSignatureInfo3030); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN212);
 
 
-            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo3030);
+            pushFollow(FOLLOW_returnDescriptor_in_methodSignatureInfo3032);
             returnDescriptor213=returnDescriptor();
 
             state._fsp--;
@@ -9103,7 +9107,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_returnDescriptor.add(returnDescriptor213.getTree());
 
             // AST REWRITE
-            // elements: Signature, bytecodeType, returnDescriptor
+            // elements: bytecodeType, returnDescriptor, Signature
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -9235,7 +9239,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor3063);
+                    pushFollow(FOLLOW_bytecodeType_in_returnDescriptor3065);
                     bytecodeType214=bytecodeType();
 
                     state._fsp--;
@@ -9250,7 +9254,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    VoidType215=(Token)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor3067); if (state.failed) return retval;
+                    VoidType215=(Token)match(input,VoidType,FOLLOW_VoidType_in_returnDescriptor3069); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     VoidType215_tree = 
                     (Object)adaptor.create(VoidType215)
@@ -9460,7 +9464,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:379:3: ( LPAREN ( typeList )? ( DOT DOT DOT )? RPAREN -> ^( UNITARGUMENTS ( typeList )? ( DOT DOT DOT )? ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:379:5: LPAREN ( typeList )? ( DOT DOT DOT )? RPAREN
             {
-            LPAREN218=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_arguments3142); if (state.failed) return retval; 
+            LPAREN218=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_arguments3144); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN218);
 
 
@@ -9475,7 +9479,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:379:12: typeList
                     {
-                    pushFollow(FOLLOW_typeList_in_arguments3144);
+                    pushFollow(FOLLOW_typeList_in_arguments3146);
                     typeList219=typeList();
 
                     state._fsp--;
@@ -9499,15 +9503,15 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:379:23: DOT DOT DOT
                     {
-                    DOT220=(Token)match(input,DOT,FOLLOW_DOT_in_arguments3148); if (state.failed) return retval; 
+                    DOT220=(Token)match(input,DOT,FOLLOW_DOT_in_arguments3150); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_DOT.add(DOT220);
 
 
-                    DOT221=(Token)match(input,DOT,FOLLOW_DOT_in_arguments3150); if (state.failed) return retval; 
+                    DOT221=(Token)match(input,DOT,FOLLOW_DOT_in_arguments3152); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_DOT.add(DOT221);
 
 
-                    DOT222=(Token)match(input,DOT,FOLLOW_DOT_in_arguments3152); if (state.failed) return retval; 
+                    DOT222=(Token)match(input,DOT,FOLLOW_DOT_in_arguments3154); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_DOT.add(DOT222);
 
 
@@ -9517,12 +9521,12 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            RPAREN223=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_arguments3156); if (state.failed) return retval; 
+            RPAREN223=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_arguments3158); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN223);
 
 
             // AST REWRITE
-            // elements: DOT, DOT, typeList, DOT
+            // elements: typeList, DOT, DOT, DOT
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -9650,11 +9654,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:388:6: Synthetic BOOLEANLITERAL
                     {
-                    Synthetic224=(Token)match(input,Synthetic,FOLLOW_Synthetic_in_body3201); if (state.failed) return retval; 
+                    Synthetic224=(Token)match(input,Synthetic,FOLLOW_Synthetic_in_body3203); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Synthetic.add(Synthetic224);
 
 
-                    BOOLEANLITERAL225=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body3203); if (state.failed) return retval; 
+                    BOOLEANLITERAL225=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_body3205); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_BOOLEANLITERAL.add(BOOLEANLITERAL225);
 
 
@@ -9664,11 +9668,11 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            Code226=(Token)match(input,Code,FOLLOW_Code_in_body3211); if (state.failed) return retval; 
+            Code226=(Token)match(input,Code,FOLLOW_Code_in_body3213); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_Code.add(Code226);
 
 
-            pushFollow(FOLLOW_codeBlock_in_body3218);
+            pushFollow(FOLLOW_codeBlock_in_body3220);
             codeBlock227=codeBlock();
 
             state._fsp--;
@@ -9690,7 +9694,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:391:5: bodyExtension
             	    {
-            	    pushFollow(FOLLOW_bodyExtension_in_body3224);
+            	    pushFollow(FOLLOW_bodyExtension_in_body3226);
             	    bodyExtension228=bodyExtension();
 
             	    state._fsp--;
@@ -9707,7 +9711,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: Synthetic, BOOLEANLITERAL, bodyExtension, Code, codeBlock
+            // elements: BOOLEANLITERAL, Code, Synthetic, codeBlock, bodyExtension
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -9722,7 +9726,7 @@ public TreeAdaptor getTreeAdaptor() {
             // 391:20: -> ( Synthetic BOOLEANLITERAL )? ^( Code codeBlock ) ( bodyExtension )*
             {
                 // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:391:23: ( Synthetic BOOLEANLITERAL )?
-                if ( stream_Synthetic.hasNext()||stream_BOOLEANLITERAL.hasNext() ) {
+                if ( stream_BOOLEANLITERAL.hasNext()||stream_Synthetic.hasNext() ) {
                     adaptor.addChild(root_0, 
                     stream_Synthetic.nextNode()
                     );
@@ -9732,8 +9736,8 @@ public TreeAdaptor getTreeAdaptor() {
                     );
 
                 }
-                stream_Synthetic.reset();
                 stream_BOOLEANLITERAL.reset();
+                stream_Synthetic.reset();
 
                 // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:391:51: ^( Code codeBlock )
                 {
@@ -9887,11 +9891,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:396:5: ExceptionTable exceptionTable
                     {
-                    ExceptionTable229=(Token)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension3262); if (state.failed) return retval; 
+                    ExceptionTable229=(Token)match(input,ExceptionTable,FOLLOW_ExceptionTable_in_bodyExtension3264); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_ExceptionTable.add(ExceptionTable229);
 
 
-                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension3265);
+                    pushFollow(FOLLOW_exceptionTable_in_bodyExtension3267);
                     exceptionTable230=exceptionTable();
 
                     state._fsp--;
@@ -9899,7 +9903,7 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) stream_exceptionTable.add(exceptionTable230.getTree());
 
                     // AST REWRITE
-                    // elements: ExceptionTable, exceptionTable
+                    // elements: exceptionTable, ExceptionTable
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -9936,7 +9940,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:397:5: LineNumberTable ( lineNumberTable )?
                     {
-                    LineNumberTable231=(Token)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension3293); if (state.failed) return retval; 
+                    LineNumberTable231=(Token)match(input,LineNumberTable,FOLLOW_LineNumberTable_in_bodyExtension3295); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_LineNumberTable.add(LineNumberTable231);
 
 
@@ -9955,7 +9959,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:397:22: lineNumberTable
                             {
-                            pushFollow(FOLLOW_lineNumberTable_in_bodyExtension3296);
+                            pushFollow(FOLLOW_lineNumberTable_in_bodyExtension3298);
                             lineNumberTable232=lineNumberTable();
 
                             state._fsp--;
@@ -10011,11 +10015,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:398:5: LocalVariableTable localVariableTable
                     {
-                    LocalVariableTable233=(Token)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension3324); if (state.failed) return retval; 
+                    LocalVariableTable233=(Token)match(input,LocalVariableTable,FOLLOW_LocalVariableTable_in_bodyExtension3326); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_LocalVariableTable.add(LocalVariableTable233);
 
 
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension3327);
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension3329);
                     localVariableTable234=localVariableTable();
 
                     state._fsp--;
@@ -10060,11 +10064,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:399:5: LocalVariableTypeTable localVariableTable
                     {
-                    LocalVariableTypeTable235=(Token)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension3347); if (state.failed) return retval; 
+                    LocalVariableTypeTable235=(Token)match(input,LocalVariableTypeTable,FOLLOW_LocalVariableTypeTable_in_bodyExtension3349); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_LocalVariableTypeTable.add(LocalVariableTypeTable235);
 
 
-                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension3350);
+                    pushFollow(FOLLOW_localVariableTable_in_bodyExtension3352);
                     localVariableTable236=localVariableTable();
 
                     state._fsp--;
@@ -10072,7 +10076,7 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) stream_localVariableTable.add(localVariableTable236.getTree());
 
                     // AST REWRITE
-                    // elements: localVariableTable, LocalVariableTypeTable
+                    // elements: LocalVariableTypeTable, localVariableTable
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -10109,11 +10113,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:400:5: StackMapTable stackMapTable
                     {
-                    StackMapTable237=(Token)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension3366); if (state.failed) return retval; 
+                    StackMapTable237=(Token)match(input,StackMapTable,FOLLOW_StackMapTable_in_bodyExtension3368); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_StackMapTable.add(StackMapTable237);
 
 
-                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension3368);
+                    pushFollow(FOLLOW_stackMapTable_in_bodyExtension3370);
                     stackMapTable238=stackMapTable();
 
                     state._fsp--;
@@ -10158,11 +10162,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:401:5: StackMap stackMapTypeTable
                     {
-                    StackMap239=(Token)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension3398); if (state.failed) return retval; 
+                    StackMap239=(Token)match(input,StackMap,FOLLOW_StackMap_in_bodyExtension3400); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_StackMap.add(StackMap239);
 
 
-                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension3400);
+                    pushFollow(FOLLOW_stackMapTypeTable_in_bodyExtension3402);
                     stackMapTypeTable240=stackMapTypeTable();
 
                     state._fsp--;
@@ -10263,7 +10267,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:406:3: ( variables ( instructionSet )* codeBlockEnd -> ^( VARINFO variables ) ^( INSTRUCTION ( instructionSet )* codeBlockEnd ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:406:5: variables ( instructionSet )* codeBlockEnd
             {
-            pushFollow(FOLLOW_variables_in_codeBlock3442);
+            pushFollow(FOLLOW_variables_in_codeBlock3444);
             variables241=variables();
 
             state._fsp--;
@@ -10367,7 +10371,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:407:5: instructionSet
             	    {
-            	    pushFollow(FOLLOW_instructionSet_in_codeBlock3449);
+            	    pushFollow(FOLLOW_instructionSet_in_codeBlock3451);
             	    instructionSet242=instructionSet();
 
             	    state._fsp--;
@@ -10383,7 +10387,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock3456);
+            pushFollow(FOLLOW_codeBlockEnd_in_codeBlock3458);
             codeBlockEnd243=codeBlockEnd();
 
             state._fsp--;
@@ -10391,7 +10395,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_codeBlockEnd.add(codeBlockEnd243.getTree());
 
             // AST REWRITE
-            // elements: codeBlockEnd, variables, instructionSet
+            // elements: instructionSet, variables, codeBlockEnd
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -10551,7 +10555,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_codeLine_in_instructionSet3517);
+                    pushFollow(FOLLOW_codeLine_in_instructionSet3519);
                     codeLine244=codeLine();
 
                     state._fsp--;
@@ -10566,7 +10570,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_javaSwitch_in_instructionSet3521);
+                    pushFollow(FOLLOW_javaSwitch_in_instructionSet3523);
                     javaSwitch245=javaSwitch();
 
                     state._fsp--;
@@ -10636,14 +10640,14 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:416:3: ( pc IDENTIFIER ( operand1 )? ( COMMA INTLITERAL )? -> ^( IDENTIFIER pc ^( OPERAND ( operand1 )? ) ^( OPERAND ( INTLITERAL )? ) ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:416:5: pc IDENTIFIER ( operand1 )? ( COMMA INTLITERAL )?
             {
-            pushFollow(FOLLOW_pc_in_codeLine3534);
+            pushFollow(FOLLOW_pc_in_codeLine3536);
             pc246=pc();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_pc.add(pc246.getTree());
 
-            IDENTIFIER247=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine3536); if (state.failed) return retval; 
+            IDENTIFIER247=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeLine3538); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER247);
 
 
@@ -10665,7 +10669,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:416:19: operand1
                     {
-                    pushFollow(FOLLOW_operand1_in_codeLine3538);
+                    pushFollow(FOLLOW_operand1_in_codeLine3540);
                     operand1248=operand1();
 
                     state._fsp--;
@@ -10689,11 +10693,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:416:30: COMMA INTLITERAL
                     {
-                    COMMA249=(Token)match(input,COMMA,FOLLOW_COMMA_in_codeLine3542); if (state.failed) return retval; 
+                    COMMA249=(Token)match(input,COMMA,FOLLOW_COMMA_in_codeLine3544); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_COMMA.add(COMMA249);
 
 
-                    INTLITERAL250=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine3544); if (state.failed) return retval; 
+                    INTLITERAL250=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeLine3546); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL250);
 
 
@@ -10704,7 +10708,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: pc, IDENTIFIER, operand1, INTLITERAL
+            // elements: operand1, pc, INTLITERAL, IDENTIFIER
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -10827,14 +10831,14 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:420:3: ( pc IDENTIFIER ( INTLITERAL )? -> ^( IDENTIFIER pc ( INTLITERAL )? ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:420:5: pc IDENTIFIER ( INTLITERAL )?
             {
-            pushFollow(FOLLOW_pc_in_codeBlockEnd3581);
+            pushFollow(FOLLOW_pc_in_codeBlockEnd3583);
             pc251=pc();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_pc.add(pc251.getTree());
 
-            IDENTIFIER252=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd3583); if (state.failed) return retval; 
+            IDENTIFIER252=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_codeBlockEnd3585); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER252);
 
 
@@ -10849,7 +10853,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:420:19: INTLITERAL
                     {
-                    INTLITERAL253=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd3585); if (state.failed) return retval; 
+                    INTLITERAL253=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_codeBlockEnd3587); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL253);
 
 
@@ -10860,7 +10864,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: pc, IDENTIFIER, INTLITERAL
+            // elements: INTLITERAL, pc, IDENTIFIER
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -10993,7 +10997,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    CPINDEX254=(Token)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand13626); if (state.failed) return retval;
+                    CPINDEX254=(Token)match(input,CPINDEX,FOLLOW_CPINDEX_in_operand13628); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     CPINDEX254_tree = 
                     (Object)adaptor.create(CPINDEX254)
@@ -11009,7 +11013,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    INTLITERAL255=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand13633); if (state.failed) return retval;
+                    INTLITERAL255=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_operand13635); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     INTLITERAL255_tree = 
                     (Object)adaptor.create(INTLITERAL255)
@@ -11025,7 +11029,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_primitiveType_in_operand13639);
+                    pushFollow(FOLLOW_primitiveType_in_operand13641);
                     primitiveType256=primitiveType();
 
                     state._fsp--;
@@ -11092,29 +11096,29 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:430:3: ( variable COMMA variable COMMA variable -> variable variable variable )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:430:5: variable COMMA variable COMMA variable
             {
-            pushFollow(FOLLOW_variable_in_variables3652);
+            pushFollow(FOLLOW_variable_in_variables3654);
             variable257=variable();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_variable.add(variable257.getTree());
 
-            COMMA258=(Token)match(input,COMMA,FOLLOW_COMMA_in_variables3654); if (state.failed) return retval; 
+            COMMA258=(Token)match(input,COMMA,FOLLOW_COMMA_in_variables3656); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_COMMA.add(COMMA258);
 
 
-            pushFollow(FOLLOW_variable_in_variables3656);
+            pushFollow(FOLLOW_variable_in_variables3658);
             variable259=variable();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_variable.add(variable259.getTree());
 
-            COMMA260=(Token)match(input,COMMA,FOLLOW_COMMA_in_variables3658); if (state.failed) return retval; 
+            COMMA260=(Token)match(input,COMMA,FOLLOW_COMMA_in_variables3660); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_COMMA.add(COMMA260);
 
 
-            pushFollow(FOLLOW_variable_in_variables3660);
+            pushFollow(FOLLOW_variable_in_variables3662);
             variable261=variable();
 
             state._fsp--;
@@ -11204,15 +11208,15 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:434:3: ( IDENTIFIER ASSIGN INTLITERAL -> ^( ASSIGN IDENTIFIER INTLITERAL ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:434:5: IDENTIFIER ASSIGN INTLITERAL
             {
-            IDENTIFIER262=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable3681); if (state.failed) return retval; 
+            IDENTIFIER262=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_variable3683); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER262);
 
 
-            ASSIGN263=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_variable3683); if (state.failed) return retval; 
+            ASSIGN263=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_variable3685); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_ASSIGN.add(ASSIGN263);
 
 
-            INTLITERAL264=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable3685); if (state.failed) return retval; 
+            INTLITERAL264=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_variable3687); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL264);
 
 
@@ -11319,18 +11323,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:438:3: ( pc IDENTIFIER LBRACE ( switchLine )* switchDefaultLine RBRACE -> ^( SWITCH ^( IDENTIFIER pc ( switchLine )* switchDefaultLine ) ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:438:5: pc IDENTIFIER LBRACE ( switchLine )* switchDefaultLine RBRACE
             {
-            pushFollow(FOLLOW_pc_in_javaSwitch3720);
+            pushFollow(FOLLOW_pc_in_javaSwitch3722);
             pc265=pc();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_pc.add(pc265.getTree());
 
-            IDENTIFIER266=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch3722); if (state.failed) return retval; 
+            IDENTIFIER266=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_javaSwitch3724); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER266);
 
 
-            LBRACE267=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_javaSwitch3728); if (state.failed) return retval; 
+            LBRACE267=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_javaSwitch3730); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LBRACE.add(LBRACE267);
 
 
@@ -11349,7 +11353,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:440:5: switchLine
             	    {
-            	    pushFollow(FOLLOW_switchLine_in_javaSwitch3735);
+            	    pushFollow(FOLLOW_switchLine_in_javaSwitch3737);
             	    switchLine268=switchLine();
 
             	    state._fsp--;
@@ -11365,19 +11369,19 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch3742);
+            pushFollow(FOLLOW_switchDefaultLine_in_javaSwitch3744);
             switchDefaultLine269=switchDefaultLine();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_switchDefaultLine.add(switchDefaultLine269.getTree());
 
-            RBRACE270=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_javaSwitch3748); if (state.failed) return retval; 
+            RBRACE270=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_javaSwitch3750); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RBRACE.add(RBRACE270);
 
 
             // AST REWRITE
-            // elements: switchLine, pc, switchDefaultLine, IDENTIFIER
+            // elements: IDENTIFIER, switchDefaultLine, switchLine, pc
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -11482,14 +11486,14 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_pc_in_switchLine3813);
+            pushFollow(FOLLOW_pc_in_switchLine3815);
             pc271=pc();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, pc271.getTree());
 
-            INTLITERAL272=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine3815); if (state.failed) return retval;
+            INTLITERAL272=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchLine3817); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             INTLITERAL272_tree = 
             (Object)adaptor.create(INTLITERAL272)
@@ -11553,20 +11557,20 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:450:3: ( DEFAULT COLON INTLITERAL -> ^( DEFAULT INTLITERAL ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:450:5: DEFAULT COLON INTLITERAL
             {
-            DEFAULT273=(Token)match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine3829); if (state.failed) return retval; 
+            DEFAULT273=(Token)match(input,DEFAULT,FOLLOW_DEFAULT_in_switchDefaultLine3831); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DEFAULT.add(DEFAULT273);
 
 
-            COLON274=(Token)match(input,COLON,FOLLOW_COLON_in_switchDefaultLine3831); if (state.failed) return retval; 
+            COLON274=(Token)match(input,COLON,FOLLOW_COLON_in_switchDefaultLine3833); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_COLON.add(COLON274);
 
 
-            INTLITERAL275=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine3833); if (state.failed) return retval; 
+            INTLITERAL275=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_switchDefaultLine3835); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL275);
 
 
             // AST REWRITE
-            // elements: DEFAULT, INTLITERAL
+            // elements: INTLITERAL, DEFAULT
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -11652,11 +11656,11 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:458:3: ( THROWS typeList -> ^( THROWS typeList ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:458:5: THROWS typeList
             {
-            THROWS276=(Token)match(input,THROWS,FOLLOW_THROWS_in_throwClause3874); if (state.failed) return retval; 
+            THROWS276=(Token)match(input,THROWS,FOLLOW_THROWS_in_throwClause3876); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_THROWS.add(THROWS276);
 
 
-            pushFollow(FOLLOW_typeList_in_throwClause3876);
+            pushFollow(FOLLOW_typeList_in_throwClause3878);
             typeList277=typeList();
 
             state._fsp--;
@@ -11753,11 +11757,11 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:462:3: ( THROWS throwType ( COMMA throwType )* -> ^( THROWS ( throwType )+ ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:462:5: THROWS throwType ( COMMA throwType )*
             {
-            THROWS278=(Token)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod3919); if (state.failed) return retval; 
+            THROWS278=(Token)match(input,THROWS,FOLLOW_THROWS_in_throwClauseMethod3921); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_THROWS.add(THROWS278);
 
 
-            pushFollow(FOLLOW_throwType_in_throwClauseMethod3921);
+            pushFollow(FOLLOW_throwType_in_throwClauseMethod3923);
             throwType279=throwType();
 
             state._fsp--;
@@ -11779,11 +11783,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:462:23: COMMA throwType
             	    {
-            	    COMMA280=(Token)match(input,COMMA,FOLLOW_COMMA_in_throwClauseMethod3924); if (state.failed) return retval; 
+            	    COMMA280=(Token)match(input,COMMA,FOLLOW_COMMA_in_throwClauseMethod3926); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_COMMA.add(COMMA280);
 
 
-            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod3926);
+            	    pushFollow(FOLLOW_throwType_in_throwClauseMethod3928);
             	    throwType281=throwType();
 
             	    state._fsp--;
@@ -11800,7 +11804,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: throwType, THROWS
+            // elements: THROWS, throwType
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -11966,19 +11970,19 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:471:3: ( IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ( exceptionTableEntry )+ -> ^( ETHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( ETENTRY ( exceptionTableEntry )+ ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:471:5: IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ( exceptionTableEntry )+
             {
-            IDENTIFIER283=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4017); if (state.failed) return retval; 
+            IDENTIFIER283=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4019); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER283);
 
 
-            IDENTIFIER284=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4019); if (state.failed) return retval; 
+            IDENTIFIER284=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4021); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER284);
 
 
-            IDENTIFIER285=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4021); if (state.failed) return retval; 
+            IDENTIFIER285=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4023); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER285);
 
 
-            IDENTIFIER286=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4023); if (state.failed) return retval; 
+            IDENTIFIER286=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTable4025); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER286);
 
 
@@ -11998,7 +12002,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:472:5: exceptionTableEntry
             	    {
-            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable4030);
+            	    pushFollow(FOLLOW_exceptionTableEntry_in_exceptionTable4032);
             	    exceptionTableEntry287=exceptionTableEntry();
 
             	    state._fsp--;
@@ -12020,7 +12024,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: IDENTIFIER, IDENTIFIER, exceptionTableEntry, IDENTIFIER, IDENTIFIER
+            // elements: IDENTIFIER, IDENTIFIER, IDENTIFIER, IDENTIFIER, exceptionTableEntry
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -12141,19 +12145,19 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:476:3: ( INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue -> INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:476:5: INTLITERAL INTLITERAL INTLITERAL exceptionTableEntryValue
             {
-            INTLITERAL288=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry4068); if (state.failed) return retval; 
+            INTLITERAL288=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry4070); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL288);
 
 
-            INTLITERAL289=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry4070); if (state.failed) return retval; 
+            INTLITERAL289=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry4072); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL289);
 
 
-            INTLITERAL290=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry4072); if (state.failed) return retval; 
+            INTLITERAL290=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_exceptionTableEntry4074); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL290);
 
 
-            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry4074);
+            pushFollow(FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry4076);
             exceptionTableEntryValue291=exceptionTableEntryValue();
 
             state._fsp--;
@@ -12161,7 +12165,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_exceptionTableEntryValue.add(exceptionTableEntryValue291.getTree());
 
             // AST REWRITE
-            // elements: INTLITERAL, INTLITERAL, exceptionTableEntryValue, INTLITERAL
+            // elements: INTLITERAL, INTLITERAL, INTLITERAL, exceptionTableEntryValue
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -12287,7 +12291,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue4124);
+                    pushFollow(FOLLOW_primitiveType_in_exceptionTableEntryValue4126);
                     primitiveType292=primitiveType();
 
                     state._fsp--;
@@ -12302,7 +12306,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    IDENTIFIER293=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue4130); if (state.failed) return retval;
+                    IDENTIFIER293=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_exceptionTableEntryValue4132); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     IDENTIFIER293_tree = 
                     (Object)adaptor.create(IDENTIFIER293)
@@ -12318,7 +12322,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    CONSTANT_TYPE_ASSIGNABLE294=(Token)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue4136); if (state.failed) return retval;
+                    CONSTANT_TYPE_ASSIGNABLE294=(Token)match(input,CONSTANT_TYPE_ASSIGNABLE,FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue4138); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     CONSTANT_TYPE_ASSIGNABLE294_tree = 
                     (Object)adaptor.create(CONSTANT_TYPE_ASSIGNABLE294)
@@ -12402,7 +12406,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:490:5: lineNumberTableLine
             	    {
-            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable4155);
+            	    pushFollow(FOLLOW_lineNumberTableLine_in_lineNumberTable4157);
             	    lineNumberTableLine295=lineNumberTableLine();
 
             	    state._fsp--;
@@ -12478,23 +12482,23 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:494:3: ( IDENTIFIER pc INTLITERAL -> ^( IDENTIFIER pc INTLITERAL ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:494:5: IDENTIFIER pc INTLITERAL
             {
-            IDENTIFIER296=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine4169); if (state.failed) return retval; 
+            IDENTIFIER296=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_lineNumberTableLine4171); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER296);
 
 
-            pushFollow(FOLLOW_pc_in_lineNumberTableLine4171);
+            pushFollow(FOLLOW_pc_in_lineNumberTableLine4173);
             pc297=pc();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_pc.add(pc297.getTree());
 
-            INTLITERAL298=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine4173); if (state.failed) return retval; 
+            INTLITERAL298=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_lineNumberTableLine4175); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL298);
 
 
             // AST REWRITE
-            // elements: INTLITERAL, pc, IDENTIFIER
+            // elements: INTLITERAL, IDENTIFIER, pc
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -12590,23 +12594,23 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:502:3: ( IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ( localVariableTableLine )* -> ^( LVHEADER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ) ^( LVENTRY ( localVariableTableLine )* ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:502:5: IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER IDENTIFIER ( localVariableTableLine )*
             {
-            IDENTIFIER299=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4204); if (state.failed) return retval; 
+            IDENTIFIER299=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4206); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER299);
 
 
-            IDENTIFIER300=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4206); if (state.failed) return retval; 
+            IDENTIFIER300=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4208); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER300);
 
 
-            IDENTIFIER301=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4208); if (state.failed) return retval; 
+            IDENTIFIER301=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4210); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER301);
 
 
-            IDENTIFIER302=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4210); if (state.failed) return retval; 
+            IDENTIFIER302=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4212); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER302);
 
 
-            IDENTIFIER303=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4212); if (state.failed) return retval; 
+            IDENTIFIER303=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_localVariableTable4214); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER303);
 
 
@@ -12625,7 +12629,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:503:5: localVariableTableLine
             	    {
-            	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable4219);
+            	    pushFollow(FOLLOW_localVariableTableLine_in_localVariableTable4221);
             	    localVariableTableLine304=localVariableTableLine();
 
             	    state._fsp--;
@@ -12769,7 +12773,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            INTLITERAL305=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine4268); if (state.failed) return retval;
+            INTLITERAL305=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine4270); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             INTLITERAL305_tree = 
             (Object)adaptor.create(INTLITERAL305)
@@ -12777,7 +12781,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, INTLITERAL305_tree);
             }
 
-            INTLITERAL306=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine4270); if (state.failed) return retval;
+            INTLITERAL306=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine4272); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             INTLITERAL306_tree = 
             (Object)adaptor.create(INTLITERAL306)
@@ -12785,7 +12789,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, INTLITERAL306_tree);
             }
 
-            INTLITERAL307=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine4272); if (state.failed) return retval;
+            INTLITERAL307=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_localVariableTableLine4274); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             INTLITERAL307_tree = 
             (Object)adaptor.create(INTLITERAL307)
@@ -12793,14 +12797,14 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, INTLITERAL307_tree);
             }
 
-            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine4274);
+            pushFollow(FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine4276);
             localVariableTableLineIdentifier308=localVariableTableLineIdentifier();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, localVariableTableLineIdentifier308.getTree());
 
-            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine4276);
+            pushFollow(FOLLOW_bytecodeType_in_localVariableTableLine4278);
             bytecodeType309=bytecodeType();
 
             state._fsp--;
@@ -12881,7 +12885,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:512:5: id1= keywordAggregate
                     {
-                    pushFollow(FOLLOW_keywordAggregate_in_localVariableTableLineIdentifier4296);
+                    pushFollow(FOLLOW_keywordAggregate_in_localVariableTableLineIdentifier4298);
                     id1=keywordAggregate();
 
                     state._fsp--;
@@ -12918,7 +12922,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:513:5: id2= STATIC
                     {
-                    id2=(Token)match(input,STATIC,FOLLOW_STATIC_in_localVariableTableLineIdentifier4310); if (state.failed) return retval; 
+                    id2=(Token)match(input,STATIC,FOLLOW_STATIC_in_localVariableTableLineIdentifier4312); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_STATIC.add(id2);
 
 
@@ -13011,15 +13015,15 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:522:3: ( IDENTIFIER ASSIGN INTLITERAL ( stackMapTypeTableEntry )+ -> ^( SMTHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMTENTRY ( stackMapTypeTableEntry )+ ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:522:5: IDENTIFIER ASSIGN INTLITERAL ( stackMapTypeTableEntry )+
             {
-            IDENTIFIER310=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable4349); if (state.failed) return retval; 
+            IDENTIFIER310=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTable4351); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER310);
 
 
-            ASSIGN311=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable4351); if (state.failed) return retval; 
+            ASSIGN311=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTable4353); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_ASSIGN.add(ASSIGN311);
 
 
-            INTLITERAL312=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable4353); if (state.failed) return retval; 
+            INTLITERAL312=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTable4355); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL312);
 
 
@@ -13045,7 +13049,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:523:5: stackMapTypeTableEntry
             	    {
-            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable4360);
+            	    pushFollow(FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable4362);
             	    stackMapTypeTableEntry313=stackMapTypeTableEntry();
 
             	    state._fsp--;
@@ -13067,7 +13071,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ASSIGN, IDENTIFIER, stackMapTypeTableEntry, INTLITERAL
+            // elements: INTLITERAL, ASSIGN, stackMapTypeTableEntry, IDENTIFIER
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -13202,7 +13206,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            IDENTIFIER314=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4406); if (state.failed) return retval;
+            IDENTIFIER314=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4408); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             IDENTIFIER314_tree = 
             (Object)adaptor.create(IDENTIFIER314)
@@ -13210,7 +13214,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, IDENTIFIER314_tree);
             }
 
-            ASSIGN315=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4408); if (state.failed) return retval;
+            ASSIGN315=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4410); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             ASSIGN315_tree = 
             (Object)adaptor.create(ASSIGN315)
@@ -13218,7 +13222,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, ASSIGN315_tree);
             }
 
-            INTLITERAL316=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4410); if (state.failed) return retval;
+            INTLITERAL316=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4412); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             INTLITERAL316_tree = 
             (Object)adaptor.create(INTLITERAL316)
@@ -13226,7 +13230,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, INTLITERAL316_tree);
             }
 
-            IDENTIFIER317=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4412); if (state.failed) return retval;
+            IDENTIFIER317=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4414); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             IDENTIFIER317_tree = 
             (Object)adaptor.create(IDENTIFIER317)
@@ -13234,7 +13238,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, IDENTIFIER317_tree);
             }
 
-            ASSIGN318=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4414); if (state.failed) return retval;
+            ASSIGN318=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4416); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             ASSIGN318_tree = 
             (Object)adaptor.create(ASSIGN318)
@@ -13242,7 +13246,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, ASSIGN318_tree);
             }
 
-            INTLITERAL319=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4416); if (state.failed) return retval;
+            INTLITERAL319=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4418); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             INTLITERAL319_tree = 
             (Object)adaptor.create(INTLITERAL319)
@@ -13250,7 +13254,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, INTLITERAL319_tree);
             }
 
-            IDENTIFIER320=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4423); if (state.failed) return retval;
+            IDENTIFIER320=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4425); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             IDENTIFIER320_tree = 
             (Object)adaptor.create(IDENTIFIER320)
@@ -13258,7 +13262,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, IDENTIFIER320_tree);
             }
 
-            ASSIGN321=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4425); if (state.failed) return retval;
+            ASSIGN321=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4427); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             ASSIGN321_tree = 
             (Object)adaptor.create(ASSIGN321)
@@ -13266,14 +13270,14 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, ASSIGN321_tree);
             }
 
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4427);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4429);
             stackMapTableTypesContainer322=stackMapTableTypesContainer();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, stackMapTableTypesContainer322.getTree());
 
-            IDENTIFIER323=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4434); if (state.failed) return retval;
+            IDENTIFIER323=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4436); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             IDENTIFIER323_tree = 
             (Object)adaptor.create(IDENTIFIER323)
@@ -13281,7 +13285,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, IDENTIFIER323_tree);
             }
 
-            ASSIGN324=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4436); if (state.failed) return retval;
+            ASSIGN324=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTypeTableEntry4438); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             ASSIGN324_tree = 
             (Object)adaptor.create(ASSIGN324)
@@ -13289,7 +13293,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, ASSIGN324_tree);
             }
 
-            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4438);
+            pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4440);
             stackMapTableTypesContainer325=stackMapTableTypesContainer();
 
             state._fsp--;
@@ -13354,15 +13358,15 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:537:3: ( IDENTIFIER ASSIGN INTLITERAL ( stackMapTableEntry )+ -> ^( SMHEADER IDENTIFIER ASSIGN INTLITERAL ) ^( SMENTRY ( stackMapTableEntry )+ ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:537:5: IDENTIFIER ASSIGN INTLITERAL ( stackMapTableEntry )+
             {
-            IDENTIFIER326=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable4456); if (state.failed) return retval; 
+            IDENTIFIER326=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTable4458); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER326);
 
 
-            ASSIGN327=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable4458); if (state.failed) return retval; 
+            ASSIGN327=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTable4460); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_ASSIGN.add(ASSIGN327);
 
 
-            INTLITERAL328=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable4460); if (state.failed) return retval; 
+            INTLITERAL328=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTable4462); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL328);
 
 
@@ -13388,7 +13392,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:538:5: stackMapTableEntry
             	    {
-            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable4467);
+            	    pushFollow(FOLLOW_stackMapTableEntry_in_stackMapTable4469);
             	    stackMapTableEntry329=stackMapTableEntry();
 
             	    state._fsp--;
@@ -13410,7 +13414,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ASSIGN, stackMapTableEntry, IDENTIFIER, INTLITERAL
+            // elements: INTLITERAL, IDENTIFIER, ASSIGN, stackMapTableEntry
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -13526,15 +13530,15 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:541:3: ( IDENTIFIER ASSIGN stackMapTableEntryValue -> ^( ASSIGN IDENTIFIER stackMapTableEntryValue ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:541:5: IDENTIFIER ASSIGN stackMapTableEntryValue
             {
-            IDENTIFIER330=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry4523); if (state.failed) return retval; 
+            IDENTIFIER330=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableEntry4525); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_IDENTIFIER.add(IDENTIFIER330);
 
 
-            ASSIGN331=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry4525); if (state.failed) return retval; 
+            ASSIGN331=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_stackMapTableEntry4527); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_ASSIGN.add(ASSIGN331);
 
 
-            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry4527);
+            pushFollow(FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry4529);
             stackMapTableEntryValue332=stackMapTableEntryValue();
 
             state._fsp--;
@@ -13542,7 +13546,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_stackMapTableEntryValue.add(stackMapTableEntryValue332.getTree());
 
             // AST REWRITE
-            // elements: IDENTIFIER, ASSIGN, stackMapTableEntryValue
+            // elements: stackMapTableEntryValue, IDENTIFIER, ASSIGN
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -13651,7 +13655,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    INTLITERAL333=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue4551); if (state.failed) return retval;
+                    INTLITERAL333=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableEntryValue4553); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     INTLITERAL333_tree = 
                     (Object)adaptor.create(INTLITERAL333)
@@ -13667,7 +13671,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue4555);
+                    pushFollow(FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue4557);
                     stackMapTableTypesContainer334=stackMapTableTypesContainer();
 
                     state._fsp--;
@@ -13731,18 +13735,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:548:3: ( LBRACK stackMapTableTypes RBRACK -> stackMapTableTypes )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:548:5: LBRACK stackMapTableTypes RBRACK
             {
-            LBRACK335=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_stackMapTableTypesContainer4568); if (state.failed) return retval; 
+            LBRACK335=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_stackMapTableTypesContainer4570); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LBRACK.add(LBRACK335);
 
 
-            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer4570);
+            pushFollow(FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer4572);
             stackMapTableTypes336=stackMapTableTypes();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_stackMapTableTypes.add(stackMapTableTypes336.getTree());
 
-            RBRACK337=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_stackMapTableTypesContainer4572); if (state.failed) return retval; 
+            RBRACK337=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_stackMapTableTypesContainer4574); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RBRACK.add(RBRACK337);
 
 
@@ -13834,7 +13838,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:552:5: stackMapTableType
                     {
-                    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes4604);
+                    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes4606);
                     stackMapTableType338=stackMapTableType();
 
                     state._fsp--;
@@ -13862,11 +13866,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:552:25: COMMA stackMapTableType
             	    {
-            	    COMMA339=(Token)match(input,COMMA,FOLLOW_COMMA_in_stackMapTableTypes4608); if (state.failed) return retval; 
+            	    COMMA339=(Token)match(input,COMMA,FOLLOW_COMMA_in_stackMapTableTypes4610); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_COMMA.add(COMMA339);
 
 
-            	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes4610);
+            	    pushFollow(FOLLOW_stackMapTableType_in_stackMapTableTypes4612);
             	    stackMapTableType340=stackMapTableType();
 
             	    state._fsp--;
@@ -14034,7 +14038,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:556:6: stackMapTableTypeObject
                     {
-                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType4635);
+                    pushFollow(FOLLOW_stackMapTableTypeObject_in_stackMapTableType4637);
                     stackMapTableTypeObject341=stackMapTableTypeObject();
 
                     state._fsp--;
@@ -14046,7 +14050,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:556:30: stackMapTableTypePlainObject
                     {
-                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType4637);
+                    pushFollow(FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType4639);
                     stackMapTableTypePlainObject342=stackMapTableTypePlainObject();
 
                     state._fsp--;
@@ -14058,7 +14062,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:556:59: primitiveType
                     {
-                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType4639);
+                    pushFollow(FOLLOW_primitiveType_in_stackMapTableType4641);
                     primitiveType343=primitiveType();
 
                     state._fsp--;
@@ -14070,7 +14074,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:556:73: IDENTIFIER ( INTLITERAL )?
                     {
-                    IDENTIFIER344=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType4641); if (state.failed) return retval;
+                    IDENTIFIER344=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableType4643); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     IDENTIFIER344_tree = 
                     (Object)adaptor.create(IDENTIFIER344)
@@ -14089,7 +14093,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:556:84: INTLITERAL
                             {
-                            INTLITERAL345=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType4643); if (state.failed) return retval;
+                            INTLITERAL345=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_stackMapTableType4645); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
                             INTLITERAL345_tree = 
                             (Object)adaptor.create(INTLITERAL345)
@@ -14165,7 +14169,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:559:3: ( CLASS ( INTERNALTYPE -> CLASS INTERNALTYPE |id= IDENTIFIER -> CLASS INTERNALTYPE[$id] ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:559:5: CLASS ( INTERNALTYPE -> CLASS INTERNALTYPE |id= IDENTIFIER -> CLASS INTERNALTYPE[$id] )
             {
-            CLASS346=(Token)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject4657); if (state.failed) return retval; 
+            CLASS346=(Token)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypePlainObject4659); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_CLASS.add(CLASS346);
 
 
@@ -14191,12 +14195,12 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:560:4: INTERNALTYPE
                     {
-                    INTERNALTYPE347=(Token)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject4663); if (state.failed) return retval; 
+                    INTERNALTYPE347=(Token)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject4665); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_INTERNALTYPE.add(INTERNALTYPE347);
 
 
                     // AST REWRITE
-                    // elements: CLASS, INTERNALTYPE
+                    // elements: INTERNALTYPE, CLASS
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -14229,12 +14233,12 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:561:5: id= IDENTIFIER
                     {
-                    id=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableTypePlainObject4681); if (state.failed) return retval; 
+                    id=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_stackMapTableTypePlainObject4683); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_IDENTIFIER.add(id);
 
 
                     // AST REWRITE
-                    // elements: CLASS, INTERNALTYPE
+                    // elements: INTERNALTYPE, CLASS
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -14322,7 +14326,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            CLASS348=(Token)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject4706); if (state.failed) return retval;
+            CLASS348=(Token)match(input,CLASS,FOLLOW_CLASS_in_stackMapTableTypeObject4708); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             CLASS348_tree = 
             (Object)adaptor.create(CLASS348)
@@ -14330,7 +14334,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, CLASS348_tree);
             }
 
-            STRINGLITERAL349=(Token)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject4708); if (state.failed) return retval;
+            STRINGLITERAL349=(Token)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject4710); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             STRINGLITERAL349_tree = 
             (Object)adaptor.create(STRINGLITERAL349)
@@ -14392,7 +14396,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:576:3: ( type ( COMMA type )* -> ( type )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:576:5: type ( COMMA type )*
             {
-            pushFollow(FOLLOW_type_in_typeList4728);
+            pushFollow(FOLLOW_type_in_typeList4730);
             type350=type();
 
             state._fsp--;
@@ -14414,11 +14418,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:576:11: COMMA type
             	    {
-            	    COMMA351=(Token)match(input,COMMA,FOLLOW_COMMA_in_typeList4731); if (state.failed) return retval; 
+            	    COMMA351=(Token)match(input,COMMA,FOLLOW_COMMA_in_typeList4733); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_COMMA.add(COMMA351);
 
 
-            	    pushFollow(FOLLOW_type_in_typeList4733);
+            	    pushFollow(FOLLOW_type_in_typeList4735);
             	    type352=type();
 
             	    state._fsp--;
@@ -14519,7 +14523,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:579:3: ( combinedJavaType ( LBRACK RBRACK )* -> combinedJavaType ^( ARRAYBRACKS ( LBRACK RBRACK )* ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:579:5: combinedJavaType ( LBRACK RBRACK )*
             {
-            pushFollow(FOLLOW_combinedJavaType_in_type4777);
+            pushFollow(FOLLOW_combinedJavaType_in_type4779);
             combinedJavaType353=combinedJavaType();
 
             state._fsp--;
@@ -14541,11 +14545,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:579:23: LBRACK RBRACK
             	    {
-            	    LBRACK354=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type4780); if (state.failed) return retval; 
+            	    LBRACK354=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_type4782); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_LBRACK.add(LBRACK354);
 
 
-            	    RBRACK355=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type4782); if (state.failed) return retval; 
+            	    RBRACK355=(Token)match(input,RBRACK,FOLLOW_RBRACK_in_type4784); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_RBRACK.add(RBRACK355);
 
 
@@ -14559,7 +14563,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: LBRACK, combinedJavaType, RBRACK
+            // elements: RBRACK, combinedJavaType, LBRACK
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -14583,7 +14587,7 @@ public TreeAdaptor getTreeAdaptor() {
                 , root_1);
 
                 // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:579:83: ( LBRACK RBRACK )*
-                while ( stream_LBRACK.hasNext()||stream_RBRACK.hasNext() ) {
+                while ( stream_RBRACK.hasNext()||stream_LBRACK.hasNext() ) {
                     adaptor.addChild(root_1, 
                     stream_LBRACK.nextNode()
                     );
@@ -14593,8 +14597,8 @@ public TreeAdaptor getTreeAdaptor() {
                     );
 
                 }
-                stream_LBRACK.reset();
                 stream_RBRACK.reset();
+                stream_LBRACK.reset();
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -14681,7 +14685,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:582:6: primitiveType
                     {
-                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType4822);
+                    pushFollow(FOLLOW_primitiveType_in_combinedJavaType4824);
                     primitiveType356=primitiveType();
 
                     state._fsp--;
@@ -14693,7 +14697,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:583:5: referenceType
                     {
-                    pushFollow(FOLLOW_referenceType_in_combinedJavaType4828);
+                    pushFollow(FOLLOW_referenceType_in_combinedJavaType4830);
                     referenceType357=referenceType();
 
                     state._fsp--;
@@ -14760,7 +14764,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:586:3: ( typeDeclSpecifier ( DOT typeDeclSpecifier )* -> ^( UNITNAME ( typeDeclSpecifier )+ ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:586:5: typeDeclSpecifier ( DOT typeDeclSpecifier )*
             {
-            pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType4841);
+            pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType4843);
             typeDeclSpecifier358=typeDeclSpecifier();
 
             state._fsp--;
@@ -14788,11 +14792,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:586:24: DOT typeDeclSpecifier
             	    {
-            	    DOT359=(Token)match(input,DOT,FOLLOW_DOT_in_referenceType4844); if (state.failed) return retval; 
+            	    DOT359=(Token)match(input,DOT,FOLLOW_DOT_in_referenceType4846); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_DOT.add(DOT359);
 
 
-            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType4846);
+            	    pushFollow(FOLLOW_typeDeclSpecifier_in_referenceType4848);
             	    typeDeclSpecifier360=typeDeclSpecifier();
 
             	    state._fsp--;
@@ -14900,7 +14904,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:589:3: ( typeName ( typeArguments )? -> ^( typeName ^( TYPEARGS ( typeArguments )? ) ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:589:5: typeName ( typeArguments )?
             {
-            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier4870);
+            pushFollow(FOLLOW_typeName_in_typeDeclSpecifier4872);
             typeName361=typeName();
 
             state._fsp--;
@@ -14971,7 +14975,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:589:14: typeArguments
                     {
-                    pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier4872);
+                    pushFollow(FOLLOW_typeArguments_in_typeDeclSpecifier4874);
                     typeArguments362=typeArguments();
 
                     state._fsp--;
@@ -15100,7 +15104,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:592:5: id= identifier
                     {
-                    pushFollow(FOLLOW_identifier_in_typeName4920);
+                    pushFollow(FOLLOW_identifier_in_typeName4922);
                     id=identifier();
 
                     state._fsp--;
@@ -15140,7 +15144,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    QualifiedType363=(Token)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName4962); if (state.failed) return retval;
+                    QualifiedType363=(Token)match(input,QualifiedType,FOLLOW_QualifiedType_in_typeName4964); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     QualifiedType363_tree = 
                     (Object)adaptor.create(QualifiedType363)
@@ -15205,18 +15209,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:596:3: ( LESST typeArgumentList LARGET -> typeArgumentList )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:596:5: LESST typeArgumentList LARGET
             {
-            LESST364=(Token)match(input,LESST,FOLLOW_LESST_in_typeArguments4974); if (state.failed) return retval; 
+            LESST364=(Token)match(input,LESST,FOLLOW_LESST_in_typeArguments4976); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LESST.add(LESST364);
 
 
-            pushFollow(FOLLOW_typeArgumentList_in_typeArguments4976);
+            pushFollow(FOLLOW_typeArgumentList_in_typeArguments4978);
             typeArgumentList365=typeArgumentList();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_typeArgumentList.add(typeArgumentList365.getTree());
 
-            LARGET366=(Token)match(input,LARGET,FOLLOW_LARGET_in_typeArguments4978); if (state.failed) return retval; 
+            LARGET366=(Token)match(input,LARGET,FOLLOW_LARGET_in_typeArguments4980); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LARGET.add(LARGET366);
 
 
@@ -15297,7 +15301,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:599:3: ( typeArgument ( COMMA typeArgument )* -> ( typeArgument )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:599:5: typeArgument ( COMMA typeArgument )*
             {
-            pushFollow(FOLLOW_typeArgument_in_typeArgumentList5009);
+            pushFollow(FOLLOW_typeArgument_in_typeArgumentList5011);
             typeArgument367=typeArgument();
 
             state._fsp--;
@@ -15319,11 +15323,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:599:19: COMMA typeArgument
             	    {
-            	    COMMA368=(Token)match(input,COMMA,FOLLOW_COMMA_in_typeArgumentList5012); if (state.failed) return retval; 
+            	    COMMA368=(Token)match(input,COMMA,FOLLOW_COMMA_in_typeArgumentList5014); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_COMMA.add(COMMA368);
 
 
-            	    pushFollow(FOLLOW_typeArgument_in_typeArgumentList5014);
+            	    pushFollow(FOLLOW_typeArgument_in_typeArgumentList5016);
             	    typeArgument369=typeArgument();
 
             	    state._fsp--;
@@ -15442,7 +15446,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_type_in_typeArgument5042);
+                    pushFollow(FOLLOW_type_in_typeArgument5044);
                     type370=type();
 
                     state._fsp--;
@@ -15457,7 +15461,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_wildcard_in_typeArgument5048);
+                    pushFollow(FOLLOW_wildcard_in_typeArgument5050);
                     wildcard371=wildcard();
 
                     state._fsp--;
@@ -15518,7 +15522,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:606:3: ( QUESTION ( wildcardBounds )? -> ^( QUESTION ( wildcardBounds )? ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:606:5: QUESTION ( wildcardBounds )?
             {
-            QUESTION372=(Token)match(input,QUESTION,FOLLOW_QUESTION_in_wildcard5060); if (state.failed) return retval; 
+            QUESTION372=(Token)match(input,QUESTION,FOLLOW_QUESTION_in_wildcard5062); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_QUESTION.add(QUESTION372);
 
 
@@ -15533,7 +15537,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:606:14: wildcardBounds
                     {
-                    pushFollow(FOLLOW_wildcardBounds_in_wildcard5062);
+                    pushFollow(FOLLOW_wildcardBounds_in_wildcard5064);
                     wildcardBounds373=wildcardBounds();
 
                     state._fsp--;
@@ -15547,7 +15551,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: QUESTION, wildcardBounds
+            // elements: wildcardBounds, QUESTION
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -15660,11 +15664,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:609:5: EXTENDS type
                     {
-                    EXTENDS374=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds5103); if (state.failed) return retval; 
+                    EXTENDS374=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_wildcardBounds5105); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_EXTENDS.add(EXTENDS374);
 
 
-                    pushFollow(FOLLOW_type_in_wildcardBounds5105);
+                    pushFollow(FOLLOW_type_in_wildcardBounds5107);
                     type375=type();
 
                     state._fsp--;
@@ -15672,7 +15676,7 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) stream_type.add(type375.getTree());
 
                     // AST REWRITE
-                    // elements: EXTENDS, type
+                    // elements: type, EXTENDS
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -15709,11 +15713,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:610:5: SUPER type
                     {
-                    SUPER376=(Token)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds5150); if (state.failed) return retval; 
+                    SUPER376=(Token)match(input,SUPER,FOLLOW_SUPER_in_wildcardBounds5152); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_SUPER.add(SUPER376);
 
 
-                    pushFollow(FOLLOW_type_in_wildcardBounds5152);
+                    pushFollow(FOLLOW_type_in_wildcardBounds5154);
                     type377=type();
 
                     state._fsp--;
@@ -15721,7 +15725,7 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) stream_type.add(type377.getTree());
 
                     // AST REWRITE
-                    // elements: SUPER, type
+                    // elements: type, SUPER
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -15815,11 +15819,11 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:613:3: ( LESST typeParameter ( COMMA typeParameter )* LARGET -> ( typeParameter )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:613:5: LESST typeParameter ( COMMA typeParameter )* LARGET
             {
-            LESST378=(Token)match(input,LESST,FOLLOW_LESST_in_typeParameters5205); if (state.failed) return retval; 
+            LESST378=(Token)match(input,LESST,FOLLOW_LESST_in_typeParameters5207); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LESST.add(LESST378);
 
 
-            pushFollow(FOLLOW_typeParameter_in_typeParameters5207);
+            pushFollow(FOLLOW_typeParameter_in_typeParameters5209);
             typeParameter379=typeParameter();
 
             state._fsp--;
@@ -15841,11 +15845,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:613:26: COMMA typeParameter
             	    {
-            	    COMMA380=(Token)match(input,COMMA,FOLLOW_COMMA_in_typeParameters5210); if (state.failed) return retval; 
+            	    COMMA380=(Token)match(input,COMMA,FOLLOW_COMMA_in_typeParameters5212); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_COMMA.add(COMMA380);
 
 
-            	    pushFollow(FOLLOW_typeParameter_in_typeParameters5212);
+            	    pushFollow(FOLLOW_typeParameter_in_typeParameters5214);
             	    typeParameter381=typeParameter();
 
             	    state._fsp--;
@@ -15861,7 +15865,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            LARGET382=(Token)match(input,LARGET,FOLLOW_LARGET_in_typeParameters5216); if (state.failed) return retval; 
+            LARGET382=(Token)match(input,LARGET,FOLLOW_LARGET_in_typeParameters5218); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LARGET.add(LARGET382);
 
 
@@ -15947,7 +15951,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:616:3: ( identifier ( typeBound )? -> ^( identifier ( typeBound )? ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:616:5: identifier ( typeBound )?
             {
-            pushFollow(FOLLOW_identifier_in_typeParameter5233);
+            pushFollow(FOLLOW_identifier_in_typeParameter5235);
             identifier383=identifier();
 
             state._fsp--;
@@ -15965,7 +15969,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:616:16: typeBound
                     {
-                    pushFollow(FOLLOW_typeBound_in_typeParameter5235);
+                    pushFollow(FOLLOW_typeBound_in_typeParameter5237);
                     typeBound384=typeBound();
 
                     state._fsp--;
@@ -15979,7 +15983,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: typeBound, identifier
+            // elements: identifier, typeBound
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -16071,11 +16075,11 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:619:3: ( EXTENDS referenceType ( AND referenceType )* -> ^( EXTENDS ( referenceType )+ ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:619:5: EXTENDS referenceType ( AND referenceType )*
             {
-            EXTENDS385=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound5279); if (state.failed) return retval; 
+            EXTENDS385=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_typeBound5281); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_EXTENDS.add(EXTENDS385);
 
 
-            pushFollow(FOLLOW_referenceType_in_typeBound5281);
+            pushFollow(FOLLOW_referenceType_in_typeBound5283);
             referenceType386=referenceType();
 
             state._fsp--;
@@ -16097,11 +16101,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:619:28: AND referenceType
             	    {
-            	    AND387=(Token)match(input,AND,FOLLOW_AND_in_typeBound5284); if (state.failed) return retval; 
+            	    AND387=(Token)match(input,AND,FOLLOW_AND_in_typeBound5286); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_AND.add(AND387);
 
 
-            	    pushFollow(FOLLOW_referenceType_in_typeBound5286);
+            	    pushFollow(FOLLOW_referenceType_in_typeBound5288);
             	    referenceType388=referenceType();
 
             	    state._fsp--;
@@ -16118,7 +16122,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: EXTENDS, referenceType
+            // elements: referenceType, EXTENDS
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -16217,11 +16221,11 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:626:3: ( LESST genericReturnDescriptor ( COMMA genericReturnDescriptor )* LARGET -> ( genericReturnDescriptor )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:626:5: LESST genericReturnDescriptor ( COMMA genericReturnDescriptor )* LARGET
             {
-            LESST389=(Token)match(input,LESST,FOLLOW_LESST_in_genericDescriptor5314); if (state.failed) return retval; 
+            LESST389=(Token)match(input,LESST,FOLLOW_LESST_in_genericDescriptor5316); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LESST.add(LESST389);
 
 
-            pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor5316);
+            pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor5318);
             genericReturnDescriptor390=genericReturnDescriptor();
 
             state._fsp--;
@@ -16243,11 +16247,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:626:36: COMMA genericReturnDescriptor
             	    {
-            	    COMMA391=(Token)match(input,COMMA,FOLLOW_COMMA_in_genericDescriptor5319); if (state.failed) return retval; 
+            	    COMMA391=(Token)match(input,COMMA,FOLLOW_COMMA_in_genericDescriptor5321); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_COMMA.add(COMMA391);
 
 
-            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor5321);
+            	    pushFollow(FOLLOW_genericReturnDescriptor_in_genericDescriptor5323);
             	    genericReturnDescriptor392=genericReturnDescriptor();
 
             	    state._fsp--;
@@ -16263,7 +16267,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            LARGET393=(Token)match(input,LARGET,FOLLOW_LARGET_in_genericDescriptor5325); if (state.failed) return retval; 
+            LARGET393=(Token)match(input,LARGET,FOLLOW_LARGET_in_genericDescriptor5327); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LARGET.add(LARGET393);
 
 
@@ -16352,18 +16356,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:629:3: ( identifier EXTENDS bytecodeReferenceTypeList -> ^( EXTENDS identifier bytecodeReferenceTypeList ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:629:5: identifier EXTENDS bytecodeReferenceTypeList
             {
-            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor5342);
+            pushFollow(FOLLOW_identifier_in_genericReturnDescriptor5344);
             identifier394=identifier();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_identifier.add(identifier394.getTree());
 
-            EXTENDS395=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor5344); if (state.failed) return retval; 
+            EXTENDS395=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_genericReturnDescriptor5346); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_EXTENDS.add(EXTENDS395);
 
 
-            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor5346);
+            pushFollow(FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor5348);
             bytecodeReferenceTypeList396=bytecodeReferenceTypeList();
 
             state._fsp--;
@@ -16371,7 +16375,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_bytecodeReferenceTypeList.add(bytecodeReferenceTypeList396.getTree());
 
             // AST REWRITE
-            // elements: identifier, EXTENDS, bytecodeReferenceTypeList
+            // elements: bytecodeReferenceTypeList, identifier, EXTENDS
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -16459,7 +16463,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:632:3: ( bytecodeReferenceType ( AND bytecodeReferenceType )* -> ( bytecodeReferenceType )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:632:5: bytecodeReferenceType ( AND bytecodeReferenceType )*
             {
-            pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5385);
+            pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5387);
             bytecodeReferenceType397=bytecodeReferenceType();
 
             state._fsp--;
@@ -16481,11 +16485,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:632:28: AND bytecodeReferenceType
             	    {
-            	    AND398=(Token)match(input,AND,FOLLOW_AND_in_bytecodeReferenceTypeList5388); if (state.failed) return retval; 
+            	    AND398=(Token)match(input,AND,FOLLOW_AND_in_bytecodeReferenceTypeList5390); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_AND.add(AND398);
 
 
-            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5390);
+            	    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5392);
             	    bytecodeReferenceType399=bytecodeReferenceType();
 
             	    state._fsp--;
@@ -16585,7 +16589,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:635:3: ( bytecodeTypeDeclSpecifier ( DOT bytecodeTypeDeclSpecifier )* -> ^( UNITNAME ( bytecodeTypeDeclSpecifier )+ ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:635:5: bytecodeTypeDeclSpecifier ( DOT bytecodeTypeDeclSpecifier )*
             {
-            pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5418);
+            pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5420);
             bytecodeTypeDeclSpecifier400=bytecodeTypeDeclSpecifier();
 
             state._fsp--;
@@ -16607,11 +16611,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:635:32: DOT bytecodeTypeDeclSpecifier
             	    {
-            	    DOT401=(Token)match(input,DOT,FOLLOW_DOT_in_bytecodeReferenceType5421); if (state.failed) return retval; 
+            	    DOT401=(Token)match(input,DOT,FOLLOW_DOT_in_bytecodeReferenceType5423); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_DOT.add(DOT401);
 
 
-            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5423);
+            	    pushFollow(FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5425);
             	    bytecodeTypeDeclSpecifier402=bytecodeTypeDeclSpecifier();
 
             	    state._fsp--;
@@ -16719,7 +16723,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:638:3: ( bytecodeTypeName ( bytecodeTypeArguments )? -> bytecodeTypeName ^( TYPEARGS ( bytecodeTypeArguments )? ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:638:5: bytecodeTypeName ( bytecodeTypeArguments )?
             {
-            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier5447);
+            pushFollow(FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier5449);
             bytecodeTypeName403=bytecodeTypeName();
 
             state._fsp--;
@@ -16737,7 +16741,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:638:22: bytecodeTypeArguments
                     {
-                    pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier5449);
+                    pushFollow(FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier5451);
                     bytecodeTypeArguments404=bytecodeTypeArguments();
 
                     state._fsp--;
@@ -16751,7 +16755,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: bytecodeTypeArguments, bytecodeTypeName
+            // elements: bytecodeTypeName, bytecodeTypeArguments
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -16860,7 +16864,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:641:5: id= identifier
                     {
-                    pushFollow(FOLLOW_identifier_in_bytecodeTypeName5495);
+                    pushFollow(FOLLOW_identifier_in_bytecodeTypeName5497);
                     id=identifier();
 
                     state._fsp--;
@@ -16900,7 +16904,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    INTERNALTYPE405=(Token)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName5552); if (state.failed) return retval;
+                    INTERNALTYPE405=(Token)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_bytecodeTypeName5554); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     INTERNALTYPE405_tree = 
                     (Object)adaptor.create(INTERNALTYPE405)
@@ -16965,18 +16969,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:645:3: ( LESST bytecodeTypeArgumentList LARGET -> bytecodeTypeArgumentList )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:645:5: LESST bytecodeTypeArgumentList LARGET
             {
-            LESST406=(Token)match(input,LESST,FOLLOW_LESST_in_bytecodeTypeArguments5564); if (state.failed) return retval; 
+            LESST406=(Token)match(input,LESST,FOLLOW_LESST_in_bytecodeTypeArguments5566); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LESST.add(LESST406);
 
 
-            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments5566);
+            pushFollow(FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments5568);
             bytecodeTypeArgumentList407=bytecodeTypeArgumentList();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_bytecodeTypeArgumentList.add(bytecodeTypeArgumentList407.getTree());
 
-            LARGET408=(Token)match(input,LARGET,FOLLOW_LARGET_in_bytecodeTypeArguments5568); if (state.failed) return retval; 
+            LARGET408=(Token)match(input,LARGET,FOLLOW_LARGET_in_bytecodeTypeArguments5570); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LARGET.add(LARGET408);
 
 
@@ -17057,7 +17061,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:648:3: ( bytecodeTypeArgument ( COMMA bytecodeTypeArgument )* -> ( bytecodeTypeArgument )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:648:5: bytecodeTypeArgument ( COMMA bytecodeTypeArgument )*
             {
-            pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5599);
+            pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5601);
             bytecodeTypeArgument409=bytecodeTypeArgument();
 
             state._fsp--;
@@ -17079,11 +17083,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:648:27: COMMA bytecodeTypeArgument
             	    {
-            	    COMMA410=(Token)match(input,COMMA,FOLLOW_COMMA_in_bytecodeTypeArgumentList5602); if (state.failed) return retval; 
+            	    COMMA410=(Token)match(input,COMMA,FOLLOW_COMMA_in_bytecodeTypeArgumentList5604); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_COMMA.add(COMMA410);
 
 
-            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5604);
+            	    pushFollow(FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5606);
             	    bytecodeTypeArgument411=bytecodeTypeArgument();
 
             	    state._fsp--;
@@ -17202,7 +17206,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument5624);
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument5626);
                     bytecodeReferenceType412=bytecodeReferenceType();
 
                     state._fsp--;
@@ -17217,7 +17221,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument5630);
+                    pushFollow(FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument5632);
                     bytecodeWildcard413=bytecodeWildcard();
 
                     state._fsp--;
@@ -17278,7 +17282,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:655:3: ( QUESTION ( bytecodeWildcardBounds )? -> ^( QUESTION ( bytecodeWildcardBounds )? ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:655:5: QUESTION ( bytecodeWildcardBounds )?
             {
-            QUESTION414=(Token)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard5642); if (state.failed) return retval; 
+            QUESTION414=(Token)match(input,QUESTION,FOLLOW_QUESTION_in_bytecodeWildcard5644); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_QUESTION.add(QUESTION414);
 
 
@@ -17293,7 +17297,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:655:14: bytecodeWildcardBounds
                     {
-                    pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard5644);
+                    pushFollow(FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard5646);
                     bytecodeWildcardBounds415=bytecodeWildcardBounds();
 
                     state._fsp--;
@@ -17307,7 +17311,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: bytecodeWildcardBounds, QUESTION
+            // elements: QUESTION, bytecodeWildcardBounds
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -17420,11 +17424,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:658:5: EXTENDS bytecodeReferenceType
                     {
-                    EXTENDS416=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds5685); if (state.failed) return retval; 
+                    EXTENDS416=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_bytecodeWildcardBounds5687); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_EXTENDS.add(EXTENDS416);
 
 
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5687);
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5689);
                     bytecodeReferenceType417=bytecodeReferenceType();
 
                     state._fsp--;
@@ -17432,7 +17436,7 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) stream_bytecodeReferenceType.add(bytecodeReferenceType417.getTree());
 
                     // AST REWRITE
-                    // elements: EXTENDS, bytecodeReferenceType
+                    // elements: bytecodeReferenceType, EXTENDS
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -17469,11 +17473,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:659:5: SUPER bytecodeReferenceType
                     {
-                    SUPER418=(Token)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds5723); if (state.failed) return retval; 
+                    SUPER418=(Token)match(input,SUPER,FOLLOW_SUPER_in_bytecodeWildcardBounds5725); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_SUPER.add(SUPER418);
 
 
-                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5725);
+                    pushFollow(FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5727);
                     bytecodeReferenceType419=bytecodeReferenceType();
 
                     state._fsp--;
@@ -17747,7 +17751,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType5776);
+                    pushFollow(FOLLOW_bytecodeArrayType_in_bytecodeType5778);
                     bytecodeArrayType420=bytecodeArrayType();
 
                     state._fsp--;
@@ -17762,7 +17766,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    BaseType421=(Token)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType5780); if (state.failed) return retval;
+                    BaseType421=(Token)match(input,BaseType,FOLLOW_BaseType_in_bytecodeType5782); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     BaseType421_tree = 
                     (Object)adaptor.create(BaseType421)
@@ -17778,14 +17782,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType5784);
+                    pushFollow(FOLLOW_simpleBytecodeObjectType_in_bytecodeType5786);
                     simpleBytecodeObjectType422=simpleBytecodeObjectType();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, simpleBytecodeObjectType422.getTree());
 
-                    SEMI423=(Token)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType5786); if (state.failed) return retval;
+                    SEMI423=(Token)match(input,SEMI,FOLLOW_SEMI_in_bytecodeType5788); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     SEMI423_tree = 
                     (Object)adaptor.create(SEMI423)
@@ -17801,7 +17805,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    IDENTIFIER424=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType5790); if (state.failed) return retval;
+                    IDENTIFIER424=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_bytecodeType5792); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     IDENTIFIER424_tree = 
                     (Object)adaptor.create(IDENTIFIER424)
@@ -17865,7 +17869,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            LBRACK425=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType5803); if (state.failed) return retval;
+            LBRACK425=(Token)match(input,LBRACK,FOLLOW_LBRACK_in_bytecodeArrayType5805); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             LBRACK425_tree = 
             (Object)adaptor.create(LBRACK425)
@@ -17873,7 +17877,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, LBRACK425_tree);
             }
 
-            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType5805);
+            pushFollow(FOLLOW_bytecodeType_in_bytecodeArrayType5807);
             bytecodeType426=bytecodeType();
 
             state._fsp--;
@@ -17934,7 +17938,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:673:3: ( simpleBytecodeReferenceType ( DOT simpleBytecodeReferenceType )* -> ( simpleBytecodeReferenceType )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:673:5: simpleBytecodeReferenceType ( DOT simpleBytecodeReferenceType )*
             {
-            pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5818);
+            pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5820);
             simpleBytecodeReferenceType427=simpleBytecodeReferenceType();
 
             state._fsp--;
@@ -17956,11 +17960,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:673:34: DOT simpleBytecodeReferenceType
             	    {
-            	    DOT428=(Token)match(input,DOT,FOLLOW_DOT_in_simpleBytecodeObjectType5821); if (state.failed) return retval; 
+            	    DOT428=(Token)match(input,DOT,FOLLOW_DOT_in_simpleBytecodeObjectType5823); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_DOT.add(DOT428);
 
 
-            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5823);
+            	    pushFollow(FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5825);
             	    simpleBytecodeReferenceType429=simpleBytecodeReferenceType();
 
             	    state._fsp--;
@@ -18058,7 +18062,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:676:3: ( simpleBytecodeReferenceTypeName ( simpleBytecodeTypeArguments )? -> simpleBytecodeReferenceTypeName ^( TYPEARGS ( simpleBytecodeTypeArguments )? ) )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:676:5: simpleBytecodeReferenceTypeName ( simpleBytecodeTypeArguments )?
             {
-            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType5842);
+            pushFollow(FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType5844);
             simpleBytecodeReferenceTypeName430=simpleBytecodeReferenceTypeName();
 
             state._fsp--;
@@ -18076,7 +18080,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:676:37: simpleBytecodeTypeArguments
                     {
-                    pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType5844);
+                    pushFollow(FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType5846);
                     simpleBytecodeTypeArguments431=simpleBytecodeTypeArguments();
 
                     state._fsp--;
@@ -18090,7 +18094,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: simpleBytecodeReferenceTypeName, simpleBytecodeTypeArguments
+            // elements: simpleBytecodeTypeArguments, simpleBytecodeReferenceTypeName
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -18203,7 +18207,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    INTERNALTYPE432=(Token)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName5869); if (state.failed) return retval;
+                    INTERNALTYPE432=(Token)match(input,INTERNALTYPE,FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName5871); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     INTERNALTYPE432_tree = 
                     (Object)adaptor.create(INTERNALTYPE432)
@@ -18216,7 +18220,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:680:5: id= IDENTIFIER
                     {
-                    id=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_simpleBytecodeReferenceTypeName5877); if (state.failed) return retval; 
+                    id=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_simpleBytecodeReferenceTypeName5879); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_IDENTIFIER.add(id);
 
 
@@ -18302,18 +18306,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:683:3: ( LESST simpleBytecodeTypeArgumentList LARGET -> simpleBytecodeTypeArgumentList )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:683:5: LESST simpleBytecodeTypeArgumentList LARGET
             {
-            LESST433=(Token)match(input,LESST,FOLLOW_LESST_in_simpleBytecodeTypeArguments5941); if (state.failed) return retval; 
+            LESST433=(Token)match(input,LESST,FOLLOW_LESST_in_simpleBytecodeTypeArguments5943); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LESST.add(LESST433);
 
 
-            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments5943);
+            pushFollow(FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments5945);
             simpleBytecodeTypeArgumentList434=simpleBytecodeTypeArgumentList();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_simpleBytecodeTypeArgumentList.add(simpleBytecodeTypeArgumentList434.getTree());
 
-            LARGET435=(Token)match(input,LARGET,FOLLOW_LARGET_in_simpleBytecodeTypeArguments5945); if (state.failed) return retval; 
+            LARGET435=(Token)match(input,LARGET,FOLLOW_LARGET_in_simpleBytecodeTypeArguments5947); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LARGET.add(LARGET435);
 
 
@@ -18391,7 +18395,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:686:3: ( simpleBytecodeTypeArgument ( simpleBytecodeTypeArgument )* -> ( simpleBytecodeTypeArgument )+ )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:686:5: simpleBytecodeTypeArgument ( simpleBytecodeTypeArgument )*
             {
-            pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5975);
+            pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5977);
             simpleBytecodeTypeArgument436=simpleBytecodeTypeArgument();
 
             state._fsp--;
@@ -18413,7 +18417,7 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:686:33: simpleBytecodeTypeArgument
             	    {
-            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5978);
+            	    pushFollow(FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5980);
             	    simpleBytecodeTypeArgument437=simpleBytecodeTypeArgument();
 
             	    state._fsp--;
@@ -18557,7 +18561,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument5998);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6000);
                     bytecodeType438=bytecodeType();
 
                     state._fsp--;
@@ -18572,7 +18576,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    MINUS439=(Token)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument6004); if (state.failed) return retval;
+                    MINUS439=(Token)match(input,MINUS,FOLLOW_MINUS_in_simpleBytecodeTypeArgument6006); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     MINUS439_tree = 
                     (Object)adaptor.create(MINUS439)
@@ -18580,7 +18584,7 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_0, MINUS439_tree);
                     }
 
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6006);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6008);
                     bytecodeType440=bytecodeType();
 
                     state._fsp--;
@@ -18595,7 +18599,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    PLUS441=(Token)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument6012); if (state.failed) return retval;
+                    PLUS441=(Token)match(input,PLUS,FOLLOW_PLUS_in_simpleBytecodeTypeArgument6014); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     PLUS441_tree = 
                     (Object)adaptor.create(PLUS441)
@@ -18603,7 +18607,7 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_0, PLUS441_tree);
                     }
 
-                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6014);
+                    pushFollow(FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6016);
                     bytecodeType442=bytecodeType();
 
                     state._fsp--;
@@ -18618,7 +18622,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    STAR443=(Token)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument6020); if (state.failed) return retval;
+                    STAR443=(Token)match(input,STAR,FOLLOW_STAR_in_simpleBytecodeTypeArgument6022); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     STAR443_tree = 
                     (Object)adaptor.create(STAR443)
@@ -18722,7 +18726,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    IDENTIFIER444=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier6039); if (state.failed) return retval;
+                    IDENTIFIER444=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier6041); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     IDENTIFIER444_tree = 
                     (Object)adaptor.create(IDENTIFIER444)
@@ -18735,7 +18739,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:701:5: v1= BaseType
                     {
-                    v1=(Token)match(input,BaseType,FOLLOW_BaseType_in_identifier6048); if (state.failed) return retval; 
+                    v1=(Token)match(input,BaseType,FOLLOW_BaseType_in_identifier6050); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_BaseType.add(v1);
 
 
@@ -18769,7 +18773,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:702:5: v2= VoidType
                     {
-                    v2=(Token)match(input,VoidType,FOLLOW_VoidType_in_identifier6065); if (state.failed) return retval; 
+                    v2=(Token)match(input,VoidType,FOLLOW_VoidType_in_identifier6067); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_VoidType.add(v2);
 
 
@@ -18803,7 +18807,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:703:5: v3= Constant_type
                     {
-                    v3=(Token)match(input,Constant_type,FOLLOW_Constant_type_in_identifier6082); if (state.failed) return retval; 
+                    v3=(Token)match(input,Constant_type,FOLLOW_Constant_type_in_identifier6084); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_Constant_type.add(v3);
 
 
@@ -18978,7 +18982,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_identifier_in_keywordAggregate6101);
+                    pushFollow(FOLLOW_identifier_in_keywordAggregate6103);
                     identifier445=identifier();
 
                     state._fsp--;
@@ -18990,7 +18994,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:708:5: v1= primitiveType
                     {
-                    pushFollow(FOLLOW_primitiveType_in_keywordAggregate6110);
+                    pushFollow(FOLLOW_primitiveType_in_keywordAggregate6112);
                     v1=primitiveType();
 
                     state._fsp--;
@@ -19027,7 +19031,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:709:5: v2= EXTENDS
                     {
-                    v2=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_keywordAggregate6124); if (state.failed) return retval; 
+                    v2=(Token)match(input,EXTENDS,FOLLOW_EXTENDS_in_keywordAggregate6126); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_EXTENDS.add(v2);
 
 
@@ -19061,7 +19065,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:710:5: v3= IMPLEMENTS
                     {
-                    v3=(Token)match(input,IMPLEMENTS,FOLLOW_IMPLEMENTS_in_keywordAggregate6140); if (state.failed) return retval; 
+                    v3=(Token)match(input,IMPLEMENTS,FOLLOW_IMPLEMENTS_in_keywordAggregate6142); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_IMPLEMENTS.add(v3);
 
 
@@ -19095,7 +19099,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 5 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:711:5: v4= DEFAULT
                     {
-                    v4=(Token)match(input,DEFAULT,FOLLOW_DEFAULT_in_keywordAggregate6155); if (state.failed) return retval; 
+                    v4=(Token)match(input,DEFAULT,FOLLOW_DEFAULT_in_keywordAggregate6157); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_DEFAULT.add(v4);
 
 
@@ -19129,7 +19133,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 6 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:712:5: v5= CLASS
                     {
-                    v5=(Token)match(input,CLASS,FOLLOW_CLASS_in_keywordAggregate6171); if (state.failed) return retval; 
+                    v5=(Token)match(input,CLASS,FOLLOW_CLASS_in_keywordAggregate6173); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_CLASS.add(v5);
 
 
@@ -19163,7 +19167,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 7 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:713:5: v6= THROWS
                     {
-                    v6=(Token)match(input,THROWS,FOLLOW_THROWS_in_keywordAggregate6189); if (state.failed) return retval; 
+                    v6=(Token)match(input,THROWS,FOLLOW_THROWS_in_keywordAggregate6191); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_THROWS.add(v6);
 
 
@@ -19197,7 +19201,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 8 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:714:5: v7= SUPER
                     {
-                    v7=(Token)match(input,SUPER,FOLLOW_SUPER_in_keywordAggregate6206); if (state.failed) return retval; 
+                    v7=(Token)match(input,SUPER,FOLLOW_SUPER_in_keywordAggregate6208); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_SUPER.add(v7);
 
 
@@ -19231,7 +19235,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 9 :
                     // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:715:5: v8= NATIVE
                     {
-                    v8=(Token)match(input,NATIVE,FOLLOW_NATIVE_in_keywordAggregate6222); if (state.failed) return retval; 
+                    v8=(Token)match(input,NATIVE,FOLLOW_NATIVE_in_keywordAggregate6224); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_NATIVE.add(v8);
 
 
@@ -19352,7 +19356,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_boolean_type_in_primitiveType6242);
+                    pushFollow(FOLLOW_boolean_type_in_primitiveType6244);
                     boolean_type446=boolean_type();
 
                     state._fsp--;
@@ -19367,7 +19371,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_numeric_type_in_primitiveType6248);
+                    pushFollow(FOLLOW_numeric_type_in_primitiveType6250);
                     numeric_type447=numeric_type();
 
                     state._fsp--;
@@ -19382,7 +19386,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    VOID448=(Token)match(input,VOID,FOLLOW_VOID_in_primitiveType6254); if (state.failed) return retval;
+                    VOID448=(Token)match(input,VOID,FOLLOW_VOID_in_primitiveType6256); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     VOID448_tree = 
                     (Object)adaptor.create(VOID448)
@@ -19444,7 +19448,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            BOOLEAN449=(Token)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type6267); if (state.failed) return retval;
+            BOOLEAN449=(Token)match(input,BOOLEAN,FOLLOW_BOOLEAN_in_boolean_type6269); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             BOOLEAN449_tree = 
             (Object)adaptor.create(BOOLEAN449)
@@ -19525,7 +19529,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_floating_point_type_in_numeric_type6280);
+                    pushFollow(FOLLOW_floating_point_type_in_numeric_type6282);
                     floating_point_type450=floating_point_type();
 
                     state._fsp--;
@@ -19540,7 +19544,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_integral_type_in_numeric_type6286);
+                    pushFollow(FOLLOW_integral_type_in_numeric_type6288);
                     integral_type451=integral_type();
 
                     state._fsp--;
@@ -19809,7 +19813,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    LONGLITERAL454=(Token)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals6355); if (state.failed) return retval;
+                    LONGLITERAL454=(Token)match(input,LONGLITERAL,FOLLOW_LONGLITERAL_in_literals6357); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     LONGLITERAL454_tree = 
                     (Object)adaptor.create(LONGLITERAL454)
@@ -19825,7 +19829,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    INTLITERAL455=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals6361); if (state.failed) return retval;
+                    INTLITERAL455=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_literals6363); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     INTLITERAL455_tree = 
                     (Object)adaptor.create(INTLITERAL455)
@@ -19841,7 +19845,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    FLOATLITERAL456=(Token)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals6367); if (state.failed) return retval;
+                    FLOATLITERAL456=(Token)match(input,FLOATLITERAL,FOLLOW_FLOATLITERAL_in_literals6369); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     FLOATLITERAL456_tree = 
                     (Object)adaptor.create(FLOATLITERAL456)
@@ -19857,7 +19861,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    DOUBLELITERAL457=(Token)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals6373); if (state.failed) return retval;
+                    DOUBLELITERAL457=(Token)match(input,DOUBLELITERAL,FOLLOW_DOUBLELITERAL_in_literals6375); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     DOUBLELITERAL457_tree = 
                     (Object)adaptor.create(DOUBLELITERAL457)
@@ -19873,7 +19877,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    CHARLITERAL458=(Token)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals6379); if (state.failed) return retval;
+                    CHARLITERAL458=(Token)match(input,CHARLITERAL,FOLLOW_CHARLITERAL_in_literals6381); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     CHARLITERAL458_tree = 
                     (Object)adaptor.create(CHARLITERAL458)
@@ -19889,7 +19893,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    STRINGLITERAL459=(Token)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals6385); if (state.failed) return retval;
+                    STRINGLITERAL459=(Token)match(input,STRINGLITERAL,FOLLOW_STRINGLITERAL_in_literals6387); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     STRINGLITERAL459_tree = 
                     (Object)adaptor.create(STRINGLITERAL459)
@@ -19905,7 +19909,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    BOOLEANLITERAL460=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals6391); if (state.failed) return retval;
+                    BOOLEANLITERAL460=(Token)match(input,BOOLEANLITERAL,FOLLOW_BOOLEANLITERAL_in_literals6393); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     BOOLEANLITERAL460_tree = 
                     (Object)adaptor.create(BOOLEANLITERAL460)
@@ -19932,7 +19936,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:754:5: MINUS
                             {
-                            MINUS461=(Token)match(input,MINUS,FOLLOW_MINUS_in_literals6397); if (state.failed) return retval;
+                            MINUS461=(Token)match(input,MINUS,FOLLOW_MINUS_in_literals6399); if (state.failed) return retval;
                             if ( state.backtracking==0 ) {
                             MINUS461_tree = 
                             (Object)adaptor.create(MINUS461)
@@ -19946,7 +19950,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    IDENTIFIER462=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals6400); if (state.failed) return retval;
+                    IDENTIFIER462=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_literals6402); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     IDENTIFIER462_tree = 
                     (Object)adaptor.create(IDENTIFIER462)
@@ -20009,16 +20013,16 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:758:3: ( INTLITERAL COLON -> INTLITERAL COLON )
             // D:\\Work and Projects\\Speciale\\ThesisDeobfuscator\\Deobfuscation\\src\\bytecodeDeobfuscation\\JVM.g:758:5: INTLITERAL COLON
             {
-            INTLITERAL463=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc6413); if (state.failed) return retval; 
+            INTLITERAL463=(Token)match(input,INTLITERAL,FOLLOW_INTLITERAL_in_pc6415); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_INTLITERAL.add(INTLITERAL463);
 
 
-            COLON464=(Token)match(input,COLON,FOLLOW_COLON_in_pc6415); if (state.failed) return retval; 
+            COLON464=(Token)match(input,COLON,FOLLOW_COLON_in_pc6417); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_COLON.add(COLON464);
 
 
             // AST REWRITE
-            // elements: COLON, INTLITERAL
+            // elements: INTLITERAL, COLON
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -20320,336 +20324,336 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_SEMI_in_fieldDefinition1960 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
     public static final BitSet FOLLOW_fieldInfo_in_fieldDefinition1967 = new BitSet(new long[]{0x0000040400000002L,0x0050000000000000L,0x0000000000008800L});
     public static final BitSet FOLLOW_fieldAdditionalInfo_in_fieldDefinition1973 = new BitSet(new long[]{0x0000040400000002L,0x0050000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_Signature_in_fieldInfo2088 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo2090 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_flags_in_fieldInfo2096 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2120 = new BitSet(new long[]{0x0100008000045000L,0x0200000000020040L,0x0000000100000000L});
-    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo2122 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000020L});
-    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo2124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2140 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo2156 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo2158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo2172 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2174 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo2188 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo2204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo2214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition2294 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_STATIC_in_staticCtorDefinition2297 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_LBRACE_in_staticCtorDefinition2299 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_RBRACE_in_staticCtorDefinition2301 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_SEMI_in_staticCtorDefinition2303 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition2310 = new BitSet(new long[]{0x0000000200000000L,0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_body_in_staticCtorDefinition2316 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition2360 = new BitSet(new long[]{0x0000000800008000L,0x0000200000010002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition2363 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_typeName_in_ctorDefinition2366 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
-    public static final BitSet FOLLOW_arguments_in_ctorDefinition2368 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_throwClause_in_ctorDefinition2370 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_SEMI_in_ctorDefinition2373 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition2380 = new BitSet(new long[]{0x0000000200000000L,0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_body_in_ctorDefinition2386 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition2392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition2561 = new BitSet(new long[]{0x018000880004D010L,0x0200200080030042L,0x0000000500000114L});
-    public static final BitSet FOLLOW_method_modifier_in_methodDefinition2564 = new BitSet(new long[]{0x018000880004D010L,0x0200200080030042L,0x0000000500000114L});
-    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition2567 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_type_in_methodDefinition2570 = new BitSet(new long[]{0x010040A80024D000L,0x0200000080020046L,0x0000000500020040L});
-    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition2572 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
-    public static final BitSet FOLLOW_arguments_in_methodDefinition2574 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition2576 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_SEMI_in_methodDefinition2579 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
-    public static final BitSet FOLLOW_methodInfo_in_methodDefinition2586 = new BitSet(new long[]{0x0004040200000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_body_in_methodDefinition2592 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition2599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo2778 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_flags_in_methodInfo2780 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_afterMethodInfoEntry_in_afterMethodInfo2805 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
-    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfoEntry2825 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2828 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Signature_in_afterMethodInfoEntry2846 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfoEntry2848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry2880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry2889 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry2899 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry2910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfoEntry2920 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_throwClause_in_afterMethodInfoEntry2923 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfoEntry2950 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfoEntry2977 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault2990 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault2993 = new BitSet(new long[]{0x0000000000000200L,0x0000000000008000L});
-    public static final BitSet FOLLOW_annotationValue_in_annotationDefault2995 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo3021 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
-    public static final BitSet FOLLOW_LPAREN_in_methodSignatureInfo3023 = new BitSet(new long[]{0x0000000000008000L,0x0008000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo3025 = new BitSet(new long[]{0x0000000000008000L,0x0008000000008102L});
-    public static final BitSet FOLLOW_RPAREN_in_methodSignatureInfo3028 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo3030 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor3063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VoidType_in_returnDescriptor3067 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPAREN_in_arguments3142 = new BitSet(new long[]{0x010000C80004D000L,0x0208200000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_typeList_in_arguments3144 = new BitSet(new long[]{0x0000004000000000L,0x0008000000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments3148 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_Signature_in_fieldInfo2089 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_fieldInfo2091 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_flags_in_fieldInfo2097 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2121 = new BitSet(new long[]{0x0100008000045000L,0x0200000000020040L,0x0000000100000000L});
+    public static final BitSet FOLLOW_primitiveType_in_fieldAdditionalInfo2123 = new BitSet(new long[]{0x0200010000082000L,0x0000000010040202L,0x0000000000000020L});
+    public static final BitSet FOLLOW_literals_in_fieldAdditionalInfo2125 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Constant_in_fieldAdditionalInfo2141 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_fieldAdditionalInfo2143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Signature_in_fieldAdditionalInfo2157 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_CPINDEX_in_fieldAdditionalInfo2159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Deprecated_in_fieldAdditionalInfo2173 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2175 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Synthetic_in_fieldAdditionalInfo2189 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_fieldAdditionalInfo2191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_fieldAdditionalInfo2205 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_fieldAdditionalInfo2215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_staticCtorDefinition2295 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_STATIC_in_staticCtorDefinition2298 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_LBRACE_in_staticCtorDefinition2300 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_RBRACE_in_staticCtorDefinition2302 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_SEMI_in_staticCtorDefinition2304 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_methodInfo_in_staticCtorDefinition2311 = new BitSet(new long[]{0x0000000200000000L,0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_body_in_staticCtorDefinition2317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_field_visual_modifier_in_ctorDefinition2361 = new BitSet(new long[]{0x0000000800008000L,0x0000200000010002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_genericDescriptor_in_ctorDefinition2364 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_typeName_in_ctorDefinition2367 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_arguments_in_ctorDefinition2369 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_throwClause_in_ctorDefinition2371 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_SEMI_in_ctorDefinition2374 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_methodInfo_in_ctorDefinition2381 = new BitSet(new long[]{0x0000000200000000L,0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_body_in_ctorDefinition2387 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_ctorDefinition2393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_method_visual_modifier_in_methodDefinition2562 = new BitSet(new long[]{0x018000880004D010L,0x0200200080030042L,0x0000000500000114L});
+    public static final BitSet FOLLOW_method_modifier_in_methodDefinition2565 = new BitSet(new long[]{0x018000880004D010L,0x0200200080030042L,0x0000000500000114L});
+    public static final BitSet FOLLOW_genericDescriptor_in_methodDefinition2568 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_type_in_methodDefinition2571 = new BitSet(new long[]{0x010040A80024D000L,0x0200000080020046L,0x0000000500020040L});
+    public static final BitSet FOLLOW_keywordAggregate_in_methodDefinition2573 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_arguments_in_methodDefinition2575 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_throwClauseMethod_in_methodDefinition2577 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_SEMI_in_methodDefinition2580 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000800L});
+    public static final BitSet FOLLOW_methodInfo_in_methodDefinition2587 = new BitSet(new long[]{0x0004040200000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_body_in_methodDefinition2593 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_afterMethodInfo_in_methodDefinition2600 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_methodSignatureInfo_in_methodInfo2780 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_flags_in_methodInfo2782 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_afterMethodInfoEntry_in_afterMethodInfo2807 = new BitSet(new long[]{0x0004040000000402L,0x00F0000000000000L,0x0000000000008800L});
+    public static final BitSet FOLLOW_Deprecated_in_afterMethodInfoEntry2827 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Signature_in_afterMethodInfoEntry2848 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_CPINDEX_in_afterMethodInfoEntry2850 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleParameterAnnotations_in_afterMethodInfoEntry2882 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeVisibleAnnotations_info_in_afterMethodInfoEntry2891 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeInvisibleAnnotations_in_afterMethodInfoEntry2901 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_runtimeVisibleParameterAnnotations_in_afterMethodInfoEntry2912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Exceptions_in_afterMethodInfoEntry2922 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_throwClause_in_afterMethodInfoEntry2925 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Synthetic_in_afterMethodInfoEntry2952 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_afterMethodInfoEntry2954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_annotationDefault_in_afterMethodInfoEntry2979 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_AnnotationDefault_in_annotationDefault2992 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_DefaultValue_in_annotationDefault2995 = new BitSet(new long[]{0x0000000000000200L,0x0000000000008000L});
+    public static final BitSet FOLLOW_annotationValue_in_annotationDefault2997 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Signature_in_methodSignatureInfo3023 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_LPAREN_in_methodSignatureInfo3025 = new BitSet(new long[]{0x0000000000008000L,0x0008000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_methodSignatureInfo3027 = new BitSet(new long[]{0x0000000000008000L,0x0008000000008102L});
+    public static final BitSet FOLLOW_RPAREN_in_methodSignatureInfo3030 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_returnDescriptor_in_methodSignatureInfo3032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeType_in_returnDescriptor3065 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VoidType_in_returnDescriptor3069 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAREN_in_arguments3144 = new BitSet(new long[]{0x010000C80004D000L,0x0208200000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_typeList_in_arguments3146 = new BitSet(new long[]{0x0000004000000000L,0x0008000000000000L});
     public static final BitSet FOLLOW_DOT_in_arguments3150 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_DOT_in_arguments3152 = new BitSet(new long[]{0x0000000000000000L,0x0008000000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_arguments3156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Synthetic_in_body3201 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body3203 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_Code_in_body3211 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_codeBlock_in_body3218 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
-    public static final BitSet FOLLOW_bodyExtension_in_body3224 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
-    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension3262 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension3265 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension3293 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension3296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension3324 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension3327 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension3347 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension3350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension3366 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension3368 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_StackMap_in_bodyExtension3398 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension3400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variables_in_codeBlock3442 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_instructionSet_in_codeBlock3449 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock3456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_codeLine_in_instructionSet3517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_javaSwitch_in_instructionSet3521 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pc_in_codeLine3534 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine3536 = new BitSet(new long[]{0x0100008012045002L,0x0200000000020240L,0x0000000100000000L});
-    public static final BitSet FOLLOW_operand1_in_codeLine3538 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_COMMA_in_codeLine3542 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeLine3544 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pc_in_codeBlockEnd3581 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd3583 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd3585 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CPINDEX_in_operand13626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_operand13633 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_operand13639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variables3652 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_COMMA_in_variables3654 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variables3656 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_COMMA_in_variables3658 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_variable_in_variables3660 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_variable3681 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_variable3683 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_variable3685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pc_in_javaSwitch3720 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch3722 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_LBRACE_in_javaSwitch3728 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_switchLine_in_javaSwitch3735 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch3742 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_RBRACE_in_javaSwitch3748 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_pc_in_switchLine3813 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchLine3815 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine3829 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_COLON_in_switchDefaultLine3831 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine3833 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_THROWS_in_throwClause3874 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_typeList_in_throwClause3876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod3919 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000102L});
-    public static final BitSet FOLLOW_throwType_in_throwClauseMethod3921 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_COMMA_in_throwClauseMethod3924 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000102L});
-    public static final BitSet FOLLOW_throwType_in_throwClauseMethod3926 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable4017 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_DOT_in_arguments3152 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_DOT_in_arguments3154 = new BitSet(new long[]{0x0000000000000000L,0x0008000000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_arguments3158 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Synthetic_in_body3203 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_body3205 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_Code_in_body3213 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_codeBlock_in_body3220 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
+    public static final BitSet FOLLOW_bodyExtension_in_body3226 = new BitSet(new long[]{0x0002000000000002L,0x0000000003800000L,0x0000000000006000L});
+    public static final BitSet FOLLOW_ExceptionTable_in_bodyExtension3264 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_exceptionTable_in_bodyExtension3267 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LineNumberTable_in_bodyExtension3295 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_lineNumberTable_in_bodyExtension3298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LocalVariableTable_in_bodyExtension3326 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension3329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LocalVariableTypeTable_in_bodyExtension3349 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_localVariableTable_in_bodyExtension3352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_StackMapTable_in_bodyExtension3368 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTable_in_bodyExtension3370 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_StackMap_in_bodyExtension3400 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTypeTable_in_bodyExtension3402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variables_in_codeBlock3444 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_instructionSet_in_codeBlock3451 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_codeBlockEnd_in_codeBlock3458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_codeLine_in_instructionSet3519 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_javaSwitch_in_instructionSet3523 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pc_in_codeLine3536 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeLine3538 = new BitSet(new long[]{0x0100008012045002L,0x0200000000020240L,0x0000000100000000L});
+    public static final BitSet FOLLOW_operand1_in_codeLine3540 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_COMMA_in_codeLine3544 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeLine3546 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pc_in_codeBlockEnd3583 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_codeBlockEnd3585 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_codeBlockEnd3587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CPINDEX_in_operand13628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_operand13635 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_operand13641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variables3654 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_COMMA_in_variables3656 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variables3658 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_COMMA_in_variables3660 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_variable_in_variables3662 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_variable3683 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_variable3685 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_variable3687 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pc_in_javaSwitch3722 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_javaSwitch3724 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
+    public static final BitSet FOLLOW_LBRACE_in_javaSwitch3730 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_switchLine_in_javaSwitch3737 = new BitSet(new long[]{0x0000002000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_switchDefaultLine_in_javaSwitch3744 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_RBRACE_in_javaSwitch3750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_pc_in_switchLine3815 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchLine3817 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEFAULT_in_switchDefaultLine3831 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_COLON_in_switchDefaultLine3833 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_switchDefaultLine3835 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_THROWS_in_throwClause3876 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_typeList_in_throwClause3878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_THROWS_in_throwClauseMethod3921 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000102L});
+    public static final BitSet FOLLOW_throwType_in_throwClauseMethod3923 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_COMMA_in_throwClauseMethod3926 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000102L});
+    public static final BitSet FOLLOW_throwType_in_throwClauseMethod3928 = new BitSet(new long[]{0x0000000002000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable4019 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable4021 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable4023 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable4030 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry4068 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable4023 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTable4025 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_exceptionTableEntry_in_exceptionTable4032 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
     public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry4070 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry4072 = new BitSet(new long[]{0x0100008008045000L,0x0200000000020042L,0x0000000100000000L});
-    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry4074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue4124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue4130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue4136 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable4155 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine4169 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_pc_in_lineNumberTableLine4171 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine4173 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable4204 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry4072 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_exceptionTableEntry4074 = new BitSet(new long[]{0x0100008008045000L,0x0200000000020042L,0x0000000100000000L});
+    public static final BitSet FOLLOW_exceptionTableEntryValue_in_exceptionTableEntry4076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_exceptionTableEntryValue4126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_exceptionTableEntryValue4132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANT_TYPE_ASSIGNABLE_in_exceptionTableEntryValue4138 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lineNumberTableLine_in_lineNumberTable4157 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_lineNumberTableLine4171 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_pc_in_lineNumberTableLine4173 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_lineNumberTableLine4175 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable4206 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable4208 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable4210 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable4212 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable4219 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine4268 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable4212 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_localVariableTable4214 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
+    public static final BitSet FOLLOW_localVariableTableLine_in_localVariableTable4221 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
     public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine4270 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine4272 = new BitSet(new long[]{0x010040A80024D000L,0x0200000080020046L,0x0000000500020044L});
-    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine4274 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine4276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_keywordAggregate_in_localVariableTableLineIdentifier4296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STATIC_in_localVariableTableLineIdentifier4310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable4349 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable4351 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable4353 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable4360 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4406 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4408 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4410 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4412 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4414 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4416 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4423 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4425 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4427 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4434 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4436 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable4456 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable4458 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable4460 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable4467 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry4523 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry4525 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008200L});
-    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry4527 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue4551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue4555 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LBRACK_in_stackMapTableTypesContainer4568 = new BitSet(new long[]{0x0100008002245000L,0x0200800000020042L,0x0000000100000000L});
-    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer4570 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
-    public static final BitSet FOLLOW_RBRACK_in_stackMapTableTypesContainer4572 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes4604 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_COMMA_in_stackMapTableTypes4608 = new BitSet(new long[]{0x0100008000245000L,0x0200000000020042L,0x0000000100000000L});
-    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes4610 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType4635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType4637 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType4639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType4641 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
-    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType4643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject4657 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000102L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject4663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableTypePlainObject4681 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject4706 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject4708 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_typeList4728 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_COMMA_in_typeList4731 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_type_in_typeList4733 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_combinedJavaType_in_type4777 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
-    public static final BitSet FOLLOW_LBRACK_in_type4780 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
-    public static final BitSet FOLLOW_RBRACK_in_type4782 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
-    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType4822 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_referenceType_in_combinedJavaType4828 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType4841 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_DOT_in_referenceType4844 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType4846 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier4870 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
-    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier4872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_typeName4920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QualifiedType_in_typeName4962 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESST_in_typeArguments4974 = new BitSet(new long[]{0x010000880004D000L,0x0200280000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_typeArgumentList_in_typeArguments4976 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_LARGET_in_typeArguments4978 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList5009 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_COMMA_in_typeArgumentList5012 = new BitSet(new long[]{0x010000880004D000L,0x0200280000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList5014 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_type_in_typeArgument5042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_wildcard_in_typeArgument5048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_wildcard5060 = new BitSet(new long[]{0x0000400000000002L,0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_wildcardBounds_in_wildcard5062 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds5103 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds5105 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SUPER_in_wildcardBounds5150 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
-    public static final BitSet FOLLOW_type_in_wildcardBounds5152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESST_in_typeParameters5205 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_typeParameter_in_typeParameters5207 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_COMMA_in_typeParameters5210 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_typeParameter_in_typeParameters5212 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_LARGET_in_typeParameters5216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_typeParameter5233 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_typeBound_in_typeParameter5235 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_typeBound5279 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_referenceType_in_typeBound5281 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_AND_in_typeBound5284 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_referenceType_in_typeBound5286 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_LESST_in_genericDescriptor5314 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor5316 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_COMMA_in_genericDescriptor5319 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
-    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor5321 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_LARGET_in_genericDescriptor5325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor5342 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor5344 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor5346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5385 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_AND_in_bytecodeReferenceTypeList5388 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5390 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5418 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_DOT_in_bytecodeReferenceType5421 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5423 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier5447 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
-    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier5449 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_bytecodeTypeName5495 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName5552 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESST_in_bytecodeTypeArguments5564 = new BitSet(new long[]{0x0000000800008000L,0x0000080000000102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments5566 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_LARGET_in_bytecodeTypeArguments5568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5599 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_COMMA_in_bytecodeTypeArgumentList5602 = new BitSet(new long[]{0x0000000800008000L,0x0000080000000102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5604 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument5624 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument5630 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard5642 = new BitSet(new long[]{0x0000400000000002L,0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard5644 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds5685 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds5723 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
-    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5725 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType5776 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BaseType_in_bytecodeType5780 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType5784 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
-    public static final BitSet FOLLOW_SEMI_in_bytecodeType5786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType5790 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType5803 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType5805 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5818 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_DOT_in_simpleBytecodeObjectType5821 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000102L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5823 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType5842 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType5844 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName5869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_simpleBytecodeReferenceTypeName5877 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LESST_in_simpleBytecodeTypeArguments5941 = new BitSet(new long[]{0x0000000000008000L,0x0000004010008102L,0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments5943 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_LARGET_in_simpleBytecodeTypeArguments5945 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5975 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5978 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument5998 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument6004 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6006 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument6012 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
-    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument6020 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_identifier6039 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BaseType_in_identifier6048 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VoidType_in_identifier6065 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_Constant_type_in_identifier6082 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_keywordAggregate6101 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primitiveType_in_keywordAggregate6110 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EXTENDS_in_keywordAggregate6124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IMPLEMENTS_in_keywordAggregate6140 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DEFAULT_in_keywordAggregate6155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASS_in_keywordAggregate6171 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_THROWS_in_keywordAggregate6189 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SUPER_in_keywordAggregate6206 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NATIVE_in_keywordAggregate6222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_boolean_type_in_primitiveType6242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_numeric_type_in_primitiveType6248 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VOID_in_primitiveType6254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type6267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_floating_point_type_in_numeric_type6280 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_integral_type_in_numeric_type6286 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LONGLITERAL_in_literals6355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_literals6361 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOATLITERAL_in_literals6367 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals6373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHARLITERAL_in_literals6379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRINGLITERAL_in_literals6385 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals6391 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_literals6397 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_literals6400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTLITERAL_in_pc6413 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_COLON_in_pc6415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine4272 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_localVariableTableLine4274 = new BitSet(new long[]{0x010040A80024D000L,0x0200000080020046L,0x0000000500020044L});
+    public static final BitSet FOLLOW_localVariableTableLineIdentifier_in_localVariableTableLine4276 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_localVariableTableLine4278 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_keywordAggregate_in_localVariableTableLineIdentifier4298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STATIC_in_localVariableTableLineIdentifier4312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTable4351 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTable4353 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTable4355 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTypeTableEntry_in_stackMapTypeTable4362 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4408 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4410 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4412 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4414 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4416 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTypeTableEntry4418 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4425 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4427 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4429 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTypeTableEntry4436 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTypeTableEntry4438 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTypeTableEntry4440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTable4458 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTable4460 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTable4462 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableEntry_in_stackMapTable4469 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableEntry4525 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ASSIGN_in_stackMapTableEntry4527 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008200L});
+    public static final BitSet FOLLOW_stackMapTableEntryValue_in_stackMapTableEntry4529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableEntryValue4553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypesContainer_in_stackMapTableEntryValue4557 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LBRACK_in_stackMapTableTypesContainer4570 = new BitSet(new long[]{0x0100008002245000L,0x0200800000020042L,0x0000000100000000L});
+    public static final BitSet FOLLOW_stackMapTableTypes_in_stackMapTableTypesContainer4572 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+    public static final BitSet FOLLOW_RBRACK_in_stackMapTableTypesContainer4574 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes4606 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_COMMA_in_stackMapTableTypes4610 = new BitSet(new long[]{0x0100008000245000L,0x0200000000020042L,0x0000000100000000L});
+    public static final BitSet FOLLOW_stackMapTableType_in_stackMapTableTypes4612 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_stackMapTableTypeObject_in_stackMapTableType4637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stackMapTableTypePlainObject_in_stackMapTableType4639 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_stackMapTableType4641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableType4643 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
+    public static final BitSet FOLLOW_INTLITERAL_in_stackMapTableType4645 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypePlainObject4659 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000102L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_stackMapTableTypePlainObject4665 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_stackMapTableTypePlainObject4683 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_stackMapTableTypeObject4708 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_stackMapTableTypeObject4710 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_typeList4730 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_COMMA_in_typeList4733 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_type_in_typeList4735 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_combinedJavaType_in_type4779 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
+    public static final BitSet FOLLOW_LBRACK_in_type4782 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+    public static final BitSet FOLLOW_RBRACK_in_type4784 = new BitSet(new long[]{0x0000000000000002L,0x0000000000008000L});
+    public static final BitSet FOLLOW_primitiveType_in_combinedJavaType4824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_referenceType_in_combinedJavaType4830 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType4843 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_DOT_in_referenceType4846 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_typeDeclSpecifier_in_referenceType4848 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_typeName_in_typeDeclSpecifier4872 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
+    public static final BitSet FOLLOW_typeArguments_in_typeDeclSpecifier4874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_typeName4922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QualifiedType_in_typeName4964 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESST_in_typeArguments4976 = new BitSet(new long[]{0x010000880004D000L,0x0200280000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_typeArgumentList_in_typeArguments4978 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_LARGET_in_typeArguments4980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList5011 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_COMMA_in_typeArgumentList5014 = new BitSet(new long[]{0x010000880004D000L,0x0200280000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_typeArgument_in_typeArgumentList5016 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_type_in_typeArgument5044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_wildcard_in_typeArgument5050 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_wildcard5062 = new BitSet(new long[]{0x0000400000000002L,0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_wildcardBounds_in_wildcard5064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_wildcardBounds5105 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds5107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SUPER_in_wildcardBounds5152 = new BitSet(new long[]{0x010000880004D000L,0x0200200000020042L,0x0000000500000000L});
+    public static final BitSet FOLLOW_type_in_wildcardBounds5154 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESST_in_typeParameters5207 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_typeParameter_in_typeParameters5209 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_COMMA_in_typeParameters5212 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_typeParameter_in_typeParameters5214 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_LARGET_in_typeParameters5218 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_typeParameter5235 = new BitSet(new long[]{0x0000400000000002L});
+    public static final BitSet FOLLOW_typeBound_in_typeParameter5237 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_typeBound5281 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_referenceType_in_typeBound5283 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_AND_in_typeBound5286 = new BitSet(new long[]{0x0000000800008000L,0x0000200000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_referenceType_in_typeBound5288 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_LESST_in_genericDescriptor5316 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor5318 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_COMMA_in_genericDescriptor5321 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000002L,0x0000000400000000L});
+    public static final BitSet FOLLOW_genericReturnDescriptor_in_genericDescriptor5323 = new BitSet(new long[]{0x0000000002000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_LARGET_in_genericDescriptor5327 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_genericReturnDescriptor5344 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_EXTENDS_in_genericReturnDescriptor5346 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceTypeList_in_genericReturnDescriptor5348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5387 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_AND_in_bytecodeReferenceTypeList5390 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeReferenceTypeList5392 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5420 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_DOT_in_bytecodeReferenceType5423 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_bytecodeTypeDeclSpecifier_in_bytecodeReferenceType5425 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeName_in_bytecodeTypeDeclSpecifier5449 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
+    public static final BitSet FOLLOW_bytecodeTypeArguments_in_bytecodeTypeDeclSpecifier5451 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_bytecodeTypeName5497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_bytecodeTypeName5554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESST_in_bytecodeTypeArguments5566 = new BitSet(new long[]{0x0000000800008000L,0x0000080000000102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_bytecodeTypeArgumentList_in_bytecodeTypeArguments5568 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_LARGET_in_bytecodeTypeArguments5570 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5601 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_COMMA_in_bytecodeTypeArgumentList5604 = new BitSet(new long[]{0x0000000800008000L,0x0000080000000102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_bytecodeTypeArgument_in_bytecodeTypeArgumentList5606 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeTypeArgument5626 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeWildcard_in_bytecodeTypeArgument5632 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_QUESTION_in_bytecodeWildcard5644 = new BitSet(new long[]{0x0000400000000002L,0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_bytecodeWildcardBounds_in_bytecodeWildcard5646 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_bytecodeWildcardBounds5687 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5689 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SUPER_in_bytecodeWildcardBounds5725 = new BitSet(new long[]{0x0000000800008000L,0x0000000000000102L,0x0000000400000000L});
+    public static final BitSet FOLLOW_bytecodeReferenceType_in_bytecodeWildcardBounds5727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeArrayType_in_bytecodeType5778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BaseType_in_bytecodeType5782 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeObjectType_in_bytecodeType5786 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_SEMI_in_bytecodeType5788 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_bytecodeType5792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LBRACK_in_bytecodeArrayType5805 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_bytecodeArrayType5807 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5820 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_DOT_in_simpleBytecodeObjectType5823 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000102L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceType_in_simpleBytecodeObjectType5825 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeReferenceTypeName_in_simpleBytecodeReferenceType5844 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArguments_in_simpleBytecodeReferenceType5846 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTERNALTYPE_in_simpleBytecodeReferenceTypeName5871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_simpleBytecodeReferenceTypeName5879 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LESST_in_simpleBytecodeTypeArguments5943 = new BitSet(new long[]{0x0000000000008000L,0x0000004010008102L,0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgumentList_in_simpleBytecodeTypeArguments5945 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_LARGET_in_simpleBytecodeTypeArguments5947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5977 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleBytecodeTypeArgument_in_simpleBytecodeTypeArgumentList5980 = new BitSet(new long[]{0x0000000000008002L,0x0000004010008102L,0x0000000000000002L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6000 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_simpleBytecodeTypeArgument6006 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PLUS_in_simpleBytecodeTypeArgument6014 = new BitSet(new long[]{0x0000000000008000L,0x0000000000008102L});
+    public static final BitSet FOLLOW_bytecodeType_in_simpleBytecodeTypeArgument6016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STAR_in_simpleBytecodeTypeArgument6022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_identifier6041 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BaseType_in_identifier6050 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VoidType_in_identifier6067 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_Constant_type_in_identifier6084 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_keywordAggregate6103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primitiveType_in_keywordAggregate6112 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EXTENDS_in_keywordAggregate6126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IMPLEMENTS_in_keywordAggregate6142 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DEFAULT_in_keywordAggregate6157 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_keywordAggregate6173 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_THROWS_in_keywordAggregate6191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SUPER_in_keywordAggregate6208 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NATIVE_in_keywordAggregate6224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_boolean_type_in_primitiveType6244 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_numeric_type_in_primitiveType6250 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VOID_in_primitiveType6256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEAN_in_boolean_type6269 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_floating_point_type_in_numeric_type6282 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_integral_type_in_numeric_type6288 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LONGLITERAL_in_literals6357 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_literals6363 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOATLITERAL_in_literals6369 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLELITERAL_in_literals6375 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHARLITERAL_in_literals6381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRINGLITERAL_in_literals6387 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLEANLITERAL_in_literals6393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_literals6399 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_literals6402 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTLITERAL_in_pc6415 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_COLON_in_pc6417 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_methodDefinition_in_synpred1_JVM1891 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ctorDefinition_in_synpred2_JVM1903 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_fieldDefinition_in_synpred3_JVM1915 = new BitSet(new long[]{0x0000000000000002L});
