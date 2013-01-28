@@ -1,0 +1,342 @@
+
+Classfile /D:/Libs/ExtractedJars/jnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO.class
+  Last modified 15-10-2012; size 2149 bytes
+  MD5 checksum 949219fbf717f3b3d61cfdd358d3d7fb
+  Compiled from "AbstractArrayMemoryIO.java"
+public abstract class jnr.ffi.provider.AbstractArrayMemoryIO$ArrayIO 
+  SourceFile: "AbstractArrayMemoryIO.java"
+  InnerClasses:
+      protected static abstract #8= #2 of #7;
+      private static final #11= #10 of #7;
+      private static final #14= #13 of #7;
+      private static final #17= #16 of #7;
+      private static final #20= #19 of #7;
+  minor version: 0
+  major version: 49
+  flags: ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+%
+
+Constant pool:
+  #1 = Utf8               jnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO
+  #2 = Class              #1            //  jnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO
+  #3 = Utf8               java/lang/Object
+  #4 = Class              #3            //  java/lang/Object
+  #5 = Utf8               AbstractArrayMemoryIO.java
+  #6 = Utf8               jnr/ffi/provider/AbstractArrayMemoryIO
+  #7 = Class              #6            //  jnr/ffi/provider/AbstractArrayMemoryIO
+  #8 = Utf8               ArrayIO
+  #9 = Utf8               jnr/ffi/provider/AbstractArrayMemoryIO$BE64ArrayIO
+  #10 = Class              #9            //  jnr/ffi/provider/AbstractArrayMemoryIO$BE64ArrayIO
+  #11 = Utf8               BE64ArrayIO
+  #12 = Utf8               jnr/ffi/provider/AbstractArrayMemoryIO$BE32ArrayIO
+  #13 = Class              #12           //  jnr/ffi/provider/AbstractArrayMemoryIO$BE32ArrayIO
+  #14 = Utf8               BE32ArrayIO
+  #15 = Utf8               jnr/ffi/provider/AbstractArrayMemoryIO$LE64ArrayIO
+  #16 = Class              #15           //  jnr/ffi/provider/AbstractArrayMemoryIO$LE64ArrayIO
+  #17 = Utf8               LE64ArrayIO
+  #18 = Utf8               jnr/ffi/provider/AbstractArrayMemoryIO$LE32ArrayIO
+  #19 = Class              #18           //  jnr/ffi/provider/AbstractArrayMemoryIO$LE32ArrayIO
+  #20 = Utf8               LE32ArrayIO
+  #21 = Utf8               <init>
+  #22 = Utf8               ()V
+  #23 = NameAndType        #21:#22       //  "<init>":()V
+  #24 = Methodref          #4.#23        //  java/lang/Object."<init>":()V
+  #25 = Utf8               this
+  #26 = Utf8               Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+  #27 = Utf8               getArrayIO
+  #28 = Utf8               (Ljnr/ffi/Runtime;)Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+  #29 = Utf8               jnr/ffi/Runtime
+  #30 = Class              #29           //  jnr/ffi/Runtime
+  #31 = Utf8               byteOrder
+  #32 = Utf8               ()Ljava/nio/ByteOrder;
+  #33 = NameAndType        #31:#32       //  byteOrder:()Ljava/nio/ByteOrder;
+  #34 = Methodref          #30.#33       //  jnr/ffi/Runtime.byteOrder:()Ljava/nio/ByteOrder;
+  #35 = Utf8               java/nio/ByteOrder
+  #36 = Class              #35           //  java/nio/ByteOrder
+  #37 = Utf8               BIG_ENDIAN
+  #38 = Utf8               Ljava/nio/ByteOrder;
+  #39 = NameAndType        #37:#38       //  BIG_ENDIAN:Ljava/nio/ByteOrder;
+  #40 = Fieldref           #36.#39       //  java/nio/ByteOrder.BIG_ENDIAN:Ljava/nio/ByteOrder;
+  #41 = Utf8               equals
+  #42 = Utf8               (Ljava/lang/Object;)Z
+  #43 = NameAndType        #41:#42       //  equals:(Ljava/lang/Object;)Z
+  #44 = Methodref          #4.#43        //  java/lang/Object.equals:(Ljava/lang/Object;)Z
+  #45 = Utf8               addressSize
+  #46 = Utf8               ()I
+  #47 = NameAndType        #45:#46       //  addressSize:()I
+  #48 = Methodref          #30.#47       //  jnr/ffi/Runtime.addressSize:()I
+  #49 = Utf8               INSTANCE
+  #50 = NameAndType        #49:#26       //  INSTANCE:Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+  #51 = Fieldref           #10.#50       //  jnr/ffi/provider/AbstractArrayMemoryIO$BE64ArrayIO.INSTANCE:Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+  #52 = Fieldref           #13.#50       //  jnr/ffi/provider/AbstractArrayMemoryIO$BE32ArrayIO.INSTANCE:Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+  #53 = Fieldref           #16.#50       //  jnr/ffi/provider/AbstractArrayMemoryIO$LE64ArrayIO.INSTANCE:Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+  #54 = Fieldref           #19.#50       //  jnr/ffi/provider/AbstractArrayMemoryIO$LE32ArrayIO.INSTANCE:Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+  #55 = Utf8               runtime
+  #56 = Utf8               Ljnr/ffi/Runtime;
+  #57 = Utf8               getInt16
+  #58 = Utf8               ([BI)S
+  #59 = Utf8               getInt32
+  #60 = Utf8               ([BI)I
+  #61 = Utf8               getInt64
+  #62 = Utf8               ([BI)J
+  #63 = Utf8               getAddress
+  #64 = Utf8               putInt16
+  #65 = Utf8               ([BII)V
+  #66 = Utf8               putInt32
+  #67 = Utf8               putInt64
+  #68 = Utf8               ([BIJ)V
+  #69 = Utf8               putAddress
+  #70 = Utf8               getFloat32
+  #71 = Utf8               ([BI)F
+  #72 = NameAndType        #59:#60       //  getInt32:([BI)I
+  #73 = Methodref          #2.#72        //  jnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO.getInt32:([BI)I
+  #74 = Utf8               java/lang/Float
+  #75 = Class              #74           //  java/lang/Float
+  #76 = Utf8               intBitsToFloat
+  #77 = Utf8               (I)F
+  #78 = NameAndType        #76:#77       //  intBitsToFloat:(I)F
+  #79 = Methodref          #75.#78       //  java/lang/Float.intBitsToFloat:(I)F
+  #80 = Utf8               buffer
+  #81 = Utf8               [B
+  #82 = Utf8               offset
+  #83 = Utf8               I
+  #84 = Utf8               putFloat32
+  #85 = Utf8               ([BIF)V
+  #86 = Utf8               floatToRawIntBits
+  #87 = Utf8               (F)I
+  #88 = NameAndType        #86:#87       //  floatToRawIntBits:(F)I
+  #89 = Methodref          #75.#88       //  java/lang/Float.floatToRawIntBits:(F)I
+  #90 = NameAndType        #66:#65       //  putInt32:([BII)V
+  #91 = Methodref          #2.#90        //  jnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO.putInt32:([BII)V
+  #92 = Utf8               value
+  #93 = Utf8               F
+  #94 = Utf8               getFloat64
+  #95 = Utf8               ([BI)D
+  #96 = NameAndType        #61:#62       //  getInt64:([BI)J
+  #97 = Methodref          #2.#96        //  jnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO.getInt64:([BI)J
+  #98 = Utf8               java/lang/Double
+  #99 = Class              #98           //  java/lang/Double
+  #100 = Utf8               longBitsToDouble
+  #101 = Utf8               (J)D
+  #102 = NameAndType        #100:#101     //  longBitsToDouble:(J)D
+  #103 = Methodref          #99.#102      //  java/lang/Double.longBitsToDouble:(J)D
+  #104 = Utf8               putFloat64
+  #105 = Utf8               ([BID)V
+  #106 = Utf8               doubleToRawLongBits
+  #107 = Utf8               (D)J
+  #108 = NameAndType        #106:#107     //  doubleToRawLongBits:(D)J
+  #109 = Methodref          #99.#108      //  java/lang/Double.doubleToRawLongBits:(D)J
+  #110 = NameAndType        #67:#68       //  putInt64:([BIJ)V
+  #111 = Methodref          #2.#110       //  jnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO.putInt64:([BIJ)V
+  #112 = Utf8               D
+  #113 = Utf8               Code
+  #114 = Utf8               LocalVariableTable
+  #115 = Utf8               LineNumberTable
+  #116 = Utf8               SourceFile
+  #117 = Utf8               InnerClasses
+{
+  protected jnr.ffi.provider.AbstractArrayMemoryIO$ArrayIO();
+    Signature: ()V
+    flags: ACC_PROTECTED
+%
+
+    Code:
+      stack=1, locals=1, args_size=1
+        0: aload_0	
+        1: invokespecial	#24
+        4: return	LocalVariableTable:
+        Start Length Slot Name Signature
+          0 5 0 this Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+
+      LineNumberTable:
+        line 288: 0
+
+    
+  public final jnr.ffi.provider.AbstractArrayMemoryIO$ArrayIO getArrayIO(jnr.ffi.Runtime);
+    Signature: (Ljnr/ffi/Runtime;)Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+
+    Code:
+      stack=2, locals=1, args_size=1
+        0: aload_0	
+        1: invokevirtual	#34
+        4: getstatic	#40
+        7: invokevirtual	#44
+        10: ifeq	32
+        13: aload_0	
+        14: invokevirtual	#48
+        17: bipush	8
+        19: if_icmpne	28
+        22: getstatic	#51
+        25: goto	31
+        28: getstatic	#52
+        31: areturn	
+        32: aload_0	
+        33: invokevirtual	#48
+        36: bipush	8
+        38: if_icmpne	47
+        41: getstatic	#53
+        44: goto	50
+        47: getstatic	#54
+        50: areturn	LocalVariableTable:
+        Start Length Slot Name Signature
+          0 51 0 runtime Ljnr/ffi/Runtime;
+
+      LineNumberTable:
+        line 291: 0
+        line 292: 13
+        line 295: 32
+
+    
+  public abstract short getInt16(byte[], int);
+    Signature: ([BI)S
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public abstract int getInt32(byte[], int);
+    Signature: ([BI)I
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public abstract long getInt64(byte[], int);
+    Signature: ([BI)J
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public abstract long getAddress(byte[], int);
+    Signature: ([BI)J
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public abstract void putInt16(byte[], int, int);
+    Signature: ([BII)V
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public abstract void putInt32(byte[], int, int);
+    Signature: ([BII)V
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public abstract void putInt64(byte[], int, long);
+    Signature: ([BIJ)V
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public abstract void putAddress(byte[], int, long);
+    Signature: ([BIJ)V
+    flags: ACC_PUBLIC, ACC_ABSTRACT
+%
+
+
+    
+  public final float getFloat32(byte[], int);
+    Signature: ([BI)F
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+
+    Code:
+      stack=3, locals=3, args_size=3
+        0: aload_0	
+        1: aload_1	
+        2: iload_2	
+        3: invokevirtual	#73
+        6: invokestatic	#79
+        9: freturn	LocalVariableTable:
+        Start Length Slot Name Signature
+          0 10 0 this Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+          0 10 1 buffer [B
+          0 10 2 offset I
+
+      LineNumberTable:
+        line 313: 0
+
+    
+  public final void putFloat32(byte[], int, float);
+    Signature: ([BIF)V
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+
+    Code:
+      stack=4, locals=4, args_size=4
+        0: aload_0	
+        1: aload_1	
+        2: iload_2	
+        3: fload_3	
+        4: invokestatic	#89
+        7: invokevirtual	#91
+        10: return	LocalVariableTable:
+        Start Length Slot Name Signature
+          0 11 0 this Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+          0 11 1 buffer [B
+          0 11 2 offset I
+          0 11 3 value F
+
+      LineNumberTable:
+        line 316: 0
+        line 317: 10
+
+    
+  public final double getFloat64(byte[], int);
+    Signature: ([BI)D
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+
+    Code:
+      stack=3, locals=3, args_size=3
+        0: aload_0	
+        1: aload_1	
+        2: iload_2	
+        3: invokevirtual	#97
+        6: invokestatic	#103
+        9: dreturn	LocalVariableTable:
+        Start Length Slot Name Signature
+          0 10 0 this Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+          0 10 1 buffer [B
+          0 10 2 offset I
+
+      LineNumberTable:
+        line 319: 0
+
+    
+  public final void putFloat64(byte[], int, double);
+    Signature: ([BID)V
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+
+    Code:
+      stack=5, locals=5, args_size=4
+        0: aload_0	
+        1: aload_1	
+        2: iload_2	
+        3: dload_3	
+        4: invokestatic	#109
+        7: invokevirtual	#111
+        10: return	LocalVariableTable:
+        Start Length Slot Name Signature
+          0 11 0 this Ljnr/ffi/provider/AbstractArrayMemoryIO$ArrayIO;
+          0 11 1 buffer [B
+          0 11 2 offset I
+          0 11 3 value D
+
+      LineNumberTable:
+        line 322: 0
+        line 323: 10
+
+    
+} 

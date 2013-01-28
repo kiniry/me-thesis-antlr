@@ -7,18 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 import java.util.Iterator;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
-import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
-import org.antlr.runtime.TokenStream;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
@@ -27,45 +22,58 @@ import bytecodeDeobfuscation.JVMLexer;
 import bytecodeDeobfuscation.JVMParser;
 import bytecodeDeobfuscation.JVMPrettyPrinter;
 import bytecodeDeobfuscation.JVMWalker;
-import bytecodeDeobfuscation.JVMWalker.program_return;
-import bytecodeDeobfuscation.TreeConstructorParser.rule1_return;
 
+/**
+ * Iterates and parses all test classes and compares the input to the output.
+ * 
+ * Testing consists of:
+ * <ul>
+ * <li> Iterates through all files in selected folder and subfolders to find .class.txt files</li>
+ * <li> Uses the massaging mechanism in JavaOutputMassaging to add markers after the flags attributes to the text input. </li>
+ * <li> Parses the massaged input text.</li>
+ * <li> Load templates and print the parsed text.</li>  
+ * <li> Compares the tokens from the lexed input to the lexed output from the pretty printer to test the completeness. </li>
+ * </ul>
+ * @author Mikkel Nielsen
+ */
 public class Test {
 
 	private static int ParsedFilesCounter = 0;
-	private static int skip = 28187;
-	
-	// try {
-	// IterateFiles("D:\\Work and Projects\\Speciale\\Repository\\Libraries");
-	// } catch (IOException e) {
-	// TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
+	private static int skip = 0;
+
 	/**
-	 * @param args
+	 * @param args the single file which functionality to be used.
 	 */
 	public static void main(String[] args) {
-
-//		TreeConstructorRunner.PrintTree(false);
-		
+			
 		try {
-//			overwriteFiles("src/TestFiles");
-//			parseMassagedFiles("src/TestFiles");
-			parseFiles("D:/Libs/ReadableBytecodeClasses");
-//			parseAndMassageFiles("src/TestFiles");
+			if(args.length == 0)
+				parseFiles("D:/Libs/ReadableBytecodeClasses");
+			switch(args[0]){
+			case "1":
+				overwriteFiles("src/TestFiles");
+				break;
+			case "2":
+				parseMassagedFiles("src/TestFiles");
+				break;
+			case "3":
+				parseAndMassageFiles("src/TestFiles");
+				break;
+			default:
+				parseFiles("D:/Libs/ReadableBytecodeClasses");
+				break;
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private static boolean fieldTrue = true;
-	private void TestMethod(boolean para1){
-		if(para1 && fieldTrue)
-		{
-			return;
-		}
-	}
+	/**
+	 * Parses a directory that has been massaged already.
+	 * 
+	 * @param myDirectoryPath the directory to be parsed
+	 * @throws IOException
+	 */
 	public static void parseMassagedFiles(String myDirectoryPath) throws IOException {
 		File dir = new File(myDirectoryPath);
 		for (File child : dir.listFiles()) {
@@ -73,16 +81,28 @@ public class Test {
 		}
 	}
 
+	/**
+	 * Parses an already massaged file ending with .class.txt.
+	 * 
+	 * @param child the file to be parsed
+	 * @throws IOException
+	 */
 	private static void parseMassagedFile(File child) throws IOException {
 		if (child.isDirectory())
 			parseFiles(child.getAbsolutePath());
 		else if (child.isFile() && child.getName().endsWith(".class.txt")) {
 			System.out.println(child.getName());
-			String filetext = deserializeString(child.getAbsolutePath());
+			String filetext = FileUtil.deserializeString(child.getAbsolutePath());
 			RunTest(filetext);
 		}
 	}
 
+	/**
+	 * Parses a directory, leaves all files unchanged.
+	 * 
+	 * @param myDirectoryPath the directory to be parsed
+	 * @throws IOException
+	 */
 	public static void parseFiles(String myDirectoryPath) throws IOException {
 		File dir = new File(myDirectoryPath);
 		for (File child : dir.listFiles()) {
@@ -90,6 +110,12 @@ public class Test {
 		}
 	}
 
+	/**
+	 * Parses a file ending with .class.txt, leaves the file unchanged. Will skip the first "skip" files.
+	 * 
+	 * @param child the file to be parsed
+	 * @throws IOException
+	 */
 	private static void parseFile(File child) throws IOException {
 		if (child.isDirectory())
 			parseFiles(child.getAbsolutePath());
@@ -97,7 +123,7 @@ public class Test {
 			if(ParsedFilesCounter > skip)
 			{
 				System.out.println(child.getName() + " - " + ParsedFilesCounter);
-				String filetext = deserializeString(child.getAbsolutePath());
+				String filetext = FileUtil.deserializeString(child.getAbsolutePath());
 				filetext = JavapOutputMassaging.massage(filetext);
 				RunTest(filetext);
 			}
@@ -105,6 +131,12 @@ public class Test {
 		}
 	}
 
+	/**
+	 * Parses and massages files in a directory, leaves all files changed.
+	 * 
+	 * @param myDirectoryPath the directory to be parsed
+	 * @throws IOException
+	 */
 	public static void parseAndMassageFiles(String myDirectoryPath) throws IOException {
 		File dir = new File(myDirectoryPath);
 		for (File child : dir.listFiles()) {
@@ -112,6 +144,12 @@ public class Test {
 		}
 	}
 
+	/**
+	 * Parses a file ending with .class.txt, leaves the file unchanged. Will skip the first "skip" files.
+	 * 
+	 * @param child the file to be parsed
+	 * @throws IOException
+	 */
 	private static void parseAndMassageFile(File child) throws IOException {
 		if (child.isDirectory())
 			parseAndMassageFiles(child.getAbsolutePath());
@@ -122,26 +160,12 @@ public class Test {
 		}
 	}
 
-	public static void openJar(String jarFileName) throws IOException {
-		ZipFile zip = new ZipFile(jarFileName);
-
-		// Process the zip file. Close it when the block is exited.
-
-		try {
-			// Loop through the zip entries and print the name of each one.
-
-			for (Enumeration list = zip.entries(); list.hasMoreElements();) {
-				ZipEntry entry = (ZipEntry) list.nextElement();
-				if (!entry.isDirectory()
-						&& entry.getName().endsWith(".class.txt")) {
-					System.out.println(entry.getName());
-				}
-			}
-		} finally {
-			zip.close();
-		}
-	}
-	
+	/**
+	 * Massages files in a directory, leaves all files changed.
+	 * 
+	 * @param myDirectoryPath the directory to be massaged
+	 * @throws IOException
+	 */
 	private static void overwriteFiles(String myDirectoryPath) throws IOException {
 		File dir = new File(myDirectoryPath);
 		for (File child : dir.listFiles()) {
@@ -149,6 +173,12 @@ public class Test {
 		}
 	}
 
+	/**
+	 * Massages a file ending with .class.txt, leaves the file changed.
+	 * 
+	 * @param child the file to be massaged
+	 * @throws IOException
+	 */
 	private static void overwriteFile(File child) throws IOException {
 		if (child.isDirectory())
 			overwriteFiles(child.getAbsolutePath());
@@ -158,16 +188,27 @@ public class Test {
 		}
 	}
 
+	/**
+	 * Deserializes a file and runs the tests on the file text.
+	 * 
+	 * @param file
+	 */
 	private static void RunTest(File file) {
 		try {
-			String filetext = deserializeString(file.getAbsolutePath());
+			String filetext = FileUtil.deserializeString(file.getAbsolutePath());
 			RunTest(filetext);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Reads a printer template, parses the input and prints it again for then to parse the output.
+	 * The parsed out is compared to the input.
+	 * If input and output is not equal (tokenwise) the output will be printed together with the error.
+	 * 
+	 * @param filetext file text to be tested.
+	 */
 	private static void RunTest(String filetext) {
 		try {
 			FileReader groupFile = new FileReader("D:/Work and Projects/Speciale/ThesisDeobfuscator/Deobfuscation/src/bytecodeDeobfuscation/JVM.stg");
@@ -187,9 +228,7 @@ public class Test {
 			JVMWalker walker = new JVMWalker(nodes);
 			JVMWalker.program_return ret2 = walker.program();
 			
-
-			
-			CommonTree theTree2 = (CommonTree)ret.getTree();
+			CommonTree theTree2 = (CommonTree)ret2.getTree();
 //			System.out.println(theTree2.toStringTree());
 			CommonTreeNodeStream nodes2 = new CommonTreeNodeStream(theTree2);
 			nodes2.setTokenStream(tokenStream);
@@ -221,9 +260,15 @@ public class Test {
 		}
 	}
 	
-	private static Token GetNextToken(Iterator iter){
+	/**
+	 * Iterates through until a token from the normal channelstream is found and returned.
+	 * 
+	 * @param iter
+	 * @return
+	 */
+	private static Token GetNextToken(Iterator<Token> iter){
 		while(iter.hasNext()){
-			Token token = (Token)iter.next();
+			Token token = iter.next();
 			int chan = token.getChannel();
 			if(chan != 99)
 				return token;
@@ -231,14 +276,10 @@ public class Test {
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private static boolean CompareStreams(CommonTokenStream s1, CommonTokenStream s2){
-		
-//		if(s1.getNumberOfOnChannelTokens() != s2.getNumberOfOnChannelTokens()){
-//			System.out.println("Not the same amount of tokens in both streams!");
-//			return false;
-//		}
-		Iterator iter1 = s1.getTokens().iterator();
-		Iterator iter2 = s2.getTokens().iterator();
+		Iterator<Token> iter1 = s1.getTokens().iterator();
+		Iterator<Token> iter2 = s2.getTokens().iterator();
 
 		while(true){
 			Token t1 = GetNextToken(iter1);
@@ -260,31 +301,4 @@ public class Test {
 			}
 		}
 	}
-
-	/**
-	 * Load a text file contents as a <code>String<code>.
-	 * This method does not perform enconding conversions
-	 * 
-	 * @param file
-	 *            The input file
-	 * @return The file contents as a <code>String</code>
-	 * @exception IOException
-	 *                IO Error
-	 */
-	public static String deserializeString(String filename) throws IOException {
-		int len;
-		char[] chr = new char[4096];
-		File file = new File(filename);
-		final StringBuffer buffer = new StringBuffer();
-		final FileReader reader = new FileReader(file);
-		try {
-			while ((len = reader.read(chr)) > 0) {
-				buffer.append(chr, 0, len);
-			}
-		} finally {
-			reader.close();
-		}
-		return buffer.toString();
-	}
-
 }
