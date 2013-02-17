@@ -1,0 +1,977 @@
+Classfile /D:/Libs/JavaClasses/sun/font/TrueTypeGlyphMapper.class
+  Last modified 24-09-2012; size 4065 bytes
+  MD5 checksum bcc4b8f49a41a08d591afc6ceaa87dd1
+public class sun.font.TrueTypeGlyphMapper extends sun.font.CharToGlyphMapper
+  InnerClasses:
+       static #207= #112 of #111; //CMapFormat10=class sun/font/CMap$CMapFormat10 of class sun/font/CMap
+       static #208= #113 of #111; //CMapFormat12=class sun/font/CMap$CMapFormat12 of class sun/font/CMap
+       static #209= #114 of #111; //CMapFormat8=class sun/font/CMap$CMapFormat8 of class sun/font/CMap
+       static #210= #115 of #111; //NullCMapClass=class sun/font/CMap$NullCMapClass of class sun/font/CMap
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+%
+Constant pool:
+    #1 = Integer            55296
+    #2 = Integer            56319
+    #3 = Integer            56320
+    #4 = Integer            57343
+    #5 = Integer            65374
+    #6 = Integer            65534
+    #7 = Integer            65535
+    #8 = Integer            65536
+    #9 = Integer            1835104368
+   #10 = String             #14           //   for char 
+   #11 = String             #15           //   out of range glyph id=
+   #12 = String             #43           //  Null Cmap for 
+   #13 = String             #86           //  substituting for this font
+   #14 = Utf8                for char 
+   #15 = Utf8                out of range glyph id=
+   #16 = Utf8               ()I
+   #17 = Utf8               ()Ljava/lang/String;
+   #18 = Utf8               ()V
+   #19 = Utf8               ()Z
+   #20 = Utf8               (C)C
+   #21 = Utf8               (C)I
+   #22 = Utf8               (I)C
+   #23 = Utf8               (I)I
+   #24 = Utf8               (I)Ljava/lang/String;
+   #25 = Utf8               (I)Z
+   #26 = Utf8               (I[C[I)V
+   #27 = Utf8               (I[C[I)Z
+   #28 = Utf8               (I[I[I)V
+   #29 = Utf8               (Ljava/lang/Object;)Z
+   #30 = Utf8               (Ljava/lang/String;)V
+   #31 = Utf8               <clinit>
+   #32 = Utf8               <init>
+   #33 = Utf8               C
+   #34 = Utf8               Code
+   #35 = Utf8               ConstantValue
+   #36 = Utf8               I
+   #37 = Utf8               InnerClasses
+   #38 = Utf8               JAPAN
+   #39 = Utf8               JA_FULLWIDTH_TILDE_CHAR
+   #40 = Utf8               JA_WAVE_DASH_CHAR
+   #41 = Utf8               JA_YEN
+   #42 = Utf8               Ljava/util/Locale;
+   #43 = Utf8               Null Cmap for 
+   #44 = Utf8               REVERSE_SOLIDUS
+   #45 = Utf8               StackMapTable
+   #46 = Utf8               Z
+   #47 = Utf8               [C
+   #48 = Utf8               append
+   #49 = Utf8               charToGlyph
+   #50 = Utf8               charsToGlyphs
+   #51 = Utf8               charsToGlyphsNS
+   #52 = Utf8               checkUseNatives
+   #53 = Utf8               cmap
+   #54 = Utf8               deRegisterBadFont
+   #55 = Utf8               equals
+   #56 = Utf8               font
+   #57 = Utf8               getChar
+   #58 = Utf8               getDefault
+   #59 = Utf8               getGlyph
+   #60 = Utf8               getGlyphFromCMAP
+   #61 = Utf8               getInstance
+   #62 = Utf8               getLogger
+   #63 = Utf8               getNumGlyphs
+   #64 = Utf8               getTableBuffer
+   #65 = Utf8               glyphToCharMap
+   #66 = Utf8               handleBadCMAP
+   #67 = Utf8               hasSupplementaryChars
+   #68 = Utf8               initialize
+   #69 = Utf8               isComplexCharCode
+   #70 = Utf8               isJAlocale
+   #71 = Utf8               isLogging
+   #72 = Utf8               isSolaris
+   #73 = Utf8               isSolaris8
+   #74 = Utf8               java/lang/Exception
+   #75 = Utf8               java/lang/Integer
+   #76 = Utf8               java/lang/StringBuilder
+   #77 = Utf8               java/nio/ByteBuffer
+   #78 = Utf8               java/util/Locale
+   #79 = Utf8               missingGlyph
+   #80 = Utf8               needsJAremapping
+   #81 = Utf8               numGlyphs
+   #82 = Utf8               remapJAChar
+   #83 = Utf8               remapJAIntChar
+   #84 = Utf8               remapJAWaveDash
+   #85 = Utf8               severe
+   #86 = Utf8               substituting for this font
+   #87 = Utf8               sun/font/CMap
+   #88 = Utf8               sun/font/CMap$CMapFormat10
+   #89 = Utf8               sun/font/CMap$CMapFormat12
+   #90 = Utf8               sun/font/CMap$CMapFormat8
+   #91 = Utf8               sun/font/CMap$NullCMapClass
+   #92 = Utf8               sun/font/CharToGlyphMapper
+   #93 = Utf8               sun/font/FontUtilities
+   #94 = Utf8               sun/font/SunFontManager
+   #95 = Utf8               sun/font/TrueTypeFont
+   #96 = Utf8               sun/font/TrueTypeGlyphMapper
+   #97 = Utf8               sun/util/logging/PlatformLogger
+   #98 = Utf8               supportsJA
+   #99 = Utf8               theNullCmap
+  #100 = Utf8               toHexString
+  #101 = Utf8               toString
+  #102 = Utf8               warning
+  #103 = Integer            92
+  #104 = Integer            165
+  #105 = Integer            12316
+  #106 = Class              #74           //  java/lang/Exception
+  #107 = Class              #75           //  java/lang/Integer
+  #108 = Class              #76           //  java/lang/StringBuilder
+  #109 = Class              #77           //  java/nio/ByteBuffer
+  #110 = Class              #78           //  java/util/Locale
+  #111 = Class              #87           //  sun/font/CMap
+  #112 = Class              #88           //  sun/font/CMap$CMapFormat10
+  #113 = Class              #89           //  sun/font/CMap$CMapFormat12
+  #114 = Class              #90           //  sun/font/CMap$CMapFormat8
+  #115 = Class              #91           //  sun/font/CMap$NullCMapClass
+  #116 = Class              #92           //  sun/font/CharToGlyphMapper
+  #117 = Class              #93           //  sun/font/FontUtilities
+  #118 = Class              #94           //  sun/font/SunFontManager
+  #119 = Class              #95           //  sun/font/TrueTypeFont
+  #120 = Class              #96           //  sun/font/TrueTypeGlyphMapper
+  #121 = Class              #97           //  sun/util/logging/PlatformLogger
+  #122 = Utf8               Lsun/font/CMap;
+  #123 = Utf8               Lsun/font/CMap$NullCMapClass;
+  #124 = Utf8               Lsun/font/TrueTypeFont;
+  #125 = Utf8               (I)Ljava/nio/ByteBuffer;
+  #126 = Utf8               ()Ljava/util/Locale;
+  #127 = Utf8               (Lsun/font/Font2D;)V
+  #128 = Utf8               ()Lsun/font/SunFontManager;
+  #129 = Utf8               (Lsun/font/TrueTypeFont;)V
+  #130 = Utf8               ()Lsun/util/logging/PlatformLogger;
+  #131 = Utf8               (Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #132 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #133 = Utf8               (Lsun/font/TrueTypeFont;)Lsun/font/CMap;
+  #134 = NameAndType        #79:#36       //  missingGlyph:I
+  #135 = NameAndType        #81:#36       //  numGlyphs:I
+  #136 = NameAndType        #70:#46       //  isJAlocale:Z
+  #137 = NameAndType        #72:#46       //  isSolaris:Z
+  #138 = NameAndType        #73:#46       //  isSolaris8:Z
+  #139 = NameAndType        #80:#46       //  needsJAremapping:Z
+  #140 = NameAndType        #84:#46       //  remapJAWaveDash:Z
+  #141 = NameAndType        #65:#47       //  glyphToCharMap:[C
+  #142 = NameAndType        #38:#42       //  JAPAN:Ljava/util/Locale;
+  #143 = NameAndType        #53:#122      //  cmap:Lsun/font/CMap;
+  #144 = NameAndType        #99:#123      //  theNullCmap:Lsun/font/CMap$NullCMapClass;
+  #145 = NameAndType        #56:#124      //  font:Lsun/font/TrueTypeFont;
+  #146 = NameAndType        #32:#18       //  "<init>":()V
+  #147 = NameAndType        #66:#18       //  handleBadCMAP:()V
+  #148 = NameAndType        #52:#19       //  checkUseNatives:()Z
+  #149 = NameAndType        #71:#19       //  isLogging:()Z
+  #150 = NameAndType        #98:#19       //  supportsJA:()Z
+  #151 = NameAndType        #82:#20       //  remapJAChar:(C)C
+  #152 = NameAndType        #57:#22       //  getChar:(I)C
+  #153 = NameAndType        #59:#22       //  getGlyph:(I)C
+  #154 = NameAndType        #60:#22       //  getGlyphFromCMAP:(I)C
+  #155 = NameAndType        #83:#23       //  remapJAIntChar:(I)I
+  #156 = NameAndType        #69:#25       //  isComplexCharCode:(I)Z
+  #157 = NameAndType        #55:#29       //  equals:(Ljava/lang/Object;)Z
+  #158 = NameAndType        #101:#17      //  toString:()Ljava/lang/String;
+  #159 = NameAndType        #100:#24      //  toHexString:(I)Ljava/lang/String;
+  #160 = NameAndType        #85:#30       //  severe:(Ljava/lang/String;)V
+  #161 = NameAndType        #102:#30      //  warning:(Ljava/lang/String;)V
+  #162 = NameAndType        #64:#125      //  getTableBuffer:(I)Ljava/nio/ByteBuffer;
+  #163 = NameAndType        #58:#126      //  getDefault:()Ljava/util/Locale;
+  #164 = NameAndType        #54:#127      //  deRegisterBadFont:(Lsun/font/Font2D;)V
+  #165 = NameAndType        #61:#128      //  getInstance:()Lsun/font/SunFontManager;
+  #166 = NameAndType        #62:#130      //  getLogger:()Lsun/util/logging/PlatformLogger;
+  #167 = NameAndType        #48:#131      //  append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #168 = NameAndType        #48:#132      //  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #169 = NameAndType        #68:#133      //  initialize:(Lsun/font/TrueTypeFont;)Lsun/font/CMap;
+  #170 = Fieldref           #110.#142     //  java/util/Locale.JAPAN:Ljava/util/Locale;
+  #171 = Fieldref           #111.#144     //  sun/font/CMap.theNullCmap:Lsun/font/CMap$NullCMapClass;
+  #172 = Fieldref           #117.#137     //  sun/font/FontUtilities.isSolaris:Z
+  #173 = Fieldref           #117.#138     //  sun/font/FontUtilities.isSolaris8:Z
+  #174 = Fieldref           #119.#141     //  sun/font/TrueTypeFont.glyphToCharMap:[C
+  #175 = Fieldref           #120.#134     //  sun/font/TrueTypeGlyphMapper.missingGlyph:I
+  #176 = Fieldref           #120.#135     //  sun/font/TrueTypeGlyphMapper.numGlyphs:I
+  #177 = Fieldref           #120.#136     //  sun/font/TrueTypeGlyphMapper.isJAlocale:Z
+  #178 = Fieldref           #120.#139     //  sun/font/TrueTypeGlyphMapper.needsJAremapping:Z
+  #179 = Fieldref           #120.#140     //  sun/font/TrueTypeGlyphMapper.remapJAWaveDash:Z
+  #180 = Fieldref           #120.#143     //  sun/font/TrueTypeGlyphMapper.cmap:Lsun/font/CMap;
+  #181 = Fieldref           #120.#145     //  sun/font/TrueTypeGlyphMapper.font:Lsun/font/TrueTypeFont;
+  #182 = Methodref          #107.#159     //  java/lang/Integer.toHexString:(I)Ljava/lang/String;
+  #183 = Methodref          #108.#146     //  java/lang/StringBuilder."<init>":()V
+  #184 = Methodref          #108.#158     //  java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #185 = Methodref          #108.#167     //  java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+  #186 = Methodref          #108.#168     //  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #187 = Methodref          #109.#152     //  java/nio/ByteBuffer.getChar:(I)C
+  #188 = Methodref          #110.#157     //  java/util/Locale.equals:(Ljava/lang/Object;)Z
+  #189 = Methodref          #110.#163     //  java/util/Locale.getDefault:()Ljava/util/Locale;
+  #190 = Methodref          #111.#153     //  sun/font/CMap.getGlyph:(I)C
+  #191 = Methodref          #111.#169     //  sun/font/CMap.initialize:(Lsun/font/TrueTypeFont;)Lsun/font/CMap;
+  #192 = Methodref          #116.#146     //  sun/font/CharToGlyphMapper."<init>":()V
+  #193 = Methodref          #117.#149     //  sun/font/FontUtilities.isLogging:()Z
+  #194 = Methodref          #117.#156     //  sun/font/FontUtilities.isComplexCharCode:(I)Z
+  #195 = Methodref          #117.#166     //  sun/font/FontUtilities.getLogger:()Lsun/util/logging/PlatformLogger;
+  #196 = Methodref          #118.#164     //  sun/font/SunFontManager.deRegisterBadFont:(Lsun/font/Font2D;)V
+  #197 = Methodref          #118.#165     //  sun/font/SunFontManager.getInstance:()Lsun/font/SunFontManager;
+  #198 = Methodref          #119.#148     //  sun/font/TrueTypeFont.checkUseNatives:()Z
+  #199 = Methodref          #119.#150     //  sun/font/TrueTypeFont.supportsJA:()Z
+  #200 = Methodref          #119.#162     //  sun/font/TrueTypeFont.getTableBuffer:(I)Ljava/nio/ByteBuffer;
+  #201 = Methodref          #120.#147     //  sun/font/TrueTypeGlyphMapper.handleBadCMAP:()V
+  #202 = Methodref          #120.#151     //  sun/font/TrueTypeGlyphMapper.remapJAChar:(C)C
+  #203 = Methodref          #120.#154     //  sun/font/TrueTypeGlyphMapper.getGlyphFromCMAP:(I)C
+  #204 = Methodref          #120.#155     //  sun/font/TrueTypeGlyphMapper.remapJAIntChar:(I)I
+  #205 = Methodref          #121.#160     //  sun/util/logging/PlatformLogger.severe:(Ljava/lang/String;)V
+  #206 = Methodref          #121.#161     //  sun/util/logging/PlatformLogger.warning:(Ljava/lang/String;)V
+  #207 = Utf8               CMapFormat10
+  #208 = Utf8               CMapFormat12
+  #209 = Utf8               CMapFormat8
+  #210 = Utf8               NullCMapClass
+{
+  static final char REVERSE_SOLIDUS = '\';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 92
+
+
+  static final char JA_YEN = '\u00a5';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 165
+
+
+  static final char JA_FULLWIDTH_TILDE_CHAR = '\uff5e';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 65374
+
+
+  static final char JA_WAVE_DASH_CHAR = '\u301c';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 12316
+
+
+  static final boolean isJAlocale;
+    Signature: Z
+    flags: ACC_STATIC, ACC_FINAL
+%
+
+
+  private final boolean needsJAremapping;
+    Signature: Z
+    flags: ACC_PRIVATE, ACC_FINAL
+%
+
+
+  private boolean remapJAWaveDash;
+    Signature: Z
+    flags: ACC_PRIVATE
+%
+
+
+  sun.font.TrueTypeFont font;
+    Signature: Lsun/font/TrueTypeFont;
+    flags: 
+%
+
+
+  sun.font.CMap cmap;
+    Signature: Lsun/font/CMap;
+    flags: 
+%
+
+
+  int numGlyphs;
+    Signature: I
+    flags: 
+%
+
+
+  public sun.font.TrueTypeGlyphMapper(sun.font.TrueTypeFont);
+    Signature: (Lsun/font/TrueTypeFont;)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0       
+         1: invokespecial #192                // Method sun/font/CharToGlyphMapper."<init>":()V
+         4: aload_0       
+         5: aload_1       
+         6: putfield      #181                // Field font:Lsun/font/TrueTypeFont;
+         9: aload_0       
+        10: aload_1       
+        11: invokestatic  #191                // Method sun/font/CMap.initialize:(Lsun/font/TrueTypeFont;)Lsun/font/CMap;
+        14: putfield      #180                // Field cmap:Lsun/font/CMap;
+        17: goto          26
+        20: astore_2      
+        21: aload_0       
+        22: aconst_null   
+        23: putfield      #180                // Field cmap:Lsun/font/CMap;
+        26: aload_0       
+        27: getfield      #180                // Field cmap:Lsun/font/CMap;
+        30: ifnonnull     37
+        33: aload_0       
+        34: invokespecial #201                // Method handleBadCMAP:()V
+        37: aload_0       
+        38: iconst_0      
+        39: putfield      #175                // Field missingGlyph:I
+        42: aload_1       
+        43: ldc           #9                  // int 1835104368
+        45: invokevirtual #200                // Method sun/font/TrueTypeFont.getTableBuffer:(I)Ljava/nio/ByteBuffer;
+        48: astore_2      
+        49: aload_0       
+        50: aload_2       
+        51: iconst_4      
+        52: invokevirtual #187                // Method java/nio/ByteBuffer.getChar:(I)C
+        55: putfield      #176                // Field numGlyphs:I
+        58: getstatic     #172                // Field sun/font/FontUtilities.isSolaris:Z
+        61: ifeq          110
+        64: getstatic     #177                // Field isJAlocale:Z
+        67: ifeq          110
+        70: aload_1       
+        71: invokevirtual #199                // Method sun/font/TrueTypeFont.supportsJA:()Z
+        74: ifeq          110
+        77: aload_0       
+        78: iconst_1      
+        79: putfield      #178                // Field needsJAremapping:Z
+        82: getstatic     #173                // Field sun/font/FontUtilities.isSolaris8:Z
+        85: ifeq          115
+        88: aload_0       
+        89: sipush        12316
+        92: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+        95: aload_0       
+        96: getfield      #175                // Field missingGlyph:I
+        99: if_icmpne     115
+       102: aload_0       
+       103: iconst_1      
+       104: putfield      #179                // Field remapJAWaveDash:Z
+       107: goto          115
+       110: aload_0       
+       111: iconst_0      
+       112: putfield      #178                // Field needsJAremapping:Z
+       115: return        
+      Exception table:
+         from    to  target type
+             9    17    20   Class java/lang/Exception
+      StackMapTable: number_of_entries = 5
+           frame_type = 255 /* full_frame */
+          offset_delta = 20
+          locals = [ class sun/font/TrueTypeGlyphMapper, class sun/font/TrueTypeFont ]
+          stack = [ class java/lang/Exception ]
+           frame_type = 5 /* same */
+           frame_type = 10 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 72
+        locals = [ class java/nio/ByteBuffer ]
+           frame_type = 4 /* same */
+
+
+  public int getNumGlyphs();
+    Signature: ()I
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #176                // Field numGlyphs:I
+         4: ireturn       
+
+  private char getGlyphFromCMAP(int);
+    Signature: (I)C
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0       
+         1: getfield      #180                // Field cmap:Lsun/font/CMap;
+         4: iload_1       
+         5: invokevirtual #190                // Method sun/font/CMap.getGlyph:(I)C
+         8: istore_2      
+         9: iload_2       
+        10: aload_0       
+        11: getfield      #176                // Field numGlyphs:I
+        14: if_icmplt     23
+        17: iload_2       
+        18: ldc           #6                  // int 65534
+        20: if_icmplt     25
+        23: iload_2       
+        24: ireturn       
+        25: invokestatic  #193                // Method sun/font/FontUtilities.isLogging:()Z
+        28: ifeq          78
+        31: invokestatic  #195                // Method sun/font/FontUtilities.getLogger:()Lsun/util/logging/PlatformLogger;
+        34: new           #108                // class java/lang/StringBuilder
+        37: dup           
+        38: invokespecial #183                // Method java/lang/StringBuilder."<init>":()V
+        41: aload_0       
+        42: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        45: invokevirtual #185                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+        48: ldc           #11                 // String  out of range glyph id=
+        50: invokevirtual #186                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        53: iload_2       
+        54: invokestatic  #182                // Method java/lang/Integer.toHexString:(I)Ljava/lang/String;
+        57: invokevirtual #186                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        60: ldc           #10                 // String  for char 
+        62: invokevirtual #186                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        65: iload_1       
+        66: invokestatic  #182                // Method java/lang/Integer.toHexString:(I)Ljava/lang/String;
+        69: invokevirtual #186                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        72: invokevirtual #184                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        75: invokevirtual #206                // Method sun/util/logging/PlatformLogger.warning:(Ljava/lang/String;)V
+        78: aload_0       
+        79: getfield      #175                // Field missingGlyph:I
+        82: i2c           
+        83: ireturn       
+        84: astore_2      
+        85: aload_0       
+        86: invokespecial #201                // Method handleBadCMAP:()V
+        89: aload_0       
+        90: getfield      #175                // Field missingGlyph:I
+        93: i2c           
+        94: ireturn       
+      Exception table:
+         from    to  target type
+             0    24    84   Class java/lang/Exception
+            25    83    84   Class java/lang/Exception
+      StackMapTable: number_of_entries = 4
+           frame_type = 252 /* append */
+             offset_delta = 23
+        locals = [ int ]
+           frame_type = 1 /* same */
+           frame_type = 52 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class sun/font/TrueTypeGlyphMapper, int ]
+          stack = [ class java/lang/Exception ]
+
+
+  private void handleBadCMAP();
+    Signature: ()V
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=3, locals=1, args_size=1
+         0: invokestatic  #193                // Method sun/font/FontUtilities.isLogging:()Z
+         3: ifeq          39
+         6: invokestatic  #195                // Method sun/font/FontUtilities.getLogger:()Lsun/util/logging/PlatformLogger;
+         9: new           #108                // class java/lang/StringBuilder
+        12: dup           
+        13: invokespecial #183                // Method java/lang/StringBuilder."<init>":()V
+        16: ldc           #12                 // String Null Cmap for 
+        18: invokevirtual #186                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        21: aload_0       
+        22: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        25: invokevirtual #185                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+        28: ldc           #13                 // String substituting for this font
+        30: invokevirtual #186                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        33: invokevirtual #184                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        36: invokevirtual #205                // Method sun/util/logging/PlatformLogger.severe:(Ljava/lang/String;)V
+        39: invokestatic  #197                // Method sun/font/SunFontManager.getInstance:()Lsun/font/SunFontManager;
+        42: aload_0       
+        43: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        46: invokevirtual #196                // Method sun/font/SunFontManager.deRegisterBadFont:(Lsun/font/Font2D;)V
+        49: aload_0       
+        50: getstatic     #171                // Field sun/font/CMap.theNullCmap:Lsun/font/CMap$NullCMapClass;
+        53: putfield      #180                // Field cmap:Lsun/font/CMap;
+        56: return        
+      StackMapTable: number_of_entries = 1
+           frame_type = 39 /* same */
+
+
+  private final char remapJAChar(char);
+    Signature: (C)C
+    flags: ACC_PRIVATE, ACC_FINAL
+%
+    Code:
+      stack=1, locals=2, args_size=2
+         0: iload_1       
+         1: lookupswitch  { // 2
+                      92: 28
+                   12316: 32
+                 default: 42
+            }
+        28: sipush        165
+        31: ireturn       
+        32: aload_0       
+        33: getfield      #179                // Field remapJAWaveDash:Z
+        36: ifeq          42
+        39: ldc           #5                  // int 65374
+        41: ireturn       
+        42: iload_1       
+        43: ireturn       
+      StackMapTable: number_of_entries = 3
+           frame_type = 28 /* same */
+           frame_type = 3 /* same */
+           frame_type = 9 /* same */
+
+
+  private final int remapJAIntChar(int);
+    Signature: (I)I
+    flags: ACC_PRIVATE, ACC_FINAL
+%
+    Code:
+      stack=1, locals=2, args_size=2
+         0: iload_1       
+         1: lookupswitch  { // 2
+                      92: 28
+                   12316: 32
+                 default: 42
+            }
+        28: sipush        165
+        31: ireturn       
+        32: aload_0       
+        33: getfield      #179                // Field remapJAWaveDash:Z
+        36: ifeq          42
+        39: ldc           #5                  // int 65374
+        41: ireturn       
+        42: iload_1       
+        43: ireturn       
+      StackMapTable: number_of_entries = 3
+           frame_type = 28 /* same */
+           frame_type = 3 /* same */
+           frame_type = 9 /* same */
+
+
+  public int charToGlyph(char);
+    Signature: (C)I
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0       
+         1: getfield      #178                // Field needsJAremapping:Z
+         4: ifeq          13
+         7: aload_0       
+         8: iload_1       
+         9: invokespecial #202                // Method remapJAChar:(C)C
+        12: istore_1      
+        13: aload_0       
+        14: iload_1       
+        15: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+        18: istore_2      
+        19: aload_0       
+        20: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        23: invokevirtual #198                // Method sun/font/TrueTypeFont.checkUseNatives:()Z
+        26: ifeq          51
+        29: iload_2       
+        30: aload_0       
+        31: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        34: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+        37: arraylength   
+        38: if_icmpge     51
+        41: aload_0       
+        42: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        45: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+        48: iload_2       
+        49: iload_1       
+        50: castore       
+        51: iload_2       
+        52: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 13 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 37
+        locals = [ int ]
+
+
+  public int charToGlyph(int);
+    Signature: (I)I
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0       
+         1: getfield      #178                // Field needsJAremapping:Z
+         4: ifeq          13
+         7: aload_0       
+         8: iload_1       
+         9: invokespecial #204                // Method remapJAIntChar:(I)I
+        12: istore_1      
+        13: aload_0       
+        14: iload_1       
+        15: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+        18: istore_2      
+        19: aload_0       
+        20: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        23: invokevirtual #198                // Method sun/font/TrueTypeFont.checkUseNatives:()Z
+        26: ifeq          52
+        29: iload_2       
+        30: aload_0       
+        31: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        34: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+        37: arraylength   
+        38: if_icmpge     52
+        41: aload_0       
+        42: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        45: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+        48: iload_2       
+        49: iload_1       
+        50: i2c           
+        51: castore       
+        52: iload_2       
+        53: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 13 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 38
+        locals = [ int ]
+
+
+  public void charsToGlyphs(int, int[], int[]);
+    Signature: (I[I[I)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=6, locals=5, args_size=4
+         0: iconst_0      
+         1: istore        4
+         3: iload         4
+         5: iload_1       
+         6: if_icmpge     95
+         9: aload_0       
+        10: getfield      #178                // Field needsJAremapping:Z
+        13: ifeq          35
+        16: aload_3       
+        17: iload         4
+        19: aload_0       
+        20: aload_0       
+        21: aload_2       
+        22: iload         4
+        24: iaload        
+        25: invokespecial #204                // Method remapJAIntChar:(I)I
+        28: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+        31: iastore       
+        32: goto          47
+        35: aload_3       
+        36: iload         4
+        38: aload_0       
+        39: aload_2       
+        40: iload         4
+        42: iaload        
+        43: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+        46: iastore       
+        47: aload_0       
+        48: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        51: invokevirtual #198                // Method sun/font/TrueTypeFont.checkUseNatives:()Z
+        54: ifeq          89
+        57: aload_3       
+        58: iload         4
+        60: iaload        
+        61: aload_0       
+        62: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        65: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+        68: arraylength   
+        69: if_icmpge     89
+        72: aload_0       
+        73: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+        76: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+        79: aload_3       
+        80: iload         4
+        82: iaload        
+        83: aload_2       
+        84: iload         4
+        86: iaload        
+        87: i2c           
+        88: castore       
+        89: iinc          4, 1
+        92: goto          3
+        95: return        
+      StackMapTable: number_of_entries = 5
+           frame_type = 252 /* append */
+             offset_delta = 3
+        locals = [ int ]
+           frame_type = 31 /* same */
+           frame_type = 11 /* same */
+           frame_type = 41 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+
+  public void charsToGlyphs(int, char[], int[]);
+    Signature: (I[C[I)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=7, args_size=4
+         0: iconst_0      
+         1: istore        4
+         3: iload         4
+         5: iload_1       
+         6: if_icmpge     177
+         9: aload_0       
+        10: getfield      #178                // Field needsJAremapping:Z
+        13: ifeq          29
+        16: aload_0       
+        17: aload_2       
+        18: iload         4
+        20: caload        
+        21: invokespecial #202                // Method remapJAChar:(C)C
+        24: istore        5
+        26: goto          35
+        29: aload_2       
+        30: iload         4
+        32: caload        
+        33: istore        5
+        35: iload         5
+        37: ldc           #1                  // int 55296
+        39: if_icmplt     121
+        42: iload         5
+        44: ldc           #2                  // int 56319
+        46: if_icmpgt     121
+        49: iload         4
+        51: iload_1       
+        52: iconst_1      
+        53: isub          
+        54: if_icmpge     121
+        57: aload_2       
+        58: iload         4
+        60: iconst_1      
+        61: iadd          
+        62: caload        
+        63: istore        6
+        65: iload         6
+        67: ldc           #3                  // int 56320
+        69: if_icmplt     121
+        72: iload         6
+        74: ldc           #4                  // int 57343
+        76: if_icmpgt     121
+        79: iload         5
+        81: ldc           #1                  // int 55296
+        83: isub          
+        84: sipush        1024
+        87: imul          
+        88: iload         6
+        90: iadd          
+        91: ldc           #3                  // int 56320
+        93: isub          
+        94: ldc           #8                  // int 65536
+        96: iadd          
+        97: istore        5
+        99: aload_3       
+       100: iload         4
+       102: aload_0       
+       103: iload         5
+       105: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+       108: iastore       
+       109: iinc          4, 1
+       112: aload_3       
+       113: iload         4
+       115: ldc           #7                  // int 65535
+       117: iastore       
+       118: goto          171
+       121: aload_3       
+       122: iload         4
+       124: aload_0       
+       125: iload         5
+       127: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+       130: iastore       
+       131: aload_0       
+       132: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+       135: invokevirtual #198                // Method sun/font/TrueTypeFont.checkUseNatives:()Z
+       138: ifeq          171
+       141: aload_3       
+       142: iload         4
+       144: iaload        
+       145: aload_0       
+       146: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+       149: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+       152: arraylength   
+       153: if_icmpge     171
+       156: aload_0       
+       157: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+       160: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+       163: aload_3       
+       164: iload         4
+       166: iaload        
+       167: iload         5
+       169: i2c           
+       170: castore       
+       171: iinc          4, 1
+       174: goto          3
+       177: return        
+      StackMapTable: number_of_entries = 6
+           frame_type = 252 /* append */
+             offset_delta = 3
+        locals = [ int ]
+           frame_type = 25 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 5
+        locals = [ int ]
+           frame_type = 251 /* same_frame_extended */
+          offset_delta = 85
+           frame_type = 250 /* chop */
+          offset_delta = 49
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+
+  public boolean charsToGlyphsNS(int, char[], int[]);
+    Signature: (I[C[I)Z
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=7, args_size=4
+         0: iconst_0      
+         1: istore        4
+         3: iload         4
+         5: iload_1       
+         6: if_icmpge     197
+         9: aload_0       
+        10: getfield      #178                // Field needsJAremapping:Z
+        13: ifeq          29
+        16: aload_0       
+        17: aload_2       
+        18: iload         4
+        20: caload        
+        21: invokespecial #202                // Method remapJAChar:(C)C
+        24: istore        5
+        26: goto          35
+        29: aload_2       
+        30: iload         4
+        32: caload        
+        33: istore        5
+        35: iload         5
+        37: ldc           #1                  // int 55296
+        39: if_icmplt     107
+        42: iload         5
+        44: ldc           #2                  // int 56319
+        46: if_icmpgt     107
+        49: iload         4
+        51: iload_1       
+        52: iconst_1      
+        53: isub          
+        54: if_icmpge     107
+        57: aload_2       
+        58: iload         4
+        60: iconst_1      
+        61: iadd          
+        62: caload        
+        63: istore        6
+        65: iload         6
+        67: ldc           #3                  // int 56320
+        69: if_icmplt     107
+        72: iload         6
+        74: ldc           #4                  // int 57343
+        76: if_icmpgt     107
+        79: iload         5
+        81: ldc           #1                  // int 55296
+        83: isub          
+        84: sipush        1024
+        87: imul          
+        88: iload         6
+        90: iadd          
+        91: ldc           #3                  // int 56320
+        93: isub          
+        94: ldc           #8                  // int 65536
+        96: iadd          
+        97: istore        5
+        99: aload_3       
+       100: iload         4
+       102: iconst_1      
+       103: iadd          
+       104: ldc           #7                  // int 65535
+       106: iastore       
+       107: aload_3       
+       108: iload         4
+       110: aload_0       
+       111: iload         5
+       113: invokespecial #203                // Method getGlyphFromCMAP:(I)C
+       116: iastore       
+       117: aload_0       
+       118: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+       121: invokevirtual #198                // Method sun/font/TrueTypeFont.checkUseNatives:()Z
+       124: ifeq          157
+       127: aload_3       
+       128: iload         4
+       130: iaload        
+       131: aload_0       
+       132: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+       135: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+       138: arraylength   
+       139: if_icmpge     157
+       142: aload_0       
+       143: getfield      #181                // Field font:Lsun/font/TrueTypeFont;
+       146: getfield      #174                // Field sun/font/TrueTypeFont.glyphToCharMap:[C
+       149: aload_3       
+       150: iload         4
+       152: iaload        
+       153: iload         5
+       155: i2c           
+       156: castore       
+       157: iload         5
+       159: sipush        768
+       162: if_icmpge     168
+       165: goto          191
+       168: iload         5
+       170: invokestatic  #194                // Method sun/font/FontUtilities.isComplexCharCode:(I)Z
+       173: ifeq          178
+       176: iconst_1      
+       177: ireturn       
+       178: iload         5
+       180: ldc           #8                  // int 65536
+       182: if_icmplt     191
+       185: iinc          4, 1
+       188: goto          191
+       191: iinc          4, 1
+       194: goto          3
+       197: iconst_0      
+       198: ireturn       
+      StackMapTable: number_of_entries = 9
+           frame_type = 252 /* append */
+             offset_delta = 3
+        locals = [ int ]
+           frame_type = 25 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 5
+        locals = [ int ]
+           frame_type = 251 /* same_frame_extended */
+          offset_delta = 71
+           frame_type = 49 /* same */
+           frame_type = 10 /* same */
+           frame_type = 9 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 12
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+
+  boolean hasSupplementaryChars();
+    Signature: ()Z
+    flags: 
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #180                // Field cmap:Lsun/font/CMap;
+         4: instanceof    #114                // class sun/font/CMap$CMapFormat8
+         7: ifne          30
+        10: aload_0       
+        11: getfield      #180                // Field cmap:Lsun/font/CMap;
+        14: instanceof    #112                // class sun/font/CMap$CMapFormat10
+        17: ifne          30
+        20: aload_0       
+        21: getfield      #180                // Field cmap:Lsun/font/CMap;
+        24: instanceof    #113                // class sun/font/CMap$CMapFormat12
+        27: ifeq          34
+        30: iconst_1      
+        31: goto          35
+        34: iconst_0      
+        35: ireturn       
+      StackMapTable: number_of_entries = 3
+           frame_type = 30 /* same */
+           frame_type = 3 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+
+  static {};
+    Signature: ()V
+    flags: ACC_STATIC
+%
+    Code:
+      stack=2, locals=0, args_size=0
+         0: getstatic     #170                // Field java/util/Locale.JAPAN:Ljava/util/Locale;
+         3: invokestatic  #189                // Method java/util/Locale.getDefault:()Ljava/util/Locale;
+         6: invokevirtual #188                // Method java/util/Locale.equals:(Ljava/lang/Object;)Z
+         9: putstatic     #177                // Field isJAlocale:Z
+        12: return        
+}

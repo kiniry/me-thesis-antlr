@@ -1,0 +1,1085 @@
+Classfile /D:/Libs/JavaClasses/java/lang/StrictMath.class
+  Last modified 24-09-2012; size 3503 bytes
+  MD5 checksum 9f9b5e68675b473289bd9ebc5f73d770
+public final class java.lang.StrictMath
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+%
+Constant pool:
+    #1 = Float              -0.0f
+    #2 = Utf8               $assertionsDisabled
+    #3 = Utf8               ()D
+    #4 = Utf8               ()V
+    #5 = Utf8               ()Z
+    #6 = Utf8               (D)D
+    #7 = Utf8               (D)I
+    #8 = Utf8               (D)J
+    #9 = Utf8               (DD)D
+   #10 = Utf8               (DDDD)D
+   #11 = Utf8               (DI)D
+   #12 = Utf8               (F)F
+   #13 = Utf8               (F)I
+   #14 = Utf8               (FD)F
+   #15 = Utf8               (FF)F
+   #16 = Utf8               (FI)F
+   #17 = Utf8               (I)I
+   #18 = Utf8               (II)I
+   #19 = Utf8               (J)D
+   #20 = Utf8               (J)J
+   #21 = Utf8               (JJ)J
+   #22 = Utf8               <clinit>
+   #23 = Utf8               <init>
+   #24 = Utf8               Code
+   #25 = Utf8               ConstantValue
+   #26 = Utf8               D
+   #27 = Utf8               E
+   #28 = Utf8               IEEEremainder
+   #29 = Utf8               J
+   #30 = Utf8               PI
+   #31 = Utf8               StackMapTable
+   #32 = Utf8               Z
+   #33 = Utf8               abs
+   #34 = Utf8               acos
+   #35 = Utf8               asin
+   #36 = Utf8               atan
+   #37 = Utf8               atan2
+   #38 = Utf8               cbrt
+   #39 = Utf8               ceil
+   #40 = Utf8               copySign
+   #41 = Utf8               cos
+   #42 = Utf8               cosh
+   #43 = Utf8               desiredAssertionStatus
+   #44 = Utf8               doubleToRawLongBits
+   #45 = Utf8               exp
+   #46 = Utf8               expm1
+   #47 = Utf8               floatToRawIntBits
+   #48 = Utf8               floor
+   #49 = Utf8               floorOrCeil
+   #50 = Utf8               getExponent
+   #51 = Utf8               hypot
+   #52 = Utf8               initRNG
+   #53 = Utf8               java/lang/AssertionError
+   #54 = Utf8               java/lang/Class
+   #55 = Utf8               java/lang/Double
+   #56 = Utf8               java/lang/Float
+   #57 = Utf8               java/lang/Math
+   #58 = Utf8               java/lang/Object
+   #59 = Utf8               java/lang/StrictMath
+   #60 = Utf8               java/util/Random
+   #61 = Utf8               log
+   #62 = Utf8               log10
+   #63 = Utf8               log1p
+   #64 = Utf8               longBitsToDouble
+   #65 = Utf8               max
+   #66 = Utf8               min
+   #67 = Utf8               negativeZeroDoubleBits
+   #68 = Utf8               negativeZeroFloatBits
+   #69 = Utf8               nextAfter
+   #70 = Utf8               nextDouble
+   #71 = Utf8               nextUp
+   #72 = Utf8               pow
+   #73 = Utf8               random
+   #74 = Utf8               randomNumberGenerator
+   #75 = Utf8               rawCopySign
+   #76 = Utf8               rint
+   #77 = Utf8               round
+   #78 = Utf8               scalb
+   #79 = Utf8               signum
+   #80 = Utf8               sin
+   #81 = Utf8               sinh
+   #82 = Utf8               sqrt
+   #83 = Utf8               sun/misc/FpUtils
+   #84 = Utf8               tan
+   #85 = Utf8               tanh
+   #86 = Utf8               toDegrees
+   #87 = Utf8               toRadians
+   #88 = Utf8               ulp
+   #89 = Long               -1l
+   #91 = Long               4503599627370495l
+   #93 = Double             -1.0d
+   #95 = Double             -0.0d
+   #97 = Double             2.718281828459045d
+   #99 = Double             3.141592653589793d
+  #101 = Double             180.0d
+  #103 = Double             4.503599627370496E15d
+  #105 = Class              #53           //  java/lang/AssertionError
+  #106 = Class              #54           //  java/lang/Class
+  #107 = Class              #55           //  java/lang/Double
+  #108 = Class              #56           //  java/lang/Float
+  #109 = Class              #57           //  java/lang/Math
+  #110 = Class              #58           //  java/lang/Object
+  #111 = Class              #59           //  java/lang/StrictMath
+  #112 = Class              #60           //  java/util/Random
+  #113 = Class              #83           //  sun/misc/FpUtils
+  #114 = Utf8               Ljava/util/Random;
+  #115 = Utf8               ()Ljava/util/Random;
+  #116 = NameAndType        #67:#29       //  negativeZeroDoubleBits:J
+  #117 = NameAndType        #68:#29       //  negativeZeroFloatBits:J
+  #118 = NameAndType        #2:#32        //  $assertionsDisabled:Z
+  #119 = NameAndType        #74:#114      //  randomNumberGenerator:Ljava/util/Random;
+  #120 = NameAndType        #70:#3        //  nextDouble:()D
+  #121 = NameAndType        #23:#4        //  "<init>":()V
+  #122 = NameAndType        #43:#5        //  desiredAssertionStatus:()Z
+  #123 = NameAndType        #33:#6        //  abs:(D)D
+  #124 = NameAndType        #71:#6        //  nextUp:(D)D
+  #125 = NameAndType        #79:#6        //  signum:(D)D
+  #126 = NameAndType        #88:#6        //  ulp:(D)D
+  #127 = NameAndType        #50:#7        //  getExponent:(D)I
+  #128 = NameAndType        #44:#8        //  doubleToRawLongBits:(D)J
+  #129 = NameAndType        #77:#8        //  round:(D)J
+  #130 = NameAndType        #40:#9        //  copySign:(DD)D
+  #131 = NameAndType        #69:#9        //  nextAfter:(DD)D
+  #132 = NameAndType        #75:#9        //  rawCopySign:(DD)D
+  #133 = NameAndType        #49:#10       //  floorOrCeil:(DDDD)D
+  #134 = NameAndType        #78:#11       //  scalb:(DI)D
+  #135 = NameAndType        #71:#12       //  nextUp:(F)F
+  #136 = NameAndType        #79:#12       //  signum:(F)F
+  #137 = NameAndType        #88:#12       //  ulp:(F)F
+  #138 = NameAndType        #47:#13       //  floatToRawIntBits:(F)I
+  #139 = NameAndType        #50:#13       //  getExponent:(F)I
+  #140 = NameAndType        #77:#13       //  round:(F)I
+  #141 = NameAndType        #69:#14       //  nextAfter:(FD)F
+  #142 = NameAndType        #40:#15       //  copySign:(FF)F
+  #143 = NameAndType        #78:#16       //  scalb:(FI)F
+  #144 = NameAndType        #64:#19       //  longBitsToDouble:(J)D
+  #145 = NameAndType        #52:#115      //  initRNG:()Ljava/util/Random;
+  #146 = Fieldref           #111.#116     //  java/lang/StrictMath.negativeZeroDoubleBits:J
+  #147 = Fieldref           #111.#117     //  java/lang/StrictMath.negativeZeroFloatBits:J
+  #148 = Fieldref           #111.#118     //  java/lang/StrictMath.$assertionsDisabled:Z
+  #149 = Fieldref           #111.#119     //  java/lang/StrictMath.randomNumberGenerator:Ljava/util/Random;
+  #150 = Methodref          #105.#121     //  java/lang/AssertionError."<init>":()V
+  #151 = Methodref          #106.#122     //  java/lang/Class.desiredAssertionStatus:()Z
+  #152 = Methodref          #107.#128     //  java/lang/Double.doubleToRawLongBits:(D)J
+  #153 = Methodref          #107.#144     //  java/lang/Double.longBitsToDouble:(J)D
+  #154 = Methodref          #108.#138     //  java/lang/Float.floatToRawIntBits:(F)I
+  #155 = Methodref          #109.#123     //  java/lang/Math.abs:(D)D
+  #156 = Methodref          #109.#127     //  java/lang/Math.getExponent:(D)I
+  #157 = Methodref          #109.#129     //  java/lang/Math.round:(D)J
+  #158 = Methodref          #109.#140     //  java/lang/Math.round:(F)I
+  #159 = Methodref          #110.#121     //  java/lang/Object."<init>":()V
+  #160 = Methodref          #111.#133     //  java/lang/StrictMath.floorOrCeil:(DDDD)D
+  #161 = Methodref          #111.#145     //  java/lang/StrictMath.initRNG:()Ljava/util/Random;
+  #162 = Methodref          #112.#120     //  java/util/Random.nextDouble:()D
+  #163 = Methodref          #112.#121     //  java/util/Random."<init>":()V
+  #164 = Methodref          #113.#124     //  sun/misc/FpUtils.nextUp:(D)D
+  #165 = Methodref          #113.#125     //  sun/misc/FpUtils.signum:(D)D
+  #166 = Methodref          #113.#126     //  sun/misc/FpUtils.ulp:(D)D
+  #167 = Methodref          #113.#127     //  sun/misc/FpUtils.getExponent:(D)I
+  #168 = Methodref          #113.#130     //  sun/misc/FpUtils.copySign:(DD)D
+  #169 = Methodref          #113.#131     //  sun/misc/FpUtils.nextAfter:(DD)D
+  #170 = Methodref          #113.#132     //  sun/misc/FpUtils.rawCopySign:(DD)D
+  #171 = Methodref          #113.#134     //  sun/misc/FpUtils.scalb:(DI)D
+  #172 = Methodref          #113.#135     //  sun/misc/FpUtils.nextUp:(F)F
+  #173 = Methodref          #113.#136     //  sun/misc/FpUtils.signum:(F)F
+  #174 = Methodref          #113.#137     //  sun/misc/FpUtils.ulp:(F)F
+  #175 = Methodref          #113.#139     //  sun/misc/FpUtils.getExponent:(F)I
+  #176 = Methodref          #113.#141     //  sun/misc/FpUtils.nextAfter:(FD)F
+  #177 = Methodref          #113.#142     //  sun/misc/FpUtils.copySign:(FF)F
+  #178 = Methodref          #113.#143     //  sun/misc/FpUtils.scalb:(FI)F
+{
+  public static final double E = 2.718281828459045d;
+    Signature: D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: double 2.718281828459045d
+
+
+  public static final double PI = 3.141592653589793d;
+    Signature: D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: double 3.141592653589793d
+
+
+  private static java.util.Random randomNumberGenerator;
+    Signature: Ljava/util/Random;
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+
+
+  private static long negativeZeroFloatBits;
+    Signature: J
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+
+
+  private static long negativeZeroDoubleBits;
+    Signature: J
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+
+
+  static final boolean $assertionsDisabled;
+    Signature: Z
+    flags: ACC_STATIC, ACC_FINAL, ACC_SYNTHETIC
+%
+
+
+  private java.lang.StrictMath();
+    Signature: ()V
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #159                // Method java/lang/Object."<init>":()V
+         4: return        
+
+  public static native double sin(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double cos(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double tan(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double asin(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double acos(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double atan(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static strictfp double toRadians(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_STRICT
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: dload_0       
+         1: ldc2_w        #101                // double 180.0d
+         4: ddiv          
+         5: ldc2_w        #99                 // double 3.141592653589793d
+         8: dmul          
+         9: dreturn       
+
+  public static strictfp double toDegrees(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_STRICT
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: dload_0       
+         1: ldc2_w        #101                // double 180.0d
+         4: dmul          
+         5: ldc2_w        #99                 // double 3.141592653589793d
+         8: ddiv          
+         9: dreturn       
+
+  public static native double exp(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double log(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double log10(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double sqrt(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double cbrt(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double IEEEremainder(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static double ceil(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=8, locals=2, args_size=1
+         0: dload_0       
+         1: ldc2_w        #95                 // double -0.0d
+         4: dconst_1      
+         5: dconst_1      
+         6: invokestatic  #160                // Method floorOrCeil:(DDDD)D
+         9: dreturn       
+
+  public static double floor(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=8, locals=2, args_size=1
+         0: dload_0       
+         1: ldc2_w        #93                 // double -1.0d
+         4: dconst_0      
+         5: ldc2_w        #93                 // double -1.0d
+         8: invokestatic  #160                // Method floorOrCeil:(DDDD)D
+        11: dreturn       
+
+  private static double floorOrCeil(double, double, double, double);
+    Signature: (DDDD)D
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+    Code:
+      stack=6, locals=15, args_size=4
+         0: dload_0       
+         1: invokestatic  #156                // Method java/lang/Math.getExponent:(D)I
+         4: istore        8
+         6: iload         8
+         8: ifge          34
+        11: dload_0       
+        12: dconst_0      
+        13: dcmpl         
+        14: ifne          21
+        17: dload_0       
+        18: goto          33
+        21: dload_0       
+        22: dconst_0      
+        23: dcmpg         
+        24: ifge          31
+        27: dload_2       
+        28: goto          33
+        31: dload         4
+        33: dreturn       
+        34: iload         8
+        36: bipush        52
+        38: if_icmplt     43
+        41: dload_0       
+        42: dreturn       
+        43: getstatic     #148                // Field $assertionsDisabled:Z
+        46: ifne          69
+        49: iload         8
+        51: iflt          61
+        54: iload         8
+        56: bipush        51
+        58: if_icmple     69
+        61: new           #105                // class java/lang/AssertionError
+        64: dup           
+        65: invokespecial #150                // Method java/lang/AssertionError."<init>":()V
+        68: athrow        
+        69: dload_0       
+        70: invokestatic  #152                // Method java/lang/Double.doubleToRawLongBits:(D)J
+        73: lstore        9
+        75: ldc2_w        #91                 // long 4503599627370495l
+        78: iload         8
+        80: lshr          
+        81: lstore        11
+        83: lload         11
+        85: lload         9
+        87: land          
+        88: lconst_0      
+        89: lcmp          
+        90: ifne          95
+        93: dload_0       
+        94: dreturn       
+        95: lload         9
+        97: lload         11
+        99: ldc2_w        #89                 // long -1l
+       102: lxor          
+       103: land          
+       104: invokestatic  #153                // Method java/lang/Double.longBitsToDouble:(J)D
+       107: dstore        13
+       109: dload         6
+       111: dload_0       
+       112: dmul          
+       113: dconst_0      
+       114: dcmpl         
+       115: ifle          125
+       118: dload         13
+       120: dload         6
+       122: dadd          
+       123: dstore        13
+       125: dload         13
+       127: dreturn       
+      StackMapTable: number_of_entries = 9
+           frame_type = 252 /* append */
+             offset_delta = 21
+        locals = [ int ]
+           frame_type = 9 /* same */
+           frame_type = 65 /* same_locals_1_stack_item */
+          stack = [ double ]
+           frame_type = 0 /* same */
+           frame_type = 8 /* same */
+           frame_type = 17 /* same */
+           frame_type = 7 /* same */
+           frame_type = 253 /* append */
+             offset_delta = 25
+        locals = [ long, long ]
+           frame_type = 252 /* append */
+             offset_delta = 29
+        locals = [ double ]
+
+
+  public static double rint(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=6, args_size=1
+         0: ldc2_w        #103                // double 4.503599627370496E15d
+         3: dstore_2      
+         4: dconst_1      
+         5: dload_0       
+         6: invokestatic  #170                // Method sun/misc/FpUtils.rawCopySign:(DD)D
+         9: dstore        4
+        11: dload_0       
+        12: invokestatic  #155                // Method java/lang/Math.abs:(D)D
+        15: dstore_0      
+        16: dload_0       
+        17: dload_2       
+        18: dcmpg         
+        19: ifge          28
+        22: dload_2       
+        23: dload_0       
+        24: dadd          
+        25: dload_2       
+        26: dsub          
+        27: dstore_0      
+        28: dload         4
+        30: dload_0       
+        31: dmul          
+        32: dreturn       
+      StackMapTable: number_of_entries = 1
+           frame_type = 253 /* append */
+             offset_delta = 28
+        locals = [ double, double ]
+
+
+  public static native double atan2(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double pow(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static int round(float);
+    Signature: (F)I
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: fload_0       
+         1: invokestatic  #158                // Method java/lang/Math.round:(F)I
+         4: ireturn       
+
+  public static long round(double);
+    Signature: (D)J
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=1
+         0: dload_0       
+         1: invokestatic  #157                // Method java/lang/Math.round:(D)J
+         4: lreturn       
+
+  private static synchronized java.util.Random initRNG();
+    Signature: ()Ljava/util/Random;
+    flags: ACC_PRIVATE, ACC_STATIC, ACC_SYNCHRONIZED
+%
+    Code:
+      stack=2, locals=1, args_size=0
+         0: getstatic     #149                // Field randomNumberGenerator:Ljava/util/Random;
+         3: astore_0      
+         4: aload_0       
+         5: ifnonnull     22
+         8: new           #112                // class java/util/Random
+        11: dup           
+        12: invokespecial #163                // Method java/util/Random."<init>":()V
+        15: dup           
+        16: putstatic     #149                // Field randomNumberGenerator:Ljava/util/Random;
+        19: goto          23
+        22: aload_0       
+        23: areturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 252 /* append */
+             offset_delta = 22
+        locals = [ class java/util/Random ]
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/util/Random ]
+
+
+  public static double random();
+    Signature: ()D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=1, args_size=0
+         0: getstatic     #149                // Field randomNumberGenerator:Ljava/util/Random;
+         3: astore_0      
+         4: aload_0       
+         5: ifnonnull     12
+         8: invokestatic  #161                // Method initRNG:()Ljava/util/Random;
+        11: astore_0      
+        12: aload_0       
+        13: invokevirtual #162                // Method java/util/Random.nextDouble:()D
+        16: dreturn       
+      StackMapTable: number_of_entries = 1
+           frame_type = 252 /* append */
+             offset_delta = 12
+        locals = [ class java/util/Random ]
+
+
+  public static int abs(int);
+    Signature: (I)I
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: iload_0       
+         1: ifge          9
+         4: iload_0       
+         5: ineg          
+         6: goto          10
+         9: iload_0       
+        10: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 9 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+
+  public static long abs(long);
+    Signature: (J)J
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: lload_0       
+         1: lconst_0      
+         2: lcmp          
+         3: ifge          11
+         6: lload_0       
+         7: lneg          
+         8: goto          12
+        11: lload_0       
+        12: lreturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 11 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ long ]
+
+
+  public static float abs(float);
+    Signature: (F)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=1, args_size=1
+         0: fload_0       
+         1: fconst_0      
+         2: fcmpg         
+         3: ifgt          12
+         6: fconst_0      
+         7: fload_0       
+         8: fsub          
+         9: goto          13
+        12: fload_0       
+        13: freturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 12 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ float ]
+
+
+  public static double abs(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: dload_0       
+         1: dconst_0      
+         2: dcmpg         
+         3: ifgt          12
+         6: dconst_0      
+         7: dload_0       
+         8: dsub          
+         9: goto          13
+        12: dload_0       
+        13: dreturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 12 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ double ]
+
+
+  public static int max(int, int);
+    Signature: (II)I
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: iload_0       
+         1: iload_1       
+         2: if_icmplt     9
+         5: iload_0       
+         6: goto          10
+         9: iload_1       
+        10: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 9 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+
+  public static long max(long, long);
+    Signature: (JJ)J
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=4, args_size=2
+         0: lload_0       
+         1: lload_2       
+         2: lcmp          
+         3: iflt          10
+         6: lload_0       
+         7: goto          11
+        10: lload_2       
+        11: lreturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 10 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ long ]
+
+
+  public static float max(float, float);
+    Signature: (FF)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=2, args_size=2
+         0: fload_0       
+         1: fload_0       
+         2: fcmpl         
+         3: ifeq          8
+         6: fload_0       
+         7: freturn       
+         8: fload_0       
+         9: fconst_0      
+        10: fcmpl         
+        11: ifne          34
+        14: fload_1       
+        15: fconst_0      
+        16: fcmpl         
+        17: ifne          34
+        20: fload_0       
+        21: invokestatic  #154                // Method java/lang/Float.floatToRawIntBits:(F)I
+        24: i2l           
+        25: getstatic     #147                // Field negativeZeroFloatBits:J
+        28: lcmp          
+        29: ifne          34
+        32: fload_1       
+        33: freturn       
+        34: fload_0       
+        35: fload_1       
+        36: fcmpl         
+        37: iflt          44
+        40: fload_0       
+        41: goto          45
+        44: fload_1       
+        45: freturn       
+      StackMapTable: number_of_entries = 4
+           frame_type = 8 /* same */
+           frame_type = 25 /* same */
+           frame_type = 9 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ float ]
+
+
+  public static double max(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=4, args_size=2
+         0: dload_0       
+         1: dload_0       
+         2: dcmpl         
+         3: ifeq          8
+         6: dload_0       
+         7: dreturn       
+         8: dload_0       
+         9: dconst_0      
+        10: dcmpl         
+        11: ifne          33
+        14: dload_2       
+        15: dconst_0      
+        16: dcmpl         
+        17: ifne          33
+        20: dload_0       
+        21: invokestatic  #152                // Method java/lang/Double.doubleToRawLongBits:(D)J
+        24: getstatic     #146                // Field negativeZeroDoubleBits:J
+        27: lcmp          
+        28: ifne          33
+        31: dload_2       
+        32: dreturn       
+        33: dload_0       
+        34: dload_2       
+        35: dcmpl         
+        36: iflt          43
+        39: dload_0       
+        40: goto          44
+        43: dload_2       
+        44: dreturn       
+      StackMapTable: number_of_entries = 4
+           frame_type = 8 /* same */
+           frame_type = 24 /* same */
+           frame_type = 9 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ double ]
+
+
+  public static int min(int, int);
+    Signature: (II)I
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: iload_0       
+         1: iload_1       
+         2: if_icmpgt     9
+         5: iload_0       
+         6: goto          10
+         9: iload_1       
+        10: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 9 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+
+  public static long min(long, long);
+    Signature: (JJ)J
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=4, args_size=2
+         0: lload_0       
+         1: lload_2       
+         2: lcmp          
+         3: ifgt          10
+         6: lload_0       
+         7: goto          11
+        10: lload_2       
+        11: lreturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 10 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ long ]
+
+
+  public static float min(float, float);
+    Signature: (FF)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=2, args_size=2
+         0: fload_0       
+         1: fload_0       
+         2: fcmpl         
+         3: ifeq          8
+         6: fload_0       
+         7: freturn       
+         8: fload_0       
+         9: fconst_0      
+        10: fcmpl         
+        11: ifne          34
+        14: fload_1       
+        15: fconst_0      
+        16: fcmpl         
+        17: ifne          34
+        20: fload_1       
+        21: invokestatic  #154                // Method java/lang/Float.floatToRawIntBits:(F)I
+        24: i2l           
+        25: getstatic     #147                // Field negativeZeroFloatBits:J
+        28: lcmp          
+        29: ifne          34
+        32: fload_1       
+        33: freturn       
+        34: fload_0       
+        35: fload_1       
+        36: fcmpg         
+        37: ifgt          44
+        40: fload_0       
+        41: goto          45
+        44: fload_1       
+        45: freturn       
+      StackMapTable: number_of_entries = 4
+           frame_type = 8 /* same */
+           frame_type = 25 /* same */
+           frame_type = 9 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ float ]
+
+
+  public static double min(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=4, args_size=2
+         0: dload_0       
+         1: dload_0       
+         2: dcmpl         
+         3: ifeq          8
+         6: dload_0       
+         7: dreturn       
+         8: dload_0       
+         9: dconst_0      
+        10: dcmpl         
+        11: ifne          33
+        14: dload_2       
+        15: dconst_0      
+        16: dcmpl         
+        17: ifne          33
+        20: dload_2       
+        21: invokestatic  #152                // Method java/lang/Double.doubleToRawLongBits:(D)J
+        24: getstatic     #146                // Field negativeZeroDoubleBits:J
+        27: lcmp          
+        28: ifne          33
+        31: dload_2       
+        32: dreturn       
+        33: dload_0       
+        34: dload_2       
+        35: dcmpg         
+        36: ifgt          43
+        39: dload_0       
+        40: goto          44
+        43: dload_2       
+        44: dreturn       
+      StackMapTable: number_of_entries = 4
+           frame_type = 8 /* same */
+           frame_type = 24 /* same */
+           frame_type = 9 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ double ]
+
+
+  public static double ulp(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=1
+         0: dload_0       
+         1: invokestatic  #166                // Method sun/misc/FpUtils.ulp:(D)D
+         4: dreturn       
+
+  public static float ulp(float);
+    Signature: (F)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: fload_0       
+         1: invokestatic  #174                // Method sun/misc/FpUtils.ulp:(F)F
+         4: freturn       
+
+  public static double signum(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=1
+         0: dload_0       
+         1: invokestatic  #165                // Method sun/misc/FpUtils.signum:(D)D
+         4: dreturn       
+
+  public static float signum(float);
+    Signature: (F)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: fload_0       
+         1: invokestatic  #173                // Method sun/misc/FpUtils.signum:(F)F
+         4: freturn       
+
+  public static native double sinh(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double cosh(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double tanh(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double hypot(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double expm1(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static native double log1p(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_NATIVE
+%
+
+  public static double copySign(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=4, args_size=2
+         0: dload_0       
+         1: dload_2       
+         2: invokestatic  #168                // Method sun/misc/FpUtils.copySign:(DD)D
+         5: dreturn       
+
+  public static float copySign(float, float);
+    Signature: (FF)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: fload_0       
+         1: fload_1       
+         2: invokestatic  #177                // Method sun/misc/FpUtils.copySign:(FF)F
+         5: freturn       
+
+  public static int getExponent(float);
+    Signature: (F)I
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: fload_0       
+         1: invokestatic  #175                // Method sun/misc/FpUtils.getExponent:(F)I
+         4: ireturn       
+
+  public static int getExponent(double);
+    Signature: (D)I
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=1
+         0: dload_0       
+         1: invokestatic  #167                // Method sun/misc/FpUtils.getExponent:(D)I
+         4: ireturn       
+
+  public static double nextAfter(double, double);
+    Signature: (DD)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=4, args_size=2
+         0: dload_0       
+         1: dload_2       
+         2: invokestatic  #169                // Method sun/misc/FpUtils.nextAfter:(DD)D
+         5: dreturn       
+
+  public static float nextAfter(float, double);
+    Signature: (FD)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=3, locals=3, args_size=2
+         0: fload_0       
+         1: dload_1       
+         2: invokestatic  #176                // Method sun/misc/FpUtils.nextAfter:(FD)F
+         5: freturn       
+
+  public static double nextUp(double);
+    Signature: (D)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=1
+         0: dload_0       
+         1: invokestatic  #164                // Method sun/misc/FpUtils.nextUp:(D)D
+         4: dreturn       
+
+  public static float nextUp(float);
+    Signature: (F)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: fload_0       
+         1: invokestatic  #172                // Method sun/misc/FpUtils.nextUp:(F)F
+         4: freturn       
+
+  public static double scalb(double, int);
+    Signature: (DI)D
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=3, locals=3, args_size=2
+         0: dload_0       
+         1: iload_2       
+         2: invokestatic  #171                // Method sun/misc/FpUtils.scalb:(DI)D
+         5: dreturn       
+
+  public static float scalb(float, int);
+    Signature: (FI)F
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: fload_0       
+         1: iload_1       
+         2: invokestatic  #178                // Method sun/misc/FpUtils.scalb:(FI)F
+         5: freturn       
+
+  static {};
+    Signature: ()V
+    flags: ACC_STATIC
+%
+    Code:
+      stack=2, locals=0, args_size=0
+         0: ldc_w         #111                // class java/lang/StrictMath
+         3: invokevirtual #151                // Method java/lang/Class.desiredAssertionStatus:()Z
+         6: ifne          13
+         9: iconst_1      
+        10: goto          14
+        13: iconst_0      
+        14: putstatic     #148                // Field $assertionsDisabled:Z
+        17: ldc           #1                  // float -0.0f
+        19: invokestatic  #154                // Method java/lang/Float.floatToRawIntBits:(F)I
+        22: i2l           
+        23: putstatic     #147                // Field negativeZeroFloatBits:J
+        26: ldc2_w        #95                 // double -0.0d
+        29: invokestatic  #152                // Method java/lang/Double.doubleToRawLongBits:(D)J
+        32: putstatic     #146                // Field negativeZeroDoubleBits:J
+        35: return        
+      StackMapTable: number_of_entries = 2
+           frame_type = 13 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+}
