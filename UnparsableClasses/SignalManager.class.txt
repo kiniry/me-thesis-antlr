@@ -1,0 +1,1348 @@
+Classfile /D:/Libs/ExtractedJars/scala/tools/util/SignalManager.class
+  Last modified 13-04-2012; size 14329 bytes
+  MD5 checksum c8e7f7c9c0c021bc16c305e659c95829
+  Compiled from "SignalManager.scala"
+public class scala.tools.util.SignalManager implements scala.ScalaObject
+  SourceFile: "SignalManager.scala"
+    ScalaSig: length = 0x3
+     05 00 00 
+  RuntimeVisibleAnnotations:
+    0: #395(#396=s#397)
+  InnerClasses:
+       public static final #402= #309 of #401; //String$=class scala/math/Ordering$String$ of class scala/math/Ordering
+       public final #403= #182 of #151; //rSignal$=class scala/tools/util/SignalManager$rSignal$ of class scala/tools/util/SignalManager
+       public final #195; //class scala/tools/util/SignalManager$$anonfun$2
+       public final #207; //class scala/tools/util/SignalManager$$anonfun$3
+       public final #306; //class scala/tools/util/SignalManager$$anonfun$4
+       public final #322; //class scala/tools/util/SignalManager$$anonfun$5
+       public final #359 of #151; //class scala/tools/util/SignalManager$$anonfun$1 of class scala/tools/util/SignalManager
+       public #404= #158 of #151; //SignalError=class scala/tools/util/SignalManager$SignalError of class scala/tools/util/SignalManager
+       public final #405= #173 of #151; //rSignalHandler$=class scala/tools/util/SignalManager$rSignalHandler$ of class scala/tools/util/SignalManager
+       public static #406= #224 of #182; //WSignal=class scala/tools/util/SignalManager$rSignal$WSignal of class scala/tools/util/SignalManager$rSignal$
+       public static final #408; //class scala/tools/util/SignalManager$$anonfun$dump$1
+       public static final #410; //class scala/tools/util/SignalManager$$anonfun$defaultSignals$1
+       public static final #412; //class scala/tools/util/SignalManager$$anonfun$ignoredSignals$1
+       public static final #414; //class scala/tools/util/SignalManager$$anonfun$signalNumberMap$1
+       public static final #416; //class scala/tools/util/SignalManager$$anonfun$requireInterval$1
+       public final #277; //class scala/tools/util/SignalManager$$anonfun$registerInfoHandler$1
+  minor version: 0
+  major version: 49
+  flags: ACC_PUBLIC, ACC_SUPER
+%
+Constant pool:
+    #1 = Utf8               SourceFile
+    #2 = Utf8               SignalManager.scala
+    #3 = Utf8               requireInterval
+    #4 = Utf8               (ILscala/tools/util/SignalManager$rSignal$WSignal;Lscala/Function1;)Ljava/lang/Object;
+    #5 = Utf8               Code
+    #6 = Utf8               scala/tools/util/SignalManager$
+    #7 = Class              #6            //  scala/tools/util/SignalManager$
+    #8 = Utf8               MODULE$
+    #9 = Utf8               Lscala/tools/util/SignalManager$;
+   #10 = NameAndType        #8:#9         //  MODULE$:Lscala/tools/util/SignalManager$;
+   #11 = Fieldref           #7.#10        //  scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+   #12 = NameAndType        #3:#4         //  requireInterval:(ILscala/tools/util/SignalManager$rSignal$WSignal;Lscala/Function1;)Ljava/lang/Object;
+   #13 = Methodref          #7.#12        //  scala/tools/util/SignalManager$.requireInterval:(ILscala/tools/util/SignalManager$rSignal$WSignal;Lscala/Function1;)Ljava/lang/Object;
+   #14 = Utf8               (ILscala/tools/util/SignalManager$rSignal$WSignal;Lscala/Function1<Ljava/lang/Object;Lscala/runtime/BoxedUnit;>;)Ljava/lang/Object;
+   #15 = Utf8               Signature
+   #16 = Utf8               USR2
+   #17 = Utf8               ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #18 = NameAndType        #16:#17       //  USR2:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #19 = Methodref          #7.#18        //  scala/tools/util/SignalManager$.USR2:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #20 = Utf8               USR1
+   #21 = NameAndType        #20:#17       //  USR1:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #22 = Methodref          #7.#21        //  scala/tools/util/SignalManager$.USR1:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #23 = Utf8               INFO
+   #24 = NameAndType        #23:#17       //  INFO:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #25 = Methodref          #7.#24        //  scala/tools/util/SignalManager$.INFO:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #26 = Utf8               WINCH
+   #27 = NameAndType        #26:#17       //  WINCH:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #28 = Methodref          #7.#27        //  scala/tools/util/SignalManager$.WINCH:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #29 = Utf8               PROF
+   #30 = NameAndType        #29:#17       //  PROF:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #31 = Methodref          #7.#30        //  scala/tools/util/SignalManager$.PROF:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #32 = Utf8               VTALRM
+   #33 = NameAndType        #32:#17       //  VTALRM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #34 = Methodref          #7.#33        //  scala/tools/util/SignalManager$.VTALRM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #35 = Utf8               XFSZ
+   #36 = NameAndType        #35:#17       //  XFSZ:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #37 = Methodref          #7.#36        //  scala/tools/util/SignalManager$.XFSZ:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #38 = Utf8               XCPU
+   #39 = NameAndType        #38:#17       //  XCPU:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #40 = Methodref          #7.#39        //  scala/tools/util/SignalManager$.XCPU:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #41 = Utf8               IO
+   #42 = NameAndType        #41:#17       //  IO:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #43 = Methodref          #7.#42        //  scala/tools/util/SignalManager$.IO:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #44 = Utf8               TTOU
+   #45 = NameAndType        #44:#17       //  TTOU:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #46 = Methodref          #7.#45        //  scala/tools/util/SignalManager$.TTOU:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #47 = Utf8               TTIN
+   #48 = NameAndType        #47:#17       //  TTIN:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #49 = Methodref          #7.#48        //  scala/tools/util/SignalManager$.TTIN:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #50 = Utf8               CHLD
+   #51 = NameAndType        #50:#17       //  CHLD:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #52 = Methodref          #7.#51        //  scala/tools/util/SignalManager$.CHLD:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #53 = Utf8               CONT
+   #54 = NameAndType        #53:#17       //  CONT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #55 = Methodref          #7.#54        //  scala/tools/util/SignalManager$.CONT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #56 = Utf8               TSTP
+   #57 = NameAndType        #56:#17       //  TSTP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #58 = Methodref          #7.#57        //  scala/tools/util/SignalManager$.TSTP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #59 = Utf8               STOP
+   #60 = NameAndType        #59:#17       //  STOP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #61 = Methodref          #7.#60        //  scala/tools/util/SignalManager$.STOP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #62 = Utf8               URG
+   #63 = NameAndType        #62:#17       //  URG:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #64 = Methodref          #7.#63        //  scala/tools/util/SignalManager$.URG:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #65 = Utf8               TERM
+   #66 = NameAndType        #65:#17       //  TERM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #67 = Methodref          #7.#66        //  scala/tools/util/SignalManager$.TERM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #68 = Utf8               ALRM
+   #69 = NameAndType        #68:#17       //  ALRM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #70 = Methodref          #7.#69        //  scala/tools/util/SignalManager$.ALRM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #71 = Utf8               PIPE
+   #72 = NameAndType        #71:#17       //  PIPE:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #73 = Methodref          #7.#72        //  scala/tools/util/SignalManager$.PIPE:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #74 = Utf8               SYS
+   #75 = NameAndType        #74:#17       //  SYS:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #76 = Methodref          #7.#75        //  scala/tools/util/SignalManager$.SYS:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #77 = Utf8               SEGV
+   #78 = NameAndType        #77:#17       //  SEGV:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #79 = Methodref          #7.#78        //  scala/tools/util/SignalManager$.SEGV:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #80 = Utf8               BUS
+   #81 = NameAndType        #80:#17       //  BUS:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #82 = Methodref          #7.#81        //  scala/tools/util/SignalManager$.BUS:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #83 = Utf8               KILL
+   #84 = NameAndType        #83:#17       //  KILL:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #85 = Methodref          #7.#84        //  scala/tools/util/SignalManager$.KILL:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #86 = Utf8               FPE
+   #87 = NameAndType        #86:#17       //  FPE:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #88 = Methodref          #7.#87        //  scala/tools/util/SignalManager$.FPE:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #89 = Utf8               EMT
+   #90 = NameAndType        #89:#17       //  EMT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #91 = Methodref          #7.#90        //  scala/tools/util/SignalManager$.EMT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #92 = Utf8               ABRT
+   #93 = NameAndType        #92:#17       //  ABRT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #94 = Methodref          #7.#93        //  scala/tools/util/SignalManager$.ABRT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #95 = Utf8               TRAP
+   #96 = NameAndType        #95:#17       //  TRAP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #97 = Methodref          #7.#96        //  scala/tools/util/SignalManager$.TRAP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+   #98 = Utf8               ILL
+   #99 = NameAndType        #98:#17       //  ILL:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #100 = Methodref          #7.#99        //  scala/tools/util/SignalManager$.ILL:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #101 = Utf8               QUIT
+  #102 = NameAndType        #101:#17      //  QUIT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #103 = Methodref          #7.#102       //  scala/tools/util/SignalManager$.QUIT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #104 = Utf8               INT
+  #105 = NameAndType        #104:#17      //  INT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #106 = Methodref          #7.#105       //  scala/tools/util/SignalManager$.INT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #107 = Utf8               HUP
+  #108 = NameAndType        #107:#17      //  HUP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #109 = Methodref          #7.#108       //  scala/tools/util/SignalManager$.HUP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #110 = Utf8               dump
+  #111 = Utf8               ()V
+  #112 = NameAndType        #110:#111     //  dump:()V
+  #113 = Methodref          #7.#112       //  scala/tools/util/SignalManager$.dump:()V
+  #114 = Utf8               findOpenSignal
+  #115 = NameAndType        #114:#17      //  findOpenSignal:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #116 = Methodref          #7.#115       //  scala/tools/util/SignalManager$.findOpenSignal:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #117 = Utf8               ignoredSignals
+  #118 = Utf8               ()Lscala/collection/immutable/List;
+  #119 = NameAndType        #117:#118     //  ignoredSignals:()Lscala/collection/immutable/List;
+  #120 = Methodref          #7.#119       //  scala/tools/util/SignalManager$.ignoredSignals:()Lscala/collection/immutable/List;
+  #121 = Utf8               ()Lscala/collection/immutable/List<Lscala/tools/util/SignalManager$rSignal$WSignal;>;
+  #122 = Utf8               defaultSignals
+  #123 = NameAndType        #122:#118     //  defaultSignals:()Lscala/collection/immutable/List;
+  #124 = Methodref          #7.#123       //  scala/tools/util/SignalManager$.defaultSignals:()Lscala/collection/immutable/List;
+  #125 = Utf8               unreserved
+  #126 = NameAndType        #125:#118     //  unreserved:()Lscala/collection/immutable/List;
+  #127 = Methodref          #7.#126       //  scala/tools/util/SignalManager$.unreserved:()Lscala/collection/immutable/List;
+  #128 = Utf8               reserved
+  #129 = Utf8               ()Lscala/collection/immutable/Set;
+  #130 = NameAndType        #128:#129     //  reserved:()Lscala/collection/immutable/Set;
+  #131 = Methodref          #7.#130       //  scala/tools/util/SignalManager$.reserved:()Lscala/collection/immutable/Set;
+  #132 = Utf8               ()Lscala/collection/immutable/Set<Lscala/tools/util/SignalManager$rSignal$WSignal;>;
+  #133 = Utf8               all
+  #134 = NameAndType        #133:#118     //  all:()Lscala/collection/immutable/List;
+  #135 = Methodref          #7.#134       //  scala/tools/util/SignalManager$.all:()Lscala/collection/immutable/List;
+  #136 = Utf8               scala$tools$util$SignalManager$$classLoader
+  #137 = Utf8               Lscala/tools/nsc/util/ScalaClassLoader;
+  #138 = Utf8               scala$tools$util$SignalManager$$illegalArgHandler
+  #139 = Utf8               Lscala/PartialFunction;
+  #140 = Utf8               Lscala/PartialFunction<Ljava/lang/Throwable;Ljava/lang/Object;>;
+  #141 = Utf8               publicHandlers
+  #142 = Utf8               Lscala/collection/immutable/Map;
+  #143 = Utf8               Lscala/collection/immutable/Map<Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;>;
+  #144 = Utf8               rSignalHandler$module
+  #145 = Utf8               Lscala/tools/util/SignalManager$rSignalHandler$;
+  #146 = Utf8               rSignal$module
+  #147 = Utf8               Lscala/tools/util/SignalManager$rSignal$;
+  #148 = Utf8               ()Lscala/PartialFunction;
+  #149 = Utf8               LineNumberTable
+  #150 = Utf8               scala/tools/util/SignalManager
+  #151 = Class              #150          //  scala/tools/util/SignalManager
+  #152 = NameAndType        #138:#139     //  scala$tools$util$SignalManager$$illegalArgHandler:Lscala/PartialFunction;
+  #153 = Fieldref           #151.#152     //  scala/tools/util/SignalManager.scala$tools$util$SignalManager$$illegalArgHandler:Lscala/PartialFunction;
+  #154 = Utf8               ()Lscala/PartialFunction<Ljava/lang/Throwable;Ljava/lang/Object;>;
+  #155 = Utf8               scala$tools$util$SignalManager$$fail
+  #156 = Utf8               (Ljava/lang/String;)Lscala/tools/util/SignalManager$SignalError;
+  #157 = Utf8               scala/tools/util/SignalManager$SignalError
+  #158 = Class              #157          //  scala/tools/util/SignalManager$SignalError
+  #159 = Utf8               <init>
+  #160 = Utf8               (Lscala/tools/util/SignalManager;Ljava/lang/String;)V
+  #161 = NameAndType        #159:#160     //  "<init>":(Lscala/tools/util/SignalManager;Ljava/lang/String;)V
+  #162 = Methodref          #158.#161     //  scala/tools/util/SignalManager$SignalError."<init>":(Lscala/tools/util/SignalManager;Ljava/lang/String;)V
+  #163 = Utf8               this
+  #164 = Utf8               Lscala/tools/util/SignalManager;
+  #165 = Utf8               msg
+  #166 = Utf8               Ljava/lang/String;
+  #167 = Utf8               LocalVariableTable
+  #168 = Utf8               rSignalHandler
+  #169 = Utf8               ()Lscala/tools/util/SignalManager$rSignalHandler$;
+  #170 = NameAndType        #144:#145     //  rSignalHandler$module:Lscala/tools/util/SignalManager$rSignalHandler$;
+  #171 = Fieldref           #151.#170     //  scala/tools/util/SignalManager.rSignalHandler$module:Lscala/tools/util/SignalManager$rSignalHandler$;
+  #172 = Utf8               scala/tools/util/SignalManager$rSignalHandler$
+  #173 = Class              #172          //  scala/tools/util/SignalManager$rSignalHandler$
+  #174 = Utf8               (Lscala/tools/util/SignalManager;)V
+  #175 = NameAndType        #159:#174     //  "<init>":(Lscala/tools/util/SignalManager;)V
+  #176 = Methodref          #173.#175     //  scala/tools/util/SignalManager$rSignalHandler$."<init>":(Lscala/tools/util/SignalManager;)V
+  #177 = Utf8               rSignal
+  #178 = Utf8               ()Lscala/tools/util/SignalManager$rSignal$;
+  #179 = NameAndType        #146:#147     //  rSignal$module:Lscala/tools/util/SignalManager$rSignal$;
+  #180 = Fieldref           #151.#179     //  scala/tools/util/SignalManager.rSignal$module:Lscala/tools/util/SignalManager$rSignal$;
+  #181 = Utf8               scala/tools/util/SignalManager$rSignal$
+  #182 = Class              #181          //  scala/tools/util/SignalManager$rSignal$
+  #183 = Methodref          #182.#175     //  scala/tools/util/SignalManager$rSignal$."<init>":(Lscala/tools/util/SignalManager;)V
+  #184 = Utf8               scala$tools$util$SignalManager$$register
+  #185 = Utf8               (Ljava/lang/String;ZLscala/Function0;)Ljava/lang/Object;
+  #186 = NameAndType        #177:#178     //  rSignal:()Lscala/tools/util/SignalManager$rSignal$;
+  #187 = Methodref          #151.#186     //  scala/tools/util/SignalManager.rSignal:()Lscala/tools/util/SignalManager$rSignal$;
+  #188 = Utf8               apply
+  #189 = Utf8               (Ljava/lang/String;)Ljava/lang/Object;
+  #190 = NameAndType        #188:#189     //  apply:(Ljava/lang/String;)Ljava/lang/Object;
+  #191 = Methodref          #182.#190     //  scala/tools/util/SignalManager$rSignal$.apply:(Ljava/lang/String;)Ljava/lang/Object;
+  #192 = NameAndType        #168:#169     //  rSignalHandler:()Lscala/tools/util/SignalManager$rSignalHandler$;
+  #193 = Methodref          #151.#192     //  scala/tools/util/SignalManager.rSignalHandler:()Lscala/tools/util/SignalManager$rSignalHandler$;
+  #194 = Utf8               scala/tools/util/SignalManager$$anonfun$2
+  #195 = Class              #194          //  scala/tools/util/SignalManager$$anonfun$2
+  #196 = Utf8               (Lscala/tools/util/SignalManager;Lscala/Function0;)V
+  #197 = NameAndType        #159:#196     //  "<init>":(Lscala/tools/util/SignalManager;Lscala/Function0;)V
+  #198 = Methodref          #195.#197     //  scala/tools/util/SignalManager$$anonfun$2."<init>":(Lscala/tools/util/SignalManager;Lscala/Function0;)V
+  #199 = Utf8               (Lscala/Function1;)Ljava/lang/Object;
+  #200 = NameAndType        #188:#199     //  apply:(Lscala/Function1;)Ljava/lang/Object;
+  #201 = Methodref          #173.#200     //  scala/tools/util/SignalManager$rSignalHandler$.apply:(Lscala/Function1;)Ljava/lang/Object;
+  #202 = Utf8               handle
+  #203 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #204 = NameAndType        #202:#203     //  handle:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #205 = Methodref          #182.#204     //  scala/tools/util/SignalManager$rSignal$.handle:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #206 = Utf8               scala/tools/util/SignalManager$$anonfun$3
+  #207 = Class              #206          //  scala/tools/util/SignalManager$$anonfun$3
+  #208 = Utf8               (Lscala/tools/util/SignalManager;Ljava/lang/Object;Ljava/lang/Object;)V
+  #209 = NameAndType        #159:#208     //  "<init>":(Lscala/tools/util/SignalManager;Ljava/lang/Object;Ljava/lang/Object;)V
+  #210 = Methodref          #207.#209     //  scala/tools/util/SignalManager$$anonfun$3."<init>":(Lscala/tools/util/SignalManager;Ljava/lang/Object;Ljava/lang/Object;)V
+  #211 = Utf8               name
+  #212 = Utf8               shouldChain
+  #213 = Utf8               Z
+  #214 = Utf8               body$1
+  #215 = Utf8               Lscala/Function0;
+  #216 = Utf8               signal
+  #217 = Utf8               Ljava/lang/Object;
+  #218 = Utf8               current$1
+  #219 = Utf8               prev$1
+  #220 = Utf8               chainer
+  #221 = Utf8               (Ljava/lang/String;ZLscala/Function0<Lscala/runtime/BoxedUnit;>;)Ljava/lang/Object;
+  #222 = Utf8               (Ljava/lang/String;)Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #223 = Utf8               scala/tools/util/SignalManager$rSignal$WSignal
+  #224 = Class              #223          //  scala/tools/util/SignalManager$rSignal$WSignal
+  #225 = Utf8               (Lscala/tools/util/SignalManager$rSignal$;Ljava/lang/String;)V
+  #226 = NameAndType        #159:#225     //  "<init>":(Lscala/tools/util/SignalManager$rSignal$;Ljava/lang/String;)V
+  #227 = Methodref          #224.#226     //  scala/tools/util/SignalManager$rSignal$WSignal."<init>":(Lscala/tools/util/SignalManager$rSignal$;Ljava/lang/String;)V
+  #228 = Utf8               java/lang/IllegalArgumentException
+  #229 = Class              #228          //  java/lang/IllegalArgumentException
+  #230 = Utf8               getMessage
+  #231 = Utf8               ()Ljava/lang/String;
+  #232 = NameAndType        #230:#231     //  getMessage:()Ljava/lang/String;
+  #233 = Methodref          #229.#232     //  java/lang/IllegalArgumentException.getMessage:()Ljava/lang/String;
+  #234 = Utf8               exceptionResult1
+  #235 = Utf8               Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #236 = Utf8               update
+  #237 = Utf8               (Ljava/lang/String;Lscala/Function0;)V
+  #238 = NameAndType        #188:#222     //  apply:(Ljava/lang/String;)Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #239 = Methodref          #151.#238     //  scala/tools/util/SignalManager.apply:(Ljava/lang/String;)Lscala/tools/util/SignalManager$rSignal$WSignal;
+  #240 = Utf8               setTo
+  #241 = Utf8               (Lscala/Function0;)Ljava/lang/Object;
+  #242 = NameAndType        #240:#241     //  setTo:(Lscala/Function0;)Ljava/lang/Object;
+  #243 = Methodref          #224.#242     //  scala/tools/util/SignalManager$rSignal$WSignal.setTo:(Lscala/Function0;)Ljava/lang/Object;
+  #244 = Utf8               body
+  #245 = Utf8               (Ljava/lang/String;Lscala/Function0<Lscala/runtime/BoxedUnit;>;)V
+  #246 = Utf8               public
+  #247 = Utf8               (Ljava/lang/String;Ljava/lang/String;Lscala/Function0;)V
+  #248 = Utf8               isError
+  #249 = Utf8               ()Z
+  #250 = NameAndType        #248:#249     //  isError:()Z
+  #251 = Methodref          #224.#250     //  scala/tools/util/SignalManager$rSignal$WSignal.isError:()Z
+  #252 = Utf8               registerInfoHandler
+  #253 = NameAndType        #252:#111     //  registerInfoHandler:()V
+  #254 = Methodref          #151.#253     //  scala/tools/util/SignalManager.registerInfoHandler:()V
+  #255 = Utf8               addPublicHandler
+  #256 = Utf8               (Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;)V
+  #257 = NameAndType        #255:#256     //  addPublicHandler:(Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;)V
+  #258 = Methodref          #151.#257     //  scala/tools/util/SignalManager.addPublicHandler:(Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;)V
+  #259 = Utf8               java/lang/Exception
+  #260 = Class              #259          //  java/lang/Exception
+  #261 = Utf8               description
+  #262 = Utf8               wsig
+  #263 = Utf8               (Ljava/lang/String;Ljava/lang/String;Lscala/Function0<Lscala/runtime/BoxedUnit;>;)V
+  #264 = String             #23           //  INFO
+  #265 = Utf8               ()Lscala/collection/immutable/Map;
+  #266 = NameAndType        #141:#265     //  publicHandlers:()Lscala/collection/immutable/Map;
+  #267 = Methodref          #151.#266     //  scala/tools/util/SignalManager.publicHandlers:()Lscala/collection/immutable/Map;
+  #268 = Utf8               scala/collection/MapLike
+  #269 = Class              #268          //  scala/collection/MapLike
+  #270 = Utf8               isEmpty
+  #271 = NameAndType        #270:#249     //  isEmpty:()Z
+  #272 = InterfaceMethodref #269.#271     //  scala/collection/MapLike.isEmpty:()Z
+  #273 = Utf8               isDefault
+  #274 = NameAndType        #273:#249     //  isDefault:()Z
+  #275 = Methodref          #224.#274     //  scala/tools/util/SignalManager$rSignal$WSignal.isDefault:()Z
+  #276 = Utf8               scala/tools/util/SignalManager$$anonfun$registerInfoHandler$1
+  #277 = Class              #276          //  scala/tools/util/SignalManager$$anonfun$registerInfoHandler$1
+  #278 = Methodref          #277.#175     //  scala/tools/util/SignalManager$$anonfun$registerInfoHandler$1."<init>":(Lscala/tools/util/SignalManager;)V
+  #279 = Utf8               Print signal handler registry on console.
+  #280 = String             #279          //  Print signal handler registry on console.
+  #281 = Utf8               contains
+  #282 = Utf8               (Ljava/lang/Object;)Z
+  #283 = NameAndType        #281:#282     //  contains:(Ljava/lang/Object;)Z
+  #284 = InterfaceMethodref #269.#283     //  scala/collection/MapLike.contains:(Ljava/lang/Object;)Z
+  #285 = Utf8               scala/collection/immutable/MapLike
+  #286 = Class              #285          //  scala/collection/immutable/MapLike
+  #287 = Utf8               updated
+  #288 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
+  #289 = NameAndType        #287:#288     //  updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
+  #290 = InterfaceMethodref #286.#289     //  scala/collection/immutable/MapLike.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
+  #291 = Utf8               publicHandlers_$eq
+  #292 = Utf8               (Lscala/collection/immutable/Map;)V
+  #293 = NameAndType        #291:#292     //  publicHandlers_$eq:(Lscala/collection/immutable/Map;)V
+  #294 = Methodref          #151.#293     //  scala/tools/util/SignalManager.publicHandlers_$eq:(Lscala/collection/immutable/Map;)V
+  #295 = NameAndType        #141:#142     //  publicHandlers:Lscala/collection/immutable/Map;
+  #296 = Fieldref           #151.#295     //  scala/tools/util/SignalManager.publicHandlers:Lscala/collection/immutable/Map;
+  #297 = Utf8               ()Lscala/collection/immutable/Map<Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;>;
+  #298 = Utf8               (Lscala/collection/immutable/Map<Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;>;)V
+  #299 = Utf8               info
+  #300 = Utf8               scala/collection/TraversableOnce
+  #301 = Class              #300          //  scala/collection/TraversableOnce
+  #302 = Utf8               toList
+  #303 = NameAndType        #302:#118     //  toList:()Lscala/collection/immutable/List;
+  #304 = InterfaceMethodref #301.#303     //  scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
+  #305 = Utf8               scala/tools/util/SignalManager$$anonfun$4
+  #306 = Class              #305          //  scala/tools/util/SignalManager$$anonfun$4
+  #307 = Methodref          #306.#175     //  scala/tools/util/SignalManager$$anonfun$4."<init>":(Lscala/tools/util/SignalManager;)V
+  #308 = Utf8               scala/math/Ordering$String$
+  #309 = Class              #308          //  scala/math/Ordering$String$
+  #310 = Utf8               Lscala/math/Ordering$String$;
+  #311 = NameAndType        #8:#310       //  MODULE$:Lscala/math/Ordering$String$;
+  #312 = Fieldref           #309.#311     //  scala/math/Ordering$String$.MODULE$:Lscala/math/Ordering$String$;
+  #313 = Utf8               scala/collection/SeqLike
+  #314 = Class              #313          //  scala/collection/SeqLike
+  #315 = Utf8               sortBy
+  #316 = Utf8               (Lscala/Function1;Lscala/math/Ordering;)Ljava/lang/Object;
+  #317 = NameAndType        #315:#316     //  sortBy:(Lscala/Function1;Lscala/math/Ordering;)Ljava/lang/Object;
+  #318 = InterfaceMethodref #314.#317     //  scala/collection/SeqLike.sortBy:(Lscala/Function1;Lscala/math/Ordering;)Ljava/lang/Object;
+  #319 = Utf8               scala/collection/TraversableLike
+  #320 = Class              #319          //  scala/collection/TraversableLike
+  #321 = Utf8               scala/tools/util/SignalManager$$anonfun$5
+  #322 = Class              #321          //  scala/tools/util/SignalManager$$anonfun$5
+  #323 = Methodref          #322.#175     //  scala/tools/util/SignalManager$$anonfun$5."<init>":(Lscala/tools/util/SignalManager;)V
+  #324 = Utf8               scala/collection/immutable/List$
+  #325 = Class              #324          //  scala/collection/immutable/List$
+  #326 = Utf8               Lscala/collection/immutable/List$;
+  #327 = NameAndType        #8:#326       //  MODULE$:Lscala/collection/immutable/List$;
+  #328 = Fieldref           #325.#327     //  scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+  #329 = Utf8               canBuildFrom
+  #330 = Utf8               ()Lscala/collection/generic/CanBuildFrom;
+  #331 = NameAndType        #329:#330     //  canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+  #332 = Methodref          #325.#331     //  scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+  #333 = Utf8               map
+  #334 = Utf8               (Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  #335 = NameAndType        #333:#334     //  map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  #336 = InterfaceMethodref #320.#335     //  scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+  #337 = Utf8               scala/collection/immutable/List
+  #338 = Class              #337          //  scala/collection/immutable/List
+  #339 = Utf8               \nSignal handler registry:\n
+  #340 = String             #339          //  \nSignal handler registry:\n
+  #341 = Utf8               \n
+  #342 = String             #341          //  \n
+  #343 = Utf8               
+  #344 = String             #343          //  
+  #345 = Utf8               mkString
+  #346 = Utf8               (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #347 = NameAndType        #345:#346     //  mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #348 = InterfaceMethodref #301.#347     //  scala/collection/TraversableOnce.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #349 = Utf8               xs
+  #350 = Utf8               Lscala/collection/immutable/List;
+  #351 = Utf8               (Lscala/tools/nsc/util/ScalaClassLoader;)V
+  #352 = NameAndType        #136:#137     //  scala$tools$util$SignalManager$$classLoader:Lscala/tools/nsc/util/ScalaClassLoader;
+  #353 = Fieldref           #151.#352     //  scala/tools/util/SignalManager.scala$tools$util$SignalManager$$classLoader:Lscala/tools/nsc/util/ScalaClassLoader;
+  #354 = Utf8               java/lang/Object
+  #355 = Class              #354          //  java/lang/Object
+  #356 = NameAndType        #159:#111     //  "<init>":()V
+  #357 = Methodref          #355.#356     //  java/lang/Object."<init>":()V
+  #358 = Utf8               scala/tools/util/SignalManager$$anonfun$1
+  #359 = Class              #358          //  scala/tools/util/SignalManager$$anonfun$1
+  #360 = Methodref          #359.#175     //  scala/tools/util/SignalManager$$anonfun$1."<init>":(Lscala/tools/util/SignalManager;)V
+  #361 = Utf8               scala/Predef$
+  #362 = Class              #361          //  scala/Predef$
+  #363 = Utf8               Lscala/Predef$;
+  #364 = NameAndType        #8:#363       //  MODULE$:Lscala/Predef$;
+  #365 = Fieldref           #362.#364     //  scala/Predef$.MODULE$:Lscala/Predef$;
+  #366 = Utf8               Map
+  #367 = Utf8               ()Lscala/collection/immutable/Map$;
+  #368 = NameAndType        #366:#367     //  Map:()Lscala/collection/immutable/Map$;
+  #369 = Methodref          #362.#368     //  scala/Predef$.Map:()Lscala/collection/immutable/Map$;
+  #370 = Utf8               scala/collection/immutable/Nil$
+  #371 = Class              #370          //  scala/collection/immutable/Nil$
+  #372 = Utf8               Lscala/collection/immutable/Nil$;
+  #373 = NameAndType        #8:#372       //  MODULE$:Lscala/collection/immutable/Nil$;
+  #374 = Fieldref           #371.#373     //  scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+  #375 = Utf8               scala/collection/immutable/Map$
+  #376 = Class              #375          //  scala/collection/immutable/Map$
+  #377 = Utf8               (Lscala/collection/Seq;)Lscala/collection/GenMap;
+  #378 = NameAndType        #188:#377     //  apply:(Lscala/collection/Seq;)Lscala/collection/GenMap;
+  #379 = Methodref          #376.#378     //  scala/collection/immutable/Map$.apply:(Lscala/collection/Seq;)Lscala/collection/GenMap;
+  #380 = Utf8               scala/collection/immutable/Map
+  #381 = Class              #380          //  scala/collection/immutable/Map
+  #382 = Utf8               classLoader
+  #383 = Utf8               scala/tools/nsc/util/ScalaClassLoader$
+  #384 = Class              #383          //  scala/tools/nsc/util/ScalaClassLoader$
+  #385 = Utf8               Lscala/tools/nsc/util/ScalaClassLoader$;
+  #386 = NameAndType        #8:#385       //  MODULE$:Lscala/tools/nsc/util/ScalaClassLoader$;
+  #387 = Fieldref           #384.#386     //  scala/tools/nsc/util/ScalaClassLoader$.MODULE$:Lscala/tools/nsc/util/ScalaClassLoader$;
+  #388 = Utf8               getSystemLoader
+  #389 = Utf8               ()Lscala/tools/nsc/util/ScalaClassLoader;
+  #390 = NameAndType        #388:#389     //  getSystemLoader:()Lscala/tools/nsc/util/ScalaClassLoader;
+  #391 = Methodref          #384.#390     //  scala/tools/nsc/util/ScalaClassLoader$.getSystemLoader:()Lscala/tools/nsc/util/ScalaClassLoader;
+  #392 = NameAndType        #159:#351     //  "<init>":(Lscala/tools/nsc/util/ScalaClassLoader;)V
+  #393 = Methodref          #151.#392     //  scala/tools/util/SignalManager."<init>":(Lscala/tools/nsc/util/ScalaClassLoader;)V
+  #394 = Utf8               ScalaSig
+  #395 = Utf8               Lscala/reflect/ScalaSignature;
+  #396 = Utf8               bytes
+  #397 = Utf8               \reB%QbU5h]dW*8bO(BA)H/71!;p_2(\"AM\r\1MA\n-R\"5q7b]TaDU4-\t1qJ6fGR\"aI!!M\r\1PE*,7\r\t/\t)A1Y1\r\1tg2{\rZ3s!\tIR$D\t1D\tan]2\nyQ\"E*dC27\t\1tg2{\rZ3s\"\"aN\5u}Q!\n\tGiA/}\rA!\tA\nE!9b\nI!E5mY<\r\!sO\"g7feV\t!W5JB=M;jC24UO\2uS>tC7\tyCG1g5\tG31AH]8pizJaBk\tq]1dW<W-8q\tIA:poG.k\"a\nm2!a\"p_2,M{%%dG.Z4bYx\rS1oI2,'\t!IQMLGFBC\"AQ\"1A\nY1+[4oC2,%O]8s'\reI\t%bB\"II#K8+[4oC2\"AQ&1RA'In8bYN!1J(!\ty%+DQ\t\tF!AsKdWm;\nM&AB*iSdG\rC!QFK96J1Aab7bgNt-\3e\"a.\nmc!AB*ue&tw\r^I!WG27o(b[bBL%\taX1!1mQ\na\tAb7bgNdu.3feBbY&\t%\tZ\rQtG\r\3NKRDwZKBa\r[O*DSa!T3uQ>$C6LB3!g7f$n3!!i7\n#b\n!a:bSN,W*;i_Db\&\tK!Z\reL7/Z'fi\"|G\r\t\tc.C)!CIaa.^7cKJlU\r5pI\"A1oEB&Q-Aok6WM]'fi\"|G\r\tk.#\tA^CBH.oj\"a=\ne4!AB!osJ+g\rC|iA0oC6,cA?91C`\ta:fI4bA.)qPYEAAAM3mKR)!\"a!9QBA9AB:jO:GCA<\r,(O]3oi\"9QC&]!:bSN,Gc!9QBA\n9bBAqD]Vl'-:\tq\t'\rbAA\r\tJ;\t51ao11F&[qaV*jO:Gn*)BC>*\t\r\"2U\tA6%\"!Q\nqQA\1nKBqIA\t\tI<}BASiaw]?\t5EC1Io\"QqIAB<MLwM\1mA!AQDA\t\tY%\"!AQCA\t\tyF!\t9!!MCcV!9qKA)9a5b]dWM\t7\nI\"^9n]#se>X#A\tCG\nQa]3u)>$2ACA3%\t9'a\tI'c_L#B\nl=bAA7\r\tAAHY=oC6,gEcJ1!a)f.;\t]Cs\n\n9mkN$S-m\"CA4k\"\tAA5!\ty(!AE<ji\"UO:f]RDM3mKJ,B!a!\nR!QQAN!\t9)!#\rA1RA?\tiIAU#\ty)!&M\t\t*CqAT8uQ&tw\rE/K1!!'\r\te.\t;i1 \ta\rC;QQG3!!$v]$n82!\t9+!u!C5t\t4-7u!\tY+!u!C5ttwN]3e!\ty+!EaB5t'$HksMbBA[[\ra^e4CA]S!\t!a/!g7feN#(/8h)ICA`S!\t%!1Q|7:j]$ \tI\"H1Q-];bYN$2!OAe!\tY-a1AU!B8uQCAhS!\t%!5!7[\"pI$\"!!\t\tU7I!A!aaB7fgNw-A\r#\t!!7YCV]?\tm3\t\"^!9qX\"BBBAr}A0Ang<q!a:\tI/s'&<g.7IC:$G.:\tYOBnA)!a<In8bY\"g7feN)1O%!9%a;MHCAAu!91b\nAbB/lI!\t/-(!C?\"9-a;!AbCA WD)!C\tqaU%H?3E*F))!a;\tKAC\t'&;u$MA!Y!BAvIBjR0J:C!B!l\"\t)!jR0J:bB;l!\tMB\rAa\rG/[8o!B\r_2aB\ri:4xn[3e!\t#a;\t!B3naRLX!BA1bB%!F\te<n;feR9!Ba.\tEBB>&AC0\tAMDw.7e\"N\nO)\"aSBa!\tUBBs2ABY(1ay\"9!Q\t}AB;qI$X\rp\t#1\tw\nm?\t$1CA%bB$!JaVG.[2\r\t-#q\nB))\tyG!\t$Q\tCA%BB>FACT\t?,7o:jaRLwN/AB-MXmZ5tiJ4ptG\r\3s)\t\tyC^!IAa!$G\rU;cY&*8eYHCBA8C)d\tmB98/[4\t\tM#1ay\"I!A%!1NaVG.[2IC:$G.:t+\ti~_9`c\nAANCBDB!%IAa%A,(\r\5dtG\r\3sg~#S-_I|\tM!a[\n12!yQ!\n\t5a9vE2L7\rS1oI2,'o\t\t\r\"B!N4p9IEQbU5h]dW*8bOcA1AEBAa##%!9Ea#\tEECBE!)Ja#\t]!C7l/NKwM\1m)IJ!(\t\tm%1ECaaBJabBQC)!CGqb]5h]dg*^7cKJl\r]KBa*2\"1WSSAAa+.I.\7viG._3AC2pY2,7\r^5p]&!!BU!),!\tm\nC:\n-!Q!\n\tE:jO:GNT;nEX*9!!iLa#\t}aA1mYV!\tOMa-\n\t\t'&HJ\n-EBf!Xm]3sm$WCBg!9Ka44&!!BU\rV\r\t+Y\t\"@QQO:fgh/3\t\te'1C7aZ3gCVdGoU5h]d7B\"A!qBF\tY.jO:|'/3TSt\r\:\t\t\r(1CKaBZ5oI>XM\*jO:G4\"A!BF\tI&ek6bB;!Q3yr\n-AA%n(v[\n,'v\n-EB|\rAUU3CBa?!q_:#B #\tAa>\tE+\n\tY\t\"x\n'\t\r!1CoA*B!\"A11BF\t90BJ#CB#\tAa>kE\t-EB|\r1+\t/Y\t\"x!1*'M!YBa#\t]a\"V'\"A1qBF\t90T3CB#\tAa>MK6(\t-EB|\nU#\t\r-\"1CoA!'S\"A1qBF\t90UJkCB#\tAa>Uv\t8\t-EB|Fk)\t\rm\"1CoAV*U!\"A1qBF\t90D:#CB\"#\tAa>\t\rCE\n\tY\t\"x!AV%O!YEa#\t]+UVCba!q_>Cba!q_1VX\t-EB|Afi.\t\rm#1CoaA+BJkCB0#\tAa>\tAvJ\tGY\t\"x)q+(D\"A1q\rBF\t90J{CB6#\tAa>\tU&+\r\t_Y\t\"x!Qk*3!Ha#\rUa:fcVL'/Z%oih/7\r\r]4qPBB)\rQ1\tw\t1~aM\t'(a\t\r5aC\tqa]3d_:$7EBM9(/9qKJ
+  #398 = Utf8               RuntimeVisibleAnnotations
+  #399 = Utf8               InnerClasses
+  #400 = Utf8               scala/math/Ordering
+  #401 = Class              #400          //  scala/math/Ordering
+  #402 = Utf8               String$
+  #403 = Utf8               rSignal$
+  #404 = Utf8               SignalError
+  #405 = Utf8               rSignalHandler$
+  #406 = Utf8               WSignal
+  #407 = Utf8               scala/tools/util/SignalManager$$anonfun$dump$1
+  #408 = Class              #407          //  scala/tools/util/SignalManager$$anonfun$dump$1
+  #409 = Utf8               scala/tools/util/SignalManager$$anonfun$defaultSignals$1
+  #410 = Class              #409          //  scala/tools/util/SignalManager$$anonfun$defaultSignals$1
+  #411 = Utf8               scala/tools/util/SignalManager$$anonfun$ignoredSignals$1
+  #412 = Class              #411          //  scala/tools/util/SignalManager$$anonfun$ignoredSignals$1
+  #413 = Utf8               scala/tools/util/SignalManager$$anonfun$signalNumberMap$1
+  #414 = Class              #413          //  scala/tools/util/SignalManager$$anonfun$signalNumberMap$1
+  #415 = Utf8               scala/tools/util/SignalManager$$anonfun$requireInterval$1
+  #416 = Class              #415          //  scala/tools/util/SignalManager$$anonfun$requireInterval$1
+  #417 = Utf8               scala/ScalaObject
+  #418 = Class              #417          //  scala/ScalaObject
+{
+  public final scala.tools.nsc.util.ScalaClassLoader scala$tools$util$SignalManager$$classLoader;
+    Signature: Lscala/tools/nsc/util/ScalaClassLoader;
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+
+
+  private final scala.PartialFunction<java.lang.Throwable, java.lang.Object> scala$tools$util$SignalManager$$illegalArgHandler;
+    Signature: Lscala/PartialFunction;
+    flags: ACC_PRIVATE, ACC_FINAL
+%
+    Signature: #140                         // Lscala/PartialFunction<Ljava/lang/Throwable;Ljava/lang/Object;>;
+
+
+  private scala.collection.immutable.Map<scala.tools.util.SignalManager$rSignal$WSignal, java.lang.String> publicHandlers;
+    Signature: Lscala/collection/immutable/Map;
+    flags: ACC_PRIVATE
+%
+    Signature: #143                         // Lscala/collection/immutable/Map<Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;>;
+
+
+  public volatile scala.tools.util.SignalManager$rSignalHandler$ rSignalHandler$module;
+    Signature: Lscala/tools/util/SignalManager$rSignalHandler$;
+    flags: ACC_PUBLIC, ACC_VOLATILE
+%
+
+
+  public volatile scala.tools.util.SignalManager$rSignal$ rSignal$module;
+    Signature: Lscala/tools/util/SignalManager$rSignal$;
+    flags: ACC_PUBLIC, ACC_VOLATILE
+%
+
+
+  public static java.lang.Object requireInterval(int, scala.tools.util.SignalManager$rSignal$WSignal, scala.Function1<java.lang.Object, scala.runtime.BoxedUnit>);
+    Signature: (ILscala/tools/util/SignalManager$rSignal$WSignal;Lscala/Function1;)Ljava/lang/Object;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=4, locals=3, args_size=3
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: iload_0       
+         4: aload_1       
+         5: aload_2       
+         6: invokevirtual #13                 // Method scala/tools/util/SignalManager$.requireInterval:(ILscala/tools/util/SignalManager$rSignal$WSignal;Lscala/Function1;)Ljava/lang/Object;
+         9: areturn       
+    Signature: #14                          // (ILscala/tools/util/SignalManager$rSignal$WSignal;Lscala/Function1<Ljava/lang/Object;Lscala/runtime/BoxedUnit;>;)Ljava/lang/Object;
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal USR2();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #19                 // Method scala/tools/util/SignalManager$.USR2:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal USR1();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #22                 // Method scala/tools/util/SignalManager$.USR1:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal INFO();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #25                 // Method scala/tools/util/SignalManager$.INFO:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal WINCH();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #28                 // Method scala/tools/util/SignalManager$.WINCH:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal PROF();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #31                 // Method scala/tools/util/SignalManager$.PROF:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal VTALRM();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #34                 // Method scala/tools/util/SignalManager$.VTALRM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal XFSZ();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #37                 // Method scala/tools/util/SignalManager$.XFSZ:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal XCPU();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #40                 // Method scala/tools/util/SignalManager$.XCPU:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal IO();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #43                 // Method scala/tools/util/SignalManager$.IO:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal TTOU();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #46                 // Method scala/tools/util/SignalManager$.TTOU:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal TTIN();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #49                 // Method scala/tools/util/SignalManager$.TTIN:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal CHLD();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #52                 // Method scala/tools/util/SignalManager$.CHLD:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal CONT();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #55                 // Method scala/tools/util/SignalManager$.CONT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal TSTP();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #58                 // Method scala/tools/util/SignalManager$.TSTP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal STOP();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #61                 // Method scala/tools/util/SignalManager$.STOP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal URG();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #64                 // Method scala/tools/util/SignalManager$.URG:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal TERM();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #67                 // Method scala/tools/util/SignalManager$.TERM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal ALRM();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #70                 // Method scala/tools/util/SignalManager$.ALRM:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal PIPE();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #73                 // Method scala/tools/util/SignalManager$.PIPE:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal SYS();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #76                 // Method scala/tools/util/SignalManager$.SYS:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal SEGV();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #79                 // Method scala/tools/util/SignalManager$.SEGV:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal BUS();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #82                 // Method scala/tools/util/SignalManager$.BUS:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal KILL();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #85                 // Method scala/tools/util/SignalManager$.KILL:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal FPE();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #88                 // Method scala/tools/util/SignalManager$.FPE:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal EMT();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #91                 // Method scala/tools/util/SignalManager$.EMT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal ABRT();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #94                 // Method scala/tools/util/SignalManager$.ABRT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal TRAP();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #97                 // Method scala/tools/util/SignalManager$.TRAP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal ILL();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #100                // Method scala/tools/util/SignalManager$.ILL:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal QUIT();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #103                // Method scala/tools/util/SignalManager$.QUIT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal INT();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #106                // Method scala/tools/util/SignalManager$.INT:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal HUP();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #109                // Method scala/tools/util/SignalManager$.HUP:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static void dump();
+    Signature: ()V
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #113                // Method scala/tools/util/SignalManager$.dump:()V
+         6: return        
+
+  public static scala.tools.util.SignalManager$rSignal$WSignal findOpenSignal();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #116                // Method scala/tools/util/SignalManager$.findOpenSignal:()Lscala/tools/util/SignalManager$rSignal$WSignal;
+         6: areturn       
+
+  public static scala.collection.immutable.List<scala.tools.util.SignalManager$rSignal$WSignal> ignoredSignals();
+    Signature: ()Lscala/collection/immutable/List;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #120                // Method scala/tools/util/SignalManager$.ignoredSignals:()Lscala/collection/immutable/List;
+         6: areturn       
+    Signature: #121                         // ()Lscala/collection/immutable/List<Lscala/tools/util/SignalManager$rSignal$WSignal;>;
+
+  public static scala.collection.immutable.List<scala.tools.util.SignalManager$rSignal$WSignal> defaultSignals();
+    Signature: ()Lscala/collection/immutable/List;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #124                // Method scala/tools/util/SignalManager$.defaultSignals:()Lscala/collection/immutable/List;
+         6: areturn       
+    Signature: #121                         // ()Lscala/collection/immutable/List<Lscala/tools/util/SignalManager$rSignal$WSignal;>;
+
+  public static scala.collection.immutable.List<scala.tools.util.SignalManager$rSignal$WSignal> unreserved();
+    Signature: ()Lscala/collection/immutable/List;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #127                // Method scala/tools/util/SignalManager$.unreserved:()Lscala/collection/immutable/List;
+         6: areturn       
+    Signature: #121                         // ()Lscala/collection/immutable/List<Lscala/tools/util/SignalManager$rSignal$WSignal;>;
+
+  public static scala.collection.immutable.Set<scala.tools.util.SignalManager$rSignal$WSignal> reserved();
+    Signature: ()Lscala/collection/immutable/Set;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #131                // Method scala/tools/util/SignalManager$.reserved:()Lscala/collection/immutable/Set;
+         6: areturn       
+    Signature: #132                         // ()Lscala/collection/immutable/Set<Lscala/tools/util/SignalManager$rSignal$WSignal;>;
+
+  public static scala.collection.immutable.List<scala.tools.util.SignalManager$rSignal$WSignal> all();
+    Signature: ()Lscala/collection/immutable/List;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #11                 // Field scala/tools/util/SignalManager$.MODULE$:Lscala/tools/util/SignalManager$;
+         3: invokevirtual #135                // Method scala/tools/util/SignalManager$.all:()Lscala/collection/immutable/List;
+         6: areturn       
+    Signature: #121                         // ()Lscala/collection/immutable/List<Lscala/tools/util/SignalManager$rSignal$WSignal;>;
+
+  public final scala.PartialFunction<java.lang.Throwable, java.lang.Object> scala$tools$util$SignalManager$$illegalArgHandler();
+    Signature: ()Lscala/PartialFunction;
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #153                // Field scala$tools$util$SignalManager$$illegalArgHandler:Lscala/PartialFunction;
+         4: areturn       
+      LineNumberTable:
+        line 36: 0
+    Signature: #154                         // ()Lscala/PartialFunction<Ljava/lang/Throwable;Ljava/lang/Object;>;
+
+  public final scala.tools.util.SignalManager$SignalError scala$tools$util$SignalManager$$fail(java.lang.String);
+    Signature: (Ljava/lang/String;)Lscala/tools/util/SignalManager$SignalError;
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=4, locals=2, args_size=2
+         0: new           #158                // class scala/tools/util/SignalManager$SignalError
+         3: dup           
+         4: aload_0       
+         5: aload_1       
+         6: invokespecial #162                // Method scala/tools/util/SignalManager$SignalError."<init>":(Lscala/tools/util/SignalManager;Ljava/lang/String;)V
+         9: areturn       
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      10     0  this   Lscala/tools/util/SignalManager;
+               0      10     1   msg   Ljava/lang/String;
+
+  public final scala.tools.util.SignalManager$rSignalHandler$ rSignalHandler();
+    Signature: ()Lscala/tools/util/SignalManager$rSignalHandler$;
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0       
+         1: getfield      #171                // Field rSignalHandler$module:Lscala/tools/util/SignalManager$rSignalHandler$;
+         4: ifnonnull     32
+         7: aload_0       
+         8: dup           
+         9: astore_1      
+        10: monitorenter  
+        11: aload_0       
+        12: getfield      #171                // Field rSignalHandler$module:Lscala/tools/util/SignalManager$rSignalHandler$;
+        15: ifnonnull     30
+        18: aload_0       
+        19: new           #173                // class scala/tools/util/SignalManager$rSignalHandler$
+        22: dup           
+        23: aload_0       
+        24: invokespecial #176                // Method scala/tools/util/SignalManager$rSignalHandler$."<init>":(Lscala/tools/util/SignalManager;)V
+        27: putfield      #171                // Field rSignalHandler$module:Lscala/tools/util/SignalManager$rSignalHandler$;
+        30: aload_0       
+        31: monitorexit   
+        32: aload_0       
+        33: getfield      #171                // Field rSignalHandler$module:Lscala/tools/util/SignalManager$rSignalHandler$;
+        36: areturn       
+        37: aload_1       
+        38: monitorexit   
+        39: athrow        
+      Exception table:
+         from    to  target type
+            11    32    37   any
+      LineNumberTable:
+        line 41: 0
+
+  public final scala.tools.util.SignalManager$rSignal$ rSignal();
+    Signature: ()Lscala/tools/util/SignalManager$rSignal$;
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0       
+         1: getfield      #180                // Field rSignal$module:Lscala/tools/util/SignalManager$rSignal$;
+         4: ifnonnull     32
+         7: aload_0       
+         8: dup           
+         9: astore_1      
+        10: monitorenter  
+        11: aload_0       
+        12: getfield      #180                // Field rSignal$module:Lscala/tools/util/SignalManager$rSignal$;
+        15: ifnonnull     30
+        18: aload_0       
+        19: new           #182                // class scala/tools/util/SignalManager$rSignal$
+        22: dup           
+        23: aload_0       
+        24: invokespecial #183                // Method scala/tools/util/SignalManager$rSignal$."<init>":(Lscala/tools/util/SignalManager;)V
+        27: putfield      #180                // Field rSignal$module:Lscala/tools/util/SignalManager$rSignal$;
+        30: aload_0       
+        31: monitorexit   
+        32: aload_0       
+        33: getfield      #180                // Field rSignal$module:Lscala/tools/util/SignalManager$rSignal$;
+        36: areturn       
+        37: aload_1       
+        38: monitorexit   
+        39: athrow        
+      Exception table:
+         from    to  target type
+            11    32    37   any
+      LineNumberTable:
+        line 57: 0
+
+  public final java.lang.Object scala$tools$util$SignalManager$$register(java.lang.String, boolean, scala.Function0<scala.runtime.BoxedUnit>);
+    Signature: (Ljava/lang/String;ZLscala/Function0;)Ljava/lang/Object;
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=6, locals=8, args_size=4
+         0: aload_0       
+         1: invokevirtual #187                // Method rSignal:()Lscala/tools/util/SignalManager$rSignal$;
+         4: aload_1       
+         5: invokevirtual #191                // Method scala/tools/util/SignalManager$rSignal$.apply:(Ljava/lang/String;)Ljava/lang/Object;
+         8: astore        4
+        10: aload_0       
+        11: invokevirtual #193                // Method rSignalHandler:()Lscala/tools/util/SignalManager$rSignalHandler$;
+        14: new           #195                // class scala/tools/util/SignalManager$$anonfun$2
+        17: dup           
+        18: aload_0       
+        19: aload_3       
+        20: invokespecial #198                // Method scala/tools/util/SignalManager$$anonfun$2."<init>":(Lscala/tools/util/SignalManager;Lscala/Function0;)V
+        23: invokevirtual #201                // Method scala/tools/util/SignalManager$rSignalHandler$.apply:(Lscala/Function1;)Ljava/lang/Object;
+        26: astore        5
+        28: aload_0       
+        29: invokevirtual #187                // Method rSignal:()Lscala/tools/util/SignalManager$rSignal$;
+        32: aload         4
+        34: aload         5
+        36: invokevirtual #205                // Method scala/tools/util/SignalManager$rSignal$.handle:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        39: astore        6
+        41: iload_2       
+        42: ifeq          83
+        45: aload_0       
+        46: invokevirtual #193                // Method rSignalHandler:()Lscala/tools/util/SignalManager$rSignalHandler$;
+        49: new           #207                // class scala/tools/util/SignalManager$$anonfun$3
+        52: dup           
+        53: aload_0       
+        54: aload         5
+        56: aload         6
+        58: invokespecial #210                // Method scala/tools/util/SignalManager$$anonfun$3."<init>":(Lscala/tools/util/SignalManager;Ljava/lang/Object;Ljava/lang/Object;)V
+        61: invokevirtual #201                // Method scala/tools/util/SignalManager$rSignalHandler$.apply:(Lscala/Function1;)Ljava/lang/Object;
+        64: astore        7
+        66: aload_0       
+        67: invokevirtual #187                // Method rSignal:()Lscala/tools/util/SignalManager$rSignal$;
+        70: aload         4
+        72: aload         7
+        74: invokevirtual #205                // Method scala/tools/util/SignalManager$rSignal$.handle:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        77: pop           
+        78: aload         7
+        80: goto          85
+        83: aload         5
+        85: areturn       
+      LineNumberTable:
+        line 134: 0
+        line 135: 10
+        line 136: 28
+        line 138: 41
+        line 139: 45
+        line 148: 66
+        line 149: 78
+        line 151: 83
+        line 133: 85
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      86     0  this   Lscala/tools/util/SignalManager;
+               0      86     1  name   Ljava/lang/String;
+               0      86     2 shouldChain   Z
+               0      86     3 body$1   Lscala/Function0;
+              10      76     4 signal   Ljava/lang/Object;
+              28      58     5 current$1   Ljava/lang/Object;
+              41      45     6 prev$1   Ljava/lang/Object;
+              66      14     7 chainer   Ljava/lang/Object;
+    Signature: #221                         // (Ljava/lang/String;ZLscala/Function0<Lscala/runtime/BoxedUnit;>;)Ljava/lang/Object;
+
+  public scala.tools.util.SignalManager$rSignal$WSignal apply(java.lang.String);
+    Signature: (Ljava/lang/String;)Lscala/tools/util/SignalManager$rSignal$WSignal;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=4, args_size=2
+         0: new           #224                // class scala/tools/util/SignalManager$rSignal$WSignal
+         3: dup           
+         4: aload_0       
+         5: invokevirtual #187                // Method rSignal:()Lscala/tools/util/SignalManager$rSignal$;
+         8: aload_1       
+         9: invokespecial #227                // Method scala/tools/util/SignalManager$rSignal$WSignal."<init>":(Lscala/tools/util/SignalManager$rSignal$;Ljava/lang/String;)V
+        12: astore_2      
+        13: goto          30
+        16: astore_3      
+        17: new           #158                // class scala/tools/util/SignalManager$SignalError
+        20: dup           
+        21: aload_0       
+        22: aload_3       
+        23: invokevirtual #233                // Method java/lang/IllegalArgumentException.getMessage:()Ljava/lang/String;
+        26: invokespecial #162                // Method scala/tools/util/SignalManager$SignalError."<init>":(Lscala/tools/util/SignalManager;Ljava/lang/String;)V
+        29: astore_2      
+        30: aload_2       
+        31: areturn       
+      Exception table:
+         from    to  target type
+             0    16    16   Class java/lang/IllegalArgumentException
+      LineNumberTable:
+        line 157: 0
+        line 158: 16
+        line 157: 29
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      32     0  this   Lscala/tools/util/SignalManager;
+               0      32     1  name   Ljava/lang/String;
+               0      31     2 exceptionResult1   Lscala/tools/util/SignalManager$rSignal$WSignal;
+
+  public void update(java.lang.String, scala.Function0<scala.runtime.BoxedUnit>);
+    Signature: (Ljava/lang/String;Lscala/Function0;)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0       
+         1: aload_1       
+         2: invokevirtual #239                // Method apply:(Ljava/lang/String;)Lscala/tools/util/SignalManager$rSignal$WSignal;
+         5: aload_2       
+         6: invokevirtual #243                // Method scala/tools/util/SignalManager$rSignal$WSignal.setTo:(Lscala/Function0;)Ljava/lang/Object;
+         9: pop           
+        10: return        
+      LineNumberTable:
+        line 160: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      11     0  this   Lscala/tools/util/SignalManager;
+               0      11     1  name   Ljava/lang/String;
+               0      11     2  body   Lscala/Function0;
+    Signature: #245                         // (Ljava/lang/String;Lscala/Function0<Lscala/runtime/BoxedUnit;>;)V
+
+  public void public(java.lang.String, java.lang.String, scala.Function0<scala.runtime.BoxedUnit>);
+    Signature: (Ljava/lang/String;Ljava/lang/String;Lscala/Function0;)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=5, args_size=4
+         0: aload_0       
+         1: aload_1       
+         2: invokevirtual #239                // Method apply:(Ljava/lang/String;)Lscala/tools/util/SignalManager$rSignal$WSignal;
+         5: astore        4
+         7: aload         4
+         9: invokevirtual #251                // Method scala/tools/util/SignalManager$rSignal$WSignal.isError:()Z
+        12: ifeq          16
+        15: return        
+        16: aload         4
+        18: aload_3       
+        19: invokevirtual #243                // Method scala/tools/util/SignalManager$rSignal$WSignal.setTo:(Lscala/Function0;)Ljava/lang/Object;
+        22: pop           
+        23: aload_0       
+        24: invokespecial #254                // Method registerInfoHandler:()V
+        27: aload_0       
+        28: aload         4
+        30: aload_2       
+        31: invokespecial #258                // Method addPublicHandler:(Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;)V
+        34: goto          38
+        37: pop           
+        38: return        
+      Exception table:
+         from    to  target type
+             0    37    37   Class java/lang/Exception
+      LineNumberTable:
+        line 169: 0
+        line 170: 7
+        line 171: 15
+        line 173: 16
+        line 174: 23
+        line 175: 27
+        line 168: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      39     0  this   Lscala/tools/util/SignalManager;
+               0      39     1  name   Ljava/lang/String;
+               0      39     2 description   Ljava/lang/String;
+               0      39     3  body   Lscala/Function0;
+               7      27     4  wsig   Lscala/tools/util/SignalManager$rSignal$WSignal;
+    Signature: #263                         // (Ljava/lang/String;Ljava/lang/String;Lscala/Function0<Lscala/runtime/BoxedUnit;>;)V
+
+  private void registerInfoHandler();
+    Signature: ()V
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0       
+         1: ldc_w         #264                // String INFO
+         4: invokevirtual #239                // Method apply:(Ljava/lang/String;)Lscala/tools/util/SignalManager$rSignal$WSignal;
+         7: astore_1      
+         8: aload_0       
+         9: invokespecial #267                // Method publicHandlers:()Lscala/collection/immutable/Map;
+        12: invokeinterface #272,  1          // InterfaceMethod scala/collection/MapLike.isEmpty:()Z
+        17: ifeq          48
+        20: aload_1       
+        21: invokevirtual #275                // Method scala/tools/util/SignalManager$rSignal$WSignal.isDefault:()Z
+        24: ifeq          48
+        27: aload_1       
+        28: new           #277                // class scala/tools/util/SignalManager$$anonfun$registerInfoHandler$1
+        31: dup           
+        32: aload_0       
+        33: invokespecial #278                // Method scala/tools/util/SignalManager$$anonfun$registerInfoHandler$1."<init>":(Lscala/tools/util/SignalManager;)V
+        36: invokevirtual #243                // Method scala/tools/util/SignalManager$rSignal$WSignal.setTo:(Lscala/Function0;)Ljava/lang/Object;
+        39: pop           
+        40: aload_0       
+        41: aload_1       
+        42: ldc_w         #280                // String Print signal handler registry on console.
+        45: invokespecial #258                // Method addPublicHandler:(Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;)V
+        48: return        
+      LineNumberTable:
+        line 183: 0
+        line 184: 8
+        line 185: 27
+        line 186: 40
+        line 182: 48
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      49     0  this   Lscala/tools/util/SignalManager;
+               8      41     1  INFO   Lscala/tools/util/SignalManager$rSignal$WSignal;
+
+  private void addPublicHandler(scala.tools.util.SignalManager$rSignal$WSignal, java.lang.String);
+    Signature: (Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;)V
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0       
+         1: invokespecial #267                // Method publicHandlers:()Lscala/collection/immutable/Map;
+         4: aload_1       
+         5: invokeinterface #284,  2          // InterfaceMethod scala/collection/MapLike.contains:(Ljava/lang/Object;)Z
+        10: ifne          28
+        13: aload_0       
+        14: aload_0       
+        15: invokespecial #267                // Method publicHandlers:()Lscala/collection/immutable/Map;
+        18: aload_1       
+        19: aload_2       
+        20: invokeinterface #290,  3          // InterfaceMethod scala/collection/immutable/MapLike.updated:(Ljava/lang/Object;Ljava/lang/Object;)Lscala/collection/immutable/Map;
+        25: invokespecial #294                // Method publicHandlers_$eq:(Lscala/collection/immutable/Map;)V
+        28: return        
+      LineNumberTable:
+        line 190: 0
+        line 191: 13
+        line 190: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      29     0  this   Lscala/tools/util/SignalManager;
+               0      29     1  wsig   Lscala/tools/util/SignalManager$rSignal$WSignal;
+               0      29     2 description   Ljava/lang/String;
+
+  private scala.collection.immutable.Map<scala.tools.util.SignalManager$rSignal$WSignal, java.lang.String> publicHandlers();
+    Signature: ()Lscala/collection/immutable/Map;
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #296                // Field publicHandlers:Lscala/collection/immutable/Map;
+         4: areturn       
+      LineNumberTable:
+        line 193: 0
+    Signature: #297                         // ()Lscala/collection/immutable/Map<Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;>;
+
+  private void publicHandlers_$eq(scala.collection.immutable.Map<scala.tools.util.SignalManager$rSignal$WSignal, java.lang.String>);
+    Signature: (Lscala/collection/immutable/Map;)V
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: putfield      #296                // Field publicHandlers:Lscala/collection/immutable/Map;
+         5: return        
+      LineNumberTable:
+        line 193: 0
+    Signature: #298                         // (Lscala/collection/immutable/Map<Lscala/tools/util/SignalManager$rSignal$WSignal;Ljava/lang/String;>;)V
+
+  public java.lang.String info();
+    Signature: ()Ljava/lang/String;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0       
+         1: invokespecial #254                // Method registerInfoHandler:()V
+         4: aload_0       
+         5: invokespecial #267                // Method publicHandlers:()Lscala/collection/immutable/Map;
+         8: invokeinterface #304,  1          // InterfaceMethod scala/collection/TraversableOnce.toList:()Lscala/collection/immutable/List;
+        13: new           #306                // class scala/tools/util/SignalManager$$anonfun$4
+        16: dup           
+        17: aload_0       
+        18: invokespecial #307                // Method scala/tools/util/SignalManager$$anonfun$4."<init>":(Lscala/tools/util/SignalManager;)V
+        21: getstatic     #312                // Field scala/math/Ordering$String$.MODULE$:Lscala/math/Ordering$String$;
+        24: invokeinterface #318,  3          // InterfaceMethod scala/collection/SeqLike.sortBy:(Lscala/Function1;Lscala/math/Ordering;)Ljava/lang/Object;
+        29: checkcast     #320                // class scala/collection/TraversableLike
+        32: new           #322                // class scala/tools/util/SignalManager$$anonfun$5
+        35: dup           
+        36: aload_0       
+        37: invokespecial #323                // Method scala/tools/util/SignalManager$$anonfun$5."<init>":(Lscala/tools/util/SignalManager;)V
+        40: getstatic     #328                // Field scala/collection/immutable/List$.MODULE$:Lscala/collection/immutable/List$;
+        43: invokevirtual #332                // Method scala/collection/immutable/List$.canBuildFrom:()Lscala/collection/generic/CanBuildFrom;
+        46: invokeinterface #336,  3          // InterfaceMethod scala/collection/TraversableLike.map:(Lscala/Function1;Lscala/collection/generic/CanBuildFrom;)Ljava/lang/Object;
+        51: checkcast     #338                // class scala/collection/immutable/List
+        54: astore_1      
+        55: aload_1       
+        56: ldc_w         #340                // String \nSignal handler registry:\n
+        59: ldc_w         #342                // String \n
+        62: ldc_w         #344                // String 
+        65: invokeinterface #348,  4          // InterfaceMethod scala/collection/TraversableOnce.mkString:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        70: areturn       
+      LineNumberTable:
+        line 195: 0
+        line 196: 4
+        line 200: 55
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      71     0  this   Lscala/tools/util/SignalManager;
+              55      15     1    xs   Lscala/collection/immutable/List;
+
+  public scala.tools.util.SignalManager(scala.tools.nsc.util.ScalaClassLoader);
+    Signature: (Lscala/tools/nsc/util/ScalaClassLoader;)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: putfield      #353                // Field scala$tools$util$SignalManager$$classLoader:Lscala/tools/nsc/util/ScalaClassLoader;
+         5: aload_0       
+         6: invokespecial #357                // Method java/lang/Object."<init>":()V
+         9: aload_0       
+        10: new           #359                // class scala/tools/util/SignalManager$$anonfun$1
+        13: dup           
+        14: aload_0       
+        15: invokespecial #360                // Method scala/tools/util/SignalManager$$anonfun$1."<init>":(Lscala/tools/util/SignalManager;)V
+        18: putfield      #153                // Field scala$tools$util$SignalManager$$illegalArgHandler:Lscala/PartialFunction;
+        21: aload_0       
+        22: getstatic     #365                // Field scala/Predef$.MODULE$:Lscala/Predef$;
+        25: invokevirtual #369                // Method scala/Predef$.Map:()Lscala/collection/immutable/Map$;
+        28: getstatic     #374                // Field scala/collection/immutable/Nil$.MODULE$:Lscala/collection/immutable/Nil$;
+        31: invokevirtual #379                // Method scala/collection/immutable/Map$.apply:(Lscala/collection/Seq;)Lscala/collection/GenMap;
+        34: checkcast     #381                // class scala/collection/immutable/Map
+        37: putfield      #296                // Field publicHandlers:Lscala/collection/immutable/Map;
+        40: return        
+      LineNumberTable:
+        line 34: 0
+        line 36: 9
+        line 193: 21
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      41     0  this   Lscala/tools/util/SignalManager;
+               0      41     1 classLoader   Lscala/tools/nsc/util/ScalaClassLoader;
+
+  public scala.tools.util.SignalManager();
+    Signature: ()V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0       
+         1: getstatic     #387                // Field scala/tools/nsc/util/ScalaClassLoader$.MODULE$:Lscala/tools/nsc/util/ScalaClassLoader$;
+         4: invokevirtual #391                // Method scala/tools/nsc/util/ScalaClassLoader$.getSystemLoader:()Lscala/tools/nsc/util/ScalaClassLoader;
+         7: invokespecial #393                // Method "<init>":(Lscala/tools/nsc/util/ScalaClassLoader;)V
+        10: return        
+      LineNumberTable:
+        line 35: 0
+}

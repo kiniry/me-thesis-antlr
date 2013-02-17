@@ -1,0 +1,3179 @@
+Classfile /D:/Libs/JavaClasses/com/sun/org/apache/regexp/internal/RE.class
+  Last modified 24-09-2012; size 11059 bytes
+  MD5 checksum d186e3bea9d90be603a638396ce98d72
+public class com.sun.org.apache.regexp.internal.RE implements java.io.Serializable
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+%
+Constant pool:
+    #1 = Integer            65536
+    #2 = String             #11           //  $
+    #3 = String             #12           //  '
+    #4 = String             #33           //  .*
+    #5 = String             #35           //  Bad posix class
+    #6 = String             #39           //  Corrupt program
+    #7 = String             #50           //  Invalid opcode '
+    #8 = String             #56           //  No RE program to run!
+    #9 = String             #93           //  RE internal error: 
+   #10 = String             #98           //  Unrecognized escape '
+   #11 = Utf8               $
+   #12 = Utf8               '
+   #13 = Utf8               ()I
+   #14 = Utf8               ()Ljava/lang/String;
+   #15 = Utf8               ()V
+   #16 = Utf8               (C)C
+   #17 = Utf8               (C)I
+   #18 = Utf8               (C)Z
+   #19 = Utf8               (CCZ)I
+   #20 = Utf8               (I)C
+   #21 = Utf8               (I)I
+   #22 = Utf8               (I)Ljava/lang/String;
+   #23 = Utf8               (I)V
+   #24 = Utf8               (I)Z
+   #25 = Utf8               (II)Ljava/lang/String;
+   #26 = Utf8               (II)V
+   #27 = Utf8               (III)I
+   #28 = Utf8               (Ljava/lang/Object;)V
+   #29 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+   #30 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuffer;
+   #31 = Utf8               (Ljava/lang/String;)V
+   #32 = Utf8               (Ljava/lang/String;)Z
+   #33 = Utf8               .*
+   #34 = Utf8               <init>
+   #35 = Utf8               Bad posix class
+   #36 = Utf8               C
+   #37 = Utf8               Code
+   #38 = Utf8               ConstantValue
+   #39 = Utf8               Corrupt program
+   #40 = Utf8               E_ALNUM
+   #41 = Utf8               E_BOUND
+   #42 = Utf8               E_DIGIT
+   #43 = Utf8               E_NALNUM
+   #44 = Utf8               E_NBOUND
+   #45 = Utf8               E_NDIGIT
+   #46 = Utf8               E_NSPACE
+   #47 = Utf8               E_SPACE
+   #48 = Utf8               Exceptions
+   #49 = Utf8               I
+   #50 = Utf8               Invalid opcode '
+   #51 = Utf8               MATCH_CASEINDEPENDENT
+   #52 = Utf8               MATCH_MULTILINE
+   #53 = Utf8               MATCH_NORMAL
+   #54 = Utf8               MATCH_SINGLELINE
+   #55 = Utf8               MAX_PAREN
+   #56 = Utf8               No RE program to run!
+   #57 = Utf8               OP_ANY
+   #58 = Utf8               OP_ANYOF
+   #59 = Utf8               OP_ATOM
+   #60 = Utf8               OP_BACKREF
+   #61 = Utf8               OP_BOL
+   #62 = Utf8               OP_BRANCH
+   #63 = Utf8               OP_CLOSE
+   #64 = Utf8               OP_CLOSE_CLUSTER
+   #65 = Utf8               OP_END
+   #66 = Utf8               OP_EOL
+   #67 = Utf8               OP_ESCAPE
+   #68 = Utf8               OP_GOTO
+   #69 = Utf8               OP_MAYBE
+   #70 = Utf8               OP_NOTHING
+   #71 = Utf8               OP_OPEN
+   #72 = Utf8               OP_OPEN_CLUSTER
+   #73 = Utf8               OP_PLUS
+   #74 = Utf8               OP_POSIXCLASS
+   #75 = Utf8               OP_RELUCTANTMAYBE
+   #76 = Utf8               OP_RELUCTANTPLUS
+   #77 = Utf8               OP_RELUCTANTSTAR
+   #78 = Utf8               OP_STAR
+   #79 = Utf8               POSIX_CLASS_ALNUM
+   #80 = Utf8               POSIX_CLASS_ALPHA
+   #81 = Utf8               POSIX_CLASS_BLANK
+   #82 = Utf8               POSIX_CLASS_CNTRL
+   #83 = Utf8               POSIX_CLASS_DIGIT
+   #84 = Utf8               POSIX_CLASS_GRAPH
+   #85 = Utf8               POSIX_CLASS_JPART
+   #86 = Utf8               POSIX_CLASS_JSTART
+   #87 = Utf8               POSIX_CLASS_LOWER
+   #88 = Utf8               POSIX_CLASS_PRINT
+   #89 = Utf8               POSIX_CLASS_PUNCT
+   #90 = Utf8               POSIX_CLASS_SPACE
+   #91 = Utf8               POSIX_CLASS_UPPER
+   #92 = Utf8               POSIX_CLASS_XDIGIT
+   #93 = Utf8               RE internal error: 
+   #94 = Utf8               REPLACE_ALL
+   #95 = Utf8               REPLACE_BACKREFERENCES
+   #96 = Utf8               REPLACE_FIRSTONLY
+   #97 = Utf8               StackMapTable
+   #98 = Utf8               Unrecognized escape '
+   #99 = Utf8               [C
+  #100 = Utf8               [I
+  #101 = Utf8               addElement
+  #102 = Utf8               allocParens
+  #103 = Utf8               append
+  #104 = Utf8               charAt
+  #105 = Utf8               com/sun/org/apache/regexp/internal/CharacterIterator
+  #106 = Utf8               com/sun/org/apache/regexp/internal/RE
+  #107 = Utf8               com/sun/org/apache/regexp/internal/RECompiler
+  #108 = Utf8               com/sun/org/apache/regexp/internal/REProgram
+  #109 = Utf8               com/sun/org/apache/regexp/internal/RESyntaxException
+  #110 = Utf8               com/sun/org/apache/regexp/internal/StringCharacterIterator
+  #111 = Utf8               compareChars
+  #112 = Utf8               compile
+  #113 = Utf8               copyInto
+  #114 = Utf8               end0
+  #115 = Utf8               end1
+  #116 = Utf8               end2
+  #117 = Utf8               endBackref
+  #118 = Utf8               endn
+  #119 = Utf8               flags
+  #120 = Utf8               getMatchFlags
+  #121 = Utf8               getParen
+  #122 = Utf8               getParenCount
+  #123 = Utf8               getParenEnd
+  #124 = Utf8               getParenLength
+  #125 = Utf8               getParenStart
+  #126 = Utf8               getProgram
+  #127 = Utf8               getType
+  #128 = Utf8               grep
+  #129 = Utf8               indexOf
+  #130 = Utf8               instruction
+  #131 = Utf8               internalError
+  #132 = Utf8               isDigit
+  #133 = Utf8               isEnd
+  #134 = Utf8               isJavaIdentifierPart
+  #135 = Utf8               isJavaIdentifierStart
+  #136 = Utf8               isLetter
+  #137 = Utf8               isLetterOrDigit
+  #138 = Utf8               isNewline
+  #139 = Utf8               isSpaceChar
+  #140 = Utf8               isWhitespace
+  #141 = Utf8               java/io/Serializable
+  #142 = Utf8               java/lang/Character
+  #143 = Utf8               java/lang/Error
+  #144 = Utf8               java/lang/Object
+  #145 = Utf8               java/lang/String
+  #146 = Utf8               java/lang/StringBuffer
+  #147 = Utf8               java/lang/StringBuilder
+  #148 = Utf8               java/util/Vector
+  #149 = Utf8               length
+  #150 = Utf8               match
+  #151 = Utf8               matchAt
+  #152 = Utf8               matchFlags
+  #153 = Utf8               matchNodes
+  #154 = Utf8               maxNode
+  #155 = Utf8               maxParen
+  #156 = Utf8               maxParens
+  #157 = Utf8               nodeSize
+  #158 = Utf8               offsetNext
+  #159 = Utf8               offsetOpcode
+  #160 = Utf8               offsetOpdata
+  #161 = Utf8               parenCount
+  #162 = Utf8               prefix
+  #163 = Utf8               program
+  #164 = Utf8               search
+  #165 = Utf8               setMatchFlags
+  #166 = Utf8               setParenEnd
+  #167 = Utf8               setParenStart
+  #168 = Utf8               setProgram
+  #169 = Utf8               simplePatternToFullRegularExpression
+  #170 = Utf8               size
+  #171 = Utf8               split
+  #172 = Utf8               start0
+  #173 = Utf8               start1
+  #174 = Utf8               start2
+  #175 = Utf8               startBackref
+  #176 = Utf8               startn
+  #177 = Utf8               subst
+  #178 = Utf8               substring
+  #179 = Utf8               toLowerCase
+  #180 = Utf8               toString
+  #181 = Integer            0
+  #182 = Integer            1
+  #183 = Integer            2
+  #184 = Integer            3
+  #185 = Integer            4
+  #186 = Integer            16
+  #187 = Integer            33
+  #188 = Integer            35
+  #189 = Integer            36
+  #190 = Integer            40
+  #191 = Integer            41
+  #192 = Integer            42
+  #193 = Integer            43
+  #194 = Integer            46
+  #195 = Integer            47
+  #196 = Integer            56
+  #197 = Integer            60
+  #198 = Integer            61
+  #199 = Integer            62
+  #200 = Integer            63
+  #201 = Integer            65
+  #202 = Integer            66
+  #203 = Integer            68
+  #204 = Integer            69
+  #205 = Integer            71
+  #206 = Integer            78
+  #207 = Integer            80
+  #208 = Integer            83
+  #209 = Integer            87
+  #210 = Integer            91
+  #211 = Integer            92
+  #212 = Integer            94
+  #213 = Integer            97
+  #214 = Integer            98
+  #215 = Integer            99
+  #216 = Integer            100
+  #217 = Integer            103
+  #218 = Integer            106
+  #219 = Integer            107
+  #220 = Integer            108
+  #221 = Integer            112
+  #222 = Integer            115
+  #223 = Integer            117
+  #224 = Integer            119
+  #225 = Integer            120
+  #226 = Integer            124
+  #227 = Class              #99           //  "[C"
+  #228 = Class              #105          //  com/sun/org/apache/regexp/internal/CharacterIterator
+  #229 = Class              #106          //  com/sun/org/apache/regexp/internal/RE
+  #230 = Class              #107          //  com/sun/org/apache/regexp/internal/RECompiler
+  #231 = Class              #108          //  com/sun/org/apache/regexp/internal/REProgram
+  #232 = Class              #109          //  com/sun/org/apache/regexp/internal/RESyntaxException
+  #233 = Class              #110          //  com/sun/org/apache/regexp/internal/StringCharacterIterator
+  #234 = Class              #141          //  java/io/Serializable
+  #235 = Class              #142          //  java/lang/Character
+  #236 = Class              #143          //  java/lang/Error
+  #237 = Class              #144          //  java/lang/Object
+  #238 = Class              #145          //  java/lang/String
+  #239 = Class              #146          //  java/lang/StringBuffer
+  #240 = Class              #147          //  java/lang/StringBuilder
+  #241 = Class              #148          //  java/util/Vector
+  #242 = Utf8               Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+  #243 = Utf8               Lcom/sun/org/apache/regexp/internal/REProgram;
+  #244 = Utf8               (Lcom/sun/org/apache/regexp/internal/CharacterIterator;I)Z
+  #245 = Utf8               ()Lcom/sun/org/apache/regexp/internal/REProgram;
+  #246 = Utf8               (Lcom/sun/org/apache/regexp/internal/REProgram;)V
+  #247 = Utf8               (Lcom/sun/org/apache/regexp/internal/REProgram;I)V
+  #248 = Utf8               ([Ljava/lang/Object;)V
+  #249 = Utf8               (Ljava/lang/String;I)I
+  #250 = Utf8               (Ljava/lang/String;I)V
+  #251 = Utf8               (Ljava/lang/String;I)Z
+  #252 = Utf8               (C)Ljava/lang/StringBuffer;
+  #253 = Utf8               (I)Ljava/lang/StringBuilder;
+  #254 = Utf8               (Ljava/lang/String;)Lcom/sun/org/apache/regexp/internal/REProgram;
+  #255 = Utf8               ([Ljava/lang/Object;)[Ljava/lang/String;
+  #256 = Utf8               (Ljava/lang/String;)[Ljava/lang/String;
+  #257 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #258 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #259 = Utf8               (Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+  #260 = NameAndType        #114:#49      //  end0:I
+  #261 = NameAndType        #115:#49      //  end1:I
+  #262 = NameAndType        #116:#49      //  end2:I
+  #263 = NameAndType        #119:#49      //  flags:I
+  #264 = NameAndType        #152:#49      //  matchFlags:I
+  #265 = NameAndType        #155:#49      //  maxParen:I
+  #266 = NameAndType        #156:#49      //  maxParens:I
+  #267 = NameAndType        #161:#49      //  parenCount:I
+  #268 = NameAndType        #172:#49      //  start0:I
+  #269 = NameAndType        #173:#49      //  start1:I
+  #270 = NameAndType        #174:#49      //  start2:I
+  #271 = NameAndType        #130:#99      //  instruction:[C
+  #272 = NameAndType        #162:#99      //  prefix:[C
+  #273 = NameAndType        #117:#100     //  endBackref:[I
+  #274 = NameAndType        #118:#100     //  endn:[I
+  #275 = NameAndType        #175:#100     //  startBackref:[I
+  #276 = NameAndType        #176:#100     //  startn:[I
+  #277 = NameAndType        #164:#242     //  search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+  #278 = NameAndType        #163:#243     //  program:Lcom/sun/org/apache/regexp/internal/REProgram;
+  #279 = NameAndType        #149:#13      //  length:()I
+  #280 = NameAndType        #170:#13      //  size:()I
+  #281 = NameAndType        #34:#15       //  "<init>":()V
+  #282 = NameAndType        #102:#15      //  allocParens:()V
+  #283 = NameAndType        #179:#16      //  toLowerCase:(C)C
+  #284 = NameAndType        #127:#17      //  getType:(C)I
+  #285 = NameAndType        #132:#18      //  isDigit:(C)Z
+  #286 = NameAndType        #134:#18      //  isJavaIdentifierPart:(C)Z
+  #287 = NameAndType        #135:#18      //  isJavaIdentifierStart:(C)Z
+  #288 = NameAndType        #136:#18      //  isLetter:(C)Z
+  #289 = NameAndType        #137:#18      //  isLetterOrDigit:(C)Z
+  #290 = NameAndType        #139:#18      //  isSpaceChar:(C)Z
+  #291 = NameAndType        #140:#18      //  isWhitespace:(C)Z
+  #292 = NameAndType        #111:#19      //  compareChars:(CCZ)I
+  #293 = NameAndType        #104:#20      //  charAt:(I)C
+  #294 = NameAndType        #123:#21      //  getParenEnd:(I)I
+  #295 = NameAndType        #125:#21      //  getParenStart:(I)I
+  #296 = NameAndType        #165:#23      //  setMatchFlags:(I)V
+  #297 = NameAndType        #133:#24      //  isEnd:(I)Z
+  #298 = NameAndType        #138:#24      //  isNewline:(I)Z
+  #299 = NameAndType        #151:#24      //  matchAt:(I)Z
+  #300 = NameAndType        #166:#26      //  setParenEnd:(II)V
+  #301 = NameAndType        #167:#26      //  setParenStart:(II)V
+  #302 = NameAndType        #153:#27      //  matchNodes:(III)I
+  #303 = NameAndType        #150:#244     //  match:(Lcom/sun/org/apache/regexp/internal/CharacterIterator;I)Z
+  #304 = NameAndType        #34:#246      //  "<init>":(Lcom/sun/org/apache/regexp/internal/REProgram;)V
+  #305 = NameAndType        #168:#246     //  setProgram:(Lcom/sun/org/apache/regexp/internal/REProgram;)V
+  #306 = NameAndType        #34:#247      //  "<init>":(Lcom/sun/org/apache/regexp/internal/REProgram;I)V
+  #307 = NameAndType        #101:#28      //  addElement:(Ljava/lang/Object;)V
+  #308 = NameAndType        #113:#248     //  copyInto:([Ljava/lang/Object;)V
+  #309 = NameAndType        #180:#14      //  toString:()Ljava/lang/String;
+  #310 = NameAndType        #121:#22      //  getParen:(I)Ljava/lang/String;
+  #311 = NameAndType        #178:#22      //  substring:(I)Ljava/lang/String;
+  #312 = NameAndType        #178:#25      //  substring:(II)Ljava/lang/String;
+  #313 = NameAndType        #34:#31       //  "<init>":(Ljava/lang/String;)V
+  #314 = NameAndType        #131:#31      //  internalError:(Ljava/lang/String;)V
+  #315 = NameAndType        #150:#32      //  match:(Ljava/lang/String;)Z
+  #316 = NameAndType        #129:#249     //  indexOf:(Ljava/lang/String;I)I
+  #317 = NameAndType        #34:#250      //  "<init>":(Ljava/lang/String;I)V
+  #318 = NameAndType        #150:#251     //  match:(Ljava/lang/String;I)Z
+  #319 = NameAndType        #103:#252     //  append:(C)Ljava/lang/StringBuffer;
+  #320 = NameAndType        #103:#253     //  append:(I)Ljava/lang/StringBuilder;
+  #321 = NameAndType        #112:#254     //  compile:(Ljava/lang/String;)Lcom/sun/org/apache/regexp/internal/REProgram;
+  #322 = NameAndType        #103:#30      //  append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #323 = NameAndType        #103:#257     //  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #324 = NameAndType        #177:#259     //  subst:(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+  #325 = Fieldref           #229.#260     //  com/sun/org/apache/regexp/internal/RE.end0:I
+  #326 = Fieldref           #229.#261     //  com/sun/org/apache/regexp/internal/RE.end1:I
+  #327 = Fieldref           #229.#262     //  com/sun/org/apache/regexp/internal/RE.end2:I
+  #328 = Fieldref           #229.#264     //  com/sun/org/apache/regexp/internal/RE.matchFlags:I
+  #329 = Fieldref           #229.#265     //  com/sun/org/apache/regexp/internal/RE.maxParen:I
+  #330 = Fieldref           #229.#267     //  com/sun/org/apache/regexp/internal/RE.parenCount:I
+  #331 = Fieldref           #229.#268     //  com/sun/org/apache/regexp/internal/RE.start0:I
+  #332 = Fieldref           #229.#269     //  com/sun/org/apache/regexp/internal/RE.start1:I
+  #333 = Fieldref           #229.#270     //  com/sun/org/apache/regexp/internal/RE.start2:I
+  #334 = Fieldref           #229.#273     //  com/sun/org/apache/regexp/internal/RE.endBackref:[I
+  #335 = Fieldref           #229.#274     //  com/sun/org/apache/regexp/internal/RE.endn:[I
+  #336 = Fieldref           #229.#275     //  com/sun/org/apache/regexp/internal/RE.startBackref:[I
+  #337 = Fieldref           #229.#276     //  com/sun/org/apache/regexp/internal/RE.startn:[I
+  #338 = Fieldref           #229.#277     //  com/sun/org/apache/regexp/internal/RE.search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+  #339 = Fieldref           #229.#278     //  com/sun/org/apache/regexp/internal/RE.program:Lcom/sun/org/apache/regexp/internal/REProgram;
+  #340 = Fieldref           #231.#263     //  com/sun/org/apache/regexp/internal/REProgram.flags:I
+  #341 = Fieldref           #231.#266     //  com/sun/org/apache/regexp/internal/REProgram.maxParens:I
+  #342 = Fieldref           #231.#271     //  com/sun/org/apache/regexp/internal/REProgram.instruction:[C
+  #343 = Fieldref           #231.#272     //  com/sun/org/apache/regexp/internal/REProgram.prefix:[C
+  #344 = Methodref          #229.#282     //  com/sun/org/apache/regexp/internal/RE.allocParens:()V
+  #345 = Methodref          #229.#292     //  com/sun/org/apache/regexp/internal/RE.compareChars:(CCZ)I
+  #346 = Methodref          #229.#294     //  com/sun/org/apache/regexp/internal/RE.getParenEnd:(I)I
+  #347 = Methodref          #229.#295     //  com/sun/org/apache/regexp/internal/RE.getParenStart:(I)I
+  #348 = Methodref          #229.#296     //  com/sun/org/apache/regexp/internal/RE.setMatchFlags:(I)V
+  #349 = Methodref          #229.#298     //  com/sun/org/apache/regexp/internal/RE.isNewline:(I)Z
+  #350 = Methodref          #229.#299     //  com/sun/org/apache/regexp/internal/RE.matchAt:(I)Z
+  #351 = Methodref          #229.#300     //  com/sun/org/apache/regexp/internal/RE.setParenEnd:(II)V
+  #352 = Methodref          #229.#301     //  com/sun/org/apache/regexp/internal/RE.setParenStart:(II)V
+  #353 = Methodref          #229.#302     //  com/sun/org/apache/regexp/internal/RE.matchNodes:(III)I
+  #354 = Methodref          #229.#303     //  com/sun/org/apache/regexp/internal/RE.match:(Lcom/sun/org/apache/regexp/internal/CharacterIterator;I)Z
+  #355 = Methodref          #229.#304     //  com/sun/org/apache/regexp/internal/RE."<init>":(Lcom/sun/org/apache/regexp/internal/REProgram;)V
+  #356 = Methodref          #229.#305     //  com/sun/org/apache/regexp/internal/RE.setProgram:(Lcom/sun/org/apache/regexp/internal/REProgram;)V
+  #357 = Methodref          #229.#306     //  com/sun/org/apache/regexp/internal/RE."<init>":(Lcom/sun/org/apache/regexp/internal/REProgram;I)V
+  #358 = Methodref          #229.#310     //  com/sun/org/apache/regexp/internal/RE.getParen:(I)Ljava/lang/String;
+  #359 = Methodref          #229.#314     //  com/sun/org/apache/regexp/internal/RE.internalError:(Ljava/lang/String;)V
+  #360 = Methodref          #229.#315     //  com/sun/org/apache/regexp/internal/RE.match:(Ljava/lang/String;)Z
+  #361 = Methodref          #229.#317     //  com/sun/org/apache/regexp/internal/RE."<init>":(Ljava/lang/String;I)V
+  #362 = Methodref          #229.#318     //  com/sun/org/apache/regexp/internal/RE.match:(Ljava/lang/String;I)Z
+  #363 = Methodref          #229.#324     //  com/sun/org/apache/regexp/internal/RE.subst:(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+  #364 = Methodref          #230.#281     //  com/sun/org/apache/regexp/internal/RECompiler."<init>":()V
+  #365 = Methodref          #230.#321     //  com/sun/org/apache/regexp/internal/RECompiler.compile:(Ljava/lang/String;)Lcom/sun/org/apache/regexp/internal/REProgram;
+  #366 = Methodref          #233.#313     //  com/sun/org/apache/regexp/internal/StringCharacterIterator."<init>":(Ljava/lang/String;)V
+  #367 = Methodref          #235.#283     //  java/lang/Character.toLowerCase:(C)C
+  #368 = Methodref          #235.#284     //  java/lang/Character.getType:(C)I
+  #369 = Methodref          #235.#285     //  java/lang/Character.isDigit:(C)Z
+  #370 = Methodref          #235.#286     //  java/lang/Character.isJavaIdentifierPart:(C)Z
+  #371 = Methodref          #235.#287     //  java/lang/Character.isJavaIdentifierStart:(C)Z
+  #372 = Methodref          #235.#288     //  java/lang/Character.isLetter:(C)Z
+  #373 = Methodref          #235.#289     //  java/lang/Character.isLetterOrDigit:(C)Z
+  #374 = Methodref          #235.#290     //  java/lang/Character.isSpaceChar:(C)Z
+  #375 = Methodref          #235.#291     //  java/lang/Character.isWhitespace:(C)Z
+  #376 = Methodref          #236.#313     //  java/lang/Error."<init>":(Ljava/lang/String;)V
+  #377 = Methodref          #237.#281     //  java/lang/Object."<init>":()V
+  #378 = Methodref          #237.#309     //  java/lang/Object.toString:()Ljava/lang/String;
+  #379 = Methodref          #238.#279     //  java/lang/String.length:()I
+  #380 = Methodref          #238.#293     //  java/lang/String.charAt:(I)C
+  #381 = Methodref          #238.#311     //  java/lang/String.substring:(I)Ljava/lang/String;
+  #382 = Methodref          #238.#312     //  java/lang/String.substring:(II)Ljava/lang/String;
+  #383 = Methodref          #238.#316     //  java/lang/String.indexOf:(Ljava/lang/String;I)I
+  #384 = Methodref          #239.#281     //  java/lang/StringBuffer."<init>":()V
+  #385 = Methodref          #239.#309     //  java/lang/StringBuffer.toString:()Ljava/lang/String;
+  #386 = Methodref          #239.#319     //  java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+  #387 = Methodref          #239.#322     //  java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #388 = Methodref          #240.#281     //  java/lang/StringBuilder."<init>":()V
+  #389 = Methodref          #240.#309     //  java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #390 = Methodref          #240.#320     //  java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+  #391 = Methodref          #240.#323     //  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #392 = Methodref          #241.#280     //  java/util/Vector.size:()I
+  #393 = Methodref          #241.#281     //  java/util/Vector."<init>":()V
+  #394 = Methodref          #241.#307     //  java/util/Vector.addElement:(Ljava/lang/Object;)V
+  #395 = Methodref          #241.#308     //  java/util/Vector.copyInto:([Ljava/lang/Object;)V
+  #396 = InterfaceMethodref #228.#293     //  com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+  #397 = InterfaceMethodref #228.#297     //  com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+  #398 = InterfaceMethodref #228.#312     //  com/sun/org/apache/regexp/internal/CharacterIterator.substring:(II)Ljava/lang/String;
+{
+  public static final int MATCH_NORMAL = 0;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 0
+
+
+  public static final int MATCH_CASEINDEPENDENT = 1;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 1
+
+
+  public static final int MATCH_MULTILINE = 2;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 2
+
+
+  public static final int MATCH_SINGLELINE = 4;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 4
+
+
+  static final char OP_END = 'E';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 69
+
+
+  static final char OP_BOL = '^';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 94
+
+
+  static final char OP_EOL = '$';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 36
+
+
+  static final char OP_ANY = '.';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 46
+
+
+  static final char OP_ANYOF = '[';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 91
+
+
+  static final char OP_BRANCH = '|';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 124
+
+
+  static final char OP_ATOM = 'A';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 65
+
+
+  static final char OP_STAR = '*';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 42
+
+
+  static final char OP_PLUS = '+';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 43
+
+
+  static final char OP_MAYBE = '?';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 63
+
+
+  static final char OP_ESCAPE = '\';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 92
+
+
+  static final char OP_OPEN = '(';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 40
+
+
+  static final char OP_OPEN_CLUSTER = '<';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 60
+
+
+  static final char OP_CLOSE = ')';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 41
+
+
+  static final char OP_CLOSE_CLUSTER = '>';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 62
+
+
+  static final char OP_BACKREF = '#';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 35
+
+
+  static final char OP_GOTO = 'G';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 71
+
+
+  static final char OP_NOTHING = 'N';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 78
+
+
+  static final char OP_RELUCTANTSTAR = '8';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 56
+
+
+  static final char OP_RELUCTANTPLUS = '=';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 61
+
+
+  static final char OP_RELUCTANTMAYBE = '/';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 47
+
+
+  static final char OP_POSIXCLASS = 'P';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 80
+
+
+  static final char E_ALNUM = 'w';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 119
+
+
+  static final char E_NALNUM = 'W';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 87
+
+
+  static final char E_BOUND = 'b';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 98
+
+
+  static final char E_NBOUND = 'B';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 66
+
+
+  static final char E_SPACE = 's';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 115
+
+
+  static final char E_NSPACE = 'S';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 83
+
+
+  static final char E_DIGIT = 'd';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 100
+
+
+  static final char E_NDIGIT = 'D';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 68
+
+
+  static final char POSIX_CLASS_ALNUM = 'w';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 119
+
+
+  static final char POSIX_CLASS_ALPHA = 'a';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 97
+
+
+  static final char POSIX_CLASS_BLANK = 'b';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 98
+
+
+  static final char POSIX_CLASS_CNTRL = 'c';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 99
+
+
+  static final char POSIX_CLASS_DIGIT = 'd';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 100
+
+
+  static final char POSIX_CLASS_GRAPH = 'g';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 103
+
+
+  static final char POSIX_CLASS_LOWER = 'l';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 108
+
+
+  static final char POSIX_CLASS_PRINT = 'p';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 112
+
+
+  static final char POSIX_CLASS_PUNCT = '!';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 33
+
+
+  static final char POSIX_CLASS_SPACE = 's';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 115
+
+
+  static final char POSIX_CLASS_UPPER = 'u';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 117
+
+
+  static final char POSIX_CLASS_XDIGIT = 'x';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 120
+
+
+  static final char POSIX_CLASS_JSTART = 'j';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 106
+
+
+  static final char POSIX_CLASS_JPART = 'k';
+    Signature: C
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 107
+
+
+  static final int maxNode = 65536;
+    Signature: I
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 65536
+
+
+  static final int MAX_PAREN = 16;
+    Signature: I
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 16
+
+
+  static final int offsetOpcode = 0;
+    Signature: I
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 0
+
+
+  static final int offsetOpdata = 1;
+    Signature: I
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 1
+
+
+  static final int offsetNext = 2;
+    Signature: I
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 2
+
+
+  static final int nodeSize = 3;
+    Signature: I
+    flags: ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 3
+
+
+  com.sun.org.apache.regexp.internal.REProgram program;
+    Signature: Lcom/sun/org/apache/regexp/internal/REProgram;
+    flags: 
+%
+
+
+  transient com.sun.org.apache.regexp.internal.CharacterIterator search;
+    Signature: Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+    flags: ACC_TRANSIENT
+%
+
+
+  int matchFlags;
+    Signature: I
+    flags: 
+%
+
+
+  int maxParen;
+    Signature: I
+    flags: 
+%
+
+
+  transient int parenCount;
+    Signature: I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int start0;
+    Signature: I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int end0;
+    Signature: I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int start1;
+    Signature: I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int end1;
+    Signature: I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int start2;
+    Signature: I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int end2;
+    Signature: I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int[] startn;
+    Signature: [I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int[] endn;
+    Signature: [I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int[] startBackref;
+    Signature: [I
+    flags: ACC_TRANSIENT
+%
+
+
+  transient int[] endBackref;
+    Signature: [I
+    flags: ACC_TRANSIENT
+%
+
+
+  public static final int REPLACE_ALL = 0;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 0
+
+
+  public static final int REPLACE_FIRSTONLY = 1;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 1
+
+
+  public static final int REPLACE_BACKREFERENCES = 2;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 2
+
+
+  public com.sun.org.apache.regexp.internal.RE(java.lang.String) throws com.sun.org.apache.regexp.internal.RESyntaxException;
+    Signature: (Ljava/lang/String;)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: iconst_0      
+         3: invokespecial #361                // Method "<init>":(Ljava/lang/String;I)V
+         6: return        
+    Exceptions:
+      throws com.sun.org.apache.regexp.internal.RESyntaxException
+
+  public com.sun.org.apache.regexp.internal.RE(java.lang.String, int) throws com.sun.org.apache.regexp.internal.RESyntaxException;
+    Signature: (Ljava/lang/String;I)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0       
+         1: new           #230                // class com/sun/org/apache/regexp/internal/RECompiler
+         4: dup           
+         5: invokespecial #364                // Method com/sun/org/apache/regexp/internal/RECompiler."<init>":()V
+         8: aload_1       
+         9: invokevirtual #365                // Method com/sun/org/apache/regexp/internal/RECompiler.compile:(Ljava/lang/String;)Lcom/sun/org/apache/regexp/internal/REProgram;
+        12: invokespecial #355                // Method "<init>":(Lcom/sun/org/apache/regexp/internal/REProgram;)V
+        15: aload_0       
+        16: iload_2       
+        17: invokevirtual #348                // Method setMatchFlags:(I)V
+        20: return        
+    Exceptions:
+      throws com.sun.org.apache.regexp.internal.RESyntaxException
+
+  public com.sun.org.apache.regexp.internal.RE(com.sun.org.apache.regexp.internal.REProgram, int);
+    Signature: (Lcom/sun/org/apache/regexp/internal/REProgram;I)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0       
+         1: invokespecial #377                // Method java/lang/Object."<init>":()V
+         4: aload_0       
+         5: bipush        16
+         7: putfield      #329                // Field maxParen:I
+        10: aload_0       
+        11: aload_1       
+        12: invokevirtual #356                // Method setProgram:(Lcom/sun/org/apache/regexp/internal/REProgram;)V
+        15: aload_0       
+        16: iload_2       
+        17: invokevirtual #348                // Method setMatchFlags:(I)V
+        20: return        
+
+  public com.sun.org.apache.regexp.internal.RE(com.sun.org.apache.regexp.internal.REProgram);
+    Signature: (Lcom/sun/org/apache/regexp/internal/REProgram;)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: iconst_0      
+         3: invokespecial #357                // Method "<init>":(Lcom/sun/org/apache/regexp/internal/REProgram;I)V
+         6: return        
+
+  public com.sun.org.apache.regexp.internal.RE();
+    Signature: ()V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0       
+         1: aconst_null   
+         2: checkcast     #231                // class com/sun/org/apache/regexp/internal/REProgram
+         5: iconst_0      
+         6: invokespecial #357                // Method "<init>":(Lcom/sun/org/apache/regexp/internal/REProgram;I)V
+         9: return        
+
+  public static java.lang.String simplePatternToFullRegularExpression(java.lang.String);
+    Signature: (Ljava/lang/String;)Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=4, args_size=1
+         0: new           #239                // class java/lang/StringBuffer
+         3: dup           
+         4: invokespecial #384                // Method java/lang/StringBuffer."<init>":()V
+         7: astore_1      
+         8: iconst_0      
+         9: istore_2      
+        10: iload_2       
+        11: aload_0       
+        12: invokevirtual #379                // Method java/lang/String.length:()I
+        15: if_icmpge     177
+        18: aload_0       
+        19: iload_2       
+        20: invokevirtual #380                // Method java/lang/String.charAt:(I)C
+        23: istore_3      
+        24: iload_3       
+        25: lookupswitch  { // 14
+                      36: 158
+                      40: 158
+                      41: 158
+                      42: 148
+                      43: 158
+                      46: 158
+                      63: 158
+                      91: 158
+                      92: 158
+                      93: 158
+                      94: 158
+                     123: 158
+                     124: 158
+                     125: 158
+                 default: 165
+            }
+       148: aload_1       
+       149: ldc           #4                  // String .*
+       151: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       154: pop           
+       155: goto          171
+       158: aload_1       
+       159: bipush        92
+       161: invokevirtual #386                // Method java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+       164: pop           
+       165: aload_1       
+       166: iload_3       
+       167: invokevirtual #386                // Method java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+       170: pop           
+       171: iinc          2, 1
+       174: goto          10
+       177: aload_1       
+       178: invokevirtual #385                // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+       181: areturn       
+      StackMapTable: number_of_entries = 6
+           frame_type = 253 /* append */
+             offset_delta = 10
+        locals = [ class java/lang/StringBuffer, int ]
+           frame_type = 252 /* append */
+             offset_delta = 137
+        locals = [ int ]
+           frame_type = 9 /* same */
+           frame_type = 6 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+
+  public void setMatchFlags(int);
+    Signature: (I)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #328                // Field matchFlags:I
+         5: return        
+
+  public int getMatchFlags();
+    Signature: ()I
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #328                // Field matchFlags:I
+         4: ireturn       
+
+  public void setProgram(com.sun.org.apache.regexp.internal.REProgram);
+    Signature: (Lcom/sun/org/apache/regexp/internal/REProgram;)V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: putfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+         5: aload_1       
+         6: ifnull        28
+         9: aload_1       
+        10: getfield      #341                // Field com/sun/org/apache/regexp/internal/REProgram.maxParens:I
+        13: iconst_m1     
+        14: if_icmpeq     28
+        17: aload_0       
+        18: aload_1       
+        19: getfield      #341                // Field com/sun/org/apache/regexp/internal/REProgram.maxParens:I
+        22: putfield      #329                // Field maxParen:I
+        25: goto          34
+        28: aload_0       
+        29: bipush        16
+        31: putfield      #329                // Field maxParen:I
+        34: return        
+      StackMapTable: number_of_entries = 2
+           frame_type = 28 /* same */
+           frame_type = 5 /* same */
+
+
+  public com.sun.org.apache.regexp.internal.REProgram getProgram();
+    Signature: ()Lcom/sun/org/apache/regexp/internal/REProgram;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+         4: areturn       
+
+  public int getParenCount();
+    Signature: ()I
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #330                // Field parenCount:I
+         4: ireturn       
+
+  public java.lang.String getParen(int);
+    Signature: (I)Ljava/lang/String;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=3, args_size=2
+         0: iload_1       
+         1: aload_0       
+         2: getfield      #330                // Field parenCount:I
+         5: if_icmpge     34
+         8: aload_0       
+         9: iload_1       
+        10: invokevirtual #347                // Method getParenStart:(I)I
+        13: dup           
+        14: istore_2      
+        15: iflt          34
+        18: aload_0       
+        19: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+        22: iload_2       
+        23: aload_0       
+        24: iload_1       
+        25: invokevirtual #346                // Method getParenEnd:(I)I
+        28: invokeinterface #398,  3          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.substring:(II)Ljava/lang/String;
+        33: areturn       
+        34: aconst_null   
+        35: areturn       
+      StackMapTable: number_of_entries = 1
+           frame_type = 34 /* same */
+
+
+  public final int getParenStart(int);
+    Signature: (I)I
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: iload_1       
+         1: aload_0       
+         2: getfield      #330                // Field parenCount:I
+         5: if_icmpge     69
+         8: iload_1       
+         9: tableswitch   { // 0 to 2
+                       0: 36
+                       1: 41
+                       2: 46
+                 default: 51
+            }
+        36: aload_0       
+        37: getfield      #331                // Field start0:I
+        40: ireturn       
+        41: aload_0       
+        42: getfield      #332                // Field start1:I
+        45: ireturn       
+        46: aload_0       
+        47: getfield      #333                // Field start2:I
+        50: ireturn       
+        51: aload_0       
+        52: getfield      #337                // Field startn:[I
+        55: ifnonnull     62
+        58: aload_0       
+        59: invokespecial #344                // Method allocParens:()V
+        62: aload_0       
+        63: getfield      #337                // Field startn:[I
+        66: iload_1       
+        67: iaload        
+        68: ireturn       
+        69: iconst_m1     
+        70: ireturn       
+      StackMapTable: number_of_entries = 6
+           frame_type = 36 /* same */
+           frame_type = 4 /* same */
+           frame_type = 4 /* same */
+           frame_type = 4 /* same */
+           frame_type = 10 /* same */
+           frame_type = 6 /* same */
+
+
+  public final int getParenEnd(int);
+    Signature: (I)I
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=2, locals=2, args_size=2
+         0: iload_1       
+         1: aload_0       
+         2: getfield      #330                // Field parenCount:I
+         5: if_icmpge     69
+         8: iload_1       
+         9: tableswitch   { // 0 to 2
+                       0: 36
+                       1: 41
+                       2: 46
+                 default: 51
+            }
+        36: aload_0       
+        37: getfield      #325                // Field end0:I
+        40: ireturn       
+        41: aload_0       
+        42: getfield      #326                // Field end1:I
+        45: ireturn       
+        46: aload_0       
+        47: getfield      #327                // Field end2:I
+        50: ireturn       
+        51: aload_0       
+        52: getfield      #335                // Field endn:[I
+        55: ifnonnull     62
+        58: aload_0       
+        59: invokespecial #344                // Method allocParens:()V
+        62: aload_0       
+        63: getfield      #335                // Field endn:[I
+        66: iload_1       
+        67: iaload        
+        68: ireturn       
+        69: iconst_m1     
+        70: ireturn       
+      StackMapTable: number_of_entries = 6
+           frame_type = 36 /* same */
+           frame_type = 4 /* same */
+           frame_type = 4 /* same */
+           frame_type = 4 /* same */
+           frame_type = 10 /* same */
+           frame_type = 6 /* same */
+
+
+  public final int getParenLength(int);
+    Signature: (I)I
+    flags: ACC_PUBLIC, ACC_FINAL
+%
+    Code:
+      stack=3, locals=2, args_size=2
+         0: iload_1       
+         1: aload_0       
+         2: getfield      #330                // Field parenCount:I
+         5: if_icmpge     20
+         8: aload_0       
+         9: iload_1       
+        10: invokevirtual #346                // Method getParenEnd:(I)I
+        13: aload_0       
+        14: iload_1       
+        15: invokevirtual #347                // Method getParenStart:(I)I
+        18: isub          
+        19: ireturn       
+        20: iconst_m1     
+        21: ireturn       
+      StackMapTable: number_of_entries = 1
+           frame_type = 20 /* same */
+
+
+  protected final void setParenStart(int, int);
+    Signature: (II)V
+    flags: ACC_PROTECTED, ACC_FINAL
+%
+    Code:
+      stack=3, locals=3, args_size=3
+         0: iload_1       
+         1: aload_0       
+         2: getfield      #330                // Field parenCount:I
+         5: if_icmpge     78
+         8: iload_1       
+         9: tableswitch   { // 0 to 2
+                       0: 36
+                       1: 44
+                       2: 52
+                 default: 60
+            }
+        36: aload_0       
+        37: iload_2       
+        38: putfield      #331                // Field start0:I
+        41: goto          78
+        44: aload_0       
+        45: iload_2       
+        46: putfield      #332                // Field start1:I
+        49: goto          78
+        52: aload_0       
+        53: iload_2       
+        54: putfield      #333                // Field start2:I
+        57: goto          78
+        60: aload_0       
+        61: getfield      #337                // Field startn:[I
+        64: ifnonnull     71
+        67: aload_0       
+        68: invokespecial #344                // Method allocParens:()V
+        71: aload_0       
+        72: getfield      #337                // Field startn:[I
+        75: iload_1       
+        76: iload_2       
+        77: iastore       
+        78: return        
+      StackMapTable: number_of_entries = 6
+           frame_type = 36 /* same */
+           frame_type = 7 /* same */
+           frame_type = 7 /* same */
+           frame_type = 7 /* same */
+           frame_type = 10 /* same */
+           frame_type = 6 /* same */
+
+
+  protected final void setParenEnd(int, int);
+    Signature: (II)V
+    flags: ACC_PROTECTED, ACC_FINAL
+%
+    Code:
+      stack=3, locals=3, args_size=3
+         0: iload_1       
+         1: aload_0       
+         2: getfield      #330                // Field parenCount:I
+         5: if_icmpge     78
+         8: iload_1       
+         9: tableswitch   { // 0 to 2
+                       0: 36
+                       1: 44
+                       2: 52
+                 default: 60
+            }
+        36: aload_0       
+        37: iload_2       
+        38: putfield      #325                // Field end0:I
+        41: goto          78
+        44: aload_0       
+        45: iload_2       
+        46: putfield      #326                // Field end1:I
+        49: goto          78
+        52: aload_0       
+        53: iload_2       
+        54: putfield      #327                // Field end2:I
+        57: goto          78
+        60: aload_0       
+        61: getfield      #335                // Field endn:[I
+        64: ifnonnull     71
+        67: aload_0       
+        68: invokespecial #344                // Method allocParens:()V
+        71: aload_0       
+        72: getfield      #335                // Field endn:[I
+        75: iload_1       
+        76: iload_2       
+        77: iastore       
+        78: return        
+      StackMapTable: number_of_entries = 6
+           frame_type = 36 /* same */
+           frame_type = 7 /* same */
+           frame_type = 7 /* same */
+           frame_type = 7 /* same */
+           frame_type = 10 /* same */
+           frame_type = 6 /* same */
+
+
+  protected void internalError(java.lang.String) throws java.lang.Error;
+    Signature: (Ljava/lang/String;)V
+    flags: ACC_PROTECTED
+%
+    Code:
+      stack=4, locals=2, args_size=2
+         0: new           #236                // class java/lang/Error
+         3: dup           
+         4: new           #240                // class java/lang/StringBuilder
+         7: dup           
+         8: invokespecial #388                // Method java/lang/StringBuilder."<init>":()V
+        11: ldc           #9                  // String RE internal error: 
+        13: invokevirtual #391                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        16: aload_1       
+        17: invokevirtual #391                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        20: invokevirtual #389                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        23: invokespecial #376                // Method java/lang/Error."<init>":(Ljava/lang/String;)V
+        26: athrow        
+    Exceptions:
+      throws java.lang.Error
+
+  private final void allocParens();
+    Signature: ()V
+    flags: ACC_PRIVATE, ACC_FINAL
+%
+    Code:
+      stack=3, locals=2, args_size=1
+         0: aload_0       
+         1: aload_0       
+         2: getfield      #329                // Field maxParen:I
+         5: newarray       int
+         7: putfield      #337                // Field startn:[I
+        10: aload_0       
+        11: aload_0       
+        12: getfield      #329                // Field maxParen:I
+        15: newarray       int
+        17: putfield      #335                // Field endn:[I
+        20: iconst_0      
+        21: istore_1      
+        22: iload_1       
+        23: aload_0       
+        24: getfield      #329                // Field maxParen:I
+        27: if_icmpge     50
+        30: aload_0       
+        31: getfield      #337                // Field startn:[I
+        34: iload_1       
+        35: iconst_m1     
+        36: iastore       
+        37: aload_0       
+        38: getfield      #335                // Field endn:[I
+        41: iload_1       
+        42: iconst_m1     
+        43: iastore       
+        44: iinc          1, 1
+        47: goto          22
+        50: return        
+      StackMapTable: number_of_entries = 2
+           frame_type = 252 /* append */
+             offset_delta = 22
+        locals = [ int ]
+           frame_type = 250 /* chop */
+          offset_delta = 27
+
+
+  protected int matchNodes(int, int, int);
+    Signature: (III)I
+    flags: ACC_PROTECTED
+%
+    Code:
+      stack=5, locals=19, args_size=4
+         0: iload_3       
+         1: istore        4
+         3: aload_0       
+         4: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+         7: getfield      #342                // Field com/sun/org/apache/regexp/internal/REProgram.instruction:[C
+        10: astore        9
+        12: iload_1       
+        13: istore        10
+        15: iload         10
+        17: iload_2       
+        18: if_icmpge     2164
+        21: aload         9
+        23: iload         10
+        25: iconst_0      
+        26: iadd          
+        27: caload        
+        28: istore        6
+        30: iload         10
+        32: aload         9
+        34: iload         10
+        36: iconst_2      
+        37: iadd          
+        38: caload        
+        39: i2s           
+        40: iadd          
+        41: istore        5
+        43: aload         9
+        45: iload         10
+        47: iconst_1      
+        48: iadd          
+        49: caload        
+        50: istore        7
+        52: iload         6
+        54: lookupswitch  { // 19
+                      35: 517
+                      36: 696
+                      40: 350
+                      41: 428
+                      46: 1127
+                      47: 216
+                      56: 309
+                      60: 506
+                      61: 268
+                      62: 506
+                      65: 1184
+                      69: 2118
+                      71: 2115
+                      78: 2115
+                      80: 1299
+                      91: 1891
+                      92: 746
+                      94: 661
+                     124: 2039
+                 default: 2128
+            }
+       216: iconst_0      
+       217: istore        11
+       219: aload_0       
+       220: iload         5
+       222: ldc           #1                  // int 65536
+       224: iload         4
+       226: invokevirtual #353                // Method matchNodes:(III)I
+       229: dup           
+       230: istore        8
+       232: iconst_m1     
+       233: if_icmpeq     239
+       236: iload         8
+       238: ireturn       
+       239: iload         11
+       241: iinc          11, 1
+       244: ifne          266
+       247: aload_0       
+       248: iload         10
+       250: iconst_3      
+       251: iadd          
+       252: iload         5
+       254: iload         4
+       256: invokevirtual #353                // Method matchNodes:(III)I
+       259: dup           
+       260: istore        4
+       262: iconst_m1     
+       263: if_icmpne     219
+       266: iconst_m1     
+       267: ireturn       
+       268: aload_0       
+       269: iload         10
+       271: iconst_3      
+       272: iadd          
+       273: iload         5
+       275: iload         4
+       277: invokevirtual #353                // Method matchNodes:(III)I
+       280: dup           
+       281: istore        4
+       283: iconst_m1     
+       284: if_icmpeq     307
+       287: aload_0       
+       288: iload         5
+       290: ldc           #1                  // int 65536
+       292: iload         4
+       294: invokevirtual #353                // Method matchNodes:(III)I
+       297: dup           
+       298: istore        8
+       300: iconst_m1     
+       301: if_icmpeq     268
+       304: iload         8
+       306: ireturn       
+       307: iconst_m1     
+       308: ireturn       
+       309: aload_0       
+       310: iload         5
+       312: ldc           #1                  // int 65536
+       314: iload         4
+       316: invokevirtual #353                // Method matchNodes:(III)I
+       319: dup           
+       320: istore        8
+       322: iconst_m1     
+       323: if_icmpeq     329
+       326: iload         8
+       328: ireturn       
+       329: aload_0       
+       330: iload         10
+       332: iconst_3      
+       333: iadd          
+       334: iload         5
+       336: iload         4
+       338: invokevirtual #353                // Method matchNodes:(III)I
+       341: dup           
+       342: istore        4
+       344: iconst_m1     
+       345: if_icmpne     309
+       348: iconst_m1     
+       349: ireturn       
+       350: aload_0       
+       351: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+       354: getfield      #340                // Field com/sun/org/apache/regexp/internal/REProgram.flags:I
+       357: iconst_1      
+       358: iand          
+       359: ifeq          371
+       362: aload_0       
+       363: getfield      #336                // Field startBackref:[I
+       366: iload         7
+       368: iload         4
+       370: iastore       
+       371: aload_0       
+       372: iload         5
+       374: ldc           #1                  // int 65536
+       376: iload         4
+       378: invokevirtual #353                // Method matchNodes:(III)I
+       381: dup           
+       382: istore        8
+       384: iconst_m1     
+       385: if_icmpeq     425
+       388: iload         7
+       390: iconst_1      
+       391: iadd          
+       392: aload_0       
+       393: getfield      #330                // Field parenCount:I
+       396: if_icmple     407
+       399: aload_0       
+       400: iload         7
+       402: iconst_1      
+       403: iadd          
+       404: putfield      #330                // Field parenCount:I
+       407: aload_0       
+       408: iload         7
+       410: invokevirtual #347                // Method getParenStart:(I)I
+       413: iconst_m1     
+       414: if_icmpne     425
+       417: aload_0       
+       418: iload         7
+       420: iload         4
+       422: invokevirtual #352                // Method setParenStart:(II)V
+       425: iload         8
+       427: ireturn       
+       428: aload_0       
+       429: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+       432: getfield      #340                // Field com/sun/org/apache/regexp/internal/REProgram.flags:I
+       435: iconst_1      
+       436: iand          
+       437: ifeq          449
+       440: aload_0       
+       441: getfield      #334                // Field endBackref:[I
+       444: iload         7
+       446: iload         4
+       448: iastore       
+       449: aload_0       
+       450: iload         5
+       452: ldc           #1                  // int 65536
+       454: iload         4
+       456: invokevirtual #353                // Method matchNodes:(III)I
+       459: dup           
+       460: istore        8
+       462: iconst_m1     
+       463: if_icmpeq     503
+       466: iload         7
+       468: iconst_1      
+       469: iadd          
+       470: aload_0       
+       471: getfield      #330                // Field parenCount:I
+       474: if_icmple     485
+       477: aload_0       
+       478: iload         7
+       480: iconst_1      
+       481: iadd          
+       482: putfield      #330                // Field parenCount:I
+       485: aload_0       
+       486: iload         7
+       488: invokevirtual #346                // Method getParenEnd:(I)I
+       491: iconst_m1     
+       492: if_icmpne     503
+       495: aload_0       
+       496: iload         7
+       498: iload         4
+       500: invokevirtual #351                // Method setParenEnd:(II)V
+       503: iload         8
+       505: ireturn       
+       506: aload_0       
+       507: iload         5
+       509: ldc           #1                  // int 65536
+       511: iload         4
+       513: invokevirtual #353                // Method matchNodes:(III)I
+       516: ireturn       
+       517: aload_0       
+       518: getfield      #336                // Field startBackref:[I
+       521: iload         7
+       523: iaload        
+       524: istore        11
+       526: aload_0       
+       527: getfield      #334                // Field endBackref:[I
+       530: iload         7
+       532: iaload        
+       533: istore        12
+       535: iload         11
+       537: iconst_m1     
+       538: if_icmpeq     547
+       541: iload         12
+       543: iconst_m1     
+       544: if_icmpne     549
+       547: iconst_m1     
+       548: ireturn       
+       549: iload         11
+       551: iload         12
+       553: if_icmpne     559
+       556: goto          2157
+       559: iload         12
+       561: iload         11
+       563: isub          
+       564: istore        13
+       566: aload_0       
+       567: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       570: iload         4
+       572: iload         13
+       574: iadd          
+       575: iconst_1      
+       576: isub          
+       577: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+       582: ifeq          587
+       585: iconst_m1     
+       586: ireturn       
+       587: aload_0       
+       588: getfield      #328                // Field matchFlags:I
+       591: iconst_1      
+       592: iand          
+       593: ifeq          600
+       596: iconst_1      
+       597: goto          601
+       600: iconst_0      
+       601: istore        14
+       603: iconst_0      
+       604: istore        15
+       606: iload         15
+       608: iload         13
+       610: if_icmpge     658
+       613: aload_0       
+       614: aload_0       
+       615: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       618: iload         4
+       620: iinc          4, 1
+       623: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+       628: aload_0       
+       629: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       632: iload         11
+       634: iload         15
+       636: iadd          
+       637: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+       642: iload         14
+       644: invokespecial #345                // Method compareChars:(CCZ)I
+       647: ifeq          652
+       650: iconst_m1     
+       651: ireturn       
+       652: iinc          15, 1
+       655: goto          606
+       658: goto          2157
+       661: iload         4
+       663: ifeq          2157
+       666: aload_0       
+       667: getfield      #328                // Field matchFlags:I
+       670: iconst_2      
+       671: iand          
+       672: iconst_2      
+       673: if_icmpne     694
+       676: iload         4
+       678: ifle          692
+       681: aload_0       
+       682: iload         4
+       684: iconst_1      
+       685: isub          
+       686: invokespecial #349                // Method isNewline:(I)Z
+       689: ifne          2157
+       692: iconst_m1     
+       693: ireturn       
+       694: iconst_m1     
+       695: ireturn       
+       696: aload_0       
+       697: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       700: iconst_0      
+       701: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+       706: ifne          2157
+       709: aload_0       
+       710: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       713: iload         4
+       715: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+       720: ifne          2157
+       723: aload_0       
+       724: getfield      #328                // Field matchFlags:I
+       727: iconst_2      
+       728: iand          
+       729: iconst_2      
+       730: if_icmpne     744
+       733: aload_0       
+       734: iload         4
+       736: invokespecial #349                // Method isNewline:(I)Z
+       739: ifne          2157
+       742: iconst_m1     
+       743: ireturn       
+       744: iconst_m1     
+       745: ireturn       
+       746: iload         7
+       748: lookupswitch  { // 8
+                      66: 824
+                      68: 919
+                      83: 919
+                      87: 919
+                      98: 824
+                     100: 919
+                     115: 919
+                     119: 919
+                 default: 1095
+            }
+       824: iload         4
+       826: ifne          834
+       829: bipush        10
+       831: goto          847
+       834: aload_0       
+       835: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       838: iload         4
+       840: iconst_1      
+       841: isub          
+       842: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+       847: istore        11
+       849: aload_0       
+       850: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       853: iload         4
+       855: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+       860: ifeq          868
+       863: bipush        10
+       865: goto          879
+       868: aload_0       
+       869: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       872: iload         4
+       874: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+       879: istore        12
+       881: iload         11
+       883: invokestatic  #373                // Method java/lang/Character.isLetterOrDigit:(C)Z
+       886: iload         12
+       888: invokestatic  #373                // Method java/lang/Character.isLetterOrDigit:(C)Z
+       891: if_icmpne     898
+       894: iconst_1      
+       895: goto          899
+       898: iconst_0      
+       899: iload         7
+       901: bipush        98
+       903: if_icmpne     910
+       906: iconst_1      
+       907: goto          911
+       910: iconst_0      
+       911: if_icmpne     916
+       914: iconst_m1     
+       915: ireturn       
+       916: goto          1124
+       919: aload_0       
+       920: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       923: iload         4
+       925: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+       930: ifeq          935
+       933: iconst_m1     
+       934: ireturn       
+       935: aload_0       
+       936: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+       939: iload         4
+       941: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+       946: istore        11
+       948: iload         7
+       950: lookupswitch  { // 6
+                      68: 1045
+                      83: 1067
+                      87: 1008
+                     100: 1045
+                     115: 1067
+                     119: 1008
+                 default: 1089
+            }
+      1008: iload         11
+      1010: invokestatic  #373                // Method java/lang/Character.isLetterOrDigit:(C)Z
+      1013: ifne          1023
+      1016: iload         11
+      1018: bipush        95
+      1020: if_icmpne     1027
+      1023: iconst_1      
+      1024: goto          1028
+      1027: iconst_0      
+      1028: iload         7
+      1030: bipush        119
+      1032: if_icmpne     1039
+      1035: iconst_1      
+      1036: goto          1040
+      1039: iconst_0      
+      1040: if_icmpeq     1089
+      1043: iconst_m1     
+      1044: ireturn       
+      1045: iload         11
+      1047: invokestatic  #369                // Method java/lang/Character.isDigit:(C)Z
+      1050: iload         7
+      1052: bipush        100
+      1054: if_icmpne     1061
+      1057: iconst_1      
+      1058: goto          1062
+      1061: iconst_0      
+      1062: if_icmpeq     1089
+      1065: iconst_m1     
+      1066: ireturn       
+      1067: iload         11
+      1069: invokestatic  #375                // Method java/lang/Character.isWhitespace:(C)Z
+      1072: iload         7
+      1074: bipush        115
+      1076: if_icmpne     1083
+      1079: iconst_1      
+      1080: goto          1084
+      1083: iconst_0      
+      1084: if_icmpeq     1089
+      1087: iconst_m1     
+      1088: ireturn       
+      1089: iinc          4, 1
+      1092: goto          1124
+      1095: aload_0       
+      1096: new           #240                // class java/lang/StringBuilder
+      1099: dup           
+      1100: invokespecial #388                // Method java/lang/StringBuilder."<init>":()V
+      1103: ldc           #10                 // String Unrecognized escape '
+      1105: invokevirtual #391                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      1108: iload         7
+      1110: invokevirtual #390                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      1113: ldc           #3                  // String '
+      1115: invokevirtual #391                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      1118: invokevirtual #389                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      1121: invokevirtual #359                // Method internalError:(Ljava/lang/String;)V
+      1124: goto          2157
+      1127: aload_0       
+      1128: getfield      #328                // Field matchFlags:I
+      1131: iconst_4      
+      1132: iand          
+      1133: iconst_4      
+      1134: if_icmpne     1153
+      1137: aload_0       
+      1138: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1141: iload         4
+      1143: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+      1148: ifeq          1178
+      1151: iconst_m1     
+      1152: ireturn       
+      1153: aload_0       
+      1154: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1157: iload         4
+      1159: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+      1164: ifne          1176
+      1167: aload_0       
+      1168: iload         4
+      1170: invokespecial #349                // Method isNewline:(I)Z
+      1173: ifeq          1178
+      1176: iconst_m1     
+      1177: ireturn       
+      1178: iinc          4, 1
+      1181: goto          2157
+      1184: aload_0       
+      1185: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1188: iload         4
+      1190: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+      1195: ifeq          1200
+      1198: iconst_m1     
+      1199: ireturn       
+      1200: iload         7
+      1202: istore        11
+      1204: iload         10
+      1206: iconst_3      
+      1207: iadd          
+      1208: istore        12
+      1210: aload_0       
+      1211: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1214: iload         11
+      1216: iload         4
+      1218: iadd          
+      1219: iconst_1      
+      1220: isub          
+      1221: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+      1226: ifeq          1231
+      1229: iconst_m1     
+      1230: ireturn       
+      1231: aload_0       
+      1232: getfield      #328                // Field matchFlags:I
+      1235: iconst_1      
+      1236: iand          
+      1237: ifeq          1244
+      1240: iconst_1      
+      1241: goto          1245
+      1244: iconst_0      
+      1245: istore        13
+      1247: iconst_0      
+      1248: istore        14
+      1250: iload         14
+      1252: iload         11
+      1254: if_icmpge     1296
+      1257: aload_0       
+      1258: aload_0       
+      1259: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1262: iload         4
+      1264: iinc          4, 1
+      1267: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1272: aload         9
+      1274: iload         12
+      1276: iload         14
+      1278: iadd          
+      1279: caload        
+      1280: iload         13
+      1282: invokespecial #345                // Method compareChars:(CCZ)I
+      1285: ifeq          1290
+      1288: iconst_m1     
+      1289: ireturn       
+      1290: iinc          14, 1
+      1293: goto          1250
+      1296: goto          2157
+      1299: aload_0       
+      1300: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1303: iload         4
+      1305: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+      1310: ifeq          1315
+      1313: iconst_m1     
+      1314: ireturn       
+      1315: iload         7
+      1317: lookupswitch  { // 14
+                      33: 1666
+                      97: 1459
+                      98: 1497
+                      99: 1535
+                     100: 1478
+                     103: 1556
+                     106: 1841
+                     107: 1860
+                     108: 1605
+                     112: 1645
+                     115: 1516
+                     117: 1625
+                     119: 1440
+                     120: 1728
+                 default: 1879
+            }
+      1440: aload_0       
+      1441: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1444: iload         4
+      1446: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1451: invokestatic  #373                // Method java/lang/Character.isLetterOrDigit:(C)Z
+      1454: ifne          1885
+      1457: iconst_m1     
+      1458: ireturn       
+      1459: aload_0       
+      1460: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1463: iload         4
+      1465: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1470: invokestatic  #372                // Method java/lang/Character.isLetter:(C)Z
+      1473: ifne          1885
+      1476: iconst_m1     
+      1477: ireturn       
+      1478: aload_0       
+      1479: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1482: iload         4
+      1484: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1489: invokestatic  #369                // Method java/lang/Character.isDigit:(C)Z
+      1492: ifne          1885
+      1495: iconst_m1     
+      1496: ireturn       
+      1497: aload_0       
+      1498: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1501: iload         4
+      1503: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1508: invokestatic  #374                // Method java/lang/Character.isSpaceChar:(C)Z
+      1511: ifne          1885
+      1514: iconst_m1     
+      1515: ireturn       
+      1516: aload_0       
+      1517: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1520: iload         4
+      1522: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1527: invokestatic  #375                // Method java/lang/Character.isWhitespace:(C)Z
+      1530: ifne          1885
+      1533: iconst_m1     
+      1534: ireturn       
+      1535: aload_0       
+      1536: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1539: iload         4
+      1541: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1546: invokestatic  #368                // Method java/lang/Character.getType:(C)I
+      1549: bipush        15
+      1551: if_icmpeq     1885
+      1554: iconst_m1     
+      1555: ireturn       
+      1556: aload_0       
+      1557: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1560: iload         4
+      1562: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1567: invokestatic  #368                // Method java/lang/Character.getType:(C)I
+      1570: tableswitch   { // 25 to 28
+                      25: 1600
+                      26: 1600
+                      27: 1600
+                      28: 1600
+                 default: 1603
+            }
+      1600: goto          1885
+      1603: iconst_m1     
+      1604: ireturn       
+      1605: aload_0       
+      1606: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1609: iload         4
+      1611: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1616: invokestatic  #368                // Method java/lang/Character.getType:(C)I
+      1619: iconst_2      
+      1620: if_icmpeq     1885
+      1623: iconst_m1     
+      1624: ireturn       
+      1625: aload_0       
+      1626: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1629: iload         4
+      1631: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1636: invokestatic  #368                // Method java/lang/Character.getType:(C)I
+      1639: iconst_1      
+      1640: if_icmpeq     1885
+      1643: iconst_m1     
+      1644: ireturn       
+      1645: aload_0       
+      1646: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1649: iload         4
+      1651: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1656: invokestatic  #368                // Method java/lang/Character.getType:(C)I
+      1659: bipush        15
+      1661: if_icmpne     1885
+      1664: iconst_m1     
+      1665: ireturn       
+      1666: aload_0       
+      1667: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1670: iload         4
+      1672: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1677: invokestatic  #368                // Method java/lang/Character.getType:(C)I
+      1680: istore        11
+      1682: iload         11
+      1684: tableswitch   { // 20 to 24
+                      20: 1720
+                      21: 1720
+                      22: 1720
+                      23: 1720
+                      24: 1720
+                 default: 1723
+            }
+      1720: goto          1725
+      1723: iconst_m1     
+      1724: ireturn       
+      1725: goto          1885
+      1728: aload_0       
+      1729: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1732: iload         4
+      1734: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1739: bipush        48
+      1741: if_icmplt     1760
+      1744: aload_0       
+      1745: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1748: iload         4
+      1750: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1755: bipush        57
+      1757: if_icmple     1824
+      1760: aload_0       
+      1761: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1764: iload         4
+      1766: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1771: bipush        97
+      1773: if_icmplt     1792
+      1776: aload_0       
+      1777: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1780: iload         4
+      1782: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1787: bipush        102
+      1789: if_icmple     1824
+      1792: aload_0       
+      1793: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1796: iload         4
+      1798: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1803: bipush        65
+      1805: if_icmplt     1828
+      1808: aload_0       
+      1809: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1812: iload         4
+      1814: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1819: bipush        70
+      1821: if_icmpgt     1828
+      1824: iconst_1      
+      1825: goto          1829
+      1828: iconst_0      
+      1829: istore        11
+      1831: iload         11
+      1833: ifne          1838
+      1836: iconst_m1     
+      1837: ireturn       
+      1838: goto          1885
+      1841: aload_0       
+      1842: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1845: iload         4
+      1847: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1852: invokestatic  #371                // Method java/lang/Character.isJavaIdentifierStart:(C)Z
+      1855: ifne          1885
+      1858: iconst_m1     
+      1859: ireturn       
+      1860: aload_0       
+      1861: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1864: iload         4
+      1866: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1871: invokestatic  #370                // Method java/lang/Character.isJavaIdentifierPart:(C)Z
+      1874: ifne          1885
+      1877: iconst_m1     
+      1878: ireturn       
+      1879: aload_0       
+      1880: ldc           #5                  // String Bad posix class
+      1882: invokevirtual #359                // Method internalError:(Ljava/lang/String;)V
+      1885: iinc          4, 1
+      1888: goto          2157
+      1891: aload_0       
+      1892: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1895: iload         4
+      1897: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+      1902: ifeq          1907
+      1905: iconst_m1     
+      1906: ireturn       
+      1907: aload_0       
+      1908: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+      1911: iload         4
+      1913: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+      1918: istore        11
+      1920: aload_0       
+      1921: getfield      #328                // Field matchFlags:I
+      1924: iconst_1      
+      1925: iand          
+      1926: ifeq          1933
+      1929: iconst_1      
+      1930: goto          1934
+      1933: iconst_0      
+      1934: istore        12
+      1936: iload         10
+      1938: iconst_3      
+      1939: iadd          
+      1940: istore        13
+      1942: iload         13
+      1944: iload         7
+      1946: iconst_2      
+      1947: imul          
+      1948: iadd          
+      1949: istore        14
+      1951: iconst_0      
+      1952: istore        15
+      1954: iload         13
+      1956: istore        16
+      1958: iload         15
+      1960: ifne          2026
+      1963: iload         16
+      1965: iload         14
+      1967: if_icmpge     2026
+      1970: aload         9
+      1972: iload         16
+      1974: iinc          16, 1
+      1977: caload        
+      1978: istore        17
+      1980: aload         9
+      1982: iload         16
+      1984: iinc          16, 1
+      1987: caload        
+      1988: istore        18
+      1990: aload_0       
+      1991: iload         11
+      1993: iload         17
+      1995: iload         12
+      1997: invokespecial #345                // Method compareChars:(CCZ)I
+      2000: iflt          2020
+      2003: aload_0       
+      2004: iload         11
+      2006: iload         18
+      2008: iload         12
+      2010: invokespecial #345                // Method compareChars:(CCZ)I
+      2013: ifgt          2020
+      2016: iconst_1      
+      2017: goto          2021
+      2020: iconst_0      
+      2021: istore        15
+      2023: goto          1958
+      2026: iload         15
+      2028: ifne          2033
+      2031: iconst_m1     
+      2032: ireturn       
+      2033: iinc          4, 1
+      2036: goto          2157
+      2039: aload         9
+      2041: iload         5
+      2043: iconst_0      
+      2044: iadd          
+      2045: caload        
+      2046: bipush        124
+      2048: if_icmpeq     2057
+      2051: iinc          10, 3
+      2054: goto          15
+      2057: aload_0       
+      2058: iload         10
+      2060: iconst_3      
+      2061: iadd          
+      2062: ldc           #1                  // int 65536
+      2064: iload         4
+      2066: invokevirtual #353                // Method matchNodes:(III)I
+      2069: dup           
+      2070: istore        8
+      2072: iconst_m1     
+      2073: if_icmpeq     2079
+      2076: iload         8
+      2078: ireturn       
+      2079: aload         9
+      2081: iload         10
+      2083: iconst_2      
+      2084: iadd          
+      2085: caload        
+      2086: i2s           
+      2087: istore        11
+      2089: iload         10
+      2091: iload         11
+      2093: iadd          
+      2094: istore        10
+      2096: iload         11
+      2098: ifeq          2113
+      2101: aload         9
+      2103: iload         10
+      2105: iconst_0      
+      2106: iadd          
+      2107: caload        
+      2108: bipush        124
+      2110: if_icmpeq     2057
+      2113: iconst_m1     
+      2114: ireturn       
+      2115: goto          2157
+      2118: aload_0       
+      2119: iconst_0      
+      2120: iload         4
+      2122: invokevirtual #351                // Method setParenEnd:(II)V
+      2125: iload         4
+      2127: ireturn       
+      2128: aload_0       
+      2129: new           #240                // class java/lang/StringBuilder
+      2132: dup           
+      2133: invokespecial #388                // Method java/lang/StringBuilder."<init>":()V
+      2136: ldc           #7                  // String Invalid opcode '
+      2138: invokevirtual #391                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      2141: iload         6
+      2143: invokevirtual #390                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      2146: ldc           #3                  // String '
+      2148: invokevirtual #391                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      2151: invokevirtual #389                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      2154: invokevirtual #359                // Method internalError:(Ljava/lang/String;)V
+      2157: iload         5
+      2159: istore        10
+      2161: goto          15
+      2164: aload_0       
+      2165: ldc           #6                  // String Corrupt program
+      2167: invokevirtual #359                // Method internalError:(Ljava/lang/String;)V
+      2170: iconst_m1     
+      2171: ireturn       
+      StackMapTable: number_of_entries = 120
+           frame_type = 255 /* full_frame */
+          offset_delta = 15
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, top, top, top, top, class "[C", int ]
+          stack = []
+           frame_type = 255 /* full_frame */
+          offset_delta = 200
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 252 /* append */
+             offset_delta = 2
+        locals = [ int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, int, class "[C", int, int ]
+          stack = []
+           frame_type = 26 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 1
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 38 /* same */
+           frame_type = 1 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, int, class "[C", int ]
+          stack = []
+           frame_type = 255 /* full_frame */
+          offset_delta = 20
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 20 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 35
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, int, class "[C", int ]
+          stack = []
+           frame_type = 17 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 20 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 35
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, int, class "[C", int ]
+          stack = []
+           frame_type = 17 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 10 /* same */
+           frame_type = 253 /* append */
+             offset_delta = 29
+        locals = [ int, int ]
+           frame_type = 1 /* same */
+           frame_type = 9 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 27
+        locals = [ int ]
+           frame_type = 12 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 253 /* append */
+             offset_delta = 4
+        locals = [ int, int ]
+           frame_type = 45 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 2 /* same */
+           frame_type = 30 /* same */
+           frame_type = 1 /* same */
+           frame_type = 1 /* same */
+           frame_type = 47 /* same */
+           frame_type = 1 /* same */
+           frame_type = 251 /* same_frame_extended */
+          offset_delta = 77
+           frame_type = 9 /* same */
+           frame_type = 76 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 252 /* append */
+             offset_delta = 20
+        locals = [ int ]
+           frame_type = 74 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 252 /* append */
+             offset_delta = 18
+        locals = [ int ]
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 74 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int, int, int ]
+          stack = [ int, int ]
+           frame_type = 249 /* chop */
+          offset_delta = 4
+           frame_type = 2 /* same */
+           frame_type = 15 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 72
+        locals = [ int ]
+           frame_type = 14 /* same */
+           frame_type = 3 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 74 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int, int ]
+          stack = [ int, int ]
+           frame_type = 4 /* same */
+           frame_type = 79 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int, int ]
+          stack = [ int, int ]
+           frame_type = 4 /* same */
+           frame_type = 79 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int, int ]
+          stack = [ int, int ]
+           frame_type = 4 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+           frame_type = 28 /* same */
+           frame_type = 2 /* same */
+           frame_type = 25 /* same */
+           frame_type = 22 /* same */
+           frame_type = 1 /* same */
+           frame_type = 5 /* same */
+           frame_type = 15 /* same */
+           frame_type = 253 /* append */
+             offset_delta = 30
+        locals = [ int, int ]
+           frame_type = 12 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 253 /* append */
+             offset_delta = 4
+        locals = [ int, int ]
+           frame_type = 39 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 2 /* same */
+           frame_type = 15 /* same */
+           frame_type = 251 /* same_frame_extended */
+          offset_delta = 124
+           frame_type = 18 /* same */
+           frame_type = 18 /* same */
+           frame_type = 18 /* same */
+           frame_type = 18 /* same */
+           frame_type = 18 /* same */
+           frame_type = 20 /* same */
+           frame_type = 43 /* same */
+           frame_type = 2 /* same */
+           frame_type = 1 /* same */
+           frame_type = 19 /* same */
+           frame_type = 19 /* same */
+           frame_type = 20 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 53
+        locals = [ int ]
+           frame_type = 2 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 1
+           frame_type = 2 /* same */
+           frame_type = 31 /* same */
+           frame_type = 31 /* same */
+           frame_type = 31 /* same */
+           frame_type = 3 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 8 /* same */
+           frame_type = 2 /* same */
+           frame_type = 18 /* same */
+           frame_type = 18 /* same */
+           frame_type = 5 /* same */
+           frame_type = 5 /* same */
+           frame_type = 15 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 25
+        locals = [ int ]
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 23
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int, int, int, int, int, int, int ]
+          stack = []
+           frame_type = 253 /* append */
+             offset_delta = 61
+        locals = [ int, int ]
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 248 /* chop */
+          offset_delta = 4
+           frame_type = 6 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 17 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 21
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, int, class "[C", int ]
+          stack = []
+           frame_type = 252 /* append */
+             offset_delta = 33
+        locals = [ int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 1
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, int, int, int, top, class "[C", int ]
+          stack = []
+           frame_type = 2 /* same */
+           frame_type = 9 /* same */
+           frame_type = 28 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 6
+          locals = [ class com/sun/org/apache/regexp/internal/RE, int, int, int, int, top, top, top, top, class "[C" ]
+          stack = []
+
+
+  protected boolean matchAt(int);
+    Signature: (I)Z
+    flags: ACC_PROTECTED
+%
+    Code:
+      stack=4, locals=3, args_size=2
+         0: aload_0       
+         1: iconst_m1     
+         2: putfield      #331                // Field start0:I
+         5: aload_0       
+         6: iconst_m1     
+         7: putfield      #325                // Field end0:I
+        10: aload_0       
+        11: iconst_m1     
+        12: putfield      #332                // Field start1:I
+        15: aload_0       
+        16: iconst_m1     
+        17: putfield      #326                // Field end1:I
+        20: aload_0       
+        21: iconst_m1     
+        22: putfield      #333                // Field start2:I
+        25: aload_0       
+        26: iconst_m1     
+        27: putfield      #327                // Field end2:I
+        30: aload_0       
+        31: aconst_null   
+        32: putfield      #337                // Field startn:[I
+        35: aload_0       
+        36: aconst_null   
+        37: putfield      #335                // Field endn:[I
+        40: aload_0       
+        41: iconst_1      
+        42: putfield      #330                // Field parenCount:I
+        45: aload_0       
+        46: iconst_0      
+        47: iload_1       
+        48: invokevirtual #352                // Method setParenStart:(II)V
+        51: aload_0       
+        52: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+        55: getfield      #340                // Field com/sun/org/apache/regexp/internal/REProgram.flags:I
+        58: iconst_1      
+        59: iand          
+        60: ifeq          83
+        63: aload_0       
+        64: aload_0       
+        65: getfield      #329                // Field maxParen:I
+        68: newarray       int
+        70: putfield      #336                // Field startBackref:[I
+        73: aload_0       
+        74: aload_0       
+        75: getfield      #329                // Field maxParen:I
+        78: newarray       int
+        80: putfield      #334                // Field endBackref:[I
+        83: aload_0       
+        84: iconst_0      
+        85: ldc           #1                  // int 65536
+        87: iload_1       
+        88: invokevirtual #353                // Method matchNodes:(III)I
+        91: dup           
+        92: istore_2      
+        93: iconst_m1     
+        94: if_icmpeq     105
+        97: aload_0       
+        98: iconst_0      
+        99: iload_2       
+       100: invokevirtual #351                // Method setParenEnd:(II)V
+       103: iconst_1      
+       104: ireturn       
+       105: aload_0       
+       106: iconst_0      
+       107: putfield      #330                // Field parenCount:I
+       110: iconst_0      
+       111: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 251 /* same_frame_extended */
+          offset_delta = 83
+           frame_type = 252 /* append */
+             offset_delta = 21
+        locals = [ int ]
+
+
+  public boolean match(java.lang.String, int);
+    Signature: (Ljava/lang/String;I)Z
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0       
+         1: new           #233                // class com/sun/org/apache/regexp/internal/StringCharacterIterator
+         4: dup           
+         5: aload_1       
+         6: invokespecial #366                // Method com/sun/org/apache/regexp/internal/StringCharacterIterator."<init>":(Ljava/lang/String;)V
+         9: iload_2       
+        10: invokevirtual #354                // Method match:(Lcom/sun/org/apache/regexp/internal/CharacterIterator;I)Z
+        13: ireturn       
+
+  public boolean match(com.sun.org.apache.regexp.internal.CharacterIterator, int);
+    Signature: (Lcom/sun/org/apache/regexp/internal/CharacterIterator;I)Z
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=8, args_size=3
+         0: aload_0       
+         1: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+         4: ifnonnull     13
+         7: aload_0       
+         8: ldc           #8                  // String No RE program to run!
+        10: invokevirtual #359                // Method internalError:(Ljava/lang/String;)V
+        13: aload_0       
+        14: aload_1       
+        15: putfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+        18: aload_0       
+        19: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+        22: getfield      #343                // Field com/sun/org/apache/regexp/internal/REProgram.prefix:[C
+        25: ifnonnull     58
+        28: aload_1       
+        29: iload_2       
+        30: iconst_1      
+        31: isub          
+        32: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+        37: ifne          56
+        40: aload_0       
+        41: iload_2       
+        42: invokevirtual #350                // Method matchAt:(I)Z
+        45: ifeq          50
+        48: iconst_1      
+        49: ireturn       
+        50: iinc          2, 1
+        53: goto          28
+        56: iconst_0      
+        57: ireturn       
+        58: aload_0       
+        59: getfield      #328                // Field matchFlags:I
+        62: iconst_1      
+        63: iand          
+        64: ifeq          71
+        67: iconst_1      
+        68: goto          72
+        71: iconst_0      
+        72: istore_3      
+        73: aload_0       
+        74: getfield      #339                // Field program:Lcom/sun/org/apache/regexp/internal/REProgram;
+        77: getfield      #343                // Field com/sun/org/apache/regexp/internal/REProgram.prefix:[C
+        80: astore        4
+        82: aload_1       
+        83: iload_2       
+        84: aload         4
+        86: arraylength   
+        87: iadd          
+        88: iconst_1      
+        89: isub          
+        90: invokeinterface #397,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.isEnd:(I)Z
+        95: ifne          175
+        98: iload_2       
+        99: istore        5
+       101: iconst_0      
+       102: istore        6
+       104: aload_0       
+       105: aload_1       
+       106: iload         5
+       108: iinc          5, 1
+       111: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+       116: aload         4
+       118: iload         6
+       120: iinc          6, 1
+       123: caload        
+       124: iload_3       
+       125: invokespecial #345                // Method compareChars:(CCZ)I
+       128: ifne          135
+       131: iconst_1      
+       132: goto          136
+       135: iconst_0      
+       136: istore        7
+       138: iload         7
+       140: ifeq          151
+       143: iload         6
+       145: aload         4
+       147: arraylength   
+       148: if_icmplt     104
+       151: iload         6
+       153: aload         4
+       155: arraylength   
+       156: if_icmpne     169
+       159: aload_0       
+       160: iload_2       
+       161: invokevirtual #350                // Method matchAt:(I)Z
+       164: ifeq          169
+       167: iconst_1      
+       168: ireturn       
+       169: iinc          2, 1
+       172: goto          82
+       175: iconst_0      
+       176: ireturn       
+      StackMapTable: number_of_entries = 14
+           frame_type = 13 /* same */
+           frame_type = 14 /* same */
+           frame_type = 21 /* same */
+           frame_type = 5 /* same */
+           frame_type = 1 /* same */
+           frame_type = 12 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 253 /* append */
+             offset_delta = 9
+        locals = [ int, class "[C" ]
+           frame_type = 253 /* append */
+             offset_delta = 21
+        locals = [ int, int ]
+           frame_type = 30 /* same */
+           frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+           frame_type = 252 /* append */
+             offset_delta = 14
+        locals = [ int ]
+           frame_type = 248 /* chop */
+          offset_delta = 17
+           frame_type = 5 /* same */
+
+
+  public boolean match(java.lang.String);
+    Signature: (Ljava/lang/String;)Z
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: iconst_0      
+         3: invokevirtual #362                // Method match:(Ljava/lang/String;I)Z
+         6: ireturn       
+
+  public java.lang.String[] split(java.lang.String);
+    Signature: (Ljava/lang/String;)[Ljava/lang/String;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=5, locals=7, args_size=2
+         0: new           #241                // class java/util/Vector
+         3: dup           
+         4: invokespecial #393                // Method java/util/Vector."<init>":()V
+         7: astore_2      
+         8: iconst_0      
+         9: istore_3      
+        10: aload_1       
+        11: invokevirtual #379                // Method java/lang/String.length:()I
+        14: istore        4
+        16: iload_3       
+        17: iload         4
+        19: if_icmpge     87
+        22: aload_0       
+        23: aload_1       
+        24: iload_3       
+        25: invokevirtual #362                // Method match:(Ljava/lang/String;I)Z
+        28: ifeq          87
+        31: aload_0       
+        32: iconst_0      
+        33: invokevirtual #347                // Method getParenStart:(I)I
+        36: istore        5
+        38: aload_0       
+        39: iconst_0      
+        40: invokevirtual #346                // Method getParenEnd:(I)I
+        43: istore        6
+        45: iload         6
+        47: iload_3       
+        48: if_icmpne     70
+        51: aload_2       
+        52: aload_1       
+        53: iload_3       
+        54: iload         5
+        56: iconst_1      
+        57: iadd          
+        58: invokevirtual #382                // Method java/lang/String.substring:(II)Ljava/lang/String;
+        61: invokevirtual #394                // Method java/util/Vector.addElement:(Ljava/lang/Object;)V
+        64: iinc          6, 1
+        67: goto          81
+        70: aload_2       
+        71: aload_1       
+        72: iload_3       
+        73: iload         5
+        75: invokevirtual #382                // Method java/lang/String.substring:(II)Ljava/lang/String;
+        78: invokevirtual #394                // Method java/util/Vector.addElement:(Ljava/lang/Object;)V
+        81: iload         6
+        83: istore_3      
+        84: goto          16
+        87: aload_1       
+        88: iload_3       
+        89: invokevirtual #381                // Method java/lang/String.substring:(I)Ljava/lang/String;
+        92: astore        5
+        94: aload         5
+        96: invokevirtual #379                // Method java/lang/String.length:()I
+        99: ifeq          108
+       102: aload_2       
+       103: aload         5
+       105: invokevirtual #394                // Method java/util/Vector.addElement:(Ljava/lang/Object;)V
+       108: aload_2       
+       109: invokevirtual #392                // Method java/util/Vector.size:()I
+       112: anewarray     #238                // class java/lang/String
+       115: astore        6
+       117: aload_2       
+       118: aload         6
+       120: invokevirtual #395                // Method java/util/Vector.copyInto:([Ljava/lang/Object;)V
+       123: aload         6
+       125: areturn       
+      StackMapTable: number_of_entries = 5
+           frame_type = 254 /* append */
+             offset_delta = 16
+        locals = [ class java/util/Vector, int, int ]
+           frame_type = 253 /* append */
+             offset_delta = 53
+        locals = [ int, int ]
+           frame_type = 10 /* same */
+           frame_type = 249 /* chop */
+          offset_delta = 5
+           frame_type = 252 /* append */
+             offset_delta = 20
+        locals = [ class java/lang/String ]
+
+
+  public java.lang.String subst(java.lang.String, java.lang.String);
+    Signature: (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0       
+         1: aload_1       
+         2: aload_2       
+         3: iconst_0      
+         4: invokevirtual #363                // Method subst:(Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+         7: areturn       
+
+  public java.lang.String subst(java.lang.String, java.lang.String, int);
+    Signature: (Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=5, locals=12, args_size=4
+         0: new           #239                // class java/lang/StringBuffer
+         3: dup           
+         4: invokespecial #384                // Method java/lang/StringBuffer."<init>":()V
+         7: astore        4
+         9: iconst_0      
+        10: istore        5
+        12: aload_1       
+        13: invokevirtual #379                // Method java/lang/String.length:()I
+        16: istore        6
+        18: iload         5
+        20: iload         6
+        22: if_icmpge     263
+        25: aload_0       
+        26: aload_1       
+        27: iload         5
+        29: invokevirtual #362                // Method match:(Ljava/lang/String;I)Z
+        32: ifeq          263
+        35: aload         4
+        37: aload_1       
+        38: iload         5
+        40: aload_0       
+        41: iconst_0      
+        42: invokevirtual #347                // Method getParenStart:(I)I
+        45: invokevirtual #382                // Method java/lang/String.substring:(II)Ljava/lang/String;
+        48: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        51: pop           
+        52: iload_3       
+        53: iconst_2      
+        54: iand          
+        55: ifeq          223
+        58: iconst_0      
+        59: istore        7
+        61: bipush        -2
+        63: istore        8
+        65: aload_2       
+        66: invokevirtual #379                // Method java/lang/String.length:()I
+        69: istore        9
+        71: iconst_0      
+        72: istore        10
+        74: aload_2       
+        75: ldc           #2                  // String $
+        77: iload         7
+        79: invokevirtual #383                // Method java/lang/String.indexOf:(Ljava/lang/String;I)I
+        82: dup           
+        83: istore        7
+        85: iflt          204
+        88: iload         7
+        90: ifeq          106
+        93: aload_2       
+        94: iload         7
+        96: iconst_1      
+        97: isub          
+        98: invokevirtual #380                // Method java/lang/String.charAt:(I)C
+       101: bipush        92
+       103: if_icmpeq     198
+       106: iload         7
+       108: iconst_1      
+       109: iadd          
+       110: iload         9
+       112: if_icmpge     198
+       115: aload_2       
+       116: iload         7
+       118: iconst_1      
+       119: iadd          
+       120: invokevirtual #380                // Method java/lang/String.charAt:(I)C
+       123: istore        11
+       125: iload         11
+       127: bipush        48
+       129: if_icmplt     198
+       132: iload         11
+       134: bipush        57
+       136: if_icmpgt     198
+       139: iload         10
+       141: ifne          163
+       144: aload         4
+       146: aload_2       
+       147: iconst_0      
+       148: iload         7
+       150: invokevirtual #382                // Method java/lang/String.substring:(II)Ljava/lang/String;
+       153: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       156: pop           
+       157: iconst_1      
+       158: istore        10
+       160: goto          179
+       163: aload         4
+       165: aload_2       
+       166: iload         8
+       168: iconst_2      
+       169: iadd          
+       170: iload         7
+       172: invokevirtual #382                // Method java/lang/String.substring:(II)Ljava/lang/String;
+       175: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       178: pop           
+       179: aload         4
+       181: aload_0       
+       182: iload         11
+       184: bipush        48
+       186: isub          
+       187: invokevirtual #358                // Method getParen:(I)Ljava/lang/String;
+       190: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       193: pop           
+       194: iload         7
+       196: istore        8
+       198: iinc          7, 1
+       201: goto          74
+       204: aload         4
+       206: aload_2       
+       207: iload         8
+       209: iconst_2      
+       210: iadd          
+       211: iload         9
+       213: invokevirtual #382                // Method java/lang/String.substring:(II)Ljava/lang/String;
+       216: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       219: pop           
+       220: goto          230
+       223: aload         4
+       225: aload_2       
+       226: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       229: pop           
+       230: aload_0       
+       231: iconst_0      
+       232: invokevirtual #346                // Method getParenEnd:(I)I
+       235: istore        7
+       237: iload         7
+       239: iload         5
+       241: if_icmpne     247
+       244: iinc          7, 1
+       247: iload         7
+       249: istore        5
+       251: iload_3       
+       252: iconst_1      
+       253: iand          
+       254: ifeq          260
+       257: goto          263
+       260: goto          18
+       263: iload         5
+       265: iload         6
+       267: if_icmpge     282
+       270: aload         4
+       272: aload_1       
+       273: iload         5
+       275: invokevirtual #381                // Method java/lang/String.substring:(I)Ljava/lang/String;
+       278: invokevirtual #387                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       281: pop           
+       282: aload         4
+       284: invokevirtual #385                // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+       287: areturn       
+      StackMapTable: number_of_entries = 13
+           frame_type = 254 /* append */
+             offset_delta = 18
+        locals = [ class java/lang/StringBuffer, int, int ]
+           frame_type = 255 /* full_frame */
+          offset_delta = 55
+          locals = [ class com/sun/org/apache/regexp/internal/RE, class java/lang/String, class java/lang/String, int, class java/lang/StringBuffer, int, int, int, int, int, int ]
+          stack = []
+           frame_type = 31 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 56
+        locals = [ int ]
+           frame_type = 15 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 18
+           frame_type = 5 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 18
+          locals = [ class com/sun/org/apache/regexp/internal/RE, class java/lang/String, class java/lang/String, int, class java/lang/StringBuffer, int, int ]
+          stack = []
+           frame_type = 6 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 16
+        locals = [ int ]
+           frame_type = 250 /* chop */
+          offset_delta = 12
+           frame_type = 2 /* same */
+           frame_type = 18 /* same */
+
+
+  public java.lang.String[] grep(java.lang.Object[]);
+    Signature: ([Ljava/lang/Object;)[Ljava/lang/String;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=2, locals=5, args_size=2
+         0: new           #241                // class java/util/Vector
+         3: dup           
+         4: invokespecial #393                // Method java/util/Vector."<init>":()V
+         7: astore_2      
+         8: iconst_0      
+         9: istore_3      
+        10: iload_3       
+        11: aload_1       
+        12: arraylength   
+        13: if_icmpge     45
+        16: aload_1       
+        17: iload_3       
+        18: aaload        
+        19: invokevirtual #378                // Method java/lang/Object.toString:()Ljava/lang/String;
+        22: astore        4
+        24: aload_0       
+        25: aload         4
+        27: invokevirtual #360                // Method match:(Ljava/lang/String;)Z
+        30: ifeq          39
+        33: aload_2       
+        34: aload         4
+        36: invokevirtual #394                // Method java/util/Vector.addElement:(Ljava/lang/Object;)V
+        39: iinc          3, 1
+        42: goto          10
+        45: aload_2       
+        46: invokevirtual #392                // Method java/util/Vector.size:()I
+        49: anewarray     #238                // class java/lang/String
+        52: astore_3      
+        53: aload_2       
+        54: aload_3       
+        55: invokevirtual #395                // Method java/util/Vector.copyInto:([Ljava/lang/Object;)V
+        58: aload_3       
+        59: areturn       
+      StackMapTable: number_of_entries = 3
+           frame_type = 253 /* append */
+             offset_delta = 10
+        locals = [ class java/util/Vector, int ]
+           frame_type = 28 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+
+  private boolean isNewline(int);
+    Signature: (I)Z
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0       
+         1: getfield      #338                // Field search:Lcom/sun/org/apache/regexp/internal/CharacterIterator;
+         4: iload_1       
+         5: invokeinterface #396,  2          // InterfaceMethod com/sun/org/apache/regexp/internal/CharacterIterator.charAt:(I)C
+        10: istore_2      
+        11: iload_2       
+        12: bipush        10
+        14: if_icmpeq     44
+        17: iload_2       
+        18: bipush        13
+        20: if_icmpeq     44
+        23: iload_2       
+        24: sipush        133
+        27: if_icmpeq     44
+        30: iload_2       
+        31: sipush        8232
+        34: if_icmpeq     44
+        37: iload_2       
+        38: sipush        8233
+        41: if_icmpne     46
+        44: iconst_1      
+        45: ireturn       
+        46: iconst_0      
+        47: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 252 /* append */
+             offset_delta = 44
+        locals = [ int ]
+           frame_type = 1 /* same */
+
+
+  private int compareChars(char, char, boolean);
+    Signature: (CCZ)I
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=2, locals=4, args_size=4
+         0: iload_3       
+         1: ifeq          14
+         4: iload_1       
+         5: invokestatic  #367                // Method java/lang/Character.toLowerCase:(C)C
+         8: istore_1      
+         9: iload_2       
+        10: invokestatic  #367                // Method java/lang/Character.toLowerCase:(C)C
+        13: istore_2      
+        14: iload_1       
+        15: iload_2       
+        16: isub          
+        17: ireturn       
+      StackMapTable: number_of_entries = 1
+           frame_type = 14 /* same */
+
+}

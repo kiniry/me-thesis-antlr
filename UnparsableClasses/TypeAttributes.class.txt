@@ -1,0 +1,583 @@
+Classfile /D:/Libs/ExtractedJars/ch/epfl/lamp/compiler/msil/TypeAttributes.class
+  Last modified 20-04-2011; size 2660 bytes
+  MD5 checksum 14328c79da2a6c6757fb6e20e096946c
+  Compiled from "TypeAttributes.java"
+public final class ch.epfl.lamp.compiler.msil.TypeAttributes
+  SourceFile: "TypeAttributes.java"
+  minor version: 0
+  major version: 49
+  flags: ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+%
+Constant pool:
+    #1 = String             #102          //  private
+    #2 = String             #103          //  public
+    #3 = String             #104          //  nested public
+    #4 = String             #105          //  nested private
+    #5 = String             #106          //  nested family
+    #6 = String             #107          //  nested assembly
+    #7 = String             #108          //  nested famandassem
+    #8 = String             #109          //  nested famorassem
+    #9 = Class              #110          //  java/lang/RuntimeException
+   #10 = Methodref          #9.#111       //  java/lang/RuntimeException."<init>":()V
+   #11 = Class              #112          //  java/lang/StringBuffer
+   #12 = Methodref          #32.#113      //  ch/epfl/lamp/compiler/msil/TypeAttributes.accessModsToString:(I)Ljava/lang/String;
+   #13 = Methodref          #11.#114      //  java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+   #14 = String             #115          //   auto
+   #15 = Methodref          #11.#116      //  java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+   #16 = String             #117          //   sequential
+   #17 = String             #118          //   explicit
+   #18 = Integer            196608
+   #19 = String             #119          //   ansi
+   #20 = String             #120          //   unicode
+   #21 = String             #121          //   autochar
+   #22 = String             #122          //   interface
+   #23 = String             #123          //   abstract
+   #24 = String             #124          //   sealed
+   #25 = Integer            1048576
+   #26 = String             #125          //   beforefieldinit
+   #27 = String             #126          //   serializable
+   #28 = String             #127          //   specialname
+   #29 = String             #128          //   rtspecialname
+   #30 = Methodref          #11.#129      //  java/lang/StringBuffer.toString:()Ljava/lang/String;
+   #31 = Methodref          #33.#111      //  java/lang/Object."<init>":()V
+   #32 = Class              #130          //  ch/epfl/lamp/compiler/msil/TypeAttributes
+   #33 = Class              #131          //  java/lang/Object
+   #34 = Utf8               VisibilityMask
+   #35 = Utf8               I
+   #36 = Utf8               ConstantValue
+   #37 = Integer            7
+   #38 = Utf8               NotPublic
+   #39 = Integer            0
+   #40 = Utf8               Public
+   #41 = Integer            1
+   #42 = Utf8               NestedPublic
+   #43 = Integer            2
+   #44 = Utf8               NestedPrivate
+   #45 = Integer            3
+   #46 = Utf8               NestedFamily
+   #47 = Integer            4
+   #48 = Utf8               NestedAssembly
+   #49 = Integer            5
+   #50 = Utf8               NestedFamANDAssem
+   #51 = Integer            6
+   #52 = Utf8               NestedFamORAssem
+   #53 = Utf8               LayoutMask
+   #54 = Integer            24
+   #55 = Utf8               AutoLayout
+   #56 = Utf8               SequentialLayout
+   #57 = Integer            8
+   #58 = Utf8               ExplicitLayout
+   #59 = Integer            16
+   #60 = Utf8               ClassSemanticsMask
+   #61 = Integer            32
+   #62 = Utf8               Class
+   #63 = Utf8               Interface
+   #64 = Utf8               Abstract
+   #65 = Integer            128
+   #66 = Utf8               Sealed
+   #67 = Integer            256
+   #68 = Utf8               SpecialName
+   #69 = Integer            1024
+   #70 = Utf8               Import
+   #71 = Integer            4096
+   #72 = Utf8               Serializable
+   #73 = Integer            8192
+   #74 = Utf8               StringFormatMask
+   #75 = Utf8               AnsiClass
+   #76 = Utf8               UnicodeClass
+   #77 = Integer            65536
+   #78 = Utf8               AutoClass
+   #79 = Integer            131072
+   #80 = Utf8               BeforeFieldInit
+   #81 = Utf8               RTSpecialName
+   #82 = Integer            2048
+   #83 = Utf8               HasSecurity
+   #84 = Integer            262144
+   #85 = Utf8               accessModsToString
+   #86 = Utf8               (I)Ljava/lang/String;
+   #87 = Utf8               Code
+   #88 = Utf8               LineNumberTable
+   #89 = Utf8               LocalVariableTable
+   #90 = Utf8               attrs
+   #91 = Utf8               toString
+   #92 = Utf8               str
+   #93 = Utf8               Ljava/lang/StringBuffer;
+   #94 = Utf8               isNested
+   #95 = Utf8               (I)Z
+   #96 = Utf8               <init>
+   #97 = Utf8               ()V
+   #98 = Utf8               this
+   #99 = Utf8               Lch/epfl/lamp/compiler/msil/TypeAttributes;
+  #100 = Utf8               SourceFile
+  #101 = Utf8               TypeAttributes.java
+  #102 = Utf8               private
+  #103 = Utf8               public
+  #104 = Utf8               nested public
+  #105 = Utf8               nested private
+  #106 = Utf8               nested family
+  #107 = Utf8               nested assembly
+  #108 = Utf8               nested famandassem
+  #109 = Utf8               nested famorassem
+  #110 = Utf8               java/lang/RuntimeException
+  #111 = NameAndType        #96:#97       //  "<init>":()V
+  #112 = Utf8               java/lang/StringBuffer
+  #113 = NameAndType        #85:#86       //  accessModsToString:(I)Ljava/lang/String;
+  #114 = NameAndType        #96:#132      //  "<init>":(Ljava/lang/String;)V
+  #115 = Utf8                auto
+  #116 = NameAndType        #133:#134     //  append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #117 = Utf8                sequential
+  #118 = Utf8                explicit
+  #119 = Utf8                ansi
+  #120 = Utf8                unicode
+  #121 = Utf8                autochar
+  #122 = Utf8                interface
+  #123 = Utf8                abstract
+  #124 = Utf8                sealed
+  #125 = Utf8                beforefieldinit
+  #126 = Utf8                serializable
+  #127 = Utf8                specialname
+  #128 = Utf8                rtspecialname
+  #129 = NameAndType        #91:#135      //  toString:()Ljava/lang/String;
+  #130 = Utf8               ch/epfl/lamp/compiler/msil/TypeAttributes
+  #131 = Utf8               java/lang/Object
+  #132 = Utf8               (Ljava/lang/String;)V
+  #133 = Utf8               append
+  #134 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #135 = Utf8               ()Ljava/lang/String;
+{
+  public static final int VisibilityMask = 7;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 7
+
+
+  public static final int NotPublic = 0;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 0
+
+
+  public static final int Public = 1;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 1
+
+
+  public static final int NestedPublic = 2;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 2
+
+
+  public static final int NestedPrivate = 3;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 3
+
+
+  public static final int NestedFamily = 4;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 4
+
+
+  public static final int NestedAssembly = 5;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 5
+
+
+  public static final int NestedFamANDAssem = 6;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 6
+
+
+  public static final int NestedFamORAssem = 7;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 7
+
+
+  public static final int LayoutMask = 24;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 24
+
+
+  public static final int AutoLayout = 0;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 0
+
+
+  public static final int SequentialLayout = 8;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 8
+
+
+  public static final int ExplicitLayout = 16;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 16
+
+
+  public static final int ClassSemanticsMask = 32;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 32
+
+
+  public static final int Class = 0;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 0
+
+
+  public static final int Interface = 32;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 32
+
+
+  public static final int Abstract = 128;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 128
+
+
+  public static final int Sealed = 256;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 256
+
+
+  public static final int SpecialName = 1024;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 1024
+
+
+  public static final int Import = 4096;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 4096
+
+
+  public static final int Serializable = 8192;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 8192
+
+
+  public static final int StringFormatMask = 196608;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 196608
+
+
+  public static final int AnsiClass = 0;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 0
+
+
+  public static final int UnicodeClass = 65536;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 65536
+
+
+  public static final int AutoClass = 131072;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 131072
+
+
+  public static final int BeforeFieldInit = 1048576;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 1048576
+
+
+  public static final int RTSpecialName = 2048;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 2048
+
+
+  public static final int HasSecurity = 262144;
+    Signature: I
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 262144
+
+
+  public static java.lang.String accessModsToString(int);
+    Signature: (I)Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=2, locals=1, args_size=1
+         0: iload_0       
+         1: bipush        7
+         3: iand          
+         4: tableswitch   { // 0 to 7
+                       0: 52
+                       1: 55
+                       2: 58
+                       3: 61
+                       4: 64
+                       5: 67
+                       6: 70
+                       7: 73
+                 default: 76
+            }
+        52: ldc           #1                  // String private
+        54: areturn       
+        55: ldc           #2                  // String public
+        57: areturn       
+        58: ldc           #3                  // String nested public
+        60: areturn       
+        61: ldc           #4                  // String nested private
+        63: areturn       
+        64: ldc           #5                  // String nested family
+        66: areturn       
+        67: ldc           #6                  // String nested assembly
+        69: areturn       
+        70: ldc           #7                  // String nested famandassem
+        72: areturn       
+        73: ldc           #8                  // String nested famorassem
+        75: areturn       
+        76: new           #9                  // class java/lang/RuntimeException
+        79: dup           
+        80: invokespecial #10                 // Method java/lang/RuntimeException."<init>":()V
+        83: athrow        
+      LineNumberTable:
+        line 132: 0
+        line 133: 52
+        line 134: 55
+        line 135: 58
+        line 136: 61
+        line 137: 64
+        line 138: 67
+        line 139: 70
+        line 140: 73
+        line 142: 76
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      84     0 attrs   I
+
+  public static java.lang.String toString(int);
+    Signature: (I)Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_STATIC
+%
+    Code:
+      stack=3, locals=2, args_size=1
+         0: new           #11                 // class java/lang/StringBuffer
+         3: dup           
+         4: iload_0       
+         5: invokestatic  #12                 // Method accessModsToString:(I)Ljava/lang/String;
+         8: invokespecial #13                 // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+        11: astore_1      
+        12: iload_0       
+        13: bipush        24
+        15: iand          
+        16: lookupswitch  { // 3
+                       0: 52
+                       8: 62
+                      16: 72
+                 default: 79
+            }
+        52: aload_1       
+        53: ldc           #14                 // String  auto
+        55: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        58: pop           
+        59: goto          79
+        62: aload_1       
+        63: ldc           #16                 // String  sequential
+        65: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        68: pop           
+        69: goto          79
+        72: aload_1       
+        73: ldc           #17                 // String  explicit
+        75: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        78: pop           
+        79: iload_0       
+        80: ldc           #18                 // int 196608
+        82: iand          
+        83: lookupswitch  { // 3
+                       0: 116
+                   65536: 126
+                  131072: 136
+                 default: 143
+            }
+       116: aload_1       
+       117: ldc           #19                 // String  ansi
+       119: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       122: pop           
+       123: goto          143
+       126: aload_1       
+       127: ldc           #20                 // String  unicode
+       129: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       132: pop           
+       133: goto          143
+       136: aload_1       
+       137: ldc           #21                 // String  autochar
+       139: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       142: pop           
+       143: iload_0       
+       144: bipush        32
+       146: iand          
+       147: ifeq          157
+       150: aload_1       
+       151: ldc           #22                 // String  interface
+       153: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       156: pop           
+       157: iload_0       
+       158: sipush        128
+       161: iand          
+       162: ifeq          172
+       165: aload_1       
+       166: ldc           #23                 // String  abstract
+       168: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       171: pop           
+       172: iload_0       
+       173: sipush        256
+       176: iand          
+       177: ifeq          187
+       180: aload_1       
+       181: ldc           #24                 // String  sealed
+       183: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       186: pop           
+       187: iload_0       
+       188: ldc           #25                 // int 1048576
+       190: iand          
+       191: ifeq          201
+       194: aload_1       
+       195: ldc           #26                 // String  beforefieldinit
+       197: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       200: pop           
+       201: iload_0       
+       202: sipush        8192
+       205: iand          
+       206: ifeq          216
+       209: aload_1       
+       210: ldc           #27                 // String  serializable
+       212: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       215: pop           
+       216: iload_0       
+       217: sipush        1024
+       220: iand          
+       221: ifeq          231
+       224: aload_1       
+       225: ldc           #28                 // String  specialname
+       227: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       230: pop           
+       231: iload_0       
+       232: sipush        2048
+       235: iand          
+       236: ifeq          246
+       239: aload_1       
+       240: ldc           #29                 // String  rtspecialname
+       242: invokevirtual #15                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+       245: pop           
+       246: aload_1       
+       247: invokevirtual #30                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+       250: areturn       
+      LineNumberTable:
+        line 148: 0
+        line 149: 12
+        line 150: 52
+        line 151: 62
+        line 152: 72
+        line 154: 79
+        line 155: 116
+        line 156: 126
+        line 157: 136
+        line 159: 143
+        line 160: 157
+        line 161: 172
+        line 162: 187
+        line 163: 201
+        line 164: 216
+        line 165: 231
+        line 166: 246
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0     251     0 attrs   I
+              12     239     1   str   Ljava/lang/StringBuffer;
+
+  public static final boolean isNested(int);
+    Signature: (I)Z
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+%
+    Code:
+      stack=2, locals=1, args_size=1
+         0: iload_0       
+         1: bipush        7
+         3: iand          
+         4: tableswitch   { // 2 to 7
+                       2: 44
+                       3: 44
+                       4: 44
+                       5: 44
+                       6: 44
+                       7: 44
+                 default: 46
+            }
+        44: iconst_1      
+        45: ireturn       
+        46: iconst_0      
+        47: ireturn       
+      LineNumberTable:
+        line 171: 0
+        line 178: 44
+        line 179: 46
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      48     0 attrs   I
+
+  private ch.epfl.lamp.compiler.msil.TypeAttributes();
+    Signature: ()V
+    flags: ACC_PRIVATE
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #31                 // Method java/lang/Object."<init>":()V
+         4: return        
+      LineNumberTable:
+        line 186: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   Lch/epfl/lamp/compiler/msil/TypeAttributes;
+}

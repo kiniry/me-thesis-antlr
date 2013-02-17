@@ -1,0 +1,983 @@
+Classfile /D:/Libs/JavaClasses/com/sun/jndi/cosnaming/CNNameParser.class
+  Last modified 24-09-2012; size 4298 bytes
+  MD5 checksum 49cda66eeaf8d5bd397b68ce9962492e
+public final class com.sun.jndi.cosnaming.CNNameParser implements javax.naming.NameParser
+  InnerClasses:
+       static final #189= #95 of #94; //CNCompoundName=class com/sun/jndi/cosnaming/CNNameParser$CNCompoundName of class com/sun/jndi/cosnaming/CNNameParser
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+%
+Constant pool:
+    #1 = String             #11           //  
+    #2 = String             #27           //  .
+    #3 = String             #28           //  /
+    #4 = String             #29           //  : invalid character being escaped
+    #5 = String             #30           //  : unescaped \ at end of component
+    #6 = String             #42           //  \
+    #7 = String             #73           //  jndi.syntax.direction
+    #8 = String             #74           //  jndi.syntax.escape
+    #9 = String             #75           //  jndi.syntax.separator
+   #10 = String             #78           //  left_to_right
+   #11 = Utf8               
+   #12 = Utf8               ()I
+   #13 = Utf8               ()Ljava/lang/String;
+   #14 = Utf8               ()V
+   #15 = Utf8               (C)Z
+   #16 = Utf8               (I)C
+   #17 = Utf8               (I)I
+   #18 = Utf8               (I)Ljava/lang/String;
+   #19 = Utf8               (I)V
+   #20 = Utf8               (Ljava/lang/Object;)V
+   #21 = Utf8               (Ljava/lang/Object;)Z
+   #22 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+   #23 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuffer;
+   #24 = Utf8               (Ljava/lang/String;)V
+   #25 = Utf8               (Ljava/lang/String;Ljava/lang/String;)V
+   #26 = Utf8               ([CII)V
+   #27 = Utf8               .
+   #28 = Utf8               /
+   #29 = Utf8               : invalid character being escaped
+   #30 = Utf8               : unescaped \ at end of component
+   #31 = Utf8               <clinit>
+   #32 = Utf8               <init>
+   #33 = Utf8               C
+   #34 = Utf8               Code
+   #35 = Utf8               ConstantValue
+   #36 = Utf8               Exceptions
+   #37 = Utf8               InnerClasses
+   #38 = Utf8               Ljava/lang/String;
+   #39 = Utf8               StackMapTable
+   #40 = Utf8               [C
+   #41 = Utf8               [Lorg/omg/CosNaming/NameComponent;
+   #42 = Utf8               \
+   #43 = Utf8               access$000
+   #44 = Utf8               add
+   #45 = Utf8               addElement
+   #46 = Utf8               append
+   #47 = Utf8               charAt
+   #48 = Utf8               com/sun/jndi/cosnaming/CNNameParser
+   #49 = Utf8               com/sun/jndi/cosnaming/CNNameParser$CNCompoundName
+   #50 = Utf8               compSeparator
+   #51 = Utf8               cosNameToInsString
+   #52 = Utf8               cosNameToName
+   #53 = Utf8               elements
+   #54 = Utf8               equals
+   #55 = Utf8               escape
+   #56 = Utf8               escapeChar
+   #57 = Utf8               get
+   #58 = Utf8               id
+   #59 = Utf8               indexOf
+   #60 = Utf8               insStringToStringifiedComps
+   #61 = Utf8               isMeta
+   #62 = Utf8               java/lang/Object
+   #63 = Utf8               java/lang/String
+   #64 = Utf8               java/lang/StringBuffer
+   #65 = Utf8               java/lang/StringBuilder
+   #66 = Utf8               java/util/Properties
+   #67 = Utf8               java/util/Vector
+   #68 = Utf8               javax/naming/CompositeName
+   #69 = Utf8               javax/naming/InvalidNameException
+   #70 = Utf8               javax/naming/Name
+   #71 = Utf8               javax/naming/NameParser
+   #72 = Utf8               javax/naming/NamingException
+   #73 = Utf8               jndi.syntax.direction
+   #74 = Utf8               jndi.syntax.escape
+   #75 = Utf8               jndi.syntax.separator
+   #76 = Utf8               kind
+   #77 = Utf8               kindSeparator
+   #78 = Utf8               left_to_right
+   #79 = Utf8               length
+   #80 = Utf8               mySyntax
+   #81 = Utf8               nameToCosName
+   #82 = Utf8               org/omg/CosNaming/NameComponent
+   #83 = Utf8               parse
+   #84 = Utf8               parseComponent
+   #85 = Utf8               put
+   #86 = Utf8               size
+   #87 = Utf8               stringifyComponent
+   #88 = Utf8               toString
+   #89 = Integer            46
+   #90 = Integer            47
+   #91 = Integer            92
+   #92 = Class              #40           //  "[C"
+   #93 = Class              #41           //  "[Lorg/omg/CosNaming/NameComponent;"
+   #94 = Class              #48           //  com/sun/jndi/cosnaming/CNNameParser
+   #95 = Class              #49           //  com/sun/jndi/cosnaming/CNNameParser$CNCompoundName
+   #96 = Class              #62           //  java/lang/Object
+   #97 = Class              #63           //  java/lang/String
+   #98 = Class              #64           //  java/lang/StringBuffer
+   #99 = Class              #65           //  java/lang/StringBuilder
+  #100 = Class              #66           //  java/util/Properties
+  #101 = Class              #67           //  java/util/Vector
+  #102 = Class              #68           //  javax/naming/CompositeName
+  #103 = Class              #69           //  javax/naming/InvalidNameException
+  #104 = Class              #70           //  javax/naming/Name
+  #105 = Class              #71           //  javax/naming/NameParser
+  #106 = Class              #72           //  javax/naming/NamingException
+  #107 = Class              #82           //  org/omg/CosNaming/NameComponent
+  #108 = Utf8               Ljava/util/Properties;
+  #109 = Utf8               (C)Ljava/lang/StringBuffer;
+  #110 = Utf8               (C)Ljava/lang/StringBuilder;
+  #111 = Utf8               ()Ljava/util/Enumeration;
+  #112 = Utf8               (Ljava/util/Enumeration;)V
+  #113 = Utf8               ()Ljava/util/Properties;
+  #114 = Utf8               (Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+  #115 = Utf8               ([Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+  #116 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #117 = Utf8               (Ljava/lang/String;)Ljava/util/Vector;
+  #118 = Utf8               (Ljava/lang/String;)Ljavax/naming/Name;
+  #119 = Utf8               ([Lorg/omg/CosNaming/NameComponent;)Ljavax/naming/Name;
+  #120 = Utf8               (Ljava/lang/String;)Lorg/omg/CosNaming/NameComponent;
+  #121 = Utf8               (Ljavax/naming/Name;)[Lorg/omg/CosNaming/NameComponent;
+  #122 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #123 = NameAndType        #58:#38       //  id:Ljava/lang/String;
+  #124 = NameAndType        #76:#38       //  kind:Ljava/lang/String;
+  #125 = NameAndType        #80:#108      //  mySyntax:Ljava/util/Properties;
+  #126 = NameAndType        #79:#12       //  length:()I
+  #127 = NameAndType        #86:#12       //  size:()I
+  #128 = NameAndType        #32:#14       //  "<init>":()V
+  #129 = NameAndType        #61:#15       //  isMeta:(C)Z
+  #130 = NameAndType        #47:#16       //  charAt:(I)C
+  #131 = NameAndType        #59:#17       //  indexOf:(I)I
+  #132 = NameAndType        #32:#19       //  "<init>":(I)V
+  #133 = NameAndType        #32:#26       //  "<init>":([CII)V
+  #134 = NameAndType        #45:#20       //  addElement:(Ljava/lang/Object;)V
+  #135 = NameAndType        #54:#21       //  equals:(Ljava/lang/Object;)Z
+  #136 = NameAndType        #88:#13       //  toString:()Ljava/lang/String;
+  #137 = NameAndType        #57:#18       //  get:(I)Ljava/lang/String;
+  #138 = NameAndType        #32:#24       //  "<init>":(Ljava/lang/String;)V
+  #139 = NameAndType        #46:#109      //  append:(C)Ljava/lang/StringBuffer;
+  #140 = NameAndType        #46:#110      //  append:(C)Ljava/lang/StringBuilder;
+  #141 = NameAndType        #53:#111      //  elements:()Ljava/util/Enumeration;
+  #142 = NameAndType        #32:#112      //  "<init>":(Ljava/util/Enumeration;)V
+  #143 = NameAndType        #55:#22       //  escape:(Ljava/lang/String;)Ljava/lang/String;
+  #144 = NameAndType        #32:#25       //  "<init>":(Ljava/lang/String;Ljava/lang/String;)V
+  #145 = NameAndType        #87:#114      //  stringifyComponent:(Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+  #146 = NameAndType        #46:#23       //  append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #147 = NameAndType        #46:#116      //  append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #148 = NameAndType        #60:#117      //  insStringToStringifiedComps:(Ljava/lang/String;)Ljava/util/Vector;
+  #149 = NameAndType        #44:#118      //  add:(Ljava/lang/String;)Ljavax/naming/Name;
+  #150 = NameAndType        #84:#120      //  parseComponent:(Ljava/lang/String;)Lorg/omg/CosNaming/NameComponent;
+  #151 = NameAndType        #85:#122      //  put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #152 = Fieldref           #94.#125      //  com/sun/jndi/cosnaming/CNNameParser.mySyntax:Ljava/util/Properties;
+  #153 = Fieldref           #107.#123     //  org/omg/CosNaming/NameComponent.id:Ljava/lang/String;
+  #154 = Fieldref           #107.#124     //  org/omg/CosNaming/NameComponent.kind:Ljava/lang/String;
+  #155 = Methodref          #94.#129      //  com/sun/jndi/cosnaming/CNNameParser.isMeta:(C)Z
+  #156 = Methodref          #94.#143      //  com/sun/jndi/cosnaming/CNNameParser.escape:(Ljava/lang/String;)Ljava/lang/String;
+  #157 = Methodref          #94.#145      //  com/sun/jndi/cosnaming/CNNameParser.stringifyComponent:(Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+  #158 = Methodref          #94.#148      //  com/sun/jndi/cosnaming/CNNameParser.insStringToStringifiedComps:(Ljava/lang/String;)Ljava/util/Vector;
+  #159 = Methodref          #94.#150      //  com/sun/jndi/cosnaming/CNNameParser.parseComponent:(Ljava/lang/String;)Lorg/omg/CosNaming/NameComponent;
+  #160 = Methodref          #95.#142      //  com/sun/jndi/cosnaming/CNNameParser$CNCompoundName."<init>":(Ljava/util/Enumeration;)V
+  #161 = Methodref          #96.#128      //  java/lang/Object."<init>":()V
+  #162 = Methodref          #97.#126      //  java/lang/String.length:()I
+  #163 = Methodref          #97.#130      //  java/lang/String.charAt:(I)C
+  #164 = Methodref          #97.#131      //  java/lang/String.indexOf:(I)I
+  #165 = Methodref          #97.#133      //  java/lang/String."<init>":([CII)V
+  #166 = Methodref          #97.#135      //  java/lang/String.equals:(Ljava/lang/Object;)Z
+  #167 = Methodref          #98.#126      //  java/lang/StringBuffer.length:()I
+  #168 = Methodref          #98.#128      //  java/lang/StringBuffer."<init>":()V
+  #169 = Methodref          #98.#136      //  java/lang/StringBuffer.toString:()Ljava/lang/String;
+  #170 = Methodref          #98.#138      //  java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+  #171 = Methodref          #98.#139      //  java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+  #172 = Methodref          #98.#146      //  java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #173 = Methodref          #99.#128      //  java/lang/StringBuilder."<init>":()V
+  #174 = Methodref          #99.#136      //  java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #175 = Methodref          #99.#140      //  java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+  #176 = Methodref          #99.#147      //  java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #177 = Methodref          #100.#128     //  java/util/Properties."<init>":()V
+  #178 = Methodref          #100.#151     //  java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #179 = Methodref          #101.#132     //  java/util/Vector."<init>":(I)V
+  #180 = Methodref          #101.#134     //  java/util/Vector.addElement:(Ljava/lang/Object;)V
+  #181 = Methodref          #101.#141     //  java/util/Vector.elements:()Ljava/util/Enumeration;
+  #182 = Methodref          #102.#128     //  javax/naming/CompositeName."<init>":()V
+  #183 = Methodref          #103.#138     //  javax/naming/InvalidNameException."<init>":(Ljava/lang/String;)V
+  #184 = Methodref          #107.#128     //  org/omg/CosNaming/NameComponent."<init>":()V
+  #185 = Methodref          #107.#144     //  org/omg/CosNaming/NameComponent."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+  #186 = InterfaceMethodref #104.#127     //  javax/naming/Name.size:()I
+  #187 = InterfaceMethodref #104.#137     //  javax/naming/Name.get:(I)Ljava/lang/String;
+  #188 = InterfaceMethodref #104.#149     //  javax/naming/Name.add:(Ljava/lang/String;)Ljavax/naming/Name;
+  #189 = Utf8               CNCompoundName
+{
+  private static final java.util.Properties mySyntax;
+    Signature: Ljava/util/Properties;
+    flags: ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+%
+
+
+  private static final char kindSeparator = '.';
+    Signature: C
+    flags: ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 46
+
+
+  private static final char compSeparator = '/';
+    Signature: C
+    flags: ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 47
+
+
+  private static final char escapeChar = '\';
+    Signature: C
+    flags: ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+%
+    ConstantValue: int 92
+
+
+  public com.sun.jndi.cosnaming.CNNameParser();
+    Signature: ()V
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #161                // Method java/lang/Object."<init>":()V
+         4: return        
+
+  public javax.naming.Name parse(java.lang.String) throws javax.naming.NamingException;
+    Signature: (Ljava/lang/String;)Ljavax/naming/Name;
+    flags: ACC_PUBLIC
+%
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_1       
+         1: invokestatic  #158                // Method insStringToStringifiedComps:(Ljava/lang/String;)Ljava/util/Vector;
+         4: astore_2      
+         5: new           #95                 // class com/sun/jndi/cosnaming/CNNameParser$CNCompoundName
+         8: dup           
+         9: aload_2       
+        10: invokevirtual #181                // Method java/util/Vector.elements:()Ljava/util/Enumeration;
+        13: invokespecial #160                // Method com/sun/jndi/cosnaming/CNNameParser$CNCompoundName."<init>":(Ljava/util/Enumeration;)V
+        16: areturn       
+    Exceptions:
+      throws javax.naming.NamingException
+
+  static org.omg.CosNaming.NameComponent[] nameToCosName(javax.naming.Name) throws javax.naming.InvalidNameException;
+    Signature: (Ljavax/naming/Name;)[Lorg/omg/CosNaming/NameComponent;
+    flags: ACC_STATIC
+%
+    Code:
+      stack=4, locals=4, args_size=1
+         0: aload_0       
+         1: invokeinterface #186,  1          // InterfaceMethod javax/naming/Name.size:()I
+         6: istore_1      
+         7: iload_1       
+         8: ifne          16
+        11: iconst_0      
+        12: anewarray     #107                // class org/omg/CosNaming/NameComponent
+        15: areturn       
+        16: iload_1       
+        17: anewarray     #107                // class org/omg/CosNaming/NameComponent
+        20: astore_2      
+        21: iconst_0      
+        22: istore_3      
+        23: iload_3       
+        24: iload_1       
+        25: if_icmpge     47
+        28: aload_2       
+        29: iload_3       
+        30: aload_0       
+        31: iload_3       
+        32: invokeinterface #187,  2          // InterfaceMethod javax/naming/Name.get:(I)Ljava/lang/String;
+        37: invokestatic  #159                // Method parseComponent:(Ljava/lang/String;)Lorg/omg/CosNaming/NameComponent;
+        40: aastore       
+        41: iinc          3, 1
+        44: goto          23
+        47: aload_2       
+        48: areturn       
+      StackMapTable: number_of_entries = 3
+           frame_type = 252 /* append */
+             offset_delta = 16
+        locals = [ int ]
+           frame_type = 253 /* append */
+             offset_delta = 6
+        locals = [ class "[Lorg/omg/CosNaming/NameComponent;", int ]
+           frame_type = 250 /* chop */
+          offset_delta = 23
+
+    Exceptions:
+      throws javax.naming.InvalidNameException
+
+  static java.lang.String cosNameToInsString(org.omg.CosNaming.NameComponent[]);
+    Signature: ([Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+    flags: ACC_STATIC
+%
+    Code:
+      stack=3, locals=3, args_size=1
+         0: new           #98                 // class java/lang/StringBuffer
+         3: dup           
+         4: invokespecial #168                // Method java/lang/StringBuffer."<init>":()V
+         7: astore_1      
+         8: iconst_0      
+         9: istore_2      
+        10: iload_2       
+        11: aload_0       
+        12: arraylength   
+        13: if_icmpge     44
+        16: iload_2       
+        17: ifle          27
+        20: aload_1       
+        21: bipush        47
+        23: invokevirtual #171                // Method java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+        26: pop           
+        27: aload_1       
+        28: aload_0       
+        29: iload_2       
+        30: aaload        
+        31: invokestatic  #157                // Method stringifyComponent:(Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+        34: invokevirtual #172                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        37: pop           
+        38: iinc          2, 1
+        41: goto          10
+        44: aload_1       
+        45: invokevirtual #169                // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+        48: areturn       
+      StackMapTable: number_of_entries = 3
+           frame_type = 253 /* append */
+             offset_delta = 10
+        locals = [ class java/lang/StringBuffer, int ]
+           frame_type = 16 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 16
+
+
+  static javax.naming.Name cosNameToName(org.omg.CosNaming.NameComponent[]);
+    Signature: ([Lorg/omg/CosNaming/NameComponent;)Ljavax/naming/Name;
+    flags: ACC_STATIC
+%
+    Code:
+      stack=3, locals=4, args_size=1
+         0: new           #102                // class javax/naming/CompositeName
+         3: dup           
+         4: invokespecial #182                // Method javax/naming/CompositeName."<init>":()V
+         7: astore_1      
+         8: iconst_0      
+         9: istore_2      
+        10: aload_0       
+        11: ifnull        43
+        14: iload_2       
+        15: aload_0       
+        16: arraylength   
+        17: if_icmpge     43
+        20: aload_1       
+        21: aload_0       
+        22: iload_2       
+        23: aaload        
+        24: invokestatic  #157                // Method stringifyComponent:(Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+        27: invokeinterface #188,  2          // InterfaceMethod javax/naming/Name.add:(Ljava/lang/String;)Ljavax/naming/Name;
+        32: pop           
+        33: goto          37
+        36: astore_3      
+        37: iinc          2, 1
+        40: goto          10
+        43: aload_1       
+        44: areturn       
+      Exception table:
+         from    to  target type
+            20    33    36   Class javax/naming/InvalidNameException
+      StackMapTable: number_of_entries = 4
+           frame_type = 253 /* append */
+             offset_delta = 10
+        locals = [ class javax/naming/Name, int ]
+           frame_type = 89 /* same_locals_1_stack_item */
+          stack = [ class javax/naming/InvalidNameException ]
+           frame_type = 0 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+
+
+  private static java.util.Vector insStringToStringifiedComps(java.lang.String) throws javax.naming.InvalidNameException;
+    Signature: (Ljava/lang/String;)Ljava/util/Vector;
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+    Code:
+      stack=9, locals=9, args_size=1
+         0: aload_0       
+         1: invokevirtual #162                // Method java/lang/String.length:()I
+         4: istore_1      
+         5: new           #101                // class java/util/Vector
+         8: dup           
+         9: bipush        10
+        11: invokespecial #179                // Method java/util/Vector."<init>":(I)V
+        14: astore_2      
+        15: iload_1       
+        16: newarray       char
+        18: astore_3      
+        19: iload_1       
+        20: newarray       char
+        22: astore        4
+        24: iconst_0      
+        25: istore        8
+        27: iload         8
+        29: iload_1       
+        30: if_icmpge     314
+        33: iconst_0      
+        34: dup           
+        35: istore        6
+        37: istore        5
+        39: iconst_1      
+        40: istore        7
+        42: iload         8
+        44: iload_1       
+        45: if_icmpge     265
+        48: aload_0       
+        49: iload         8
+        51: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+        54: bipush        47
+        56: if_icmpne     62
+        59: goto          265
+        62: aload_0       
+        63: iload         8
+        65: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+        68: bipush        92
+        70: if_icmpne     196
+        73: iload         8
+        75: iconst_1      
+        76: iadd          
+        77: iload_1       
+        78: if_icmplt     108
+        81: new           #103                // class javax/naming/InvalidNameException
+        84: dup           
+        85: new           #99                 // class java/lang/StringBuilder
+        88: dup           
+        89: invokespecial #173                // Method java/lang/StringBuilder."<init>":()V
+        92: aload_0       
+        93: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        96: ldc           #5                  // String : unescaped \ at end of component
+        98: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       101: invokevirtual #174                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       104: invokespecial #183                // Method javax/naming/InvalidNameException."<init>":(Ljava/lang/String;)V
+       107: athrow        
+       108: aload_0       
+       109: iload         8
+       111: iconst_1      
+       112: iadd          
+       113: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       116: invokestatic  #155                // Method isMeta:(C)Z
+       119: ifeq          169
+       122: iinc          8, 1
+       125: iload         7
+       127: ifeq          149
+       130: aload_3       
+       131: iload         5
+       133: iinc          5, 1
+       136: aload_0       
+       137: iload         8
+       139: iinc          8, 1
+       142: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       145: castore       
+       146: goto          42
+       149: aload         4
+       151: iload         6
+       153: iinc          6, 1
+       156: aload_0       
+       157: iload         8
+       159: iinc          8, 1
+       162: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       165: castore       
+       166: goto          42
+       169: new           #103                // class javax/naming/InvalidNameException
+       172: dup           
+       173: new           #99                 // class java/lang/StringBuilder
+       176: dup           
+       177: invokespecial #173                // Method java/lang/StringBuilder."<init>":()V
+       180: aload_0       
+       181: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       184: ldc           #4                  // String : invalid character being escaped
+       186: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       189: invokevirtual #174                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       192: invokespecial #183                // Method javax/naming/InvalidNameException."<init>":(Ljava/lang/String;)V
+       195: athrow        
+       196: iload         7
+       198: ifeq          221
+       201: aload_0       
+       202: iload         8
+       204: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       207: bipush        46
+       209: if_icmpne     221
+       212: iinc          8, 1
+       215: iconst_0      
+       216: istore        7
+       218: goto          42
+       221: iload         7
+       223: ifeq          245
+       226: aload_3       
+       227: iload         5
+       229: iinc          5, 1
+       232: aload_0       
+       233: iload         8
+       235: iinc          8, 1
+       238: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       241: castore       
+       242: goto          42
+       245: aload         4
+       247: iload         6
+       249: iinc          6, 1
+       252: aload_0       
+       253: iload         8
+       255: iinc          8, 1
+       258: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       261: castore       
+       262: goto          42
+       265: aload_2       
+       266: new           #107                // class org/omg/CosNaming/NameComponent
+       269: dup           
+       270: new           #97                 // class java/lang/String
+       273: dup           
+       274: aload_3       
+       275: iconst_0      
+       276: iload         5
+       278: invokespecial #165                // Method java/lang/String."<init>":([CII)V
+       281: new           #97                 // class java/lang/String
+       284: dup           
+       285: aload         4
+       287: iconst_0      
+       288: iload         6
+       290: invokespecial #165                // Method java/lang/String."<init>":([CII)V
+       293: invokespecial #185                // Method org/omg/CosNaming/NameComponent."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+       296: invokestatic  #157                // Method stringifyComponent:(Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+       299: invokevirtual #180                // Method java/util/Vector.addElement:(Ljava/lang/Object;)V
+       302: iload         8
+       304: iload_1       
+       305: if_icmpge     27
+       308: iinc          8, 1
+       311: goto          27
+       314: aload_2       
+       315: areturn       
+      StackMapTable: number_of_entries = 11
+           frame_type = 255 /* full_frame */
+          offset_delta = 27
+          locals = [ class java/lang/String, int, class java/util/Vector, class "[C", class "[C", top, top, top, int ]
+          stack = []
+           frame_type = 255 /* full_frame */
+          offset_delta = 14
+          locals = [ class java/lang/String, int, class java/util/Vector, class "[C", class "[C", int, int, int, int ]
+          stack = []
+           frame_type = 19 /* same */
+           frame_type = 45 /* same */
+           frame_type = 40 /* same */
+           frame_type = 19 /* same */
+           frame_type = 26 /* same */
+           frame_type = 24 /* same */
+           frame_type = 23 /* same */
+           frame_type = 19 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 48
+          locals = [ class java/lang/String, int, class java/util/Vector, class "[C", class "[C" ]
+          stack = []
+
+    Exceptions:
+      throws javax.naming.InvalidNameException
+
+  private static org.omg.CosNaming.NameComponent parseComponent(java.lang.String) throws javax.naming.InvalidNameException;
+    Signature: (Ljava/lang/String;)Lorg/omg/CosNaming/NameComponent;
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+    Code:
+      stack=6, locals=8, args_size=1
+         0: new           #107                // class org/omg/CosNaming/NameComponent
+         3: dup           
+         4: invokespecial #184                // Method org/omg/CosNaming/NameComponent."<init>":()V
+         7: astore_1      
+         8: iconst_m1     
+         9: istore_2      
+        10: aload_0       
+        11: invokevirtual #162                // Method java/lang/String.length:()I
+        14: istore_3      
+        15: iconst_0      
+        16: istore        4
+        18: iload_3       
+        19: newarray       char
+        21: astore        5
+        23: iconst_0      
+        24: istore        6
+        26: iconst_0      
+        27: istore        7
+        29: iload         7
+        31: iload_3       
+        32: if_icmpge     194
+        35: iload_2       
+        36: ifge          194
+        39: iload         6
+        41: ifeq          64
+        44: aload         5
+        46: iload         4
+        48: iinc          4, 1
+        51: aload_0       
+        52: iload         7
+        54: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+        57: castore       
+        58: iconst_0      
+        59: istore        6
+        61: goto          188
+        64: aload_0       
+        65: iload         7
+        67: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+        70: bipush        92
+        72: if_icmpne     157
+        75: iload         7
+        77: iconst_1      
+        78: iadd          
+        79: iload_3       
+        80: if_icmplt     110
+        83: new           #103                // class javax/naming/InvalidNameException
+        86: dup           
+        87: new           #99                 // class java/lang/StringBuilder
+        90: dup           
+        91: invokespecial #173                // Method java/lang/StringBuilder."<init>":()V
+        94: aload_0       
+        95: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        98: ldc           #5                  // String : unescaped \ at end of component
+       100: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       103: invokevirtual #174                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       106: invokespecial #183                // Method javax/naming/InvalidNameException."<init>":(Ljava/lang/String;)V
+       109: athrow        
+       110: aload_0       
+       111: iload         7
+       113: iconst_1      
+       114: iadd          
+       115: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       118: invokestatic  #155                // Method isMeta:(C)Z
+       121: ifeq          130
+       124: iconst_1      
+       125: istore        6
+       127: goto          188
+       130: new           #103                // class javax/naming/InvalidNameException
+       133: dup           
+       134: new           #99                 // class java/lang/StringBuilder
+       137: dup           
+       138: invokespecial #173                // Method java/lang/StringBuilder."<init>":()V
+       141: aload_0       
+       142: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       145: ldc           #4                  // String : invalid character being escaped
+       147: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       150: invokevirtual #174                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       153: invokespecial #183                // Method javax/naming/InvalidNameException."<init>":(Ljava/lang/String;)V
+       156: athrow        
+       157: aload_0       
+       158: iload         7
+       160: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       163: bipush        46
+       165: if_icmpne     174
+       168: iload         7
+       170: istore_2      
+       171: goto          188
+       174: aload         5
+       176: iload         4
+       178: iinc          4, 1
+       181: aload_0       
+       182: iload         7
+       184: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       187: castore       
+       188: iinc          7, 1
+       191: goto          29
+       194: aload_1       
+       195: new           #97                 // class java/lang/String
+       198: dup           
+       199: aload         5
+       201: iconst_0      
+       202: iload         4
+       204: invokespecial #165                // Method java/lang/String."<init>":([CII)V
+       207: putfield      #153                // Field org/omg/CosNaming/NameComponent.id:Ljava/lang/String;
+       210: iload_2       
+       211: ifge          223
+       214: aload_1       
+       215: ldc           #1                  // String 
+       217: putfield      #154                // Field org/omg/CosNaming/NameComponent.kind:Ljava/lang/String;
+       220: goto          394
+       223: iconst_0      
+       224: istore        4
+       226: iconst_0      
+       227: istore        6
+       229: iload_2       
+       230: iconst_1      
+       231: iadd          
+       232: istore        7
+       234: iload         7
+       236: iload_3       
+       237: if_icmpge     378
+       240: iload         6
+       242: ifeq          265
+       245: aload         5
+       247: iload         4
+       249: iinc          4, 1
+       252: aload_0       
+       253: iload         7
+       255: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       258: castore       
+       259: iconst_0      
+       260: istore        6
+       262: goto          372
+       265: aload_0       
+       266: iload         7
+       268: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       271: bipush        92
+       273: if_icmpne     358
+       276: iload         7
+       278: iconst_1      
+       279: iadd          
+       280: iload_3       
+       281: if_icmplt     311
+       284: new           #103                // class javax/naming/InvalidNameException
+       287: dup           
+       288: new           #99                 // class java/lang/StringBuilder
+       291: dup           
+       292: invokespecial #173                // Method java/lang/StringBuilder."<init>":()V
+       295: aload_0       
+       296: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       299: ldc           #5                  // String : unescaped \ at end of component
+       301: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       304: invokevirtual #174                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       307: invokespecial #183                // Method javax/naming/InvalidNameException."<init>":(Ljava/lang/String;)V
+       310: athrow        
+       311: aload_0       
+       312: iload         7
+       314: iconst_1      
+       315: iadd          
+       316: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       319: invokestatic  #155                // Method isMeta:(C)Z
+       322: ifeq          331
+       325: iconst_1      
+       326: istore        6
+       328: goto          372
+       331: new           #103                // class javax/naming/InvalidNameException
+       334: dup           
+       335: new           #99                 // class java/lang/StringBuilder
+       338: dup           
+       339: invokespecial #173                // Method java/lang/StringBuilder."<init>":()V
+       342: aload_0       
+       343: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       346: ldc           #4                  // String : invalid character being escaped
+       348: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+       351: invokevirtual #174                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       354: invokespecial #183                // Method javax/naming/InvalidNameException."<init>":(Ljava/lang/String;)V
+       357: athrow        
+       358: aload         5
+       360: iload         4
+       362: iinc          4, 1
+       365: aload_0       
+       366: iload         7
+       368: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+       371: castore       
+       372: iinc          7, 1
+       375: goto          234
+       378: aload_1       
+       379: new           #97                 // class java/lang/String
+       382: dup           
+       383: aload         5
+       385: iconst_0      
+       386: iload         4
+       388: invokespecial #165                // Method java/lang/String."<init>":([CII)V
+       391: putfield      #154                // Field org/omg/CosNaming/NameComponent.kind:Ljava/lang/String;
+       394: aload_1       
+       395: areturn       
+      StackMapTable: number_of_entries = 17
+           frame_type = 255 /* full_frame */
+          offset_delta = 29
+          locals = [ class java/lang/String, class org/omg/CosNaming/NameComponent, int, int, int, class "[C", int, int ]
+          stack = []
+           frame_type = 34 /* same */
+           frame_type = 45 /* same */
+           frame_type = 19 /* same */
+           frame_type = 26 /* same */
+           frame_type = 16 /* same */
+           frame_type = 13 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+           frame_type = 28 /* same */
+           frame_type = 252 /* append */
+             offset_delta = 10
+        locals = [ int ]
+           frame_type = 30 /* same */
+           frame_type = 45 /* same */
+           frame_type = 19 /* same */
+           frame_type = 26 /* same */
+           frame_type = 13 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 5
+           frame_type = 15 /* same */
+
+    Exceptions:
+      throws javax.naming.InvalidNameException
+
+  private static java.lang.String stringifyComponent(org.omg.CosNaming.NameComponent);
+    Signature: (Lorg/omg/CosNaming/NameComponent;)Ljava/lang/String;
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+    Code:
+      stack=3, locals=2, args_size=1
+         0: new           #98                 // class java/lang/StringBuffer
+         3: dup           
+         4: aload_0       
+         5: getfield      #153                // Field org/omg/CosNaming/NameComponent.id:Ljava/lang/String;
+         8: invokestatic  #156                // Method escape:(Ljava/lang/String;)Ljava/lang/String;
+        11: invokespecial #170                // Method java/lang/StringBuffer."<init>":(Ljava/lang/String;)V
+        14: astore_1      
+        15: aload_0       
+        16: getfield      #154                // Field org/omg/CosNaming/NameComponent.kind:Ljava/lang/String;
+        19: ifnull        64
+        22: aload_0       
+        23: getfield      #154                // Field org/omg/CosNaming/NameComponent.kind:Ljava/lang/String;
+        26: ldc           #1                  // String 
+        28: invokevirtual #166                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        31: ifne          64
+        34: aload_1       
+        35: new           #99                 // class java/lang/StringBuilder
+        38: dup           
+        39: invokespecial #173                // Method java/lang/StringBuilder."<init>":()V
+        42: bipush        46
+        44: invokevirtual #175                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+        47: aload_0       
+        48: getfield      #154                // Field org/omg/CosNaming/NameComponent.kind:Ljava/lang/String;
+        51: invokestatic  #156                // Method escape:(Ljava/lang/String;)Ljava/lang/String;
+        54: invokevirtual #176                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        57: invokevirtual #174                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+        60: invokevirtual #172                // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        63: pop           
+        64: aload_1       
+        65: invokevirtual #167                // Method java/lang/StringBuffer.length:()I
+        68: ifne          74
+        71: ldc           #2                  // String .
+        73: areturn       
+        74: aload_1       
+        75: invokevirtual #169                // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+        78: areturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 252 /* append */
+             offset_delta = 64
+        locals = [ class java/lang/StringBuffer ]
+           frame_type = 9 /* same */
+
+
+  private static java.lang.String escape(java.lang.String);
+    Signature: (Ljava/lang/String;)Ljava/lang/String;
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+    Code:
+      stack=5, locals=5, args_size=1
+         0: aload_0       
+         1: bipush        46
+         3: invokevirtual #164                // Method java/lang/String.indexOf:(I)I
+         6: ifge          29
+         9: aload_0       
+        10: bipush        47
+        12: invokevirtual #164                // Method java/lang/String.indexOf:(I)I
+        15: ifge          29
+        18: aload_0       
+        19: bipush        92
+        21: invokevirtual #164                // Method java/lang/String.indexOf:(I)I
+        24: ifge          29
+        27: aload_0       
+        28: areturn       
+        29: aload_0       
+        30: invokevirtual #162                // Method java/lang/String.length:()I
+        33: istore_1      
+        34: iconst_0      
+        35: istore_2      
+        36: iload_1       
+        37: iload_1       
+        38: iadd          
+        39: newarray       char
+        41: astore_3      
+        42: iconst_0      
+        43: istore        4
+        45: iload         4
+        47: iload_1       
+        48: if_icmpge     89
+        51: aload_0       
+        52: iload         4
+        54: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+        57: invokestatic  #155                // Method isMeta:(C)Z
+        60: ifeq          71
+        63: aload_3       
+        64: iload_2       
+        65: iinc          2, 1
+        68: bipush        92
+        70: castore       
+        71: aload_3       
+        72: iload_2       
+        73: iinc          2, 1
+        76: aload_0       
+        77: iload         4
+        79: invokevirtual #163                // Method java/lang/String.charAt:(I)C
+        82: castore       
+        83: iinc          4, 1
+        86: goto          45
+        89: new           #97                 // class java/lang/String
+        92: dup           
+        93: aload_3       
+        94: iconst_0      
+        95: iload_2       
+        96: invokespecial #165                // Method java/lang/String."<init>":([CII)V
+        99: areturn       
+      StackMapTable: number_of_entries = 4
+           frame_type = 29 /* same */
+           frame_type = 255 /* full_frame */
+          offset_delta = 15
+          locals = [ class java/lang/String, int, int, class "[C", int ]
+          stack = []
+           frame_type = 25 /* same */
+           frame_type = 250 /* chop */
+          offset_delta = 17
+
+
+  private static boolean isMeta(char);
+    Signature: (C)Z
+    flags: ACC_PRIVATE, ACC_STATIC
+%
+    Code:
+      stack=1, locals=1, args_size=1
+         0: iload_0       
+         1: lookupswitch  { // 3
+                      46: 36
+                      47: 36
+                      92: 36
+                 default: 38
+            }
+        36: iconst_1      
+        37: ireturn       
+        38: iconst_0      
+        39: ireturn       
+      StackMapTable: number_of_entries = 2
+           frame_type = 36 /* same */
+           frame_type = 1 /* same */
+
+
+  static java.util.Properties access$000();
+    Signature: ()Ljava/util/Properties;
+    flags: ACC_STATIC, ACC_SYNTHETIC
+%
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #152                // Field mySyntax:Ljava/util/Properties;
+         3: areturn       
+
+  static {};
+    Signature: ()V
+    flags: ACC_STATIC
+%
+    Code:
+      stack=3, locals=0, args_size=0
+         0: new           #100                // class java/util/Properties
+         3: dup           
+         4: invokespecial #177                // Method java/util/Properties."<init>":()V
+         7: putstatic     #152                // Field mySyntax:Ljava/util/Properties;
+        10: getstatic     #152                // Field mySyntax:Ljava/util/Properties;
+        13: ldc           #7                  // String jndi.syntax.direction
+        15: ldc           #10                 // String left_to_right
+        17: invokevirtual #178                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        20: pop           
+        21: getstatic     #152                // Field mySyntax:Ljava/util/Properties;
+        24: ldc           #9                  // String jndi.syntax.separator
+        26: ldc           #3                  // String /
+        28: invokevirtual #178                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        31: pop           
+        32: getstatic     #152                // Field mySyntax:Ljava/util/Properties;
+        35: ldc           #8                  // String jndi.syntax.escape
+        37: ldc           #6                  // String \
+        39: invokevirtual #178                // Method java/util/Properties.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        42: pop           
+        43: return        
+}
