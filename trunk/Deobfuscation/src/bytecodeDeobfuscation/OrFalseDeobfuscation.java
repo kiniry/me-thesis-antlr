@@ -16,90 +16,90 @@ public class OrFalseDeobfuscation {
 
 	private TreeAdaptor adaptor = new CommonTreeAdaptor();
 	
-	public CommonTree FindSubtreeToRemove(CommonTree tree)
-	{
-		for(int j = 0; j < tree.getChildCount(); j++){
-			CommonTree child = (CommonTree)tree.getChild(j);
-			if(child.getText() == "INSTRUCTION"){
-				RemoveSubtree(child);
-			}
-			else{
-				FindSubtreeToRemove(child);	
-			}
-		}
-		return tree;
-	}
-
-	public CommonTree RemoveSubtree(CommonTree tree)
-	{
-		for(int i = 0; i < tree.getChildCount(); i++){
-			if(tree.getChild(i).getText().equals("iconst_0") && tree.getChild(i+1).getText().equals("ifeq")){
-				tree.deleteChild(i);
-				tree.deleteChild(i);
-				ChangeProgramCounter(tree, i);
-				break;
-			}
-		}
-		return tree;
-	}
-	
-	private CommonTree ChangeProgramCounter(CommonTree tree, int pcIndex){
-		CommonTree child = (CommonTree)tree.getChild(pcIndex);
-		int threshold = Integer.parseInt(child.getChild(0).getText());
-		for(int i = pcIndex; i < tree.getChildCount();i++){
-			CommonTree codeLine = (CommonTree)tree.getChild(i);
-			int pc = Integer.parseInt(codeLine.getChild(0).getText())-4;
-			Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, pc+"");
-			codeLine.replaceChildren(0, 0, o);
-		}
-		ReplaceGotos(tree, threshold);
-		return tree;
-	}
-	
-	private CommonTree ReplaceGotos(CommonTree tree, int threshold)
-	{
-		for(int i = 0; i < tree.getChildCount();i++){
-			CommonTree codeLine = (CommonTree)tree.getChild(i);
-			switch(codeLine.getText())
-			{
-				case "if_acmpeq": 
-				case "if_acmpne": 
-				case "if_icmpeq": 
-				case "if_icmpne": 
-				case "if_icmplt": 
-				case "if_icmpge": 
-				case "if_icmpgt": 
-				case "if_icmple": 
-				case "ifeq": 
-				case "ifne": 
-				case "iflt": 
-				case "ifge": 
-				case "ifgt": 
-				case "ifle": 
-				case "ifnonnull": 
-				case "ifnull": 
-				case "jsr": 
-				case "goto": 
-				case "jsr_w":
-				case "goto_w":
-					ReplaceGoto(codeLine, threshold);
-					break;
-			}
-		}
-		return tree;
-	}
-	
-	private void ReplaceGoto(CommonTree codeLine, int threshold){
-		for(int i = 0; i < codeLine.getChildCount();i++){
-			CommonTree child = (CommonTree)codeLine.getChild(i);
-			if(child.getText().equals("OPERAND") && child.getChildCount() > 0){
-				CommonTree childchild = (CommonTree)child.getChild(0);
-				int pc = Integer.parseInt(childchild.getText()) - 4;
-				Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, pc+"");
-				child.replaceChildren(0, 0, o);
-			}
-		}
-	}
+//	public CommonTree FindSubtreeToRemove(CommonTree tree)
+//	{
+//		for(int j = 0; j < tree.getChildCount(); j++){
+//			CommonTree child = (CommonTree)tree.getChild(j);
+//			if(child.getText() == "INSTRUCTION"){
+//				RemoveSubtree(child);
+//			}
+//			else{
+//				FindSubtreeToRemove(child);	
+//			}
+//		}
+//		return tree;
+//	}
+//
+//	public CommonTree RemoveSubtree(CommonTree tree)
+//	{
+//		for(int i = 0; i < tree.getChildCount(); i++){
+//			if(tree.getChild(i).getText().equals("iconst_0") && tree.getChild(i+1).getText().equals("ifeq")){
+//				tree.deleteChild(i);
+//				tree.deleteChild(i);
+//				ChangeProgramCounter(tree, i);
+//				break;
+//			}
+//		}
+//		return tree;
+//	}
+//	
+//	private CommonTree ChangeProgramCounter(CommonTree tree, int pcIndex){
+//		CommonTree child = (CommonTree)tree.getChild(pcIndex);
+//		int threshold = Integer.parseInt(child.getChild(0).getText());
+//		for(int i = pcIndex; i < tree.getChildCount();i++){
+//			CommonTree codeLine = (CommonTree)tree.getChild(i);
+//			int pc = Integer.parseInt(codeLine.getChild(0).getText())-4;
+//			Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, pc+"");
+//			codeLine.replaceChildren(0, 0, o);
+//		}
+//		ReplaceGotos(tree, threshold);
+//		return tree;
+//	}
+//	
+//	private CommonTree ReplaceGotos(CommonTree tree, int threshold)
+//	{
+//		for(int i = 0; i < tree.getChildCount();i++){
+//			CommonTree codeLine = (CommonTree)tree.getChild(i);
+//			switch(codeLine.getText())
+//			{
+//				case "if_acmpeq": 
+//				case "if_acmpne": 
+//				case "if_icmpeq": 
+//				case "if_icmpne": 
+//				case "if_icmplt": 
+//				case "if_icmpge": 
+//				case "if_icmpgt": 
+//				case "if_icmple": 
+//				case "ifeq": 
+//				case "ifne": 
+//				case "iflt": 
+//				case "ifge": 
+//				case "ifgt": 
+//				case "ifle": 
+//				case "ifnonnull": 
+//				case "ifnull": 
+//				case "jsr": 
+//				case "goto": 
+//				case "jsr_w":
+//				case "goto_w":
+//					ReplaceGoto(codeLine, threshold);
+//					break;
+//			}
+//		}
+//		return tree;
+//	}
+//	
+//	private void ReplaceGoto(CommonTree codeLine, int threshold){
+//		for(int i = 0; i < codeLine.getChildCount();i++){
+//			CommonTree child = (CommonTree)codeLine.getChild(i);
+//			if(child.getText().equals("OPERAND") && child.getChildCount() > 0){
+//				CommonTree childchild = (CommonTree)child.getChild(0);
+//				int pc = Integer.parseInt(childchild.getText()) - 4;
+//				Object o = adaptor.create(JVMPrettyPrinter.INTLITERAL, pc+"");
+//				child.replaceChildren(0, 0, o);
+//			}
+//		}
+//	}
 	
 	public CommonTree ChangeTree(HashMap<CommonTree, ArrayList<OrFalseReduction.CodeLine>> list){
 		CommonTree ret = null;
