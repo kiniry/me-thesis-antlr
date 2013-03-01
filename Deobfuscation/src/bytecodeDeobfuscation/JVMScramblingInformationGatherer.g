@@ -373,7 +373,7 @@ fieldDefinition
             ^(UNITHEADER fieldInfo)
             ^(UNITATTR fieldAdditionalInfo*)
             )
-            {rename($classDefinition::className + "." + $IDENTIFIER.text + ":" + $fieldInfo.value, "datField" + $classBody::fieldCount);} 
+            {rename($classDefinition::className + "." + $IDENTIFIER.text + ":" + $fieldInfo.value, "field" + $classBody::fieldCount);} 
             -> ^(FIELDDECL ^(VMODIFIER field_visual_modifier?) ^(MODIFIER field_modifier*) ^(RETVALUE type) ^(UNITNAME IDENTIFIER["datField" + $classBody::fieldCount]) ^(FIELDVALUE literals?)
             ^(UNITHEADER fieldInfo)
             ^(UNITATTR fieldAdditionalInfo*)
